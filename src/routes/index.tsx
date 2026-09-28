@@ -366,11 +366,11 @@ function HomePage() {
             <div className="lg:col-span-8 space-y-6">
               <span className="eyebrow eyebrow-bracket text-accent">Angebots-Assistent</span>
               <h2 className="display text-3xl md:text-5xl text-brand leading-[1.1]">
-                In 2 Minuten zum Angebot.<br />
-                <span className="font-normal text-brand-muted">Unser intelligenter Planer.</span>
+                Ihr Gartenprojekt. Klar geplant.<br />
+                <span className="font-normal text-brand-muted">Schritt für Schritt mit uns.</span>
               </h2>
               <p className="text-foreground/75 leading-relaxed text-sm md:text-base max-w-2xl font-light">
-                Sparen Sie sich lange Absprachen und bürokratischen Aufwand. Tragen Sie einfach Ihre Wunsch-Maße (z. B. Zaunlänge, Pflasterfläche oder Rasenfläche) ein, laden Sie Fotos Ihrer Außenfläche hoch und erhalten Sie innerhalb von 24 Stunden eine erste Preisschätzung von uns!
+                Kombinieren Sie passende Gewerke, beschreiben Sie Ihre Wünsche und ergänzen Sie Maße, Fotos oder Pläne. Sie erhalten eine persönliche Projektübersicht – wir eine gute Grundlage für die Beratung und Ihr individuelles Angebot.
               </p>
               
               <div className="grid sm:grid-cols-3 gap-4 text-xs font-semibold text-brand/85">
@@ -384,7 +384,7 @@ function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">✓</span>
-                  <span>Rückmeldung in 24 Stunden</span>
+                  <span>Persönliche Projektübersicht</span>
                 </div>
               </div>
             </div>

@@ -3,6 +3,8 @@ import { z } from "zod";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { contactSubmissionSchema, applicationSchema, newsletterSchema } from "@/lib/validators";
 import { persistContactSubmission } from "@/lib/contact-submission.server";
+import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
+import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
 import { publicUploadSchema, preparePublicUpload } from "@/lib/public-upload.server";
 
 export const getServices = createServerFn({ method: "GET" }).handler(async () => {
@@ -173,6 +175,15 @@ export const getJobBySlug = createServerFn({ method: "GET" })
 export const createContactRequest = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => contactSubmissionSchema.parse(d))
   .handler(({ data }) => persistContactSubmission(supabaseAdmin, data));
+
+export const createGardenPlannerRequest = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) => z.object({
+    plan: plannerStateSchema,
+    attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
+  }).parse(data))
+  .handler(({ data }) => persistContactSubmission(supabaseAdmin, {
+    ...buildPlannerPayload(data.plan), attachments: data.attachments,
+  }));
 
 export const createApplication = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => applicationSchema.parse(d))
