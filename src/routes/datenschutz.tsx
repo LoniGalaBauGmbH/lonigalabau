@@ -5,12 +5,8 @@ import { Shield, Cookie, Mail, Database, UserCheck, FileLock2 } from "lucide-rea
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({
     meta: [
-      { title: "Datenschutz – Loni GalaBau GmbH" },
-      {
-        name: "description",
-        content:
-          "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei der Loni GalaBau GmbH.",
-      },
+      { title: "Datenschutz – Loni Galabau GmbH" },
+      { name: "description", content: "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei der Loni Galabau GmbH." },
     ],
   }),
   component: DatenschutzPage,
@@ -36,11 +32,7 @@ function DatenschutzPage() {
     <PageShell>
       <PageIntro
         eyebrow="Rechtliches"
-        title={
-          <>
-            Datenschutz<span className="italic font-light">erklärung</span>
-          </>
-        }
+        title={<>Datenschutz<span className="italic font-light">erklärung</span></>}
         lead="Transparenz darüber, welche Daten wir wie und warum verarbeiten – nach den Regeln der DSGVO."
       />
 
@@ -53,10 +45,7 @@ function DatenschutzPage() {
               <ul className="space-y-1">
                 {TOC.map((s) => (
                   <li key={s.id}>
-                    <a
-                      href={`#${s.id}`}
-                      className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm hover:bg-brand/5 transition"
-                    >
+                    <a href={`#${s.id}`} className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm hover:bg-brand/5 transition">
                       <s.icon className="w-4 h-4 text-accent" />
                       <span>{s.t}</span>
                     </a>
@@ -76,120 +65,31 @@ function DatenschutzPage() {
           <div className="lg:col-span-8 space-y-10">
             <Section id="verantwortlich" title="Verantwortlicher">
               <p>
-                Verantwortlich für die Datenverarbeitung auf dieser Website ist die Loni GalaBau
-                GmbH, Auf der Roos 3, 65795 Hattersheim am Main. Bei Fragen zum Datenschutz
-                erreichen Sie uns unter{" "}
-                <a href="mailto:info@loni-galabau.de" className="underline decoration-accent">
-                  info@loni-galabau.de
-                </a>
-                .
+                Verantwortlich für die Datenverarbeitung auf dieser Website ist die Loni Galabau GmbH, Auf der Roos 3, 65795 Hattersheim am Main.
+                Bei Fragen zum Datenschutz erreichen Sie uns unter <a href="mailto:info@loni-galabau.de" className="underline decoration-accent">info@loni-galabau.de</a>.
               </p>
             </Section>
 
             <Section id="daten" title="Verarbeitete Daten und Zwecke">
-              <p>
-                Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer
-                funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist.
-              </p>
+              <p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist.</p>
               <ul className="list-disc pl-5 space-y-1 mt-3">
-                <li>
-                  Server-Logfiles (IP, Datum, Browser) – berechtigtes Interesse an Sicherheit (Art.
-                  6 Abs. 1 lit. f DSGVO)
-                </li>
-                <li>
-                  Kontaktanfragen – zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO)
-                </li>
+                <li>Server-Logfiles (IP, Datum, Browser) – berechtigtes Interesse an Sicherheit (Art. 6 Abs. 1 lit. f DSGVO)</li>
+                <li>Kontaktanfragen – zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO)</li>
                 <li>Bewerbungsdaten – zur Durchführung des Bewerbungsverfahrens (§ 26 BDSG)</li>
               </ul>
             </Section>
 
             <Section id="kontakt" title="Kontaktformular und Bewerbungen">
               <p>
-                Über unser Kontaktformular übermittelte Angaben (Name, E-Mail, Telefon, Nachricht)
-                verarbeiten wir ausschließlich zur Bearbeitung Ihrer Anfrage. Zur technischen
-                Verarbeitung setzen wir die unten genannten Dienstleister ein. Die Daten werden
-                gelöscht, sobald sie für den Verarbeitungszweck nicht mehr erforderlich sind.
-              </p>
-            </Section>
-
-            <Section id="hosting" title="Technische Dienstleister und Speicherung">
-              <p>
-                Diese Website wird über OpenAI Sites mit Cloudflare als technischer
-                Hosting-Infrastruktur bereitgestellt. Beim Abruf fallen technische Verbindungsdaten
-                an, insbesondere IP-Adresse, Zeitpunkt und aufgerufene Adresse. Die Verarbeitung
-                dient der Auslieferung und Sicherheit der Website (Art. 6 Abs. 1 lit. f DSGVO).
-              </p>
-              <p>
-                Formulardaten, Projektangaben, freiwillig hochgeladene Fotos und
-                Bewerbungsunterlagen speichern wir bei Supabase im Rechenzentrumsgebiet Irland. Der
-                Zugriff auf Anfragen und Bewerbungen ist auf berechtigte Administratoren beschränkt.
-                Für die Bearbeitung vorvertraglicher Anfragen gilt Art. 6 Abs. 1 lit. b DSGVO, für
-                allgemeine Anfragen Art. 6 Abs. 1 lit. f DSGVO, für Bewerbungen § 26 BDSG.
-              </p>
-              <p>
-                Zum Schutz vor massenhaften Formularaufrufen verwenden wir kurzzeitig einen nicht im
-                Klartext gespeicherten, aus der IP-Adresse abgeleiteten Prüfwert. Die Sperrfrist
-                beträgt 15 Minuten; abgelaufene Prüfwerte werden bei nachfolgenden Anfragen
-                entfernt.
-              </p>
-              <p>
-                Eine interne E-Mail-Benachrichtigung über neue Eingänge kann über Resend erfolgen.
-                Sie enthält die Vorgangskennung und einen Link zum geschützten Verwaltungsbereich;
-                Nachrichtentexte und hochgeladene Dateien werden darin nicht versandt.
-              </p>
-              <p>
-                Informationen der Anbieter:{" "}
-                <a
-                  className="underline"
-                  href="https://openai.com/policies/privacy-policy/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  OpenAI
-                </a>
-                ,{" "}
-                <a
-                  className="underline"
-                  href="https://www.cloudflare.com/privacypolicy/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Cloudflare
-                </a>
-                ,{" "}
-                <a
-                  className="underline"
-                  href="https://supabase.com/privacy"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Supabase
-                </a>{" "}
-                und{" "}
-                <a
-                  className="underline"
-                  href="https://resend.com/legal/privacy-policy"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Resend
-                </a>
-                . Bei diesen internationalen Anbietern können Verarbeitungen auch außerhalb der EU
-                stattfinden.
-              </p>
-              <p>
-                Wir bewahren Anfragen und Bewerbungen so lange auf, wie ihre Bearbeitung und
-                gegebenenfalls gesetzliche Aufbewahrungspflichten dies erfordern. Sie können sich
-                für Auskünfte oder Löschungswünsche an uns wenden.
+                Über unser Kontaktformular übermittelte Angaben (Name, E-Mail, Telefon, Nachricht) verarbeiten wir ausschließlich zur Bearbeitung Ihrer Anfrage.
+                Eine Weitergabe an Dritte erfolgt nicht. Die Daten werden gelöscht, sobald sie für den Verarbeitungszweck nicht mehr erforderlich sind.
               </p>
             </Section>
 
             <Section id="cookies" title="Cookies und Reichweitenmessung">
               <p>
-                Wir setzen technisch notwendige Cookies ein, um Grundfunktionen der Website zu
-                gewährleisten. Optionale Cookies (Statistik, Marketing) werden nur mit Ihrer
-                ausdrücklichen Einwilligung über unseren Cookie-Banner aktiviert. Sie können Ihre
-                Einwilligung jederzeit widerrufen.
+                Wir setzen technisch notwendige Cookies ein, um Grundfunktionen der Website zu gewährleisten. Optionale Cookies (Statistik, Marketing)
+                werden nur mit Ihrer ausdrücklichen Einwilligung über unseren Cookie-Banner aktiviert. Sie können Ihre Einwilligung jederzeit widerrufen.
               </p>
               <button
                 onClick={openCookies}
@@ -213,10 +113,8 @@ function DatenschutzPage() {
 
             <Section id="sicherheit" title="Datensicherheit">
               <p>
-                Diese Website nutzt eine SSL-/TLS-Verschlüsselung zum Schutz der Übertragung
-                vertraulicher Inhalte. Wir treffen darüber hinaus technische und organisatorische
-                Maßnahmen, um Ihre Daten gegen Manipulation, Verlust oder unberechtigten Zugriff zu
-                sichern.
+                Diese Website nutzt eine SSL-/TLS-Verschlüsselung zum Schutz der Übertragung vertraulicher Inhalte. Wir treffen darüber hinaus
+                technische und organisatorische Maßnahmen, um Ihre Daten gegen Manipulation, Verlust oder unberechtigten Zugriff zu sichern.
               </p>
             </Section>
 
@@ -228,15 +126,7 @@ function DatenschutzPage() {
   );
 }
 
-function Section({
-  id,
-  title,
-  children,
-}: {
-  id: string;
-  title: string;
-  children: React.ReactNode;
-}) {
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <article id={id} className="scroll-mt-28">
       <h2 className="font-serif text-2xl md:text-3xl text-brand">{title}</h2>

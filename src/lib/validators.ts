@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const contactSchema = z.object({
-  website: z.string().max(0, "Die Anfrage konnte nicht verarbeitet werden.").optional(),
   name: z.string().trim().min(1, "Name erforderlich").max(200),
   email: z.string().trim().email("Ungültige E-Mail").max(320),
   phone: z.string().trim().max(50).optional().or(z.literal("")),
@@ -15,7 +14,6 @@ export const contactSchema = z.object({
 export type ContactInput = z.infer<typeof contactSchema>;
 
 export const applicationSchema = z.object({
-  website: z.string().max(0, "Die Bewerbung konnte nicht verarbeitet werden.").optional(),
   job_id: z.string().uuid(),
   name: z.string().trim().min(1).max(200),
   email: z.string().trim().email().max(320),

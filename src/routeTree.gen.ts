@@ -10,8 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ProjekteRouteImport } from './routes/projekte'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as KontaktRouteImport } from './routes/kontakt'
@@ -37,16 +35,6 @@ import { Route as AuthenticatedAdminAnfragenRouteImport } from './routes/_authen
 const UeberUnsRoute = UeberUnsRouteImport.update({
   id: '/ueber-uns',
   path: '/ueber-uns',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
-  id: '/robots.txt',
-  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjekteRoute = ProjekteRouteImport.update({
@@ -169,8 +157,6 @@ export interface FileRoutesByFullPath {
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
   '/projekte': typeof ProjekteRoute
-  '/robots.txt': typeof RobotsDottxtRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
@@ -194,8 +180,6 @@ export interface FileRoutesByTo {
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
   '/projekte': typeof ProjekteRoute
-  '/robots.txt': typeof RobotsDottxtRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
@@ -221,8 +205,6 @@ export interface FileRoutesById {
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
   '/projekte': typeof ProjekteRoute
-  '/robots.txt': typeof RobotsDottxtRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
@@ -248,8 +230,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/login'
     | '/projekte'
-    | '/robots.txt'
-    | '/sitemap.xml'
     | '/ueber-uns'
     | '/jobs/$slug'
     | '/leistungen/$slug'
@@ -273,8 +253,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/login'
     | '/projekte'
-    | '/robots.txt'
-    | '/sitemap.xml'
     | '/ueber-uns'
     | '/jobs/$slug'
     | '/leistungen/$slug'
@@ -299,8 +277,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/login'
     | '/projekte'
-    | '/robots.txt'
-    | '/sitemap.xml'
     | '/ueber-uns'
     | '/jobs/$slug'
     | '/leistungen/$slug'
@@ -326,8 +302,6 @@ export interface RootRouteChildren {
   KontaktRoute: typeof KontaktRoute
   LoginRoute: typeof LoginRoute
   ProjekteRoute: typeof ProjekteRoute
-  RobotsDottxtRoute: typeof RobotsDottxtRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UeberUnsRoute: typeof UeberUnsRoute
   JobsSlugRoute: typeof JobsSlugRoute
   LeistungenSlugRoute: typeof LeistungenSlugRoute
@@ -342,20 +316,6 @@ declare module '@tanstack/react-router' {
       path: '/ueber-uns'
       fullPath: '/ueber-uns'
       preLoaderRoute: typeof UeberUnsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots.txt': {
-      id: '/robots.txt'
-      path: '/robots.txt'
-      fullPath: '/robots.txt'
-      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projekte': {
@@ -544,8 +504,6 @@ const rootRouteChildren: RootRouteChildren = {
   KontaktRoute: KontaktRoute,
   LoginRoute: LoginRoute,
   ProjekteRoute: ProjekteRoute,
-  RobotsDottxtRoute: RobotsDottxtRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   UeberUnsRoute: UeberUnsRoute,
   JobsSlugRoute: JobsSlugRoute,
   LeistungenSlugRoute: LeistungenSlugRoute,

@@ -1,4 +1,3 @@
-import { notificationConfigured, notifyNewEntry } from "@/lib/notifications.server";
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireAdmin } from "@/integrations/supabase/admin-middleware";
@@ -17,10 +16,10 @@ export const adminListServices = createServerFn({ method: "GET" })
         .from("services")
         .select("*")
         .order("sort_order", { ascending: true });
-      if (error) throw new Error("Daten konnten nicht geladen werden.");
+      if (error) return [];
       return data ?? [];
     } catch {
-      throw new Error("Daten konnten nicht geladen werden. Bitte erneut versuchen.");
+      return [];
     }
   });
 
@@ -56,10 +55,10 @@ export const adminListJobs = createServerFn({ method: "GET" })
         .from("jobs")
         .select("*")
         .order("created_at", { ascending: false });
-      if (error) throw new Error("Daten konnten nicht geladen werden.");
+      if (error) return [];
       return data ?? [];
     } catch {
-      throw new Error("Daten konnten nicht geladen werden. Bitte erneut versuchen.");
+      return [];
     }
   });
 
@@ -99,10 +98,10 @@ export const adminListProjects = createServerFn({ method: "GET" })
         .from("projects")
         .select("*")
         .order("created_at", { ascending: false });
-      if (error) throw new Error("Daten konnten nicht geladen werden.");
+      if (error) return [];
       return data ?? [];
     } catch {
-      throw new Error("Daten konnten nicht geladen werden. Bitte erneut versuchen.");
+      return [];
     }
   });
 
@@ -142,10 +141,10 @@ export const adminListApplications = createServerFn({ method: "GET" })
         .from("applications")
         .select("*, jobs(title, slug)")
         .order("created_at", { ascending: false });
-      if (error) throw new Error("Daten konnten nicht geladen werden.");
+      if (error) return [];
       return data ?? [];
     } catch {
-      throw new Error("Daten konnten nicht geladen werden. Bitte erneut versuchen.");
+      return [];
     }
   });
 
@@ -204,10 +203,10 @@ export const adminListContacts = createServerFn({ method: "GET" })
         .from("contact_requests")
         .select("*")
         .order("created_at", { ascending: false });
-      if (error) throw new Error("Daten konnten nicht geladen werden.");
+      if (error) return [];
       return data ?? [];
     } catch {
-      throw new Error("Daten konnten nicht geladen werden. Bitte erneut versuchen.");
+      return [];
     }
   });
 
@@ -279,74 +278,4 @@ export const adminUpdateSitePartners = createServerFn({ method: "POST" })
       .upsert({ key: "partners", value: data }, { onConflict: "key" });
     if (error) throw new Error(error.message);
     return { ok: true };
-  });
-
-export const adminUpdateNotes = createServerFn({ method: "POST" })
-  .middleware([requireAdmin])
-  .inputValidator((d: unknown) =>
-    z
-      .object({
-        table: z.enum(["contact_requests", "applications"]),
-        id: z.string().uuid(),
-        notes: z.string().max(20000),
-        version: z.number().int().nonnegative(),
-      })
-      .parse(d),
-  )
-  .handler(async ({ data }) => {
-    const { data: saved, error } = await supabaseAdmin
-      .from(data.table)
-      .update({ notes: data.notes, notes_version: data.version + 1 })
-      .eq("id", data.id)
-      .eq("notes_version", data.version)
-      .select("notes, notes_version")
-      .maybeSingle();
-    if (error) throw new Error("Die Notiz konnte nicht gespeichert werden.");
-    if (saved) return { ok: true as const, ...saved };
-    const { data: current, error: readError } = await supabaseAdmin
-      .from(data.table)
-      .select("notes, notes_version")
-      .eq("id", data.id)
-      .maybeSingle();
-    if (readError || !current) throw new Error("Der Datensatz ist nicht mehr verfügbar.");
-    return { ok: false as const, ...current };
-  });
-
-export const adminNotificationStatus = createServerFn({ method: "GET" })
-  .middleware([requireAdmin])
-  .handler(async () => {
-    const [contacts, applications] = await Promise.all([
-      supabaseAdmin
-        .from("contact_requests")
-        .select("id", { count: "exact", head: true })
-        .is("notification_sent_at", null),
-      supabaseAdmin
-        .from("applications")
-        .select("id", { count: "exact", head: true })
-        .is("notification_sent_at", null),
-    ]);
-    if (contacts.error || applications.error)
-      throw new Error("Versandstatus konnte nicht geladen werden.");
-    return {
-      configured: notificationConfigured(),
-      pending: (contacts.count || 0) + (applications.count || 0),
-    };
-  });
-
-export const adminRetryNotifications = createServerFn({ method: "POST" })
-  .middleware([requireAdmin])
-  .handler(async () => {
-    if (!notificationConfigured()) throw new Error("Resend ist noch nicht eingerichtet.");
-    let sent = 0;
-    for (const table of ["contact_requests", "applications"] as const) {
-      const { data, error } = await supabaseAdmin
-        .from(table)
-        .select("id")
-        .is("notification_sent_at", null)
-        .order("created_at")
-        .limit(5);
-      if (error) throw new Error("Ausstehende Meldungen konnten nicht geladen werden.");
-      for (const row of data ?? []) if (await notifyNewEntry(table, row.id)) sent++;
-    }
-    return { sent };
   });

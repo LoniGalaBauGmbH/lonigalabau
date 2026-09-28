@@ -1,276 +1,464 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Link2, Leaf, Sparkles, Heart } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { ProjectInquiryForm } from "@/components/site/ProjectInquiryForm";
+import { StatsBand } from "@/components/site/StatsBand";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
+import { Awards } from "@/components/site/Awards";
+import { Testimonials } from "@/components/site/Testimonials";
 import { FAQ } from "@/components/site/FAQ";
-import { getServices, getSitePartners } from "@/lib/site.functions";
+import { getServices, getFeaturedProject, getSitePartners } from "@/lib/site.functions";
 import { getServiceImage } from "@/lib/service-images";
 import { useSiteImages } from "@/hooks/useSiteImages";
-import { company, absoluteUrl } from "@/lib/company";
-import paving from "@/assets/svc-pflaster.jpg";
-import stone from "@/assets/svc-naturstein.jpg";
+import aboutImg from "@/assets/about-site.jpg";
+
+import partnerBickhardt from "@/assets/partners/bickhardt-bau.png";
+import partnerHattersheim from "@/assets/partners/hattersheim.png";
+import partnerLimbach from "@/assets/partners/limbach.webp";
+import partnerRose from "@/assets/partners/rose-gleisbau.webp";
+import partnerVgf from "@/assets/partners/vgf.png";
+import partnerFrankfurt from "@/assets/partners/frankfurt.svg";
 
 const servicesQuery = queryOptions({ queryKey: ["services"], queryFn: () => getServices() });
-const partnersQuery = queryOptions({
-  queryKey: ["site-partners"],
-  queryFn: () => getSitePartners(),
-});
+const featuredQuery = queryOptions({ queryKey: ["featured-project"], queryFn: () => getFeaturedProject() });
+const partnersQuery = queryOptions({ queryKey: ["partners"], queryFn: () => getSitePartners() });
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Garten- und Landschaftsbau in Hattersheim | Loni GalaBau" },
-      {
-        name: "description",
-        content:
-          "Loni GalaBau aus Hattersheim: Pflasterarbeiten, Naturstein, Gärten und Außenanlagen im Rhein-Main-Gebiet. Beschreiben Sie uns Ihr Vorhaben.",
-      },
+      { title: "Loni Galabau GmbH – Ihr Garten, unsere Leidenschaft" },
+      { name: "description", content: "Garten- und Landschaftsbau aus Hattersheim am Main. Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten und mehr." },
     ],
   }),
-  loader: ({ context }) =>
-    Promise.all([
-      context.queryClient.ensureQueryData(servicesQuery),
-      context.queryClient.ensureQueryData(partnersQuery),
-    ]),
+  loader: ({ context }) => Promise.all([
+    context.queryClient.ensureQueryData(servicesQuery),
+    context.queryClient.ensureQueryData(featuredQuery),
+    context.queryClient.ensureQueryData(partnersQuery),
+  ]),
   component: HomePage,
 });
 
-const descriptions: Record<string, string> = {
-  natursteinarbeiten: "Mauern, Stufen und Einfassungen aus Naturstein.",
-  gartengestaltung: "Gärten neu anlegen oder bestehende Flächen umgestalten.",
-  pflasterarbeiten: "Terrassen, Einfahrten und Wege mit passendem Unterbau.",
-};
+const clients = [
+  { name: "Bickhardt Bau", src: partnerBickhardt },
+  { name: "Stadt Hattersheim", src: partnerHattersheim },
+  { name: "Stadt Frankfurt am Main", src: partnerFrankfurt },
+  { name: "Limbach Gruppe", src: partnerLimbach },
+  { name: "ROSE Gleisbau", src: partnerRose },
+  { name: "VGF", src: partnerVgf },
+];
+
+const values = [
+  { Icon: Link2, t: "Wir verwirklichen Träume!", d: "Wir lassen Ihre Designträume Wirklichkeit werden, indem wir Ihre persönlichen Vorstellungen mit unserer über 15-jährigen Expertise im Bereich Garten- und Landschaftsbau kreativ verbinden." },
+  { Icon: Leaf, t: "Nachhaltigkeit im Blick", d: "Nachhaltigkeit ist fester Bestandteil unserer Pflegearbeit. Mit dem Einsatz nachhaltiger Produkte und sorgfältig ausgewählten Pflegemaßnahmen tragen wir dazu bei, Gärten und Grünflächen langfristig gesund und lebendig zu erhalten." },
+  { Icon: Sparkles, t: "Kreativität entfesselt!", d: "Unsere Gartendesigns verbinden kreative Ideen mit funktionalen Lösungen. So entstehen individuelle Gärten, die nicht nur hervorstechen, sondern auch praktische Herausforderungen sinnvoll lösen." },
+  { Icon: Heart, t: "Leidenschaft in jeder Arbeit", d: "Die Schaffung schöner, nachhaltiger Außenanlagen ist unsere große Leidenschaft. Jeder Garten ist individuell und stellt uns vor neue Herausforderungen. Genau darin liegt unsere Stärke: Materialien und Pflanzen harmonisch zu verbinden und so einzigartige Gartenlandschaften zu gestalten." },
+];
+
+const steps = [
+  { n: "01", t: "Design-Beratung", d: "Im ersten Schritt setzen wir uns mit Ihnen zusammen, um Ihre Wünsche und Vorstellungen für den Garten ausführlich zu besprechen und zu verstehen." },
+  { n: "02", t: "Individuelle Planung", d: "Wenn gewünscht, entwirft unser Partner ein individuelles und passgenaues Gartendesign, das genau auf Ihre Vorstellungen und die Besonderheiten Ihres Grundstücks zugeschnitten ist." },
+  { n: "03", t: "Umsetzung & Bau", d: "Nach Fertigstellung des Entwurfs stellen wir Ihnen das Konzept persönlich vor und gehen alle Details gemeinsam durch. Nach Ihrer Freigabe starten wir unmittelbar mit der Einplanung und der fachgerechten Umsetzung." },
+  { n: "04", t: "Gestaltung & Ausstattung", d: "Im Bereich Gestaltung & Ausstattung integrieren wir zeitgemäße Lösungen wie Gartenbeleuchtung, automatische Bewässerung und Mähroboter. So verbinden wir Funktionalität, Komfort und ein gepflegtes Erscheinungsbild." },
+];
 
 function HomePage() {
   const { data: services } = useSuspenseQuery(servicesQuery);
-  const { data: partners } = useSuspenseQuery(partnersQuery);
-  const { images, customImages } = useSiteImages();
-  const highlighted = ["pflasterarbeiten", "natursteinarbeiten", "gartengestaltung"];
-  const mainServices = highlighted.flatMap((slug) =>
-    services.filter((service) => service.slug === slug),
-  );
-  const otherServices = services.filter((service) => !highlighted.includes(service.slug));
+  const { data: featured } = useSuspenseQuery(featuredQuery);
+  const { data: partnersData } = useSuspenseQuery(partnersQuery);
+  const { images } = useSiteImages();
+
+  const activePartners = partnersData && partnersData.length > 0 ? partnersData : clients;
 
   return (
-    <PageShell>
+    <PageShell transparentHeader>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "HomeAndConstructionBusiness",
-            name: company.name,
-            url: absoluteUrl("/"),
-            logo: absoluteUrl(images.logo),
-            telephone: company.phone,
-            email: company.email,
-            address: {
+            "@type": ["HomeAndConstructionBusiness", "LandscapingService"],
+            "name": "Loni Galabau GmbH",
+            "url": "https://www.loni-galabau.de",
+            "logo": "https://www.loni-galabau.de/assets/logo-loni.svg",
+            "image": "https://www.loni-galabau.de/assets/hero-garden.jpg",
+            "telephone": "+49-6190-9266134",
+            "email": "info@loni-galabau.de",
+            "address": {
               "@type": "PostalAddress",
-              streetAddress: company.street,
-              addressLocality: "Hattersheim am Main",
-              postalCode: "65795",
-              addressCountry: "DE",
+              "streetAddress": "Auf der Roos 3",
+              "addressLocality": "Hattersheim am Main",
+              "postalCode": "65795",
+              "addressCountry": "DE"
             },
-            openingHoursSpecification: [
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 50.0654,
+              "longitude": 8.4859
+            },
+            "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                opens: "07:00",
-                closes: "18:00",
-              },
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "07:00",
+                "closes": "18:00"
+              }
             ],
-            areaServed: "Rhein-Main-Gebiet",
-          }).replace(/</g, "\\u003c"),
+            "areaServed": [
+              {"@type": "City", "name": "Hattersheim am Main"},
+              {"@type": "City", "name": "Frankfurt am Main"},
+              {"@type": "City", "name": "Wiesbaden"},
+              {"@type": "City", "name": "Mainz"},
+              {"@type": "City", "name": "Darmstadt"},
+              {"@type": "City", "name": "Rhein-Main-Gebiet"}
+            ]
+          })
         }}
       />
-
-      <section className="site-width home-hero">
-        <div className="home-hero-copy">
-          <p className="eyebrow">Hattersheim am Main · Rhein-Main</p>
-          <h1>
-            Hof, Terrasse,
-            <br />
-            Garten.
-          </h1>
-          <p className="home-intro">
-            Garten- und Landschaftsbau beginnt beim Boden und reicht bis zum letzten Pflasterstein.
-            Wir kümmern uns um Ihre Außenanlage.
-          </p>
-          <div className="flex flex-wrap gap-5 items-center mt-8">
-            <Link to="/kontakt" className="primary-link">
-              Projekt anfragen <ArrowUpRight size={18} />
-            </Link>
-            <a href="#leistungen" className="text-link">
-              Leistungen ansehen <ArrowRight size={16} />
-            </a>
-          </div>
-          <p className="mt-9 text-sm text-foreground/65">
-            Eine neue Einfahrt? Mehr Platz auf der Terrasse?
-            <br />
-            Erzählen Sie uns, was Sie vorhaben.
-          </p>
-        </div>
-        <figure className="home-hero-image">
+      {/* HERO */}
+      <section className="relative min-h-[100svh] w-full overflow-hidden text-white">
+        <div className="absolute inset-0">
           <img
-            src={customImages.hero_bg || paving}
-            alt="Gepflasterter Weg zwischen Rasenflächen"
-            width={768}
-            height={768}
-            fetchPriority="high"
+            src={images.hero_bg}
+            alt="Modern gestalteter Garten in der Abenddämmerung"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover animate-slow-zoom"
           />
-          <figcaption>Stein, Grün und Platz für den Alltag.</figcaption>
-        </figure>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+        </div>
+
+        {/* floating stat card */}
+        <div className="absolute right-6 md:right-10 top-28 md:top-32 z-10 animate-fade-up [animation-delay:300ms]">
+          <div className="rounded-3xl backdrop-blur-md bg-white/5 px-7 py-5 md:px-9 md:py-7 text-right">
+            <div className="display text-4xl md:text-5xl text-white">500+</div>
+            <div className="text-[11px] tracking-[0.22em] uppercase text-white/80 mt-1">Zufriedene Kunden</div>
+          </div>
+        </div>
+
+        <div className="relative z-[1] max-w-[1480px] mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-16 md:pb-24 pt-44 md:pt-56">
+          <div className="max-w-5xl animate-fade-up">
+            <h1 className="display text-white text-[clamp(2.75rem,8vw,8rem)]">
+              Ihr Garten<br />
+              <span className="text-white">unsere Leidenschaft</span>
+            </h1>
+
+            <p className="mt-10 max-w-2xl text-lg md:text-xl text-white/90 leading-relaxed font-normal">
+              Gärten sind mehr als nur Grünflächen – sie sind Orte der Entspannung, Inspiration
+              und Naturverbundenheit. Wir verwandeln Ihren Außenbereich in eine harmonische Oase,
+              die Ästhetik und Funktionalität vereint.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-8">
+              <Link
+                to="/kontakt"
+                className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-accent hover:text-brand transition"
+              >
+                Mehr erfahren
+              </Link>
+              <Link
+                to="/leistungen"
+                className="group inline-flex items-center gap-3 text-white text-sm uppercase tracking-[0.2em] font-semibold border-b border-white/60 pb-1 hover:border-accent hover:text-accent transition"
+              >
+                Unsere Leistungen
+                <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="leistungen" className="site-width section-space scroll-mt-24">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Was wir machen</p>
-            <h2>
-              Von einzelnen Arbeiten
-              <br />
-              bis zur ganzen Außenanlage.
-            </h2>
+      {/* CLIENTS BAND — auto-scrolling marquee */}
+      <section className="bg-background border-b border-brand/10 overflow-hidden">
+        <div className="max-w-[1480px] mx-auto px-6 md:px-10 pt-14 md:pt-16 pb-10 md:pb-12">
+          <div className="text-center mb-10">
+            <span className="eyebrow text-brand">Auftraggeber & Partner</span>
           </div>
-          <Link to="/leistungen" className="text-link">
-            Alle Leistungen <ArrowUpRight size={18} />
-          </Link>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {mainServices.map((service) => (
-            <Link
-              key={service.id}
-              to="/leistungen/$slug"
-              params={{ slug: service.slug }}
-              className="service-preview group"
-            >
-              <div className="aspect-[4/3] overflow-hidden bg-secondary">
+        <div
+          className="relative group"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          }}
+        >
+          <div className="flex w-max animate-partner-marquee group-hover:[animation-play-state:paused] pb-14 md:pb-16">
+            {[...activePartners, ...activePartners].map((c, i) => (
+              <div
+                key={`${c.name}-${i}`}
+                className="shrink-0 px-10 md:px-16 flex items-center justify-center"
+              >
                 <img
-                  src={getServiceImage(service.slug, service.hero_image)}
-                  alt={service.title}
-                  width={768}
-                  height={576}
+                  src={c.src}
+                  alt={c.name}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                  className="h-12 md:h-16 w-auto max-w-[200px] object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
-              <div className="flex justify-between gap-4 mt-5">
-                <h3>{service.title}</h3>
-                <ArrowUpRight size={21} className="shrink-0 mt-1" />
-              </div>
-              <p>{descriptions[service.slug] || service.short_text}</p>
-            </Link>
-          ))}
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 mt-10">
-          {otherServices.map((service) => (
-            <Link
-              key={service.id}
-              to="/leistungen/$slug"
-              params={{ slug: service.slug }}
-              className="flex justify-between gap-4 py-5 border-t border-brand/20 font-medium hover:text-brand"
-            >
-              <span>{service.title}</span>
-              <ArrowUpRight size={18} />
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-brand text-brand-foreground section-space">
-        <div className="site-width grid lg:grid-cols-2 gap-12 lg:gap-24">
-          <div>
-            <p className="eyebrow text-white/65">Die Zusammenarbeit</p>
-            <h2 className="home-heading text-white mt-4">
-              Erst besprechen.
-              <br />
-              Dann anpacken.
-            </h2>
-            <p className="mt-6 max-w-md leading-relaxed text-white/75">
-              Was soll entstehen, was ist schon da und was passt zum Grundstück? Diese Fragen klären
-              wir gemeinsam, bevor die Arbeiten beginnen.
-            </p>
-            <Link to="/ueber-uns" className="text-link text-white mt-8">
-              Mehr über unseren Betrieb <ArrowUpRight size={18} />
-            </Link>
+            ))}
           </div>
-          <ol className="divide-y divide-white/20">
-            {[
-              [
-                "Vorhaben besprechen",
-                "Sie schicken uns die wichtigsten Angaben. Fotos und ungefähre Maße helfen bei der ersten Einschätzung.",
-              ],
-              [
-                "Umfang und Angebot klären",
-                "Wir stimmen die Arbeiten, Materialien und den möglichen Zeitraum mit Ihnen ab.",
-              ],
-              [
-                "Arbeiten umsetzen",
-                "Auf der Baustelle setzen wir die vereinbarten Leistungen um und besprechen offene Fragen direkt.",
-              ],
-            ].map(([title, text], index) => (
-              <li key={title} className="py-6 first:pt-0 grid grid-cols-[2rem_1fr] gap-5">
-                <span className="text-white/50 text-sm pt-1">0{index + 1}</span>
-                <div>
-                  <h3 className="text-white text-xl font-medium">{title}</h3>
-                  <p className="text-white/70 mt-3 leading-relaxed">{text}</p>
+        </div>
+        <style>{`
+          @keyframes partner-marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+          }
+          .animate-partner-marquee {
+            animation: partner-marquee 40s linear infinite;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .animate-partner-marquee { animation: none; }
+          }
+        `}</style>
+      </section>
+
+
+      <StatsBand />
+
+      {/* VALUES */}
+      <section className="px-6 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1480px] mx-auto">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div className="lg:col-span-7">
+              <span className="eyebrow eyebrow-bracket text-brand/70">Unsere Werte</span>
+              <h2 className="display text-[clamp(2.25rem,8vw,5.5rem)] mt-6 text-brand leading-[1.05]">
+                Wir sind <span className="text-brand-muted">in jeder<br className="hidden lg:inline" /> Hinsicht anders</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:pt-6 flex lg:justify-end">
+              <Link
+                to="/ueber-uns"
+                className="inline-flex items-center gap-2 bg-brand text-brand-foreground px-10 py-5 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-brand/90 transition"
+              >
+                Mehr erfahren
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mt-20">
+            <div className="lg:col-span-6 space-y-14">
+              {values.map(({ Icon, t, d }) => (
+                <div key={t}>
+                  <div className="size-12 grid place-items-center mb-5">
+                    <Icon className="h-5 w-5 text-brand" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-display font-extrabold text-brand">{t}</h3>
+                  <p className="mt-3 text-base text-foreground/75 leading-relaxed max-w-xl">{d}</p>
                 </div>
-              </li>
-            ))}
-          </ol>
+              ))}
+            </div>
+
+            <div className="lg:col-span-6 lg:sticky lg:top-32 h-fit">
+              <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl">
+                <img
+                  src={aboutImg}
+                  alt="Modernes Bauvorhaben mit Baumaschinen"
+                  width={1600}
+                  height={2000}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="site-width section-space grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
-        <img
-          src={stone}
-          alt="Detail einer Mauer aus Naturstein"
-          width={768}
-          height={768}
-          loading="lazy"
-          className="w-full aspect-[5/4] object-cover"
-        />
-        <div>
-          <p className="eyebrow">Ihr Vorhaben</p>
-          <h2 className="home-heading mt-4">
-            Noch keine fertige Planung?
-            <br />
-            Das ist in Ordnung.
+      {/* PROCESS */}
+      <section className="bg-brand text-brand-foreground px-6 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1480px] mx-auto">
+          <span className="eyebrow eyebrow-bracket text-brand-foreground/70">Wie es funktioniert</span>
+          <h2 className="display text-[clamp(2rem,5vw,4.5rem)] mt-6 text-brand-foreground max-w-6xl">
+            EINFACHE SCHRITTE FÜR <br />IHRE <span className="text-accent">GARTENGESTALTUNG</span>
           </h2>
-          <p className="mt-6 leading-relaxed text-foreground/75">
-            Im Gartenplaner können Sie Ihre Wünsche Schritt für Schritt beschreiben und Fotos
-            ergänzen. Aus Ihren Angaben entsteht eine Anfrage, die wir persönlich mit Ihnen
-            besprechen.
-          </p>
-          <Link to="/konfigurator" className="primary-link mt-8">
-            Gartenprojekt beschreiben <ArrowRight size={18} />
-          </Link>
+
+          <div className="mt-20 grid md:grid-cols-2 gap-x-16 gap-y-14 relative">
+            {steps.map((s, i) => (
+              <div
+                key={s.n}
+                className={`relative md:px-8 ${i < 2 ? "md:pb-14" : "md:pt-4"}`}
+              >
+                <h3 className="text-2xl md:text-3xl text-accent font-display font-extrabold tracking-tight">
+                  {s.n} <span className="text-brand-foreground/30 mx-2">|</span> {s.t}
+                </h3>
+                <p className="mt-5 text-brand-foreground/75 leading-relaxed max-w-md">{s.d}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {customImages.before_garden && customImages.after_garden && <BeforeAfterSlider />}
-      {partners.length > 0 && (
-        <section className="site-width pb-16">
-          <p className="eyebrow mb-8">Auftraggeber & Partner</p>
-          <div className="flex flex-wrap gap-10 items-center">
-            {partners.map((partner) => (
-              <img
-                key={partner.name}
-                src={partner.src}
-                alt={partner.name}
-                loading="lazy"
-                className="max-w-36 max-h-12 object-contain"
-              />
-            ))}
+      {/* SERVICES */}
+      <section className="px-6 md:px-10 py-24 md:py-36">
+        <div className="max-w-[1480px] mx-auto">
+          <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
+            <div className="lg:col-span-8">
+              <span className="eyebrow eyebrow-bracket text-brand/70">Leistungen</span>
+              <h2 className="display text-[clamp(2.5rem,6vw,5.5rem)] mt-6 text-brand">
+                Unsere Gewerke
+              </h2>
+            </div>
+            <div className="lg:col-span-4 lg:text-right">
+              <Link
+                to="/leistungen"
+                className="inline-flex items-center gap-2 text-brand text-sm uppercase tracking-[0.2em] font-semibold border-b border-brand/40 pb-1 hover:border-brand transition"
+              >
+                Alle Leistungen <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.slice(0, 9).map((s, i) => {
+              const img = getServiceImage(s.slug, s.hero_image);
+              const num = String(i + 1).padStart(2, "0");
+              return (
+                <Link
+                  key={s.id}
+                  to="/leistungen/$slug"
+                  params={{ slug: s.slug }}
+                  className="group relative block aspect-[3/4] overflow-hidden rounded-[2rem] bg-brand text-brand-foreground isolate"
+                >
+                  {/* Background image with zoom on hover */}
+                  <img
+                    src={img}
+                    alt={s.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                  />
+                  {/* Permanent bottom-up gradient for legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand/95 via-brand/30 to-transparent" />
+
+                  {/* Top meta row */}
+                  <div className="absolute top-0 inset-x-0 p-6 flex items-start justify-between text-brand-foreground">
+                    <span className="font-display text-xs tracking-[0.25em] opacity-80">— {num}</span>
+                    {s.category && (
+                      <span className="text-[10px] uppercase tracking-[0.25em] bg-brand-foreground/15 backdrop-blur-md px-3 py-1.5 rounded-full">
+                        {s.category}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Sliding content panel */}
+                  <div className="absolute inset-x-0 bottom-0 p-7 pt-14">
+                    {/* Title — slides up slightly on hover */}
+                    <h3 className="display md:text-xs leading-[0.95] text-brand-foreground transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 line-clamp-2 text-sm">
+                      {s.title}
+                    </h3>
+
+                    {/* Reveal panel — slides up from below on hover */}
+                    <div className="overflow-hidden">
+                      <div className="max-h-0 opacity-0 translate-y-4 group-hover:max-h-36 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                        <p className="text-sm leading-relaxed opacity-90 mt-4 line-clamp-2">
+                          {s.short_text}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* CTA arrow row */}
+                    <div className="mt-5 flex items-center justify-between pt-4">
+                      <span className="text-[11px] uppercase tracking-[0.25em] font-semibold opacity-80 group-hover:text-accent transition-colors">
+                        Mehr erfahren
+                      </span>
+                      <span className="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden">
+                        <span className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                        <span className="relative text-brand-foreground group-hover:text-brand transition-colors duration-500">→</span>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <Awards />
+
+      <BeforeAfterSlider />
+
+      {/* FEATURED PROJECT */}
+      {featured && (
+        <section className="px-6 md:px-10 pb-24 md:pb-36">
+          <div className="max-w-[1480px] mx-auto bg-brand text-brand-foreground rounded-[2.5rem] overflow-hidden grid lg:grid-cols-2">
+            <div className="p-10 md:p-16 flex flex-col gap-7 justify-center">
+              <span className="eyebrow eyebrow-bracket text-accent">Referenz</span>
+              <h2 className="display text-4xl md:text-6xl text-brand-foreground">{featured.title}</h2>
+              {featured.location && (
+                <p className="text-xs uppercase tracking-[0.22em] text-brand-foreground/60">
+                  Standort · {featured.location}
+                </p>
+              )}
+              <p className="text-lg text-brand-foreground/90 font-normal leading-relaxed max-w-lg">
+                {featured.description}
+              </p>
+              <Link
+                to="/projekte"
+                className="inline-flex items-center gap-2 bg-brand-foreground text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold self-start hover:bg-accent transition"
+              >
+                Alle Projekte <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="min-h-[360px] lg:min-h-full">
+              {featured.images?.[0] ? (
+                <img src={featured.images[0]} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
+              ) : (
+                <img src={aboutImg} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
+              )}
+            </div>
           </div>
         </section>
       )}
-      <FAQ />
-      <section id="projektanfrage" className="site-width section-space scroll-mt-24">
-        <ProjectInquiryForm />
+
+      {/* CONFIGURATOR CTA BANNER */}
+      <section className="px-6 md:px-10 pt-24 md:pt-36 pb-24 md:pb-36 animate-fade-up">
+        <div className="max-w-[1480px] mx-auto bg-surface rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden shadow-sm">
+          
+          <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div className="lg:col-span-8 space-y-6">
+              <span className="eyebrow eyebrow-bracket text-accent">Angebots-Assistent</span>
+              <h2 className="display text-3xl md:text-5xl text-brand leading-[1.1]">
+                In 2 Minuten zum Angebot.<br />
+                <span className="font-normal text-brand-muted">Unser intelligenter Planer.</span>
+              </h2>
+              <p className="text-foreground/75 leading-relaxed text-sm md:text-base max-w-2xl font-light">
+                Sparen Sie sich lange Absprachen und bürokratischen Aufwand. Tragen Sie einfach Ihre Wunsch-Maße (z. B. Zaunlänge, Pflasterfläche oder Rasenfläche) ein, laden Sie Fotos Ihrer Außenfläche hoch und erhalten Sie innerhalb von 24 Stunden eine erste Preisschätzung von uns!
+              </p>
+              
+              <div className="grid sm:grid-cols-3 gap-4 text-xs font-semibold text-brand/85">
+                <div className="flex items-center gap-2">
+                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">✓</span>
+                  <span>100% kostenlos & unverbindlich</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">✓</span>
+                  <span>Eigene Fotos bequem hochladen</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">✓</span>
+                  <span>Rückmeldung in 24 Stunden</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-4 flex justify-start lg:justify-end">
+              <Link
+                to="/konfigurator"
+                className="group inline-flex items-center gap-3 bg-brand text-brand-foreground px-8 py-4.5 rounded-full text-xs font-bold font-display uppercase tracking-wider hover:bg-brand/90 transition shadow-lg shrink-0"
+              >
+                Projekt planen
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <Testimonials />
+      <FAQ />
+      <ProjectInquiryForm />
     </PageShell>
   );
 }

@@ -35,7 +35,7 @@ export function StatsBand() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-brand-foreground/10 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden">
           {STATS.map(({ v, suffix, l, sub, Icon }) => (
             <div
               key={l}

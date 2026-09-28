@@ -1,7 +1,7 @@
 # Neue Supabase-Datenbank für Loni Galabau
 
 Stand: 28.09.2026. Das neue Cloud-Projekt **LoniGalabau** in der Organisation
-**LoniGalabauGmbH** ist eingerichtet: neun Tabellen mit RLS, vier Dateispeicher,
+**LoniGalabauGmbH** ist eingerichtet: acht Tabellen mit RLS, vier Dateispeicher,
 acht Leistungen, ein Projekt, eine Stellenanzeige und drei Website-Einstellungen.
 Projekt-ID: `fvctfguvupdcscthrxeb`, Region: `eu-west-1`.
 Die alte Datenbank wurde ausschließlich lesend verwendet. Die aktive lokale
@@ -20,10 +20,10 @@ Passwörter später über einen sicheren Kanal an die jeweiligen Kontoinhaber ü
 
 ## Bereits ausgeführte Cloud-Einrichtung
 
-| Migration                          | Version        |
-| ---------------------------------- | -------------- |
-| loni_initial_schema                | 20260928094323 |
-| loni_initial_storage               | 20260928094332 |
+| Migration | Version |
+| --- | --- |
+| loni_initial_schema | 20260928094323 |
+| loni_initial_storage | 20260928094332 |
 | loni_restrict_internal_rls_trigger | 20260928094537 |
 
 Der öffentliche Inhaltsimport wurde einmalig mit `04_content.sql` ausgeführt.
@@ -44,9 +44,6 @@ Die folgende Anleitung dient der Einrichtung eines weiteren, leeren Projekts.
      Standard-Einstellungen und Rechte.
    - `02_storage.sql`: zwei öffentliche Bildspeicher und zwei private Dateispeicher.
    - `04_content.sql`: gesicherte Website-Inhalte importieren.
-   - Beide SQL-Dateien unter `updates/` in Datumsreihenfolge: gemeinsame Notizen,
-     Formularquote und Benachrichtigungsstatus.
-   - `update_service_copy.sql`: die überarbeiteten Leistungstexte übernehmen.
 3. In Authentication einen Benutzer für die Website-Verwaltung anlegen.
    Öffentliche Selbstregistrierung deaktivieren. Das Supabase-Dashboard-Konto und
    der Website-Admin sind getrennte Konten.
@@ -94,7 +91,7 @@ Dabei werden die beiden lokalen Exportdateien ersetzt; keine Datenbank wird geä
 
 ## Zugriffskonzept
 
-Alle neun Tabellen haben Row Level Security. Öffentliche API-Zugriffe können nur
+Alle acht Tabellen haben Row Level Security. Öffentliche API-Zugriffe können nur
 aktive Leistungen, Projekte, Stellen und ausdrücklich freigegebene Einstellungen
 lesen. Angemeldete Benutzer dürfen ihre eigene Rolle lesen, sie aber nicht verändern.
 Browserrollen erhalten keine Schreibrechte auf die Anwendungstabellen und keinen
@@ -106,12 +103,12 @@ Adminrolle in `user_roles`. Fehler bei diesen Prüfungen verweigern den Zugriff.
 Der Serverclient unterstützt `SUPABASE_SECRET_KEY` und als Kompatibilität
 `SUPABASE_SERVICE_ROLE_KEY`; öffentliche Schlüssel werden dafür abgewiesen.
 
-| Bucket              | Zugriff    | Verwendung                                   |
-| ------------------- | ---------- | -------------------------------------------- |
-| service-images      | Öffentlich | Leistungen, Logo, Partner und Website-Bilder |
-| project-images      | Öffentlich | Veröffentlichte Projektbilder                |
-| configurator-images | Privat     | Kundenfotos, maximal 10 MB pro Datei         |
-| cvs                 | Privat     | Lebensläufe, maximal 10 MB pro Datei         |
+| Bucket | Zugriff | Verwendung |
+| --- | --- | --- |
+| service-images | Öffentlich | Leistungen, Logo, Partner und Website-Bilder |
+| project-images | Öffentlich | Veröffentlichte Projektbilder |
+| configurator-images | Privat | Kundenfotos, maximal 10 MB pro Datei |
+| cvs | Privat | Lebensläufe, maximal 10 MB pro Datei |
 
 Gäste können über die Serverfunktion nur erlaubte Dateitypen mit passender
 Dateisignatur hochladen. Dateinamen erzeugt der Server; vorhandene Dateien werden
@@ -165,25 +162,13 @@ Im neuen Cloud-Projekt zusätzlich geprüft:
 - Performance Advisor: nur [Hinweise auf noch ungenutzte Indizes](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index)
   in der frisch eingerichteten Datenbank.
 
-### Nachtrag: Website-Überarbeitung am 28.09.2026
-
-Die Website ist bereits auf Sites veröffentlicht. Die oben genannten Ergebnisse
-beschreiben den ursprünglichen Datenbankwechsel. Anschließend wurden die beiden
-Migrationen in `updates/` auf das Cloud-Projekt angewendet: gemeinsame Notizen mit
-Versionsprüfung, private Tabelle `form_rate_limits` mit atomarer 15-Minuten-Quote
-und `notification_sent_at` für Anfragen/Bewerbungen. `verify_workflows.sql` hat
-Quoten, Ablauf, Rollenrechte und Notizkonflikte geprüft und alle Änderungen
-zurückgerollt. Die acht Leistungstexte wurden separat aktualisiert.
-
-Die Anwendung besteht jetzt 33 Tests, Typprüfung, gezieltes Linting und Build.
-Kontaktübermittlung, mobile Darstellung und gemeinsame Notizen mit beiden
-Admin-Konten sind im Browser bestätigt. Synthetische Testanfragen wurden entfernt.
-Tracking-Widerruf und gemeinsame CRM-Notizen sind umgesetzt. Formularbegrenzung,
-Honeypot und CSRF-Prüfung sind aktiv; Aufbewahrungs- und Backupregeln bleiben
-betrieblich festzulegen. Resend-Versand benötigt noch Schlüssel und Absender im
-Website-Hosting. Der jüngste Security Advisor meldet zusätzlich deaktivierten
-Schutz gegen bereits geleakte Passwörter; die frühere Aussage zu fehlenden
-Warnungen beschreibt nur den damaligen Prüfzeitpunkt.
+Noch offen sind die vollständige Prüfung aller Website-Abläufe,
+Hosting-Konfiguration und Veröffentlichung.
+Öffentliche Formulare/Uploads
+benötigen vor dem produktiven Start zusätzlich einen abgestimmten Spam-/Bot-Schutz
+und Betriebsregeln für ungenutzte Uploads, Aufbewahrung und Backups.
+Die weiteren Punkte aus der Projektanalyse, etwa Tracking-Widerruf und lokale
+CRM-Notizen, sind durch diesen Datenbankwechsel noch nicht erledigt.
 
 Grundlagen: [Supabase API-Schlüssel](https://supabase.com/docs/guides/getting-started/api-keys),
 [Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security),

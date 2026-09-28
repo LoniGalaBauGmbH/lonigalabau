@@ -1,5 +1,3 @@
-import { notifyNewEntry } from "@/lib/notifications.server";
-import { checkFormQuota } from "@/lib/form-quota.server";
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
@@ -174,49 +172,36 @@ export const getJobBySlug = createServerFn({ method: "GET" })
 export const createContactRequest = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => contactSchema.parse(d))
   .handler(async ({ data }) => {
-    await checkFormQuota("contact");
-    const { data: entry, error } = await supabaseAdmin
-      .from("contact_requests")
-      .insert({
-        name: data.name,
-        email: data.email,
-        phone: data.phone || null,
-        subject: data.subject || null,
-        message: data.message,
-        image_paths: data.image_paths,
-      })
-      .select("id")
-      .single();
-    if (error) throw new Error("Speichern fehlgeschlagen. Bitte versuchen Sie es später erneut.");
-    if (entry) await notifyNewEntry("contact_requests", entry.id);
+    const { error } = await supabaseAdmin.from("contact_requests").insert({
+      name: data.name,
+      email: data.email,
+      phone: data.phone || null,
+      subject: data.subject || null,
+      message: data.message,
+      image_paths: data.image_paths,
+    });
+    if (error) throw new Error(error.message);
     return { ok: true };
   });
 
 export const createApplication = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => applicationSchema.parse(d))
   .handler(async ({ data }) => {
-    await checkFormQuota("application");
-    const { data: entry, error } = await supabaseAdmin
-      .from("applications")
-      .insert({
-        job_id: data.job_id,
-        name: data.name,
-        email: data.email,
-        phone: data.phone || null,
-        message: data.message || null,
-        cv_path: data.cv_path || null,
-      })
-      .select("id")
-      .single();
-    if (error) throw new Error("Speichern fehlgeschlagen. Bitte versuchen Sie es später erneut.");
-    if (entry) await notifyNewEntry("applications", entry.id);
+    const { error } = await supabaseAdmin.from("applications").insert({
+      job_id: data.job_id,
+      name: data.name,
+      email: data.email,
+      phone: data.phone || null,
+      message: data.message || null,
+      cv_path: data.cv_path || null,
+    });
+    if (error) throw new Error(error.message);
     return { ok: true };
   });
 
 export const subscribeNewsletter = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => newsletterSchema.parse(d))
   .handler(async ({ data }) => {
-    await checkFormQuota("newsletter");
     const { error } = await supabaseAdmin
       .from("newsletter_subscribers")
       .insert({ email: data.email });
@@ -246,7 +231,6 @@ export const getSiteImages = createServerFn({ method: "GET" }).handler(async () 
 export const publicUploadFile = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => publicUploadSchema.parse(d))
   .handler(async ({ data }) => {
-    await checkFormQuota("upload");
     const file = preparePublicUpload(data);
     const bucket = supabaseAdmin.storage.from(file.bucket);
     const { error } = await bucket.upload(file.path, file.buffer, {

@@ -9,6 +9,7 @@ import heroDefault from "@/assets/hero-garden.jpg";
 import beforeDefault from "@/assets/before-garden.png";
 import afterDefault from "@/assets/after-garden.png";
 import aboutDefault from "@/assets/about-site.jpg";
+import contactPortraitDefault from "@/assets/contact-portrait.jpg";
 
 export type SiteImages = {
   logo: string;
@@ -23,28 +24,27 @@ export type SiteImages = {
 
 export function useSiteImages() {
   const fetchFn = useServerFn(getSiteImages);
-
+  
   const { data, isLoading } = useQuery({
     queryKey: ["site-images"],
     queryFn: () => fetchFn(),
     // Keep data fresh in memory, avoids aggressive refetching
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 5, 
   });
 
   const images: SiteImages = {
     logo: data?.logo || logoDefault,
-    logo_white: data?.logo_white || data?.logo || logoWhiteDefault,
+    logo_white: data?.logo || logoWhiteDefault, // Logo can also be used as white logo fallback or directly
     hero_bg: data?.hero_bg || heroDefault,
     before_garden: data?.before_garden || beforeDefault,
     after_garden: data?.after_garden || afterDefault,
     about_hero_bg: data?.about_hero_bg || aboutDefault,
     service_detail_bg: data?.service_detail_bg || heroDefault,
-    contact_portrait: data?.contact_portrait || "",
+    contact_portrait: data?.contact_portrait || contactPortraitDefault,
   };
 
   return {
     images,
-    customImages: data ?? {},
-    isLoading,
+    isLoading
   };
 }

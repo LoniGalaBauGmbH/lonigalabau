@@ -1,9 +1,6 @@
-import { type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
-import { Phone, ArrowUpRight } from "lucide-react";
+import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { company } from "@/lib/company";
 
 export function PageShell({
   children,
@@ -14,26 +11,13 @@ export function PageShell({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      <a href="#inhalt" className="skip-link">
-        Zum Inhalt
-      </a>
       <Header transparent={transparentHeader} />
-      <main id="inhalt" tabIndex={-1} className={transparentHeader ? "" : "pt-20 lg:pt-24"}>
-        {children}
-      </main>
+      <main className={transparentHeader ? "" : "pt-24 md:pt-28"}>{children}</main>
       <Footer />
-      <nav aria-label="Schneller Kontakt" className="mobile-contact lg:hidden">
-        <a href={company.phoneHref}>
-          <Phone size={18} /> Anrufen
-        </a>
-        <Link to="/kontakt" hash="formular">
-          <span>Projekt anfragen</span>
-          <ArrowUpRight size={18} />
-        </Link>
-      </nav>
     </div>
   );
 }
+
 export function PageIntro({
   eyebrow,
   title,
@@ -44,10 +28,14 @@ export function PageIntro({
   lead?: ReactNode;
 }) {
   return (
-    <section className="site-width pt-12 pb-12 md:pt-20 md:pb-16">
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h1 className="home-heading mt-4 max-w-4xl">{title}</h1>
-      {lead && <p className="mt-6 text-lg max-w-2xl text-foreground/75 leading-relaxed">{lead}</p>}
+    <section className="px-6">
+      <div className="max-w-7xl mx-auto py-16 md:py-28">
+        {eyebrow && <span className="eyebrow eyebrow-bracket text-accent">{eyebrow}</span>}
+        <h1 className="display text-5xl md:text-7xl lg:text-8xl mt-6 max-w-5xl text-balance text-brand">
+          {title}
+        </h1>
+        {lead && <p className="mt-8 text-lg md:text-xl max-w-2xl opacity-80 leading-relaxed font-serif italic font-light">{lead}</p>}
+      </div>
     </section>
   );
 }

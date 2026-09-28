@@ -11,7 +11,7 @@ const AWARDS = [
 
 export function Awards() {
   return (
-    <section className="bg-surface border-y border-brand/10">
+    <section className="bg-surface">
       <div className="max-w-[1480px] mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="text-center mb-12">
           <span className="eyebrow eyebrow-bracket text-brand/70">Qualität & Zugehörigkeit</span>
@@ -24,9 +24,9 @@ export function Awards() {
           {AWARDS.map(({ Icon, t, s }) => (
             <div
               key={t}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-background border border-brand/10 hover:border-brand/30 hover:-translate-y-0.5 transition"
+              className="flex flex-col items-center text-center p-6 rounded-2xl bg-background hover:-translate-y-0.5 transition"
             >
-              <div className="size-12 rounded-full border border-brand/20 grid place-items-center mb-4">
+              <div className="size-12 grid place-items-center mb-4">
                 <Icon className="h-5 w-5 text-brand" strokeWidth={1.6} />
               </div>
               <div className="text-sm font-display font-extrabold text-brand leading-tight">{t}</div>

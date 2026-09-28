@@ -1,5 +1,3 @@
-import logoFallback from "@/assets/logo-loni.svg";
-import pavingFallback from "@/assets/svc-pflaster.jpg";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -47,7 +45,7 @@ type ImageKey =
   | "after_garden"
   | "about_hero_bg"
   | "service_detail_bg"
-  | "logo_white";
+  | "contact_portrait";
 
 type ImageSettings = Partial<Record<ImageKey, string>>;
 
@@ -56,46 +54,55 @@ const labels: Record<ImageKey, { title: string; desc: string; fallback: string; 
     logo: {
       title: "Firmen-Logo",
       desc: "Wird im Header und Footer auf allen Seiten angezeigt. Empfehlung: SVG oder PNG mit transparentem Hintergrund.",
-      fallback: logoFallback,
+      fallback: "/assets/logo-loni.svg",
       aspect: "aspect-[3/1]",
     },
     hero_bg: {
       title: "Startseiten Hero-Hintergrund",
       desc: "Das große Hintergrundbild ganz oben auf der Homepage. Empfehlung: min. 1920×1080px, Querformat.",
-      fallback: pavingFallback,
+      fallback: "/assets/hero-garden.jpg",
       aspect: "aspect-[16/9]",
     },
     before_garden: {
       title: "Vorher-Bild (Before/After Slider)",
       desc: "Das Baustellen- oder Vorher-Foto im Schieberegler-Vergleich auf der Startseite.",
-      fallback: "",
+      fallback: "/assets/before-garden.png",
       aspect: "aspect-[16/9]",
     },
     after_garden: {
       title: "Nachher-Bild (Before/After Slider)",
-      desc: "Das Nachher-Foto im Schieberegler-Vergleich auf der Startseite.",
-      fallback: "",
+      desc: "Das fertige Traumgarten-Foto im Schieberegler-Vergleich auf der Startseite.",
+      fallback: "/assets/after-garden.png",
       aspect: "aspect-[16/9]",
     },
     about_hero_bg: {
       title: "Hintergrundbild 'Über uns'",
       desc: "Das Bannerbild auf der Firmenvorstellungsseite /ueber-uns.",
-      fallback: pavingFallback,
+      fallback: "/assets/hero-garden.jpg",
       aspect: "aspect-[16/9]",
     },
     service_detail_bg: {
       title: "Standard Leistungs-Hintergrund",
       desc: "Fallback-Hintergrund für Leistungs-Detailseiten ohne eigenes Bild.",
-      fallback: pavingFallback,
+      fallback: "/assets/hero-garden.jpg",
       aspect: "aspect-[16/9]",
     },
-    logo_white: {
-      title: "Helles Logo im Fußbereich",
-      desc: "Optionales Logo für dunklen Hintergrund. Ohne eigenes Bild wird das Hauptlogo verwendet.",
-      fallback: logoFallback,
-      aspect: "aspect-[3/1]",
+    contact_portrait: {
+      title: "Ansprechpartner Kontaktformular",
+      desc: "Das Porträtbild des persönlichen Ansprechpartners auf der Kontaktseite und in den Anfrageformularen.",
+      fallback: "/assets/contact-portrait.jpg",
+      aspect: "aspect-[3/4]",
     },
   };
+
+const DEFAULT_PARTNERS = [
+  { name: "Bickhardt Bau", src: "/src/assets/partners/bickhardt-bau.png" },
+  { name: "Stadt Hattersheim", src: "/src/assets/partners/hattersheim.png" },
+  { name: "Stadt Frankfurt am Main", src: "/src/assets/partners/frankfurt.svg" },
+  { name: "Limbach Gruppe", src: "/src/assets/partners/limbach.webp" },
+  { name: "ROSE Gleisbau", src: "/src/assets/partners/rose-gleisbau.webp" },
+  { name: "VGF", src: "/src/assets/partners/vgf.png" },
+];
 
 const Page_BUCKET = "service-images";
 
@@ -289,6 +296,12 @@ function Page() {
     setPartnersDirty(true);
   }
 
+  function handleLoadDefaultPartners() {
+    setPartners(DEFAULT_PARTNERS);
+    setPartnersDirty(true);
+    toast.success("Standard-Partner geladen. Speichern nicht vergessen!");
+  }
+
   async function handlePartnerUpload(idx: number, e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     e.target.value = "";
@@ -472,10 +485,10 @@ function Page() {
                 <div
                   className={`${cfg.aspect} w-full bg-background border border-brand/8 rounded-2xl overflow-hidden relative group`}
                 >
-                  {currentUrl || cfg.fallback ? (
+                  {currentUrl ? (
                     <>
                       <img
-                        src={currentUrl || cfg.fallback}
+                        src={currentUrl}
                         alt={cfg.title}
                         className="w-full h-full object-cover object-center"
                         onError={(e) => {
@@ -484,7 +497,7 @@ function Page() {
                       />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
                         <a
-                          href={currentUrl || cfg.fallback}
+                          href={currentUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
@@ -497,9 +510,7 @@ function Page() {
                   ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center p-4">
                       <ImageIcon className="w-7 h-7 text-foreground/15" />
-                      <p className="text-[10px] text-foreground/35">
-                        {cfg.fallback ? "Standardbild" : "Kein Bild hinterlegt"}
-                      </p>
+                      <p className="text-[10px] text-foreground/35">Standard: {cfg.fallback}</p>
                     </div>
                   )}
 
@@ -593,6 +604,20 @@ function Page() {
                   verwalten.
                 </p>
               </div>
+
+              {partners.length === 0 && (
+                <button
+                  type="button"
+                  onClick={handleLoadDefaultPartners}
+                  className="flex items-center gap-1.5 bg-brand/5 hover:bg-brand/10 text-brand text-xs font-semibold px-4 py-2.5 rounded-full transition border border-brand/20"
+                >
+                  <RefreshCw
+                    className="w-3.5 h-3.5 animate-spin"
+                    style={{ animationDuration: "10s" }}
+                  />
+                  Standard-Logos laden
+                </button>
+              )}
             </div>
 
             {/* List */}
@@ -603,9 +628,17 @@ function Page() {
                   Noch keine Partner-Logos konfiguriert
                 </p>
                 <p className="text-xs text-foreground/45 max-w-sm leading-relaxed">
-                  Fügen Sie einen bestätigten Partner und dessen freigegebenes Logo hinzu.
+                  Laden Sie die vordefinierten Standard-Logos herunter oder fügen Sie einen neuen
+                  Partner hinzu, um zu starten.
                 </p>
                 <div className="flex gap-3 mt-2">
+                  <button
+                    type="button"
+                    onClick={handleLoadDefaultPartners}
+                    className="bg-brand text-brand-foreground text-xs font-bold px-6 py-2.5 rounded-full hover:bg-brand/90 transition shadow"
+                  >
+                    Standard-Logos laden
+                  </button>
                   <button
                     type="button"
                     onClick={handleAddPartner}

@@ -42,7 +42,7 @@ export function Testimonials() {
             </p>
           </div>
           <div className="lg:col-span-4 lg:text-right">
-            <div className="inline-flex items-center gap-3 bg-surface border border-brand/10 px-5 py-3 rounded-2xl shadow-sm">
+            <div className="inline-flex items-center gap-3 bg-surface px-5 py-3 rounded-2xl shadow-sm">
               <div className="flex text-amber-500">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
@@ -56,11 +56,11 @@ export function Testimonials() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {TESTIMONIALS.map((t) => (
             <figure
               key={t.n}
-              className="relative p-8 rounded-3xl border border-brand/10 bg-surface flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
+              className="relative min-w-0 p-8 rounded-3xl bg-surface flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">
@@ -69,7 +69,7 @@ export function Testimonials() {
                       <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2.5 py-0.5 rounded-full">
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">
                     <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Verifiziert
                   </span>
                 </div>
@@ -78,7 +78,7 @@ export function Testimonials() {
                 </blockquote>
               </div>
 
-              <figcaption className="mt-8 pt-6 border-t border-brand/10 flex items-center gap-3.5">
+              <figcaption className="mt-8 pt-6 flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-full bg-brand/10 text-brand font-semibold text-sm flex items-center justify-center shrink-0">
                   {t.i}
                 </div>
