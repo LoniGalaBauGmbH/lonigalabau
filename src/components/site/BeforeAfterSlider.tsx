@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSiteImages } from "@/hooks/useSiteImages";
+import { ProjectImage } from "@/components/site/ProjectImage";
 
 export function BeforeAfterSlider() {
   const { images } = useSiteImages();
@@ -52,14 +53,14 @@ export function BeforeAfterSlider() {
       <div className="max-w-[1480px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <span className="eyebrow eyebrow-bracket text-brand/70">Transformation</span>
+            <span className="eyebrow eyebrow-bracket text-brand/70">Einblick ins Handwerk</span>
             <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand leading-[1.05]">
-              Vom Traum<br />
-              <span className="italic font-light text-brand-muted">zur fertigen Oase.</span>
+              Qualität beginnt<br />
+              <span className="italic font-light text-brand-muted">unter der Oberfläche.</span>
             </h2>
           </div>
           <p className="text-sm text-foreground/65 max-w-sm leading-relaxed">
-            Schieben Sie den Regler nach links und rechts, um den direkten Vergleich zwischen der Bauphase ("Vorher") und dem vollendeten Premium-Garten ("Nachher") zu erleben.
+            Bewegen Sie den Regler: links eine Terrassenunterkonstruktion, rechts ein fertiger Holzbelag. Zwei Aufnahmen aus unterschiedlichen Projekten zeigen, worauf es bei der Ausführung ankommt.
           </p>
         </div>
 
@@ -70,14 +71,16 @@ export function BeforeAfterSlider() {
           onTouchStart={() => setIsDragging(true)}
         >
           {/* After image (background) */}
-          <img
+          <ProjectImage
             src={images.after_garden}
-            alt="Endzustand des modern gestalteten Premium-Gartens"
+            alt="Fertige Holzterrasse mit dunklem Sichtschutz"
+            loading="lazy"
+            sizes="90vw"
             className="absolute inset-0 h-full w-full object-cover pointer-events-none"
             draggable={false}
           />
           <div className="absolute right-6 top-6 bg-brand/80 backdrop-blur-md text-white font-display text-[10px] tracking-[0.24em] uppercase px-4 py-2 rounded-full font-bold shadow-lg">
-            Nachher
+            Fertiger Belag
           </div>
 
           {/* Before image (clipped overlay) */}
@@ -85,15 +88,16 @@ export function BeforeAfterSlider() {
             className="absolute inset-0 h-full overflow-hidden"
             style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
           >
-            <img
+            <ProjectImage
               src={images.before_garden}
-              alt="Baustellen- / Alt-Zustand vor der Umgestaltung"
-              className="absolute inset-0 h-full w-[100vw] object-cover pointer-events-none"
-              style={{ width: containerRef.current?.getBoundingClientRect().width }}
+              alt="Terrassenunterkonstruktion vor dem Verlegen des Belags"
+              loading="lazy"
+              sizes="90vw"
+              className="absolute inset-0 h-full w-full object-cover pointer-events-none"
               draggable={false}
             />
             <div className="absolute left-6 top-6 bg-accent/80 backdrop-blur-md text-accent-foreground font-display text-[10px] tracking-[0.24em] uppercase px-4 py-2 rounded-full font-bold shadow-lg">
-              Vorher
+              Unterkonstruktion
             </div>
           </div>
 

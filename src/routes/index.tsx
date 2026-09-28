@@ -13,7 +13,9 @@ import { FAQ } from "@/components/site/FAQ";
 import { getServices, getFeaturedProject, getSitePartners } from "@/lib/site.functions";
 import { ServiceCarousel } from "@/components/site/ServiceCarousel";
 import { useSiteImages } from "@/hooks/useSiteImages";
-import aboutImg from "@/assets/about-site.jpg";
+import { projectPhotos } from "@/lib/project-photos";
+import { ProjectImage } from "@/components/site/ProjectImage";
+const aboutImg = projectPhotos[18].src;
 
 import partnerBickhardt from "@/assets/partners/bickhardt-bau.png";
 import partnerHattersheim from "@/assets/partners/hattersheim.png";
@@ -254,9 +256,9 @@ function HomePage() {
 
             <div className="lg:col-span-6 lg:sticky lg:top-32 h-fit">
               <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl">
-                <img
+                <ProjectImage
                   src={aboutImg}
-                  alt="Modernes Bauvorhaben mit Baumaschinen"
+                  alt="Natursteintreppe und Stützmauern während der Bauphase"
                   width={1600}
                   height={2000}
                   loading="lazy"
@@ -345,9 +347,9 @@ function HomePage() {
             <ProjectGallery project={featured}>
               <button type="button" aria-label={featured.title + " – Bilder ansehen"} className="group relative block min-h-[360px] w-full overflow-hidden text-left focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent lg:min-h-full">
               {featured.images?.[0] ? (
-                <img src={featured.images[0]} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
+                <ProjectImage src={featured.images[0]} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
               ) : (
-                <img src={aboutImg} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
+                <ProjectImage src={aboutImg} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
               )}
                 <span className="absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-brand/90 px-5 py-3 text-sm text-white backdrop-blur-sm group-hover:bg-brand">Projekt ansehen <ArrowUpRight className="size-4" aria-hidden="true" /></span>
               </button>

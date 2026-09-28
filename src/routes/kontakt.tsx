@@ -1,3 +1,4 @@
+import { ProjectImage } from "@/components/site/ProjectImage";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -324,7 +325,7 @@ function Page() {
       {/* CTA STRIP */}
       <section className="px-6 pb-24">
         <div className="max-w-7xl mx-auto relative rounded-[2rem] overflow-hidden">
-          <img src={images.about_hero_bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <ProjectImage src={images.about_hero_bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-brand/95 via-brand/85 to-brand/60" />
           <div className="relative px-8 md:px-14 py-14 md:py-20 grid md:grid-cols-2 gap-8 items-center">
             <div>

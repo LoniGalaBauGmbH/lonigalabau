@@ -1,15 +1,17 @@
 import { useId, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Plus } from "lucide-react";
-import garden from "@/assets/after-garden.png";
+import { projectPhotos } from "@/lib/project-photos";
+import { ProjectImage } from "@/components/site/ProjectImage";
+const garden = projectPhotos[47].src;
 
 const details = [
   {
     title: "Terrasse",
     heading: "Ein Platz zum Ankommen.",
     text: "Große Platten und klare Übergänge verbinden Sitzplatz und Garten. Material, Verlegemuster und Unterbau stimmen wir auf die Nutzung ab.",
-    position: { left: "23%", top: "76%" },
-    origin: "23% 76%",
+    position: { left: "23%", top: "88%" },
+    origin: "23% 88%",
     service: "pflasterarbeiten",
     link: "Pflasterarbeiten ansehen",
   },
@@ -17,19 +19,19 @@ const details = [
     title: "Bepflanzung",
     heading: "Grün mit Charakter.",
     text: "Gräser, Sträucher und Gehölze geben dem Garten Struktur. Standort, Jahreszeiten und Pflegeaufwand bestimmen die passende Pflanzenauswahl.",
-    position: { left: "75%", top: "51%" },
-    origin: "75% 51%",
+    position: { left: "78%", top: "42%" },
+    origin: "78% 42%",
     service: "gartengestaltung",
     link: "Gartengestaltung ansehen",
   },
   {
-    title: "Beleuchtung",
-    heading: "Auch abends ein Lieblingsplatz.",
-    text: "Licht entlang der Wege und einzelne Akzente in den Beeten machen den Garten am Abend erlebbar. Die Beleuchtung lässt sich früh in die Gartenplanung einbeziehen.",
-    position: { left: "81%", top: "74%" },
-    origin: "81% 74%",
-    service: "gartengestaltung",
-    link: "Gartenplanung ansehen",
+    title: "Rasen",
+    heading: "Grün, das Raum gibt.",
+    text: "Eine zusammenhängende Rasenfläche bringt Ruhe in den Garten und lässt Platz zum Spielen und Entspannen. Saubere Kanten erleichtern die Pflege und verbinden Rasen, Terrasse und Beete.",
+    position: { left: "59%", top: "65%" },
+    origin: "59% 65%",
+    service: "rasenanlagen",
+    link: "Rasenanlagen ansehen",
   },
 ] as const;
 
@@ -53,21 +55,21 @@ export function GardenDetails() {
             </h2>
           </div>
           <p className="max-w-xs text-base leading-relaxed text-foreground/65">
-            Entdecken Sie, wie Materialien, Pflanzen und Licht zusammenspielen.
+            Entdecken Sie an einem unserer Gärten, wie Terrasse, Rasen und Pflanzen zusammenpassen.
           </p>
         </div>
         <div className="grid items-stretch gap-0 overflow-hidden rounded-[2rem] bg-brand lg:grid-cols-[1.25fr_1fr]">
           <div className="relative min-w-0 self-center">
-            <img
+            <ProjectImage
               src={garden}
-              alt="Gestaltungsbeispiel eines Gartens mit Terrasse, seitlichen Pflanzbeeten und Wegbeleuchtung"
-              width={1024}
-              height={1024}
+              alt="Garten mit Plattenterrasse, Rasenfläche und umlaufender Hecke"
+              width={1600}
+              height={1200}
               loading="lazy"
-              className="block aspect-square w-full object-cover"
+              className="block aspect-[4/3] w-full object-cover"
             />
             <span className="absolute left-4 top-4 rounded-full bg-brand/80 px-3 py-1.5 text-xs tracking-wide text-white md:left-6 md:top-6">
-              Gestaltungsbeispiel
+              Ein Garten von Loni
             </span>
             {details.map((item, i) => (
               <button
@@ -118,7 +120,7 @@ export function GardenDetails() {
                 className="motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300"
               >
                 <div className="mb-7 aspect-[16/7] overflow-hidden rounded-2xl" aria-hidden="true">
-                  <img
+                  <ProjectImage
                     src={garden}
                     alt=""
                     width={1024}

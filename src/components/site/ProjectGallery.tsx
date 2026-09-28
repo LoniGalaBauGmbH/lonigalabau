@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import projectFallback from "@/assets/project-villa.jpg";
+import { ProjectImage } from "@/components/site/ProjectImage";
 
 type GalleryProject = {
   title: string;
@@ -30,9 +31,10 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
       Dieses Bild ist gerade nicht verfügbar.
     </div>
   ) : (
-    <img
+    <ProjectImage
       src={src}
       alt={alt}
+      sizes="(max-width: 1280px) 96vw, 1280px"
       onError={() => setFailed(true)}
       className="h-full w-full object-contain"
       draggable={false}
@@ -43,9 +45,11 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
 export function ProjectGallery({
   project,
   children,
+  initialIndex = 0,
 }: {
   project: GalleryProject;
   children: ReactNode;
+  initialIndex?: number;
 }) {
   const [index, setIndex] = useState(0);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
@@ -60,7 +64,7 @@ export function ProjectGallery({
   return (
     <Dialog
       onOpenChange={(open) => {
-        if (open) setIndex(0);
+        if (open) setIndex(Math.max(0, Math.min(initialIndex, images.length - 1)));
       }}
     >
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -126,7 +130,10 @@ export function ProjectGallery({
           <div className="px-5 py-5 md:px-8 md:py-6">
             {images.length > 1 && (
               <div className="mb-5 flex items-center justify-between gap-4">
-                <div className="flex min-w-0 gap-2 overflow-x-auto py-1" aria-label="Bildauswahl">
+                <div
+                  className="flex min-w-0 gap-2 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  aria-label="Bildauswahl"
+                >
                   {images.map((src, i) => (
                     <button
                       key={src}
@@ -141,9 +148,10 @@ export function ProjectGallery({
                           : "opacity-55 hover:opacity-100")
                       }
                     >
-                      <img
+                      <ProjectImage
                         src={src}
                         alt=""
+                        sizes="80px"
                         loading="lazy"
                         className="h-full w-full object-cover p-0.5"
                       />

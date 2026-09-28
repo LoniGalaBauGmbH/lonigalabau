@@ -5,6 +5,7 @@ import { getProjects } from "@/lib/site.functions";
 import projectFallback from "@/assets/project-villa.jpg";
 import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { ArrowUpRight } from "lucide-react";
+import { ProjectImage } from "@/components/site/ProjectImage";
 
 const q = queryOptions({ queryKey: ["projects"], queryFn: () => getProjects() });
 
@@ -25,8 +26,8 @@ function Page() {
     <PageShell>
       <PageIntro
         eyebrow="Referenzen"
-        title={<>Unsere neuesten <span className="italic">Projekte</span>.</>}
-        lead="Ein Einblick in unsere tägliche Arbeit – von privaten Rückzugsorten bis hin zu repräsentativen Gewerbeobjekten."
+        title={<>Unsere Arbeit. <span className="italic">In Bildern.</span></>}
+        lead="Eigene Aufnahmen aus unseren Projekten – nach Leistungen zusammengestellt. Entdecken Sie fertige Anlagen, Materialien und Einblicke in die Ausführung."
       />
       <section className="px-6 pb-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
@@ -35,8 +36,8 @@ function Page() {
             <article key={p.id} className="bg-surface rounded-[2rem] overflow-hidden shadow-sm">
               <ProjectGallery project={p}>
                 <button type="button" aria-label={p.title + " – Bilder ansehen"} className="group relative block aspect-[4/3] w-full overflow-hidden text-left focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent">
-                  <img src={p.images?.[0] || projectFallback} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.03] motion-reduce:transition-none" />
-                  <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 rounded-full bg-brand/90 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm group-hover:bg-brand">Projekt ansehen <ArrowUpRight className="size-4" aria-hidden="true" /></span>
+                  <ProjectImage src={p.images?.[0] || projectFallback} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.03] motion-reduce:transition-none" />
+                  <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 rounded-full bg-brand/90 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm group-hover:bg-brand">Galerie ansehen <ArrowUpRight className="size-4" aria-hidden="true" /></span>
                 </button>
               </ProjectGallery>
               <div className="p-8">

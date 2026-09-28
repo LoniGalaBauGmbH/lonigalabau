@@ -10,6 +10,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { getServiceImage } from "@/lib/service-images";
+import { ProjectImage } from "@/components/site/ProjectImage";
 
 type Service = {
   id: string;
@@ -66,9 +67,10 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
               draggable={false}
               className="group relative isolate block aspect-[3/4] overflow-hidden rounded-[2rem] bg-brand text-brand-foreground focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent"
             >
-              <img
+              <ProjectImage
                 src={getServiceImage(service.slug, service.hero_image ?? null)}
                 alt={service.title}
+                sizes="(max-width: 639px) 85vw, (max-width: 1023px) 55vw, 36vw"
                 loading="lazy"
                 draggable={false}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.05] motion-reduce:transition-none"

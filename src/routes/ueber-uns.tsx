@@ -5,10 +5,12 @@ import { PageShell } from "@/components/site/PageShell";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import founder from "@/assets/about-founder.jpg";
 import heroGarden from "@/assets/hero-garden.jpg";
-import svcGarten from "@/assets/svc-gartengestaltung.jpg";
-import svcPflaster from "@/assets/svc-pflaster.jpg";
-import svcNaturstein from "@/assets/svc-naturstein.jpg";
-import aboutSite from "@/assets/about-site.jpg";
+import { projectPhotos } from "@/lib/project-photos";
+import { ProjectImage } from "@/components/site/ProjectImage";
+const svcGarten = projectPhotos[81].src;
+const svcPflaster = projectPhotos[30].src;
+const svcNaturstein = projectPhotos[19].src;
+const aboutSite = projectPhotos[94].src;
 
 export const Route = createFileRoute("/ueber-uns")({
   head: () => ({
@@ -146,7 +148,7 @@ function AboutPage() {
           <div className="lg:col-span-5">
             <div className="relative">
               <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-surface shadow-2xl shadow-brand/10">
-                <img
+                <ProjectImage
                   src={images.about_hero_bg}
                   alt="Loni Garten- und Landschaftsbau – Projekteindruck"
                   width={1024}
@@ -176,7 +178,7 @@ function AboutPage() {
               <Reveal>
                 <div className="sticky top-8">
                   <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl shadow-brand/10">
-                    <img
+                    <ProjectImage
                       src={svcGarten}
                       alt="Garten- und Landschaftsbau Loni – Gartengestaltung"
                       loading="lazy"
@@ -312,7 +314,7 @@ function AboutPage() {
                     >
                       <Reveal delay={150}>
                         <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl shadow-brand/10">
-                          <img
+                          <ProjectImage
                             src={item.img}
                             alt={item.t}
                             loading="lazy"
@@ -343,7 +345,7 @@ function AboutPage() {
           <div className="lg:col-span-5">
             <div className="relative max-w-md">
               <div className="aspect-square overflow-hidden rounded-3xl">
-                <img
+                <ProjectImage
                   src={founder}
                   alt="Geschäftsführer Loni Galabau GmbH"
                   width={1024}
@@ -423,7 +425,7 @@ function AboutPage() {
       {/* 5. TEAM TEASER */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <ProjectImage
             src={heroGarden}
             alt=""
             aria-hidden

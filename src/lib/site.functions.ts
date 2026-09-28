@@ -99,6 +99,7 @@ export const getProjects = createServerFn({ method: "GET" }).handler(async () =>
       .from("projects")
       .select("id,title,location,description,images,featured,service_id")
       .eq("active", true)
+      .filter("images", "neq", "{}")
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false });
     if (error) {
@@ -118,6 +119,7 @@ export const getFeaturedProject = createServerFn({ method: "GET" }).handler(asyn
       .from("projects")
       .select("id,title,location,description,images")
       .eq("active", true)
+      .filter("images", "neq", "{}")
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false })
       .limit(1)

@@ -1,3 +1,5 @@
+import { ProjectImage } from "@/components/site/ProjectImage";
+import { ServiceProjectPhotos } from "@/components/site/ServiceProjectPhotos";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { 
@@ -237,7 +239,7 @@ function Page() {
             <div className="lg:col-span-5 lg:pl-4">
               <div className="relative group">
                 <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-brand/5 shadow-[0_25px_60px_-25px_rgba(0,0,0,0.18)]">
-                  <img
+                  <ProjectImage
                     src={img}
                     alt={data.title}
                     className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 ease-out"
@@ -315,6 +317,30 @@ function Page() {
           </div>
         </div>
       </section>
+
+      {/* 7. PORTFOLIO REFERENCES */}
+      {projects.length > 0 && (
+        <section className="px-6 md:px-10 pb-24 md:pb-32">
+          <div className="max-w-[1480px] mx-auto">
+            <div className="flex items-end justify-between flex-wrap gap-6 mb-12 pb-6">
+              <div>
+                <span className="eyebrow eyebrow-bracket text-accent">Referenzen</span>
+                <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand">
+                  Einblicke in unsere Projekte.
+                </h2>
+              </div>
+              <Link
+                to="/projekte"
+                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
+              >
+                Ganzes Portfolio <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <ServiceProjectPhotos projects={projects} />
+          </div>
+        </section>
+      )}
 
       {/* 4. VISUAL BENEFITS - Sage themed cards with exact matched Lucide Icons */}
       {benefits.length > 0 && (
@@ -436,60 +462,6 @@ function Page() {
         </div>
       </section>
 
-      {/* 7. PORTFOLIO REFERENCES */}
-      {projects.length > 0 && (
-        <section className="px-6 md:px-10 pb-24 md:pb-32">
-          <div className="max-w-[1480px] mx-auto">
-            <div className="flex items-end justify-between flex-wrap gap-6 mb-12 pb-6">
-              <div>
-                <span className="eyebrow eyebrow-bracket text-accent">Referenzen</span>
-                <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand">
-                  Realisierte Projekte.
-                </h2>
-              </div>
-              <Link
-                to="/projekte"
-                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
-              >
-                Ganzes Portfolio <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-              {projects.slice(0, 6).map((p) => (
-                <article key={p.id} className="group cursor-pointer">
-                  <div className="aspect-[4/3] overflow-hidden bg-brand/5 rounded-3xl shadow-sm group-hover:shadow-md transition-shadow duration-300">
-                    {p.images?.[0] ? (
-                      <img
-                        src={p.images[0]}
-                        alt={p.title}
-                        loading="lazy"
-                        className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
-                      />
-                    ) : (
-                      <div className="h-full w-full grid place-items-center text-brand/30 text-sm font-display font-semibold uppercase tracking-wider">
-                        Referenz verfügbar
-                      </div>
-                    )}
-                  </div>
-                  <div className="pt-5 space-y-2">
-                    {p.location && (
-                      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-foreground/50 font-display font-semibold">
-                        <MapPin className="h-3.5 w-3.5 text-accent" strokeWidth={1.8} />
-                        {p.location}
-                      </div>
-                    )}
-                    <h3 className="font-display font-bold text-lg text-brand">
-                      {p.title}
-                    </h3>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* 8. FAQ + MINIMALIST CONTACT PANEL */}
       <section
         id="anfrage"
@@ -534,7 +506,7 @@ function Page() {
                   params={{ slug: s.slug }}
                   className="group relative rounded-3xl overflow-hidden aspect-[4/3] block shadow-sm hover:shadow-md transition-shadow duration-300"
                 >
-                  <img
+                  <ProjectImage
                     src={getServiceImage(s.slug, s.hero_image)}
                     alt={s.title}
                     loading="lazy"

@@ -1,24 +1,17 @@
-import naturstein from "@/assets/svc-naturstein.jpg";
-import gartengestaltung from "@/assets/svc-gartengestaltung.jpg";
-import pflaster from "@/assets/svc-pflaster.jpg";
-import bewaesserung from "@/assets/svc-bewaesserung.jpg";
-import zaun from "@/assets/svc-zaun.jpg";
-import rasen from "@/assets/svc-rasen.jpg";
-import erdarbeiten from "@/assets/svc-erdarbeiten.jpg";
-import entwaesserung from "@/assets/svc-entwaesserung.jpg";
+import { projectPhotos } from "@/lib/project-photos";
 
 export const serviceImageBySlug: Record<string, string> = {
-  natursteinarbeiten: naturstein,
-  gartengestaltung,
-  pflasterarbeiten: pflaster,
-  bewaesserungsanlagen: bewaesserung,
-  zaunarbeiten: zaun,
-  rasenanlagen: rasen,
-  erdarbeiten,
-  entwaesserung,
+  natursteinarbeiten: projectPhotos[77].src,
+  gartengestaltung: projectPhotos[81].src,
+  pflasterarbeiten: projectPhotos[30].src,
+  bewaesserungsanlagen: projectPhotos[66].src,
+  zaunarbeiten: projectPhotos[40].src,
+  rasenanlagen: projectPhotos[48].src,
+  erdarbeiten: projectPhotos[76].src,
+  entwaesserung: projectPhotos[85].src,
 };
 
 export function getServiceImage(slug: string, override?: string | null) {
   if (override) return override;
-  return serviceImageBySlug[slug] ?? naturstein;
+  return serviceImageBySlug[slug] ?? projectPhotos[77].src;
 }

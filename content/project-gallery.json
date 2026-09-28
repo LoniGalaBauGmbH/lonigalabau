@@ -1,0 +1,217 @@
+{
+  "collection": "referenzen-2026",
+  "services": {
+    "natursteinarbeiten": 77,
+    "gartengestaltung": 81,
+    "pflasterarbeiten": 30,
+    "bewaesserungsanlagen": 66,
+    "zaunarbeiten": 40,
+    "rasenanlagen": 48,
+    "erdarbeiten": 76,
+    "entwaesserung": 85
+  },
+  "siteImages": {
+    "about_hero_bg": 34,
+    "before_garden": 76,
+    "after_garden": 69
+  },
+  "photos": {
+    "13": "/images/projekte/natursteinmauer-mit-aussentreppe.webp",
+    "14": "/images/projekte/terrasse-mit-entwaesserungsrinne.webp",
+    "18": "/images/projekte/natursteintreppe-in-der-bauphase.webp",
+    "19": "/images/projekte/natursteinstufen-im-detail.webp",
+    "21": "/images/projekte/sichtschutz-anthrazit.webp",
+    "24": "/images/projekte/gepflasterter-hauseingang.webp",
+    "25": "/images/projekte/terrasse-mit-rasenanschluss.webp",
+    "26": "/images/projekte/grossformatige-terrassenplatten.webp",
+    "28": "/images/projekte/holzdeck-mit-baumausschnitt.webp",
+    "30": "/images/projekte/gartenweg-mit-bluehenden-beeten.webp",
+    "34": "/images/projekte/hanggarten-mit-holzterrasse.webp",
+    "35": "/images/projekte/rasen-auf-gartenebene.webp",
+    "36": "/images/projekte/holzterrasse-mit-natursteintreppe.webp",
+    "40": "/images/projekte/sichtschutz-holz-und-metall.webp",
+    "42": "/images/projekte/pool-mit-natursteinmauer.webp",
+    "45": "/images/projekte/rasen-mit-geschwungener-beetkante.webp",
+    "46": "/images/projekte/poolgarten-mit-terrasse.webp",
+    "47": "/images/projekte/rasengarten-mit-plattenterrasse.webp",
+    "48": "/images/projekte/rasenflaeche-mit-hecke.webp",
+    "52": "/images/projekte/natursteinbeet-an-rasenflaeche.webp",
+    "56": "/images/projekte/grosszuegige-eingangstreppe.webp",
+    "58": "/images/projekte/begruenung-im-gleisbereich.webp",
+    "63": "/images/projekte/bepflanzung-am-holzdeck.webp",
+    "64": "/images/projekte/doppelstabmattenzaun.webp",
+    "66": "/images/projekte/tropfbewaesserung-im-pflanzbeet.webp",
+    "67": "/images/projekte/pflanzbeet-am-geschwungenen-weg.webp",
+    "69": "/images/projekte/holzterrasse-mit-sichtschutz.webp",
+    "71": "/images/projekte/pflasterweg-mit-graesern.webp",
+    "72": "/images/projekte/hangbeet-mit-naturstein.webp",
+    "75": "/images/projekte/blockstufen-am-hauseingang.webp",
+    "76": "/images/projekte/terrassenunterkonstruktion.webp",
+    "77": "/images/projekte/natursteinmauer-mit-plattenbelag.webp",
+    "78": "/images/projekte/pool-und-sonnenterrasse.webp",
+    "79": "/images/projekte/natursteinweg-unter-pergola.webp",
+    "81": "/images/projekte/garten-mit-rasen-und-bepflanzung.webp",
+    "84": "/images/projekte/gartentor-anthrazit.webp",
+    "85": "/images/projekte/entwaesserungsrinne-vor-garage.webp",
+    "86": "/images/projekte/bepflanzte-natursteinmauern.webp",
+    "87": "/images/projekte/entwaesserungsrinne-am-pflasterweg.webp",
+    "88": "/images/projekte/stauden-und-wege-im-stadtraum.webp",
+    "91": "/images/projekte/gartenweg-mit-treppe.webp",
+    "94": "/images/projekte/naturnahe-spielflaeche.webp"
+  },
+  "projects": [
+    {
+      "id": "c6a3dbe3-8883-4785-b7b5-422cd4e9cef6",
+      "service": "gartengestaltung",
+      "title": "Gärten mit klaren Übergängen",
+      "description": "Rasen, Terrassen und Pflanzflächen verbinden sich zu nutzbaren Gartenräumen. Diese Galerie zeigt ausgewählte Gestaltungen aus unseren Projekten.",
+      "images": [
+        "/images/projekte/garten-mit-rasen-und-bepflanzung.webp",
+        "/images/projekte/rasengarten-mit-plattenterrasse.webp",
+        "/images/projekte/terrasse-mit-rasenanschluss.webp",
+        "/images/projekte/hanggarten-mit-holzterrasse.webp"
+      ],
+      "featured": true,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "97a28801-fad8-4b91-8ce1-cb3ade36ea5a",
+      "service": "natursteinarbeiten",
+      "title": "Naturstein: Mauern, Stufen und Beete",
+      "description": "Material und Verarbeitung im Detail: Natursteinmauern, Treppen und eingefasste Pflanzflächen aus verschiedenen Außenanlagen.",
+      "images": [
+        "/images/projekte/natursteinmauer-mit-plattenbelag.webp",
+        "/images/projekte/natursteinstufen-im-detail.webp",
+        "/images/projekte/natursteinmauer-mit-aussentreppe.webp",
+        "/images/projekte/hangbeet-mit-naturstein.webp",
+        "/images/projekte/bepflanzte-natursteinmauern.webp",
+        "/images/projekte/natursteinbeet-an-rasenflaeche.webp",
+        "/images/projekte/grosszuegige-eingangstreppe.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "186ed51f-a3a3-4961-b5e4-9b88a08470a2",
+      "service": "pflasterarbeiten",
+      "title": "Wege, Terrassen und Hauseingänge",
+      "description": "Ausgewählte Pflaster- und Plattenarbeiten: vom schmalen Gartenweg über die Terrasse bis zum sauberen Anschluss an die Haustür.",
+      "images": [
+        "/images/projekte/gartenweg-mit-bluehenden-beeten.webp",
+        "/images/projekte/gepflasterter-hauseingang.webp",
+        "/images/projekte/grossformatige-terrassenplatten.webp",
+        "/images/projekte/blockstufen-am-hauseingang.webp",
+        "/images/projekte/gartenweg-mit-treppe.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "5cfc040c-1c20-4d4c-8f8c-2b791e4bf406",
+      "service": "zaunarbeiten",
+      "title": "Sichtschutz und Gartentore",
+      "description": "Unterschiedliche Lösungen für klare Grenzen und mehr Privatsphäre: Holz, Metall, Doppelstabmatten und passende Tore.",
+      "images": [
+        "/images/projekte/sichtschutz-holz-und-metall.webp",
+        "/images/projekte/sichtschutz-anthrazit.webp",
+        "/images/projekte/doppelstabmattenzaun.webp",
+        "/images/projekte/gartentor-anthrazit.webp",
+        "/images/projekte/holzterrasse-mit-sichtschutz.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "79d2d6c8-a737-4c4d-a223-73215ae94074",
+      "service": "rasenanlagen",
+      "title": "Rasen als grüner Mittelpunkt",
+      "description": "Rasenflächen und ihre Übergänge zu Beeten, Wegen und Mauern. Die Aufnahmen zeigen private Gärten und eine Begrünung im Gleisbereich.",
+      "images": [
+        "/images/projekte/rasenflaeche-mit-hecke.webp",
+        "/images/projekte/rasen-mit-geschwungener-beetkante.webp",
+        "/images/projekte/rasen-auf-gartenebene.webp",
+        "/images/projekte/begruenung-im-gleisbereich.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "696cfc1a-4f27-48c0-a593-ff5ceffa0f73",
+      "service": "bewaesserungsanlagen",
+      "title": "Bewässerung und Pflanzflächen",
+      "description": "Tropfbewässerung im Detail und Einblicke in bepflanzte Außenanlagen. Die Galerie zeigt technische Ausführung und Beispiele für die Flächen, deren Wasserversorgung bei der Planung berücksichtigt wird.",
+      "images": [
+        "/images/projekte/tropfbewaesserung-im-pflanzbeet.webp",
+        "/images/projekte/pflanzbeet-am-geschwungenen-weg.webp",
+        "/images/projekte/bepflanzung-am-holzdeck.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "86e3d235-2950-493d-b2ac-e7f9d86e01fb",
+      "service": "erdarbeiten",
+      "title": "Vorbereitung unter der Oberfläche",
+      "description": "Einblicke in die Bauphase: vorbereitete Terrassenkonstruktion und Natursteinarbeiten vor Fertigstellung. Die Aufnahmen stammen aus unterschiedlichen Projekten.",
+      "images": [
+        "/images/projekte/terrassenunterkonstruktion.webp",
+        "/images/projekte/natursteintreppe-in-der-bauphase.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "9cce7291-71ea-43c7-86a0-8543691b9323",
+      "service": "entwaesserung",
+      "title": "Entwässerung an Übergängen",
+      "description": "Entwässerungsrinnen an Garage und Terrasse zeigen, wie Wasser an befestigten Flächen aufgenommen wird.",
+      "images": [
+        "/images/projekte/entwaesserungsrinne-vor-garage.webp",
+        "/images/projekte/terrasse-mit-entwaesserungsrinne.webp",
+        "/images/projekte/entwaesserungsrinne-am-pflasterweg.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "9a819fcf-5b1c-4170-a114-9f7570aea902",
+      "service": "gartengestaltung",
+      "title": "Terrassen und Gärten am Wasser",
+      "description": "Poolgärten, Sitzplätze und Gartenebenen aus unseren Projekten. Holz und Naturstein schaffen Übergänge zwischen Wasser, Wegen und Grün.",
+      "images": [
+        "/images/projekte/poolgarten-mit-terrasse.webp",
+        "/images/projekte/pool-mit-natursteinmauer.webp",
+        "/images/projekte/pool-und-sonnenterrasse.webp",
+        "/images/projekte/natursteinweg-unter-pergola.webp",
+        "/images/projekte/holzterrasse-mit-natursteintreppe.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    },
+    {
+      "id": "113f2d5e-f00c-4894-aa2a-dfd6c6f32274",
+      "service": "gartengestaltung",
+      "title": "Freiräume zum Verweilen",
+      "description": "Vom naturnahen Spielbereich bis zum bepflanzten Holzdeck: eine Auswahl unserer gestalteten Freiräume und Pflanzflächen.",
+      "images": [
+        "/images/projekte/naturnahe-spielflaeche.webp",
+        "/images/projekte/stauden-und-wege-im-stadtraum.webp",
+        "/images/projekte/pflasterweg-mit-graesern.webp",
+        "/images/projekte/bepflanzung-am-holzdeck.webp",
+        "/images/projekte/holzdeck-mit-baumausschnitt.webp"
+      ],
+      "featured": false,
+      "active": true,
+      "location": null
+    }
+  ]
+}
