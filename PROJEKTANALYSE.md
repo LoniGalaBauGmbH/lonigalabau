@@ -7,8 +7,10 @@ Das neue Schema einschließlich Inhaltsimport und privater Kundendateien liegt i
 Die fehlenden TypeScript-Felder wurden ergänzt, Windows-Abhängigkeiten repariert
 und der Build erfolgreich geprüft. Das neue Cloud-Projekt `LoniGalabau` ist
 inzwischen mit Schema, Dateispeichern und Website-Inhalten eingerichtet und
-auf SQL-/öffentlicher API-Ebene geprüft. Website-Serverzugang und Admin-Konten
-stehen noch aus. Die folgende Analyse dokumentiert den **ursprünglich geprüften Stand**;
+auf SQL-/öffentlicher API-Ebene geprüft. Die lokale Website ist angeschlossen;
+beide Admin-Konten, Browser-Logins und eine Bewerbung mit privatem PDF-Upload
+sind geprüft. Die vollständige Website-Abnahme bleibt offen.
+Die folgende Analyse dokumentiert den **ursprünglich geprüften Stand**;
 ihre Fehlerzahlen und Codezeilen beziehen sich auf diesen Ausgangszustand.
 
 Das Projekt enthält eine umfangreiche Website mit Inhaltsverwaltung, Anfragenverwaltung, Bewerbungen und Gartenplaner. Die wesentlichen Seiten und Datenflüsse sind umgesetzt. Der vorliegende Stand hat jedoch konkrete Probleme bei Adminberechtigungen, Datenbankkonfiguration, Fehlermeldungen und lokaler Ausführbarkeit. Die Adminabsicherung hat höchste Priorität.

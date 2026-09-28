@@ -36,9 +36,11 @@ Das neue Cloud-Projekt `LoniGalabau` ist mit acht Tabellen, vier Dateispeichern
 und den bestehenden öffentlichen Website-Inhalten eingerichtet. SQL- und
 öffentliche API-Zugriffe wurden geprüft. Schema und Prüfskripte stehen in
 [supabase/bootstrap](supabase/bootstrap/README.md).
-Der Anschluss der Website benötigt noch den lokalen Secret Key; Admin-Konten
-und vollständige Login-/Uploadtests stehen noch aus. Der Quellcode enthält
-keine einsatzbereiten Zugangsdaten.
+Die lokale Website ist mit dem neuen Projekt verbunden. Zwei Admin-Konten sind
+eingerichtet, öffentliche Selbstregistrierung ist deaktiviert. Beide Logins
+wurden im Browser geprüft; eine Testbewerbung mit privatem PDF-Upload wurde
+erfolgreich über die Website verarbeitet. Der Quellcode enthält keine
+einsatzbereiten Zugangsdaten. Hosting und die vollständige Website-Abnahme stehen aus.
 
 ## Synchronisierung
 

@@ -9,9 +9,11 @@ Aktueller Stand und nächste Einrichtungsschritte:
 
 Der Adminschutz und die Uploadvalidierung sind implementiert. Die neue
 Supabase-Datenbank einschließlich privater Kundendateispeicher ist eingerichtet
-und mit den öffentlichen Website-Inhalten befüllt. Der Secret Key, die beiden
-angeforderten Admin-Konten und echte Login-/Uploadtests stehen noch aus.
-Die aktive lokale Umgebung verweist bis zum geprüften Anschluss auf das alte Projekt.
+und mit den öffentlichen Website-Inhalten befüllt. Die lokale Umgebung ist auf
+das neue Projekt umgestellt; beide angeforderten Admin-Konten sind eingerichtet
+und im Browser geprüft. Öffentliche Selbstregistrierung ist deaktiviert.
+Eine Testbewerbung samt privater PDF wurde über die Website gespeichert und geprüft.
+Hosting und vollständige Website-Abnahme stehen noch aus.
 Die bisherigen Angaben zu Demo-Modus, Schriftarten und öffentlichem Server-Key
 waren veraltet und wurden durch diese Verweise ersetzt. Zugangsdaten gehören
 in die lokale bzw. serverseitige Umgebung; als Vorlage dient [.env.example](.env.example).

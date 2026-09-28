@@ -5,13 +5,18 @@ Stand: 28.09.2026. Das neue Cloud-Projekt **LoniGalabau** in der Organisation
 acht Leistungen, ein Projekt, eine Stellenanzeige und drei Website-Einstellungen.
 Projekt-ID: `fvctfguvupdcscthrxeb`, Region: `eu-west-1`.
 Die alte Datenbank wurde ausschließlich lesend verwendet. Die aktive lokale
-`.env` verweist bis zum geprüften Anschluss weiterhin auf das bisherige Projekt.
+`.env` ist nach erfolgreicher Schlüsselprüfung auf das neue Projekt umgestellt.
+Die frühere Konfiguration liegt in der ebenfalls ignorierten Datei
+`.env.before-new-supabase`. Zwei angeforderte Website-Admin-Konten sind über die
+Supabase-Auth-Admin-API angelegt und über `user_roles` zugeordnet; beide Logins
+wurden im Browser geprüft. Öffentliche Selbstregistrierung ist deaktiviert,
+anonyme Anmeldung und manuelle Identitätsverknüpfung bleiben deaktiviert.
 
-Noch offen: Secret Key lokal eintragen, die zwei angeforderten Website-Admin-Konten
-anlegen und zuordnen, öffentliche Selbstregistrierung deaktivieren sowie echte
-Anmelde-/Uploadabläufe testen. Die isolierte lokale Datei `.env.supabase-new`
-enthält bereits die neue URL und den öffentlichen Schlüssel; sie ist von Git
-ausgeschlossen. Administrator-Adressen und Zugangsdaten werden nicht hier veröffentlicht.
+Die zufällig erzeugten Zugangsdaten stehen ausschließlich lokal in
+`.env.admin-logins`; Server- und Browser-Konfiguration in `.env` sowie
+`.env.supabase-new`. Alle diese Dateien sind von Git ausgeschlossen.
+Administrator-Adressen und Zugangsdaten werden nicht hier veröffentlicht.
+Passwörter später über einen sicheren Kanal an die jeweiligen Kontoinhaber übergeben.
 
 ## Bereits ausgeführte Cloud-Einrichtung
 
@@ -137,14 +142,28 @@ Im neuen Cloud-Projekt zusätzlich geprüft:
   als `anon` und `authenticated`; sämtliche Teständerungen zurückgerollt.
 - REST-API mit dem Publishable Key: Inhalte lesbar, vier geschützte Tabellen
   einschließlich `user_roles` mit Berechtigungsfehler gesperrt.
+- Secret Key: privilegierter Serverzugriff bestätigt. Auth-API bestätigt
+  `disable_signup: true`; die beiden Konten konnten sich anmelden und ihre
+  jeweilige Adminrolle lesen.
+- Browser: anonymer Aufruf von `/admin` leitet zu `/login`; beide Admin-Konten
+  erreichen das Dashboard mit acht Leistungen, einem Projekt und einer Stelle.
+  Die Abmeldung führt zurück zum Login.
+- Eine synthetische Testbewerbung mit PDF wurde über das öffentliche
+  Bewerbungsformular gespeichert und im Adminbereich angezeigt. Der signierte
+  PDF-Abruf lieferte die Originaldatei; der öffentliche Abruf wurde verweigert.
+  Die Statusänderung im Adminbereich wurde in der Datenbank bestätigt.
+  Anschließend wurden ausschließlich der eigene Testdatensatz und seine PDF
+  entfernt; Anfragen, Bewerbungen und Dateispeicher sind wieder leer.
+- 25 Anwendungstests, TypeScript und Client-/Server-Build nach der Umstellung
+  erfolgreich; 84 erzeugte Browserdateien ohne enthaltenen Secret Key geprüft.
 - Security Advisor nach Korrektur der internen Trigger-Rechte: keine Warnungen
   oder Fehler. Die drei [Informationshinweise zu Tabellen ohne Browser-Policy](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy)
   sind für die ausschließlich serverseitig verwendeten privaten Tabellen beabsichtigt.
 - Performance Advisor: nur [Hinweise auf noch ungenutzte Indizes](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index)
   in der frisch eingerichteten Datenbank.
 
-Noch offen sind der Website-Serverzugang, Admin-Konten, echte Anmeldung,
-Schreib-/Uploadtests über die Website, Hosting-Konfiguration und Veröffentlichung.
+Noch offen sind die vollständige Prüfung aller Website-Abläufe,
+Hosting-Konfiguration und Veröffentlichung.
 Öffentliche Formulare/Uploads
 benötigen vor dem produktiven Start zusätzlich einen abgestimmten Spam-/Bot-Schutz
 und Betriebsregeln für ungenutzte Uploads, Aufbewahrung und Backups.
