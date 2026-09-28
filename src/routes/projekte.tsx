@@ -3,6 +3,8 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { getProjects } from "@/lib/site.functions";
 import projectFallback from "@/assets/project-villa.jpg";
+import { ProjectGallery } from "@/components/site/ProjectGallery";
+import { ArrowUpRight } from "lucide-react";
 
 const q = queryOptions({ queryKey: ["projects"], queryFn: () => getProjects() });
 
@@ -31,9 +33,12 @@ function Page() {
           {projects.length === 0 && <p className="opacity-60">Aktuell sind keine Projekte hinterlegt.</p>}
           {projects.map((p) => (
             <article key={p.id} className="bg-surface rounded-[2rem] overflow-hidden shadow-sm">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={p.images?.[0] || projectFallback} alt={p.title} loading="lazy" className="w-full h-full object-cover" />
-              </div>
+              <ProjectGallery project={p}>
+                <button type="button" aria-label={p.title + " – Bilder ansehen"} className="group relative block aspect-[4/3] w-full overflow-hidden text-left focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent">
+                  <img src={p.images?.[0] || projectFallback} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.03] motion-reduce:transition-none" />
+                  <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 rounded-full bg-brand/90 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm group-hover:bg-brand">Projekt ansehen <ArrowUpRight className="size-4" aria-hidden="true" /></span>
+                </button>
+              </ProjectGallery>
               <div className="p-8">
                 {p.location && <span className="text-xs uppercase tracking-widest text-accent font-bold">{p.location}</span>}
                 <h3 className="font-serif text-3xl mt-2">{p.title}</h3>

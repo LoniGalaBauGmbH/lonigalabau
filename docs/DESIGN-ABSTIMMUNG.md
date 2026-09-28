@@ -37,6 +37,23 @@ und [Visual Hierarchy](https://www.nngroup.com/articles/visual-hierarchy-ux-defi
 Rahmen sind kein Nachweis für KI-Erstellung; hier geht es um den subjektiven
 Eindruck wiederkehrender Dekoration und um visuelle Unruhe.
 
+## Freigegebene interaktive Ergänzungen
+
+Im Folgeauftrag wurden Projektgalerien und ein Gartenbild mit anklickbaren
+Details gewünscht. Projektbilder öffnen eine große, per Tastatur bedienbare
+Galerie; bei mehreren hinterlegten Bildern stehen Bildauswahl und Wischen zur
+Verfügung. Das derzeitige Referenzprojekt enthält keine eigenen Bilddateien:
+sein Ersatzbild ist in der Galerie ausdrücklich als Symbolbild gekennzeichnet.
+Das interaktive Gartenbild nutzt ein vorhandenes Asset als Gestaltungsbeispiel,
+mit Details zu Terrasse, Bepflanzung und Beleuchtung.
+
+Auf weiteren ausdrücklichen Wunsch werden die vorhandenen Gewerke-Karten auf
+Startseite und Leistungsübersicht als horizontaler, manuell bedienbarer Slider
+angezeigt. Die Infokarten aller Leistungsdetails sind auch mobil bündig; die
+früheren Einzüge nach dem ersten Eintrag entfallen. Farben und übrige Seiten-
+gestaltung bleiben erhalten. Ein eigener Gartenfilm und zusätzliche dokumentierte
+Projektfotos stehen weiterhin aus.
+
 ## Technischer Stand nach der Rücknahme
 
 Auch der Anwendungscode wurde auf den Stand vor der großen Überarbeitung

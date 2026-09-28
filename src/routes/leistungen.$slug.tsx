@@ -260,7 +260,7 @@ function Page() {
               { v: "Festpreis-Garantie", sub: "Finanzielle Sicherheit · Keine Nebenkosten", Icon: Coins },
               { v: "B.Eng. Leitung", sub: "Landschaftsarchitektur · CAD-Planung", Icon: GraduationCap },
             ].map((s, i) => (
-              <div key={i} className="flex gap-4 items-start pl-6 md:pl-8 first:pl-0">
+              <div key={i} className="flex min-w-0 gap-4 items-start">
                 <div className="size-11 rounded-2xl bg-brand/5 flex items-center justify-center shrink-0">
                   <s.Icon className="h-5 w-5 text-brand" strokeWidth={1.8} />
                 </div>
