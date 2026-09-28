@@ -66,21 +66,23 @@ function Field({
   children: ReactNode;
 }) {
   return (
-    <div className="min-w-0">
+    <div className="planner-field">
       <label htmlFor={htmlFor} className="planner-label">
         {label}
       </label>
-      {hint && (
-        <p id={htmlFor + "-hint"} className="planner-hint mb-3">
-          {hint}
-        </p>
-      )}
-      {children}
-      {error && (
-        <p id={htmlFor + "-error"} className="planner-error">
-          {error}
-        </p>
-      )}
+      <div className="planner-field-control">{children}</div>
+      <div className="planner-field-note">
+        {hint && (
+          <p id={htmlFor + "-hint"} className="planner-hint">
+            {hint}
+          </p>
+        )}
+        {error && (
+          <p id={htmlFor + "-error"} className="planner-error">
+            {error}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -100,7 +102,7 @@ function MeasureHelper({ unit, onApply }: { unit: string; onApply: (value: strin
         Für einen rechteckigen Bereich. Unregelmäßige Flächen in Rechtecke aufteilen und die
         Ergebnisse zusammenzählen.
       </p>
-      <div className="mt-3 grid grid-cols-2 gap-3">
+      <div className="planner-measure-grid">
         {[
           ["length", "Länge (m)", length, setLength],
           ["width", "Breite (m)", width, setWidth],
@@ -110,7 +112,7 @@ function MeasureHelper({ unit, onApply }: { unit: string; onApply: (value: strin
             {String(label)}
             <input
               id={id + key}
-              className={inputClass + " mt-1"}
+              className={inputClass}
               inputMode="decimal"
               value={String(value)}
               onChange={(e) => (setter as (v: string) => void)(e.target.value)}
@@ -169,10 +171,10 @@ function QuestionField({
       hint={q.help}
     >
       {q.options ? (
-        <div className="relative">
+        <div className="planner-select">
           <select
             {...props}
-            className={inputClass + " appearance-none pr-10"}
+            className={inputClass}
             value={value}
             onChange={(e) => onChange(e.target.value)}
           >
@@ -183,17 +185,14 @@ function QuestionField({
               </option>
             ))}
           </select>
-          <ChevronDown
-            aria-hidden="true"
-            className="pointer-events-none absolute right-4 top-4 size-4"
-          />
+          <ChevronDown aria-hidden="true" />
         </div>
       ) : (
         <>
-          <div className="relative">
+          <div className="planner-input-with-unit">
             <input
               {...props}
-              className={inputClass + " pr-16"}
+              className={inputClass}
               inputMode="decimal"
               disabled={value === OPEN}
               value={value === OPEN ? "" : value}
@@ -201,12 +200,10 @@ function QuestionField({
               maxLength={9}
               placeholder={value === OPEN ? "Klären wir gemeinsam" : "z. B. 25"}
             />
-            <span className="pointer-events-none absolute right-4 top-3.5 text-sm text-brand/60">
-              {q.unit}
-            </span>
+            <span className="planner-unit">{q.unit}</span>
           </div>
           {!q.optional && (
-            <label className="mt-3 flex cursor-pointer items-center gap-3 text-sm text-brand/70">
+            <label className="planner-unknown">
               <Checkbox
                 checked={value === OPEN}
                 onCheckedChange={(v) => onChange(v === true ? OPEN : "")}
@@ -644,7 +641,7 @@ export function GardenPlanner() {
                   )}
                   {step.id === "site" && (
                     <div className="space-y-8">
-                      <div className="grid gap-5 sm:grid-cols-[1fr_2fr]">
+                      <div className="planner-question-grid">
                         <Field
                           label="Postleitzahl des Projekts *"
                           htmlFor={uid + "-zip"}
@@ -839,7 +836,7 @@ export function GardenPlanner() {
                           </p>
                         )}
                       </div>
-                      <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="planner-question-grid">
                         <Field label="Name *" htmlFor={uid + "-name"} error={errors.name}>
                           <input
                             {...fieldProps("name")}
@@ -866,15 +863,18 @@ export function GardenPlanner() {
                           htmlFor={uid + "-channel"}
                           error={errors.channel}
                         >
-                          <select
-                            {...fieldProps("channel")}
-                            className={inputClass}
-                            value={form.channel}
-                            onChange={(e) => change("channel", e.target.value)}
-                          >
-                            <option>E-Mail</option>
-                            <option>Telefon</option>
-                          </select>
+                          <div className="planner-select">
+                            <select
+                              {...fieldProps("channel")}
+                              className={inputClass}
+                              value={form.channel}
+                              onChange={(e) => change("channel", e.target.value)}
+                            >
+                              <option>E-Mail</option>
+                              <option>Telefon</option>
+                            </select>
+                            <ChevronDown aria-hidden="true" />
+                          </div>
                         </Field>
                         <Field
                           label={"Telefon" + (form.channel === "Telefon" ? " *" : " (optional)")}

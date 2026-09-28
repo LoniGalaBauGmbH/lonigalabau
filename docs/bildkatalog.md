@@ -39,7 +39,7 @@ Die Gruppierung erfolgt nach sichtbaren Gewerken, nicht nach vermuteten Kunden o
 | 031 | IMG_3169.HEIC | Pflaster & Wege | Gepflasterter Hauseingang mit Fußmatte | Reserve |
 | 032 | IMG_3275.HEIC | Naturstein & Stufen | Dunkle Treppenstufen mit angrenzendem Garten | Reserve |
 | 033 | IMG_3278.HEIC | Gärten & Rasen | Rasenfläche an einer erhöhten Gartenebene | Reserve |
-| 034 | IMG_3286.HEIC | Terrassen & Decks | Holzterrasse mit Pflanzbeeten im Hanggarten | [Website](../public/images/projekte/hanggarten-mit-holzterrasse.webp) |
+| 034 | IMG_3286.HEIC | Terrassen & Decks | Terrassengarten mit WPC, Naturstein und Pflanzbeeten | [Website](../public/images/projekte/hanggarten-mit-holzterrasse.webp) |
 | 035 | IMG_3287.HEIC | Gärten & Rasen | Grüne Gartenebene oberhalb einer Stützwand | [Website](../public/images/projekte/rasen-auf-gartenebene.webp) |
 | 036 | IMG_3289.HEIC | Terrassen & Decks | Holzterrasse mit angrenzender Natursteintreppe | [Website](../public/images/projekte/holzterrasse-mit-natursteintreppe.webp) |
 | 037 | IMG_3302.HEIC | Gärten & Rasen | Schmales Pflanzbeet neben einem Sitzplatz | Reserve |

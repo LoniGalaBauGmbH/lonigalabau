@@ -3,35 +3,53 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
-const garden = projectPhotos[47].src;
+const garden = projectPhotos[34].src;
 
 const details = [
   {
-    title: "Terrasse",
+    title: "WPC-Terrasse",
     heading: "Ein Platz zum Ankommen.",
-    text: "Große Platten und klare Übergänge verbinden Sitzplatz und Garten. Material, Verlegemuster und Unterbau stimmen wir auf die Nutzung ab.",
-    position: { left: "23%", top: "88%" },
-    origin: "23% 88%",
-    service: "pflasterarbeiten",
-    link: "Pflasterarbeiten ansehen",
-  },
-  {
-    title: "Bepflanzung",
-    heading: "Grün mit Charakter.",
-    text: "Gräser, Sträucher und Gehölze geben dem Garten Struktur. Standort, Jahreszeiten und Pflegeaufwand bestimmen die passende Pflanzenauswahl.",
-    position: { left: "78%", top: "42%" },
-    origin: "78% 42%",
+    text: "Warme Dielen, ein geschützter Sitzplatz und Grün direkt daneben. Bei einer WPC-Terrasse planen wir Unterkonstruktion, Gefälle und Fugen passend zu Material und Nutzung.",
+    position: { left: "80%", top: "70%" },
+    origin: "80% 70%",
     service: "gartengestaltung",
     link: "Gartengestaltung ansehen",
   },
   {
+    title: "Bepflanzung",
+    heading: "Grün mit Charakter.",
+    text: "Pflanzbeete begleiten die Terrasse und verbinden die Gartenebenen. Blätter, Blüten und unterschiedliche Wuchshöhen bringen Abwechslung – abgestimmt auf Standort und Pflegeaufwand.",
+    position: { left: "28%", top: "60%" },
+    origin: "28% 60%",
+    service: "gartengestaltung",
+    link: "Gartengestaltung ansehen",
+  },
+  {
+    title: "Naturstein",
+    heading: "Stein gibt dem Garten Halt.",
+    text: "Naturstein fasst die Beete ein und betont die unterschiedlichen Ebenen. Aufeinander abgestimmte Oberflächen und saubere Abschlüsse verbinden Mauern, Pflanzflächen und Terrasse.",
+    position: { left: "18%", top: "43%" },
+    origin: "18% 43%",
+    service: "natursteinarbeiten",
+    link: "Natursteinarbeiten ansehen",
+  },
+  {
     title: "Rasen",
     heading: "Grün, das Raum gibt.",
-    text: "Eine zusammenhängende Rasenfläche bringt Ruhe in den Garten und lässt Platz zum Spielen und Entspannen. Saubere Kanten erleichtern die Pflege und verbinden Rasen, Terrasse und Beete.",
-    position: { left: "59%", top: "65%" },
-    origin: "59% 65%",
+    text: "Eine kleine Rasenfläche auf der oberen Ebene setzt einen ruhigen grünen Akzent. Klar gefasste Kanten verbinden sie mit den Mauern und den angrenzenden Pflanzbereichen.",
+    position: { left: "23%", top: "31.5%" },
+    origin: "23% 31.5%",
     service: "rasenanlagen",
     link: "Rasenanlagen ansehen",
+  },
+  {
+    title: "Zaun",
+    heading: "Ein klarer Rahmen fürs Grün.",
+    text: "Der dunkle Metallzaun fasst den Garten ein und bleibt zwischen den Pflanzen dezent im Hintergrund. Höhe, Verlauf und Befestigung stimmen wir auf das Gelände und Ihre Wünsche ab.",
+    position: { left: "67%", top: "22%" },
+    origin: "67% 22%",
+    service: "zaunarbeiten",
+    link: "Zaunarbeiten ansehen",
   },
 ] as const;
 
@@ -55,39 +73,44 @@ export function GardenDetails() {
             </h2>
           </div>
           <p className="max-w-xs text-base leading-relaxed text-foreground/65">
-            Entdecken Sie an einem unserer Gärten, wie Terrasse, Rasen und Pflanzen zusammenpassen.
+            Entdecken Sie, wie WPC, Naturstein, Pflanzbeete, Rasen und Zaun in einem unserer Gärten
+            zusammenspielen.
           </p>
         </div>
         <div className="grid items-stretch gap-0 overflow-hidden rounded-[2rem] bg-brand lg:grid-cols-[1.25fr_1fr]">
-          <div className="relative aspect-[4/3] min-w-0 overflow-hidden lg:aspect-auto">
-            <ProjectImage
-              src={garden}
-              alt="Garten mit Plattenterrasse, Rasenfläche und umlaufender Hecke"
-              width={1600}
-              height={1200}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <span className="absolute left-4 top-4 rounded-full bg-brand/80 px-3 py-1.5 text-xs tracking-wide text-white md:left-6 md:top-6">
+          <div className="relative aspect-square min-w-0 overflow-hidden [container-type:size] lg:aspect-auto">
+            <div className="absolute left-1/2 top-1/2 h-[max(100cqh,133.333333cqw)] w-[max(100cqw,75cqh)] -translate-x-1/2 -translate-y-1/2">
+              <ProjectImage
+                src={garden}
+                alt="Terrassengarten mit WPC, Naturstein und Pflanzbeeten"
+                width={1200}
+                height={1600}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              {details.map((item, i) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  aria-label={item.title + " im Garten entdecken"}
+                  aria-pressed={active === i}
+                  aria-controls={id + "-detail"}
+                  onClick={() => setActive(i)}
+                  style={item.position}
+                  className={
+                    "absolute grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-12 " +
+                    (active === i
+                      ? "bg-accent text-brand"
+                      : "bg-white/95 text-brand hover:bg-accent")
+                  }
+                >
+                  <Plus className="size-5" aria-hidden="true" />
+                </button>
+              ))}
+            </div>
+            <span className="absolute bottom-4 left-4 rounded-full bg-brand/80 px-3 py-1.5 text-xs tracking-wide text-white md:bottom-6 md:left-6">
               Ein Garten von Loni
             </span>
-            {details.map((item, i) => (
-              <button
-                key={item.title}
-                type="button"
-                aria-label={item.title + " im Garten entdecken"}
-                aria-pressed={active === i}
-                aria-controls={id + "-detail"}
-                onClick={() => setActive(i)}
-                style={item.position}
-                className={
-                  "absolute grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-12 " +
-                  (active === i ? "bg-accent text-brand" : "bg-white/95 text-brand hover:bg-accent")
-                }
-              >
-                <Plus className="size-5" aria-hidden="true" />
-              </button>
-            ))}
           </div>
           <div className="flex min-w-0 flex-col p-6 text-brand-foreground md:p-10 xl:p-14">
             <div className="flex flex-wrap gap-2" aria-label="Gartendetails auswählen">

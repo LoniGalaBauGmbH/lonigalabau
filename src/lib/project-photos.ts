@@ -64,7 +64,7 @@ export const projectPhotos = {
     src: "/images/projekte/hanggarten-mit-holzterrasse.webp",
     width: 1200,
     smallWidth: 600,
-    alt: "Holzterrasse mit Pflanzbeeten im Hanggarten",
+    alt: "Terrassengarten mit WPC, Naturstein und Pflanzbeeten",
   },
   "35": {
     src: "/images/projekte/rasen-auf-gartenebene.webp",
