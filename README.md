@@ -40,7 +40,36 @@ Die lokale Website ist mit dem neuen Projekt verbunden. Zwei Admin-Konten sind
 eingerichtet, öffentliche Selbstregistrierung ist deaktiviert. Beide Logins
 wurden im Browser geprüft; eine Testbewerbung mit privatem PDF-Upload wurde
 erfolgreich über die Website verarbeitet. Der Quellcode enthält keine
-einsatzbereiten Zugangsdaten. Hosting und die vollständige Website-Abnahme stehen aus.
+einsatzbereiten Zugangsdaten. Die vollständige Website-Abnahme steht noch aus.
+
+## Live-Projektlink
+
+Die Projektwebsite ist unter
+[loni-galabau.serhad1999.chatgpt.site](https://loni-galabau.serhad1999.chatgpt.site)
+für jeden mit dem Link erreichbar. Die Verwaltung bleibt über
+[/login](https://loni-galabau.serhad1999.chatgpt.site/login) geschützt.
+Die Unternehmensdomain ist damit noch nicht umgestellt.
+
+Hosting erfolgt über Sites als Cloudflare Worker. `npm run build` erzeugt mit
+Nitro `dist/server/index.mjs`, die Worker-Konfiguration und `dist/client`.
+`.openai/hosting.json` enthält die feste Projektzuordnung. Ein Deployment-Archiv
+enthält diese Datei sowie `dist/server` und `dist/client`; lokale `.env`-Dateien
+und Admin-Passwörter gehören niemals hinein. Vor jeder Veröffentlichung muss
+der genaue Quellcode-Commit in das zugehörige Sites-Quellrepository übertragen
+und als Version gespeichert werden. Die Unternehmens-GitHub-Synchronisierung
+allein veröffentlicht keine neue Live-Version.
+
+Die öffentlichen `VITE_SUPABASE_*`-Werte werden beim Build eingebunden.
+`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` und der als Secret markierte
+`SUPABASE_SECRET_KEY` liegen zusätzlich als Server-Variablen im Sites-Hosting.
+Änderungen dieser Server-Variablen benötigen eine erneute Veröffentlichung.
+
+Am 28.09.2026 geprüft: öffentlicher HTTPS-Aufruf, Weiterleitung unberechtigter
+Admin-Aufrufe zum Login, Admin-Anmeldung, Dashboard mit acht Leistungen, einem
+Projekt und einer Stelle sowie Kontaktformular bis zur Speicherung in Supabase.
+Der synthetische Kontakt-Testeintrag wurde danach entfernt. Der Build enthält
+keinen Supabase-Secret-Key. Dies ersetzt noch nicht die vollständige fachliche
+und redaktionelle Freigabe der Website.
 
 ## Synchronisierung
 
