@@ -1,0 +1,159 @@
+{
+  "source": "https://zbksavhvrniwhjwjprbs.supabase.co",
+  "exportedAt": "2026-09-28T08:27:11.178Z",
+  "tables": {
+    "services": [
+      {
+        "id": "24d1e958-c82f-46de-9ff2-4ca64caf46e3",
+        "slug": "natursteinarbeiten",
+        "title": "Natursteinarbeiten",
+        "category": "Garten · Mauern",
+        "short_text": "Zeitlose Eleganz aus der Natur – Mauern, Wege und Terrassen aus hochwertigem Naturstein.",
+        "long_text": "Natursteinarbeiten verleihen jedem Garten Stil, Wertigkeit und Beständigkeit. Ob Natursteinmauer, Gartenweg, Granit-Terrasse oder Sandstein-Treppe – mit Naturstein entsteht ein harmonisches Zusammenspiel von Farbe, Struktur und Form, das Ihren Außenbereich unverwechselbar macht.\n\nMit handwerklicher Präzision und langjähriger Erfahrung im Garten- und Landschaftsbau gestalten wir Natursteinflächen, die Ästhetik und Funktion perfekt vereinen. Jeder Stein ist ein Unikat – robust, wetterbeständig und voller natürlicher Schönheit.\n\nWir setzen auf hochwertige Materialien wie Granit, Sandstein, Basalt und Kalkstein, die sowohl optisch als auch technisch überzeugen. Durch fachgerechte Verarbeitung und eine sorgfältige Untergrundvorbereitung schaffen wir langlebige Ergebnisse, die sich harmonisch in Ihre Gartenlandschaft einfügen.",
+        "hero_image": null,
+        "sort_order": 1,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      },
+      {
+        "id": "d3ac79b1-cc29-41be-9d20-aa79275982cb",
+        "slug": "gartengestaltung",
+        "title": "Gartengestaltung",
+        "category": "Garten · Planung",
+        "short_text": "Ihr Traumgarten – individuell geplant, liebevoll gestaltet und nachhaltig umgesetzt.",
+        "long_text": "Ein Garten ist weit mehr als nur eine grüne Fläche mit Pflanzen – er ist Ihr ganz persönlicher Rückzugsort, ein Ort der Ruhe, Inspiration und Erholung. Mit professioneller Gartengestaltung und individueller Gartenplanung verwandeln wir Ihre Außenanlage in eine harmonische Wohlfühloase, die perfekt zu Ihrem Lebensstil passt.\n\nMit kreativen Gartenideen, Liebe zum Detail und fachlicher Expertise gestalten wir Gärten, die zu jeder Jahreszeit begeistern. Ob moderner Stadtgarten, naturnahe Landschaft oder eleganter Rückzugsort – wir entwickeln ein Konzept, das Ihre Wünsche und Vorstellungen in ein stimmiges Gesamtbild bringt.\n\nDabei legen wir größten Wert auf Qualität und Nachhaltigkeit: sorgfältig ausgewählte Pflanzen, langlebige Materialien und eine harmonische Integration in die Umgebung sind für uns selbstverständlich.",
+        "hero_image": null,
+        "sort_order": 2,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      },
+      {
+        "id": "04bd4eb7-ae9c-48b8-9ab1-faa571500cee",
+        "slug": "pflasterarbeiten",
+        "title": "Pflasterarbeiten",
+        "category": "Garten · Wege & Terrassen",
+        "short_text": "Präzise verlegt, perfekt gestaltet – Wege, Terrassen und Einfahrten von höchster Qualität.",
+        "long_text": "Ein ansprechender Garten beginnt mit soliden Wegen, eleganten Terrassen und funktionalen Einfahrten. Professionell verlegte Pflastersteine verbinden Ästhetik mit Langlebigkeit und verleihen Ihrem Außenbereich Struktur, Charakter und Stil.\n\nMit hochwertigem Material, handwerklicher Präzision und einem Auge fürs Detail gestalten wir Pflasterflächen, die nicht nur schön aussehen, sondern auch den täglichen Belastungen standhalten. Ob Naturstein, Betonstein oder Klinker – wir finden die passende Lösung für Ihre Vorstellungen und Ihr Budget.\n\nUnser Ziel ist es, dauerhafte und harmonische Ergebnisse zu schaffen. Dabei achten wir auf exakte Linienführung, fachgerechtes Gefälle und eine solide Untergrundvorbereitung.",
+        "hero_image": null,
+        "sort_order": 3,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      },
+      {
+        "id": "96830647-21ae-4d7f-80fb-ef222c40ff48",
+        "slug": "bewaesserungsanlagen",
+        "title": "Bewässerungsanlagen",
+        "category": "Garten · Automatisiert",
+        "short_text": "Effiziente Wasserversorgung für gesunde Grünflächen – smart, automatisch, ressourcenschonend.",
+        "long_text": "Eine zuverlässige Bewässerung ist entscheidend für das Wachstum und die Vitalität Ihres Gartens. Mit einer professionellen Bewässerungsanlage sorgen wir dafür, dass Rasen, Pflanzen und Beete immer optimal mit Wasser versorgt sind – automatisch und individuell abgestimmt.\n\nModerne Bewässerungssysteme sparen nicht nur Zeit und Wasser, sondern fördern auch die gleichmäßige Entwicklung Ihrer Pflanzen. Ob Tropfbewässerung, Versenkregner oder vollautomatische Steuerung – wir planen und installieren Anlagen, die sich perfekt an die Gegebenheiten Ihres Grundstücks anpassen.\n\nAuf Wunsch integrieren wir smarte Steuerungssysteme, die sich per App oder Sensor automatisch an Wetter und Jahreszeit anpassen.",
+        "hero_image": null,
+        "sort_order": 4,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      },
+      {
+        "id": "70cce84b-4e32-41d5-ab98-327a5dd7c443",
+        "slug": "zaunarbeiten",
+        "title": "Zaunarbeiten",
+        "category": "Firmengelände · Sicherheit",
+        "short_text": "Sichtschutz und Sicherheit mit Stil – Zäune und Tore aus Holz, Metall oder Stein.",
+        "long_text": "Wir gestalten den perfekten Gartenraum – individuell angepasst an Ihren Lebensstil. Von dezenten Sichtschutzelementen bis zu repräsentativen Eingangstoren verbinden unsere Zaunanlagen Funktionalität mit hochwertiger Optik. Wir arbeiten mit Holz, Metall, Gabionen und Naturstein und planen jede Anlage genau auf Ihre baulichen Gegebenheiten zu.",
+        "hero_image": null,
+        "sort_order": 5,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      },
+      {
+        "id": "db70f41c-8605-4c2a-886d-bcfe7ef45a27",
+        "slug": "rasenanlagen",
+        "title": "Rasenanlagen",
+        "category": "Garten · Lebensqualität",
+        "short_text": "Rollrasen und hochwertige Einsaat – sattes Grün, das Ihrem Garten Charakter gibt.",
+        "long_text": "Ein gepflegter Rasen ist das Herzstück jedes Gartens. Wir bereiten den Untergrund fachgerecht vor, säen hochwertige Rasenmischungen oder verlegen Rollrasen – damit Ihr Garten in kürzester Zeit zu einem grünen Wohnzimmer wird. Auf Wunsch ergänzen wir die Anlage mit automatischer Bewässerung und Mähroboter-Integration.",
+        "hero_image": null,
+        "sort_order": 6,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      },
+      {
+        "id": "20dd39db-086d-45c4-8fb2-b95b024a5801",
+        "slug": "erdarbeiten",
+        "title": "Erdarbeiten",
+        "category": "Garten · Entsorgung",
+        "short_text": "Die Grundlage für jedes Gartenprojekt – Geländemodellierung, Aushub und Bodenverbesserung.",
+        "long_text": "Bevor ein Traumgarten entstehen kann, braucht es ein solides Fundament. Erdarbeiten bilden die Basis jeder erfolgreichen Gartengestaltung – ob für Wege, Terrassen, Teiche oder Pflanzflächen. Sie entscheiden über Stabilität, Entwässerung und die langfristige Qualität Ihres Gartens.\n\nMit modernster Technik, Fachwissen und präziser Planung sorgen wir dafür, dass Ihr Boden optimal vorbereitet ist. Wir modellieren Gelände, schaffen Ebenen, heben Teiche aus und führen Bodenverbesserungen durch.",
+        "hero_image": null,
+        "sort_order": 7,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      },
+      {
+        "id": "662e3a89-0f7c-452d-8c4e-c3827c450b37",
+        "slug": "entwaesserung",
+        "title": "Entwässerung",
+        "category": "Garten · Wassermanagement",
+        "short_text": "Fachgerechte Ableitung von Regen- und Oberflächenwasser für dauerhaft trockene Anlagen.",
+        "long_text": "Eine durchdachte Entwässerung schützt Ihren Garten und Ihr Gebäude vor Staunässe und Erosion. Wir planen und installieren Drainagen, Rigolen und Versickerungssysteme, die das Wasser dort hinleiten, wo es hingehört – effizient, unauffällig und langlebig.",
+        "hero_image": null,
+        "sort_order": 8,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      }
+    ],
+    "projects": [
+      {
+        "id": "15b97106-0428-4a3e-8d1c-071b14b87d24",
+        "title": "Residenz am Mainufer",
+        "service_id": null,
+        "location": "Heidelberg",
+        "description": "Im Rahmen der Außenanlagen wurden ein moderner Pool fachgerecht errichtet und mit Naturstein verkleidet. Die Terrasse ist aus einem Holzdeck erstellt worden.",
+        "images": [],
+        "featured": true,
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      }
+    ],
+    "jobs": [
+      {
+        "id": "eef8985e-067a-44d3-9d0a-24daab86d2d3",
+        "slug": "landschaftsgaertner-m-w-d",
+        "title": "Landschaftsgärtner:in (m/w/d)",
+        "description": "Wir suchen Verstärkung für unser Team in Hattersheim. Sie wirken an der Umsetzung anspruchsvoller Außenanlagen mit – von Naturstein über Pflasterarbeiten bis zu Bewässerungssystemen.",
+        "requirements": "Abgeschlossene Ausbildung im Garten- und Landschaftsbau oder vergleichbar; handwerkliches Geschick; Führerschein Klasse B; Teamfähigkeit und Zuverlässigkeit.",
+        "location": "Hattersheim am Main",
+        "employment_type": "Vollzeit",
+        "active": true,
+        "created_at": "2026-05-28T12:06:16.290116+00:00",
+        "updated_at": "2026-05-28T12:06:16.290116+00:00"
+      }
+    ],
+    "site_settings": [
+      {
+        "key": "tracking",
+        "value": {
+          "ga4": "",
+          "gtm": "",
+          "banner": {
+            "title": "Cookies & Privatsphäre",
+            "description": "Wir verwenden Cookies, um unsere Website zu betreiben und – mit Ihrer Zustimmung – Reichweite zu messen. Technisch notwendige Cookies sind immer aktiv."
+          },
+          "tiktokId": "",
+          "metaPixel": "",
+          "customHead": "",
+          "linkedinId": "",
+          "anonymizeIp": true,
+          "consentVersion": 1
+        }
+      }
+    ]
+  }
+}
