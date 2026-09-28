@@ -30,13 +30,24 @@ try {
     CREATE TABLE storage.buckets (id text PRIMARY KEY, name text, public boolean,
       file_size_limit bigint, allowed_mime_types text[]);
     ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO anon, authenticated;
+    CREATE FUNCTION public.rls_auto_enable() RETURNS event_trigger
+      LANGUAGE plpgsql SECURITY DEFINER AS $$ BEGIN RETURN; END $$;
+    GRANT EXECUTE ON FUNCTION public.rls_auto_enable() TO anon, authenticated;
   `);
   await db.exec(await readSql("01_schema.sql"));
   await db.exec(await readSql("02_storage.sql"));
   await db.exec(await readSql("04_content.sql"));
+  await db.exec(await readSql("05_verify.sql"));
+  checks++;
   const rows = async (sql) => (await db.query(sql)).rows;
   const count = async (table) =>
     Number((await rows(`SELECT count(*) AS count FROM public.${table}`))[0].count);
+  for (const role of ["anon", "authenticated"]) {
+    const permissions = await rows(
+      `SELECT has_function_privilege('${role}', 'public.rls_auto_enable()', 'EXECUTE') AS allowed`,
+    );
+    check(!permissions[0].allowed, role + " cannot execute internal RLS trigger");
+  }
   check((await count("services")) === 8, "all 8 services imported");
   check((await count("projects")) === 1, "project imported");
   check((await count("jobs")) === 1, "job imported");

@@ -165,4 +165,13 @@ INSERT INTO public.site_settings (key, value) VALUES
   ('partners', '[]'::jsonb),
   ('tracking', '{"ga4":"","gtm":"","metaPixel":"","linkedinId":"","tiktokId":"","customHead":"","anonymizeIp":true,"consentVersion":1,"banner":{"title":"Cookies & Privatsphäre","description":"Wir verwenden Cookies, um unsere Website zu betreiben und – mit Ihrer Zustimmung – Reichweite zu messen. Technisch notwendige Cookies sind immer aktiv."}}'::jsonb);
 
+-- Supabase legt diese interne Event-Trigger-Funktion in neuen Projekten an.
+-- Sie wird vom Eigentümer ausgeführt und benötigt keine Browser-Freigabe.
+DO $$
+BEGIN
+  IF to_regprocedure('public.rls_auto_enable()') IS NOT NULL THEN
+    REVOKE EXECUTE ON FUNCTION public.rls_auto_enable() FROM PUBLIC, anon, authenticated;
+  END IF;
+END $$;
+
 COMMIT;

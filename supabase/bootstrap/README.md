@@ -1,10 +1,36 @@
 # Neue Supabase-Datenbank für Loni Galabau
 
-Stand: 28.09.2026. Lokal vorbereitet; noch kein neues Cloud-Projekt angelegt oder
-verbunden. Die vorhandene Datenbank wurde nur lesend abgefragt. Die lokale
-`.env` verweist bis zum Anschluss weiterhin auf das bisherige Projekt.
+Stand: 28.09.2026. Das neue Cloud-Projekt **LoniGalabau** in der Organisation
+**LoniGalabauGmbH** ist eingerichtet: acht Tabellen mit RLS, vier Dateispeicher,
+acht Leistungen, ein Projekt, eine Stellenanzeige und drei Website-Einstellungen.
+Projekt-ID: `fvctfguvupdcscthrxeb`, Region: `eu-west-1`.
+Die alte Datenbank wurde ausschließlich lesend verwendet. Die aktive lokale
+`.env` verweist bis zum geprüften Anschluss weiterhin auf das bisherige Projekt.
 
-## Einrichtung nach Verbindung des neuen Kontos
+Noch offen: Secret Key lokal eintragen, die zwei angeforderten Website-Admin-Konten
+anlegen und zuordnen, öffentliche Selbstregistrierung deaktivieren sowie echte
+Anmelde-/Uploadabläufe testen. Die isolierte lokale Datei `.env.supabase-new`
+enthält bereits die neue URL und den öffentlichen Schlüssel; sie ist von Git
+ausgeschlossen. Administrator-Adressen und Zugangsdaten werden nicht hier veröffentlicht.
+
+## Bereits ausgeführte Cloud-Einrichtung
+
+| Migration | Version |
+| --- | --- |
+| loni_initial_schema | 20260928094323 |
+| loni_initial_storage | 20260928094332 |
+| loni_restrict_internal_rls_trigger | 20260928094537 |
+
+Der öffentliche Inhaltsimport wurde einmalig mit `04_content.sql` ausgeführt.
+Die dritte Migration entzieht Browserrollen den Zugriff auf die von Supabase
+vorinstallierte Event-Trigger-Funktion `public.rls_auto_enable()`. Der interne
+Trigger bleibt aktiv. Derselbe Schutz ist für weitere neue Projekte in
+`01_schema.sql` enthalten.
+
+**Die Bootstrap-Skripte nicht erneut auf dieses bereits eingerichtete Projekt anwenden.**
+Die folgende Anleitung dient der Einrichtung eines weiteren, leeren Projekts.
+
+## Einrichtung eines weiteren leeren Projekts
 
 1. Ein **neues, leeres Supabase-Projekt** anlegen. Organisation und Datenbankpasswort
    im Konto wählen; für den Standort bietet sich eine EU-Region an.
@@ -24,6 +50,8 @@ verbunden. Die vorhandene Datenbank wurde nur lesend abgefragt. Die lokale
 6. Anwendung neu starten bzw. neu bauen. Login, alle Verwaltungsaktionen,
    Kontakt-/Bewerbungsformulare sowie private Downloads gegen das neue Projekt testen.
    Erst anschließend die veröffentlichte Website umstellen.
+7. `05_verify.sql` prüft Server-Schreibrechte, Zeitstempel und Browser-Zugriffssperren
+   in einer Transaktion. Sämtliche dabei erzeugten Testdaten werden zurückgerollt.
 
 **Für dieses neue Projekt ausschließlich diesen Bootstrap verwenden.** Die alten
 Dateien `SETUP_KOMPLETT.sql`, `STORAGE_SETUP_SECURITY.sql` und die bisherigen
@@ -90,7 +118,7 @@ Es gibt keine öffentlichen Storage-Listen und keine direkten Browser-Uploads.
 Lokal geprüft:
 
 - 25 automatisierte Tests für Adminzugriff, Routenschutz und Uploadvalidierung.
-- 33 PostgreSQL-Prüfungen mit PGlite 0.5.8: Schema, Inhaltsimport, Rollen,
+- 36 PostgreSQL-Prüfungen mit PGlite 0.5.8: Schema, Inhaltsimport, Rollen,
   Lesesperren, Schreibsperren, Constraints und Schutz vor erneutem Bootstrap.
   Supabase-Auth- und Storage-Systemtabellen wurden dafür minimal nachgebildet.
 - TypeScript ohne Fehler; Vite erstellt Client- und Server-Bundles unter Windows.
@@ -101,8 +129,23 @@ Tests: `node --test tests/*.test.mjs`. Der SQL-Test läuft mit
 `node scripts/check-database-schema.mjs PFAD_ZU_PGLITE_DIST_INDEX_JS`, alternativ
 mit lokal installiertem `@electric-sql/pglite` ohne Pfadargument.
 
-Noch offen sind die Cloud-Einrichtung, echte Anmeldung, Schreib-/Uploadtests,
-Hosting-Konfiguration und Veröffentlichung. Öffentliche Formulare/Uploads
+Im neuen Cloud-Projekt zusätzlich geprüft:
+
+- RLS auf allen acht Tabellen; Browserrollen ohne Schreibrechte und ohne Lesezugriff
+  auf Anfragen, Bewerbungen oder Newsletter-Adressen.
+- `05_verify.sql`: echte Server-Schreibvorgänge und Trigger sowie Zugriffsprüfungen
+  als `anon` und `authenticated`; sämtliche Teständerungen zurückgerollt.
+- REST-API mit dem Publishable Key: Inhalte lesbar, vier geschützte Tabellen
+  einschließlich `user_roles` mit Berechtigungsfehler gesperrt.
+- Security Advisor nach Korrektur der internen Trigger-Rechte: keine Warnungen
+  oder Fehler. Die drei [Informationshinweise zu Tabellen ohne Browser-Policy](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy)
+  sind für die ausschließlich serverseitig verwendeten privaten Tabellen beabsichtigt.
+- Performance Advisor: nur [Hinweise auf noch ungenutzte Indizes](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index)
+  in der frisch eingerichteten Datenbank.
+
+Noch offen sind der Website-Serverzugang, Admin-Konten, echte Anmeldung,
+Schreib-/Uploadtests über die Website, Hosting-Konfiguration und Veröffentlichung.
+Öffentliche Formulare/Uploads
 benötigen vor dem produktiven Start zusätzlich einen abgestimmten Spam-/Bot-Schutz
 und Betriebsregeln für ungenutzte Uploads, Aufbewahrung und Backups.
 Die weiteren Punkte aus der Projektanalyse, etwa Tracking-Widerruf und lokale

@@ -32,10 +32,13 @@ Lintfehler vorhanden; Einzelheiten stehen in [PROJEKTANALYSE.md](PROJEKTANALYSE.
 
 ## Neue Datenbank
 
-Das Schema, private Dateispeicher und der vorbereitete Import der bestehenden
-Website-Inhalte befinden sich in [supabase/bootstrap](supabase/bootstrap/README.md).
-Die Einrichtung des neuen Cloud-Projekts und Tests mit echten Zugängen stehen
-noch aus. Der Quellcode allein enthält keine einsatzbereiten Zugangsdaten.
+Das neue Cloud-Projekt `LoniGalabau` ist mit acht Tabellen, vier Dateispeichern
+und den bestehenden öffentlichen Website-Inhalten eingerichtet. SQL- und
+öffentliche API-Zugriffe wurden geprüft. Schema und Prüfskripte stehen in
+[supabase/bootstrap](supabase/bootstrap/README.md).
+Der Anschluss der Website benötigt noch den lokalen Secret Key; Admin-Konten
+und vollständige Login-/Uploadtests stehen noch aus. Der Quellcode enthält
+keine einsatzbereiten Zugangsdaten.
 
 ## Synchronisierung
 

@@ -5,8 +5,10 @@ Adminschutz ist inzwischen lokal korrigiert und durch Zugriffstests abgesichert.
 Das neue Schema einschließlich Inhaltsimport und privater Kundendateien liegt in
 `supabase/bootstrap/`; siehe [Einrichtungsstand](supabase/bootstrap/README.md).
 Die fehlenden TypeScript-Felder wurden ergänzt, Windows-Abhängigkeiten repariert
-und der Build erfolgreich geprüft. Die neue Cloud-Datenbank ist noch nicht
-verbunden. Die folgende Analyse dokumentiert den **ursprünglich geprüften Stand**;
+und der Build erfolgreich geprüft. Das neue Cloud-Projekt `LoniGalabau` ist
+inzwischen mit Schema, Dateispeichern und Website-Inhalten eingerichtet und
+auf SQL-/öffentlicher API-Ebene geprüft. Website-Serverzugang und Admin-Konten
+stehen noch aus. Die folgende Analyse dokumentiert den **ursprünglich geprüften Stand**;
 ihre Fehlerzahlen und Codezeilen beziehen sich auf diesen Ausgangszustand.
 
 Das Projekt enthält eine umfangreiche Website mit Inhaltsverwaltung, Anfragenverwaltung, Bewerbungen und Gartenplaner. Die wesentlichen Seiten und Datenflüsse sind umgesetzt. Der vorliegende Stand hat jedoch konkrete Probleme bei Adminberechtigungen, Datenbankkonfiguration, Fehlermeldungen und lokaler Ausführbarkeit. Die Adminabsicherung hat höchste Priorität.

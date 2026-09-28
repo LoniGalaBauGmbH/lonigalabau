@@ -7,8 +7,11 @@ Aktueller Stand und nächste Einrichtungsschritte:
 - [Neue Datenbank](supabase/bootstrap/README.md): Schema, Inhaltsimport und Zugriffsregeln
 - [Arbeitsregeln](AGENTS.md): fortlaufende Synchronisierung mit GitHub
 
-Der Adminschutz, die Uploadvalidierung und private Kundendateien sind lokal
-vorbereitet. Die neue Supabase-Datenbank und der Live-Betrieb sind noch einzurichten.
+Der Adminschutz und die Uploadvalidierung sind implementiert. Die neue
+Supabase-Datenbank einschließlich privater Kundendateispeicher ist eingerichtet
+und mit den öffentlichen Website-Inhalten befüllt. Der Secret Key, die beiden
+angeforderten Admin-Konten und echte Login-/Uploadtests stehen noch aus.
+Die aktive lokale Umgebung verweist bis zum geprüften Anschluss auf das alte Projekt.
 Die bisherigen Angaben zu Demo-Modus, Schriftarten und öffentlichem Server-Key
 waren veraltet und wurden durch diese Verweise ersetzt. Zugangsdaten gehören
 in die lokale bzw. serverseitige Umgebung; als Vorlage dient [.env.example](.env.example).
