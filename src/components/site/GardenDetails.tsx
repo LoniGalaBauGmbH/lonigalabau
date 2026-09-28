@@ -59,14 +59,14 @@ export function GardenDetails() {
           </p>
         </div>
         <div className="grid items-stretch gap-0 overflow-hidden rounded-[2rem] bg-brand lg:grid-cols-[1.25fr_1fr]">
-          <div className="relative min-w-0 self-center">
+          <div className="relative aspect-[4/3] min-w-0 overflow-hidden lg:aspect-auto">
             <ProjectImage
               src={garden}
               alt="Garten mit Plattenterrasse, Rasenfläche und umlaufender Hecke"
               width={1600}
               height={1200}
               loading="lazy"
-              className="block aspect-[4/3] w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
             <span className="absolute left-4 top-4 rounded-full bg-brand/80 px-3 py-1.5 text-xs tracking-wide text-white md:left-6 md:top-6">
               Ein Garten von Loni
