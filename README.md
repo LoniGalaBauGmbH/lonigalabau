@@ -84,3 +84,67 @@ GitHub speichert den Projektcode; Datenbank und Hosting werden separat eingerich
 mit Nachtrag zu den bereits behobenen Punkten. Der aktuelle Datenbankstand ist in
 der Bootstrap-Anleitung dokumentiert. Die Gestaltungshinweise in `.lovable/`
 beschreiben einen früheren Auftrag.
+
+## Überarbeitung am 28.09.2026
+
+Startseite, Leistungen, Kontakt, Über uns und Fußbereich verwenden eine ruhigere
+Gestaltung und konkrete Texte. Unbestätigte Bewertungen, Kennzahlen, Auszeichnungen
+und Personenporträts werden dort nicht mehr eingeblendet. Bestehende Datensätze sind
+erhalten; die acht importierten Leistungstexte wurden über
+`supabase/bootstrap/update_service_copy.sql` aktualisiert. Projektfotos benötigen
+jetzt echte hinterlegte URLs statt eines automatisch zugeordneten Villenbildes.
+Vorher/Nachher-Bilder erscheinen erst nach Einpflege beider Aufnahmen.
+
+Bestätigte Firmenangaben stehen in `src/lib/company.ts`. Öffnungszeiten:
+**Montag bis Freitag, 7–18 Uhr**. Keine Samstagszeiten. Impressum: HRB 125735,
+Amtsgericht Frankfurt am Main, Geschäftsführer Valon Sinanaj, SVLFG.
+
+- Mobile Anruf-/Anfrageleiste, sichtbare Feldfehler, zugängliche Formularbeschriftungen.
+- Gartenplaner: getrennte Namensfelder, positive Maße, E-Mail-Prüfung.
+- Gemeinsame interne Notizen mit Versionsprüfung gegen versehentliches Überschreiben.
+- Serverseitige, atomare Formularbegrenzung: 6 Kontakte/Bewerbungen bzw. 20 Uploads
+  je abgeleiteter IP-Kennung und 15 Minuten. Der HMAC-Schlüssel verlässt den Server
+  nicht. Auf Cloudflare wird ausschließlich dessen Client-IP-Header verwendet.
+  Ohne diesen Header teilen sich Anfragen eine vorsichtige Ersatzquote.
+- CSRF-Middleware für Serverfunktionen; Cookie-Widerruf lädt die Seite ohne optionale
+  Skripte neu. Ohne konfigurierte optionale Dienste erscheint kein Startbanner.
+- Abgleich des Query-Caches zwischen Server und Browser; Sitemap, Robots-Datei,
+  Canonical-URLs und ein lokales Logo als Favicon. Keine externen Google-Font-Aufrufe.
+
+### E-Mail-Meldungen
+
+Empfänger ist **webseite@loni-galabau.de**, bei Bedarf explizit über
+`NOTIFICATION_TO_EMAIL` konfigurierbar. Benachrichtigungen enthalten nur Vorgangs-ID
+und Admin-Link. Kundentexte und Anhänge verbleiben in Supabase.
+
+Resend benötigt im Server-Hosting `RESEND_API_KEY` (Secret) und
+`RESEND_FROM_EMAIL` mit bestätigter Absenderdomain. Die Codex-Plugin-Verbindung
+überträgt diese Werte nicht automatisch in den Website-Server. Ohne diese
+Konfiguration werden Eingänge gespeichert, aber keine E-Mails versandt.
+Das Dashboard zeigt ausstehende Meldungen und erlaubt deren erneuten Versand.
+Erst nach erfolgreicher Resend-Annahme wird `notification_sent_at` gesetzt.
+Das bedeutet Provider-Annahme, keine bestätigte Zustellung im Zielpostfach.
+Resend-Idempotenz schützt Wiederholungen innerhalb des vom Anbieter unterstützten
+Zeitfensters; es läuft noch kein automatischer Wiederholungsdienst.
+
+Die beiden SQL-Erweiterungen unter `supabase/bootstrap/updates/` sind bereits im
+neuen Cloud-Projekt angewendet. Historische Migrationen nicht zusätzlich ausführen.
+`supabase/bootstrap/verify_workflows.sql` prüft Rechte, Quote, Ablauf und Notizkonflikte
+und rollt alle Teständerungen zurück.
+
+### Noch benötigte Inhalte / Konfiguration
+
+Eigene Baustellen- und Teamfotos; gegebenenfalls vorhandene USt-/Wirtschafts-ID;
+abschließende betriebliche Prüfung der Rechtstexte und Aufbewahrungsregeln;
+Resend-Schlüssel und Domainbestätigung; gesonderte Verbindung der Unternehmensdomain.
+Der geplante Outlook-Assistent ist in `docs/EMAIL-ASSISTENT.md` beschrieben und
+noch nicht aktiv. Preise und Weiterleitungsregeln sind nicht hinterlegt.
+
+### Prüfungen dieses Standes
+
+33 automatisierte Tests, TypeScript, gezieltes ESLint und Client-/Server-Build sind
+erfolgreich. 70 erzeugte Browserdateien enthalten keinen Server-Schlüssel. Kontakt,
+Robots und Sitemap liefern HTTP 200. Desktop und mobile Kontaktseite sind im Browser
+geprüft; sichtbare Formularfehler und erfolgreiche Übermittlung bestätigt. Die neue
+gemeinsame Notiz wurde mit dem ersten Admin-Konto gespeichert und mit dem zweiten
+gelesen. Beide synthetischen Testanfragen wurden anschließend wieder entfernt.

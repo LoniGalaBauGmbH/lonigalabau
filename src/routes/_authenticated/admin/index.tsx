@@ -1,3 +1,4 @@
+import { NotificationStatus } from "@/components/admin/NotificationStatus";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -60,12 +61,12 @@ function today() {
 }
 
 function Page() {
-  const whoamiFn   = useServerFn(adminWhoami);
+  const whoamiFn = useServerFn(adminWhoami);
   const contactsFn = useServerFn(adminListContacts);
-  const appsFn     = useServerFn(adminListApplications);
+  const appsFn = useServerFn(adminListApplications);
   const servicesFn = useServerFn(adminListServices);
   const projectsFn = useServerFn(adminListProjects);
-  const jobsFn     = useServerFn(adminListJobs);
+  const jobsFn = useServerFn(adminListJobs);
 
   const { data: whoami, isLoading } = useQuery({
     queryKey: ["whoami"],
@@ -124,14 +125,14 @@ function Page() {
   }
 
   // ── Stats ─────────────────────────────────────────
-  const totalContacts  = (contacts as any[]).length;
-  const totalApps      = (apps as any[]).length;
-  const totalServices  = (services as any[]).length;
-  const totalProjects  = (projects as any[]).length;
-  const totalJobs      = (jobs as any[]).length;
-  const newContacts    = (contacts as any[]).filter((c: any) => c.status === "new").length;
-  const newApps        = (apps as any[]).filter((a: any) => a.status === "new").length;
-  const activeJobs     = (jobs as any[]).filter((j: any) => j.active).length;
+  const totalContacts = contacts.length;
+  const totalApps = apps.length;
+  const totalServices = services.length;
+  const totalProjects = projects.length;
+  const totalJobs = jobs.length;
+  const newContacts = contacts.filter((c) => c.status === "new").length;
+  const newApps = apps.filter((a) => a.status === "new").length;
+  const activeJobs = jobs.filter((j) => j.active).length;
 
   // ── Chart data: contacts last 14 days ─────────────
   const chartData = (() => {
@@ -143,21 +144,34 @@ function Page() {
       const key = d.toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
       days[key] = { Anfragen: 0, Bewerbungen: 0 };
     }
-    (contacts as any[]).forEach((c: any) => {
-      const key = new Date(c.created_at).toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
+    contacts.forEach((c) => {
+      const key = new Date(c.created_at).toLocaleDateString("de-DE", {
+        day: "2-digit",
+        month: "short",
+      });
       if (key in days) days[key].Anfragen++;
     });
-    (apps as any[]).forEach((a: any) => {
-      const key = new Date(a.created_at).toLocaleDateString("de-DE", { day: "2-digit", month: "short" });
+    apps.forEach((a) => {
+      const key = new Date(a.created_at).toLocaleDateString("de-DE", {
+        day: "2-digit",
+        month: "short",
+      });
       if (key in days) days[key].Bewerbungen++;
     });
     return Object.entries(days).map(([name, vals]) => ({ name, ...vals }));
   })();
 
   // ── Recent activity feed (combined, sorted by time) ─
-  type ActivityItem = { id: string; type: "contact" | "application"; name: string; sub: string; time: string; status: string };
+  type ActivityItem = {
+    id: string;
+    type: "contact" | "application";
+    name: string;
+    sub: string;
+    time: string;
+    status: string;
+  };
   const recentActivity: ActivityItem[] = [
-    ...(contacts as any[]).slice(0, 5).map((c: any) => ({
+    ...contacts.slice(0, 5).map((c) => ({
       id: c.id,
       type: "contact" as const,
       name: c.name,
@@ -165,7 +179,7 @@ function Page() {
       time: c.created_at,
       status: c.status,
     })),
-    ...(apps as any[]).slice(0, 5).map((a: any) => ({
+    ...apps.slice(0, 5).map((a) => ({
       id: a.id,
       type: "application" as const,
       name: a.name,
@@ -251,7 +265,7 @@ function Page() {
 
   return (
     <div className="space-y-8 animate-fade-up">
-
+      <NotificationStatus />
       {/* ── GREETING HEADER ─────────────────────────────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-6 border-b border-brand/8">
         <div>
@@ -260,10 +274,10 @@ function Page() {
             <span className="text-sm font-semibold text-foreground/50">{today()}</span>
           </div>
           <h1 className="font-serif text-3xl md:text-4xl text-brand tracking-tight leading-tight">
-            {greeting.text}, Chef! 🌱
+            {greeting.text}
           </h1>
           <p className="text-sm text-foreground/50 mt-1.5">
-            Hier ist Ihre Übersicht für heute – alles auf einem Blick.
+            Hier ist Ihre Übersicht für heute – alles auf einen Blick.
           </p>
         </div>
 
@@ -292,58 +306,85 @@ function Page() {
 
       {/* ── KPI CARDS ───────────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        {kpiCards.map(({ label, value, badge, badgeColor, sub, Icon, iconBg, iconColor, href, progress, progressColor }) => (
-          <Link
-            key={label}
-            to={href}
-            className="bg-surface border border-brand/10 rounded-3xl p-5 shadow-sm hover:shadow-md hover:border-brand/20 transition-all group flex flex-col justify-between gap-4"
-          >
-            <div className="flex items-start justify-between">
-              <div className={`size-10 rounded-2xl ${iconBg} flex items-center justify-center flex-shrink-0`}>
-                <Icon className={`h-5 w-5 ${iconColor}`} />
+        {kpiCards.map(
+          ({
+            label,
+            value,
+            badge,
+            badgeColor,
+            sub,
+            Icon,
+            iconBg,
+            iconColor,
+            href,
+            progress,
+            progressColor,
+          }) => (
+            <Link
+              key={label}
+              to={href}
+              className="bg-surface border border-brand/10 rounded-3xl p-5 shadow-sm hover:shadow-md hover:border-brand/20 transition-all group flex flex-col justify-between gap-4"
+            >
+              <div className="flex items-start justify-between">
+                <div
+                  className={`size-10 rounded-2xl ${iconBg} flex items-center justify-center flex-shrink-0`}
+                >
+                  <Icon className={`h-5 w-5 ${iconColor}`} />
+                </div>
+                {badge && (
+                  <span
+                    className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${badgeColor}`}
+                  >
+                    {badge}
+                  </span>
+                )}
               </div>
-              {badge && (
-                <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${badgeColor}`}>
-                  {badge}
-                </span>
-              )}
-            </div>
 
-            <div>
-              <p className="text-[11px] uppercase tracking-widest font-semibold text-foreground/45 mb-1">
-                {label}
-              </p>
-              <div className="flex items-end justify-between gap-2">
-                <span className="text-3xl font-black text-brand font-display tabular-nums">{value}</span>
-                <ArrowUpRight className="w-4 h-4 text-brand/25 group-hover:text-brand transition-colors mb-0.5" />
+              <div>
+                <p className="text-[11px] uppercase tracking-widest font-semibold text-foreground/45 mb-1">
+                  {label}
+                </p>
+                <div className="flex items-end justify-between gap-2">
+                  <span className="text-3xl font-black text-brand font-display tabular-nums">
+                    {value}
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-brand/25 group-hover:text-brand transition-colors mb-0.5" />
+                </div>
+                <p className="text-[11px] text-foreground/45 mt-1">{sub}</p>
               </div>
-              <p className="text-[11px] text-foreground/45 mt-1">{sub}</p>
-            </div>
 
-            {/* Mini progress bar */}
-            <div className="h-1 bg-foreground/8 rounded-full overflow-hidden">
-              <div
-                className={`h-full rounded-full transition-all ${progressColor}`}
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          </Link>
-        ))}
+              {/* Mini progress bar */}
+              <div className="h-1 bg-foreground/8 rounded-full overflow-hidden">
+                <div
+                  className={`h-full rounded-full transition-all ${progressColor}`}
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </Link>
+          ),
+        )}
       </div>
 
       {/* ── CHART + ACTIVITY ────────────────────────────────────────────── */}
       <div className="grid lg:grid-cols-12 gap-6">
-
         {/* Area Chart */}
         <div className="lg:col-span-8 bg-surface border border-brand/10 rounded-3xl p-6 md:p-8 shadow-sm">
           <div className="flex items-start justify-between mb-6">
             <div>
               <h2 className="font-display font-extrabold text-brand text-lg">Eingangs-Übersicht</h2>
-              <p className="text-xs text-foreground/45 mt-0.5">Anfragen & Bewerbungen — letzte 14 Tage</p>
+              <p className="text-xs text-foreground/45 mt-0.5">
+                Anfragen & Bewerbungen — letzte 14 Tage
+              </p>
             </div>
             <div className="flex items-center gap-4 text-xs">
-              <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-full bg-green-500 inline-block" />Anfragen</span>
-              <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-full bg-blue-400 inline-block" />Bewerbungen</span>
+              <span className="flex items-center gap-1.5">
+                <span className="size-2.5 rounded-full bg-green-500 inline-block" />
+                Anfragen
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="size-2.5 rounded-full bg-blue-400 inline-block" />
+                Bewerbungen
+              </span>
             </div>
           </div>
 
@@ -355,7 +396,8 @@ function Page() {
               <div>
                 <p className="text-sm font-semibold text-brand/50">Noch keine Einträge</p>
                 <p className="text-xs text-foreground/35 mt-1 max-w-xs">
-                  Sobald Kunden das Kontaktformular oder den Gartenplaner nutzen, erscheinen hier die Daten.
+                  Sobald Kunden das Kontaktformular oder den Gartenplaner nutzen, erscheinen hier
+                  die Daten.
                 </p>
               </div>
             </div>
@@ -374,8 +416,21 @@ function Page() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
-                  <XAxis dataKey="name" stroke="#94a3b8" fontSize={10} tickLine={false} axisLine={false} interval={1} />
-                  <YAxis stroke="#94a3b8" fontSize={10} tickLine={false} axisLine={false} allowDecimals={false} />
+                  <XAxis
+                    dataKey="name"
+                    stroke="#94a3b8"
+                    fontSize={10}
+                    tickLine={false}
+                    axisLine={false}
+                    interval={1}
+                  />
+                  <YAxis
+                    stroke="#94a3b8"
+                    fontSize={10}
+                    tickLine={false}
+                    axisLine={false}
+                    allowDecimals={false}
+                  />
                   <Tooltip
                     contentStyle={{
                       background: "#fff",
@@ -385,8 +440,26 @@ function Page() {
                       fontSize: "12px",
                     }}
                   />
-                  <Area name="Anfragen" type="monotone" dataKey="Anfragen" stroke={BRAND} strokeWidth={2.5} fill="url(#gradAnfragen)" dot={false} activeDot={{ r: 5, fill: BRAND }} />
-                  <Area name="Bewerbungen" type="monotone" dataKey="Bewerbungen" stroke="#60a5fa" strokeWidth={2} fill="url(#gradBewerbungen)" dot={false} activeDot={{ r: 4, fill: "#60a5fa" }} />
+                  <Area
+                    name="Anfragen"
+                    type="monotone"
+                    dataKey="Anfragen"
+                    stroke={BRAND}
+                    strokeWidth={2.5}
+                    fill="url(#gradAnfragen)"
+                    dot={false}
+                    activeDot={{ r: 5, fill: BRAND }}
+                  />
+                  <Area
+                    name="Bewerbungen"
+                    type="monotone"
+                    dataKey="Bewerbungen"
+                    stroke="#60a5fa"
+                    strokeWidth={2}
+                    fill="url(#gradBewerbungen)"
+                    dot={false}
+                    activeDot={{ r: 4, fill: "#60a5fa" }}
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -424,11 +497,18 @@ function Page() {
                 })();
 
                 return (
-                  <div key={item.id} className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-brand/4 transition group">
+                  <div
+                    key={item.id}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-brand/4 transition group"
+                  >
                     {/* Avatar */}
-                    <div className={`size-8 rounded-full flex items-center justify-center shrink-0 font-bold text-xs ${
-                      item.type === "contact" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
-                    }`}>
+                    <div
+                      className={`size-8 rounded-full flex items-center justify-center shrink-0 font-bold text-xs ${
+                        item.type === "contact"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-blue-100 text-blue-700"
+                      }`}
+                    >
                       {item.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -453,8 +533,12 @@ function Page() {
       <div className="bg-surface border border-brand/10 rounded-3xl shadow-sm overflow-hidden">
         <div className="flex items-center justify-between p-6 md:p-8 border-b border-brand/6">
           <div>
-            <h2 className="font-display font-extrabold text-brand text-base">Letzte Projektanfragen</h2>
-            <p className="text-xs text-foreground/45 mt-0.5">Direkt aus Ihrer Datenbank — nur echte Einträge</p>
+            <h2 className="font-display font-extrabold text-brand text-base">
+              Letzte Projektanfragen
+            </h2>
+            <p className="text-xs text-foreground/45 mt-0.5">
+              Direkt aus Ihrer Datenbank — nur echte Einträge
+            </p>
           </div>
           <Link
             to="/admin/anfragen"
@@ -464,7 +548,7 @@ function Page() {
           </Link>
         </div>
 
-        {(contacts as any[]).length === 0 ? (
+        {contacts.length === 0 ? (
           <div className="py-16 flex flex-col items-center gap-4 text-center px-8">
             <div className="size-14 rounded-full bg-brand/5 flex items-center justify-center">
               <Mail className="h-7 w-7 text-brand/20" />
@@ -472,13 +556,14 @@ function Page() {
             <div>
               <p className="font-semibold text-brand/50">Noch keine Anfragen</p>
               <p className="text-xs text-foreground/35 mt-1 max-w-sm">
-                Wenn Kunden das Kontaktformular oder den Gartenplaner nutzen, erscheinen hier die Anfragen in Echtzeit.
+                Wenn Kunden das Kontaktformular oder den Gartenplaner nutzen, erscheinen hier die
+                Anfragen in Echtzeit.
               </p>
             </div>
           </div>
         ) : (
           <div className="divide-y divide-brand/5">
-            {(contacts as any[]).slice(0, 6).map((c: any, i: number) => (
+            {contacts.slice(0, 6).map((c, i: number) => (
               <Link
                 key={c.id}
                 to="/admin/anfragen"
@@ -502,18 +587,27 @@ function Page() {
                 </div>
 
                 <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-                  <span className={`text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full ${
-                    c.status === "new"
-                      ? "bg-accent/15 text-accent"
+                  <span
+                    className={`text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full ${
+                      c.status === "new"
+                        ? "bg-accent/15 text-accent"
+                        : c.status === "handled"
+                          ? "bg-emerald-100 text-emerald-700"
+                          : "bg-foreground/10 text-foreground/45"
+                    }`}
+                  >
+                    {c.status === "new"
+                      ? "Neu"
                       : c.status === "handled"
-                      ? "bg-emerald-100 text-emerald-700"
-                      : "bg-foreground/10 text-foreground/45"
-                  }`}>
-                    {c.status === "new" ? "Neu" : c.status === "handled" ? "Erledigt" : "Archiviert"}
+                        ? "Erledigt"
+                        : "Archiviert"}
                   </span>
                   <span className="text-[10px] text-foreground/35 flex items-center gap-1">
                     <Clock className="h-3 w-3" />
-                    {new Date(c.created_at).toLocaleDateString("de-DE", { day: "2-digit", month: "short" })}
+                    {new Date(c.created_at).toLocaleDateString("de-DE", {
+                      day: "2-digit",
+                      month: "short",
+                    })}
                   </span>
                 </div>
 
@@ -527,17 +621,43 @@ function Page() {
       {/* ── SCHNELLZUGRIFF ──────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { label: "Neue Leistung", sub: "Gewerk anlegen", href: "/admin/leistungen", Icon: Sprout, color: "bg-green-100 text-green-700" },
-          { label: "Projekt upload", sub: "Mit Fotos & Gewerk", href: "/admin/projekte", Icon: Hammer, color: "bg-orange-100 text-orange-700" },
-          { label: "Stelle schalten", sub: "Job anlegen & aktiv", href: "/admin/jobs", Icon: Briefcase, color: "bg-blue-100 text-blue-700" },
-          { label: "Bilder & Logo", sub: "Hero, About, Logo", href: "/admin/bilder", Icon: Leaf, color: "bg-purple-100 text-purple-700" },
+          {
+            label: "Neue Leistung",
+            sub: "Gewerk anlegen",
+            href: "/admin/leistungen",
+            Icon: Sprout,
+            color: "bg-green-100 text-green-700",
+          },
+          {
+            label: "Projekt upload",
+            sub: "Mit Fotos & Gewerk",
+            href: "/admin/projekte",
+            Icon: Hammer,
+            color: "bg-orange-100 text-orange-700",
+          },
+          {
+            label: "Stelle schalten",
+            sub: "Job anlegen & aktiv",
+            href: "/admin/jobs",
+            Icon: Briefcase,
+            color: "bg-blue-100 text-blue-700",
+          },
+          {
+            label: "Bilder & Logo",
+            sub: "Hero, About, Logo",
+            href: "/admin/bilder",
+            Icon: Leaf,
+            color: "bg-purple-100 text-purple-700",
+          },
         ].map(({ label, sub, href, Icon, color }) => (
           <Link
             key={label}
             to={href}
             className="bg-surface border border-brand/10 rounded-2xl p-4 shadow-sm hover:shadow-md hover:border-brand/20 transition-all group flex items-center gap-3"
           >
-            <div className={`size-9 rounded-xl ${color} flex items-center justify-center flex-shrink-0`}>
+            <div
+              className={`size-9 rounded-xl ${color} flex items-center justify-center flex-shrink-0`}
+            >
               <Icon className="h-4 w-4" />
             </div>
             <div className="min-w-0">
@@ -548,7 +668,6 @@ function Page() {
           </Link>
         ))}
       </div>
-
     </div>
   );
 }

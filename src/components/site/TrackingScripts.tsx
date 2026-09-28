@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { getTrackingSettings } from "@/lib/tracking.functions";
-import { readConsent, type Consent } from "./CookieBanner";
+import { readConsent, type Consent } from "@/lib/consent";
 
 declare global {
   interface Window {
@@ -47,14 +47,16 @@ export function TrackingScripts() {
       setConsent(detail ?? readConsent());
     };
     window.addEventListener("loni:consent-updated", handler);
-    window.addEventListener("storage", () => setConsent(readConsent()));
+    const onStorage = () => setConsent(readConsent());
+    window.addEventListener("storage", onStorage);
     return () => {
       window.removeEventListener("loni:consent-updated", handler);
+      window.removeEventListener("storage", onStorage);
     };
   }, []);
 
   useEffect(() => {
-    if (!settings || !consent) return;
+    if (!settings || !consent || consent.version !== settings.consentVersion) return;
     if (typeof window === "undefined") return;
 
     // Statistik

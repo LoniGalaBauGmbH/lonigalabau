@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useRef } from "react";
+import { useState, useRef, useId } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { supabase } from "@/integrations/supabase/client";
+import { contactSchema } from "@/lib/validators";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { createContactRequest, publicUploadFile } from "@/lib/site.functions";
 import { ArrowRight, ArrowLeft, Check, Upload, Trash2, CheckCircle2 } from "lucide-react";
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/konfigurator")({
       {
         name: "description",
         content:
-          "Konfigurieren Sie Ihr Gartenprojekt in wenigen Schritten. Zaunbau, Pflasterarbeiten, Rollrasen oder Bewässerung – direkt zum Vorab-Angebot.",
+          "Konfigurieren Sie Ihr Gartenprojekt in wenigen Schritten. Zaunbau, Pflasterarbeiten, Rollrasen oder Bewässerung – als Grundlage für ein persönliches Gespräch.",
       },
     ],
   }),
@@ -62,7 +62,8 @@ interface Cfg {
   machineryAccess: string;
   uploadedImages: { path: string; url: string }[];
   // Kontakt
-  clientName: string;
+  clientFirstName: string;
+  clientLastName: string;
   clientEmail: string;
   clientPhone: string;
   timeframe: string;
@@ -94,7 +95,8 @@ const init: Cfg = {
   gradient: "Flaches Gelände",
   machineryAccess: "Breite Zufahrt > 2m",
   uploadedImages: [],
-  clientName: "",
+  clientFirstName: "",
+  clientLastName: "",
   clientEmail: "",
   clientPhone: "",
   timeframe: "In 1-3 Monaten",
@@ -420,24 +422,27 @@ function ConfiguratorPage() {
       toast.error("Bitte wählen Sie eine Dienstleistung aus.");
       return;
     }
-    if (question === 3 && cfg.service === "zaunbau" && !cfg.fenceLength) {
-      toast.error("Bitte Zaunlänge eingeben.");
+    if (uploading || submitting) return;
+    if (question === 3) {
+      const measurement = {
+        zaunbau: cfg.fenceLength,
+        pflasterarbeiten: cfg.pavingArea,
+        rollrasen: cfg.lawnArea,
+        gartengestaltung: cfg.gardenArea,
+        bewaesserung: cfg.irrigationArea,
+      }[cfg.service || "gartengestaltung"];
+      const value = Number(measurement.replace(",", "."));
+      if (!Number.isFinite(value) || value <= 0) {
+        toast.error("Bitte geben Sie ein Maß größer als null ein.");
+        return;
+      }
+    }
+    if (question === 10 && ![cfg.clientFirstName, cfg.clientLastName].join("").trim()) {
+      toast.error("Bitte geben Sie Ihren Namen ein.");
       return;
     }
-    if (question === 3 && cfg.service === "pflasterarbeiten" && !cfg.pavingArea) {
-      toast.error("Bitte Fläche eingeben.");
-      return;
-    }
-    if (question === 3 && cfg.service === "rollrasen" && !cfg.lawnArea) {
-      toast.error("Bitte Rasenfläche eingeben.");
-      return;
-    }
-    if (question === 3 && cfg.service === "gartengestaltung" && !cfg.gardenArea) {
-      toast.error("Bitte Gartengröße eingeben.");
-      return;
-    }
-    if (question === 3 && cfg.service === "bewaesserung" && !cfg.irrigationArea) {
-      toast.error("Bitte Fläche eingeben.");
+    if (question === 11 && !contactSchema.shape.email.safeParse(cfg.clientEmail).success) {
+      toast.error("Bitte prüfen Sie Ihre E-Mail-Adresse.");
       return;
     }
     if (question === totalQ) {
@@ -456,7 +461,10 @@ function ConfiguratorPage() {
   // ── Submit ─────────────────────────────────────────────────────────────────
 
   const handleSubmit = async () => {
-    if (!cfg.clientName || !cfg.clientEmail) {
+    if (
+      ![cfg.clientFirstName, cfg.clientLastName].filter(Boolean).join(" ").trim() ||
+      !cfg.clientEmail
+    ) {
       toast.error("Bitte Name und E-Mail angeben.");
       return;
     }
@@ -499,7 +507,7 @@ ${cfg.extraNotes ? `#### Anmerkungen\n${cfg.extraNotes}` : ""}`;
     try {
       await sendLead({
         data: {
-          name: cfg.clientName,
+          name: [cfg.clientFirstName, cfg.clientLastName].filter(Boolean).join(" ").trim(),
           email: cfg.clientEmail,
           phone: cfg.clientPhone || "",
           subject: `Gartenplaner: ${svc?.title}`,
@@ -1376,7 +1384,7 @@ ${cfg.extraNotes ? `#### Anmerkungen\n${cfg.extraNotes}` : ""}`;
                 </div>
                 <div className="text-center">
                   <p className="font-semibold text-sm">
-                    <span className="underline">Klicken zum Hochladen</span> oder Drag & Drop
+                    <span className="underline">Klicken zum Hochladen</span>
                   </p>
                   <p className="text-xs mt-1">
                     {uploading ? "Upload läuft..." : "JPG, PNG, WEBP – max. 10 MB pro Foto"}
@@ -1425,11 +1433,11 @@ ${cfg.extraNotes ? `#### Anmerkungen\n${cfg.extraNotes}` : ""}`;
             <div className="flex flex-col sm:flex-row gap-8 max-w-lg">
               <UInput
                 label="Vorname"
-                value={cfg.clientName.split(" ")[0] || ""}
+                value={cfg.clientFirstName}
                 onChange={(v) =>
                   setCfg((c) => ({
                     ...c,
-                    clientName: `${v} ${c.clientName.split(" ").slice(1).join(" ")}`.trim(),
+                    clientFirstName: v,
                   }))
                 }
                 placeholder="Max"
@@ -1437,11 +1445,11 @@ ${cfg.extraNotes ? `#### Anmerkungen\n${cfg.extraNotes}` : ""}`;
               />
               <UInput
                 label="Nachname"
-                value={cfg.clientName.split(" ").slice(1).join(" ") || ""}
+                value={cfg.clientLastName}
                 onChange={(v) =>
                   setCfg((c) => ({
                     ...c,
-                    clientName: `${c.clientName.split(" ")[0] || ""} ${v}`.trim(),
+                    clientLastName: v,
                   }))
                 }
                 placeholder="Mustermann"
@@ -1540,7 +1548,9 @@ ${cfg.extraNotes ? `#### Anmerkungen\n${cfg.extraNotes}` : ""}`;
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-500">Name:</span>
-                    <span className="font-semibold text-gray-800">{cfg.clientName}</span>
+                    <span className="font-semibold text-gray-800">
+                      {[cfg.clientFirstName, cfg.clientLastName].filter(Boolean).join(" ").trim()}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-500">E-Mail:</span>
@@ -1680,7 +1690,6 @@ ${cfg.extraNotes ? `#### Anmerkungen\n${cfg.extraNotes}` : ""}`;
           )}
 
           <div className="flex items-center gap-4">
-            <span className="text-xs text-gray-300 hidden sm:block">ENTER</span>
             <button
               type="button"
               onClick={advance}

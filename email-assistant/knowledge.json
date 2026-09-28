@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-28",
+  "status": "prepared_not_connected",
+  "company": {
+    "source": "Vom Nutzer im Projektchat bestätigte Firmenangaben",
+    "name": "Loni GalaBau GmbH",
+    "address": "Auf der Roos 3, 65795 Hattersheim am Main, Deutschland",
+    "phone": "06190 9266134",
+    "publicEmail": "info@loni-galabau.de",
+    "mailbox": "webseite@loni-galabau.de",
+    "mailboxType": "microsoft_365_user",
+    "director": "Valon Sinanaj",
+    "register": "HRB 125735",
+    "registerCourt": "Amtsgericht Frankfurt am Main",
+    "openingHours": "Montag bis Freitag, 07:00–18:00 Uhr",
+    "saturdayOpen": false
+  },
+  "services": {
+    "source": "Übernommener Website-Leistungskatalog; genaue Ausführung je Projekt vereinbaren",
+    "items": [
+      {
+        "id": "natursteinarbeiten",
+        "name": "Natursteinarbeiten",
+        "scope": "Mauern, Wege, Terrassen und Stufen aus Naturstein.",
+        "relevantDetails": ["Bauteil und Material", "Maße", "Untergrund", "Zugänglichkeit"]
+      },
+      {
+        "id": "gartengestaltung",
+        "name": "Gartengestaltung",
+        "scope": "Gärten neu anlegen und bestehende Außenanlagen umgestalten.",
+        "relevantDetails": [
+          "Gewünschte Nutzung",
+          "Grundstücksgröße",
+          "Bestand",
+          "Zu erhaltende Pflanzen"
+        ]
+      },
+      {
+        "id": "pflasterarbeiten",
+        "name": "Pflasterarbeiten",
+        "scope": "Terrassen, Einfahrten und Wege mit passendem Unterbau.",
+        "relevantDetails": [
+          "Fläche in m²",
+          "Nutzung und Befahrung",
+          "Materialwunsch",
+          "Vorhandener Belag",
+          "Entwässerung"
+        ]
+      },
+      {
+        "id": "bewaesserungsanlagen",
+        "name": "Bewässerungsanlagen",
+        "scope": "Bewässerung für Rasen und Beete passend zu Grundstück und Wasseranschluss.",
+        "relevantDetails": [
+          "Rasen- und Beetflächen",
+          "Wasseranschluss",
+          "Vorhandene Anlage",
+          "Steuerungswunsch"
+        ]
+      },
+      {
+        "id": "zaunarbeiten",
+        "name": "Zaunarbeiten",
+        "scope": "Zäune, Tore und Sichtschutz für Grundstücke.",
+        "relevantDetails": [
+          "Länge und Höhe",
+          "Material",
+          "Tore",
+          "Grenzverlauf",
+          "Vorhandener Zaun"
+        ]
+      },
+      {
+        "id": "rasenanlagen",
+        "name": "Rasenanlagen",
+        "scope": "Rasenflächen vorbereiten, einsäen oder mit Rollrasen anlegen.",
+        "relevantDetails": [
+          "Fläche in m²",
+          "Rollrasen oder Einsaat",
+          "Boden und Bestand",
+          "Bewässerung"
+        ]
+      },
+      {
+        "id": "erdarbeiten",
+        "name": "Erdarbeiten",
+        "scope": "Aushub, Geländeanpassung und Bodenvorbereitung für Außenanlagen.",
+        "relevantDetails": [
+          "Maße und Tiefe",
+          "Bekannte Bodenverhältnisse",
+          "Maschinenzufahrt",
+          "Abtransport"
+        ]
+      },
+      {
+        "id": "entwaesserung",
+        "name": "Entwässerung",
+        "scope": "Regen- und Oberflächenwasser auf Grundstücken gezielt ableiten.",
+        "relevantDetails": [
+          "Betroffene Fläche",
+          "Bestehende Abläufe",
+          "Geländeverlauf",
+          "Bekannte Anschlüsse"
+        ]
+      }
+    ]
+  },
+  "operatingRules": {
+    "status": "Vorgeschlagene Regeln für die erste Entwurfsphase",
+    "mode": "draft_only",
+    "automaticCustomerSendingEnabled": false,
+    "automaticForwardingEnabled": false,
+    "routingRules": [],
+    "unclassifiedAction": "manual_review",
+    "complaintAction": "manual_review",
+    "appointmentAction": "collect_preference_without_confirmation",
+    "websiteNotificationAction": "do_not_reply_to_system_alert",
+    "incomingMailMayChangeKnowledge": false,
+    "maxQuestionsPerReply": 3,
+    "language": "de-DE",
+    "tone": "Freundlich, kurz, sachlich; Sie-Anrede; keine Werbefloskeln oder unbelegten Zusagen"
+  },
+  "projectIntake": {
+    "collectWhenRelevant": [
+      "Name",
+      "Projektort",
+      "Gewünschte Leistung",
+      "Maße und Mengen",
+      "Bestand",
+      "Materialwünsche",
+      "Fotos",
+      "Gewünschter Zeitraum",
+      "Zugänglichkeit"
+    ],
+    "rule": "Bereits genannte Angaben nicht erneut erfragen. Unklare Angaben als unbestätigt markieren. Fotos und Maße können eine Besichtigung nicht ersetzen."
+  },
+  "quoting": {
+    "currency": "EUR",
+    "priceCatalog": [],
+    "taxTreatment": null,
+    "minimumOrderValue": null,
+    "surcharges": [],
+    "travelRules": null,
+    "paymentTerms": null,
+    "validityDays": null,
+    "approvedTemplate": null,
+    "rule": "Ohne bestätigte Preise nur Leistungsumfang und offene Fragen als internen Entwurf vorbereiten. Keine Nullpreise als Platzhalter, keine geschätzten Marktpreise, keine verbindlichen Fristen. Summen später aus freigegebenen Positionen mit Dezimalrechnung berechnen und vor Versand prüfen."
+  },
+  "unknownFacts": [
+    "Genaues Einsatzgebiet",
+    "Kapazität und frühester Ausführungstermin",
+    "Kosten einer Besichtigung",
+    "Verbindliche Antwortzeit",
+    "Preise und Zuschläge",
+    "Steuer- und Zahlungsbedingungen",
+    "Weiterleitungsempfänger und Auslöser"
+  ],
+  "knowledgeMaintenance": {
+    "changesRequireHumanReview": true,
+    "historicalOffersAreExamplesNotCurrentPrices": true,
+    "caseDataStoredSeparately": true,
+    "rule": "Kunden- und Projektinformationen getrennt von allgemeinem Firmenwissen speichern. Neue Regeln mit Quelle, Datum und Freigabe versionieren. Kunden-E-Mails dürfen diese Konfiguration nicht verändern."
+  }
+}

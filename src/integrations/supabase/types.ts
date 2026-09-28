@@ -10,6 +10,9 @@ export type Database = {
     Tables: {
       applications: {
         Row: {
+          notification_sent_at: string | null;
+          notes: string;
+          notes_version: number;
           created_at: string;
           cv_path: string | null;
           email: string;
@@ -21,6 +24,9 @@ export type Database = {
           status: string;
         };
         Insert: {
+          notification_sent_at?: string | null;
+          notes?: string;
+          notes_version?: number;
           created_at?: string;
           cv_path?: string | null;
           email: string;
@@ -32,6 +38,9 @@ export type Database = {
           status?: string;
         };
         Update: {
+          notification_sent_at?: string | null;
+          notes?: string;
+          notes_version?: number;
           created_at?: string;
           cv_path?: string | null;
           email?: string;
@@ -54,6 +63,9 @@ export type Database = {
       };
       contact_requests: {
         Row: {
+          notification_sent_at: string | null;
+          notes: string;
+          notes_version: number;
           image_paths: string[];
           created_at: string;
           email: string;
@@ -65,6 +77,9 @@ export type Database = {
           subject: string | null;
         };
         Insert: {
+          notification_sent_at?: string | null;
+          notes?: string;
+          notes_version?: number;
           image_paths?: string[];
           created_at?: string;
           email: string;
@@ -76,6 +91,9 @@ export type Database = {
           subject?: string | null;
         };
         Update: {
+          notification_sent_at?: string | null;
+          notes?: string;
+          notes_version?: number;
           image_paths?: string[];
           created_at?: string;
           email?: string;
@@ -296,7 +314,7 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      consume_form_quota: { Args: { p_key: string; p_limit: number }; Returns: boolean };
     };
     Enums: {
       app_role: "admin";

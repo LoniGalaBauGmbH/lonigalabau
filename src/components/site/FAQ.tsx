@@ -1,86 +1,51 @@
-import { ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const FAQS = [
-  {
-    q: "Was kostet eine Gartengestaltung?",
-    a: "Die Kosten hängen stark von Größe, Materialien und Aufwand ab. Nach einem kostenlosen Vor-Ort-Termin erhalten Sie von uns ein transparentes Festpreisangebot ohne versteckte Kosten.",
-  },
-  {
-    q: "Wie lange dauert ein typisches Projekt?",
-    a: "Kleinere Arbeiten wie eine Terrasse oder Pflasterung dauern 1–2 Wochen. Komplette Gartenneugestaltungen planen wir je nach Umfang mit 4–10 Wochen reiner Bauzeit.",
-  },
-  {
-    q: "Arbeiten Sie auch bei kleinen Aufträgen?",
-    a: "Ja. Ob Pflegeeinsatz, einzelne Pflanzung oder kompletter Neubau – wir nehmen jedes Projekt mit der gleichen Sorgfalt an.",
-  },
-  {
-    q: "In welchem Umkreis sind Sie tätig?",
-    a: "Wir arbeiten im gesamten Rhein-Main-Gebiet – schwerpunktmäßig in Hattersheim, Frankfurt am Main, Kelkheim, Hofheim und dem Main-Taunus-Kreis.",
-  },
-  {
-    q: "Übernehmen Sie auch die Pflege nach Fertigstellung?",
-    a: "Selbstverständlich. Wir bieten regelmäßige Pflegeverträge an – von der saisonalen Pflege bis zur ganzjährigen Komplettbetreuung.",
-  },
-  {
-    q: "Gibt es Garantie auf Pflanzen und Pflasterarbeiten?",
-    a: "Auf alle handwerklichen Leistungen geben wir die gesetzliche Gewährleistung. Für Pflanzen bieten wir eine Anwuchsgarantie bei zusätzlich vereinbarter Pflege.",
-  },
-  {
-    q: "Wie läuft die Erstberatung ab?",
-    a: "Nach Ihrer Anfrage melden wir uns innerhalb von 24 Stunden. Wir vereinbaren einen kostenlosen Vor-Ort-Termin, hören zu, messen auf und entwickeln gemeinsam erste Ideen.",
-  },
-  {
-    q: "Bieten Sie Förderberatung an?",
-    a: "Ja. Für entsiegelnde Maßnahmen, Regenwassernutzung oder naturnahe Gärten gibt es regional unterschiedliche Förderungen. Wir prüfen Ihre Möglichkeiten im Beratungsgespräch.",
-  },
+const questions = [
+  [
+    "Was brauchen Sie für eine erste Anfrage?",
+    "Eine kurze Beschreibung, den Ort des Grundstücks und eine Kontaktmöglichkeit. Wenn Sie bereits Maße oder Fotos haben, können Sie diese im Gartenplaner ergänzen.",
+  ],
+  [
+    "Wie entsteht das Angebot?",
+    "Der Preis hängt von Fläche, Material, Untergrund und Zugänglichkeit ab. Wir klären den Leistungsumfang mit Ihnen und erstellen darauf aufbauend ein Angebot.",
+  ],
+  [
+    "Kann ich auch einzelne Arbeiten anfragen?",
+    "Ja. Beschreiben Sie die gewünschte Arbeit, zum Beispiel eine neue Terrasse, eine Einfahrt oder eine Natursteinmauer. Wir besprechen mit Ihnen, was dafür notwendig ist.",
+  ],
+  [
+    "Wann können die Arbeiten beginnen?",
+    "Das hängt vom Umfang, der Materialverfügbarkeit und unserer Auslastung ab. Nennen Sie uns Ihren Wunschzeitraum, damit wir ihn bei der Abstimmung berücksichtigen können.",
+  ],
 ];
-
 export function FAQ() {
   return (
-    <section className="px-6 md:px-10 py-24 md:py-32 bg-surface">
-      <div className="max-w-[1480px] mx-auto">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-          <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
-            <span className="eyebrow eyebrow-bracket text-brand/70">Häufige Fragen</span>
-            <h2 className="display text-[clamp(2.25rem,5vw,4.5rem)] mt-6 text-brand leading-[1]">
-              Antworten<br />vor dem Spatenstich
-            </h2>
-            <p className="mt-6 text-base text-foreground/75 leading-relaxed max-w-md">
-              Sie haben eine Frage, die hier nicht beantwortet wird? Schreiben Sie uns – wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen.
-            </p>
-            <a
-              href="#projektanfrage"
-              className="mt-8 inline-flex items-center gap-2 bg-brand text-brand-foreground px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-brand/90 transition"
-            >
-              Projekt anfragen <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-
-          <div className="lg:col-span-7">
-            <Accordion type="single" collapsible className="w-full">
-              {FAQS.map((f, i) => (
-                <AccordionItem
-                  key={f.q}
-                  value={`item-${i}`}
-                  className="border-b border-brand/15"
-                >
-                  <AccordionTrigger className="text-left text-base md:text-lg font-display font-extrabold text-brand py-6 hover:no-underline hover:text-brand/80">
-                    {f.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-base text-foreground/75 leading-relaxed pb-6 pr-6">
-                    {f.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+    <section className="bg-secondary section-space">
+      <div className="site-width grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-20">
+        <div>
+          <p className="eyebrow">Gut zu wissen</p>
+          <h2 className="home-heading mt-4">Vor der ersten Anfrage.</h2>
+          <Link to="/kontakt" className="text-link mt-6">
+            Ihre Frage ist noch offen? Schreiben Sie uns.
+          </Link>
         </div>
+        <Accordion type="single" collapsible>
+          {questions.map(([question, answer], index) => (
+            <AccordionItem value={String(index)} key={question} className="border-brand/20">
+              <AccordionTrigger className="text-left text-base font-medium py-6 hover:no-underline">
+                {question}
+              </AccordionTrigger>
+              <AccordionContent className="text-foreground/75 leading-relaxed pb-6">
+                {answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );

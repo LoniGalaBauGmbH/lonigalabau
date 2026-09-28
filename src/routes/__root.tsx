@@ -3,15 +3,20 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 import { supabase } from "@/integrations/supabase/client";
 import { CookieBanner } from "@/components/site/CookieBanner";
 import { InquiryModal } from "@/components/site/InquiryModal";
 import { TrackingScripts } from "@/components/site/TrackingScripts";
+import { absoluteUrl } from "@/lib/company";
+import shareImage from "@/assets/svc-pflaster.jpg";
+import favicon from "@/assets/logo-loni.svg";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -38,7 +43,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="font-serif text-3xl text-brand">Etwas ist schiefgelaufen</h1>
-        <p className="mt-4 text-sm text-foreground/70">{error.message}</p>
+        <p className="mt-4 text-sm text-foreground/70">
+          Die Seite konnte nicht geladen werden. Bitte versuchen Sie es erneut.
+        </p>
         <div className="mt-6 flex justify-center gap-3">
           <button
             onClick={() => {
@@ -63,45 +70,46 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Loni Galabau GmbH – Garten- und Landschaftsbau Hattersheim" },
+      { title: "Loni GalaBau GmbH – Garten- und Landschaftsbau Hattersheim" },
       {
         name: "description",
         content:
-          "Loni Galabau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
+          "Loni GalaBau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
       },
-      { name: "author", content: "Loni Galabau GmbH" },
+      { name: "author", content: "Loni GalaBau GmbH" },
       {
         property: "og:title",
-        content: "Loni Galabau GmbH – Garten- und Landschaftsbau Hattersheim",
+        content: "Loni GalaBau GmbH – Garten- und Landschaftsbau Hattersheim",
       },
       {
         property: "og:description",
         content:
-          "Loni Galabau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
+          "Loni GalaBau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
       },
       { property: "og:type", content: "website" },
       {
         name: "twitter:title",
-        content: "Loni Galabau GmbH – Garten- und Landschaftsbau Hattersheim",
+        content: "Loni GalaBau GmbH – Garten- und Landschaftsbau Hattersheim",
       },
       {
         name: "twitter:description",
         content:
-          "Loni Galabau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
+          "Loni GalaBau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
       },
       {
         property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4aa87039-5088-407f-9dca-a24645a87f7a/id-preview-7c516dec--3821610f-33d3-48dc-9fea-dccbec49139d.lovable.app-1779971593823.png",
+        content: absoluteUrl(shareImage),
       },
       {
         name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4aa87039-5088-407f-9dca-a24645a87f7a/id-preview-7c516dec--3821610f-33d3-48dc-9fea-dccbec49139d.lovable.app-1779971593823.png",
+        content: absoluteUrl(shareImage),
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: favicon },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -109,11 +117,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+function SeoLinks() {
+  const pathname = useLocation({ select: (location) => location.pathname });
+  const privatePage = pathname.startsWith("/admin") || pathname === "/login";
+  return privatePage ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <link
+      rel="canonical"
+      href={absoluteUrl(pathname === "/" ? "/" : pathname.replace(/\/$/, ""))}
+    />
+  );
+}
+
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de">
       <head>
         <HeadContent />
+        <SeoLinks />
       </head>
       <body>
         {children}
@@ -165,6 +187,7 @@ function RootComponent() {
       <CookieBanner />
       <InquiryModal />
       <TrackingScripts />
+      <Toaster position="top-center" richColors closeButton />
     </QueryClientProvider>
   );
 }

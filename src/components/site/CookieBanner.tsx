@@ -4,33 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { Shield, BarChart3, Megaphone, X } from "lucide-react";
 import { getTrackingSettings } from "@/lib/tracking.functions";
 
-export type Consent = {
-  necessary: true;
-  analytics: boolean;
-  marketing: boolean;
-  version: number;
-  ts: number;
-};
-
-const STORAGE_KEY = "loni.cookieConsent.v1";
-const CONSENT_EVENT = "loni:consent-updated";
-
-export function readConsent(): Consent | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as Consent) : null;
-  } catch {
-    return null;
-  }
-}
-
-function writeConsent(c: Consent) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(c));
-    window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: c }));
-  } catch {}
-}
+import { readConsent, writeConsent, type Consent } from "@/lib/consent";
 
 export function CookieBanner() {
   const fetchSettings = useServerFn(getTrackingSettings);
@@ -50,6 +24,17 @@ export function CookieBanner() {
   useEffect(() => {
     setMounted(true);
     if (!settings) return;
+    if (
+      ![
+        settings.ga4,
+        settings.gtm,
+        settings.customHead,
+        settings.metaPixel,
+        settings.linkedinId,
+        settings.tiktokId,
+      ].some(Boolean)
+    )
+      return;
     const existing = readConsent();
     if (!existing || existing.version !== settings.consentVersion) {
       const t = setTimeout(() => setOpen(true), 700);
@@ -93,7 +78,7 @@ export function CookieBanner() {
 
   if (!mounted || !open || !settings) return null;
 
-  const hasAnalytics = !!(settings.ga4 || settings.gtm);
+  const hasAnalytics = !!(settings.ga4 || settings.gtm || settings.customHead);
   const hasMarketing = !!(settings.metaPixel || settings.linkedinId || settings.tiktokId);
 
   return (
@@ -173,10 +158,16 @@ export function CookieBanner() {
 
             <div className="p-6 bg-background/60 border-t border-border/60 flex flex-wrap items-center justify-between gap-3">
               <div className="flex gap-4 text-xs font-medium text-foreground/60">
-                <a href="/datenschutz" className="hover:text-brand underline-offset-2 hover:underline">
+                <a
+                  href="/datenschutz"
+                  className="hover:text-brand underline-offset-2 hover:underline"
+                >
                   Datenschutz
                 </a>
-                <a href="/impressum" className="hover:text-brand underline-offset-2 hover:underline">
+                <a
+                  href="/impressum"
+                  className="hover:text-brand underline-offset-2 hover:underline"
+                >
                   Impressum
                 </a>
               </div>
@@ -206,9 +197,7 @@ export function CookieBanner() {
           role="dialog"
           aria-labelledby="cookie-title"
         >
-          <div
-            className="bg-surface/95 backdrop-blur-md border border-border shadow-xl rounded-2xl p-5 md:p-6 animate-[slideUp_.35s_cubic-bezier(.2,1,.3,1)]"
-          >
+          <div className="bg-surface/95 backdrop-blur-md border border-border shadow-xl rounded-2xl p-5 md:p-6 animate-[slideUp_.35s_cubic-bezier(.2,1,.3,1)]">
             <div className="flex items-center gap-2 mb-1.5">
               <Shield className="w-4 h-4 text-brand" />
               <h3 id="cookie-title" className="font-bold text-sm text-brand">
@@ -216,7 +205,8 @@ export function CookieBanner() {
               </h3>
             </div>
             <p className="text-xs leading-relaxed text-foreground/75">
-              {settings.banner.description || "Wir nutzen Cookies auf unserer Website. Einige sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern."}{" "}
+              {settings.banner.description ||
+                "Wir nutzen Cookies auf unserer Website. Einige sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern."}{" "}
               <a
                 href="/datenschutz"
                 className="text-brand underline decoration-brand/30 underline-offset-2 hover:decoration-brand font-medium"
@@ -284,9 +274,7 @@ function ConsentRow({
   return (
     <div
       className={`p-4 rounded-2xl border transition ${
-        checked && !isDisabled
-          ? "border-brand/30 bg-brand/5"
-          : "border-brand/10 bg-surface/40"
+        checked && !isDisabled ? "border-brand/30 bg-brand/5" : "border-brand/10 bg-surface/40"
       } ${isDisabled ? "opacity-80" : ""}`}
     >
       <div className="flex items-start gap-3">
@@ -297,7 +285,9 @@ function ConsentRow({
           <div className="flex items-center justify-between gap-3">
             <p className="font-medium text-sm">{title}</p>
             {badge ? (
-              <span className="text-[10px] uppercase tracking-wider text-accent font-medium">{badge}</span>
+              <span className="text-[10px] uppercase tracking-wider text-accent font-medium">
+                {badge}
+              </span>
             ) : (
               <button
                 type="button"
@@ -317,11 +307,11 @@ function ConsentRow({
             )}
           </div>
           <p className="text-xs text-foreground/60 mt-1 leading-relaxed">{description}</p>
-          {services && (
-            <p className="text-[11px] text-foreground/50 mt-1.5">Dienste: {services}</p>
-          )}
+          {services && <p className="text-[11px] text-foreground/50 mt-1.5">Dienste: {services}</p>}
           {!available && !disabled && (
-            <p className="text-[11px] text-foreground/40 mt-1.5 italic">Aktuell keine Dienste konfiguriert.</p>
+            <p className="text-[11px] text-foreground/40 mt-1.5 italic">
+              Aktuell keine Dienste konfiguriert.
+            </p>
           )}
         </div>
       </div>

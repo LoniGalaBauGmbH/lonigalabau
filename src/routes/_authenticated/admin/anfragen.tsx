@@ -1,7 +1,8 @@
+import { SharedNotes } from "@/components/admin/SharedNotes";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   adminListContacts,
   adminUpdateContactStatus,
@@ -34,6 +35,8 @@ type ContactRequest = {
   image_paths?: string[];
   status: string;
   created_at: string;
+  notes: string;
+  notes_version: number;
 };
 
 function PrivatePhoto({ path, index }: { path: string; index: number }) {
@@ -78,7 +81,12 @@ function Page() {
   const list = useServerFn(adminListContacts);
   const setStatus = useServerFn(adminUpdateContactStatus);
   const qc = useQueryClient();
-  const { data, isLoading } = useQuery<ContactRequest[]>({
+  const {
+    data,
+    isLoading,
+    error: loadError,
+    refetch,
+  } = useQuery<ContactRequest[]>({
     queryKey: ["admin-contacts"],
     queryFn: () => list() as Promise<ContactRequest[]>,
   });
@@ -86,24 +94,6 @@ function Page() {
   const [activeTab, setActiveTab] = useState<"new" | "handled" | "archived">("new");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLead, setSelectedLead] = useState<ContactRequest | null>(null);
-  const [notes, setNotes] = useState("");
-
-  // Load notes from localStorage when a lead is selected
-  useEffect(() => {
-    if (selectedLead) {
-      const savedNotes = localStorage.getItem(`crm-notes-${selectedLead.id}`) || "";
-      setNotes(savedNotes);
-    }
-  }, [selectedLead]);
-
-  // Save notes to localStorage
-  const handleSaveNotes = () => {
-    if (selectedLead) {
-      localStorage.setItem(`crm-notes-${selectedLead.id}`, notes);
-      toast.success("Notizen lokal gespeichert");
-    }
-  };
-
   async function changeStatus(id: string, status: "new" | "handled" | "archived") {
     try {
       await setStatus({ data: { id, status } });
@@ -217,7 +207,14 @@ function Page() {
       </div>
 
       {/* CRM GRID LIST */}
-      {isLoading ? (
+      {loadError ? (
+        <div role="alert" className="p-6 border border-red-300">
+          <p>Die Daten konnten nicht geladen werden.</p>
+          <button type="button" className="underline mt-3" onClick={() => void refetch()}>
+            Erneut laden
+          </button>
+        </div>
+      ) : isLoading ? (
         <div className="py-20 flex flex-col items-center gap-3">
           <div className="size-10 rounded-full border-2 border-brand/20 border-t-brand animate-spin" />
           <p className="text-sm text-foreground/40">Lade Kundenkontakte…</p>
@@ -453,26 +450,12 @@ function Page() {
                 </div>
               </div>
 
-              {/* CRM Admin Notes (localStorage backed) */}
-              <div className="space-y-3">
-                <p className="text-[10px] uppercase tracking-widest text-foreground/40 font-bold flex items-center justify-between">
-                  <span>Interne Notizen</span>
-                  <span className="text-[9px] opacity-60 normal-case">(Lokal gespeichert)</span>
-                </p>
-                <textarea
-                  rows={4}
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Geben Sie hier Notizen zum Telefonat, Fortschritt oder Vereinbarungen ein..."
-                  className="w-full p-4.5 rounded-2xl border border-brand/10 bg-surface/50 text-sm outline-none focus:border-brand/40 focus:bg-background transition resize-none"
-                />
-                <button
-                  onClick={handleSaveNotes}
-                  className="text-xs font-bold font-display uppercase tracking-wider text-brand hover:text-accent border border-brand/20 hover:border-brand/40 px-4 py-2 rounded-full transition"
-                >
-                  Notizen sichern
-                </button>
-              </div>
+              <SharedNotes
+                key={selectedLead.id}
+                record={selectedLead}
+                table="contact_requests"
+                queryKey="admin-contacts"
+              />
             </div>
 
             {/* Drawer Footer info */}
