@@ -36,17 +36,20 @@ type ContactRequest = {
   created_at: string;
 };
 
-function PrivatePhoto({ path, index }: { path: string; index: number }) {
+function PrivateAttachment({ path, index }: { path: string; index: number }) {
   const signPhoto = useServerFn(adminPhotoSignedUrl);
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const isPdf = path.endsWith(".pdf");
   async function showPhoto() {
     setLoading(true);
     try {
       const signed = await signPhoto({ data: { path } });
       setUrl(signed.url);
+      setName(signed.name);
     } catch {
-      toast.error("Das Foto konnte nicht geöffnet werden.");
+      toast.error("Der Anhang konnte nicht geöffnet werden.");
     } finally {
       setLoading(false);
     }
@@ -58,16 +61,19 @@ function PrivatePhoto({ path, index }: { path: string; index: number }) {
         disabled={loading}
         className="text-sm underline disabled:opacity-50"
       >
-        {loading ? "Foto wird geladen…" : `Foto ${index + 1} öffnen`}
+        {loading ? "Anhang wird geladen…" : `${isPdf ? "PDF" : "Foto"} ${index + 1} öffnen`}
       </button>
       {url && (
-        <a href={url} target="_blank" rel="noreferrer">
+        <a href={url} target="_blank" rel="noopener noreferrer" className="block break-all text-sm text-brand underline underline-offset-4">
+          {isPdf ? `PDF herunterladen: ${name}` : <>
           <img
             src={url}
             alt={`Kundenfoto ${index + 1}`}
             className="max-h-64 rounded-xl"
             onError={() => setUrl("")}
           />
+          <span className="mt-2 block">{name}</span>
+          </>}
         </a>
       )}
     </div>
@@ -408,7 +414,7 @@ function Page() {
                   {selectedLead.message}
                 </p>
                 {selectedLead.image_paths?.map((path, index) => (
-                  <PrivatePhoto key={path} path={path} index={index} />
+                  <PrivateAttachment key={path} path={path} index={index} />
                 ))}
               </div>
 

@@ -51,15 +51,15 @@ test("mismatching declared MIME type is rejected", () => {
     /Dateiformat/,
   );
 });
-test("PDF is accepted only for applications", () => {
+test("PDF is accepted for private customer attachments and applications", () => {
   const pdf = Buffer.from("%PDF-1.7\n");
   assert.equal(
     preparePublicUpload(input(pdf, { bucket: "cvs", contentType: "application/pdf" })).contentType,
     "application/pdf",
   );
-  assert.throws(
-    () => preparePublicUpload(input(pdf, { contentType: "application/pdf" })),
-    /Dateiformat/,
+  assert.equal(
+    preparePublicUpload(input(pdf, { contentType: "application/pdf" })).contentType,
+    "application/pdf",
   );
 });
 test("SVG is not accepted from guests", () => {

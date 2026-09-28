@@ -19,7 +19,7 @@ INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_typ
   ('project-images', 'project-images', true, 15728640,
     ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif']),
   ('configurator-images', 'configurator-images', false, 10485760,
-    ARRAY['image/jpeg', 'image/png', 'image/webp']),
+    ARRAY['image/jpeg', 'image/png', 'image/webp', 'application/pdf']),
   ('cvs', 'cvs', false, 10485760,
     ARRAY['application/pdf', 'image/jpeg', 'image/png']);
 

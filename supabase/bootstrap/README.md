@@ -107,7 +107,7 @@ Der Serverclient unterstützt `SUPABASE_SECRET_KEY` und als Kompatibilität
 | --- | --- | --- |
 | service-images | Öffentlich | Leistungen, Logo, Partner und Website-Bilder |
 | project-images | Öffentlich | Veröffentlichte Projektbilder |
-| configurator-images | Privat | Kundenfotos, maximal 10 MB pro Datei |
+| configurator-images | Privat | Kundenfotos/PDF-Anhänge, maximal 10 MB pro Datei; Kontaktformulare begrenzen auf 5 MB |
 | cvs | Privat | Lebensläufe, maximal 10 MB pro Datei |
 
 Gäste können über die Serverfunktion nur erlaubte Dateitypen mit passender
@@ -116,6 +116,16 @@ nicht überschrieben. Dateisignaturen ersetzen keinen Schadsoftware-Scanner.
 Konfiguratorfotos werden als stabile Pfade in `contact_requests.image_paths`
 gespeichert. Vorschauen gelten eine Stunde, Admin-Downloadlinks zehn Minuten.
 Im Adminbereich lässt sich ein Foto erneut öffnen, um einen neuen Link zu erhalten.
+Die Kontaktformulare auf Startseite, im Anfragefenster und auf `/kontakt` erlauben
+bis zu drei JPG-, PNG-, WebP- oder PDF-Dateien mit jeweils maximal 5 MB. Die Auswahl
+bleibt bis zum Absenden lokal im Browser. Der Server prüft sämtliche Dateisignaturen
+vor dem ersten Upload, speichert Originalnamen in privaten Objektmetadaten und
+verknüpft die Pfade mit der Anfrage. Bei einem Upload-/Speicherfehler werden nur
+die im laufenden Versuch erfolgreich hochgeladenen Dateien wieder entfernt.
+PDFs stehen Administratoren als befristete Downloads zur Verfügung.
+Die Erweiterung der MIME-Typen im bestehenden privaten Bucket ist unter
+`updates/contact_attachments_storage.sql` dokumentiert und wurde am 28.09.2026
+im neuen Projekt angewandt; Sichtbarkeit, Rechte und Dateigröße blieben erhalten.
 Es gibt keine öffentlichen Storage-Listen und keine direkten Browser-Uploads.
 
 ## Prüfung und noch ausstehende Schritte

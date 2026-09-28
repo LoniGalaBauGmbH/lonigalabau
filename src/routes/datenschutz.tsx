@@ -81,7 +81,7 @@ function DatenschutzPage() {
 
             <Section id="kontakt" title="Kontaktformular und Bewerbungen">
               <p>
-                Über unser Kontaktformular übermittelte Angaben (Name, E-Mail, Telefon, Nachricht) verarbeiten wir ausschließlich zur Bearbeitung Ihrer Anfrage.
+                Über unser Kontaktformular übermittelte Angaben (Name, E-Mail, Telefon, Nachricht sowie freiwillig hochgeladene Fotos und PDF-Anhänge) verarbeiten wir ausschließlich zur Bearbeitung Ihrer Anfrage.
                 Eine Weitergabe an Dritte erfolgt nicht. Die Daten werden gelöscht, sobald sie für den Verarbeitungszweck nicht mehr erforderlich sind.
               </p>
             </Section>

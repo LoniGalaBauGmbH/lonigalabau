@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { contactAttachmentSchema, MAX_CONTACT_FILES } from "./contact-attachments";
 
 export const contactSchema = z.object({
   name: z.string().trim().min(1, "Name erforderlich").max(200),
@@ -7,11 +8,16 @@ export const contactSchema = z.object({
   subject: z.string().trim().max(200).optional().or(z.literal("")),
   message: z.string().trim().min(1, "Nachricht erforderlich").max(5000),
   image_paths: z
-    .array(z.string().regex(/^[0-9a-f-]{36}\.(jpg|png|webp)$/))
+    .array(z.string().regex(/^[0-9a-f-]{36}\.(jpg|png|webp|pdf)$/))
     .max(3)
     .default([]),
 });
 export type ContactInput = z.infer<typeof contactSchema>;
+export const contactSubmissionSchema = contactSchema.extend({
+  attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
+}).refine((data) => data.image_paths.length + data.attachments.length <= MAX_CONTACT_FILES, {
+  message: "Es sind höchstens 3 Anhänge pro Anfrage möglich.",
+});
 
 export const applicationSchema = z.object({
   job_id: z.string().uuid(),

@@ -46,7 +46,7 @@ export function preparePublicUpload(input: z.infer<typeof publicUploadSchema>) {
   const allowed =
     data.bucket === "cvs"
       ? ["application/pdf", "image/jpeg", "image/png"]
-      : ["image/jpeg", "image/png", "image/webp"];
+      : ["image/jpeg", "image/png", "image/webp", "application/pdf"];
   if (
     !allowed.includes(contentType) ||
     data.contentType.replace("image/jpg", "image/jpeg") !== contentType

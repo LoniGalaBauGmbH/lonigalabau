@@ -13,6 +13,8 @@ import { createContactRequest } from "@/lib/site.functions";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
+import { ContactAttachments } from "./ContactAttachments";
+import { useContactAttachments } from "@/hooks/useContactAttachments";
 import {
   BUDGETS,
   CHANNELS,
@@ -57,6 +59,7 @@ export function ProjectInquiryForm({
   onClose?: () => void;
 }) {
   const send = useServerFn(createContactRequest);
+  const attachments = useContactAttachments();
   const uid = useId();
   const [form, setForm] = useState<InquiryForm>(INITIAL_INQUIRY);
   const [step, setStep] = useState<InquiryStep>(0);
@@ -124,10 +127,12 @@ export function ProjectInquiryForm({
     submitting.current = true;
     setStatus("loading");
     try {
-      await send({ data: buildInquiryPayload(form) });
+      const files = await attachments.serialize();
+      await send({ data: { ...buildInquiryPayload(form), attachments: files } });
       navigating.current = true;
       setStatus("ok");
       setForm(INITIAL_INQUIRY);
+      attachments.clear();
     } catch {
       setStatus("err");
     } finally {
@@ -349,6 +354,7 @@ export function ProjectInquiryForm({
                       />
                     </Field>
                   </div>
+                  <ContactAttachments attachments={attachments} disabled={pending} />
                   <details
                     className="rounded-2xl bg-brand/[0.035] p-5"
                     open={showOptional || !!errors.area}
@@ -395,6 +401,8 @@ export function ProjectInquiryForm({
                       <p className="mt-1 text-brand/60">
                         {form.zip && form.zip + " · "}
                         {form.timeframe}
+                        {attachments.items.length > 0 &&
+                          " · " + attachments.items.length + " Anhänge"}
                       </p>
                       <details className="mt-3">
                         <summary className="cursor-pointer underline underline-offset-4">
@@ -403,6 +411,15 @@ export function ProjectInquiryForm({
                         <p className="mt-3 whitespace-pre-wrap break-words leading-relaxed">
                           {form.description}
                         </p>
+                        {attachments.items.length > 0 && (
+                          <ul className="mt-3 space-y-1" aria-label="Anhänge der Anfrage">
+                            {attachments.items.map((item) => (
+                              <li key={item.id} className="break-all text-sm">
+                                {item.file.name}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                         {(form.area || form.budget) && (
                           <p className="mt-2 text-brand/60">
                             {[form.area && form.area + " m²", form.budget]
@@ -539,7 +556,9 @@ export function ProjectInquiryForm({
                       className="size-4 animate-spin motion-reduce:animate-none"
                       aria-hidden="true"
                     />
-                    Wird gesendet …
+                    {attachments.items.length
+                      ? "Anfrage & Dateien werden gesendet …"
+                      : "Wird gesendet …"}
                   </>
                 ) : (
                   <>

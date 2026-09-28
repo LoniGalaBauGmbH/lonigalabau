@@ -164,16 +164,17 @@ export const adminPhotoSignedUrl = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) =>
     z
       .object({
-        path: z.string().regex(/^[0-9a-f-]{36}\.(jpg|png|webp)$/),
+        path: z.string().regex(/^[0-9a-f-]{36}\.(jpg|png|webp|pdf)$/),
       })
       .parse(d),
   )
   .handler(async ({ data }) => {
-    const { data: signed, error } = await supabaseAdmin.storage
-      .from("configurator-images")
-      .createSignedUrl(data.path, 60 * 10);
-    if (error) throw new Error("Das Foto konnte nicht geöffnet werden.");
-    return { url: signed.signedUrl };
+    const bucket = supabaseAdmin.storage.from("configurator-images");
+    const { data: info } = await bucket.info(data.path);
+    const name = typeof info?.metadata?.originalName === "string" ? info.metadata.originalName : data.path;
+    const { data: signed, error } = await bucket.createSignedUrl(data.path, 60 * 10, data.path.endsWith(".pdf") ? { download: name } : undefined);
+    if (error) throw new Error("Der Anhang konnte nicht geöffnet werden.");
+    return { url: signed.signedUrl, name };
   });
 
 export const adminUpdateApplicationStatus = createServerFn({ method: "POST" })

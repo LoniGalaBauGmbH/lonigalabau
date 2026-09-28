@@ -1,7 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
-import { contactSchema, applicationSchema, newsletterSchema } from "@/lib/validators";
+import { contactSubmissionSchema, applicationSchema, newsletterSchema } from "@/lib/validators";
+import { persistContactSubmission } from "@/lib/contact-submission.server";
 import { publicUploadSchema, preparePublicUpload } from "@/lib/public-upload.server";
 
 export const getServices = createServerFn({ method: "GET" }).handler(async () => {
@@ -170,19 +171,8 @@ export const getJobBySlug = createServerFn({ method: "GET" })
   });
 
 export const createContactRequest = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => contactSchema.parse(d))
-  .handler(async ({ data }) => {
-    const { error } = await supabaseAdmin.from("contact_requests").insert({
-      name: data.name,
-      email: data.email,
-      phone: data.phone || null,
-      subject: data.subject || null,
-      message: data.message,
-      image_paths: data.image_paths,
-    });
-    if (error) throw new Error(error.message);
-    return { ok: true };
-  });
+  .inputValidator((d: unknown) => contactSubmissionSchema.parse(d))
+  .handler(({ data }) => persistContactSubmission(supabaseAdmin, data));
 
 export const createApplication = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => applicationSchema.parse(d))

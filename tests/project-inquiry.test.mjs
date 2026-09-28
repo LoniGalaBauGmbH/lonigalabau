@@ -15,7 +15,8 @@ function load(relative) {
   vm.runInNewContext(outputText, {
     module,
     exports: module.exports,
-    require: (name) => (name === "./validators" ? load("../src/lib/validators.ts") : require(name)),
+    require: (name) =>
+      name.startsWith("./") ? load("../src/lib/" + name.slice(2) + ".ts") : require(name),
   });
   return module.exports;
 }

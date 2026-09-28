@@ -6,6 +6,8 @@ import { PageShell } from "@/components/site/PageShell";
 import { createContactRequest } from "@/lib/site.functions";
 import { contactSchema } from "@/lib/validators";
 import { useSiteImages } from "@/hooks/useSiteImages";
+import { useContactAttachments } from "@/hooks/useContactAttachments";
+import { ContactAttachments } from "@/components/site/ContactAttachments";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
@@ -60,6 +62,8 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 
 function Page() {
   const send = useServerFn(createContactRequest);
+  const attachments = useContactAttachments();
+  const submitting = useRef(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const { images } = useSiteImages();
   const [status, setStatus] = useState<"idle" | "ok" | "err" | "loading">("idle");
@@ -67,15 +71,20 @@ function Page() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
     setStatus("loading");
     try {
       const parsed = contactSchema.parse(form);
-      await send({ data: parsed });
+      await send({ data: { ...parsed, attachments: await attachments.serialize() } });
       setStatus("ok");
       setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-    } catch (err: unknown) {
+      attachments.clear();
+    } catch {
       setStatus("err");
-      setErrorMsg(err instanceof Error ? err.message : "Unbekannter Fehler");
+      setErrorMsg("Ihre Anfrage konnte gerade nicht gesendet werden. Bitte prüfen Sie Ihre Angaben und Dateien und versuchen Sie es erneut. Ihre Eingaben bleiben erhalten.");
+    } finally {
+      submitting.current = false;
     }
   }
 
@@ -216,7 +225,9 @@ function Page() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="relative space-y-6">
+                <form onSubmit={onSubmit} className="relative space-y-6" aria-label="Kontaktformular" aria-busy={status === "loading"}>
+                  <fieldset disabled={status === "loading"} className="min-w-0 space-y-6">
+                  <legend className="sr-only">Ihre Nachricht an Loni Galabau</legend>
                   <div>
                     <span className="eyebrow eyebrow-bracket text-accent">Anfrageformular</span>
                     <h3 className="display text-3xl md:text-4xl mt-3 text-brand">Schreiben Sie uns.</h3>
@@ -248,6 +259,8 @@ function Page() {
                     <div className="mt-1.5 text-xs text-foreground/50 text-right">{form.message.length} / 5000</div>
                   </Field>
 
+                  <ContactAttachments attachments={attachments} disabled={status === "loading"} />
+
                   {status === "err" && (
                     <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-sm text-red-700">
                       {errorMsg}
@@ -263,9 +276,10 @@ function Page() {
                       disabled={status === "loading"}
                       className="inline-flex items-center gap-2 bg-brand text-brand-foreground px-8 py-3.5 rounded-full text-sm font-medium hover:bg-brand/90 disabled:opacity-50 transition group"
                     >
-                      {status === "loading" ? "Wird gesendet…" : (<>Nachricht senden <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></>)}
+                      {status === "loading" ? (attachments.items.length ? "Anfrage & Dateien werden gesendet…" : "Wird gesendet…") : (<>Nachricht senden <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></>)}
                     </button>
                   </div>
+                  </fieldset>
                 </form>
               )}
             </div>
