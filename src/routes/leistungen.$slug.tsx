@@ -152,7 +152,7 @@ function Page() {
         else if (titleL.includes("stein") || titleL.includes("pflaster") || titleL.includes("mauer") || titleL.includes("terrasse") || titleL.includes("platte")) resolvedIcon = Layers;
         else if (titleL.includes("pflege") || titleL.includes("rasen") || titleL.includes("baum") || titleL.includes("pflanz")) resolvedIcon = Sprout;
         else if (titleL.includes("bau") || titleL.includes("montage") || titleL.includes("arbeit") || titleL.includes("tiefbau")) resolvedIcon = Hammer;
-        
+
         return {
           t: item.t,
           d: item.d,
@@ -188,7 +188,7 @@ function Page() {
                     </span>
                   )}
                   {data.geo_focus && (
-                    <span className="flex items-center gap-1.5 text-[9px] uppercase tracking-widest text-accent font-bold font-display bg-brand/5 border border-brand/10 px-3 py-1 rounded-full">
+                    <span className="flex items-center gap-1.5 text-[9px] uppercase tracking-widest text-accent font-bold font-display bg-brand/5 px-3 py-1 rounded-full">
                       <MapPin className="w-3.5 h-3.5 text-accent" /> {data.geo_focus}
                     </span>
                   )}
@@ -203,8 +203,8 @@ function Page() {
               </p>
 
               {/* Enterprise Authority Badge */}
-              <div className="bg-brand/[0.03] border border-brand/5 rounded-2xl p-5 flex items-start gap-4 max-w-xl shadow-sm">
-                <div className="size-10 rounded-xl bg-brand/5 border border-brand/10 grid place-items-center shrink-0 mt-0.5">
+              <div className="bg-brand/[0.03] rounded-2xl p-5 flex items-start gap-4 max-w-xl shadow-sm">
+                <div className="size-10 rounded-xl bg-brand/5 grid place-items-center shrink-0 mt-0.5">
                   <ShieldCheck className="h-5 w-5 text-brand" />
                 </div>
                 <div className="space-y-1">
@@ -236,14 +236,14 @@ function Page() {
             {/* Right Media (5 Cols) - Harmonious 4:3 Aspect Ratio */}
             <div className="lg:col-span-5 lg:pl-4">
               <div className="relative group">
-                <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-brand/5 shadow-[0_25px_60px_-25px_rgba(0,0,0,0.18)] border border-brand/10">
+                <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-brand/5 shadow-[0_25px_60px_-25px_rgba(0,0,0,0.18)]">
                   <img
                     src={img}
                     alt={data.title}
                     className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 ease-out"
                   />
                 </div>
-                <div className="absolute -inset-3 rounded-[32px] border border-brand/5 -z-10 group-hover:scale-[1.01] transition-transform duration-500" />
+
               </div>
             </div>
           </div>
@@ -252,7 +252,7 @@ function Page() {
 
       {/* 2. FLOATING ENTERPRISE FACT-CARD - Clean 2-Layer Hierarchy & Scannability */}
       <section className="px-6 md:px-10 py-6 relative z-10">
-        <div className="max-w-[1480px] mx-auto bg-surface border border-brand/10 rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(45,90,39,0.06)]">
+        <div className="max-w-[1480px] mx-auto bg-surface rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(45,90,39,0.06)]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
             {[
               { v: "Meisterbetrieb", sub: "Fachliche Exzellenz · FGL-Mitglied", Icon: Award },
@@ -260,8 +260,8 @@ function Page() {
               { v: "Festpreis-Garantie", sub: "Finanzielle Sicherheit · Keine Nebenkosten", Icon: Coins },
               { v: "B.Eng. Leitung", sub: "Landschaftsarchitektur · CAD-Planung", Icon: GraduationCap },
             ].map((s, i) => (
-              <div key={i} className="flex gap-4 items-start border-l border-brand/10 pl-6 md:pl-8 first:border-0 first:pl-0 [&:nth-child(3)]:border-l-0 lg:[&:nth-child(3)]:border-l">
-                <div className="size-11 rounded-2xl bg-brand/5 border border-brand/10 flex items-center justify-center shrink-0">
+              <div key={i} className="flex gap-4 items-start pl-6 md:pl-8 first:pl-0">
+                <div className="size-11 rounded-2xl bg-brand/5 flex items-center justify-center shrink-0">
                   <s.Icon className="h-5 w-5 text-brand" strokeWidth={1.8} />
                 </div>
                 <div className="space-y-1">
@@ -327,15 +327,15 @@ function Page() {
               </h2>
               <p className="text-sm text-foreground/60 mt-2">Unser vollumfängliches Leistungsspektrum im Detail.</p>
             </div>
-            
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {benefits.map((b, i) => (
                 <div
                   key={i}
-                  className="group bg-brand/[0.015] border border-brand/5 rounded-3xl p-8 hover:bg-white hover:border-brand/10 hover:shadow-[0_15px_40px_rgba(45,90,39,0.05)] transition-all duration-300 relative overflow-hidden"
+                  className="group bg-brand/[0.015] rounded-3xl p-8 hover:bg-white hover:shadow-[0_15px_40px_rgba(45,90,39,0.05)] transition-all duration-300 relative overflow-hidden"
                 >
                   <div className="flex items-center justify-between mb-8">
-                    <div className="size-11 rounded-2xl bg-brand/5 border border-brand/10 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-colors duration-300">
+                    <div className="size-11 rounded-2xl bg-brand/5 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
                       <b.Icon className="h-5 w-5 text-brand group-hover:text-brand transition-colors duration-300" strokeWidth={1.8} />
                     </div>
                     <span className="font-display font-extrabold text-brand/20 text-xs tracking-[0.24em]">
@@ -381,7 +381,7 @@ function Page() {
             </div>
 
             {/* Stat Counters inside banner */}
-            <div className="lg:col-span-4 lg:pl-10 space-y-6 border-l border-brand-foreground/15">
+            <div className="lg:col-span-4 lg:pl-10 space-y-6">
               {[
                 { v: "100%", l: "Eigener Maschinenpark", sub: "Keine Drittmieten" },
                 { v: "0%", l: "Subunternehmer-Quote", sub: "Volle Qualitätskontrolle" },
@@ -440,7 +440,7 @@ function Page() {
       {projects.length > 0 && (
         <section className="px-6 md:px-10 pb-24 md:pb-32">
           <div className="max-w-[1480px] mx-auto">
-            <div className="flex items-end justify-between flex-wrap gap-6 mb-12 border-b border-brand/5 pb-6">
+            <div className="flex items-end justify-between flex-wrap gap-6 mb-12 pb-6">
               <div>
                 <span className="eyebrow eyebrow-bracket text-accent">Referenzen</span>
                 <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand">
@@ -458,7 +458,7 @@ function Page() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
               {projects.slice(0, 6).map((p) => (
                 <article key={p.id} className="group cursor-pointer">
-                  <div className="aspect-[4/3] overflow-hidden bg-brand/5 rounded-3xl border border-brand/10 shadow-sm group-hover:shadow-md transition-shadow duration-300">
+                  <div className="aspect-[4/3] overflow-hidden bg-brand/5 rounded-3xl shadow-sm group-hover:shadow-md transition-shadow duration-300">
                     {p.images?.[0] ? (
                       <img
                         src={p.images[0]}
@@ -493,7 +493,7 @@ function Page() {
       {/* 8. FAQ + MINIMALIST CONTACT PANEL */}
       <section
         id="anfrage"
-        className="px-6 md:px-10 pb-24 md:pb-32 border-t border-brand/10 pt-24"
+        className="px-6 md:px-10 pb-24 md:pb-32 pt-24"
       >
         <div className="max-w-[1480px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-7">
@@ -509,7 +509,7 @@ function Page() {
 
       {/* 9. WEITERE LEISTUNGEN - Sage Themed hover scroller */}
       {related.length > 0 && (
-        <section className="px-6 md:px-10 pb-24 border-t border-brand/10 pt-24 bg-brand/[0.01]">
+        <section className="px-6 md:px-10 pb-24 pt-24 bg-brand/[0.01]">
           <div className="max-w-[1480px] mx-auto">
             <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
               <div>
@@ -549,7 +549,7 @@ function Page() {
                     )}
                     <h3 className="font-display font-bold text-lg flex items-center justify-between gap-3 text-brand-foreground">
                       {s.title}
-                      <span className="relative w-8 h-8 rounded-full border border-brand-foreground/20 flex items-center justify-center overflow-hidden shrink-0">
+                      <span className="relative w-8 h-8 rounded-full flex items-center justify-center overflow-hidden shrink-0">
                         <span className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                         <span className="relative text-brand-foreground group-hover:text-brand transition-colors duration-500 text-sm">→</span>
                       </span>
@@ -564,7 +564,7 @@ function Page() {
 
       {/* 10. LUXURY FINAL CALL TO ACTION */}
       <section className="px-6 md:px-10 pb-24 md:pb-32 bg-surface">
-        <div className="max-w-[1480px] mx-auto rounded-[2.5rem] border border-brand/10 bg-brand text-brand-foreground p-12 md:p-24 text-center relative overflow-hidden shadow-xl shadow-brand/10">
+        <div className="max-w-[1480px] mx-auto rounded-[2.5rem] bg-brand text-brand-foreground p-12 md:p-24 text-center relative overflow-hidden shadow-xl shadow-brand/10">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-40"

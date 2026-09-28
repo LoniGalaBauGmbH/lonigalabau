@@ -33,7 +33,7 @@ function Page() {
               key={j.id}
               to="/jobs/$slug"
               params={{ slug: j.slug }}
-              className="group block bg-surface rounded-3xl p-8 border border-brand/5 shadow-sm hover:shadow-xl transition"
+              className="group block bg-surface rounded-3xl p-8 shadow-sm hover:shadow-xl transition"
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>

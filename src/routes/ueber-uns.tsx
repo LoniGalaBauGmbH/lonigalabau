@@ -138,7 +138,7 @@ function AboutPage() {
                   Hattersheim · Rhein-Main
                 </span>
               </div>
-              <div className="h-px w-12 bg-brand/20" />
+
               <div className="text-foreground/60">Gegründet 2011 · Meisterbetrieb</div>
             </div>
           </div>
@@ -168,7 +168,7 @@ function AboutPage() {
       </section>
 
       {/* 2. STORY — ausführlicher Unternehmenstext */}
-      <section className="px-6 md:px-10 py-24 md:py-32 bg-surface border-y border-brand/10">
+      <section className="px-6 md:px-10 py-24 md:py-32 bg-surface">
         <div className="max-w-[1480px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             {/* Bild links */}
@@ -199,7 +199,7 @@ function AboutPage() {
 
               <div className="mt-14 space-y-10">
                 <Reveal delay={100}>
-                  <div className="relative pl-6 border-l border-accent/40">
+                  <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
                       Die Firma Loni wurde 2011 in Hattersheim gegründet mit einem kleinen Team und einer klaren Vision: zuverlässige und fachgerechte Gartenpflege für Privatkunden.
                     </p>
@@ -207,7 +207,7 @@ function AboutPage() {
                 </Reveal>
 
                 <Reveal delay={150}>
-                  <div className="relative pl-6 border-l border-brand/15">
+                  <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
                       Bereits 2013 erweiterten wir unser Leistungsspektrum um den klassischen Garten- und Landschaftsbau – von der Neuanlage kompletter Gärten bis hin zu Pflaster- und Terrassenarbeiten.
                     </p>
@@ -215,7 +215,7 @@ function AboutPage() {
                 </Reveal>
 
                 <Reveal delay={200}>
-                  <div className="relative pl-6 border-l border-brand/15">
+                  <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
                       Heute stehen wir für hochwertige Außenanlagen im privaten, gewerblichen und öffentlichen Bereich. Fachwissen, langjährige Erfahrung und eine praxisorientierte Arbeitsweise bilden dabei die Grundlage unserer Arbeit.
                     </p>
@@ -223,7 +223,7 @@ function AboutPage() {
                 </Reveal>
 
                 <Reveal delay={250}>
-                  <div className="relative pl-6 border-l border-brand/15">
+                  <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
                       Seit 2017 bringt unser Geschäftsführer seine akademische Expertise als Bachelor of Engineering (B. Ing.) im Studiengang Landschaftsarchitektur der Hochschule Geisenheim in die Planung und Umsetzung unserer Projekte ein.
                     </p>
@@ -231,7 +231,7 @@ function AboutPage() {
                 </Reveal>
 
                 <Reveal delay={300}>
-                  <div className="relative pl-6 border-l border-brand/15">
+                  <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
                       Dank unseres umfassenden Know-hows realisieren wir erfolgreich anspruchsvolle Bauprojekte im privaten, gewerblichen und öffentlichen Bereich. Qualität, Zuverlässigkeit und eine strukturierte Projektabwicklung stehen dabei stets im Mittelpunkt unserer Arbeit.
                     </p>
@@ -239,7 +239,7 @@ function AboutPage() {
                 </Reveal>
 
                 <Reveal delay={350}>
-                  <div className="relative pl-6 border-l border-brand/15">
+                  <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
                       Unser Unternehmen verfügt über ein erfahrenes, leistungsstarkes Team aus Fachkräften sowie ein professionell organisiertes Backoffice, das sämtliche Abläufe in den Bereichen Koordination, Kundenservice und Projektmanagement effizient steuert. Darüber hinaus engagieren wir uns aktiv in der Ausbildung zukünftiger Fachkräfte im Bereich Garten- und Landschaftsbau sowie Büromanagement.
                     </p>
@@ -247,7 +247,7 @@ function AboutPage() {
                 </Reveal>
 
                 <Reveal delay={400}>
-                  <div className="relative pl-6 border-l border-accent/40">
+                  <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
                       Wir sind zudem Mitglied im Fachverband Garten-, Landschafts- und Sportplatzbau, was unser Engagement für Qualität, fachliche Standards und kontinuierliche Weiterentwicklung in der Branche unterstreicht.
                     </p>
@@ -260,7 +260,7 @@ function AboutPage() {
       </section>
 
       {/* 3. TIMELINE */}
-      <section className="px-6 md:px-10 py-24 md:py-32 bg-surface border-y border-brand/10">
+      <section className="px-6 md:px-10 py-24 md:py-32 bg-surface">
         <div className="max-w-[1480px] mx-auto">
           <div className="max-w-2xl mb-20">
             <span className="eyebrow eyebrow-bracket text-brand/70">Unsere Geschichte</span>
@@ -352,10 +352,6 @@ function AboutPage() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div
-                aria-hidden
-                className="absolute -inset-3 rounded-[28px] border border-accent/40 -z-0"
-              />
             </div>
           </div>
 
@@ -368,7 +364,7 @@ function AboutPage() {
               </span>"
             </blockquote>
             <div className="mt-10 flex items-center gap-4">
-              <div className="h-px w-12 bg-accent" />
+
               <div>
                 <div className="font-display font-extrabold text-brand-foreground">
                   Valon Sinanaj
@@ -399,14 +395,14 @@ function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-brand/10 rounded-2xl overflow-hidden border border-brand/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden">
             {VALUES.map(({ Icon, t, d }, i) => (
               <div
                 key={t}
                 className="group relative bg-background p-8 md:p-10 hover:bg-surface transition-colors duration-300"
               >
                 <div className="flex items-center justify-between mb-10">
-                  <div className="size-11 rounded-full border border-brand/15 grid place-items-center group-hover:border-accent transition-colors">
+                  <div className="size-11 rounded-full grid place-items-center">
                     <Icon className="h-5 w-5 text-brand group-hover:text-accent transition-colors" strokeWidth={1.6} />
                   </div>
                   <span className="text-[10px] tracking-[0.24em] uppercase text-brand/30 font-display font-semibold">
@@ -416,8 +412,8 @@ function AboutPage() {
                 <h3 className="font-display font-extrabold text-brand text-lg leading-tight">
                   {t}
                 </h3>
-                <div className="mt-4 h-px w-8 bg-accent/60 group-hover:w-16 transition-all duration-500" />
-                <p className="mt-5 text-sm text-foreground/70 leading-relaxed">{d}</p>
+
+                <p className="mt-9 text-sm text-foreground/70 leading-relaxed">{d}</p>
               </div>
             ))}
           </div>

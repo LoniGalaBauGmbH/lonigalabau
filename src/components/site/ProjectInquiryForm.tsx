@@ -109,7 +109,7 @@ export function ProjectInquiryForm({
   }
 
   const innerContent = (
-    <div className={`w-full bg-white overflow-hidden ${isModal ? "" : "max-w-[1480px] mx-auto rounded-[2.5rem] border border-brand/10 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)]"}`}>
+    <div className={`w-full bg-white overflow-hidden ${isModal ? "" : "max-w-[1480px] mx-auto rounded-[2.5rem] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)]"}`}>
       <div className="grid lg:grid-cols-12">
         {/* LEFT — Editorial pitch with portrait */}
         <aside className="lg:col-span-5 relative bg-[var(--surface)] flex flex-col">
@@ -141,7 +141,7 @@ export function ProjectInquiryForm({
               </p>
             </div>
 
-            <ul className="space-y-4 border-t border-brand/10 pt-8">
+            <ul className="space-y-4 pt-8">
               {[
                 { Icon: Clock, t: "Antwort innerhalb 24 Stunden" },
                 { Icon: MapPin, t: "Kostenloser Vor-Ort-Termin" },
@@ -157,7 +157,7 @@ export function ProjectInquiryForm({
               ))}
             </ul>
 
-            <div className="pt-6 border-t border-brand/10 space-y-3">
+            <div className="pt-6 space-y-3">
               <p className="text-[0.7rem] uppercase tracking-[0.22em] text-brand/45 font-semibold">
                 Lieber direkt sprechen?
               </p>

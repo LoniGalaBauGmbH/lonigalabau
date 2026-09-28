@@ -52,7 +52,7 @@ function Page() {
                 <div className="absolute top-0 inset-x-0 p-6 flex items-start justify-between text-brand-foreground">
                   <span className="font-display text-xs tracking-[0.25em] opacity-80">— {num}</span>
                   {s.category && (
-                    <span className="text-[10px] uppercase tracking-[0.25em] bg-brand-foreground/15 backdrop-blur-md px-3 py-1.5 rounded-full border border-brand-foreground/20">
+                    <span className="text-[10px] uppercase tracking-[0.25em] bg-brand-foreground/15 backdrop-blur-md px-3 py-1.5 rounded-full">
                       {s.category}
                     </span>
                   )}
@@ -75,11 +75,11 @@ function Page() {
                   </div>
 
                   {/* CTA arrow row */}
-                  <div className="mt-5 flex items-center justify-between border-t border-brand-foreground/20 pt-4">
+                  <div className="mt-5 flex items-center justify-between pt-4">
                     <span className="text-[11px] uppercase tracking-[0.25em] font-semibold opacity-80 group-hover:text-accent transition-colors">
                       Mehr erfahren
                     </span>
-                    <span className="relative w-10 h-10 rounded-full border border-brand-foreground/30 flex items-center justify-center overflow-hidden">
+                    <span className="relative w-10 h-10 rounded-full flex items-center justify-center overflow-hidden">
                       <span className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
                       <span className="relative text-brand-foreground group-hover:text-brand transition-colors duration-500">→</span>
                     </span>

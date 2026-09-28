@@ -110,7 +110,7 @@ function Card({
   className?: string;
 }) {
   return (
-    <div className={`bg-surface border border-brand/10 rounded-3xl p-7 ${className}`}>
+    <div className={`bg-surface rounded-3xl p-7 ${className}`}>
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 rounded-2xl bg-brand/5 flex items-center justify-center">
           <Icon className="w-4 h-4 text-brand" />

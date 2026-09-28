@@ -30,7 +30,7 @@ function Page() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
           {projects.length === 0 && <p className="opacity-60">Aktuell sind keine Projekte hinterlegt.</p>}
           {projects.map((p) => (
-            <article key={p.id} className="bg-surface rounded-[2rem] overflow-hidden border border-brand/5 shadow-sm">
+            <article key={p.id} className="bg-surface rounded-[2rem] overflow-hidden shadow-sm">
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={p.images?.[0] || projectFallback} alt={p.title} loading="lazy" className="w-full h-full object-cover" />
               </div>

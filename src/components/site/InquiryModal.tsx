@@ -47,7 +47,7 @@ export function InquiryModal() {
       aria-modal="true"
     >
       <div
-        className="relative w-full max-w-7xl bg-white rounded-3xl md:rounded-[2.5rem] shadow-2xl border border-brand/10 overflow-hidden max-h-[92vh] md:max-h-[88vh] flex flex-col scale-95 opacity-0 animate-[popIn_0.35s_cubic-bezier(0.34,1.56,0.64,1)_forwards]"
+        className="relative w-full max-w-7xl bg-white rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden max-h-[92vh] md:max-h-[88vh] flex flex-col scale-95 opacity-0 animate-[popIn_0.35s_cubic-bezier(0.34,1.56,0.64,1)_forwards]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Floating close button */}

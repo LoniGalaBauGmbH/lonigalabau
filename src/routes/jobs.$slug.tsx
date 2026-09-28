@@ -53,7 +53,7 @@ function Page() {
         if (file.size > 10 * 1024 * 1024) throw new Error("Lebenslauf max. 10 MB");
         const ext = file.name.split(".").pop() || "pdf";
         const path = `${job.id}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-        
+
         // Convert file to base64 safely
         const base64 = await new Promise<string>((resolve, reject) => {
           const reader = new FileReader();
@@ -83,7 +83,7 @@ function Page() {
       <section className="px-6">
         <div className="max-w-4xl mx-auto py-10">
           <Link to="/jobs" className="text-sm opacity-60 hover:opacity-100">← Alle Stellen</Link>
-          <h1 className="font-serif text-5xl md:text-6xl mt-6">{job.title}</h1>
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl mt-6 break-words hyphens-auto">{job.title}</h1>
           <div className="mt-3 flex flex-wrap gap-3 text-xs uppercase tracking-widest opacity-60">
             {job.location && <span>{job.location}</span>}
             {job.employment_type && <span>· {job.employment_type}</span>}
@@ -103,7 +103,7 @@ function Page() {
       </section>
 
       <section className="px-6 pb-24">
-        <div className="max-w-3xl mx-auto bg-surface rounded-[2rem] p-8 md:p-12 border border-brand/5 shadow-sm">
+        <div className="max-w-3xl mx-auto bg-surface rounded-[2rem] p-8 md:p-12 shadow-sm">
           <h2 className="font-serif text-3xl">Jetzt bewerben</h2>
           <p className="opacity-70 mt-2">Senden Sie uns Ihre Unterlagen direkt über das Formular.</p>
 
@@ -128,7 +128,7 @@ function Page() {
                 <textarea maxLength={5000} rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="input resize-none" />
               </Field>
               <Field label="Lebenslauf (PDF, max. 10 MB)">
-                <input type="file" accept=".pdf,.doc,.docx" onChange={(e) => setFile(e.target.files?.[0] || null)} className="text-sm" />
+                <input type="file" accept=".pdf,.doc,.docx" onChange={(e) => setFile(e.target.files?.[0] || null)} className="w-full min-w-0 text-sm" />
               </Field>
               {status === "err" && <p className="text-sm text-red-600">Fehler: {errorMsg}</p>}
               <button type="submit" disabled={status === "loading"} className="bg-brand text-brand-foreground px-7 py-3 rounded-full text-sm font-medium hover:bg-brand/90 disabled:opacity-50">

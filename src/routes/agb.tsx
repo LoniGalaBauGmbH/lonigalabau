@@ -61,7 +61,7 @@ function AGBPage() {
       <section className="px-6 pb-24">
         <div className="max-w-3xl mx-auto grid gap-6">
           {SECTIONS.map((s, i) => (
-            <article key={s.h} className="bg-surface border border-brand/10 rounded-3xl p-7 md:p-8">
+            <article key={s.h} className="bg-surface rounded-3xl p-7 md:p-8">
               <div className="flex items-baseline gap-3">
                 <span className="font-serif text-3xl text-accent">{String(i + 1).padStart(2, "0")}</span>
                 <h2 className="font-serif text-xl md:text-2xl text-brand">{s.h}</h2>

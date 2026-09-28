@@ -38,7 +38,7 @@ export function Footer() {
       <div className="border-b border-brand-foreground/10">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <span className="eyebrow opacity-60">[ &nbsp;Kontakt&nbsp; ]</span>
+            <span className="eyebrow opacity-60">Kontakt</span>
             <h3 className="font-display uppercase tracking-tight text-2xl md:text-3xl mt-2">
               Bereit für Ihr Gartenprojekt?
             </h3>

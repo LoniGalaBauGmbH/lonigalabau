@@ -32,7 +32,7 @@ function DatenschutzPage() {
     <PageShell>
       <PageIntro
         eyebrow="Rechtliches"
-        title={<>Datenschutz<span className="italic font-light">erklärung</span></>}
+        title={<>Daten&shy;schutz&shy;<wbr /><span className="italic font-light">erklärung</span></>}
         lead="Transparenz darüber, welche Daten wir wie und warum verarbeiten – nach den Regeln der DSGVO."
       />
 
@@ -40,7 +40,7 @@ function DatenschutzPage() {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
           {/* TOC */}
           <aside className="lg:col-span-4">
-            <div className="lg:sticky lg:top-28 bg-surface border border-brand/10 rounded-3xl p-6">
+            <div className="lg:sticky lg:top-28 bg-surface rounded-3xl p-6">
               <p className="text-xs uppercase tracking-widest text-foreground/60 mb-4">Inhalt</p>
               <ul className="space-y-1">
                 {TOC.map((s) => (

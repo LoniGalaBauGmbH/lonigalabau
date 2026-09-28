@@ -104,7 +104,7 @@ function Page() {
 
           <Reveal delay={200} className="lg:col-span-5">
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-accent/30 via-transparent to-brand/10 blur-2xl rounded-[3rem]" />
+
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <img src={images.contact_portrait} alt="Ansprechpartner Loni Galabau" className="w-full h-full object-cover" />
                 <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
@@ -113,7 +113,7 @@ function Page() {
                   <p className="text-white/70 text-sm">Geschäftsführer</p>
                 </div>
               </div>
-              <div className="absolute -bottom-5 -left-5 bg-background border border-brand/10 rounded-2xl px-5 py-3 shadow-lg flex items-center gap-2">
+              <div className="absolute -bottom-5 -left-5 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-accent" />
                 <span className="text-sm font-medium">Antwort in 24 h</span>
               </div>
@@ -131,7 +131,7 @@ function Page() {
             { icon: MapPin, eyebrow: "Adresse", main: "Auf der Roos 3", href: "https://maps.google.com/?q=Auf+der+Roos+3,+65795+Hattersheim", sub: "65795 Hattersheim am Main" },
           ].map((c, i) => (
             <Reveal key={c.eyebrow} delay={i * 100}>
-              <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="group block h-full bg-surface border border-brand/10 rounded-3xl p-7 hover:border-accent/40 hover:shadow-lg transition-all">
+              <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="group block h-full bg-surface rounded-3xl p-7 hover:shadow-lg transition-all">
                 <div className="flex items-start justify-between">
                   <div className="w-12 h-12 rounded-2xl bg-brand/5 group-hover:bg-accent/15 flex items-center justify-center transition-colors">
                     <c.icon className="w-5 h-5 text-brand" />
@@ -164,7 +164,7 @@ function Page() {
                     { t: "Angebot & Umsetzung", d: "Transparente Planung, sauberer Ablauf." },
                   ].map((s, i) => (
                     <li key={s.t} className="flex gap-4">
-                      <span className="shrink-0 w-8 h-8 rounded-full border border-brand-foreground/30 flex items-center justify-center text-sm font-serif">{i + 1}</span>
+                      <span className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-serif">{i + 1}</span>
                       <div>
                         <p className="font-medium">{s.t}</p>
                         <p className="text-sm text-brand-foreground/70 mt-0.5">{s.d}</p>
@@ -175,7 +175,7 @@ function Page() {
               </div>
             </div>
 
-            <div className="bg-surface border border-brand/10 rounded-3xl p-7">
+            <div className="bg-surface rounded-3xl p-7">
               <div className="flex items-center gap-3 mb-4">
                 <Clock className="w-5 h-5 text-brand" />
                 <h4 className="font-serif text-xl text-brand">Öffnungszeiten</h4>
@@ -196,8 +196,8 @@ function Page() {
 
           {/* Form */}
           <Reveal delay={150} className="lg:col-span-8">
-            <div className="bg-background border border-brand/10 rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="bg-background rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+
 
               {status === "ok" ? (
                 <div className="relative py-12 text-center">
@@ -295,7 +295,7 @@ function Page() {
           </Reveal>
 
           <Reveal delay={150} className="lg:col-span-7">
-            <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-brand/10 shadow-lg">
+            <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-lg">
               <iframe
                 title="Standort Loni Galabau"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=8.4750%2C50.0650%2C8.5050%2C50.0850&layer=mapnik&marker=50.0750%2C8.4900"

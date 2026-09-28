@@ -9,11 +9,23 @@ Konturen, gestrichelte Raster und wiederkehrende Schmuckklammern. Aufbau, Bilder
 Farben, Schrift und Inhalte bleiben erhalten. Keine erneute grundlegende
 Umgestaltung aus einer allgemeinen Bitte um „weniger KI-typisch“ ableiten.
 
-Die kleine Korrektur betrifft nur `index.tsx`, `StatsBand`, `Awards`, `Testimonials`
+Die erste kleine Korrektur betrifft `index.tsx`, `StatsBand`, `Awards`, `Testimonials`
 und die dekorativen Label-Pseudoelemente in `styles.css`. Formularrahmen,
 Fokusmarkierungen und funktionale Bedienelemente bleiben erhalten.
 Die Kundenstimmen bekommen eine explizite einspaltige Mobilansicht, damit lange
 Orts-/Leistungsangaben die Seite nicht seitlich verbreitern.
+
+Auf ausdrücklichen Folgeauftrag werden dieselben Details auch auf den öffentlichen
+Unterseiten angepasst: Über uns, Leistungsübersicht und alle Leistungsdetails,
+Projekte, Kontakt, Stellenübersicht und Stellenangebote sowie die rechtlichen
+Seiten. Beim Gartenplaner und Login entfällt nur ein zusätzlicher Außenrahmen.
+Entfernt werden dekorative Textlinien, doppelte Bildrahmen und redundante
+Kartenkonturen. Die gemeinsame Anfrageansicht und die Kontaktüberschrift im
+Footer folgen derselben Gestaltung. Zeitachsen, Eingabefelder, Auswahlzustände,
+Fokusmarkierungen und funktionale Trennlinien bleiben erhalten.
+Die Datenschutz- und Stellenüberschriften erhalten Umbruchmöglichkeiten und der Datei-Upload bei
+Bewerbungen eine begrenzte Breite, damit beide Seiten auf dem Handy nicht
+horizontal überlaufen.
 
 Die bereits bestätigten Firmenangaben werden in der ursprünglichen Gestaltung
 beibehalten: Auf der Roos 3, Montag–Freitag 7–18 Uhr ohne Samstagseintrag,

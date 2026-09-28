@@ -1529,7 +1529,7 @@ ${cfg.extraNotes ? `#### Anmerkungen\n${cfg.extraNotes}` : ""}`;
                 />
               </div>
               {/* Summary */}
-              <div className="bg-gray-50 rounded-2xl p-5 space-y-3 border border-gray-200">
+              <div className="bg-gray-50 rounded-2xl p-5 space-y-3">
                 <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
                   Ihre Zusammenfassung
                 </p>

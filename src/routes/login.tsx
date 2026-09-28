@@ -32,7 +32,7 @@ function Page() {
 
   return (
     <div className="min-h-screen bg-background grid place-items-center px-6">
-      <div className="w-full max-w-md bg-surface rounded-[2rem] p-10 border border-brand/5 shadow-xl">
+      <div className="w-full max-w-md bg-surface rounded-[2rem] p-10 shadow-xl">
         <Link to="/" className="text-xs uppercase tracking-widest opacity-60">← Zur Website</Link>
         <h1 className="font-serif text-4xl mt-4">Admin-Login</h1>
         <p className="text-sm opacity-70 mt-2">Verwaltung der Inhalte und Anfragen.</p>
