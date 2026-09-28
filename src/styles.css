@@ -91,6 +91,7 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
   body {
     background-color: var(--color-background);
@@ -103,6 +104,10 @@
     letter-spacing: -0.02em;
     color: var(--color-brand);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 @layer components {
