@@ -140,7 +140,7 @@ function HomePage() {
 
         <div className="relative z-[1] max-w-[1480px] mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-16 md:pb-24 pt-44 md:pt-56">
           <div className="max-w-5xl animate-fade-up">
-            <h1 className="display text-white text-[clamp(2.75rem,8vw,8rem)]">
+            <h1 lang="de" className="display break-words hyphens-auto text-white text-[clamp(2.75rem,8vw,8rem)]">
               Ihr Garten<br />
               <span className="text-white">unsere Leidenschaft</span>
             </h1>
@@ -272,7 +272,7 @@ function HomePage() {
       <section className="bg-brand text-brand-foreground px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1480px] mx-auto">
           <span className="eyebrow eyebrow-bracket text-brand-foreground/70">Wie es funktioniert</span>
-          <h2 className="display text-[clamp(2rem,5vw,4.5rem)] mt-6 text-brand-foreground max-w-6xl">
+          <h2 lang="de" className="display break-words hyphens-auto text-[clamp(2rem,5vw,4.5rem)] mt-6 text-brand-foreground max-w-6xl">
             EINFACHE SCHRITTE FÜR <br />IHRE <span className="text-accent">GARTENGESTALTUNG</span>
           </h2>
 

@@ -1,52 +1,53 @@
-import { useState } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Clock, MapPin, FileCheck2, Phone, Mail, ArrowUpRight, ChevronDown, ShieldCheck } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  CheckCheck,
+  ChevronDown,
+  Loader2,
+  Phone,
+} from "lucide-react";
 import { createContactRequest } from "@/lib/site.functions";
-import { contactSchema } from "@/lib/validators";
-import { useSiteImages } from "@/hooks/useSiteImages";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Progress } from "@/components/ui/progress";
+import {
+  BUDGETS,
+  CHANNELS,
+  INITIAL_INQUIRY,
+  INQUIRY_SERVICES,
+  PROJECT_TYPES,
+  TIMEFRAMES,
+  buildInquiryPayload,
+  validateInquiryStep,
+  type InquiryErrors,
+  type InquiryForm,
+  type InquiryStep,
+} from "@/lib/project-inquiry";
 
-const SERVICES = [
-  "Gartengestaltung",
-  "Pflasterarbeiten",
-  "Natursteinarbeiten",
-  "Bewässerungsanlagen",
-  "Gartenpflege",
-  "Sonstiges",
+const STEPS = [
+  {
+    label: "Projekt",
+    title: "Was haben Sie vor?",
+    hint: "Wählen Sie den Bereich, der am besten zu Ihrem Vorhaben passt.",
+  },
+  {
+    label: "Wünsche",
+    title: "Wie sieht Ihre Idee aus?",
+    hint: "Ein paar Sätze reichen. Die Details klären wir gemeinsam.",
+  },
+  {
+    label: "Kontakt",
+    title: "Wie erreichen wir Sie?",
+    hint: "Wir melden uns persönlich, um die nächsten Schritte zu besprechen.",
+  },
 ];
-const PROJECT_TYPES = ["Privatgarten", "Gewerbe", "Außenanlage", "Sanierung"];
-const TIMEFRAMES = ["So bald wie möglich", "1–3 Monate", "3–6 Monate", "Flexibel"];
-const BUDGETS = ["< 10.000 €", "10.000 – 25.000 €", "25.000 – 50.000 €", "50.000 € +", "Noch unklar"];
-const CHANNELS = ["E-Mail", "Telefon", "WhatsApp"];
-
-type FormState = {
-  service: string;
-  projectType: string;
-  area: string;
-  timeframe: string;
-  budget: string;
-  description: string;
-  name: string;
-  email: string;
-  phone: string;
-  zip: string;
-  channel: string;
-  consent: boolean;
-};
-
-const INITIAL: FormState = {
-  service: SERVICES[0],
-  projectType: PROJECT_TYPES[0],
-  area: "",
-  timeframe: TIMEFRAMES[0],
-  budget: "",
-  description: "",
-  name: "",
-  email: "",
-  phone: "",
-  zip: "",
-  channel: "E-Mail",
-  consent: false,
-};
+const inputClass =
+  "min-w-0 w-full rounded-xl border border-brand/15 bg-white px-4 py-3.5 text-base text-brand outline-none transition-colors placeholder:text-brand/40 focus:border-brand focus:ring-2 focus:ring-brand/10 aria-[invalid=true]:border-red-600";
+const buttonClass =
+  "inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand disabled:cursor-wait disabled:opacity-60";
 
 export function ProjectInquiryForm({
   isModal = false,
@@ -55,406 +56,645 @@ export function ProjectInquiryForm({
   isModal?: boolean;
   onClose?: () => void;
 }) {
-  const { images } = useSiteImages();
   const send = useServerFn(createContactRequest);
-  const [form, setForm] = useState<FormState>(INITIAL);
+  const uid = useId();
+  const [form, setForm] = useState<InquiryForm>(INITIAL_INQUIRY);
+  const [step, setStep] = useState<InquiryStep>(0);
+  const [showOptional, setShowOptional] = useState(false);
+  const [errors, setErrors] = useState<InquiryErrors>({});
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "err">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const successRef = useRef<HTMLHeadingElement>(null);
+  const navigating = useRef(false);
+  const focusingError = useRef(false);
+  const submitting = useRef(false);
+  const pending = status === "loading";
+  const id = (key: string) => uid + "-" + key;
 
-  function update<K extends keyof FormState>(key: K, value: FormState[K]) {
-    setForm((f) => ({ ...f, [key]: value }));
+  useEffect(() => {
+    if (!navigating.current) return;
+    navigating.current = false;
+    const heading = status === "ok" ? successRef.current : headingRef.current;
+    heading?.focus({ preventScroll: true });
+    const scrollTarget = status === "ok" ? heading : formRef.current;
+    scrollTarget?.scrollIntoView({ block: "start", behavior: "instant" });
+  }, [step, status]);
+
+  useEffect(() => {
+    if (!focusingError.current) return;
+    focusingError.current = false;
+    formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+  }, [errors]);
+
+  function update<K extends keyof InquiryForm>(key: K, value: InquiryForm[K]) {
+    setForm((previous) => ({ ...previous, [key]: value }));
+    setErrors((previous) => ({
+      ...previous,
+      [key]: undefined,
+      ...(key === "channel" ? { phone: undefined } : {}),
+    }));
+    if (status === "err") setStatus("idle");
   }
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!form.consent) {
-      setStatus("err");
-      setErrorMsg("Bitte stimmen Sie der Datenschutzerklärung zu.");
+  function goTo(next: InquiryStep) {
+    if (pending) return;
+    setErrors({});
+    setStatus("idle");
+    navigating.current = true;
+    setStep(next);
+  }
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submitting.current) return;
+    for (let i = 0; i <= step; i++) {
+      const found = validateInquiryStep(form, i as InquiryStep);
+      if (Object.keys(found).length) {
+        focusingError.current = true;
+        setErrors(found);
+        setStep(i as InquiryStep);
+        return;
+      }
+    }
+    if (step < 2) {
+      goTo((step + 1) as InquiryStep);
       return;
     }
+    submitting.current = true;
     setStatus("loading");
-    setErrorMsg("");
-
-    const subject = `Projektanfrage: ${form.service} – ${form.projectType}`;
-    const message = [
-      `Leistungsbereich: ${form.service}`,
-      `Projekttyp: ${form.projectType}`,
-      form.area && `Fläche: ${form.area} m²`,
-      `Zeitraum: ${form.timeframe}`,
-      form.budget && `Budget: ${form.budget}`,
-      form.zip && `PLZ/Ort: ${form.zip}`,
-      `Bevorzugter Kontakt: ${form.channel}`,
-      "",
-      "Beschreibung:",
-      form.description,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
     try {
-      const parsed = contactSchema.parse({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        subject,
-        message,
-      });
-      await send({ data: parsed });
+      await send({ data: buildInquiryPayload(form) });
+      navigating.current = true;
       setStatus("ok");
-      setForm(INITIAL);
-    } catch (err: unknown) {
+      setForm(INITIAL_INQUIRY);
+    } catch {
       setStatus("err");
-      setErrorMsg(err instanceof Error ? err.message : "Unbekannter Fehler");
+    } finally {
+      submitting.current = false;
     }
   }
 
-  const innerContent = (
-    <div className={`w-full bg-white overflow-hidden ${isModal ? "" : "max-w-[1480px] mx-auto rounded-[2.5rem] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)]"}`}>
-      <div className="grid lg:grid-cols-12">
-        {/* LEFT — Editorial pitch with portrait */}
-        <aside className="lg:col-span-5 relative bg-[var(--surface)] flex flex-col">
-          <div className="relative h-72 lg:h-[420px] overflow-hidden">
-            <img
-              src={images.contact_portrait}
-              alt="Ihr persönlicher Ansprechpartner"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 text-white">
-              <p className="text-[0.7rem] uppercase tracking-[0.25em] opacity-80">Ihr Ansprechpartner</p>
-              <p className="font-serif text-2xl mt-1">Wir beraten Sie persönlich.</p>
-            </div>
+  const fieldProps = (key: keyof InquiryForm) => ({
+    id: id(key),
+    "aria-invalid": errors[key] ? true : undefined,
+    "aria-describedby": errors[key] ? id(key) + "-error" : undefined,
+  });
+
+  const content = (
+    <div
+      className={
+        "mx-auto grid w-full max-w-[1320px] overflow-hidden bg-white lg:grid-cols-[0.8fr_1.6fr] " +
+        (isModal ? "" : "rounded-[2rem] md:rounded-[2.5rem]")
+      }
+    >
+      <aside className="flex flex-col bg-brand p-7 text-white md:p-10 lg:p-12">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          Ihr Projekt beginnt hier
+        </span>
+        <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-white md:text-4xl lg:text-[2.6rem]">
+          Ihr Garten.
+          <br />
+          <span className="font-serif font-normal italic text-white/75">
+            Unser nächstes Projekt.
+          </span>
+        </h2>
+        <p className="mt-5 max-w-sm text-base leading-relaxed text-white/75">
+          Von der ersten Idee bis zur fertigen Außenanlage. Erzählen Sie uns, was Sie vorhaben.
+        </p>
+        <div className="mt-8 hidden space-y-5 lg:block">
+          {[
+            "Unverbindlich anfragen",
+            "Persönlich beraten lassen",
+            "Gemeinsam die nächsten Schritte planen",
+          ].map((text) => (
+            <p key={text} className="flex items-start gap-3 text-sm leading-relaxed text-white/85">
+              <Check className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden="true" />
+              {text}
+            </p>
+          ))}
+        </div>
+        <div className="mt-7 lg:mt-auto lg:pt-12">
+          <p className="mb-2 text-sm text-white/60">Lieber direkt sprechen?</p>
+          <a
+            href="tel:+4961909266134"
+            className="inline-flex min-h-11 items-center gap-3 text-lg font-medium text-white hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            <Phone className="size-4" aria-hidden="true" />
+            06190 9266134
+          </a>
+          <p className="hidden text-sm text-white/60 lg:block">Montag–Freitag · 7–18 Uhr</p>
+        </div>
+      </aside>
+
+      <div className="min-w-0 p-6 md:p-10 lg:p-12">
+        {status === "ok" ? (
+          <div className="flex min-h-[480px] flex-col items-start justify-center gap-6">
+            <span className="grid size-16 place-items-center rounded-full bg-accent/15 text-brand">
+              <CheckCheck className="size-8" aria-hidden="true" />
+            </span>
+            <h3
+              ref={successRef}
+              tabIndex={-1}
+              className="scroll-mt-28 font-serif text-4xl text-brand outline-none"
+            >
+              Ihre Anfrage ist angekommen.
+            </h3>
+            <p className="max-w-md text-base leading-relaxed text-brand/70">
+              Vielen Dank für Ihr Vertrauen. Wir sehen uns Ihr Vorhaben an und melden uns persönlich
+              bei Ihnen.
+            </p>
+            <button
+              type="button"
+              className={buttonClass}
+              onClick={() => {
+                navigating.current = true;
+                setStep(0);
+                setErrors({});
+                setStatus("idle");
+              }}
+            >
+              Weiteres Projekt anfragen <ArrowRight className="size-4" aria-hidden="true" />
+            </button>
+            {isModal && onClose && (
+              <button
+                type="button"
+                onClick={onClose}
+                className="min-h-11 text-sm text-brand underline underline-offset-4"
+              >
+                Fenster schließen
+              </button>
+            )}
           </div>
-
-          <div className="p-8 md:p-12 flex flex-col gap-10">
-            <div className="space-y-5">
-              <span className="eyebrow eyebrow-bracket text-brand/70">Projektanfrage</span>
-              <h2 className="display text-3xl md:text-4xl leading-[1] text-brand">
-                Erzählen Sie uns von Ihrem <span className="italic font-light">Garten</span>projekt.
-              </h2>
-              <p className="text-brand/65 font-serif italic font-light text-base leading-relaxed">
-                Ein paar Angaben genügen – wir melden uns persönlich mit einem
-                unverbindlichen Erstgespräch und einem fairen Festpreisangebot.
+        ) : (
+          <form
+            ref={formRef}
+            noValidate
+            onSubmit={onSubmit}
+            aria-label="Projektanfrage"
+            className="scroll-mt-28"
+            aria-busy={pending}
+          >
+            <nav aria-label="Schritte der Projektanfrage">
+              <ol className="mb-4 grid grid-cols-3 gap-2">
+                {STEPS.map((item, i) => (
+                  <li key={item.label}>
+                    <button
+                      type="button"
+                      disabled={i >= step || pending}
+                      onClick={() => goTo(i as InquiryStep)}
+                      aria-current={i === step ? "step" : undefined}
+                      aria-label={i < step ? "Zurück zu " + item.label : item.label}
+                      className={
+                        "flex min-h-11 items-center gap-2 rounded-md text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand " +
+                        (i <= step ? "text-brand" : "text-brand/40")
+                      }
+                    >
+                      <span
+                        className={
+                          "grid size-7 shrink-0 place-items-center rounded-full text-xs " +
+                          (i === step
+                            ? "bg-brand text-white"
+                            : i < step
+                              ? "bg-accent/20 text-brand"
+                              : "bg-brand/5")
+                        }
+                      >
+                        {i < step ? (
+                          <Check className="size-3.5" aria-hidden="true" />
+                        ) : (
+                          "0" + (i + 1)
+                        )}
+                      </span>
+                      <span className={i === step ? "font-semibold" : ""}>{item.label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
+              <Progress
+                value={((step + 1) / 3) * 100}
+                aria-label={"Schritt " + (step + 1) + " von 3"}
+                getValueLabel={() => "Schritt " + (step + 1) + " von 3"}
+                className="h-1 bg-brand/10 [&>div]:bg-accent [&>div]:motion-reduce:transition-none"
+              />
+            </nav>
+            <div className="mb-7 mt-8" aria-live="polite" aria-atomic="true">
+              <p className="mb-2 text-xs font-medium uppercase tracking-[0.15em] text-brand/50">
+                Schritt {step + 1} von 3
               </p>
+              <h3
+                ref={headingRef}
+                tabIndex={-1}
+                className="scroll-mt-28 font-serif text-3xl leading-tight text-brand outline-none md:text-4xl"
+              >
+                {STEPS[step].title}
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-brand/65">{STEPS[step].hint}</p>
             </div>
 
-            <ul className="space-y-4 pt-8">
-              {[
-                { Icon: Clock, t: "Antwort innerhalb 24 Stunden" },
-                { Icon: MapPin, t: "Kostenloser Vor-Ort-Termin" },
-                { Icon: FileCheck2, t: "Transparentes Festpreisangebot" },
-                { Icon: ShieldCheck, t: "Meisterbetrieb · Versichert · Geprüft" },
-              ].map(({ Icon, t }) => (
-                <li key={t} className="flex items-center gap-4">
-                  <div className="shrink-0 w-9 h-9 rounded-full bg-brand/5 grid place-items-center">
-                    <Icon className="h-4 w-4 text-brand" strokeWidth={1.6} />
+            <fieldset disabled={pending} className="min-w-0 space-y-6">
+              <legend className="sr-only">{STEPS[step].title}</legend>
+              {step === 0 && (
+                <>
+                  <Choices
+                    label="Leistungsbereich *"
+                    uid={id("service")}
+                    options={INQUIRY_SERVICES}
+                    value={form.service}
+                    onChange={(value) => update("service", value)}
+                    error={errors.service}
+                    tiles
+                  />
+                  <Choices
+                    label="Es geht um"
+                    uid={id("projectType")}
+                    options={PROJECT_TYPES}
+                    value={form.projectType}
+                    onChange={(value) => update("projectType", value)}
+                  />
+                </>
+              )}
+              {step === 1 && (
+                <>
+                  <Field label="Ihre Idee *" id={id("description")} error={errors.description}>
+                    <textarea
+                      {...fieldProps("description")}
+                      required
+                      rows={4}
+                      maxLength={4000}
+                      value={form.description}
+                      onChange={(event) => update("description", event.target.value)}
+                      className={inputClass + " resize-y leading-relaxed"}
+                      placeholder="Zum Beispiel: Wir möchten unsere Terrasse erneuern und wünschen uns pflegeleichte Beete …"
+                    />
+                  </Field>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Wann möchten Sie starten?" id={id("timeframe")}>
+                      <Select
+                        id={id("timeframe")}
+                        value={form.timeframe}
+                        onChange={(value) => update("timeframe", value)}
+                        options={TIMEFRAMES}
+                      />
+                    </Field>
+                    <Field label="PLZ / Ort (optional)" id={id("zip")}>
+                      <input
+                        id={id("zip")}
+                        autoComplete="postal-code"
+                        maxLength={120}
+                        value={form.zip}
+                        onChange={(event) => update("zip", event.target.value)}
+                        className={inputClass}
+                        placeholder="z. B. 65795 Hattersheim"
+                      />
+                    </Field>
                   </div>
-                  <span className="text-brand text-sm">{t}</span>
-                </li>
-              ))}
-            </ul>
+                  <details
+                    className="rounded-2xl bg-brand/[0.035] p-5"
+                    open={showOptional || !!errors.area}
+                    onToggle={(event) => setShowOptional(event.currentTarget.open)}
+                  >
+                    <summary className="cursor-pointer text-sm font-semibold text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+                      Fläche & Budget ergänzen{" "}
+                      <span className="font-normal text-brand/55">(optional)</span>
+                    </summary>
+                    <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                      <Field label="Fläche in m² (ca.)" id={id("area")} error={errors.area}>
+                        <input
+                          {...fieldProps("area")}
+                          inputMode="numeric"
+                          maxLength={10}
+                          value={form.area}
+                          onChange={(event) =>
+                            update("area", event.target.value.replace(/[^0-9]/g, ""))
+                          }
+                          className={inputClass}
+                          placeholder="z. B. 100"
+                        />
+                      </Field>
+                      <Field label="Budgetrahmen" id={id("budget")}>
+                        <Select
+                          id={id("budget")}
+                          value={form.budget}
+                          onChange={(value) => update("budget", value)}
+                          options={BUDGETS}
+                          allowEmpty
+                        />
+                      </Field>
+                    </div>
+                  </details>
+                </>
+              )}
+              {step === 2 && (
+                <>
+                  <div className="flex items-start justify-between gap-4 rounded-2xl bg-brand/[0.035] p-5">
+                    <div className="min-w-0 text-sm text-brand">
+                      <p className="font-semibold">
+                        {form.service} · {form.projectType}
+                      </p>
+                      <p className="mt-1 text-brand/60">
+                        {form.zip && form.zip + " · "}
+                        {form.timeframe}
+                      </p>
+                      <details className="mt-3">
+                        <summary className="cursor-pointer underline underline-offset-4">
+                          Ihre Angaben ansehen
+                        </summary>
+                        <p className="mt-3 whitespace-pre-wrap break-words leading-relaxed">
+                          {form.description}
+                        </p>
+                        {(form.area || form.budget) && (
+                          <p className="mt-2 text-brand/60">
+                            {[form.area && form.area + " m²", form.budget]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </p>
+                        )}
+                      </details>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => goTo(1)}
+                      className="min-h-11 shrink-0 text-sm font-semibold text-brand underline underline-offset-4"
+                    >
+                      Ändern
+                    </button>
+                  </div>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Ihr Name *" id={id("name")} error={errors.name}>
+                      <input
+                        {...fieldProps("name")}
+                        autoComplete="name"
+                        required
+                        maxLength={200}
+                        value={form.name}
+                        onChange={(event) => update("name", event.target.value)}
+                        className={inputClass}
+                      />
+                    </Field>
+                    <Field label="E-Mail-Adresse *" id={id("email")} error={errors.email}>
+                      <input
+                        {...fieldProps("email")}
+                        autoComplete="email"
+                        required
+                        type="email"
+                        maxLength={320}
+                        value={form.email}
+                        onChange={(event) => update("email", event.target.value)}
+                        className={inputClass}
+                      />
+                    </Field>
+                  </div>
+                  <Choices
+                    label="Wie dürfen wir Sie kontaktieren?"
+                    uid={id("channel")}
+                    options={CHANNELS}
+                    value={form.channel}
+                    onChange={(value) => update("channel", value)}
+                  />
+                  <Field
+                    label={form.channel === "E-Mail" ? "Telefon (optional)" : "Telefon *"}
+                    id={id("phone")}
+                    error={errors.phone}
+                  >
+                    <input
+                      {...fieldProps("phone")}
+                      autoComplete="tel"
+                      type="tel"
+                      required={form.channel !== "E-Mail"}
+                      maxLength={50}
+                      value={form.phone}
+                      onChange={(event) => update("phone", event.target.value)}
+                      className={inputClass}
+                      placeholder="Ihre Telefonnummer"
+                    />
+                  </Field>
+                  <div>
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        {...fieldProps("consent")}
+                        checked={form.consent}
+                        onCheckedChange={(checked) => update("consent", checked === true)}
+                        className="mt-1 size-5 rounded-md border-brand/30 data-[state=checked]:bg-brand data-[state=checked]:text-white"
+                      />
+                      <label
+                        htmlFor={id("consent")}
+                        className="text-sm leading-relaxed text-brand/70"
+                      >
+                        Ich habe die{" "}
+                        <a
+                          href="/datenschutz"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brand underline underline-offset-4"
+                        >
+                          Datenschutzhinweise (neuer Tab)
+                        </a>{" "}
+                        gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung dieser
+                        Anfrage zu. *
+                      </label>
+                    </div>
+                    {errors.consent && (
+                      <p id={id("consent") + "-error"} className="mt-2 text-sm text-red-700">
+                        {errors.consent}
+                      </p>
+                    )}
+                  </div>
+                </>
+              )}
+            </fieldset>
 
-            <div className="pt-6 space-y-3">
-              <p className="text-[0.7rem] uppercase tracking-[0.22em] text-brand/45 font-semibold">
-                Lieber direkt sprechen?
+            {!!Object.values(errors).filter(Boolean).length && (
+              <p role="alert" className="mt-5 text-sm text-red-700">
+                Bitte prüfen Sie die markierten Angaben.
               </p>
-              <a href="tel:+4961909266134" className="flex items-center gap-3 text-brand hover:text-accent transition">
-                <Phone className="h-4 w-4" strokeWidth={1.6} />
-                <span className="font-serif text-lg">06190 9266134</span>
-              </a>
-              <a href="mailto:info@loni-galabau.de" className="flex items-center gap-3 text-brand hover:text-accent transition">
-                <Mail className="h-4 w-4" strokeWidth={1.6} />
-                <span className="font-serif text-lg">info@loni-galabau.de</span>
-              </a>
-            </div>
-          </div>
-        </aside>
-
-        {/* RIGHT — Form */}
-        <div className="lg:col-span-7 p-8 md:p-14 bg-white">
-          {status === "ok" ? (
-            <div className="h-full min-h-[500px] flex flex-col items-center justify-center text-center gap-6">
-              <div className="w-16 h-16 rounded-full bg-accent/20 grid place-items-center">
-                <FileCheck2 className="h-7 w-7 text-accent" />
-              </div>
-              <h3 className="display text-3xl md:text-4xl">Vielen Dank!</h3>
-              <p className="max-w-md text-brand/70 font-serif italic text-lg">
-                Ihre Projektanfrage ist bei uns eingegangen. Wir melden uns innerhalb von
-                24 Stunden persönlich bei Ihnen.
+            )}
+            {status === "err" && (
+              <p
+                role="alert"
+                className="mt-5 rounded-xl bg-red-50 p-4 text-sm leading-relaxed text-red-800"
+              >
+                Die Anfrage konnte gerade nicht gesendet werden. Ihre Eingaben sind noch da. Bitte
+                versuchen Sie es erneut oder rufen Sie uns unter 06190 9266134 an.
               </p>
-              <div className="flex flex-col gap-3 items-center">
+            )}
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+              {step > 0 ? (
                 <button
                   type="button"
-                  onClick={() => setStatus("idle")}
-                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold border-b border-brand/40 pb-1 hover:border-brand"
+                  disabled={pending}
+                  onClick={() => goTo((step - 1) as InquiryStep)}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full px-2 text-sm font-semibold text-brand hover:text-brand/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand disabled:opacity-50"
                 >
-                  Weitere Anfrage senden <ArrowUpRight className="h-3.5 w-3.5" />
+                  <ArrowLeft className="size-4" aria-hidden="true" />
+                  Zurück
                 </button>
-                {isModal && onClose && (
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className="mt-4 bg-brand text-brand-foreground px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-brand/90 transition"
-                  >
-                    Fenster schließen
-                  </button>
+              ) : (
+                <p className="text-sm text-brand/50">Unverbindlich & kostenlos</p>
+              )}
+              <button type="submit" disabled={pending} className={buttonClass + " ml-auto"}>
+                {pending ? (
+                  <>
+                    <Loader2
+                      className="size-4 animate-spin motion-reduce:animate-none"
+                      aria-hidden="true"
+                    />
+                    Wird gesendet …
+                  </>
+                ) : (
+                  <>
+                    {step === 2
+                      ? "Anfrage senden"
+                      : step === 0
+                        ? "Weiter zu Ihren Wünschen"
+                        : "Weiter zum Kontakt"}
+                    <ArrowRight className="size-4" aria-hidden="true" />
+                  </>
                 )}
-              </div>
+              </button>
             </div>
-          ) : (
-            <form onSubmit={onSubmit} className="space-y-10">
-              {/* SECTION 1 */}
-              <fieldset className="space-y-6">
-                <legend className="text-[0.7rem] uppercase tracking-[0.25em] text-brand/50 font-semibold mb-5">
-                  01 — Zu Ihrem Projekt
-                </legend>
-
-                <Field label="Leistungsbereich">
-                  <Select value={form.service} onChange={(v) => update("service", v)} options={SERVICES} />
-                </Field>
-
-                <Field label="Projekttyp">
-                  <div className="flex flex-wrap gap-2">
-                    {PROJECT_TYPES.map((t) => (
-                      <Chip key={t} active={form.projectType === t} onClick={() => update("projectType", t)}>{t}</Chip>
-                    ))}
-                  </div>
-                </Field>
-
-                <div className="grid md:grid-cols-2 gap-5">
-                  <Field label="Fläche (ca.)">
-                    <div className="relative">
-                      <input
-                        inputMode="numeric"
-                        maxLength={10}
-                        value={form.area}
-                        onChange={(e) => update("area", e.target.value.replace(/[^0-9]/g, ""))}
-                        className="pi-input pr-12"
-                        placeholder="z. B. 250"
-                      />
-                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-brand/45">m²</span>
-                    </div>
-                  </Field>
-                  <Field label="Zeitraum">
-                    <Select value={form.timeframe} onChange={(v) => update("timeframe", v)} options={TIMEFRAMES} />
-                  </Field>
-                </div>
-
-                <Field label="Budgetrahmen (optional)">
-                  <Select
-                    value={form.budget}
-                    onChange={(v) => update("budget", v)}
-                    options={BUDGETS}
-                    placeholder="Bitte wählen…"
-                    allowEmpty
-                  />
-                </Field>
-
-                <Field label="Projektbeschreibung *">
-                  <textarea
-                    required
-                    rows={5}
-                    maxLength={4000}
-                    value={form.description}
-                    onChange={(e) => update("description", e.target.value)}
-                    className="pi-input resize-none leading-relaxed"
-                    placeholder="Was schwebt Ihnen vor? Pflanzen, Materialien, besondere Wünsche…"
-                  />
-                </Field>
-              </fieldset>
-
-              {/* SECTION 2 */}
-              <fieldset className="space-y-6 border-t border-brand/10 pt-10">
-                <legend className="text-[0.7rem] uppercase tracking-[0.25em] text-brand/50 font-semibold mb-5">
-                  02 — Ihre Kontaktdaten
-                </legend>
-
-                <div className="grid md:grid-cols-2 gap-5">
-                  <Field label="Name *">
-                    <input required maxLength={200} value={form.name} onChange={(e) => update("name", e.target.value)} className="pi-input" />
-                  </Field>
-                  <Field label="E-Mail *">
-                    <input required type="email" maxLength={320} value={form.email} onChange={(e) => update("email", e.target.value)} className="pi-input" />
-                  </Field>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-5">
-                  <Field label="Telefon">
-                    <input maxLength={50} value={form.phone} onChange={(e) => update("phone", e.target.value)} className="pi-input" />
-                  </Field>
-                  <Field label="PLZ / Ort">
-                    <input maxLength={120} value={form.zip} onChange={(e) => update("zip", e.target.value)} className="pi-input" placeholder="65795 Hattersheim" />
-                  </Field>
-                </div>
-
-                <Field label="Bevorzugte Kontaktart">
-                  <div className="flex flex-wrap gap-2">
-                    {CHANNELS.map((c) => (
-                      <Chip key={c} active={form.channel === c} onClick={() => update("channel", c)}>{c}</Chip>
-                    ))}
-                  </div>
-                </Field>
-              </fieldset>
-
-              {/* CONSENT + SUBMIT */}
-              <div className="space-y-5 border-t border-brand/10 pt-8">
-                <label className="flex gap-3 text-sm text-brand/75 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={form.consent}
-                    onChange={(e) => update("consent", e.target.checked)}
-                    className="mt-1 h-4 w-4 accent-[var(--brand)] shrink-0"
-                  />
-                  <span>
-                    Ich habe die Datenschutzhinweise gelesen und bin damit einverstanden, dass
-                    meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden.
-                  </span>
-                </label>
-
-                {status === "err" && (
-                  <p className="text-sm text-red-600">{errorMsg}</p>
-                )}
-
-                <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-                  <p className="text-xs text-brand/45 max-w-xs">
-                    Mit dem Absenden stimmen Sie unserer Datenverarbeitung gemäss Datenschutzerklärung zu.
-                  </p>
-                  <button
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="group inline-flex items-center gap-3 bg-brand text-brand-foreground px-9 py-4 rounded-full text-sm uppercase tracking-[0.2em] font-semibold hover:bg-brand/90 disabled:opacity-50 transition"
-                  >
-                    {status === "loading" ? "Wird gesendet…" : "Projektanfrage senden"}
-                    <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
-                  </button>
-                </div>
-
-                <p className="text-xs text-brand/45">
-                  Pflichtfelder sind mit * gekennzeichnet. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
-                </p>
-              </div>
-            </form>
-          )}
-        </div>
+            <p className="mt-5 text-xs leading-relaxed text-brand/50">
+              {step === 2
+                ? "Ihre Angaben werden nur zur Bearbeitung Ihrer Anfrage verwendet."
+                : "* Pflichtangaben. Sie können Ihre Auswahl später ändern."}
+            </p>
+          </form>
+        )}
       </div>
     </div>
   );
 
-  if (isModal) {
-    return (
-      <div className="w-full">
-        {innerContent}
-        <style>{`
-          .pi-input {
-            width: 100%;
-            background: #ffffff;
-            border: 1px solid color-mix(in oklab, var(--brand) 14%, transparent);
-            border-radius: 0.85rem;
-            padding: 0.85rem 1rem;
-            font-size: 0.95rem;
-            color: var(--brand);
-            font-family: inherit;
-            transition: border-color .15s, box-shadow .15s, background-color .15s;
-            appearance: none;
-            -webkit-appearance: none;
-          }
-          .pi-input::placeholder { color: color-mix(in oklab, var(--brand) 35%, transparent); }
-          .pi-input:hover { border-color: color-mix(in oklab, var(--brand) 28%, transparent); }
-          .pi-input:focus {
-            outline: none;
-            border-color: var(--brand);
-            box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 10%, transparent);
-          }
-        `}</style>
-      </div>
-    );
-  }
-
-  return (
-    <section id="projektanfrage" className="px-6 md:px-10 pb-24 md:pb-36 pt-4">
-      {innerContent}
-      <style>{`
-        .pi-input {
-          width: 100%;
-          background: #ffffff;
-          border: 1px solid color-mix(in oklab, var(--brand) 14%, transparent);
-          border-radius: 0.85rem;
-          padding: 0.85rem 1rem;
-          font-size: 0.95rem;
-          color: var(--brand);
-          font-family: inherit;
-          transition: border-color .15s, box-shadow .15s, background-color .15s;
-          appearance: none;
-          -webkit-appearance: none;
-        }
-        .pi-input::placeholder { color: color-mix(in oklab, var(--brand) 35%, transparent); }
-        .pi-input:hover { border-color: color-mix(in oklab, var(--brand) 28%, transparent); }
-        .pi-input:focus {
-          outline: none;
-          border-color: var(--brand);
-          box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 10%, transparent);
-        }
-      `}</style>
+  return isModal ? (
+    content
+  ) : (
+    <section id="projektanfrage" className="scroll-mt-28 px-4 pb-24 pt-4 md:px-10 md:pb-36">
+      {content}
     </section>
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  id,
+  error,
+  children,
+}: {
+  label: string;
+  id: string;
+  error?: string;
+  children: ReactNode;
+}) {
   return (
-    <label className="block">
-      <span className="block text-[0.7rem] uppercase tracking-[0.2em] text-brand/55 mb-2 font-semibold">{label}</span>
+    <div className="min-w-0">
+      <label htmlFor={id} className="mb-2 block text-sm font-medium text-brand">
+        {label}
+      </label>
       {children}
-    </label>
+      {error && (
+        <p id={id + "-error"} className="mt-2 text-sm text-red-700">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 
-function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function Choices({
+  label,
+  uid,
+  options,
+  value,
+  onChange,
+  error,
+  tiles = false,
+}: {
+  label: string;
+  uid: string;
+  options: string[];
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  tiles?: boolean;
+}) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`px-5 py-2.5 rounded-full text-sm border transition ${
-        active
-          ? "bg-brand text-brand-foreground border-brand"
-          : "bg-white text-brand/75 border-brand/15 hover:border-brand/40"
-      }`}
-    >
-      {children}
-    </button>
+    <div>
+      <p id={uid + "-label"} className="mb-3 text-sm font-medium text-brand">
+        {label}
+      </p>
+      <RadioGroup
+        id={uid}
+        aria-labelledby={uid + "-label"}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? uid + "-error" : undefined}
+        tabIndex={-1}
+        value={value}
+        onValueChange={onChange}
+        className={
+          tiles ? "grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2" : "flex flex-wrap gap-2"
+        }
+      >
+        {options.map((option, index) => (
+          <label
+            key={option}
+            htmlFor={uid + "-" + index}
+            className={
+              "relative flex min-h-12 cursor-pointer items-center justify-between gap-3 px-4 py-3 text-sm transition-colors focus-within:ring-2 focus-within:ring-brand focus-within:ring-offset-2 " +
+              (tiles ? "rounded-xl " : "rounded-full ") +
+              (value === option ? "bg-brand text-white" : "bg-brand/5 text-brand hover:bg-brand/10")
+            }
+          >
+            <RadioGroupItem id={uid + "-" + index} value={option} className="sr-only" />
+            <span lang="de" className="min-w-0 break-words hyphens-auto">
+              {option}
+            </span>
+            {tiles && (
+              <span className="size-4 shrink-0" aria-hidden="true">
+                {value === option && <Check className="size-4 text-accent" />}
+              </span>
+            )}
+          </label>
+        ))}
+      </RadioGroup>
+      {error && (
+        <p id={uid + "-error"} className="mt-2 text-sm text-red-700">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
 
 function Select({
+  id,
   value,
   onChange,
   options,
-  placeholder,
   allowEmpty,
 }: {
+  id: string;
   value: string;
-  onChange: (v: string) => void;
+  onChange: (value: string) => void;
   options: string[];
-  placeholder?: string;
   allowEmpty?: boolean;
 }) {
   return (
     <div className="relative">
       <select
+        id={id}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="pi-input pr-12 cursor-pointer bg-white"
+        onChange={(event) => onChange(event.target.value)}
+        className={inputClass + " appearance-none pr-10"}
       >
-        {allowEmpty && <option value="">{placeholder ?? "Bitte wählen…"}</option>}
-        {options.map((o) => (
-          <option key={o} value={o}>{o}</option>
+        {allowEmpty && <option value="">Noch offen</option>}
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
         ))}
       </select>
       <ChevronDown
-        className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-brand/50"
-        strokeWidth={1.8}
+        className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-brand/50"
+        aria-hidden="true"
       />
     </div>
   );

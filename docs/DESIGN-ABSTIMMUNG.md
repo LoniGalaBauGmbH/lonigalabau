@@ -54,6 +54,17 @@ früheren Einzüge nach dem ersten Eintrag entfallen. Farben und übrige Seiten-
 gestaltung bleiben erhalten. Ein eigener Gartenfilm und zusätzliche dokumentierte
 Projektfotos stehen weiterhin aus.
 
+## Projektanfrage in drei Schritten
+
+Auf Wunsch wird das lange Anfrageformular auf der Startseite durch die Schritte
+Projekt, Wünsche und Kontakt ersetzt. Das Porträt entfällt. Die gemeinsame
+Formularkomponente übernimmt den Ablauf auch im Anfragefenster. Auswahl und
+Eingaben bleiben beim Zurückgehen erhalten; Fläche und Budget sind optional
+aufklappbar. Eine Zusammenfassung ist vor dem Absenden einsehbar. Kontaktdaten
+werden erst am Ende abgefragt und nur beim ausdrücklichen Absenden übertragen.
+Telefon/WhatsApp als Kontaktwunsch erfordert eine Telefonnummer. Der bestehende
+Server-Endpunkt und das Datenformat bleiben erhalten.
+
 ## Technischer Stand nach der Rücknahme
 
 Auch der Anwendungscode wurde auf den Stand vor der großen Überarbeitung
