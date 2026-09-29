@@ -7,6 +7,14 @@ Felder und der zugehörigen Anhänge. Antworten auf die Nachricht gehen durch `r
 an die im Formular angegebene Adresse. Es werden keine automatischen Kundenantworten
 oder Angebote verschickt; der E-Mail-Assistent bleibt ein separates Vorhaben.
 
+Alle vier Formularwege verwenden dieselbe strukturierte E-Mail-Gestaltung:
+Kontaktkopf, separate Themenabschnitte, zweispaltige Datenzeilen, Nachricht,
+Anhangsliste und Adminlink. Gartenplaner und Startseiten-Anfrage zerlegen ihre
+Projektbriefings in passende Abschnitte; Bewerbungen zeigen die Stelle im Kopf.
+Inline-Formatierung, klassische HTML-Tabellen und explizite `<br>`-Umbrüche halten
+die Inhalte auch in Mailprogrammen lesbar, die CSS-Whitespace-Regeln ignorieren.
+Eine gegliederte Textversion ist ebenfalls enthalten.
+
 ## Konfiguration
 
 - `RESEND_API_KEY`: ausschließlich als geheime Servervariable hinterlegen.

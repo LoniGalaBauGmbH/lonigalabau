@@ -4,9 +4,11 @@ import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import ts from "typescript";
 const source=readFileSync(new URL("../src/lib/submission-notification.server.ts",import.meta.url),"utf8");
+const emailModule={exports:{}};
+vm.runInNewContext(ts.transpileModule(readFileSync(new URL('../src/lib/submission-email.ts',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module:emailModule,exports:emailModule.exports});
 function harness({sent=false,failed=false,missingKey=false,missingFile=false}={}) {
  const module={exports:{}};const calls=[],updates=[];
- vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,Buffer,AbortSignal,process:{env:missingKey?{}:{RESEND_API_KEY:"test-key",RESEND_FROM:"Website <mail@example.invalid>"}},console:{info(){},error(){}},fetch:async(url,options)=>{calls.push({url,options});return{ok:!failed,status:failed?503:200,json:async()=>({id:"mail-id"})};}});
+ vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,require:(name)=>{assert.equal(name,'./submission-email');return emailModule.exports;},Buffer,AbortSignal,process:{env:missingKey?{}:{RESEND_API_KEY:"test-key",RESEND_FROM:"Website <mail@example.invalid>"}},console:{info(){},error(){}},fetch:async(url,options)=>{calls.push({url,options});return{ok:!failed,status:failed?503:200,json:async()=>({id:"mail-id"})};}});
  const record={id:"11111111-1111-4111-8111-111111111111",name:"<img onerror='bad'>",email:"qa@example.invalid",phone:"123",subject:"Garten\nTest",message:"Wünsche & Maße <script>bad</script>",image_paths:["test.pdf"],notification_sent_at:sent?"2026-09-29":null};
  const query={select:()=>query,eq:()=>query,single:async()=>({data:record,error:null}),update:(data)=>{updates.push(data);return{eq:async()=>({error:null})};}};
  const client={from:()=>query,storage:{from:()=>({download:async()=>({data:missingFile?null:new Blob(["%PDF-1.7 test"]),error:missingFile}),info:async()=>({data:{metadata:{originalName:"Plan.pdf"}}})})}};

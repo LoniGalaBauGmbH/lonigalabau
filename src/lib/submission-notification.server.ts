@@ -1,13 +1,9 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { renderSubmissionEmail } from "./submission-email";
 
 export type SubmissionTable = "contact_requests" | "applications";
 export const NOTIFICATION_TO = "webseite@loni-galabau.de";
 const SITE = "https://loni-galabau.serhad1999.chatgpt.site";
-const escapeHtml = (text: string) =>
-  text.replace(
-    /[&<>"']/g,
-    (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]!,
-  );
 
 export function notificationMessage(
   record: {
@@ -24,37 +20,13 @@ export function notificationMessage(
 ) {
   const title = table === "applications" ? "Neue Bewerbung" : "Neue Website-Anfrage";
   const adminUrl = SITE + (table === "applications" ? "/admin/bewerbungen" : "/admin/anfragen");
-  const text = [
-    title,
-    "",
-    ...(jobTitle ? ["Stelle: " + jobTitle] : []),
-    "Name: " + record.name,
-    "E-Mail: " + record.email,
-    "Telefon: " + (record.phone || "Nicht angegeben"),
-    ...(record.subject ? ["Betreff: " + record.subject] : []),
-    "",
-    record.message || "Keine zusätzliche Nachricht.",
-    "",
-    "Anhänge: " + (files.length ? files.join(", ") : "Keine"),
-    "",
-    "Im geschützten Adminbereich öffnen: " + adminUrl,
-    "Vorgangsnummer: " + record.id,
-  ].join("\n");
   return {
     to: [NOTIFICATION_TO],
     reply_to: record.email,
     subject: (title + " · " + (jobTitle || record.subject || record.name))
       .replace(/[\r\n]/g, " ")
       .slice(0, 200),
-    text,
-    html:
-      '<div style="font-family:Arial,sans-serif;color:#1e4826;max-width:680px"><h1 style="font-size:24px">' +
-      title +
-      '</h1><div style="white-space:pre-wrap;line-height:1.6;color:#263d2b">' +
-      escapeHtml(text) +
-      '</div><p><a href="' +
-      adminUrl +
-      '" style="color:#1e4826">Vorgang im Adminbereich öffnen</a></p></div>',
+    ...renderSubmissionEmail(record, table === "applications", jobTitle, files, adminUrl),
     headers: { "Auto-Submitted": "auto-generated" },
     tags: [
       { name: "source", value: table },
