@@ -6,6 +6,8 @@ Die Gruppierung erfolgt nach sichtbaren Gewerken, nicht nach vermuteten Kunden o
 
 Für den Vorher-Nachher-Regler wurden am 29.09.2026 zwei weitere, ausdrücklich ausgewählte PNG-Dateien ergänzt: `ChatGPT-Bild 29. Sept. 2026, 09_05_48.png` als „Vorher“ (Nr. 096) und `ChatGPT-Bild 29. Sept. 2026, 09_05_27.png` als „Nachher“ (Nr. 097). Beide zeigen die Terrassenfläche aus gleicher Perspektive. WebP-Exporte in 1448 × 1086 und 800 × 600 Pixeln, ohne EXIF-/GPS-Metadaten. Der gezielte Import mit `node --env-file=.env scripts/import-project-gallery.mjs --apply --comparison-only` aktualisiert nur diese beiden Bildfelder und bewahrt Hero, sonstige Bildfelder und Galerien.
 
+Für „Wir sind in jeder Hinsicht anders“ wurde die vom Nutzer ausgewählte Datei `Startseite 2.Bild.png` ergänzt (Nr. 098): Bagger und Radlader im Abendlicht. WebP-Exporte in 941 × 1672 und 600 × 1066 Pixeln; der mittige Ausschnitt im bestehenden 4:5-Bildrahmen zeigt beide Maschinen. Das Startseiten-Hero bleibt unverändert.
+
 | Nr. | Originaldatei | Kategorie | Motiv | Auswahl |
 |---|---|---|---|---|
 | 001 | 4431de2a-5442-4fdb-bf13-6f6b37533fe5.JPG | Gärten & Rasen | Garten bei Nacht, durch ein Fenster fotografiert | Reserve |

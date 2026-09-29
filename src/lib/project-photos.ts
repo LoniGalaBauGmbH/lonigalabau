@@ -264,6 +264,12 @@ export const projectPhotos = {
     smallWidth: 800,
     alt: "Terrasse mit großformatigem Plattenbelag und anthrazitfarbenem Sichtschutz",
   },
+  "98": {
+    src: "/images/projekte/bagger-radlader-abendlicht.webp",
+    width: 941,
+    smallWidth: 600,
+    alt: "Bagger und Radlader bei Erdarbeiten im Abendlicht",
+  },
 } as const;
 const byName = new Map(
   Object.values(projectPhotos).map((photo) => [photo.src.split("/").pop(), photo]),

@@ -15,7 +15,7 @@ import { ServiceCarousel } from "@/components/site/ServiceCarousel";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
-const aboutImg = projectPhotos[18].src;
+const aboutImg = projectPhotos[98].src;
 
 import partnerBickhardt from "@/assets/partners/bickhardt-bau.png";
 import partnerHattersheim from "@/assets/partners/hattersheim.png";
@@ -258,9 +258,10 @@ function HomePage() {
               <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl">
                 <ProjectImage
                   src={aboutImg}
-                  alt="Natursteintreppe und Stützmauern während der Bauphase"
-                  width={1600}
-                  height={2000}
+                  alt="Bagger und Radlader bei Erdarbeiten im Abendlicht"
+                  width={941}
+                  height={1672}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   loading="lazy"
                   className="w-full h-full object-cover"
                 />
