@@ -2,7 +2,9 @@
 
 95 Aufnahmen vom Nutzer bereitgestellt, 42 Fotos für die Website ausgewählt. Originaldateien unverändert; WebP-Kopien sind korrekt ausgerichtet und ohne EXIF-/GPS-Metadaten gespeichert. Zwei Bildgrößen werden passend zur Darstellung geladen. Das Startseiten-Hero und die Logos bleiben unverändert.
 
-Die Gruppierung erfolgt nach sichtbaren Gewerken, nicht nach vermuteten Kunden oder Standorten. Die Galerien können mehrere Projekte enthalten. Die beiden Bilder im Konstruktionsvergleich stammen aus verschiedenen Projekten und sind entsprechend gekennzeichnet. Für Porträts liegen keine eindeutig zugeordneten neuen Aufnahmen vor; bestehende Porträts bleiben erhalten.
+Die Gruppierung erfolgt nach sichtbaren Gewerken, nicht nach vermuteten Kunden oder Standorten. Die Galerien können mehrere Projekte enthalten. Für Porträts liegen keine eindeutig zugeordneten neuen Aufnahmen vor; bestehende Porträts bleiben erhalten.
+
+Für den Vorher-Nachher-Regler wurden am 29.09.2026 zwei weitere, ausdrücklich ausgewählte PNG-Dateien ergänzt: `ChatGPT-Bild 29. Sept. 2026, 09_05_48.png` als „Vorher“ (Nr. 096) und `ChatGPT-Bild 29. Sept. 2026, 09_05_27.png` als „Nachher“ (Nr. 097). Beide zeigen die Terrassenfläche aus gleicher Perspektive. WebP-Exporte in 1448 × 1086 und 800 × 600 Pixeln, ohne EXIF-/GPS-Metadaten. Der gezielte Import mit `node --env-file=.env scripts/import-project-gallery.mjs --apply --comparison-only` aktualisiert nur diese beiden Bildfelder und bewahrt Hero, sonstige Bildfelder und Galerien.
 
 | Nr. | Originaldatei | Kategorie | Motiv | Auswahl |
 |---|---|---|---|---|

@@ -252,6 +252,18 @@ export const projectPhotos = {
     smallWidth: 800,
     alt: "Naturnahe Spielfläche mit Sitzkreis und Bauwagen",
   },
+  "96": {
+    src: "/images/projekte/terrasse-vorher.webp",
+    width: 1448,
+    smallWidth: 800,
+    alt: "Terrassenfläche in der Bauphase mit Bodenarbeiten und Baumaterial",
+  },
+  "97": {
+    src: "/images/projekte/terrasse-nachher.webp",
+    width: 1448,
+    smallWidth: 800,
+    alt: "Terrasse mit großformatigem Plattenbelag und anthrazitfarbenem Sichtschutz",
+  },
 } as const;
 const byName = new Map(
   Object.values(projectPhotos).map((photo) => [photo.src.split("/").pop(), photo]),

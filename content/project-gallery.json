@@ -12,8 +12,8 @@
   },
   "siteImages": {
     "about_hero_bg": 34,
-    "before_garden": 76,
-    "after_garden": 69
+    "before_garden": 96,
+    "after_garden": 97
   },
   "photos": {
     "13": "/images/projekte/natursteinmauer-mit-aussentreppe.webp",
@@ -57,7 +57,9 @@
     "87": "/images/projekte/entwaesserungsrinne-am-pflasterweg.webp",
     "88": "/images/projekte/stauden-und-wege-im-stadtraum.webp",
     "91": "/images/projekte/gartenweg-mit-treppe.webp",
-    "94": "/images/projekte/naturnahe-spielflaeche.webp"
+    "94": "/images/projekte/naturnahe-spielflaeche.webp",
+    "96": "/images/projekte/terrasse-vorher.webp",
+    "97": "/images/projekte/terrasse-nachher.webp"
   },
   "projects": [
     {

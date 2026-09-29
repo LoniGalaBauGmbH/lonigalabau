@@ -22,20 +22,20 @@ export type SiteImages = {
 
 export function useSiteImages() {
   const fetchFn = useServerFn(getSiteImages);
-  
+
   const { data, isLoading } = useQuery({
     queryKey: ["site-images"],
     queryFn: () => fetchFn(),
     // Keep data fresh in memory, avoids aggressive refetching
-    staleTime: 1000 * 60 * 5, 
+    staleTime: 1000 * 60 * 5,
   });
 
   const images: SiteImages = {
     logo: data?.logo || logoDefault,
     logo_white: data?.logo || logoWhiteDefault, // Logo can also be used as white logo fallback or directly
     hero_bg: data?.hero_bg || heroDefault,
-    before_garden: data?.before_garden || projectPhotos[76].src,
-    after_garden: data?.after_garden || projectPhotos[69].src,
+    before_garden: data?.before_garden || projectPhotos[96].src,
+    after_garden: data?.after_garden || projectPhotos[97].src,
     about_hero_bg: data?.about_hero_bg || projectPhotos[34].src,
     service_detail_bg: data?.service_detail_bg || heroDefault,
     contact_portrait: data?.contact_portrait || contactPortraitDefault,
@@ -43,6 +43,6 @@ export function useSiteImages() {
 
   return {
     images,
-    isLoading
+    isLoading,
   };
 }

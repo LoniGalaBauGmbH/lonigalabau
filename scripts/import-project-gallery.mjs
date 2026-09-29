@@ -6,9 +6,18 @@ import assert from "node:assert/strict";
 import { createClient } from "@supabase/supabase-js";
 
 const content = JSON.parse(fs.readFileSync("content/project-gallery.json", "utf8"));
+const comparisonOnly = process.argv.includes("--comparison-only");
+const siteImages = Object.fromEntries(
+  Object.entries(content.siteImages).filter(
+    ([key]) => !comparisonOnly || ["before_garden", "after_garden"].includes(key),
+  ),
+);
+const photos = comparisonOnly
+  ? Object.values(siteImages).map((id) => content.photos[id])
+  : Object.values(content.photos);
 if (!process.argv.includes("--apply")) {
   console.log(
-    `Ready: ${Object.keys(content.photos).length} photos, ${content.projects.length} galleries. Use --apply to import.`,
+    `Ready: ${photos.length} photos, ${comparisonOnly ? 0 : content.projects.length} galleries. Use --apply to import.`,
   );
   process.exit(0);
 }
@@ -47,10 +56,7 @@ const backupDir = path.join(".git", "photo-import-backups");
 fs.mkdirSync(backupDir, { recursive: true });
 fs.writeFileSync(path.join(backupDir, `${Date.now()}.json`), JSON.stringify(backup, null, 2));
 const bucket = client.storage.from("project-images");
-const files = Object.values(content.photos).flatMap((src) => [
-  src,
-  src.replace(/\.webp$/, "-small.webp"),
-]);
+const files = photos.flatMap((src) => [src, src.replace(/\.webp$/, "-small.webp")]);
 const present = process.argv.includes("--only-missing")
   ? new Set(
       (await checked(bucket.list(content.collection, { limit: 1000 }))).map((file) => file.name),
@@ -76,35 +82,37 @@ for (let i = 0; i < uploads.length; i += 5) {
 }
 const url = (src) =>
   bucket.getPublicUrl(`${content.collection}/${path.basename(src)}`).data.publicUrl;
-for (const [slug, photoId] of Object.entries(content.services)) {
-  const service = services.find((s) => s.slug === slug);
-  assert.ok(service, slug);
+if (!comparisonOnly) {
+  for (const [slug, photoId] of Object.entries(content.services)) {
+    const service = services.find((s) => s.slug === slug);
+    assert.ok(service, slug);
+    await checked(
+      client
+        .from("services")
+        .update({ hero_image: url(content.photos[photoId]) })
+        .eq("id", service.id),
+    );
+  }
   await checked(
-    client
-      .from("services")
-      .update({ hero_image: url(content.photos[photoId]) })
-      .eq("id", service.id),
+    client.from("projects").upsert(
+      content.projects.map(({ service, ...project }) => ({
+        ...project,
+        service_id: services.find((s) => s.slug === service).id,
+        images: project.images.map(url),
+      })),
+      { onConflict: "id" },
+    ),
   );
 }
-await checked(
-  client.from("projects").upsert(
-    content.projects.map(({ service, ...project }) => ({
-      ...project,
-      service_id: services.find((s) => s.slug === service).id,
-      images: project.images.map(url),
-    })),
-    { onConflict: "id" },
-  ),
-);
-// This flag is applied after publishing the component copy describing the two distinct projects.
-if (process.argv.includes("--site-images")) {
+// The scoped comparison import preserves every other image setting and all galleries.
+if (comparisonOnly || process.argv.includes("--site-images")) {
   const latest = await checked(
     client.from("site_settings").select("value").eq("key", "images").maybeSingle(),
   );
   const merged = {
     ...(latest?.value ?? {}),
     ...Object.fromEntries(
-      Object.entries(content.siteImages).map(([key, id]) => [key, url(content.photos[id])]),
+      Object.entries(siteImages).map(([key, id]) => [key, url(content.photos[id])]),
     ),
   };
   assert.equal(merged.hero_bg, latest?.value?.hero_bg);
@@ -127,11 +135,19 @@ const current = await checked(
   client.from("site_settings").select("value").eq("key", "images").maybeSingle(),
 );
 assert.equal(current?.value?.hero_bg, previousImages.hero_bg);
+if (comparisonOnly) {
+  for (const [key, id] of Object.entries(siteImages)) {
+    assert.equal(current?.value?.[key], url(content.photos[id]));
+  }
+  const withoutComparison = (images) =>
+    Object.fromEntries(Object.entries(images).filter(([key]) => !Object.hasOwn(siteImages, key)));
+  assert.deepEqual(withoutComparison(current.value), withoutComparison(previousImages));
+}
 console.log(
   JSON.stringify({
     uploaded: uploads.length,
-    services: Object.keys(content.services).length,
-    galleries: verified.length,
+    services: comparisonOnly ? 0 : Object.keys(content.services).length,
+    galleries: comparisonOnly ? 0 : verified.length,
     homepageHeroUnchanged: true,
   }),
 );
