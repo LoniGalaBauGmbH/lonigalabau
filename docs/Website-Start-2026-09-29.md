@@ -69,8 +69,14 @@ Vorgangsnummer im Resend-Protokoll ausschließen, dass die Mail bereits angenomm
 Bounce/Spam nicht blind erneut versenden.
 
 Secrets stehen ausschließlich in ignorierten lokalen .env-Dateien bzw. Sites/Vault.
-Der Cron-Bearer darf nur für diesen Endpunkt eingesetzt werden. Net-Queue und
-Net-Funktionen sind Browserrollen entzogen. RLS ohne Lesepolicy ist für interne
+Der Cron-Bearer darf nur für diesen Endpunkt eingesetzt werden. Alle fünf Minuten
+ruft pg_cron eine private Routine in website_ops auf. Diese liest das Secret aus
+Vault und sendet es synchron mit der HTTP-Extension, ohne es in einer Request-Queue
+zu speichern. Die Routine ist Browserrollen entzogen. Das vorübergehend vorbereitete
+pg_net wurde wieder entfernt, weil dessen providerseitige Queue-Berechtigungen
+nicht wirksam eingeschränkt werden konnten. Bei HTTP-Timeouts wird der Cronlauf
+als fehlgeschlagen protokolliert; erneuter Versand bleibt idempotent.
+RLS ohne Lesepolicy ist für interne
 Tabellen absichtlich eine vollständige Zugriffssperre; keine öffentlichen Policies
 ergänzen, um den entsprechenden Info-Hinweis „loszuwerden“.
 

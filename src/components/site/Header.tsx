@@ -98,7 +98,13 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
         <div className="site-header-glass" aria-hidden="true" />
         <div className="site-header-inner">
           <Link to="/" className="site-header-logo" aria-label="Loni Galabau – Startseite">
-            <img src={images.logo} alt="Loni Galabau" width={140} height={40} />
+            <img
+              src={images.logo}
+              alt="Loni Galabau"
+              width={140}
+              height={40}
+              fetchPriority="high"
+            />
           </Link>
           <NavigationMenu.Root
             className="site-desktop-nav"
@@ -227,7 +233,13 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
           <DialogTitle className="sr-only">Navigation</DialogTitle>
           <div className="site-mobile-menu-top">
             <Link to="/" onClick={() => setOpen(false)} aria-label="Loni Galabau – Startseite">
-              <img src={images.logo} alt="Loni Galabau" width={140} height={40} />
+              <img
+                src={images.logo}
+                alt="Loni Galabau"
+                width={140}
+                height={40}
+                fetchPriority="high"
+              />
             </Link>
             <DialogClose asChild>
               <button

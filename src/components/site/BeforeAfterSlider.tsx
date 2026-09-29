@@ -11,14 +11,14 @@ export function BeforeAfterSlider() {
       <div className="max-w-[1480px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <span className="eyebrow eyebrow-bracket text-brand/70">Vorher & Nachher</span>
+            <span className="eyebrow eyebrow-bracket text-brand">Vorher & Nachher</span>
             <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand leading-[1.05]">
               Von der Baustelle
               <br />
               <span className="italic font-light text-brand-muted">zur fertigen Terrasse.</span>
             </h2>
           </div>
-          <p className="text-sm text-foreground/65 max-w-sm leading-relaxed">
+          <p className="text-sm text-foreground/80 max-w-sm leading-relaxed">
             Ziehen Sie den Regler und vergleichen Sie die Bauphase mit der fertigen Terrasse – mit
             Plattenbelag und Sichtschutz. Die Vergleichsbilder sind bearbeitete Darstellungen.
           </p>

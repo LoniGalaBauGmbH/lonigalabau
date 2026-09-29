@@ -18,9 +18,9 @@ export function ContactAttachments({
     <div className="min-w-0">
       <div className="mb-3 flex items-center justify-between gap-3 text-sm text-brand">
         <label htmlFor={id} className="font-medium">
-          Fotos & Anhänge <span className="font-normal text-brand/55">(optional)</span>
+          Fotos & Anhänge <span className="font-normal text-brand/80">(optional)</span>
         </label>
-        <span aria-live="polite" className="shrink-0 text-brand/55">
+        <span aria-live="polite" className="shrink-0 text-brand/80">
           {attachments.items.length} / {MAX_CONTACT_FILES}
         </span>
       </div>
@@ -64,11 +64,11 @@ export function ContactAttachments({
           <Paperclip className="size-5 shrink-0" aria-hidden="true" />
           {full ? "3 Dateien ausgewählt" : "Fotos oder PDFs auswählen"}
         </button>
-        <p id={id + "-help"} className="mt-3 text-sm leading-relaxed text-brand/65">
+        <p id={id + "-help"} className="mt-3 text-sm leading-relaxed text-brand/80">
           <span className="hidden sm:inline">Auch per Drag & Drop. </span>JPG, PNG, WebP oder PDF ·
           bis zu 3 Dateien · jeweils max. 5 MB.
         </p>
-        <p className="mt-2 text-xs leading-relaxed text-brand/55">
+        <p className="mt-2 text-xs leading-relaxed text-brand/80">
           Zum Beispiel Gartenfotos, Skizzen oder Pläne. Die Dateien werden erst mit Ihrer Anfrage
           gesendet.
         </p>
@@ -87,13 +87,13 @@ export function ContactAttachments({
                   className="size-12 shrink-0 rounded-lg object-cover"
                 />
               ) : (
-                <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-white text-brand/65">
+                <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-white text-brand/80">
                   <FileText className="size-6" aria-hidden="true" />
                 </span>
               )}
               <div className="min-w-0 flex-1">
                 <p className="break-all text-sm font-medium text-brand">{item.file.name}</p>
-                <p className="mt-1 text-xs text-brand/55">
+                <p className="mt-1 text-xs text-brand/80">
                   {item.contentType === "application/pdf" ? "PDF" : "Foto"} ·{" "}
                   {item.file.size < 1024 * 1024
                     ? Math.max(1, Math.ceil(item.file.size / 1024)) + " KB"
@@ -109,7 +109,7 @@ export function ContactAttachments({
                 disabled={disabled}
                 aria-label={item.file.name + " entfernen"}
                 onClick={() => attachments.remove(item.id)}
-                className="grid size-11 shrink-0 place-items-center rounded-full text-brand/65 hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand disabled:opacity-40"
+                className="grid size-11 shrink-0 place-items-center rounded-full text-brand/80 hover:bg-brand/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand disabled:opacity-40"
               >
                 <X className="size-4" aria-hidden="true" />
               </button>

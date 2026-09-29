@@ -47,7 +47,7 @@ export function FAQ() {
       <div className="max-w-[1480px] mx-auto">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
-            <span className="eyebrow eyebrow-bracket text-brand/70">Häufige Fragen</span>
+            <span className="eyebrow eyebrow-bracket text-brand">Häufige Fragen</span>
             <h2 className="display text-[clamp(2.25rem,5vw,4.5rem)] mt-6 text-brand leading-[1]">
               Antworten
               <br />

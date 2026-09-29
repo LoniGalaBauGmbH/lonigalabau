@@ -293,7 +293,7 @@ export function ProjectInquiryForm({
             <div ref={motion.frameRef} className="step-motion-frame">
               <div ref={motion.panelRef} className="step-motion-panel">
                 <div className="mb-7 mt-8" aria-live="polite" aria-atomic="true">
-                  <p className="mb-2 text-xs font-medium uppercase tracking-[0.15em] text-brand/50">
+                  <p className="mb-2 text-xs font-medium uppercase tracking-[0.15em] text-brand/80">
                     Schritt {step + 1} von 3
                   </p>
                   <h3
@@ -303,7 +303,7 @@ export function ProjectInquiryForm({
                   >
                     {STEPS[step].title}
                   </h3>
-                  <p className="mt-3 text-base leading-relaxed text-brand/65">{STEPS[step].hint}</p>
+                  <p className="mt-3 text-base leading-relaxed text-brand/80">{STEPS[step].hint}</p>
                 </div>
 
                 <fieldset disabled={pending} className="min-w-0 space-y-6">
@@ -556,7 +556,7 @@ export function ProjectInquiryForm({
                       Zurück
                     </button>
                   ) : (
-                    <p className="text-sm text-brand/50">Unverbindlich & kostenlos</p>
+                    <p className="text-sm text-brand/80">Unverbindlich & kostenlos</p>
                   )}
                   <button type="submit" disabled={pending} className={buttonClass + " ml-auto"}>
                     {pending ? (
@@ -581,7 +581,7 @@ export function ProjectInquiryForm({
                     )}
                   </button>
                 </div>
-                <p className="mt-5 text-xs leading-relaxed text-brand/50">
+                <p className="mt-5 text-xs leading-relaxed text-brand/80">
                   {step === 2
                     ? "Ihre Angaben werden nur zur Bearbeitung Ihrer Anfrage verwendet."
                     : "* Pflichtangaben. Sie können Ihre Auswahl später ändern."}
@@ -724,7 +724,7 @@ function Select({
         ))}
       </select>
       <ChevronDown
-        className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-brand/50"
+        className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-brand/80"
         aria-hidden="true"
       />
     </div>

@@ -65,7 +65,7 @@ export function GardenDetails() {
       <div className="mx-auto max-w-[1480px]">
         <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end md:mb-14">
           <div>
-            <span className="eyebrow text-accent">Gartenideen</span>
+            <span className="eyebrow text-brand">Gartenideen</span>
             <h2
               id={id + "-heading"}
               className="display mt-5 text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.05] text-brand"
@@ -75,7 +75,7 @@ export function GardenDetails() {
               <span className="font-light italic text-brand-muted">im Detail.</span>
             </h2>
           </div>
-          <p className="max-w-xs text-base leading-relaxed text-foreground/65">
+          <p className="max-w-xs text-base leading-relaxed text-foreground/80">
             Entdecken Sie, wie WPC, Naturstein, Pflanzbeete, Rasen und Zaun in einem unserer Gärten
             zusammenspielen.
           </p>

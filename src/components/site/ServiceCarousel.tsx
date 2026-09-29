@@ -144,7 +144,7 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
         ))}
       </CarouselContent>
       <div className="mt-7 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-4 text-sm text-brand/60">
+        <div className="flex items-center gap-4 text-sm text-brand/80">
           <span
             aria-live="polite"
             aria-atomic="true"

@@ -1,5 +1,5 @@
 import { ProjectImage } from "@/components/site/ProjectImage";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import {
@@ -118,7 +118,7 @@ function Page() {
       <section className="relative px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto pt-10 md:pt-16 pb-16 md:pb-24 grid lg:grid-cols-12 gap-10 items-end">
           <Reveal className="lg:col-span-7">
-            <span className="eyebrow eyebrow-bracket text-accent">In Kontakt treten</span>
+            <span className="eyebrow eyebrow-bracket text-brand">In Kontakt treten</span>
             <h1 className="display text-5xl md:text-7xl lg:text-[5.5rem] mt-6 leading-[1.02] text-brand text-balance">
               Lassen Sie uns über <span className="italic font-light">Ihren Garten</span> sprechen.
             </h1>
@@ -160,7 +160,7 @@ function Page() {
               </div>
               <div className="absolute -bottom-5 -left-5 bg-background rounded-2xl px-5 py-3 shadow-lg flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-accent" />
-                <span className="text-sm font-medium">Antwort in 24 h</span>
+                <span className="text-sm font-medium">Persönlich für Sie da</span>
               </div>
             </div>
           </Reveal>
@@ -176,7 +176,7 @@ function Page() {
               eyebrow: "E-Mail",
               main: "info@loni-galabau.de",
               href: "mailto:info@loni-galabau.de",
-              sub: "Antwort innerhalb 24 h",
+              sub: "Direkt an unser Team",
             },
             {
               icon: Phone,
@@ -206,11 +206,11 @@ function Page() {
                   </div>
                   <ArrowUpRight className="w-5 h-5 text-foreground/30 group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                 </div>
-                <p className="mt-6 text-xs uppercase tracking-widest text-foreground/60">
+                <p className="mt-6 text-xs uppercase tracking-widest text-foreground/80">
                   {c.eyebrow}
                 </p>
                 <p className="mt-2 font-serif text-2xl text-brand leading-tight">{c.main}</p>
-                <p className="mt-2 text-sm text-foreground/60">{c.sub}</p>
+                <p className="mt-2 text-sm text-foreground/80">{c.sub}</p>
               </a>
             </Reveal>
           ))}
@@ -231,11 +231,11 @@ function Page() {
               />
               <div className="relative">
                 <span className="eyebrow eyebrow-bracket text-accent">So läuft's ab</span>
-                <h3 className="display text-2xl mt-4 mb-6 text-white">
+                <h2 className="display text-2xl mt-4 mb-6 text-white">
                   In drei Schritten
                   <br />
                   zu Ihrem Garten.
-                </h3>
+                </h2>
                 <ol className="space-y-5">
                   {[
                     { t: "Anfrage stellen", d: "Formular, E-Mail oder Anruf." },
@@ -262,7 +262,7 @@ function Page() {
             <div className="bg-surface rounded-3xl p-7">
               <div className="flex items-center gap-3 mb-4">
                 <Clock className="w-5 h-5 text-brand" />
-                <h4 className="font-serif text-xl text-brand">Öffnungszeiten</h4>
+                <h3 className="font-serif text-xl text-brand">Öffnungszeiten</h3>
               </div>
               <dl className="space-y-2 text-sm">
                 {[
@@ -289,7 +289,7 @@ function Page() {
                   <div className="w-16 h-16 mx-auto rounded-full bg-accent/15 flex items-center justify-center">
                     <CheckCircle2 className="w-8 h-8 text-accent" />
                   </div>
-                  <h3 className="display text-3xl mt-6 text-brand">Vielen Dank!</h3>
+                  <h2 className="display text-3xl mt-6 text-brand">Vielen Dank!</h2>
                   <p className="mt-3 text-foreground/70 max-w-md mx-auto">
                     Ihre Nachricht ist bei uns angekommen. Wir melden uns persönlich bei Ihnen
                     zurück.
@@ -311,10 +311,10 @@ function Page() {
                   <fieldset disabled={status === "loading"} className="min-w-0 space-y-6">
                     <legend className="sr-only">Ihre Nachricht an Loni Galabau</legend>
                     <div>
-                      <span className="eyebrow eyebrow-bracket text-accent">Anfrageformular</span>
-                      <h3 className="display text-3xl md:text-4xl mt-3 text-brand">
+                      <span className="eyebrow eyebrow-bracket text-brand">Anfrageformular</span>
+                      <h2 className="display text-3xl md:text-4xl mt-3 text-brand">
                         Schreiben Sie uns.
-                      </h3>
+                      </h2>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-5">
@@ -378,7 +378,7 @@ function Page() {
                         className="input resize-none"
                         placeholder="Beschreiben Sie kurz Ihr Anliegen, Ihren Garten oder Wunschtermin…"
                       />
-                      <div className="mt-1.5 text-xs text-foreground/50 text-right">
+                      <div className="mt-1.5 text-xs text-foreground/80 text-right">
                         {form.message.length} / 5000
                       </div>
                     </Field>
@@ -392,9 +392,12 @@ function Page() {
                     )}
 
                     <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-                      <p className="text-xs text-foreground/50 max-w-xs">
-                        Mit dem Absenden stimmen Sie unserer Datenverarbeitung gemäss
-                        Datenschutzerklärung zu.
+                      <p className="text-xs text-foreground/80 max-w-xs">
+                        Informationen zur Verarbeitung Ihrer Angaben finden Sie in unserer{" "}
+                        <Link to="/datenschutz" className="underline underline-offset-2">
+                          Datenschutzerklärung
+                        </Link>
+                        .
                       </p>
                       <button
                         type="submit"
@@ -427,7 +430,7 @@ function Page() {
       <section className="px-6 pb-24">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-stretch">
           <Reveal className="lg:col-span-5 flex flex-col justify-center">
-            <span className="eyebrow eyebrow-bracket text-accent">Hier finden Sie uns</span>
+            <span className="eyebrow eyebrow-bracket text-brand">Hier finden Sie uns</span>
             <h2 className="display text-4xl md:text-5xl mt-6 text-brand leading-tight">
               Mitten im <span className="italic font-light">Rhein-Main-Gebiet</span>.
             </h2>
@@ -485,9 +488,9 @@ function Page() {
           <div className="relative px-8 md:px-14 py-14 md:py-20 grid md:grid-cols-2 gap-8 items-center">
             <div>
               <span className="eyebrow eyebrow-bracket text-accent">Lieber kurz anrufen?</span>
-              <h3 className="display text-3xl md:text-4xl text-white mt-4 leading-tight">
+              <h2 className="display text-3xl md:text-4xl text-white mt-4 leading-tight">
                 Wir nehmen uns Zeit für Ihr Anliegen.
-              </h3>
+              </h2>
             </div>
             <div className="flex flex-wrap gap-3 md:justify-end">
               <a
@@ -539,7 +542,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-xs uppercase tracking-widest text-foreground/60 mb-2">
+      <span className="block text-xs uppercase tracking-widest text-foreground/80 mb-2">
         {label}
         {required && <span className="text-accent ml-1">*</span>}
       </span>

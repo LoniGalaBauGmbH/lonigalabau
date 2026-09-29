@@ -266,7 +266,7 @@ function HomePage() {
         <div className="max-w-[1480px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-7">
-              <span className="eyebrow eyebrow-bracket text-brand/70">Unsere Werte</span>
+              <span className="eyebrow eyebrow-bracket text-brand">Unsere Werte</span>
               <h2 className="display text-[clamp(2.25rem,8vw,5.5rem)] mt-6 text-brand leading-[1.05]">
                 Wir sind{" "}
                 <span className="text-brand-muted">
@@ -349,7 +349,7 @@ function HomePage() {
         <div className="max-w-[1480px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
             <div className="lg:col-span-8">
-              <span className="eyebrow eyebrow-bracket text-brand/70">Leistungen</span>
+              <span className="eyebrow eyebrow-bracket text-brand">Leistungen</span>
               <h2 className="display text-[clamp(2.5rem,6vw,5.5rem)] mt-6 text-brand">
                 Unsere Gewerke
               </h2>
@@ -433,7 +433,7 @@ function HomePage() {
         <div className="max-w-[1480px] mx-auto bg-surface rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden shadow-sm">
           <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-8 space-y-6">
-              <span className="eyebrow eyebrow-bracket text-accent">Angebots-Assistent</span>
+              <span className="eyebrow eyebrow-bracket text-brand">Angebots-Assistent</span>
               <h2 className="display text-3xl md:text-5xl text-brand leading-[1.1]">
                 Ihr Gartenprojekt. Klar geplant.
                 <br />
