@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { renderSubmissionEmail } from "./submission-email";
+import { EMAIL_LOGO_ATTACHMENTS } from "./email-logo-assets.server";
 
 export type SubmissionTable = "contact_requests" | "applications";
 export const NOTIFICATION_TO = "webseite@loni-galabau.de";
@@ -90,7 +91,7 @@ export async function notifySavedSubmission(
         jobTitle,
         attachments.map((file) => file.filename),
       ),
-      attachments,
+      attachments: [...attachments, ...EMAIL_LOGO_ATTACHMENTS],
     }),
   });
   if (!response.ok)

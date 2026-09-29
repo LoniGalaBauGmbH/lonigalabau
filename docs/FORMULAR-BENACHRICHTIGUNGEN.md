@@ -15,6 +15,11 @@ Inline-Formatierung, klassische HTML-Tabellen und explizite `<br>`-Umbrüche hal
 die Inhalte auch in Mailprogrammen lesbar, die CSS-Whitespace-Regeln ignorieren.
 Eine gegliederte Textversion ist ebenfalls enthalten.
 
+Das Loni-Logo und Verbandslogo stammen aus den Original-SVGs in `src/assets`.
+`scripts/generate-email-logos.mjs` erzeugt weiße PNG-Fassungen für die dunklen
+Kopf- und Fußbereiche. Sie werden als CID-Bilder direkt in jede Nachricht eingebettet
+und nicht zur Anzahl der Kundenanhänge gezählt. Die SVGs bleiben die Website-Assets.
+
 ## Konfiguration
 
 - `RESEND_API_KEY`: ausschließlich als geheime Servervariable hinterlegen.

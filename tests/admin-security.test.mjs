@@ -135,6 +135,7 @@ function harness(overrides = {}) {
       if (id === "./contact-attachments") return load("src/lib/contact-attachments.ts");
       if (id === "./application-document") return load("src/lib/application-document.ts");
       if (id === "./submission-email") return load("src/lib/submission-email.ts");
+      if (id === "./email-logo-assets.server") return load("src/lib/email-logo-assets.server.ts");
       if (id === "@/lib/submission-notification.server") return load("src/lib/submission-notification.server.ts");
       if (id === "@/lib/admin.functions") return load("src/lib/admin.functions.ts");
       if (id === "@/integrations/supabase/client")
