@@ -91,8 +91,10 @@
   justify-self: end;
 }
 .site-header a:focus-visible,
+.site-header button:focus-visible,
 .site-menu-trigger:focus-visible,
 .site-mobile-menu a:focus-visible,
+.site-mobile-menu button:focus-visible,
 .site-menu-close:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 5px;
@@ -278,38 +280,349 @@
   .site-desktop-nav {
     display: flex;
     align-items: center;
-    gap: clamp(18px, 2.2vw, 36px);
+  }
+  .site-desktop-list {
+    display: flex;
+    align-items: center;
+    gap: clamp(2px, 0.6vw, 10px);
+    list-style: none;
   }
   .site-desktop-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     position: relative;
-    padding-block: 10px;
+    padding: 12px 10px;
+    border-radius: 999px;
+    cursor: pointer;
     white-space: nowrap;
     font-size: 0.78rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-weight: 600;
     opacity: 0.8;
-    transition: opacity 220ms ease;
+    transition:
+      opacity 220ms ease,
+      background-color 220ms ease;
   }
   .site-desktop-link::after {
     content: "";
     position: absolute;
-    bottom: 4px;
-    left: 0;
-    right: 0;
-    height: 1px;
+    bottom: 3px;
+    left: calc(50% - 2px);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
     background: currentColor;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 280ms ease;
   }
   .site-desktop-link:hover,
-  .site-desktop-link[aria-current="page"] {
+  .site-desktop-link[aria-current="page"],
+  .site-desktop-link[data-state="open"] {
     opacity: 1;
+    background: color-mix(in srgb, currentColor 6%, transparent);
   }
-  .site-desktop-link:hover::after,
-  .site-desktop-link[aria-current="page"]::after {
+  .site-desktop-link[aria-current="page"]::after,
+  .site-desktop-link[data-active="true"]::after {
     transform: scaleX(1);
+  }
+}
+.site-header .site-services-trigger:active:not(:disabled) {
+  scale: 1;
+}
+/* Anchor the wide panel to the header, beyond Radix's list positioning wrapper. */
+.site-desktop-nav > div {
+  position: static !important;
+}
+.site-services-trigger > svg {
+  transition: rotate 280ms var(--nav-ease);
+}
+.site-services-trigger[data-state="open"] > svg {
+  rotate: 180deg;
+}
+.site-header .site-nav-contact {
+  background: var(--brand);
+  color: white;
+  padding-inline: 18px;
+  margin-left: 6px;
+  opacity: 1;
+}
+.site-header[data-on-dark="true"] .site-nav-contact {
+  background: white;
+  color: var(--brand);
+}
+.site-nav-contact::after {
+  display: none;
+}
+.site-mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 24px;
+  right: 24px;
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 24px;
+  background: var(--background);
+  color: var(--brand);
+  box-shadow: 0 28px 70px rgb(10 35 20 / 20%);
+  transform-origin: top center;
+}
+.site-mega-menu[data-state="open"] {
+  animation: mega-in 300ms var(--nav-ease) both;
+}
+.site-mega-menu[data-state="closed"] {
+  animation: mega-out 180ms ease both;
+  pointer-events: none;
+}
+.site-mega-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 2fr);
+  gap: 28px;
+  padding: 24px;
+}
+.site-mega-feature {
+  position: relative;
+  min-height: 350px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--brand);
+  color: white;
+}
+.site-mega-feature > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 650ms var(--nav-ease);
+}
+.site-mega-feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 10%, rgb(12 35 20 / 85%) 100%);
+}
+.site-mega-feature:hover > img {
+  transform: scale(1.04);
+}
+.site-mega-feature-copy {
+  position: absolute;
+  inset: auto 24px 26px;
+  z-index: 1;
+}
+.site-mega-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 650;
+}
+.site-mega-feature strong {
+  display: block;
+  margin-top: 14px;
+  font-size: clamp(26px, 2.6vw, 38px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  font-weight: 550;
+}
+.site-mega-feature-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  font-size: 13px;
+}
+.site-mega-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 10px 16px;
+}
+.site-mega-topline > a,
+.site-mega-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.site-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 8px;
+}
+.site-mega-service {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  min-width: 0;
+  border-radius: 14px;
+  transition: background-color 200ms ease;
+}
+.site-mega-service:hover,
+.site-mega-service:focus-visible,
+.site-mega-service[aria-current="page"] {
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+.site-mega-service > img {
+  width: 58px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.site-mega-service > span {
+  min-width: 0;
+}
+.site-mega-service strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 650;
+}
+.site-mega-service small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  opacity: 0.65;
+}
+.site-mega-service > svg {
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0;
+  translate: -4px 4px;
+  transition:
+    opacity 220ms ease,
+    translate 220ms var(--nav-ease);
+}
+.site-mega-service:hover > svg,
+.site-mega-service:focus-visible > svg {
+  opacity: 1;
+  translate: 0 0;
+}
+.site-mega-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 17px 34px;
+  background: color-mix(in srgb, var(--brand) 4%, transparent);
+  font-size: 12px;
+}
+.site-mobile-services-toggle {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.site-mobile-services-toggle > svg {
+  transition: rotate 300ms ease;
+}
+.site-mobile-services-toggle[aria-expanded="true"] > svg {
+  rotate: 180deg;
+}
+.site-mobile-services {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s 380ms;
+}
+.site-mobile-services[data-open="true"] {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.site-mobile-services > div {
+  min-height: 0;
+  overflow: hidden;
+}
+.site-mobile-services-inner {
+  display: grid;
+  gap: 3px;
+  padding: 6px 0 18px;
+}
+.site-mobile-services-inner > a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  gap: 12px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 550;
+}
+.site-mobile-services-inner > a:hover {
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+.site-mobile-services-inner img {
+  width: 38px;
+  height: 38px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+.site-mobile-services-inner svg {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.site-mobile-services-inner > .site-mobile-all {
+  margin-top: 8px;
+  background: var(--brand);
+  color: white;
+  padding-inline: 14px;
+}
+@keyframes mega-in {
+  from {
+    opacity: 0;
+    translate: 0 -10px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes mega-out {
+  to {
+    opacity: 0;
+    translate: 0 -6px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .site-header-inner {
+    padding-inline: 24px;
+    gap: 18px;
+  }
+  .site-header-logo img {
+    height: 34px;
+  }
+  .site-desktop-list {
+    gap: 2px;
+  }
+  .site-desktop-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding-inline: 8px;
+  }
+  .site-header .site-nav-contact {
+    padding-inline: 14px;
+  }
+  .site-mega-layout {
+    gap: 16px;
+    padding: 20px;
+  }
+  .site-mega-service {
+    gap: 9px;
+    padding: 8px 6px;
+  }
+  .site-mega-service > img {
+    width: 44px;
+    height: 50px;
+  }
+  .site-mega-service > svg {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

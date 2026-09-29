@@ -15,6 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { ContactAttachments } from "./ContactAttachments";
 import { useContactAttachments } from "@/hooks/useContactAttachments";
+import { scrollStepIntoView, useStepTransition } from "@/hooks/useStepTransition";
 import "./Motion.css";
 import {
   BUDGETS,
@@ -74,6 +75,7 @@ export function ProjectInquiryForm({
   const focusingError = useRef(false);
   const submitting = useRef(false);
   const pending = status === "loading";
+  const motion = useStepTransition(step);
   const id = (key: string) => uid + "-" + key;
 
   useEffect(() => {
@@ -81,9 +83,8 @@ export function ProjectInquiryForm({
     navigating.current = false;
     const heading = status === "ok" ? successRef.current : headingRef.current;
     heading?.focus({ preventScroll: true });
-    const scrollTarget = status === "ok" ? heading : formRef.current;
-    scrollTarget?.scrollIntoView({ block: "start", behavior: "instant" });
-  }, [step, status]);
+    scrollStepIntoView(heading, motion.reduced);
+  }, [step, status, motion.reduced]);
 
   useEffect(() => {
     if (!focusingError.current) return;
@@ -102,16 +103,21 @@ export function ProjectInquiryForm({
   }
 
   function goTo(next: InquiryStep) {
-    if (pending) return;
-    setErrors({});
-    setStatus("idle");
-    navigating.current = true;
-    setStep(next);
+    if (pending || next === step) return;
+    motion.changeStep(
+      () => {
+        setErrors({});
+        setStatus("idle");
+        navigating.current = true;
+        setStep(next);
+      },
+      next > step ? 1 : -1,
+    );
   }
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (submitting.current) return;
+    if (submitting.current || motion.isMoving.current) return;
     for (let i = 0; i <= step; i++) {
       const found = validateInquiryStep(form, i as InquiryStep);
       if (Object.keys(found).length) {
@@ -284,300 +290,304 @@ export function ProjectInquiryForm({
                 className="h-1 bg-brand/10 [&>div]:bg-accent [&>div]:motion-reduce:transition-none"
               />
             </nav>
-            <div className="mb-7 mt-8" aria-live="polite" aria-atomic="true">
-              <p className="mb-2 text-xs font-medium uppercase tracking-[0.15em] text-brand/50">
-                Schritt {step + 1} von 3
-              </p>
-              <h3
-                ref={headingRef}
-                tabIndex={-1}
-                className="scroll-mt-28 font-serif text-3xl leading-tight text-brand outline-none md:text-4xl"
-              >
-                {STEPS[step].title}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-brand/65">{STEPS[step].hint}</p>
-            </div>
-
-            <fieldset disabled={pending} className="min-w-0 space-y-6">
-              <legend className="sr-only">{STEPS[step].title}</legend>
-              {step === 0 && (
-                <>
-                  <Choices
-                    label="Leistungsbereich *"
-                    uid={id("service")}
-                    options={INQUIRY_SERVICES}
-                    value={form.service}
-                    onChange={(value) => update("service", value)}
-                    error={errors.service}
-                    tiles
-                  />
-                  <Choices
-                    label="Es geht um"
-                    uid={id("projectType")}
-                    options={PROJECT_TYPES}
-                    value={form.projectType}
-                    onChange={(value) => update("projectType", value)}
-                  />
-                </>
-              )}
-              {step === 1 && (
-                <>
-                  <Field label="Ihre Idee *" id={id("description")} error={errors.description}>
-                    <textarea
-                      {...fieldProps("description")}
-                      required
-                      rows={4}
-                      maxLength={4000}
-                      value={form.description}
-                      onChange={(event) => update("description", event.target.value)}
-                      className={inputClass + " resize-y leading-relaxed"}
-                      placeholder="Zum Beispiel: Wir möchten unsere Terrasse erneuern und wünschen uns pflegeleichte Beete …"
-                    />
-                  </Field>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Wann möchten Sie starten?" id={id("timeframe")}>
-                      <Select
-                        id={id("timeframe")}
-                        value={form.timeframe}
-                        onChange={(value) => update("timeframe", value)}
-                        options={TIMEFRAMES}
-                      />
-                    </Field>
-                    <Field label="PLZ / Ort (optional)" id={id("zip")}>
-                      <input
-                        id={id("zip")}
-                        autoComplete="postal-code"
-                        maxLength={120}
-                        value={form.zip}
-                        onChange={(event) => update("zip", event.target.value)}
-                        className={inputClass}
-                        placeholder="z. B. 65795 Hattersheim"
-                      />
-                    </Field>
-                  </div>
-                  <ContactAttachments attachments={attachments} disabled={pending} />
-                  <details
-                    className="rounded-2xl bg-brand/[0.035] p-5"
-                    open={showOptional || !!errors.area}
-                    onToggle={(event) => setShowOptional(event.currentTarget.open)}
+            <div ref={motion.frameRef} className="step-motion-frame">
+              <div ref={motion.panelRef} className="step-motion-panel">
+                <div className="mb-7 mt-8" aria-live="polite" aria-atomic="true">
+                  <p className="mb-2 text-xs font-medium uppercase tracking-[0.15em] text-brand/50">
+                    Schritt {step + 1} von 3
+                  </p>
+                  <h3
+                    ref={headingRef}
+                    tabIndex={-1}
+                    className="scroll-mt-28 font-serif text-3xl leading-tight text-brand outline-none md:text-4xl"
                   >
-                    <summary className="cursor-pointer text-sm font-semibold text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
-                      Fläche & Budget ergänzen{" "}
-                      <span className="font-normal text-brand/55">(optional)</span>
-                    </summary>
-                    <div className="mt-5 grid gap-5 sm:grid-cols-2">
-                      <Field label="Fläche in m² (ca.)" id={id("area")} error={errors.area}>
-                        <input
-                          {...fieldProps("area")}
-                          inputMode="numeric"
-                          maxLength={10}
-                          value={form.area}
-                          onChange={(event) =>
-                            update("area", event.target.value.replace(/[^0-9]/g, ""))
-                          }
-                          className={inputClass}
-                          placeholder="z. B. 100"
+                    {STEPS[step].title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-brand/65">{STEPS[step].hint}</p>
+                </div>
+
+                <fieldset disabled={pending} className="min-w-0 space-y-6">
+                  <legend className="sr-only">{STEPS[step].title}</legend>
+                  {step === 0 && (
+                    <>
+                      <Choices
+                        label="Leistungsbereich *"
+                        uid={id("service")}
+                        options={INQUIRY_SERVICES}
+                        value={form.service}
+                        onChange={(value) => update("service", value)}
+                        error={errors.service}
+                        tiles
+                      />
+                      <Choices
+                        label="Es geht um"
+                        uid={id("projectType")}
+                        options={PROJECT_TYPES}
+                        value={form.projectType}
+                        onChange={(value) => update("projectType", value)}
+                      />
+                    </>
+                  )}
+                  {step === 1 && (
+                    <>
+                      <Field label="Ihre Idee *" id={id("description")} error={errors.description}>
+                        <textarea
+                          {...fieldProps("description")}
+                          required
+                          rows={4}
+                          maxLength={4000}
+                          value={form.description}
+                          onChange={(event) => update("description", event.target.value)}
+                          className={inputClass + " resize-y leading-relaxed"}
+                          placeholder="Zum Beispiel: Wir möchten unsere Terrasse erneuern und wünschen uns pflegeleichte Beete …"
                         />
                       </Field>
-                      <Field label="Budgetrahmen" id={id("budget")}>
-                        <Select
-                          id={id("budget")}
-                          value={form.budget}
-                          onChange={(value) => update("budget", value)}
-                          options={BUDGETS}
-                          allowEmpty
-                        />
-                      </Field>
-                    </div>
-                  </details>
-                </>
-              )}
-              {step === 2 && (
-                <>
-                  <div className="flex items-start justify-between gap-4 rounded-2xl bg-brand/[0.035] p-5">
-                    <div className="min-w-0 text-sm text-brand">
-                      <p className="font-semibold">
-                        {form.service} · {form.projectType}
-                      </p>
-                      <p className="mt-1 text-brand/60">
-                        {form.zip && form.zip + " · "}
-                        {form.timeframe}
-                        {attachments.items.length > 0 &&
-                          " · " + attachments.items.length + " Anhänge"}
-                      </p>
-                      <details className="mt-3">
-                        <summary className="cursor-pointer underline underline-offset-4">
-                          Ihre Angaben ansehen
+                      <div className="grid gap-5 sm:grid-cols-2">
+                        <Field label="Wann möchten Sie starten?" id={id("timeframe")}>
+                          <Select
+                            id={id("timeframe")}
+                            value={form.timeframe}
+                            onChange={(value) => update("timeframe", value)}
+                            options={TIMEFRAMES}
+                          />
+                        </Field>
+                        <Field label="PLZ / Ort (optional)" id={id("zip")}>
+                          <input
+                            id={id("zip")}
+                            autoComplete="postal-code"
+                            maxLength={120}
+                            value={form.zip}
+                            onChange={(event) => update("zip", event.target.value)}
+                            className={inputClass}
+                            placeholder="z. B. 65795 Hattersheim"
+                          />
+                        </Field>
+                      </div>
+                      <ContactAttachments attachments={attachments} disabled={pending} />
+                      <details
+                        className="rounded-2xl bg-brand/[0.035] p-5"
+                        open={showOptional || !!errors.area}
+                        onToggle={(event) => setShowOptional(event.currentTarget.open)}
+                      >
+                        <summary className="cursor-pointer text-sm font-semibold text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+                          Fläche & Budget ergänzen{" "}
+                          <span className="font-normal text-brand/55">(optional)</span>
                         </summary>
-                        <p className="mt-3 whitespace-pre-wrap break-words leading-relaxed">
-                          {form.description}
-                        </p>
-                        {attachments.items.length > 0 && (
-                          <ul className="mt-3 space-y-1" aria-label="Anhänge der Anfrage">
-                            {attachments.items.map((item) => (
-                              <li key={item.id} className="break-all text-sm">
-                                {item.file.name}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {(form.area || form.budget) && (
-                          <p className="mt-2 text-brand/60">
-                            {[form.area && form.area + " m²", form.budget]
-                              .filter(Boolean)
-                              .join(" · ")}
+                        <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                          <Field label="Fläche in m² (ca.)" id={id("area")} error={errors.area}>
+                            <input
+                              {...fieldProps("area")}
+                              inputMode="numeric"
+                              maxLength={10}
+                              value={form.area}
+                              onChange={(event) =>
+                                update("area", event.target.value.replace(/[^0-9]/g, ""))
+                              }
+                              className={inputClass}
+                              placeholder="z. B. 100"
+                            />
+                          </Field>
+                          <Field label="Budgetrahmen" id={id("budget")}>
+                            <Select
+                              id={id("budget")}
+                              value={form.budget}
+                              onChange={(value) => update("budget", value)}
+                              options={BUDGETS}
+                              allowEmpty
+                            />
+                          </Field>
+                        </div>
+                      </details>
+                    </>
+                  )}
+                  {step === 2 && (
+                    <>
+                      <div className="flex items-start justify-between gap-4 rounded-2xl bg-brand/[0.035] p-5">
+                        <div className="min-w-0 text-sm text-brand">
+                          <p className="font-semibold">
+                            {form.service} · {form.projectType}
+                          </p>
+                          <p className="mt-1 text-brand/60">
+                            {form.zip && form.zip + " · "}
+                            {form.timeframe}
+                            {attachments.items.length > 0 &&
+                              " · " + attachments.items.length + " Anhänge"}
+                          </p>
+                          <details className="mt-3">
+                            <summary className="cursor-pointer underline underline-offset-4">
+                              Ihre Angaben ansehen
+                            </summary>
+                            <p className="mt-3 whitespace-pre-wrap break-words leading-relaxed">
+                              {form.description}
+                            </p>
+                            {attachments.items.length > 0 && (
+                              <ul className="mt-3 space-y-1" aria-label="Anhänge der Anfrage">
+                                {attachments.items.map((item) => (
+                                  <li key={item.id} className="break-all text-sm">
+                                    {item.file.name}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                            {(form.area || form.budget) && (
+                              <p className="mt-2 text-brand/60">
+                                {[form.area && form.area + " m²", form.budget]
+                                  .filter(Boolean)
+                                  .join(" · ")}
+                              </p>
+                            )}
+                          </details>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => goTo(1)}
+                          className="min-h-11 shrink-0 text-sm font-semibold text-brand underline underline-offset-4"
+                        >
+                          Ändern
+                        </button>
+                      </div>
+                      <div className="grid gap-5 sm:grid-cols-2">
+                        <Field label="Ihr Name *" id={id("name")} error={errors.name}>
+                          <input
+                            {...fieldProps("name")}
+                            autoComplete="name"
+                            required
+                            maxLength={200}
+                            value={form.name}
+                            onChange={(event) => update("name", event.target.value)}
+                            className={inputClass}
+                          />
+                        </Field>
+                        <Field label="E-Mail-Adresse *" id={id("email")} error={errors.email}>
+                          <input
+                            {...fieldProps("email")}
+                            autoComplete="email"
+                            required
+                            type="email"
+                            maxLength={320}
+                            value={form.email}
+                            onChange={(event) => update("email", event.target.value)}
+                            className={inputClass}
+                          />
+                        </Field>
+                      </div>
+                      <Choices
+                        label="Wie dürfen wir Sie kontaktieren?"
+                        uid={id("channel")}
+                        options={CHANNELS}
+                        value={form.channel}
+                        onChange={(value) => update("channel", value)}
+                      />
+                      <Field
+                        label={form.channel === "E-Mail" ? "Telefon (optional)" : "Telefon *"}
+                        id={id("phone")}
+                        error={errors.phone}
+                      >
+                        <input
+                          {...fieldProps("phone")}
+                          autoComplete="tel"
+                          type="tel"
+                          required={form.channel !== "E-Mail"}
+                          maxLength={50}
+                          value={form.phone}
+                          onChange={(event) => update("phone", event.target.value)}
+                          className={inputClass}
+                          placeholder="Ihre Telefonnummer"
+                        />
+                      </Field>
+                      <div>
+                        <div className="flex items-start gap-3">
+                          <Checkbox
+                            {...fieldProps("consent")}
+                            checked={form.consent}
+                            onCheckedChange={(checked) => update("consent", checked === true)}
+                            className="mt-1 size-5 rounded-md border-brand/30 data-[state=checked]:bg-brand data-[state=checked]:text-white"
+                          />
+                          <label
+                            htmlFor={id("consent")}
+                            className="text-sm leading-relaxed text-brand/70"
+                          >
+                            Ich habe die{" "}
+                            <a
+                              href="/datenschutz"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-brand underline underline-offset-4"
+                            >
+                              Datenschutzhinweise (neuer Tab)
+                            </a>{" "}
+                            gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung
+                            dieser Anfrage zu. *
+                          </label>
+                        </div>
+                        {errors.consent && (
+                          <p id={id("consent") + "-error"} className="mt-2 text-sm text-red-700">
+                            {errors.consent}
                           </p>
                         )}
-                      </details>
-                    </div>
+                      </div>
+                    </>
+                  )}
+                </fieldset>
+
+                {!!Object.values(errors).filter(Boolean).length && (
+                  <p role="alert" className="mt-5 text-sm text-red-700">
+                    Bitte prüfen Sie die markierten Angaben.
+                  </p>
+                )}
+                {status === "err" && (
+                  <p
+                    role="alert"
+                    className="mt-5 rounded-xl bg-red-50 p-4 text-sm leading-relaxed text-red-800"
+                  >
+                    Die Anfrage konnte gerade nicht gesendet werden. Ihre Eingaben sind noch da.
+                    Bitte versuchen Sie es erneut oder rufen Sie uns unter 06190 9266134 an.
+                  </p>
+                )}
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+                  {step > 0 ? (
                     <button
                       type="button"
-                      onClick={() => goTo(1)}
-                      className="min-h-11 shrink-0 text-sm font-semibold text-brand underline underline-offset-4"
+                      disabled={pending}
+                      onClick={() => goTo((step - 1) as InquiryStep)}
+                      className="inline-flex min-h-12 items-center gap-2 rounded-full px-2 text-sm font-semibold text-brand hover:text-brand/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand disabled:opacity-50"
                     >
-                      Ändern
+                      <ArrowLeft className="size-4" aria-hidden="true" />
+                      Zurück
                     </button>
-                  </div>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Ihr Name *" id={id("name")} error={errors.name}>
-                      <input
-                        {...fieldProps("name")}
-                        autoComplete="name"
-                        required
-                        maxLength={200}
-                        value={form.name}
-                        onChange={(event) => update("name", event.target.value)}
-                        className={inputClass}
-                      />
-                    </Field>
-                    <Field label="E-Mail-Adresse *" id={id("email")} error={errors.email}>
-                      <input
-                        {...fieldProps("email")}
-                        autoComplete="email"
-                        required
-                        type="email"
-                        maxLength={320}
-                        value={form.email}
-                        onChange={(event) => update("email", event.target.value)}
-                        className={inputClass}
-                      />
-                    </Field>
-                  </div>
-                  <Choices
-                    label="Wie dürfen wir Sie kontaktieren?"
-                    uid={id("channel")}
-                    options={CHANNELS}
-                    value={form.channel}
-                    onChange={(value) => update("channel", value)}
-                  />
-                  <Field
-                    label={form.channel === "E-Mail" ? "Telefon (optional)" : "Telefon *"}
-                    id={id("phone")}
-                    error={errors.phone}
-                  >
-                    <input
-                      {...fieldProps("phone")}
-                      autoComplete="tel"
-                      type="tel"
-                      required={form.channel !== "E-Mail"}
-                      maxLength={50}
-                      value={form.phone}
-                      onChange={(event) => update("phone", event.target.value)}
-                      className={inputClass}
-                      placeholder="Ihre Telefonnummer"
-                    />
-                  </Field>
-                  <div>
-                    <div className="flex items-start gap-3">
-                      <Checkbox
-                        {...fieldProps("consent")}
-                        checked={form.consent}
-                        onCheckedChange={(checked) => update("consent", checked === true)}
-                        className="mt-1 size-5 rounded-md border-brand/30 data-[state=checked]:bg-brand data-[state=checked]:text-white"
-                      />
-                      <label
-                        htmlFor={id("consent")}
-                        className="text-sm leading-relaxed text-brand/70"
-                      >
-                        Ich habe die{" "}
-                        <a
-                          href="/datenschutz"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-brand underline underline-offset-4"
-                        >
-                          Datenschutzhinweise (neuer Tab)
-                        </a>{" "}
-                        gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung dieser
-                        Anfrage zu. *
-                      </label>
-                    </div>
-                    {errors.consent && (
-                      <p id={id("consent") + "-error"} className="mt-2 text-sm text-red-700">
-                        {errors.consent}
-                      </p>
+                  ) : (
+                    <p className="text-sm text-brand/50">Unverbindlich & kostenlos</p>
+                  )}
+                  <button type="submit" disabled={pending} className={buttonClass + " ml-auto"}>
+                    {pending ? (
+                      <>
+                        <Loader2
+                          className="size-4 animate-spin motion-reduce:animate-none"
+                          aria-hidden="true"
+                        />
+                        {attachments.items.length
+                          ? "Anfrage & Dateien werden gesendet …"
+                          : "Wird gesendet …"}
+                      </>
+                    ) : (
+                      <>
+                        {step === 2
+                          ? "Anfrage senden"
+                          : step === 0
+                            ? "Weiter zu Ihren Wünschen"
+                            : "Weiter zum Kontakt"}
+                        <ArrowRight className="size-4" aria-hidden="true" />
+                      </>
                     )}
-                  </div>
-                </>
-              )}
-            </fieldset>
-
-            {!!Object.values(errors).filter(Boolean).length && (
-              <p role="alert" className="mt-5 text-sm text-red-700">
-                Bitte prüfen Sie die markierten Angaben.
-              </p>
-            )}
-            {status === "err" && (
-              <p
-                role="alert"
-                className="mt-5 rounded-xl bg-red-50 p-4 text-sm leading-relaxed text-red-800"
-              >
-                Die Anfrage konnte gerade nicht gesendet werden. Ihre Eingaben sind noch da. Bitte
-                versuchen Sie es erneut oder rufen Sie uns unter 06190 9266134 an.
-              </p>
-            )}
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-              {step > 0 ? (
-                <button
-                  type="button"
-                  disabled={pending}
-                  onClick={() => goTo((step - 1) as InquiryStep)}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full px-2 text-sm font-semibold text-brand hover:text-brand/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand disabled:opacity-50"
-                >
-                  <ArrowLeft className="size-4" aria-hidden="true" />
-                  Zurück
-                </button>
-              ) : (
-                <p className="text-sm text-brand/50">Unverbindlich & kostenlos</p>
-              )}
-              <button type="submit" disabled={pending} className={buttonClass + " ml-auto"}>
-                {pending ? (
-                  <>
-                    <Loader2
-                      className="size-4 animate-spin motion-reduce:animate-none"
-                      aria-hidden="true"
-                    />
-                    {attachments.items.length
-                      ? "Anfrage & Dateien werden gesendet …"
-                      : "Wird gesendet …"}
-                  </>
-                ) : (
-                  <>
-                    {step === 2
-                      ? "Anfrage senden"
-                      : step === 0
-                        ? "Weiter zu Ihren Wünschen"
-                        : "Weiter zum Kontakt"}
-                    <ArrowRight className="size-4" aria-hidden="true" />
-                  </>
-                )}
-              </button>
+                  </button>
+                </div>
+                <p className="mt-5 text-xs leading-relaxed text-brand/50">
+                  {step === 2
+                    ? "Ihre Angaben werden nur zur Bearbeitung Ihrer Anfrage verwendet."
+                    : "* Pflichtangaben. Sie können Ihre Auswahl später ändern."}
+                </p>
+              </div>
             </div>
-            <p className="mt-5 text-xs leading-relaxed text-brand/50">
-              {step === 2
-                ? "Ihre Angaben werden nur zur Bearbeitung Ihrer Anfrage verwendet."
-                : "* Pflichtangaben. Sie können Ihre Auswahl später ändern."}
-            </p>
           </form>
         )}
       </div>

@@ -133,7 +133,7 @@ function HomePage() {
         </div>
 
         {/* floating stat card */}
-        <div className="absolute right-6 md:right-10 top-28 md:top-32 z-10 animate-fade-up [animation-delay:300ms]">
+        <div className="absolute right-6 md:right-10 top-28 md:top-32 z-10">
           <div className="rounded-3xl backdrop-blur-md bg-white/5 px-7 py-5 md:px-9 md:py-7 text-right">
             <div className="display text-4xl md:text-5xl text-white">500+</div>
             <div className="text-[11px] tracking-[0.22em] uppercase text-white/80 mt-1">Zufriedene Kunden</div>
