@@ -4,7 +4,7 @@ import { EMAIL_LOGO_ATTACHMENTS } from "./email-logo-assets.server";
 
 export type SubmissionTable = "contact_requests" | "applications";
 export const NOTIFICATION_TO = "webseite@loni-galabau.de";
-const SITE = "https://loni-galabau.serhad1999.chatgpt.site";
+const SITE = process.env.SITE_ADMIN_ORIGIN || "https://loni-galabau.serhad1999.chatgpt.site";
 
 export function notificationMessage(
   record: {
@@ -100,7 +100,7 @@ export async function notifySavedSubmission(
   if (!result.id) throw new Error("Der E-Mail-Dienst hat den Versand nicht bestätigt.");
   const { error: updateError } = await client
     .from(table)
-    .update({ notification_sent_at: new Date().toISOString() })
+    .update({ notification_sent_at: new Date().toISOString(), notification_email_id: result.id })
     .eq("id", id);
   // Log only identifiers, never message text, attachment content or credentials.
   console.info("Submission notification accepted", { table, id, emailId: result.id });

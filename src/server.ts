@@ -1,4 +1,6 @@
 import "./lib/error-capture";
+import { notificationOperations } from "./lib/notification-operations.server";
+import { publicUtilityResponse, secureResponse } from "./lib/http-policy.server";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
@@ -40,15 +42,22 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const operation = await notificationOperations(request);
+      if (operation) return secureResponse(request, operation);
+      const utility = await publicUtilityResponse(request);
+      if (utility) return secureResponse(request, utility);
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return secureResponse(request, await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return secureResponse(
+        request,
+        new Response(renderErrorPage(), {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }),
+      );
     }
   },
 };

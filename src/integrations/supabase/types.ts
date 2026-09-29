@@ -17,6 +17,10 @@ export type Database = {
           job_id: string | null;
           message: string | null;
           name: string;
+          notes: string;
+          notes_version: number;
+          notification_email_id: string | null;
+          notification_sent_at: string | null;
           phone: string | null;
           status: string;
         };
@@ -28,6 +32,10 @@ export type Database = {
           job_id?: string | null;
           message?: string | null;
           name: string;
+          notes?: string;
+          notes_version?: number;
+          notification_email_id?: string | null;
+          notification_sent_at?: string | null;
           phone?: string | null;
           status?: string;
         };
@@ -39,6 +47,10 @@ export type Database = {
           job_id?: string | null;
           message?: string | null;
           name?: string;
+          notes?: string;
+          notes_version?: number;
+          notification_email_id?: string | null;
+          notification_sent_at?: string | null;
           phone?: string | null;
           status?: string;
         };
@@ -54,37 +66,85 @@ export type Database = {
       };
       contact_requests: {
         Row: {
-          image_paths: string[];
           created_at: string;
           email: string;
           id: string;
+          image_paths: string[];
           message: string;
           name: string;
+          notes: string;
+          notes_version: number;
+          notification_email_id: string | null;
+          notification_sent_at: string | null;
           phone: string | null;
           status: string;
           subject: string | null;
         };
         Insert: {
-          image_paths?: string[];
           created_at?: string;
           email: string;
           id?: string;
+          image_paths?: string[];
           message: string;
           name: string;
+          notes?: string;
+          notes_version?: number;
+          notification_email_id?: string | null;
+          notification_sent_at?: string | null;
           phone?: string | null;
           status?: string;
           subject?: string | null;
         };
         Update: {
-          image_paths?: string[];
           created_at?: string;
           email?: string;
           id?: string;
+          image_paths?: string[];
           message?: string;
           name?: string;
+          notes?: string;
+          notes_version?: number;
+          notification_email_id?: string | null;
+          notification_sent_at?: string | null;
           phone?: string | null;
           status?: string;
           subject?: string | null;
+        };
+        Relationships: [];
+      };
+      email_delivery: {
+        Row: {
+          email_id: string;
+          occurred_at: string;
+          status: string;
+        };
+        Insert: {
+          email_id: string;
+          occurred_at: string;
+          status: string;
+        };
+        Update: {
+          email_id?: string;
+          occurred_at?: string;
+          status?: string;
+        };
+        Relationships: [];
+      };
+      form_rate_limits: {
+        Row: {
+          expires_at: string;
+          hits: number;
+          key: string;
+        };
+        Insert: {
+          expires_at: string;
+          hits: number;
+          key: string;
+        };
+        Update: {
+          expires_at?: string;
+          hits?: number;
+          key?: string;
         };
         Relationships: [];
       };
@@ -194,17 +254,17 @@ export type Database = {
       };
       services: {
         Row: {
-          meta_title: string | null;
-          meta_description: string | null;
-          geo_focus: string | null;
-          custom_benefits: { t: string; d: string }[];
-          custom_faqs: { q: string; a: string }[];
           active: boolean;
           category: string | null;
           created_at: string;
+          custom_benefits: Json;
+          custom_faqs: Json;
+          geo_focus: string | null;
           hero_image: string | null;
           id: string;
           long_text: string;
+          meta_description: string | null;
+          meta_title: string | null;
           short_text: string;
           slug: string;
           sort_order: number;
@@ -212,17 +272,17 @@ export type Database = {
           updated_at: string;
         };
         Insert: {
-          meta_title?: string | null;
-          meta_description?: string | null;
-          geo_focus?: string | null;
-          custom_benefits?: { t: string; d: string }[];
-          custom_faqs?: { q: string; a: string }[];
           active?: boolean;
           category?: string | null;
           created_at?: string;
+          custom_benefits?: Json;
+          custom_faqs?: Json;
+          geo_focus?: string | null;
           hero_image?: string | null;
           id?: string;
           long_text?: string;
+          meta_description?: string | null;
+          meta_title?: string | null;
           short_text?: string;
           slug: string;
           sort_order?: number;
@@ -230,17 +290,17 @@ export type Database = {
           updated_at?: string;
         };
         Update: {
-          meta_title?: string | null;
-          meta_description?: string | null;
-          geo_focus?: string | null;
-          custom_benefits?: { t: string; d: string }[];
-          custom_faqs?: { q: string; a: string }[];
           active?: boolean;
           category?: string | null;
           created_at?: string;
+          custom_benefits?: Json;
+          custom_faqs?: Json;
+          geo_focus?: string | null;
           hero_image?: string | null;
           id?: string;
           long_text?: string;
+          meta_description?: string | null;
+          meta_title?: string | null;
           short_text?: string;
           slug?: string;
           sort_order?: number;
@@ -296,7 +356,14 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      consume_form_quota: {
+        Args: { p_key: string; p_limit: number };
+        Returns: boolean;
+      };
+      record_email_delivery: {
+        Args: { p_at: string; p_id: string; p_status: string };
+        Returns: undefined;
+      };
     };
     Enums: {
       app_role: "admin";

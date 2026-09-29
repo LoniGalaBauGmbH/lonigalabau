@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Heart, Handshake, Leaf, Sparkles, Quote, MapPin } from "lucide-react";
+import { ArrowUpRight, Heart, Handshake, Leaf, Sparkles, MapPin } from "lucide-react";
 import { PageShell, Reveal } from "@/components/site/PageShell";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import founder from "@/assets/about-founder-valon.webp";
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/ueber-uns")({
       {
         name: "description",
         content:
-          "Seit 2011 stehen wir für hochwertige Außenanlagen – akademische Expertise trifft handwerkliche Präzision.",
+          "Seit 2011 im Garten- und Landschaftsbau tätig. Lernen Sie das Team der Loni GalaBau GmbH aus Hattersheim am Main kennen.",
       },
     ],
   }),
@@ -27,27 +27,27 @@ export const Route = createFileRoute("/ueber-uns")({
 
 const TIMELINE = [
   {
-    year: "2011",
-    t: "Die Gründung",
-    d: "Loni wird in Hattersheim gegründet – mit einer klaren Vision: zuverlässige und fachgerechte Gartenpflege für Privatkunden im Rhein-Main-Gebiet.",
+    year: "Seit 2011",
+    t: "Erfahrung in der Branche",
+    d: "Seit 2011 sind wir im Garten- und Landschaftsbau tätig.",
     img: svcGarten,
   },
   {
-    year: "2013",
-    t: "Garten- und Landschaftsbau",
-    d: "Erweiterung des Leistungsspektrums um den klassischen GaLaBau – von der Neuanlage kompletter Gärten bis zu Pflaster- und Terrassenarbeiten.",
+    year: "Gestaltung",
+    t: "Gärten und Außenanlagen",
+    d: "Pflanzen, Wege und Terrassen verbinden wir zu nutzbaren Außenräumen.",
     img: svcPflaster,
   },
   {
-    year: "2017",
-    t: "Akademische Expertise",
-    d: "Unser Geschäftsführer schließt den Bachelor of Engineering in Landschaftsarchitektur an der Hochschule Geisenheim ab – Planung trifft Handwerk.",
+    year: "Handwerk",
+    t: "Material und Ausführung",
+    d: "Naturstein, Pflaster und Bodenaufbau stimmen wir auf Ihr Grundstück ab.",
     img: svcNaturstein,
   },
   {
     year: "Heute",
     t: "Ein eingespieltes Team",
-    d: "Hochwertige Außenanlagen für Privat, Gewerbe und öffentliche Hand. Mitglied im Fachverband GaLaBau, aktiv in der Ausbildung der nächsten Generation.",
+    d: "Aus Hattersheim begleiten wir Projekte im Rhein-Main-Gebiet.",
     img: aboutSite,
   },
 ];
@@ -56,7 +56,7 @@ const VALUES = [
   {
     Icon: Heart,
     t: "Leidenschaft in jedem Projekt",
-    d: "Seit über 15 Jahren realisieren wir Außenanlagen mit echter Begeisterung für Gestaltung, Funktion und Qualität.",
+    d: "Mit Erfahrung seit 2011 realisieren wir Außenanlagen mit echter Begeisterung für Gestaltung, Funktion und Qualität.",
   },
   {
     Icon: Handshake,
@@ -86,13 +86,13 @@ function AboutPage() {
           <div className="lg:col-span-7">
             <span className="eyebrow eyebrow-bracket text-accent">Über uns</span>
             <h1 className="display text-[clamp(3rem,7vw,7rem)] mt-6 text-brand leading-[0.95]">
-              Wer wir<br />
+              Wer wir
+              <br />
               <span className="italic font-light text-brand-muted">wirklich</span> sind.
             </h1>
             <p className="mt-10 text-lg md:text-xl max-w-xl text-foreground/75 leading-relaxed">
-              Die Firma Loni wurde 2011 in Hattersheim gegründet – mit einer klaren Vision:
-              zuverlässige, fachgerechte Außenanlagen, geplant mit Verstand und umgesetzt mit
-              Handwerksstolz.
+              Seit 2011 sind wir im Garten- und Landschaftsbau tätig. Unser Anspruch: zuverlässige,
+              fachgerechte Außenanlagen, geplant mit Verstand und umgesetzt mit Handwerksstolz.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
               <div className="flex items-center gap-2 text-brand">
@@ -102,7 +102,7 @@ function AboutPage() {
                 </span>
               </div>
 
-              <div className="text-foreground/60">Gegründet 2011 · Meisterbetrieb</div>
+              <div className="text-foreground/60">Seit 2011 in der Branche tätig</div>
             </div>
           </div>
 
@@ -123,7 +123,7 @@ function AboutPage() {
                   Seit 2011
                 </div>
                 <div className="mt-1 font-display font-extrabold text-lg leading-tight">
-                  15+ Jahre Handwerk
+                  Garten- & Landschaftsbau
                 </div>
               </div>
             </div>
@@ -154,9 +154,12 @@ function AboutPage() {
             {/* Text rechts */}
             <div className="lg:col-span-7">
               <Reveal>
-                <span className="eyebrow eyebrow-bracket text-brand/70">Unsere Geschichte im Detail</span>
+                <span className="eyebrow eyebrow-bracket text-brand/70">
+                  Unsere Geschichte im Detail
+                </span>
                 <h2 className="display mt-6 text-[clamp(2rem,4vw,3.5rem)] text-brand leading-[1.05]">
-                  Von der Vision<br />
+                  Von der Vision
+                  <br />
                   <span className="italic font-light text-brand-muted">zur Realität.</span>
                 </h2>
               </Reveal>
@@ -165,7 +168,9 @@ function AboutPage() {
                 <Reveal delay={100}>
                   <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
-                      Die Firma Loni wurde 2011 in Hattersheim gegründet mit einem kleinen Team und einer klaren Vision: zuverlässige und fachgerechte Gartenpflege für Privatkunden.
+                      Seit 2011 sind wir im Garten- und Landschaftsbau tätig. Zuverlässige
+                      Gartenpflege und fachgerecht angelegte Außenanlagen stehen im Mittelpunkt
+                      unserer Arbeit.
                     </p>
                   </div>
                 </Reveal>
@@ -173,7 +178,9 @@ function AboutPage() {
                 <Reveal delay={150}>
                   <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
-                      Bereits 2013 erweiterten wir unser Leistungsspektrum um den klassischen Garten- und Landschaftsbau – von der Neuanlage kompletter Gärten bis hin zu Pflaster- und Terrassenarbeiten.
+                      Unser Leistungsspektrum reicht von der Neuanlage kompletter Gärten bis zu
+                      Pflaster- und Terrassenarbeiten. Wir stimmen Gestaltung, Material und Aufbau
+                      auf die Nutzung ab.
                     </p>
                   </div>
                 </Reveal>
@@ -181,7 +188,9 @@ function AboutPage() {
                 <Reveal delay={200}>
                   <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
-                      Heute stehen wir für hochwertige Außenanlagen im privaten, gewerblichen und öffentlichen Bereich. Fachwissen, langjährige Erfahrung und eine praxisorientierte Arbeitsweise bilden dabei die Grundlage unserer Arbeit.
+                      Heute stehen wir für hochwertige Außenanlagen im privaten, gewerblichen und
+                      öffentlichen Bereich. Fachwissen, langjährige Erfahrung und eine
+                      praxisorientierte Arbeitsweise bilden dabei die Grundlage unserer Arbeit.
                     </p>
                   </div>
                 </Reveal>
@@ -189,7 +198,9 @@ function AboutPage() {
                 <Reveal delay={250}>
                   <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
-                      Seit 2017 bringt unser Geschäftsführer seine akademische Expertise als Bachelor of Engineering (B. Ing.) im Studiengang Landschaftsarchitektur der Hochschule Geisenheim in die Planung und Umsetzung unserer Projekte ein.
+                      Unser Geschäftsführer Valon Sinanaj begleitet die Planung und Umsetzung. Klare
+                      Absprachen und ein realistischer Blick auf die Gegebenheiten vor Ort bilden
+                      die Grundlage.
                     </p>
                   </div>
                 </Reveal>
@@ -197,7 +208,10 @@ function AboutPage() {
                 <Reveal delay={300}>
                   <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
-                      Dank unseres umfassenden Know-hows realisieren wir erfolgreich anspruchsvolle Bauprojekte im privaten, gewerblichen und öffentlichen Bereich. Qualität, Zuverlässigkeit und eine strukturierte Projektabwicklung stehen dabei stets im Mittelpunkt unserer Arbeit.
+                      Dank unseres umfassenden Know-hows realisieren wir erfolgreich anspruchsvolle
+                      Bauprojekte im privaten, gewerblichen und öffentlichen Bereich. Qualität,
+                      Zuverlässigkeit und eine strukturierte Projektabwicklung stehen dabei stets im
+                      Mittelpunkt unserer Arbeit.
                     </p>
                   </div>
                 </Reveal>
@@ -205,7 +219,10 @@ function AboutPage() {
                 <Reveal delay={350}>
                   <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
-                      Unser Unternehmen verfügt über ein erfahrenes, leistungsstarkes Team aus Fachkräften sowie ein professionell organisiertes Backoffice, das sämtliche Abläufe in den Bereichen Koordination, Kundenservice und Projektmanagement effizient steuert. Darüber hinaus engagieren wir uns aktiv in der Ausbildung zukünftiger Fachkräfte im Bereich Garten- und Landschaftsbau sowie Büromanagement.
+                      Unser Unternehmen verfügt über ein erfahrenes, leistungsstarkes Team aus
+                      Fachkräften sowie ein professionell organisiertes Backoffice, das sämtliche
+                      Abläufe in den Bereichen Koordination, Kundenservice und Projektmanagement
+                      effizient steuert.
                     </p>
                   </div>
                 </Reveal>
@@ -213,7 +230,8 @@ function AboutPage() {
                 <Reveal delay={400}>
                   <div className="relative pl-6">
                     <p className="text-foreground/80 leading-[1.8] text-lg">
-                      Wir sind zudem Mitglied im Fachverband Garten-, Landschafts- und Sportplatzbau, was unser Engagement für Qualität, fachliche Standards und kontinuierliche Weiterentwicklung in der Branche unterstreicht.
+                      Wir sind Partner im Fachverband Garten-, Landschafts- und Sportplatzbau. Der
+                      Austausch innerhalb der Branche gehört für uns zur Weiterentwicklung.
                     </p>
                   </div>
                 </Reveal>
@@ -229,7 +247,8 @@ function AboutPage() {
           <div className="max-w-2xl mb-20">
             <span className="eyebrow eyebrow-bracket text-brand/70">Unsere Geschichte</span>
             <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand leading-[1]">
-              Von einer Idee<br />
+              Von einer Idee
+              <br />
               <span className="italic font-light text-brand-muted">zum Fachbetrieb.</span>
             </h2>
           </div>
@@ -244,7 +263,10 @@ function AboutPage() {
               {TIMELINE.map((item, i) => {
                 const flip = i % 2 === 1;
                 return (
-                  <li key={item.year} className="relative md:grid md:grid-cols-2 md:gap-16 items-center">
+                  <li
+                    key={item.year}
+                    className="relative md:grid md:grid-cols-2 md:gap-16 items-center"
+                  >
                     {/* dot */}
                     <span
                       aria-hidden
@@ -320,21 +342,21 @@ function AboutPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <Quote className="h-12 w-12 text-accent" strokeWidth={1.2} />
-            <blockquote className="mt-6 display text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.15] text-brand-foreground">
-              „Jeder Garten erzählt eine Geschichte –<br />
+            <span className="eyebrow text-accent">Ihr Ansprechpartner</span>
+            <h2 className="mt-6 display text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.15] text-brand-foreground">
+              Von der ersten Idee
+              <br />
               <span className="italic font-light text-brand-foreground/70">
-                wir geben ihr Form, Tiefe und Bestand.
-              </span>"
-            </blockquote>
+                bis zur fertigen Außenanlage.
+              </span>
+            </h2>
             <div className="mt-10 flex items-center gap-4">
-
               <div>
                 <div className="font-display font-extrabold text-brand-foreground">
                   Valon Sinanaj
                 </div>
                 <div className="text-xs uppercase tracking-[0.22em] text-brand-foreground/60 mt-1">
-                  Geschäftsführer · B. Ing. Landschaftsarchitektur
+                  Geschäftsführer
                 </div>
               </div>
             </div>
@@ -349,7 +371,8 @@ function AboutPage() {
             <div>
               <span className="eyebrow eyebrow-bracket text-brand/70">Was uns trägt</span>
               <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand leading-[1] max-w-2xl">
-                Vier Werte,<br />
+                Vier Werte,
+                <br />
                 <span className="italic font-light text-brand-muted">ein Anspruch.</span>
               </h2>
             </div>
@@ -367,7 +390,10 @@ function AboutPage() {
               >
                 <div className="flex items-center justify-between mb-10">
                   <div className="size-11 rounded-full grid place-items-center">
-                    <Icon className="h-5 w-5 text-brand group-hover:text-accent transition-colors" strokeWidth={1.6} />
+                    <Icon
+                      className="h-5 w-5 text-brand group-hover:text-accent transition-colors"
+                      strokeWidth={1.6}
+                    />
                   </div>
                   <span className="text-[10px] tracking-[0.24em] uppercase text-brand/30 font-display font-semibold">
                     / 0{i + 1}
@@ -398,16 +424,15 @@ function AboutPage() {
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10 py-24 md:py-32 text-center text-brand-foreground">
           <span className="eyebrow eyebrow-bracket text-accent">Unser Team</span>
           <h2 className="display mt-6 text-[clamp(2rem,4vw,3.5rem)] max-w-3xl mx-auto leading-[1.05] text-white">
-            Ein eingespieltes Team aus Fachkräften,<br />
-            <span className="italic font-light text-brand-foreground/70">
-              Auszubildenden und Backoffice.
-            </span>
+            Ein eingespieltes Team aus Fachkräften,
+            <br />
+            <span className="italic font-light text-brand-foreground/70">Baustelle und Büro.</span>
           </h2>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-sm">
             {[
-              { v: "12+", l: "Mitarbeiter" },
-              { v: "2", l: "Auszubildende" },
-              { v: "Mitglied", l: "Fachverband GaLaBau" },
+              { v: "2011", l: "Seit 2011 in der Branche" },
+              { v: "Regional", l: "Rhein-Main-Gebiet" },
+              { v: "Partner", l: "Fachverband GaLaBau" },
             ].map((s, i) => (
               <div key={s.l} className="flex items-center gap-12">
                 {i > 0 && <span className="hidden sm:block h-8 w-px bg-brand-foreground/20" />}
@@ -428,12 +453,13 @@ function AboutPage() {
         <div className="max-w-4xl mx-auto text-center">
           <span className="eyebrow eyebrow-bracket text-brand/70">Lust auf ein Gespräch?</span>
           <h2 className="display mt-6 text-[clamp(2rem,4.5vw,3.75rem)] text-brand leading-[1.05]">
-            Erzählen Sie uns von<br />
+            Erzählen Sie uns von
+            <br />
             <span className="italic font-light text-brand-muted">Ihrem Garten.</span>
           </h2>
           <p className="mt-6 text-foreground/70 max-w-xl mx-auto leading-relaxed">
-            Kostenloser Vor-Ort-Termin, transparentes Festpreisangebot, Rückmeldung innerhalb von
-            24 Stunden – verbindlich.
+            Schildern Sie uns Ihr Vorhaben. Wir besprechen die nächsten Schritte persönlich und
+            stimmen einen passenden Termin mit Ihnen ab.
           </p>
           <Link
             to="/"

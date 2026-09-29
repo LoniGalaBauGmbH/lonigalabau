@@ -760,3 +760,33 @@ export function plannerText(s: PlannerState, files: string[] = []) {
     "\nNÄCHSTER SCHRITT\nLoni prüft Umfang, Rückfragen und einen möglichen Vor-Ort-Termin. Ein verbindliches Angebot folgt nach Klärung der Ausführung.",
   ].join("\n");
 }
+
+/** Only predefined choices and numeric measurements may leave the active form for a draft. */
+export function privatePlannerDraft(form: PlannerState): PlannerState {
+  const safe = {
+    ...INITIAL_PLANNER,
+    services: [...form.services],
+    clientType: form.clientType,
+    details: {} as PlannerState["details"],
+    site: {} as PlannerState["site"],
+    frame: {} as PlannerState["frame"],
+  };
+  function copyChoices(source: Record<string, string>, questions: Question[]) {
+    return Object.fromEntries(
+      questions.flatMap((q) => {
+        const value = source[q.id];
+        return value &&
+          (q.options?.includes(value) ||
+            (q.unit && /^(?:[0-9]+(?:[.,][0-9]+)?|Noch unklar)$/.test(value)))
+          ? [[q.id, value]]
+          : [];
+      }),
+    );
+  }
+  for (const trade of TRADES)
+    if (form.services.includes(trade.id))
+      safe.details[trade.id] = copyChoices(form.details[trade.id] || {}, trade.questions);
+  safe.site = copyChoices(form.site, SITE_QUESTIONS);
+  safe.frame = copyChoices(form.frame, FRAME_QUESTIONS);
+  return safe;
+}

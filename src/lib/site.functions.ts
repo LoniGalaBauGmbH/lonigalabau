@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { setResponseStatus } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import {
@@ -11,7 +12,7 @@ import { persistApplicationSubmission } from "@/lib/application-submission.serve
 import { attemptSubmissionNotification } from "@/lib/submission-notification.server";
 import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
-import { publicUploadSchema, preparePublicUpload } from "@/lib/public-upload.server";
+import { enforceFormQuota } from "@/lib/form-quota.server";
 
 export const getServices = createServerFn({ method: "GET" }).handler(async () => {
   try {
@@ -22,12 +23,14 @@ export const getServices = createServerFn({ method: "GET" }).handler(async () =>
       .order("sort_order", { ascending: true });
     if (error) {
       console.warn("getServices DB warning:", error.message);
-      return [];
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
     return data ?? [];
   } catch (err) {
     console.warn("getServices fetch failed:", err);
-    return [];
+    setResponseStatus(503);
+    throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
   }
 });
 
@@ -43,12 +46,14 @@ export const getServiceBySlug = createServerFn({ method: "GET" })
         .maybeSingle();
       if (error) {
         console.warn("getServiceBySlug DB warning:", error.message);
-        return null;
+        setResponseStatus(503);
+        throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
       }
       return svc;
     } catch (err) {
       console.warn("getServiceBySlug fetch failed:", err);
-      return null;
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
   });
 
@@ -66,12 +71,14 @@ export const getProjectsByService = createServerFn({ method: "GET" })
         .limit(8);
       if (error) {
         console.warn("getProjectsByService DB warning:", error.message);
-        return [];
+        setResponseStatus(503);
+        throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
       }
       return rows ?? [];
     } catch (err) {
       console.warn("getProjectsByService fetch failed:", err);
-      return [];
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
   });
 
@@ -90,12 +97,14 @@ export const getRelatedServices = createServerFn({ method: "GET" })
         .limit(6);
       if (error) {
         console.warn("getRelatedServices DB warning:", error.message);
-        return [];
+        setResponseStatus(503);
+        throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
       }
       return rows ?? [];
     } catch (err) {
       console.warn("getRelatedServices fetch failed:", err);
-      return [];
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
   });
 
@@ -110,14 +119,34 @@ export const getProjects = createServerFn({ method: "GET" }).handler(async () =>
       .order("created_at", { ascending: false });
     if (error) {
       console.warn("getProjects DB warning:", error.message);
-      return [];
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
     return data ?? [];
   } catch (err) {
     console.warn("getProjects fetch failed:", err);
-    return [];
+    setResponseStatus(503);
+    throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
   }
 });
+
+export const getProjectById = createServerFn({ method: "GET" })
+  .inputValidator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
+  .handler(async ({ data: input }) => {
+    const { data, error } = await supabaseAdmin
+      .from("projects")
+      .select(
+        "id,title,description,location,images,service_id,updated_at,services(slug,title,active)",
+      )
+      .eq("id", input.id)
+      .eq("active", true)
+      .maybeSingle();
+    if (error) {
+      setResponseStatus(503);
+      throw new Error("Die Referenzen sind vorübergehend nicht verfügbar.");
+    }
+    return data?.images?.length ? data : null;
+  });
 
 export const getFeaturedProject = createServerFn({ method: "GET" }).handler(async () => {
   try {
@@ -132,12 +161,14 @@ export const getFeaturedProject = createServerFn({ method: "GET" }).handler(asyn
       .maybeSingle();
     if (error) {
       console.warn("getFeaturedProject DB warning:", error.message);
-      return null;
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
     return data;
   } catch (err) {
     console.warn("getFeaturedProject fetch failed:", err);
-    return null;
+    setResponseStatus(503);
+    throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
   }
 });
 
@@ -150,12 +181,14 @@ export const getJobs = createServerFn({ method: "GET" }).handler(async () => {
       .order("created_at", { ascending: false });
     if (error) {
       console.warn("getJobs DB warning:", error.message);
-      return [];
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
     return data ?? [];
   } catch (err) {
     console.warn("getJobs fetch failed:", err);
-    return [];
+    setResponseStatus(503);
+    throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
   }
 });
 
@@ -171,18 +204,21 @@ export const getJobBySlug = createServerFn({ method: "GET" })
         .maybeSingle();
       if (error) {
         console.warn("getJobBySlug DB warning:", error.message);
-        return null;
+        setResponseStatus(503);
+        throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
       }
       return job;
     } catch (err) {
       console.warn("getJobBySlug fetch failed:", err);
-      return null;
+      setResponseStatus(503);
+      throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
   });
 
 export const createContactRequest = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => contactSubmissionSchema.parse(d))
   .handler(async ({ data }) => {
+    await enforceFormQuota(data.email);
     const result = await persistContactSubmission(supabaseAdmin, data);
     await attemptSubmissionNotification(supabaseAdmin, "contact_requests", result.id);
     return { ok: true };
@@ -198,6 +234,7 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
       .parse(data),
   )
   .handler(async ({ data }) => {
+    await enforceFormQuota(data.plan.email);
     const result = await persistContactSubmission(supabaseAdmin, {
       ...buildPlannerPayload(data.plan),
       attachments: data.attachments,
@@ -209,20 +246,15 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
 export const createApplication = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => applicationSubmissionSchema.parse(d))
   .handler(async ({ data }) => {
+    await enforceFormQuota(data.email);
     const result = await persistApplicationSubmission(supabaseAdmin, data);
     await attemptSubmissionNotification(supabaseAdmin, "applications", result.id);
     return { ok: true };
   });
 
-export const subscribeNewsletter = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => newsletterSchema.parse(d))
-  .handler(async ({ data }) => {
-    const { error } = await supabaseAdmin
-      .from("newsletter_subscribers")
-      .insert({ email: data.email });
-    if (error && !error.message.includes("duplicate")) throw new Error(error.message);
-    return { ok: true };
-  });
+export const subscribeNewsletter = createServerFn({ method: "POST" }).handler(async () => {
+  throw new Error("Eine Newsletter-Anmeldung wird derzeit nicht angeboten.");
+});
 
 export const getSiteImages = createServerFn({ method: "GET" }).handler(async () => {
   try {
@@ -241,31 +273,6 @@ export const getSiteImages = createServerFn({ method: "GET" }).handler(async () 
     return {};
   }
 });
-
-// Guest files go to preconfigured private buckets. Never overwrite existing files.
-export const publicUploadFile = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => publicUploadSchema.parse(d))
-  .handler(async ({ data }) => {
-    const file = preparePublicUpload(data);
-    const bucket = supabaseAdmin.storage.from(file.bucket);
-    const { error } = await bucket.upload(file.path, file.buffer, {
-      contentType: file.contentType,
-      upsert: false,
-    });
-    if (error) throw new Error("Upload fehlgeschlagen. Bitte später erneut versuchen.");
-
-    // The uploader may preview their own photo. Store the path, never the expiring URL.
-    let url = "";
-    if (file.bucket === "configurator-images") {
-      const { data: signed, error: signingError } = await bucket.createSignedUrl(
-        file.path,
-        60 * 60,
-      );
-      if (signingError) throw new Error("Die Bildvorschau konnte nicht erstellt werden.");
-      url = signed.signedUrl;
-    }
-    return { url, path: file.path };
-  });
 
 export const getSitePartners = createServerFn({ method: "GET" }).handler(async () => {
   try {

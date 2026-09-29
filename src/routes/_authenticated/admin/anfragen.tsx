@@ -21,6 +21,8 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { toast } from "sonner";
+import { adminSaveNotes } from "@/lib/admin.functions";
+import { DeleteSubmission } from "@/components/admin/DeleteSubmission";
 import { SubmissionNotification } from "@/components/admin/SubmissionNotification";
 
 export const Route = createFileRoute("/_authenticated/admin/anfragen")({ component: Page });
@@ -36,6 +38,9 @@ type ContactRequest = {
   status: string;
   created_at: string;
   notification_sent_at?: string | null;
+  notification_status?: string | null;
+  notes?: string;
+  notes_version?: number;
 };
 
 function PrivateAttachment({ path, index }: { path: string; index: number }) {
@@ -66,16 +71,25 @@ function PrivateAttachment({ path, index }: { path: string; index: number }) {
         {loading ? "Anhang wird geladen…" : `${isPdf ? "PDF" : "Foto"} ${index + 1} öffnen`}
       </button>
       {url && (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="block break-all text-sm text-brand underline underline-offset-4">
-          {isPdf ? `PDF herunterladen: ${name}` : <>
-          <img
-            src={url}
-            alt={`Kundenfoto ${index + 1}`}
-            className="max-h-64 rounded-xl"
-            onError={() => setUrl("")}
-          />
-          <span className="mt-2 block">{name}</span>
-          </>}
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block break-all text-sm text-brand underline underline-offset-4"
+        >
+          {isPdf ? (
+            `PDF herunterladen: ${name}`
+          ) : (
+            <>
+              <img
+                src={url}
+                alt={`Kundenfoto ${index + 1}`}
+                className="max-h-64 rounded-xl"
+                onError={() => setUrl("")}
+              />
+              <span className="mt-2 block">{name}</span>
+            </>
+          )}
         </a>
       )}
     </div>
@@ -95,20 +109,47 @@ function Page() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLead, setSelectedLead] = useState<ContactRequest | null>(null);
   const [notes, setNotes] = useState("");
+  const saveNotes = useServerFn(adminSaveNotes);
+  const [savingNotes, setSavingNotes] = useState(false);
 
   // Load notes from localStorage when a lead is selected
   useEffect(() => {
     if (selectedLead) {
-      const savedNotes = localStorage.getItem(`crm-notes-${selectedLead.id}`) || "";
+      let savedNotes = selectedLead.notes || "";
+      try {
+        if (!savedNotes) savedNotes = localStorage.getItem(`crm-notes-${selectedLead.id}`) || "";
+      } catch {
+        /* Browser storage is optional. */
+      }
       setNotes(savedNotes);
     }
   }, [selectedLead]);
 
   // Save notes to localStorage
-  const handleSaveNotes = () => {
-    if (selectedLead) {
-      localStorage.setItem(`crm-notes-${selectedLead.id}`, notes);
-      toast.success("Notizen lokal gespeichert");
+  const handleSaveNotes = async () => {
+    if (!selectedLead || savingNotes) return;
+    setSavingNotes(true);
+    try {
+      const result = await saveNotes({
+        data: {
+          table: "contact_requests",
+          id: selectedLead.id,
+          notes,
+          version: selectedLead.notes_version ?? 0,
+        },
+      });
+      setSelectedLead({ ...selectedLead, notes, notes_version: result.version });
+      try {
+        localStorage.removeItem(`crm-notes-${selectedLead.id}`);
+      } catch {
+        /* Already saved securely. */
+      }
+      void qc.invalidateQueries({ queryKey: ["admin-contacts"] });
+      toast.success("Notizen sicher gespeichert");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Speichern fehlgeschlagen");
+    } finally {
+      setSavingNotes(false);
     }
   };
 
@@ -386,7 +427,21 @@ function Page() {
               </div>
 
               {/* Quick Communication Actions bar */}
-              <SubmissionNotification key={selectedLead.id} id={selectedLead.id} table="contact_requests" sentAt={selectedLead.notification_sent_at} />
+              <DeleteSubmission
+                table="contact_requests"
+                id={selectedLead.id}
+                onDeleted={() => {
+                  setSelectedLead(null);
+                  void qc.invalidateQueries({ queryKey: ["admin-contacts"] });
+                }}
+              />
+              <SubmissionNotification
+                key={selectedLead.id}
+                id={selectedLead.id}
+                table="contact_requests"
+                sentAt={selectedLead.notification_sent_at}
+                deliveryStatus={selectedLead.notification_status}
+              />
               <div className="mt-6 flex flex-wrap gap-2.5">
                 <a
                   href={`mailto:${selectedLead.email}?subject=Ihre Anfrage bei Loni Galabau GmbH`}
@@ -462,7 +517,7 @@ function Page() {
                 </div>
               </div>
 
-              {/* CRM Admin Notes (localStorage backed) */}
+              {/* CRM Admin Notes (server backed) */}
               <div className="space-y-3">
                 <p className="text-[10px] uppercase tracking-widest text-foreground/40 font-bold flex items-center justify-between">
                   <span>Interne Notizen</span>
@@ -477,6 +532,7 @@ function Page() {
                 />
                 <button
                   onClick={handleSaveNotes}
+                  disabled={savingNotes}
                   className="text-xs font-bold font-display uppercase tracking-wider text-brand hover:text-accent border border-brand/20 hover:border-brand/40 px-4 py-2 rounded-full transition"
                 >
                   Notizen sichern

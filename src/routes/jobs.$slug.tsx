@@ -7,15 +7,27 @@ import { PageShell } from "@/components/site/PageShell";
 import { getJobBySlug, createApplication } from "@/lib/site.functions";
 import { applicationSchema } from "@/lib/validators";
 import { validateApplicationDocument } from "@/lib/application-document";
+import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import { ApplicationUpload } from "@/components/site/ApplicationUpload";
 
 const jobQuery = (slug: string) =>
   queryOptions({ queryKey: ["job", slug], queryFn: () => getJobBySlug({ data: { slug } }) });
 
 export const Route = createFileRoute("/jobs/$slug")({
-  head: ({ params }) => ({
-    meta: [{ title: `Stelle: ${params.slug} – Loni Galabau GmbH` }],
-  }),
+  head: ({ loaderData: loaded }) => {
+    const loaderData = loaded as { title: string; location: string | null } | undefined;
+    return {
+      meta: [
+        { title: `${loaderData?.title || "Stellenangebot"} – Loni GalaBau GmbH` },
+        {
+          name: "description",
+          content: loaderData
+            ? `${loaderData.title} in ${loaderData.location || "Hattersheim am Main"}. Aufgaben und Anforderungen ansehen und bei Loni GalaBau bewerben.`
+            : "Aktuelle Stellenangebote bei Loni GalaBau.",
+        },
+      ],
+    };
+  },
   loader: async ({ context, params }) => {
     const data = await context.queryClient.ensureQueryData(jobQuery(params.slug));
     if (!data) throw notFound();
@@ -88,6 +100,34 @@ function Page() {
 
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd({
+            "@context": "https://schema.org",
+            "@type": "JobPosting",
+            title: job.title,
+            description: job.description,
+            datePosted: job.created_at,
+            employmentType: job.employment_type === "Vollzeit" ? "FULL_TIME" : undefined,
+            hiringOrganization: {
+              "@type": "Organization",
+              name: "Loni GalaBau GmbH",
+              sameAs: "https://www.loni-galabau.de",
+              logo: "https://www.loni-galabau.de/images/partner/loni.svg",
+            },
+            jobLocation: {
+              "@type": "Place",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: job.location || "Hattersheim am Main",
+                addressCountry: "DE",
+              },
+            },
+            url: canonicalUrl("/jobs/" + slug),
+          }),
+        }}
+      />
       <section className="px-6">
         <div className="max-w-4xl mx-auto py-10">
           <Link to="/jobs" className="text-sm opacity-60 hover:opacity-100">

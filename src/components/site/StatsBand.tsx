@@ -1,10 +1,28 @@
 import { Award, Hammer, Sprout, Timer } from "lucide-react";
 
 const STATS = [
-  { v: "15", suffix: "+", l: "Jahre Erfahrung", sub: "Seit 2009 im Rhein-Main-Gebiet", Icon: Sprout },
-  { v: "500", suffix: "+", l: "Realisierte Projekte", sub: "Privat- & Gewerbegärten", Icon: Hammer },
-  { v: "100", suffix: "%", l: "Meisterbetrieb", sub: "Eingetragen bei der Innung", Icon: Award },
-  { v: "24", suffix: "h", l: "Antwortzeit", sub: "Verbindlich, werktags", Icon: Timer },
+  {
+    v: "2011",
+    suffix: "",
+    l: "Seit 2011 tätig",
+    sub: "Im Garten- und Landschaftsbau",
+    Icon: Sprout,
+  },
+  { v: "8", suffix: "", l: "Leistungsbereiche", sub: "Für Ihre Außenanlagen", Icon: Hammer },
+  {
+    v: "Rhein",
+    suffix: "-Main",
+    l: "Regional für Sie da",
+    sub: "Aus Hattersheim am Main",
+    Icon: Award,
+  },
+  {
+    v: "Direkt",
+    suffix: "",
+    l: "Persönlicher Kontakt",
+    sub: "Von der Anfrage bis zur Umsetzung",
+    Icon: Timer,
+  },
 ];
 
 export function StatsBand() {
@@ -24,14 +42,17 @@ export function StatsBand() {
           <div>
             <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.28em] uppercase text-accent font-display font-semibold">
               <span className="size-1.5 rounded-full bg-accent" />
-              In Zahlen
+              Loni auf einen Blick
             </span>
             <h2 className="display mt-5 text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] max-w-xl text-brand-foreground">
-              Handwerk, das sich<br />in Zahlen messen lässt.
+              Erfahrung, die
+              <br />
+              Ihren Garten weiterbringt.
             </h2>
           </div>
-          <p className="text-sm text-brand-foreground/60 max-w-sm leading-relaxed">
-            Über 15 Jahre Erfahrung, hunderte umgesetzte Projekte und eine verbindliche Antwortzeit – das ist unser Anspruch an jeden Auftrag.
+          <p className="text-sm text-brand-foreground/80 max-w-sm leading-relaxed">
+            Seit 2011 sind wir im Garten- und Landschaftsbau tätig. Wir verbinden diese Erfahrung
+            mit einem persönlichen Blick auf Ihr Vorhaben.
           </p>
         </div>
 
@@ -43,13 +64,13 @@ export function StatsBand() {
             >
               <div className="flex items-center justify-between mb-8">
                 <Icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
-                <span className="text-[10px] tracking-[0.24em] uppercase text-brand-foreground/40 font-display font-semibold">
-                  / 0{STATS.indexOf(STATS.find(s => s.l === l)!) + 1}
+                <span className="text-[10px] tracking-[0.24em] uppercase text-brand-foreground/80 font-display font-semibold">
+                  / 0{STATS.indexOf(STATS.find((s) => s.l === l)!) + 1}
                 </span>
               </div>
 
               <div className="flex items-baseline gap-0.5">
-                <span className="display text-[clamp(3rem,5vw,4.5rem)] leading-none tracking-tight text-brand-foreground tabular-nums font-black">
+                <span className="display text-[clamp(2rem,3.5vw,3.5rem)] leading-none tracking-tight text-brand-foreground tabular-nums font-black">
                   {v}
                 </span>
                 <span className="text-[clamp(1.5rem,2vw,2rem)] text-accent font-display font-bold leading-none">
@@ -60,9 +81,7 @@ export function StatsBand() {
               <div className="mt-8 text-sm font-display font-bold uppercase tracking-[0.16em] text-brand-foreground">
                 {l}
               </div>
-              <div className="mt-2 text-[13px] text-brand-foreground/55 leading-relaxed">
-                {sub}
-              </div>
+              <div className="mt-2 text-[13px] text-brand-foreground/80 leading-relaxed">{sub}</div>
             </div>
           ))}
         </div>

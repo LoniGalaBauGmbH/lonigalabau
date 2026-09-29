@@ -8,7 +8,7 @@ import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { GardenDetails } from "@/components/site/GardenDetails";
 import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { Awards } from "@/components/site/Awards";
-import { Testimonials } from "@/components/site/Testimonials";
+
 import { FAQ } from "@/components/site/FAQ";
 import { getServices, getFeaturedProject, getSitePartners } from "@/lib/site.functions";
 import { ServiceCarousel } from "@/components/site/ServiceCarousel";
@@ -25,21 +25,29 @@ import partnerVgf from "@/assets/partners/vgf.png";
 import partnerFrankfurt from "@/assets/partners/frankfurt.svg";
 
 const servicesQuery = queryOptions({ queryKey: ["services"], queryFn: () => getServices() });
-const featuredQuery = queryOptions({ queryKey: ["featured-project"], queryFn: () => getFeaturedProject() });
+const featuredQuery = queryOptions({
+  queryKey: ["featured-project"],
+  queryFn: () => getFeaturedProject(),
+});
 const partnersQuery = queryOptions({ queryKey: ["partners"], queryFn: () => getSitePartners() });
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Loni Galabau GmbH – Ihr Garten, unsere Leidenschaft" },
-      { name: "description", content: "Garten- und Landschaftsbau aus Hattersheim am Main. Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten und mehr." },
+      {
+        name: "description",
+        content:
+          "Garten- und Landschaftsbau aus Hattersheim am Main. Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten und mehr.",
+      },
     ],
   }),
-  loader: ({ context }) => Promise.all([
-    context.queryClient.ensureQueryData(servicesQuery),
-    context.queryClient.ensureQueryData(featuredQuery),
-    context.queryClient.ensureQueryData(partnersQuery),
-  ]),
+  loader: ({ context }) =>
+    Promise.all([
+      context.queryClient.ensureQueryData(servicesQuery),
+      context.queryClient.ensureQueryData(featuredQuery),
+      context.queryClient.ensureQueryData(partnersQuery),
+    ]),
   component: HomePage,
 });
 
@@ -53,17 +61,49 @@ const clients = [
 ];
 
 const values = [
-  { Icon: Link2, t: "Wir verwirklichen Träume!", d: "Wir lassen Ihre Designträume Wirklichkeit werden, indem wir Ihre persönlichen Vorstellungen mit unserer über 15-jährigen Expertise im Bereich Garten- und Landschaftsbau kreativ verbinden." },
-  { Icon: Leaf, t: "Nachhaltigkeit im Blick", d: "Nachhaltigkeit ist fester Bestandteil unserer Pflegearbeit. Mit dem Einsatz nachhaltiger Produkte und sorgfältig ausgewählten Pflegemaßnahmen tragen wir dazu bei, Gärten und Grünflächen langfristig gesund und lebendig zu erhalten." },
-  { Icon: Sparkles, t: "Kreativität entfesselt!", d: "Unsere Gartendesigns verbinden kreative Ideen mit funktionalen Lösungen. So entstehen individuelle Gärten, die nicht nur hervorstechen, sondern auch praktische Herausforderungen sinnvoll lösen." },
-  { Icon: Heart, t: "Leidenschaft in jeder Arbeit", d: "Die Schaffung schöner, nachhaltiger Außenanlagen ist unsere große Leidenschaft. Jeder Garten ist individuell und stellt uns vor neue Herausforderungen. Genau darin liegt unsere Stärke: Materialien und Pflanzen harmonisch zu verbinden und so einzigartige Gartenlandschaften zu gestalten." },
+  {
+    Icon: Link2,
+    t: "Wir verwirklichen Träume!",
+    d: "Wir lassen Ihre Designträume Wirklichkeit werden, indem wir Ihre persönlichen Vorstellungen mit unserer Erfahrung seit 2011 im Bereich Garten- und Landschaftsbau kreativ verbinden.",
+  },
+  {
+    Icon: Leaf,
+    t: "Nachhaltigkeit im Blick",
+    d: "Nachhaltigkeit ist fester Bestandteil unserer Pflegearbeit. Mit dem Einsatz nachhaltiger Produkte und sorgfältig ausgewählten Pflegemaßnahmen tragen wir dazu bei, Gärten und Grünflächen langfristig gesund und lebendig zu erhalten.",
+  },
+  {
+    Icon: Sparkles,
+    t: "Kreativität entfesselt!",
+    d: "Unsere Gartendesigns verbinden kreative Ideen mit funktionalen Lösungen. So entstehen individuelle Gärten, die nicht nur hervorstechen, sondern auch praktische Herausforderungen sinnvoll lösen.",
+  },
+  {
+    Icon: Heart,
+    t: "Leidenschaft in jeder Arbeit",
+    d: "Die Schaffung schöner, nachhaltiger Außenanlagen ist unsere große Leidenschaft. Jeder Garten ist individuell und stellt uns vor neue Herausforderungen. Genau darin liegt unsere Stärke: Materialien und Pflanzen harmonisch zu verbinden und so einzigartige Gartenlandschaften zu gestalten.",
+  },
 ];
 
 const steps = [
-  { n: "01", t: "Design-Beratung", d: "Im ersten Schritt setzen wir uns mit Ihnen zusammen, um Ihre Wünsche und Vorstellungen für den Garten ausführlich zu besprechen und zu verstehen." },
-  { n: "02", t: "Individuelle Planung", d: "Wenn gewünscht, entwirft unser Partner ein individuelles und passgenaues Gartendesign, das genau auf Ihre Vorstellungen und die Besonderheiten Ihres Grundstücks zugeschnitten ist." },
-  { n: "03", t: "Umsetzung & Bau", d: "Nach Fertigstellung des Entwurfs stellen wir Ihnen das Konzept persönlich vor und gehen alle Details gemeinsam durch. Nach Ihrer Freigabe starten wir unmittelbar mit der Einplanung und der fachgerechten Umsetzung." },
-  { n: "04", t: "Gestaltung & Ausstattung", d: "Im Bereich Gestaltung & Ausstattung integrieren wir zeitgemäße Lösungen wie Gartenbeleuchtung, automatische Bewässerung und Mähroboter. So verbinden wir Funktionalität, Komfort und ein gepflegtes Erscheinungsbild." },
+  {
+    n: "01",
+    t: "Design-Beratung",
+    d: "Im ersten Schritt setzen wir uns mit Ihnen zusammen, um Ihre Wünsche und Vorstellungen für den Garten ausführlich zu besprechen und zu verstehen.",
+  },
+  {
+    n: "02",
+    t: "Individuelle Planung",
+    d: "Wenn gewünscht, entwirft unser Partner ein individuelles und passgenaues Gartendesign, das genau auf Ihre Vorstellungen und die Besonderheiten Ihres Grundstücks zugeschnitten ist.",
+  },
+  {
+    n: "03",
+    t: "Umsetzung & Bau",
+    d: "Nach Fertigstellung des Entwurfs stellen wir Ihnen das Konzept persönlich vor und gehen alle Details gemeinsam durch. Nach Ihrer Freigabe starten wir unmittelbar mit der Einplanung und der fachgerechten Umsetzung.",
+  },
+  {
+    n: "04",
+    t: "Gestaltung & Ausstattung",
+    d: "Im Bereich Gestaltung & Ausstattung integrieren wir zeitgemäße Lösungen wie Gartenbeleuchtung, automatische Bewässerung und Mähroboter. So verbinden wir Funktionalität, Komfort und ein gepflegtes Erscheinungsbild.",
+  },
 ];
 
 function HomePage() {
@@ -81,42 +121,37 @@ function HomePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": ["HomeAndConstructionBusiness", "LandscapingService"],
-            "name": "Loni Galabau GmbH",
-            "url": "https://www.loni-galabau.de",
-            "logo": "https://www.loni-galabau.de/assets/logo-loni.svg",
-            "image": "https://www.loni-galabau.de/assets/hero-garden.jpg",
-            "telephone": "+49-6190-9266134",
-            "email": "info@loni-galabau.de",
-            "address": {
+            "@type": "HomeAndConstructionBusiness",
+            name: "Loni Galabau GmbH",
+            url: "https://www.loni-galabau.de",
+            logo: "https://www.loni-galabau.de/images/partner/loni.svg",
+            image: "https://www.loni-galabau.de/images/social-preview.jpg",
+            telephone: "+49-6190-9266134",
+            email: "info@loni-galabau.de",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "Auf der Roos 3",
-              "addressLocality": "Hattersheim am Main",
-              "postalCode": "65795",
-              "addressCountry": "DE"
+              streetAddress: "Auf der Roos 3",
+              addressLocality: "Hattersheim am Main",
+              postalCode: "65795",
+              addressCountry: "DE",
             },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 50.0654,
-              "longitude": 8.4859
-            },
-            "openingHoursSpecification": [
+            openingHoursSpecification: [
               {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "07:00",
-                "closes": "18:00"
-              }
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                opens: "07:00",
+                closes: "18:00",
+              },
             ],
-            "areaServed": [
-              {"@type": "City", "name": "Hattersheim am Main"},
-              {"@type": "City", "name": "Frankfurt am Main"},
-              {"@type": "City", "name": "Wiesbaden"},
-              {"@type": "City", "name": "Mainz"},
-              {"@type": "City", "name": "Darmstadt"},
-              {"@type": "City", "name": "Rhein-Main-Gebiet"}
-            ]
-          })
+            areaServed: [
+              { "@type": "City", name: "Hattersheim am Main" },
+              { "@type": "City", name: "Frankfurt am Main" },
+              { "@type": "City", name: "Wiesbaden" },
+              { "@type": "City", name: "Mainz" },
+              { "@type": "City", name: "Darmstadt" },
+              { "@type": "Place", name: "Rhein-Main-Gebiet" },
+            ],
+          }),
         }}
       />
       {/* HERO */}
@@ -124,6 +159,7 @@ function HomePage() {
         <div className="absolute inset-0">
           <img
             src={images.hero_bg}
+            fetchPriority="high"
             alt="Modern gestalteter Garten in der Abenddämmerung"
             width={1920}
             height={1080}
@@ -135,22 +171,28 @@ function HomePage() {
         {/* floating stat card */}
         <div className="absolute right-6 md:right-10 top-28 md:top-32 z-10">
           <div className="rounded-3xl backdrop-blur-md bg-white/5 px-7 py-5 md:px-9 md:py-7 text-right">
-            <div className="display text-4xl md:text-5xl text-white">500+</div>
-            <div className="text-[11px] tracking-[0.22em] uppercase text-white/80 mt-1">Zufriedene Kunden</div>
+            <div className="display text-4xl md:text-5xl text-white">Seit 2011</div>
+            <div className="text-[11px] tracking-[0.22em] uppercase text-white/80 mt-1">
+              Im Garten- & Landschaftsbau
+            </div>
           </div>
         </div>
 
         <div className="relative z-[1] max-w-[1480px] mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-16 md:pb-24 pt-44 md:pt-56">
           <div className="max-w-5xl animate-fade-up">
-            <h1 lang="de" className="display break-words hyphens-auto text-white text-[clamp(2.75rem,8vw,8rem)]">
-              Ihr Garten<br />
+            <h1
+              lang="de"
+              className="display break-words hyphens-auto text-white text-[clamp(2.75rem,8vw,8rem)]"
+            >
+              Ihr Garten
+              <br />
               <span className="text-white">unsere Leidenschaft</span>
             </h1>
 
             <p className="mt-10 max-w-2xl text-lg md:text-xl text-white/90 leading-relaxed font-normal">
-              Gärten sind mehr als nur Grünflächen – sie sind Orte der Entspannung, Inspiration
-              und Naturverbundenheit. Wir verwandeln Ihren Außenbereich in eine harmonische Oase,
-              die Ästhetik und Funktionalität vereint.
+              Gärten sind mehr als nur Grünflächen – sie sind Orte der Entspannung, Inspiration und
+              Naturverbundenheit. Wir verwandeln Ihren Außenbereich in eine harmonische Oase, die
+              Ästhetik und Funktionalität vereint.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-8">
@@ -182,8 +224,7 @@ function HomePage() {
         <div
           className="relative group"
           style={{
-            maskImage:
-              "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+            maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
             WebkitMaskImage:
               "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
           }}
@@ -218,7 +259,6 @@ function HomePage() {
         `}</style>
       </section>
 
-
       <StatsBand />
 
       {/* VALUES */}
@@ -228,7 +268,11 @@ function HomePage() {
             <div className="lg:col-span-7">
               <span className="eyebrow eyebrow-bracket text-brand/70">Unsere Werte</span>
               <h2 className="display text-[clamp(2.25rem,8vw,5.5rem)] mt-6 text-brand leading-[1.05]">
-                Wir sind <span className="text-brand-muted">in jeder<br className="hidden lg:inline" /> Hinsicht anders</span>
+                Wir sind{" "}
+                <span className="text-brand-muted">
+                  in jeder
+                  <br className="hidden lg:inline" /> Hinsicht anders
+                </span>
               </h2>
             </div>
             <div className="lg:col-span-5 lg:pt-6 flex lg:justify-end">
@@ -248,7 +292,9 @@ function HomePage() {
                   <div className="size-12 grid place-items-center mb-5">
                     <Icon className="h-5 w-5 text-brand" strokeWidth={1.8} />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-display font-extrabold text-brand">{t}</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-extrabold text-brand">
+                    {t}
+                  </h3>
                   <p className="mt-3 text-base text-foreground/75 leading-relaxed max-w-xl">{d}</p>
                 </div>
               ))}
@@ -274,17 +320,20 @@ function HomePage() {
       {/* PROCESS */}
       <section className="bg-brand text-brand-foreground px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1480px] mx-auto">
-          <span className="eyebrow eyebrow-bracket text-brand-foreground/70">Wie es funktioniert</span>
-          <h2 lang="de" className="display break-words hyphens-auto text-[clamp(2rem,5vw,4.5rem)] mt-6 text-brand-foreground max-w-6xl">
-            EINFACHE SCHRITTE FÜR <br />IHRE <span className="text-accent">GARTENGESTALTUNG</span>
+          <span className="eyebrow eyebrow-bracket text-brand-foreground/70">
+            Wie es funktioniert
+          </span>
+          <h2
+            lang="de"
+            className="display break-words hyphens-auto text-[clamp(2rem,5vw,4.5rem)] mt-6 text-brand-foreground max-w-6xl"
+          >
+            EINFACHE SCHRITTE FÜR <br />
+            IHRE <span className="text-accent">GARTENGESTALTUNG</span>
           </h2>
 
           <div className="mt-20 grid md:grid-cols-2 gap-x-16 gap-y-14 relative">
             {steps.map((s, i) => (
-              <div
-                key={s.n}
-                className={`relative md:px-8 ${i < 2 ? "md:pb-14" : "md:pt-4"}`}
-              >
+              <div key={s.n} className={`relative md:px-8 ${i < 2 ? "md:pb-14" : "md:pt-4"}`}>
                 <h3 className="text-2xl md:text-3xl text-accent font-display font-extrabold tracking-tight">
                   {s.n} <span className="text-brand-foreground/30 mx-2">|</span> {s.t}
                 </h3>
@@ -329,7 +378,9 @@ function HomePage() {
           <div className="max-w-[1480px] mx-auto bg-brand text-brand-foreground rounded-[2.5rem] overflow-hidden grid lg:grid-cols-2">
             <div className="p-10 md:p-16 flex flex-col gap-7 justify-center">
               <span className="eyebrow eyebrow-bracket text-accent">Referenz</span>
-              <h2 className="display text-4xl md:text-6xl text-brand-foreground">{featured.title}</h2>
+              <h2 className="display text-4xl md:text-6xl text-brand-foreground">
+                {featured.title}
+              </h2>
               {featured.location && (
                 <p className="text-xs uppercase tracking-[0.22em] text-brand-foreground/60">
                   Standort · {featured.location}
@@ -346,13 +397,29 @@ function HomePage() {
               </Link>
             </div>
             <ProjectGallery project={featured}>
-              <button type="button" aria-label={featured.title + " – Bilder ansehen"} className="group relative block min-h-[360px] w-full overflow-hidden text-left focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent lg:min-h-full">
-              {featured.images?.[0] ? (
-                <ProjectImage src={featured.images[0]} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
-              ) : (
-                <ProjectImage src={aboutImg} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
-              )}
-                <span className="absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-brand/90 px-5 py-3 text-sm text-white backdrop-blur-sm group-hover:bg-brand">Projekt ansehen <ArrowUpRight className="size-4" aria-hidden="true" /></span>
+              <button
+                type="button"
+                aria-label={featured.title + " – Bilder ansehen"}
+                className="group relative block min-h-[360px] w-full overflow-hidden text-left focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent lg:min-h-full"
+              >
+                {featured.images?.[0] ? (
+                  <ProjectImage
+                    src={featured.images[0]}
+                    alt={featured.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <ProjectImage
+                    src={aboutImg}
+                    alt={featured.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                )}
+                <span className="absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-brand/90 px-5 py-3 text-sm text-white backdrop-blur-sm group-hover:bg-brand">
+                  Projekt ansehen <ArrowUpRight className="size-4" aria-hidden="true" />
+                </span>
               </button>
             </ProjectGallery>
           </div>
@@ -364,29 +431,37 @@ function HomePage() {
       {/* CONFIGURATOR CTA BANNER */}
       <section className="px-6 md:px-10 pt-24 md:pt-36 pb-24 md:pb-36 animate-fade-up">
         <div className="max-w-[1480px] mx-auto bg-surface rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden shadow-sm">
-          
           <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-8 space-y-6">
               <span className="eyebrow eyebrow-bracket text-accent">Angebots-Assistent</span>
               <h2 className="display text-3xl md:text-5xl text-brand leading-[1.1]">
-                Ihr Gartenprojekt. Klar geplant.<br />
+                Ihr Gartenprojekt. Klar geplant.
+                <br />
                 <span className="font-normal text-brand-muted">Schritt für Schritt mit uns.</span>
               </h2>
               <p className="text-foreground/75 leading-relaxed text-sm md:text-base max-w-2xl font-light">
-                Kombinieren Sie passende Gewerke, beschreiben Sie Ihre Wünsche und ergänzen Sie Maße, Fotos oder Pläne. Sie erhalten eine persönliche Projektübersicht – wir eine gute Grundlage für die Beratung und Ihr individuelles Angebot.
+                Kombinieren Sie passende Gewerke, beschreiben Sie Ihre Wünsche und ergänzen Sie
+                Maße, Fotos oder Pläne. Sie erhalten eine persönliche Projektübersicht – wir eine
+                gute Grundlage für die Beratung und Ihr individuelles Angebot.
               </p>
-              
+
               <div className="grid sm:grid-cols-3 gap-4 text-xs font-semibold text-brand/85">
                 <div className="flex items-center gap-2">
-                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">✓</span>
+                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">
+                    ✓
+                  </span>
                   <span>100% kostenlos & unverbindlich</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">✓</span>
+                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">
+                    ✓
+                  </span>
                   <span>Eigene Fotos bequem hochladen</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">✓</span>
+                  <span className="size-5 rounded-full bg-accent/15 text-accent grid place-items-center shrink-0">
+                    ✓
+                  </span>
                   <span>Persönliche Projektübersicht</span>
                 </div>
               </div>
@@ -404,8 +479,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      <Testimonials />
       <FAQ />
       <ProjectInquiryForm />
     </PageShell>

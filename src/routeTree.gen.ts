@@ -21,6 +21,7 @@ import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LeistungenIndexRouteImport } from './routes/leistungen.index'
 import { Route as JobsIndexRouteImport } from './routes/jobs.index'
+import { Route as ProjekteIdRouteImport } from './routes/projekte_.$id'
 import { Route as LeistungenSlugRouteImport } from './routes/leistungen.$slug'
 import { Route as JobsSlugRouteImport } from './routes/jobs.$slug'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
@@ -89,6 +90,11 @@ const LeistungenIndexRoute = LeistungenIndexRouteImport.update({
 const JobsIndexRoute = JobsIndexRouteImport.update({
   id: '/jobs/',
   path: '/jobs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjekteIdRoute = ProjekteIdRouteImport.update({
+  id: '/projekte_/$id',
+  path: '/projekte/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeistungenSlugRoute = LeistungenSlugRouteImport.update({
@@ -160,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/ueber-uns': typeof UeberUnsRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
+  '/projekte/$id': typeof ProjekteIdRoute
   '/jobs/': typeof JobsIndexRoute
   '/leistungen/': typeof LeistungenIndexRoute
   '/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
@@ -183,6 +190,7 @@ export interface FileRoutesByTo {
   '/ueber-uns': typeof UeberUnsRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
+  '/projekte/$id': typeof ProjekteIdRoute
   '/jobs': typeof JobsIndexRoute
   '/leistungen': typeof LeistungenIndexRoute
   '/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
@@ -208,6 +216,7 @@ export interface FileRoutesById {
   '/ueber-uns': typeof UeberUnsRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
+  '/projekte_/$id': typeof ProjekteIdRoute
   '/jobs/': typeof JobsIndexRoute
   '/leistungen/': typeof LeistungenIndexRoute
   '/_authenticated/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
@@ -233,6 +242,7 @@ export interface FileRouteTypes {
     | '/ueber-uns'
     | '/jobs/$slug'
     | '/leistungen/$slug'
+    | '/projekte/$id'
     | '/jobs/'
     | '/leistungen/'
     | '/admin/anfragen'
@@ -256,6 +266,7 @@ export interface FileRouteTypes {
     | '/ueber-uns'
     | '/jobs/$slug'
     | '/leistungen/$slug'
+    | '/projekte/$id'
     | '/jobs'
     | '/leistungen'
     | '/admin/anfragen'
@@ -280,6 +291,7 @@ export interface FileRouteTypes {
     | '/ueber-uns'
     | '/jobs/$slug'
     | '/leistungen/$slug'
+    | '/projekte_/$id'
     | '/jobs/'
     | '/leistungen/'
     | '/_authenticated/admin/anfragen'
@@ -305,6 +317,7 @@ export interface RootRouteChildren {
   UeberUnsRoute: typeof UeberUnsRoute
   JobsSlugRoute: typeof JobsSlugRoute
   LeistungenSlugRoute: typeof LeistungenSlugRoute
+  ProjekteIdRoute: typeof ProjekteIdRoute
   JobsIndexRoute: typeof JobsIndexRoute
   LeistungenIndexRoute: typeof LeistungenIndexRoute
 }
@@ -393,6 +406,13 @@ declare module '@tanstack/react-router' {
       path: '/jobs'
       fullPath: '/jobs/'
       preLoaderRoute: typeof JobsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projekte_/$id': {
+      id: '/projekte_/$id'
+      path: '/projekte/$id'
+      fullPath: '/projekte/$id'
+      preLoaderRoute: typeof ProjekteIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leistungen/$slug': {
@@ -507,6 +527,7 @@ const rootRouteChildren: RootRouteChildren = {
   UeberUnsRoute: UeberUnsRoute,
   JobsSlugRoute: JobsSlugRoute,
   LeistungenSlugRoute: LeistungenSlugRoute,
+  ProjekteIdRoute: ProjekteIdRoute,
   JobsIndexRoute: JobsIndexRoute,
   LeistungenIndexRoute: LeistungenIndexRoute,
 }

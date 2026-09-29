@@ -136,12 +136,19 @@ function harness(overrides = {}) {
       if (id === "./application-document") return load("src/lib/application-document.ts");
       if (id === "./submission-email") return load("src/lib/submission-email.ts");
       if (id === "./email-logo-assets.server") return load("src/lib/email-logo-assets.server.ts");
-      if (id === "@/lib/submission-notification.server") return load("src/lib/submission-notification.server.ts");
+      if (id === "@/lib/submission-notification.server")
+        return load("src/lib/submission-notification.server.ts");
       if (id === "@/lib/admin.functions") return load("src/lib/admin.functions.ts");
       if (id === "@/integrations/supabase/client")
         return {
           supabase: {
             auth: {
+              mfa: {
+                getAuthenticatorAssuranceLevel: async () => ({
+                  data: state.assurance || { currentLevel: "aal1", nextLevel: "aal1" },
+                  error: null,
+                }),
+              },
               getSession: async () => ({
                 data: { session: state.authorization ? { access_token: "valid-token" } : null },
                 error: null,
@@ -162,9 +169,9 @@ function harness(overrides = {}) {
       {
         module,
         exports: module.exports,
+        Buffer,
         require: imports,
         process: { env: state.env },
-        Buffer,
       },
       { filename: path },
     );
@@ -262,4 +269,25 @@ test("a browser session alone does not open the admin route", async () => {
 test("a verified admin can open the admin route", async () => {
   const h = harness();
   await h.load("src/routes/_authenticated.tsx").Route.options.beforeLoad();
+});
+
+for (const aal of ["aal1", "aal2"]) {
+  test(`an enrolled administrator requires aal2, received ${aal}`, async () => {
+    const payload = Buffer.from(JSON.stringify({ aal })).toString("base64url");
+    const h = harness({
+      authorization: `Bearer header.${payload}.signature`,
+      auth: { data: { user: { id: userId, factors: [{ status: "verified" }] } }, error: null },
+    });
+    const action = h.load("src/lib/admin.functions.ts").adminWhoami();
+    if (aal === "aal1") await assert.rejects(action, /Authenticator/);
+    else assert.equal((await action).isAdmin, true);
+  });
+}
+
+test("an incomplete second factor redirects the browser to login", async () => {
+  const h = harness({ assurance: { currentLevel: "aal1", nextLevel: "aal2" } });
+  await assert.rejects(
+    h.load("src/routes/_authenticated.tsx").Route.options.beforeLoad(),
+    (error) => error.to === "/login",
+  );
 });

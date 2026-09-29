@@ -31,6 +31,17 @@ export const requireSupabaseAuth = createMiddleware({ type: "function" }).server
       throw new Error("Deine Sitzung ist ungültig. Bitte melde dich erneut an.");
     }
 
+    if (data.user.factors?.some((factor) => factor.status === "verified")) {
+      // Token authenticity was checked by getUser above; only then inspect its AAL claim.
+      let aal: string | undefined;
+      try {
+        aal = JSON.parse(Buffer.from(token.split(".")[1], "base64url").toString("utf8")).aal;
+      } catch {
+        /* Fail closed. */
+      }
+      if (aal !== "aal2")
+        throw new Error("Bitte bestätigen Sie die Anmeldung mit Ihrer Authenticator-App.");
+    }
     return next({ context: { supabase, userId: data.user.id } });
   },
 );

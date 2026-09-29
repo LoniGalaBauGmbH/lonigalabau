@@ -1,52 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { ProjectImage } from "@/components/site/ProjectImage";
 
 export function BeforeAfterSlider() {
   const { images } = useSiteImages();
   const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleMove = (clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPosition(percentage);
-  };
-
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging) return;
-    handleMove(e.clientX);
-  };
-
-  const handleTouchMove = (e: TouchEvent) => {
-    if (!isDragging) return;
-    if (e.touches.length > 0) {
-      handleMove(e.touches[0].clientX);
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  useEffect(() => {
-    if (isDragging) {
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleMouseUp);
-      window.addEventListener("touchmove", handleTouchMove);
-      window.addEventListener("touchend", handleMouseUp);
-    }
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleMouseUp);
-    };
-  }, [isDragging]);
 
   return (
     <section className="px-6 md:px-10 py-24 md:py-36 bg-surface border-y border-brand/10 overflow-hidden">
@@ -62,16 +20,27 @@ export function BeforeAfterSlider() {
           </div>
           <p className="text-sm text-foreground/65 max-w-sm leading-relaxed">
             Ziehen Sie den Regler und vergleichen Sie die Bauphase mit der fertigen Terrasse – mit
-            Plattenbelag und Sichtschutz.
+            Plattenbelag und Sichtschutz. Die Vergleichsbilder sind bearbeitete Darstellungen.
           </p>
         </div>
 
-        <div
-          ref={containerRef}
-          className="relative aspect-[4/3] md:aspect-[16/9] w-full overflow-hidden rounded-3xl select-none shadow-[0_20px_50px_rgba(0,0,0,0.15)] cursor-ew-resize"
-          onMouseDown={() => setIsDragging(true)}
-          onTouchStart={() => setIsDragging(true)}
-        >
+        <div className="relative aspect-[4/3] md:aspect-[16/9] w-full overflow-hidden rounded-3xl select-none shadow-[0_20px_50px_rgba(0,0,0,0.15)] cursor-ew-resize focus-within:ring-4 focus-within:ring-accent focus-within:ring-offset-4">
+          <input
+            type="range"
+            min={0}
+            max={100}
+            step={1}
+            value={sliderPosition}
+            onChange={(e) => setSliderPosition(Number(e.target.value))}
+            aria-label="Vorher-Nachher-Vergleich"
+            aria-valuetext={
+              Math.round(sliderPosition) +
+              "% Vorher, " +
+              Math.round(100 - sliderPosition) +
+              "% Nachher"
+            }
+            className="absolute inset-0 z-30 h-full w-full opacity-0 cursor-ew-resize touch-pan-y"
+          />
           {/* After image (background) */}
           <ProjectImage
             src={images.after_garden}

@@ -9,11 +9,11 @@ import {
 const FAQS = [
   {
     q: "Was kostet eine Gartengestaltung?",
-    a: "Die Kosten hängen stark von Größe, Materialien und Aufwand ab. Nach einem kostenlosen Vor-Ort-Termin erhalten Sie von uns ein transparentes Festpreisangebot ohne versteckte Kosten.",
+    a: "Die Kosten hängen stark von Größe, Materialien und Aufwand ab. Nach der Klärung Ihres Vorhabens erstellen wir ein Angebot mit dem vereinbarten Leistungsumfang.",
   },
   {
     q: "Wie lange dauert ein typisches Projekt?",
-    a: "Kleinere Arbeiten wie eine Terrasse oder Pflasterung dauern 1–2 Wochen. Komplette Gartenneugestaltungen planen wir je nach Umfang mit 4–10 Wochen reiner Bauzeit.",
+    a: "Bauzeit und Starttermin hängen vom Umfang, von Materiallieferungen, Zufahrt und Witterung ab. Nach der Bestandsaufnahme besprechen wir einen realistischen Ablauf für Ihr Vorhaben.",
   },
   {
     q: "Arbeiten Sie auch bei kleinen Aufträgen?",
@@ -29,15 +29,15 @@ const FAQS = [
   },
   {
     q: "Gibt es Garantie auf Pflanzen und Pflasterarbeiten?",
-    a: "Auf alle handwerklichen Leistungen geben wir die gesetzliche Gewährleistung. Für Pflanzen bieten wir eine Anwuchsgarantie bei zusätzlich vereinbarter Pflege.",
+    a: "Auf alle handwerklichen Leistungen geben wir die gesetzliche Gewährleistung. Pflegeleistungen und etwaige zusätzliche Garantien vereinbaren wir ausdrücklich im jeweiligen Angebot.",
   },
   {
     q: "Wie läuft die Erstberatung ab?",
-    a: "Nach Ihrer Anfrage melden wir uns innerhalb von 24 Stunden. Wir vereinbaren einen kostenlosen Vor-Ort-Termin, hören zu, messen auf und entwickeln gemeinsam erste Ideen.",
+    a: "Nach Ihrer Anfrage melden wir uns persönlich. Wir klären Ihre Wünsche und vereinbaren bei Bedarf einen Termin zur Besichtigung.",
   },
   {
-    q: "Bieten Sie Förderberatung an?",
-    a: "Ja. Für entsiegelnde Maßnahmen, Regenwassernutzung oder naturnahe Gärten gibt es regional unterschiedliche Förderungen. Wir prüfen Ihre Möglichkeiten im Beratungsgespräch.",
+    q: "Kommen Fördermittel für mein Vorhaben infrage?",
+    a: "Für Entsiegelung oder Regenwassernutzung können kommunale Programme infrage kommen. Die zuständige Stadt oder Gemeinde informiert über aktuelle Voraussetzungen und Antragsfristen. Klären Sie eine mögliche Förderung vor der Beauftragung.",
   },
 ];
 
@@ -49,10 +49,13 @@ export function FAQ() {
           <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
             <span className="eyebrow eyebrow-bracket text-brand/70">Häufige Fragen</span>
             <h2 className="display text-[clamp(2.25rem,5vw,4.5rem)] mt-6 text-brand leading-[1]">
-              Antworten<br />vor dem Spatenstich
+              Antworten
+              <br />
+              vor dem Spatenstich
             </h2>
             <p className="mt-6 text-base text-foreground/75 leading-relaxed max-w-md">
-              Sie haben eine Frage, die hier nicht beantwortet wird? Schreiben Sie uns – wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen.
+              Sie haben eine Frage, die hier nicht beantwortet wird? Schreiben Sie uns – wir melden
+              uns persönlich bei Ihnen.
             </p>
             <a
               href="#projektanfrage"
@@ -65,11 +68,7 @@ export function FAQ() {
           <div className="lg:col-span-7">
             <Accordion type="single" collapsible className="w-full">
               {FAQS.map((f, i) => (
-                <AccordionItem
-                  key={f.q}
-                  value={`item-${i}`}
-                  className="border-b border-brand/15"
-                >
+                <AccordionItem key={f.q} value={`item-${i}`} className="border-b border-brand/15">
                   <AccordionTrigger className="text-left text-base md:text-lg font-display font-extrabold text-brand py-6 hover:no-underline hover:text-brand/80">
                     {f.q}
                   </AccordionTrigger>

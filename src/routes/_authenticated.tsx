@@ -33,6 +33,10 @@ export const Route = createFileRoute("/_authenticated")({
     if (error || !data.session) {
       throw redirect({ to: "/login", replace: true });
     }
+    const assurance = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+    if (assurance.error) throw new Error("Der Sicherheitsstatus konnte nicht geprüft werden.");
+    if (assurance.data.nextLevel === "aal2" && assurance.data.currentLevel !== "aal2")
+      throw redirect({ to: "/login", replace: true });
     await adminWhoami();
   },
   errorComponent: AdminAccessError,

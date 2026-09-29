@@ -2,19 +2,19 @@ import { ProjectImage } from "@/components/site/ProjectImage";
 import { ServiceProjectPhotos } from "@/components/site/ServiceProjectPhotos";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { 
-  ArrowUpRight, 
-  MapPin, 
-  Phone, 
-  ShieldCheck, 
-  Truck, 
-  GraduationCap, 
-  Compass, 
-  Layers, 
-  Hammer, 
-  Droplet, 
-  Sprout, 
-  CheckCircle2, 
+import {
+  ArrowUpRight,
+  MapPin,
+  Phone,
+  ShieldCheck,
+  Truck,
+  GraduationCap,
+  Compass,
+  Layers,
+  Hammer,
+  Droplet,
+  Sprout,
+  CheckCircle2,
   ArrowRight,
   Award,
   Coins,
@@ -32,16 +32,13 @@ import {
   Smartphone,
   Snowflake,
   Key,
-  Shield
+  Shield,
 } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
-import {
-  getProjectsByService,
-  getRelatedServices,
-  getServiceBySlug,
-} from "@/lib/site.functions";
+import { getProjectsByService, getRelatedServices, getServiceBySlug } from "@/lib/site.functions";
 import { getServiceImage } from "@/lib/service-images";
 import { ServiceFAQ } from "@/components/leistungen/ServiceFAQ";
+import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 
 const slugQuery = (slug: string) =>
@@ -64,29 +61,27 @@ const relatedQuery = (excludeSlug: string) =>
 
 export const Route = createFileRoute("/leistungen/$slug")({
   head: ({ loaderData, params }) => {
-    const d = loaderData as any;
-    const title = d?.meta_title && d.meta_title.trim() !== ""
-      ? d.meta_title
-      : `${d?.title ?? params.slug} – Loni Galabau GmbH`;
-    const desc = d?.meta_description && d.meta_description.trim() !== ""
-      ? d.meta_description
-      : d?.short_text?.slice(0, 160) ?? "Detaillierte Informationen zu unserer Leistung.";
+    const d = loaderData as Awaited<ReturnType<typeof getServiceBySlug>> | undefined;
+    const title =
+      d?.meta_title && d.meta_title.trim() !== ""
+        ? d.meta_title
+        : `${d?.title ?? params.slug} – Loni Galabau GmbH`;
+    const desc =
+      d?.meta_description && d.meta_description.trim() !== ""
+        ? d.meta_description
+        : (d?.short_text?.slice(0, 160) ?? "Detaillierte Informationen zu unserer Leistung.");
     const img = d ? getServiceImage(params.slug, d.hero_image) : undefined;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
-        { property: "og:title", content: title },
-        { property: "og:description", content: desc },
-        ...(img ? [{ property: "og:image", content: img }] : []),
-        ...(img ? [{ name: "twitter:image", content: img }] : []),
+        ...(img ? [{ property: "og:image", content: new URL(img, canonicalUrl("/")).href }] : []),
+        ...(img ? [{ name: "twitter:image", content: new URL(img, canonicalUrl("/")).href }] : []),
       ],
     };
   },
   loader: async ({ context, params }) => {
-    const data = await context.queryClient.ensureQueryData(
-      slugQuery(params.slug),
-    );
+    const data = await context.queryClient.ensureQueryData(slugQuery(params.slug));
     if (!data) throw notFound();
     void context.queryClient.prefetchQuery(projectsByServiceQuery(data.id));
     void context.queryClient.prefetchQuery(relatedQuery(params.slug));
@@ -97,20 +92,19 @@ export const Route = createFileRoute("/leistungen/$slug")({
     <PageShell>
       <div className="max-w-3xl mx-auto px-6 py-32 text-center">
         <h1 className="display text-5xl text-brand">Leistung nicht gefunden</h1>
-        <Link
-          to="/leistungen"
-          className="mt-6 inline-block text-accent hover:underline"
-        >
+        <Link to="/leistungen" className="mt-6 inline-block text-accent hover:underline">
           ← Zurück zur Übersicht
         </Link>
       </div>
     </PageShell>
   ),
-  errorComponent: ({ error, reset }) => (
+  errorComponent: ({ reset }) => (
     <PageShell>
       <div className="max-w-3xl mx-auto px-6 py-32 text-center">
         <h1 className="display text-4xl text-brand">Etwas ist schief gelaufen</h1>
-        <p className="mt-4 text-foreground/70">{error.message}</p>
+        <p className="mt-4 text-foreground/70">
+          Die Inhalte sind vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.
+        </p>
         <button
           onClick={reset}
           className="mt-6 inline-block bg-brand text-brand-foreground px-6 py-3 rounded-full text-sm"
@@ -123,10 +117,26 @@ export const Route = createFileRoute("/leistungen/$slug")({
 });
 
 const STEPS = [
-  { n: "01", t: "Vermessung & Analyse", d: "Digitale Erfassung der Geländehöhen und Bodenverhältnisse vor Ort als exakte Planungsgrundlage." },
-  { n: "02", t: "CAD-Planung & 3D", d: "Fachliche Ausarbeitung maßgeschneiderter Entwürfe durch unsere internen Landschaftsarchitekten." },
-  { n: "03", t: "Logistik & Fuhrpark", d: "Disposition unseres eigenen Maschinenparks und erfahrener Facharbeiter für einen termingerechten Start." },
-  { n: "04", t: "Meisterhafter Bau", d: "Fachgerechte Ausführung sämtlicher Arbeiten nach deutschen VOB-Qualitätsstandards inklusive Endabnahme." },
+  {
+    n: "01",
+    t: "Vermessung & Analyse",
+    d: "Digitale Erfassung der Geländehöhen und Bodenverhältnisse vor Ort als exakte Planungsgrundlage.",
+  },
+  {
+    n: "02",
+    t: "Planung & Materialauswahl",
+    d: "Abstimmung von Gestaltung, Materialien und Arbeitsschritten für Ihr Vorhaben.",
+  },
+  {
+    n: "03",
+    t: "Logistik & Fuhrpark",
+    d: "Disposition unseres eigenen Maschinenparks und erfahrener Facharbeiter für einen termingerechten Start.",
+  },
+  {
+    n: "04",
+    t: "Fachgerechter Bau",
+    d: "Fachgerechte Ausführung der vereinbarten Arbeiten und gemeinsame Besprechung bei der Übergabe.",
+  },
 ];
 
 function Page() {
@@ -134,31 +144,84 @@ function Page() {
   const { data } = useSuspenseQuery(slugQuery(slug));
   if (!data) return null;
 
+  return <ServicePage slug={slug} data={data} />;
+}
+
+function ServicePage({
+  slug,
+  data,
+}: {
+  slug: string;
+  data: NonNullable<Awaited<ReturnType<typeof getServiceBySlug>>>;
+}) {
   const img = getServiceImage(slug, data.hero_image);
-  const { data: projects = [] } = useSuspenseQuery(
-    projectsByServiceQuery(data.id),
-  );
+  const { data: projects = [] } = useSuspenseQuery(projectsByServiceQuery(data.id));
   const { data: related = [] } = useSuspenseQuery(relatedQuery(slug));
 
   const benefits = (() => {
-    const custom = (data as any).custom_benefits;
+    const custom = data.custom_benefits as { t: string; d: string }[] | null;
     if (Array.isArray(custom) && custom.length > 0) {
-      return custom.map((item: any, idx: number) => {
+      return custom.map((item) => {
         let resolvedIcon = CheckCircle2;
         const titleL = (item.t || "").toLowerCase();
-        if (titleL.includes("beratung") || titleL.includes("suche") || titleL.includes("analyse")) resolvedIcon = Search;
-        else if (titleL.includes("planung") || titleL.includes("zeichnung") || titleL.includes("entwurf") || titleL.includes("konzept")) resolvedIcon = PenTool;
-        else if (titleL.includes("transport") || titleL.includes("lieferung") || titleL.includes("lkw") || titleL.includes("fuhrpark")) resolvedIcon = Truck;
-        else if (titleL.includes("garantie") || titleL.includes("sicherheit") || titleL.includes("gewährleistung") || titleL.includes("zertifikat") || titleL.includes("meister")) resolvedIcon = ShieldCheck;
-        else if (titleL.includes("wasser") || titleL.includes("bewässerung") || titleL.includes("tropf") || titleL.includes("entwässerung")) resolvedIcon = Droplet;
-        else if (titleL.includes("stein") || titleL.includes("pflaster") || titleL.includes("mauer") || titleL.includes("terrasse") || titleL.includes("platte")) resolvedIcon = Layers;
-        else if (titleL.includes("pflege") || titleL.includes("rasen") || titleL.includes("baum") || titleL.includes("pflanz")) resolvedIcon = Sprout;
-        else if (titleL.includes("bau") || titleL.includes("montage") || titleL.includes("arbeit") || titleL.includes("tiefbau")) resolvedIcon = Hammer;
+        if (titleL.includes("beratung") || titleL.includes("suche") || titleL.includes("analyse"))
+          resolvedIcon = Search;
+        else if (
+          titleL.includes("planung") ||
+          titleL.includes("zeichnung") ||
+          titleL.includes("entwurf") ||
+          titleL.includes("konzept")
+        )
+          resolvedIcon = PenTool;
+        else if (
+          titleL.includes("transport") ||
+          titleL.includes("lieferung") ||
+          titleL.includes("lkw") ||
+          titleL.includes("fuhrpark")
+        )
+          resolvedIcon = Truck;
+        else if (
+          titleL.includes("garantie") ||
+          titleL.includes("sicherheit") ||
+          titleL.includes("gewährleistung") ||
+          titleL.includes("zertifikat") ||
+          titleL.includes("meister")
+        )
+          resolvedIcon = ShieldCheck;
+        else if (
+          titleL.includes("wasser") ||
+          titleL.includes("bewässerung") ||
+          titleL.includes("tropf") ||
+          titleL.includes("entwässerung")
+        )
+          resolvedIcon = Droplet;
+        else if (
+          titleL.includes("stein") ||
+          titleL.includes("pflaster") ||
+          titleL.includes("mauer") ||
+          titleL.includes("terrasse") ||
+          titleL.includes("platte")
+        )
+          resolvedIcon = Layers;
+        else if (
+          titleL.includes("pflege") ||
+          titleL.includes("rasen") ||
+          titleL.includes("baum") ||
+          titleL.includes("pflanz")
+        )
+          resolvedIcon = Sprout;
+        else if (
+          titleL.includes("bau") ||
+          titleL.includes("montage") ||
+          titleL.includes("arbeit") ||
+          titleL.includes("tiefbau")
+        )
+          resolvedIcon = Hammer;
 
         return {
           t: item.t,
           d: item.d,
-          Icon: resolvedIcon
+          Icon: resolvedIcon,
         };
       });
     }
@@ -167,6 +230,46 @@ function Page() {
 
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Service",
+                name: data.title,
+                description: data.short_text,
+                url: canonicalUrl("/leistungen/" + slug),
+                provider: {
+                  "@type": "HomeAndConstructionBusiness",
+                  name: "Loni GalaBau GmbH",
+                  url: canonicalUrl("/"),
+                },
+                areaServed: { "@type": "Place", name: "Rhein-Main-Gebiet" },
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Startseite", item: canonicalUrl("/") },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Leistungen",
+                    item: canonicalUrl("/leistungen"),
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: data.title,
+                    item: canonicalUrl("/leistungen/" + slug),
+                  },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
       {/* 1. HERO - Balanced Magazine Split-Layout */}
       <section className="px-6 md:px-10 pt-8 pb-16 md:pb-24 overflow-hidden">
         <div className="max-w-[1480px] mx-auto">
@@ -185,9 +288,7 @@ function Page() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4 flex-wrap">
                   {data.category && (
-                    <span className="eyebrow eyebrow-bracket text-accent/90">
-                      {data.category}
-                    </span>
+                    <span className="eyebrow eyebrow-bracket text-accent/90">{data.category}</span>
                   )}
                   {data.geo_focus && (
                     <span className="flex items-center gap-1.5 text-[9px] uppercase tracking-widest text-accent font-bold font-display bg-brand/5 px-3 py-1 rounded-full">
@@ -210,9 +311,12 @@ function Page() {
                   <ShieldCheck className="h-5 w-5 text-brand" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-display font-bold text-xs uppercase tracking-wider text-brand">Alles-aus-einer-Hand-Garantie</h4>
+                  <h4 className="font-display font-bold text-xs uppercase tracking-wider text-brand">
+                    Persönlich koordiniert
+                  </h4>
                   <p className="text-[12px] text-foreground/60 leading-relaxed">
-                    Eigener moderner Maschinenpark, qualifizierte Meister-Bauleiter und 100% festangestelltes Fachpersonal. Keine unzuverlässigen Subunternehmer.
+                    Wir stimmen Arbeitsschritte, Material und Maschineneinsatz auf Ihr Projekt ab.
+                    Sie haben einen persönlichen Ansprechpartner.
                   </p>
                 </div>
               </div>
@@ -245,7 +349,6 @@ function Page() {
                     className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 ease-out"
                   />
                 </div>
-
               </div>
             </div>
           </div>
@@ -257,10 +360,18 @@ function Page() {
         <div className="max-w-[1480px] mx-auto bg-surface rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(45,90,39,0.06)]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8">
             {[
-              { v: "Meisterbetrieb", sub: "Fachliche Exzellenz · FGL-Mitglied", Icon: Award },
-              { v: "Eigener Fuhrpark", sub: "Maximale Schlagkraft · Eigene Bagger & Lader", Icon: Truck },
-              { v: "Festpreis-Garantie", sub: "Finanzielle Sicherheit · Keine Nebenkosten", Icon: Coins },
-              { v: "B.Eng. Leitung", sub: "Landschaftsarchitektur · CAD-Planung", Icon: GraduationCap },
+              { v: "Erfahrung seit 2011", sub: "Garten- und Landschaftsbau", Icon: Award },
+              {
+                v: "Eigener Fuhrpark",
+                sub: "Maximale Schlagkraft · Eigene Bagger & Lader",
+                Icon: Truck,
+              },
+              { v: "Klares Angebot", sub: "Umfang und Kosten vorab besprechen", Icon: Coins },
+              {
+                v: "Persönliche Planung",
+                sub: "Abgestimmt auf Ihr Grundstück",
+                Icon: GraduationCap,
+              },
             ].map((s, i) => (
               <div key={i} className="flex min-w-0 gap-4 items-start">
                 <div className="size-11 rounded-2xl bg-brand/5 flex items-center justify-center shrink-0">
@@ -286,11 +397,19 @@ function Page() {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             {/* Left Box (4 Cols) */}
             <div className="lg:col-span-4 bg-brand text-brand-foreground rounded-3xl p-8 md:p-10 space-y-6 relative overflow-hidden">
-              <div aria-hidden className="absolute -right-10 -bottom-10 size-40 rounded-full bg-accent/10 pointer-events-none" />
-              <span className="text-[10px] tracking-[0.24em] uppercase text-accent font-display font-semibold">Qualität & Anspruch</span>
-              <h3 className="font-serif font-semibold text-2xl md:text-3xl text-brand-foreground leading-tight">Warum Loni die erste Wahl ist.</h3>
+              <div
+                aria-hidden
+                className="absolute -right-10 -bottom-10 size-40 rounded-full bg-accent/10 pointer-events-none"
+              />
+              <span className="text-[10px] tracking-[0.24em] uppercase text-accent font-display font-semibold">
+                Qualität & Anspruch
+              </span>
+              <h3 className="font-serif font-semibold text-2xl md:text-3xl text-brand-foreground leading-tight">
+                Warum Loni die erste Wahl ist.
+              </h3>
               <p className="text-sm text-brand-foreground/75 leading-relaxed font-sans">
-                Wir überlassen Ihren Außenbereich nicht dem Zufall. Als inhabergeführter Meister- und Ausbildungsbetrieb verknüpfen wir wissenschaftliche Landschaftsarchitektur mit kompromisslosem Handwerk.
+                Wir betrachten Ihren Außenbereich als Ganzes: Nutzung, Gelände, Materialien und
+                Pflegeaufwand. Daraus entwickeln wir gemeinsam eine passende Umsetzung.
               </p>
               <div className="pt-4 border-t border-brand-foreground/20 flex flex-col gap-3 text-xs text-brand-foreground/90 font-display uppercase tracking-widest font-semibold">
                 <div className="flex items-center gap-2.5">
@@ -299,7 +418,7 @@ function Page() {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="h-4 w-4 text-accent" />
-                  <span>Staatlich zertifizierter Betrieb</span>
+                  <span>Partner im Fachverband</span>
                 </div>
               </div>
             </div>
@@ -351,7 +470,9 @@ function Page() {
               <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand mt-4">
                 Was wir abdecken.
               </h2>
-              <p className="text-sm text-foreground/60 mt-2">Unser vollumfängliches Leistungsspektrum im Detail.</p>
+              <p className="text-sm text-foreground/60 mt-2">
+                Unser vollumfängliches Leistungsspektrum im Detail.
+              </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -362,7 +483,10 @@ function Page() {
                 >
                   <div className="flex items-center justify-between mb-8">
                     <div className="size-11 rounded-2xl bg-brand/5 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
-                      <b.Icon className="h-5 w-5 text-brand group-hover:text-brand transition-colors duration-300" strokeWidth={1.8} />
+                      <b.Icon
+                        className="h-5 w-5 text-brand group-hover:text-brand transition-colors duration-300"
+                        strokeWidth={1.8}
+                      />
                     </div>
                     <span className="font-display font-extrabold text-brand/20 text-xs tracking-[0.24em]">
                       / 0{i + 1}
@@ -372,9 +496,7 @@ function Page() {
                   <h3 className="font-display font-bold text-lg text-brand group-hover:text-brand transition-colors">
                     {b.t}
                   </h3>
-                  <p className="mt-3 text-sm text-foreground/65 leading-relaxed font-sans">
-                    {b.d}
-                  </p>
+                  <p className="mt-3 text-sm text-foreground/65 leading-relaxed font-sans">{b.d}</p>
                 </div>
               ))}
             </div>
@@ -397,25 +519,36 @@ function Page() {
           <div className="relative z-10 grid lg:grid-cols-12 gap-10 items-center">
             {/* Text Content */}
             <div className="lg:col-span-8 space-y-6">
-              <span className="text-[10px] tracking-[0.26em] uppercase text-accent font-display font-semibold">Komplettanbieter-Garantie</span>
+              <span className="text-[10px] tracking-[0.26em] uppercase text-accent font-display font-semibold">
+                Projektbegleitung
+              </span>
               <h2 className="font-serif font-semibold text-3xl md:text-5xl text-brand-foreground leading-tight tracking-tight max-w-4xl mx-auto">
-                Schweres Gerät.<br />Erfahrene Hände.
+                Schweres Gerät.
+                <br />
+                Erfahrene Hände.
               </h2>
               <p className="text-base text-brand-foreground/80 leading-relaxed max-w-3xl font-sans">
-                Wir mieten nicht, wir besitzen. Mit unserem eigenen modernen Fuhrpark aus Baggern, Radlader, Lkw-Transportern und GPS-vermessenen Planierwerkzeugen sind wir vollkommen autark. Das bedeutet für Sie: Absolute Termintreue, maximale Bau-Geschwindigkeit und reibungslose Koordination – ausgeführt ausschließlich durch unsere festangestellten Gartenmeister und Tiefbau-Facharbeiter.
+                Für Erdarbeiten, Materialtransport und den Bau Ihrer Außenanlage setzen wir unseren
+                Fuhrpark passend zur Aufgabe ein. Welche Maschinen benötigt werden, hängt auch von
+                Zufahrt, Platz und Bodenverhältnissen ab. Den Ablauf und die nächsten Schritte
+                stimmen wir mit Ihnen ab.
               </p>
             </div>
 
             {/* Stat Counters inside banner */}
             <div className="lg:col-span-4 lg:pl-10 space-y-6">
               {[
-                { v: "100%", l: "Eigener Maschinenpark", sub: "Keine Drittmieten" },
-                { v: "0%", l: "Subunternehmer-Quote", sub: "Volle Qualitätskontrolle" },
-                { v: "10 Mio. €", l: "Haftpflichtschutz", sub: "Maximale Projektsicherheit" },
+                { v: "Fuhrpark", l: "Passend zur Aufgabe", sub: "Bagger, Radlader und Transport" },
+                { v: "Seit 2011", l: "Branchenerfahrung", sub: "Garten- und Landschaftsbau" },
+                { v: "Persönlich", l: "Begleitung", sub: "Klare Absprachen" },
               ].map((stat, idx) => (
                 <div key={idx} className="space-y-1 pl-6">
-                  <div className="text-3xl md:text-4xl font-display font-extrabold text-accent leading-none">{stat.v}</div>
-                  <div className="text-[10px] uppercase tracking-widest text-brand-foreground font-bold mt-1">{stat.l}</div>
+                  <div className="text-3xl md:text-4xl font-display font-extrabold text-accent leading-none">
+                    {stat.v}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-widest text-brand-foreground font-bold mt-1">
+                    {stat.l}
+                  </div>
                   <div className="text-xs text-brand-foreground/50">{stat.sub}</div>
                 </div>
               ))}
@@ -432,7 +565,9 @@ function Page() {
             <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand mt-4">
               In vier Schritten zum Meisterwerk.
             </h2>
-            <p className="text-sm text-foreground/60 mt-2">Ein durchdachter und transparenter Ablauf für planbare Bauphasen.</p>
+            <p className="text-sm text-foreground/60 mt-2">
+              Ein durchdachter und transparenter Ablauf für planbare Bauphasen.
+            </p>
           </div>
 
           <div className="relative">
@@ -444,16 +579,16 @@ function Page() {
                 <div key={s.n} className="relative space-y-6">
                   {/* Step counter with elegant status circle */}
                   <div className="size-14 rounded-2xl bg-brand text-brand-foreground grid place-items-center font-display font-extrabold text-base relative z-10 shadow-md shadow-brand/10 border-2 border-surface group">
-                    <span className="text-brand-foreground group-hover:scale-110 transition-transform duration-300">{s.n}</span>
+                    <span className="text-brand-foreground group-hover:scale-110 transition-transform duration-300">
+                      {s.n}
+                    </span>
                   </div>
 
                   <div className="space-y-3">
                     <h3 className="font-display font-extrabold text-lg text-brand flex items-center gap-2">
                       {s.t}
                     </h3>
-                    <p className="text-sm text-foreground/75 leading-relaxed font-sans">
-                      {s.d}
-                    </p>
+                    <p className="text-sm text-foreground/75 leading-relaxed font-sans">{s.d}</p>
                   </div>
                 </div>
               ))}
@@ -463,13 +598,14 @@ function Page() {
       </section>
 
       {/* 8. FAQ + MINIMALIST CONTACT PANEL */}
-      <section
-        id="anfrage"
-        className="px-6 md:px-10 pb-24 md:pb-32 pt-24"
-      >
+      <section id="anfrage" className="px-6 md:px-10 pb-24 md:pb-32 pt-24">
         <div className="max-w-[1480px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-7">
-            <ServiceFAQ slug={slug} title={data.title} customFaqs={(data as any).custom_faqs} />
+            <ServiceFAQ
+              slug={slug}
+              title={data.title}
+              customFaqs={data.custom_faqs as { q: string; a: string }[] | undefined}
+            />
           </div>
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
@@ -523,7 +659,9 @@ function Page() {
                       {s.title}
                       <span className="relative w-8 h-8 rounded-full flex items-center justify-center overflow-hidden shrink-0">
                         <span className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                        <span className="relative text-brand-foreground group-hover:text-brand transition-colors duration-500 text-sm">→</span>
+                        <span className="relative text-brand-foreground group-hover:text-brand transition-colors duration-500 text-sm">
+                          →
+                        </span>
                       </span>
                     </h3>
                   </div>
@@ -547,12 +685,15 @@ function Page() {
           />
 
           <div className="relative z-10 space-y-6">
-            <span className="text-[10px] tracking-[0.28em] uppercase text-accent font-display font-bold">Unverbindlicher Erstkontakt</span>
+            <span className="text-[10px] tracking-[0.28em] uppercase text-accent font-display font-bold">
+              Unverbindlicher Erstkontakt
+            </span>
             <h2 className="font-serif font-semibold text-3xl md:text-5xl text-brand-foreground leading-tight tracking-tight max-w-4xl mx-auto">
               Lassen Sie uns Ihr Gartenprojekt realisieren.
             </h2>
             <p className="mt-5 max-w-2xl mx-auto text-brand-foreground/75 text-sm md:text-base leading-relaxed font-sans">
-              Planen Sie gemeinsam mit unseren Landschaftsarchitekten und Meistern Ihr Traumbauwerk. Ein kostenloser Vor-Ort-Termin ist the erste Schritt zur Festpreisgarantie.
+              Besprechen Sie Ihr Vorhaben mit unserem Team. Nach der Bestandsaufnahme stimmen wir
+              Leistungsumfang, Materialien und Angebot mit Ihnen ab.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4 pt-4">
               <Link
@@ -586,46 +727,166 @@ interface BenefitItem {
 function buildBenefits(slug: string): BenefitItem[] {
   const map: Record<string, BenefitItem[]> = {
     natursteinarbeiten: [
-      { t: "Materialauswahl", d: "Detaillierte Beratung zu Basalt, Granit, Travertin und edlen Natursteinen.", Icon: Search },
-      { t: "Trockenmauern", d: "Klassisch geschichtet, statisch bemessen und extrem langlebig.", Icon: Layers },
-      { t: "Treppen & Stufen", d: "Geradlinige, trittsichere Höhenausgleiche im Gelände.", Icon: Layers },
-      { t: "Terrassen & Beläge", d: "Exklusiv verlegte Großformatplatten oder Polygonalverbände nach Designstil.", Icon: Grid },
-      { t: "Einfassungen", d: "Präzise Steinabgrenzungen für Beetflächen, Wege und Baumgruppen.", Icon: Maximize },
-      { t: "Sanierung & Werterhalt", d: "Fachgerechte Reinigung, Festigkeitsprüfung und Neuverfugung von Naturstein.", Icon: RefreshCw },
+      {
+        t: "Materialauswahl",
+        d: "Detaillierte Beratung zu Basalt, Granit, Travertin und edlen Natursteinen.",
+        Icon: Search,
+      },
+      {
+        t: "Trockenmauern",
+        d: "Klassisch geschichtet, statisch bemessen und extrem langlebig.",
+        Icon: Layers,
+      },
+      {
+        t: "Treppen & Stufen",
+        d: "Geradlinige, trittsichere Höhenausgleiche im Gelände.",
+        Icon: Layers,
+      },
+      {
+        t: "Terrassen & Beläge",
+        d: "Exklusiv verlegte Großformatplatten oder Polygonalverbände nach Designstil.",
+        Icon: Grid,
+      },
+      {
+        t: "Einfassungen",
+        d: "Präzise Steinabgrenzungen für Beetflächen, Wege und Baumgruppen.",
+        Icon: Maximize,
+      },
+      {
+        t: "Sanierung & Werterhalt",
+        d: "Fachgerechte Reinigung, Festigkeitsprüfung und Neuverfugung von Naturstein.",
+        Icon: RefreshCw,
+      },
     ],
     pflasterarbeiten: [
-      { t: "Einfahrten & Logistik", d: "Befahrbarer, hochverdichteter Unterbau bis 7,5 t für sichere Nutzung.", Icon: Truck },
-      { t: "Premium Gartenwege", d: "Harmonisch geordnete Pflasterpfade, passend zur Geländelinie.", Icon: Compass },
-      { t: "Hof- und Stellflächen", d: "Robuste, entwässerte Befestigungen für jahrzehntelange Formstabilität.", Icon: Grid },
-      { t: "Versickerungs-Systeme", d: "Ökologisches Fugenpflaster für zeitgemäßes Regenwassermanagement.", Icon: Droplet },
-      { t: "Randeinfassungen", d: "Saubere Fundamentkanten mit Beton- oder Naturstein-Rückenstütze.", Icon: Maximize },
-      { t: "Sanierung & Fuge", d: "Tiefenreinigung, wasserundurchlässige Epoxidharz-Verfugung und Nivellierung.", Icon: Wrench },
+      {
+        t: "Einfahrten & Logistik",
+        d: "Unterbau und Belag werden auf die vorgesehene Belastung abgestimmt.",
+        Icon: Truck,
+      },
+      {
+        t: "Premium Gartenwege",
+        d: "Harmonisch geordnete Pflasterpfade, passend zur Geländelinie.",
+        Icon: Compass,
+      },
+      {
+        t: "Hof- und Stellflächen",
+        d: "Robuste, entwässerte Befestigungen für jahrzehntelange Formstabilität.",
+        Icon: Grid,
+      },
+      {
+        t: "Versickerungs-Systeme",
+        d: "Ökologisches Fugenpflaster für zeitgemäßes Regenwassermanagement.",
+        Icon: Droplet,
+      },
+      {
+        t: "Randeinfassungen",
+        d: "Saubere Fundamentkanten mit Beton- oder Naturstein-Rückenstütze.",
+        Icon: Maximize,
+      },
+      {
+        t: "Sanierung & Fuge",
+        d: "Tiefenreinigung, wasserundurchlässige Epoxidharz-Verfugung und Nivellierung.",
+        Icon: Wrench,
+      },
     ],
     gartengestaltung: [
-      { t: "Konzept & CAD-Planung", d: "Detaillierter Entwurf inklusive vollumfänglicher Bepflanzungspläne.", Icon: PenTool },
-      { t: "3D-Geländevisualisierung", d: "Virtueller Rundgang durch Ihr neues Gartenareal vor Baubeginn.", Icon: Eye },
-      { t: "Materialberatung", d: "Edle Kompositionen aus Naturstein, Holz und Zierelementen.", Icon: Layers },
-      { t: "Großbaumpflanzung", d: "Lieferung und meisterhaftes Setzen von Solitärbäumen.", Icon: Trees },
-      { t: "Wasserlandschaften", d: "Einbau von formstabilen Zierteichen, Bachläufen und Wasserspielen.", Icon: Waves },
-      { t: "Ganzheitlicher Tiefbau", d: "Komplettabwicklung von schweren Erdarbeiten bis zum feinsten Rollrasen.", Icon: HardHat },
+      {
+        t: "Konzept & Planung",
+        d: "Detaillierter Entwurf inklusive vollumfänglicher Bepflanzungspläne.",
+        Icon: PenTool,
+      },
+      {
+        t: "Gestaltung besprechen",
+        d: "Materialien, Flächen und Übergänge stimmen wir vor der Ausführung mit Ihnen ab.",
+        Icon: Eye,
+      },
+      {
+        t: "Materialberatung",
+        d: "Edle Kompositionen aus Naturstein, Holz und Zierelementen.",
+        Icon: Layers,
+      },
+      {
+        t: "Großbaumpflanzung",
+        d: "Lieferung und meisterhaftes Setzen von Solitärbäumen.",
+        Icon: Trees,
+      },
+      {
+        t: "Wasserlandschaften",
+        d: "Einbau von formstabilen Zierteichen, Bachläufen und Wasserspielen.",
+        Icon: Waves,
+      },
+      {
+        t: "Ganzheitlicher Tiefbau",
+        d: "Komplettabwicklung von schweren Erdarbeiten bis zum feinsten Rollrasen.",
+        Icon: HardHat,
+      },
     ],
     bewaesserungsanlagen: [
-      { t: "Hydraulik-Berechnung", d: "Exakte Berechnung des Wasserbedarfs, Fließdrucks und der Sektoraufteilung.", Icon: Calculator },
-      { t: "Versenkregner-Systeme", d: "Unsichtbar im Boden integriert, gleichmäßige Bewässerung per Getrieberegner.", Icon: Droplet },
-      { t: "Tropfbewässerung", d: "Wassersparende, punktgenaue Hecken- und Solitärgehölz-Versorgung.", Icon: Droplet },
-      { t: "Smart Control (App)", d: "WLAN-Steuerung mit Sensoranbindung und automatischer Wetterdaten-Anpassung.", Icon: Smartphone },
-      { t: "Winterservice", d: "Wintersichere Druckluft-Entleerung zur Frostsicherung im Spätherbst.", Icon: Snowflake },
-      { t: "Minimal-invasive Nachrüstung", d: "Schonender Einzug in bestehende Rasenflächen mit Spezialwerkzeug.", Icon: Wrench },
+      {
+        t: "Hydraulik-Berechnung",
+        d: "Exakte Berechnung des Wasserbedarfs, Fließdrucks und der Sektoraufteilung.",
+        Icon: Calculator,
+      },
+      {
+        t: "Versenkregner-Systeme",
+        d: "Unsichtbar im Boden integriert, gleichmäßige Bewässerung per Getrieberegner.",
+        Icon: Droplet,
+      },
+      {
+        t: "Tropfbewässerung",
+        d: "Wassersparende, punktgenaue Hecken- und Solitärgehölz-Versorgung.",
+        Icon: Droplet,
+      },
+      {
+        t: "Smart Control (App)",
+        d: "WLAN-Steuerung mit Sensoranbindung und automatischer Wetterdaten-Anpassung.",
+        Icon: Smartphone,
+      },
+      {
+        t: "Winterservice",
+        d: "Wintersichere Druckluft-Entleerung zur Frostsicherung im Spätherbst.",
+        Icon: Snowflake,
+      },
+      {
+        t: "Minimal-invasive Nachrüstung",
+        d: "Schonender Einzug in bestehende Rasenflächen mit Spezialwerkzeug.",
+        Icon: Wrench,
+      },
     ],
   };
 
   const defaultBenefits: BenefitItem[] = [
-    { t: "Audit & Vermessung", d: "Detaillierte Höhenvermessung und Bestandsaufnahme direkt vor Ort.", Icon: Search },
-    { t: "CAD-Projektplanung", d: "Präzise zeichnerische Konzeption inklusive Materialauswahl.", Icon: PenTool },
-    { t: "Termintreuer Tiefbau", d: "Saubere, meistergeführte Bauphase mit täglichem Projektfortschritt.", Icon: Hammer },
-    { t: "Schlüsselfertige Übergabe", d: "Gemeinsame VOB-Abnahme inklusive umfassender Einweisung.", Icon: Key },
-    { t: "Dauerhafter Werterhalt", d: "Optionale dauerhafte Pflege Ihrer Großanlage durch unsere Kolonnen.", Icon: Shield },
-    { t: "Gewährleistung", d: "Staatlich verbriefte Garantie auf sämtliche meisterhaften Ausführungen.", Icon: ShieldCheck },
+    {
+      t: "Audit & Vermessung",
+      d: "Detaillierte Höhenvermessung und Bestandsaufnahme direkt vor Ort.",
+      Icon: Search,
+    },
+    {
+      t: "Projektplanung",
+      d: "Präzise zeichnerische Konzeption inklusive Materialauswahl.",
+      Icon: PenTool,
+    },
+    {
+      t: "Termintreuer Tiefbau",
+      d: "Koordinierte Bauphase mit abgestimmten Arbeitsschritten.",
+      Icon: Hammer,
+    },
+    {
+      t: "Schlüsselfertige Übergabe",
+      d: "Gemeinsame Übergabe mit Hinweisen zur Nutzung und Pflege.",
+      Icon: Key,
+    },
+    {
+      t: "Dauerhafter Werterhalt",
+      d: "Optionale dauerhafte Pflege Ihrer Großanlage durch unsere Kolonnen.",
+      Icon: Shield,
+    },
+    {
+      t: "Gewährleistung",
+      d: "Es gelten die vertraglich vereinbarten und gesetzlichen Mängelrechte.",
+      Icon: ShieldCheck,
+    },
   ];
 
   return map[slug] ?? defaultBenefits;

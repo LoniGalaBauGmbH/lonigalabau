@@ -36,6 +36,7 @@ import {
   plannerOpenPoints,
   plannerText,
   plannerDraftSchema,
+  privatePlannerDraft,
   rectangleMeasure,
   type PlannerState,
   type PlannerErrors,
@@ -260,7 +261,13 @@ export function GardenPlanner() {
         const data = JSON.parse(raw);
         if (data.version === 1 && Date.now() - data.savedAt < 7 * 24 * 60 * 60 * 1000) {
           const parsed = plannerDraftSchema.safeParse(data.form);
-          if (parsed.success) setDraft(parsed.data);
+          if (parsed.success) {
+            const safe = privatePlannerDraft(parsed.data);
+            setDraft(safe);
+            localStorage.setItem(DRAFT_KEY, JSON.stringify({ ...data, form: safe }));
+          }
+        } else {
+          localStorage.removeItem(DRAFT_KEY);
         }
       }
     } catch {
@@ -316,13 +323,13 @@ export function GardenPlanner() {
   }
   function keepDraft() {
     try {
-      const safe = { ...form, name: "", email: "", phone: "", consent: false };
+      const safe = privatePlannerDraft(form);
       localStorage.setItem(
         DRAFT_KEY,
         JSON.stringify({ version: 1, savedAt: Date.now(), form: safe }),
       );
       setNotice(
-        "Entwurf für 7 Tage auf diesem Gerät gespeichert. Kontaktdaten und Anhänge werden nicht mitgespeichert.",
+        "Entwurf für 7 Tage auf diesem Gerät gespeichert. Name, Kontaktdaten, Anschrift, Freitext, Termindetails und Anhänge werden nicht mitgespeichert.",
       );
     } catch {
       setNotice(

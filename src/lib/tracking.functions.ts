@@ -71,6 +71,17 @@ export const updateTrackingSettings = createServerFn({ method: "POST" })
   .middleware([requireAdmin])
   .inputValidator((d: unknown) => trackingSchema.parse(d))
   .handler(async ({ data }) => {
+    if (
+      data.ga4 ||
+      data.gtm ||
+      data.metaPixel ||
+      data.linkedinId ||
+      data.tiktokId ||
+      data.customHead
+    )
+      throw new Error(
+        "Tracking ist zum Start deaktiviert. Vor der Aktivierung müssen Einwilligung und Datenschutzhinweise auf den konkreten Dienst abgestimmt werden.",
+      );
     const { error } = await supabaseAdmin
       .from("site_settings")
       .upsert({ key: "tracking", value: data }, { onConflict: "key" });

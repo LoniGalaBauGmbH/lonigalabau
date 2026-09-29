@@ -6,7 +6,11 @@ export const Route = createFileRoute("/impressum")({
   head: () => ({
     meta: [
       { title: "Impressum – Loni Galabau GmbH" },
-      { name: "description", content: "Impressum und Pflichtangaben gemäß § 5 TMG der Loni Galabau GmbH, Hattersheim am Main." },
+      {
+        name: "description",
+        content:
+          "Impressum und Pflichtangaben gemäß § 5 DDG der Loni Galabau GmbH, Hattersheim am Main.",
+      },
     ],
   }),
   component: ImpressumPage,
@@ -18,7 +22,7 @@ function ImpressumPage() {
       <PageIntro
         eyebrow="Rechtliches"
         title={<>Impressum</>}
-        lead="Pflichtangaben gemäß § 5 TMG und § 55 RStV."
+        lead="Pflichtangaben gemäß § 5 DDG."
       />
 
       <section className="px-6 pb-24">
@@ -31,15 +35,29 @@ function ImpressumPage() {
 
           <Card icon={MapPin} title="Geschäftsführung">
             <p>Valon Sinanaj</p>
-            <p className="text-sm text-foreground/60 mt-1">Vertretungsberechtigter Geschäftsführer</p>
+            <p className="text-sm text-foreground/60 mt-1">
+              Vertretungsberechtigter Geschäftsführer
+            </p>
           </Card>
 
           <Card icon={Phone} title="Kontakt">
             <p>
-              Telefon: <a href="tel:+4961909266134" className="underline decoration-accent underline-offset-2">06190 9266134</a>
+              Telefon:{" "}
+              <a
+                href="tel:+4961909266134"
+                className="underline decoration-accent underline-offset-2"
+              >
+                06190 9266134
+              </a>
             </p>
             <p>
-              E-Mail: <a href="mailto:info@loni-galabau.de" className="underline decoration-accent underline-offset-2">info@loni-galabau.de</a>
+              E-Mail:{" "}
+              <a
+                href="mailto:info@loni-galabau.de"
+                className="underline decoration-accent underline-offset-2"
+              >
+                info@loni-galabau.de
+              </a>
             </p>
           </Card>
 
@@ -51,45 +69,40 @@ function ImpressumPage() {
 
           <Card icon={Scale} title="Berufsbezeichnung" className="md:col-span-2">
             <p>Garten- und Landschaftsbau</p>
-            <p>Zuständige Berufsgenossenschaft: Sozialversicherung für Landwirtschaft, Forsten und Gartenbau (SVLFG)</p>
+            <p>
+              Zuständige Berufsgenossenschaft: Sozialversicherung für Landwirtschaft, Forsten und
+              Gartenbau (SVLFG)
+            </p>
             <p>Weißensteinstraße 70–72, 34131 Kassel, Deutschland</p>
           </Card>
 
-          <Card icon={Mail} title="Verantwortlich i. S. d. § 55 Abs. 2 RStV" className="md:col-span-2">
+          <Card icon={Mail} title="Kontakt für Website-Inhalte" className="md:col-span-2">
             <p>Valon Sinanaj, Auf der Roos 3, 65795 Hattersheim am Main</p>
           </Card>
         </div>
 
         <div className="max-w-4xl mx-auto mt-10 space-y-6 text-sm text-foreground/70 leading-relaxed">
           <div>
-            <h3 className="font-serif text-lg text-brand mb-2">Haftung für Inhalte</h3>
-            <p>
-              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-              Nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
-            </p>
-          </div>
-          <div>
             <h3 className="font-serif text-lg text-brand mb-2">Haftung für Links</h3>
             <p>
-              Unser Angebot enthält ggf. Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der
-              verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.
+              Unser Angebot enthält ggf. Links zu externen Websites Dritter, auf deren Inhalte wir
+              keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige
+              Anbieter verantwortlich.
             </p>
           </div>
           <div>
             <h3 className="font-serif text-lg text-brand mb-2">Urheberrecht</h3>
             <p>
-              Die durch die Seitenbetreiber erstellten Inhalte und Werke unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung
-              und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung.
+              Die durch die Seitenbetreiber erstellten Inhalte und Werke unterliegen dem deutschen
+              Urheberrecht. Vervielfältigung, Bearbeitung und jede Art der Verwertung außerhalb der
+              Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung.
             </p>
           </div>
           <div>
             <h3 className="font-serif text-lg text-brand mb-2">Streitschlichtung</h3>
             <p>
-              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noreferrer" className="underline decoration-accent underline-offset-2">
-                ec.europa.eu/consumers/odr
-              </a>
-              . Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+              Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+              Verbraucherschlichtungsstelle teilzunehmen.
             </p>
           </div>
         </div>

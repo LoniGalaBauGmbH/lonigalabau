@@ -1,136 +1,114 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/site/PageShell";
-import { Shield, Cookie, Mail, Database, UserCheck, FileLock2 } from "lucide-react";
-
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({
     meta: [
-      { title: "Datenschutz – Loni Galabau GmbH" },
-      { name: "description", content: "Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO bei der Loni Galabau GmbH." },
+      { title: "Datenschutz – Loni GalaBau GmbH" },
+      {
+        name: "description",
+        content:
+          "Informationen zu Kontaktformularen, Bewerbungen, Gartenplaner, Hosting und Ihren Datenschutzrechten.",
+      },
     ],
   }),
   component: DatenschutzPage,
 });
-
-function openCookies() {
-  if (typeof window !== "undefined") {
-    window.dispatchEvent(new Event("loni:open-cookies"));
-  }
-}
-
-const TOC = [
-  { id: "verantwortlich", icon: UserCheck, t: "Verantwortlicher" },
-  { id: "daten", icon: Database, t: "Verarbeitete Daten" },
-  { id: "kontakt", icon: Mail, t: "Kontaktformular" },
-  { id: "cookies", icon: Cookie, t: "Cookies" },
-  { id: "rechte", icon: Shield, t: "Ihre Rechte" },
-  { id: "sicherheit", icon: FileLock2, t: "Datensicherheit" },
+const SECTIONS = [
+  [
+    "verantwortlich",
+    "Verantwortlicher",
+    "Loni GalaBau GmbH, Auf der Roos 3, 65795 Hattersheim am Main, Deutschland. Vertreten durch den Geschäftsführer Valon Sinanaj. Bei Fragen zum Datenschutz erreichen Sie uns unter info@loni-galabau.de oder 06190 9266134.",
+  ],
+  [
+    "hosting",
+    "Bereitstellung der Website",
+    "Beim Abruf werden insbesondere IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browserinformationen und technische Fehlerdaten verarbeitet, um die Website auszuliefern und Angriffe abzuwehren. Die Veröffentlichung erfolgt über Sites von OpenAI unter Einsatz der Cloudflare-Infrastruktur. Grundlage ist unser berechtigtes Interesse an einer sicheren und funktionsfähigen Website (Art. 6 Abs. 1 lit. f DSGVO).",
+  ],
+  [
+    "anfragen",
+    "Kontaktformulare und Gartenplaner",
+    "Wir verarbeiten Ihre Kontakt- und Projektdaten, Nachrichten sowie freiwillig hochgeladene Fotos und Dokumente zur Bearbeitung Ihrer Anfrage. Dazu gehören im Gartenplaner beispielsweise Grundstück, Maße, Ausstattung und Budgetrahmen. Rechtsgrundlage für vertragsbezogene Anfragen ist Art. 6 Abs. 1 lit. b DSGVO, für andere Anliegen unser berechtigtes Interesse an deren Beantwortung nach Art. 6 Abs. 1 lit. f DSGVO. Pflichtfelder sind gekennzeichnet; ohne diese Angaben können wir eine Anfrage gegebenenfalls nicht bearbeiten. Bitte laden Sie nur für das Vorhaben erforderliche Unterlagen hoch.",
+  ],
+  [
+    "bewerbungen",
+    "Bewerbungen",
+    "Bewerberdaten und freiwillige Bewerbungsunterlagen werden zur Entscheidung über ein Beschäftigungsverhältnis nach § 26 Abs. 1 BDSG verarbeitet. Zugriff erhalten die mit dem Bewerbungsverfahren befassten Personen. Eine Aufnahme in einen Bewerberpool erfolgt nicht automatisch. Nach Abschluss des Verfahrens werden Unterlagen gelöscht, sobald sie nicht mehr für die Entscheidung oder zur Wahrung berechtigter rechtlicher Interessen erforderlich sind.",
+  ],
+  [
+    "dienstleister",
+    "Datenbank und E-Mail-Dienste",
+    "Anfragen, Bewerbungen und Anhänge werden im zugriffsgeschützten Supabase-Projekt der Website gespeichert. Für dieses Projekt ist die Region EU-West (Irland) eingerichtet. Benachrichtigungen einschließlich der eingereichten Unterlagen werden über Resend an unser internes Postfach webseite@loni-galabau.de übermittelt. Die Bearbeitung im Postfach erfolgt über Microsoft 365. Diese technischen Dienstleister erhalten die für ihre jeweilige Aufgabe erforderlichen Daten. Eine EU-Region schließt mögliche Zugriffe aus anderen Ländern, beispielsweise für Support, nicht grundsätzlich aus.",
+  ],
+  [
+    "ausland",
+    "Verarbeitung außerhalb der EU/des EWR",
+    "Bei international tätigen technischen Dienstleistern kann eine Verarbeitung außerhalb der EU beziehungsweise des EWR stattfinden. Dafür gelten die Anforderungen der Art. 44 ff. DSGVO, insbesondere ein anwendbarer Angemessenheitsbeschluss oder geeignete Garantien wie Standardvertragsklauseln. Informationen zu den für Ihre Daten eingesetzten Dienstleistern und Transfergrundlagen können Sie über die oben genannte Kontaktadresse anfordern.",
+  ],
+  [
+    "speicherung",
+    "Speicherdauer und Schutz",
+    "Wir speichern personenbezogene Daten, solange sie für die genannten Zwecke erforderlich sind. Gesetzliche Aufbewahrungspflichten, etwa für Vertrags- und Rechnungsunterlagen, oder die Geltendmachung beziehungsweise Abwehr von Ansprüchen können eine längere Aufbewahrung erfordern. Nicht mehr benötigte Daten sind zu löschen. Private Anhänge werden nicht öffentlich verlinkt; berechtigte Administratoren erhalten zeitlich begrenzte Downloadlinks. Kopien in unserem E-Mail-Postfach unterliegen ebenfalls der zweckgebundenen Aufbewahrung.",
+  ],
+  [
+    "browser",
+    "Lokale Speicherung im Browser",
+    "Die Anmeldung im Adminbereich verwendet technisch notwendige Sitzungsdaten. Auf ausdrücklichen Wunsch können Sie einen Gartenplaner-Entwurf für bis zu sieben Tage auf Ihrem Gerät speichern. Name, E-Mail, Telefon, Anschrift, Freitext, Termindetails und Anhänge werden dabei nicht gespeichert. Sie können den Entwurf im Gartenplaner oder über die Browser-Einstellungen löschen. Der Zugriff auf notwendige Speicherdaten richtet sich nach § 25 Abs. 2 TDDDG; für die ausdrücklich angeforderte Entwurfsfunktion erfolgt die Speicherung erst durch Ihren Klick.",
+  ],
+  [
+    "externe",
+    "Schriften, Karten und WhatsApp",
+    "Die Schriftarten werden von dieser Website geladen. Karten werden nicht automatisch eingebettet. Erst beim Öffnen eines Kartenlinks wird eine Verbindung zu Google Maps beziehungsweise OpenStreetMap hergestellt. Der WhatsApp-Button ist ein externer Link; vor dem Anklicken wird darüber keine Verbindung zu WhatsApp aufgebaut. Bei der Nutzung gelten zusätzlich die Datenschutzinformationen des gewählten Anbieters. Alternativ können Sie Telefon, E-Mail und das Kontaktformular verwenden.",
+  ],
+  [
+    "tracking",
+    "Reichweitenmessung und Newsletter",
+    "Auf dieser Fassung der Website werden keine Analyse- oder Werbepixel ausgeführt. Eine Newsletter-Anmeldung wird derzeit nicht angeboten. Es findet keine automatisierte Entscheidung über Ihre Anfrage oder Bewerbung und kein entsprechendes Profiling statt.",
+  ],
+  [
+    "rechte",
+    "Ihre Rechte",
+    "Sie können nach Maßgabe der DSGVO Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit verlangen. Erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen; die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung bleibt unberührt. Soweit eine Verarbeitung auf Art. 6 Abs. 1 lit. f DSGVO beruht, können Sie aus Gründen Ihrer besonderen Situation widersprechen. Gegen Direktwerbung ist ein Widerspruch jederzeit möglich. Wenden Sie sich dazu an info@loni-galabau.de.",
+  ],
+  [
+    "beschwerde",
+    "Beschwerderecht",
+    "Sie können sich bei einer Datenschutzaufsichtsbehörde beschweren. Für Hessen ist dies der Hessische Beauftragte für Datenschutz und Informationsfreiheit, Gustav-Stresemann-Ring 1, 65189 Wiesbaden. Kontaktmöglichkeiten finden Sie unter datenschutz.hessen.de.",
+  ],
 ];
-
 function DatenschutzPage() {
   return (
     <PageShell>
       <PageIntro
         eyebrow="Rechtliches"
-        title={<>Daten&shy;schutz&shy;<wbr /><span className="italic font-light">erklärung</span></>}
-        lead="Transparenz darüber, welche Daten wir wie und warum verarbeiten – nach den Regeln der DSGVO."
+        title={<>Datenschutz</>}
+        lead="Welche Daten wir verarbeiten und welche Rechte Sie haben."
       />
-
       <section className="px-6 pb-24">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
-          {/* TOC */}
-          <aside className="lg:col-span-4">
-            <div className="lg:sticky lg:top-28 bg-surface rounded-3xl p-6">
-              <p className="text-xs uppercase tracking-widest text-foreground/60 mb-4">Inhalt</p>
-              <ul className="space-y-1">
-                {TOC.map((s) => (
-                  <li key={s.id}>
-                    <a href={`#${s.id}`} className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm hover:bg-brand/5 transition">
-                      <s.icon className="w-4 h-4 text-accent" />
-                      <span>{s.t}</span>
+          <nav aria-label="Inhalt der Datenschutzerklärung" className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28 rounded-3xl bg-surface p-6">
+              <ul className="space-y-3 text-sm">
+                {SECTIONS.map(([id, title]) => (
+                  <li key={id}>
+                    <a href={"#" + id} className="underline underline-offset-4 text-brand">
+                      {title}
                     </a>
                   </li>
                 ))}
               </ul>
-              <button
-                onClick={openCookies}
-                className="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-brand text-brand-foreground text-sm hover:bg-brand/90 transition"
-              >
-                <Cookie className="w-4 h-4" /> Cookie-Einstellungen
-              </button>
             </div>
-          </aside>
-
-          {/* Content */}
+          </nav>
           <div className="lg:col-span-8 space-y-10">
-            <Section id="verantwortlich" title="Verantwortlicher">
-              <p>
-                Verantwortlich für die Datenverarbeitung auf dieser Website ist die Loni Galabau GmbH, Auf der Roos 3, 65795 Hattersheim am Main.
-                Bei Fragen zum Datenschutz erreichen Sie uns unter <a href="mailto:info@loni-galabau.de" className="underline decoration-accent">info@loni-galabau.de</a>.
-              </p>
-            </Section>
-
-            <Section id="daten" title="Verarbeitete Daten und Zwecke">
-              <p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist.</p>
-              <ul className="list-disc pl-5 space-y-1 mt-3">
-                <li>Server-Logfiles (IP, Datum, Browser) – berechtigtes Interesse an Sicherheit (Art. 6 Abs. 1 lit. f DSGVO)</li>
-                <li>Kontaktanfragen – zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO)</li>
-                <li>Bewerbungsdaten – zur Durchführung des Bewerbungsverfahrens (§ 26 BDSG)</li>
-              </ul>
-            </Section>
-
-            <Section id="kontakt" title="Kontaktformular und Bewerbungen">
-              <p>
-                Über unser Kontaktformular übermittelte Angaben (Name, E-Mail, Telefon, Nachricht sowie freiwillig hochgeladene Fotos und PDF-Anhänge) verarbeiten wir ausschließlich zur Bearbeitung Ihrer Anfrage.
-                Eine Weitergabe an Dritte erfolgt nicht. Die Daten werden gelöscht, sobald sie für den Verarbeitungszweck nicht mehr erforderlich sind.
-              </p>
-            </Section>
-
-            <Section id="cookies" title="Cookies und Reichweitenmessung">
-              <p>
-                Wir setzen technisch notwendige Cookies ein, um Grundfunktionen der Website zu gewährleisten. Optionale Cookies (Statistik, Marketing)
-                werden nur mit Ihrer ausdrücklichen Einwilligung über unseren Cookie-Banner aktiviert. Sie können Ihre Einwilligung jederzeit widerrufen.
-              </p>
-              <button
-                onClick={openCookies}
-                className="mt-4 inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full border border-brand/20 hover:bg-brand/5 transition"
-              >
-                <Cookie className="w-4 h-4 text-accent" /> Einstellungen öffnen
-              </button>
-            </Section>
-
-            <Section id="rechte" title="Ihre Rechte">
-              <p>Ihnen stehen folgende Rechte zu:</p>
-              <ul className="list-disc pl-5 space-y-1 mt-3">
-                <li>Auskunft über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO)</li>
-                <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-                <li>Löschung (Art. 17 DSGVO) und Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-                <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-                <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
-              </ul>
-            </Section>
-
-            <Section id="sicherheit" title="Datensicherheit">
-              <p>
-                Diese Website nutzt eine SSL-/TLS-Verschlüsselung zum Schutz der Übertragung vertraulicher Inhalte. Wir treffen darüber hinaus
-                technische und organisatorische Maßnahmen, um Ihre Daten gegen Manipulation, Verlust oder unberechtigten Zugriff zu sichern.
-              </p>
-            </Section>
-
-            <p className="text-xs text-foreground/50 pt-4">Stand: {new Date().getFullYear()}</p>
+            {SECTIONS.map(([id, title, text]) => (
+              <article key={id} id={id} className="scroll-mt-28">
+                <h2 className="text-2xl font-semibold text-brand">{title}</h2>
+                <p className="mt-4 leading-relaxed text-foreground/85">{text}</p>
+              </article>
+            ))}
+            <p className="text-sm text-foreground/75">Stand: 29. September 2026</p>
           </div>
         </div>
       </section>
     </PageShell>
-  );
-}
-
-function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
-  return (
-    <article id={id} className="scroll-mt-28">
-      <h2 className="font-serif text-2xl md:text-3xl text-brand">{title}</h2>
-      <div className="mt-4 text-foreground/80 leading-relaxed space-y-2">{children}</div>
-    </article>
   );
 }

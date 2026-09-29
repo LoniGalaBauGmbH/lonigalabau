@@ -152,7 +152,7 @@ export const adminListApplications = createServerFn({ method: "GET" })
         .select("*, jobs(title, slug)")
         .order("created_at", { ascending: false });
       if (error) return [];
-      return data ?? [];
+      return withDeliveryStatus(data ?? []);
     } catch {
       return [];
     }
@@ -220,7 +220,7 @@ export const adminListContacts = createServerFn({ method: "GET" })
         .select("*")
         .order("created_at", { ascending: false });
       if (error) return [];
-      return data ?? [];
+      return withDeliveryStatus(data ?? []);
     } catch {
       return [];
     }
@@ -295,3 +295,83 @@ export const adminUpdateSitePartners = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true };
   });
+
+export const adminSaveNotes = createServerFn({ method: "POST" })
+  .middleware([requireAdmin])
+  .inputValidator((d: unknown) =>
+    z
+      .object({
+        table: z.enum(["contact_requests", "applications"]),
+        id: z.string().uuid(),
+        notes: z.string().max(20000),
+        version: z.number().int().min(0),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data }) => {
+    const { data: row, error } = await supabaseAdmin
+      .from(data.table)
+      .update({ notes: data.notes, notes_version: data.version + 1 })
+      .eq("id", data.id)
+      .eq("notes_version", data.version)
+      .select("notes_version")
+      .maybeSingle();
+    if (error) throw new Error("Die Notizen konnten nicht gespeichert werden.");
+    if (!row)
+      throw new Error(
+        "Der Vorgang wurde inzwischen geändert. Bitte neu öffnen und Ihre Notizen abgleichen.",
+      );
+    return { version: row.notes_version };
+  });
+
+export const adminDeleteSubmission = createServerFn({ method: "POST" })
+  .middleware([requireAdmin])
+  .inputValidator((d: unknown) =>
+    z
+      .object({
+        table: z.enum(["contact_requests", "applications"]),
+        id: z.string().uuid(),
+        confirmation: z.literal("LÖSCHEN"),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data }) => {
+    const { data: row, error } = await supabaseAdmin
+      .from(data.table)
+      .select("*")
+      .eq("id", data.id)
+      .single();
+    if (error || !row) throw new Error("Der Vorgang konnte nicht geladen werden.");
+    const paths = "image_paths" in row ? row.image_paths : row.cv_path ? [row.cv_path] : [];
+    if (paths.length) {
+      const { error: storageError } = await supabaseAdmin.storage
+        .from(data.table === "applications" ? "cvs" : "configurator-images")
+        .remove(paths);
+      if (storageError)
+        throw new Error(
+          "Anhänge konnten nicht vollständig gelöscht werden. Der Vorgang bleibt zur erneuten Bearbeitung erhalten.",
+        );
+    }
+    const { error: deletionError } = await supabaseAdmin
+      .from(data.table)
+      .delete()
+      .eq("id", data.id);
+    if (deletionError)
+      throw new Error("Der Vorgang konnte nicht gelöscht werden. Bitte erneut versuchen.");
+    return { ok: true };
+  });
+
+async function withDeliveryStatus<T extends { notification_email_id: string | null }>(rows: T[]) {
+  const ids = rows.map((row) => row.notification_email_id).filter((id): id is string => !!id);
+  if (!ids.length)
+    return rows.map((row) => ({ ...row, notification_status: null as string | null }));
+  const { data, error } = await supabaseAdmin
+    .from("email_delivery")
+    .select("email_id,status")
+    .in("email_id", ids);
+  const statuses = new Map((data || []).map((row) => [row.email_id, row.status]));
+  return rows.map((row) => ({
+    ...row,
+    notification_status: error ? "unknown" : statuses.get(row.notification_email_id || "") || null,
+  }));
+}

@@ -1,19 +1,14 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Link } from "@tanstack/react-router";
 import { CheckCircle2, Loader2, Mail, Phone, ShieldCheck } from "lucide-react";
 import { createContactRequest } from "@/lib/site.functions";
 import { contactSchema } from "@/lib/validators";
 
-export function ServiceMiniContact({
-  serviceTitle,
-}: {
-  serviceTitle: string;
-}) {
+export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
+  const messageId = useId();
   const submit = useServerFn(createContactRequest);
-  const [state, setState] = useState<"idle" | "loading" | "ok" | "error">(
-    "idle",
-  );
+  const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
@@ -58,19 +53,16 @@ export function ServiceMiniContact({
           <CheckCircle2 className="h-6 w-6 text-accent" strokeWidth={1.5} />
           <span className="eyebrow text-brand/60">Anfrage gesendet</span>
         </div>
-        <h3 className="font-display font-bold text-2xl mt-4 text-brand">
-          Vielen Dank!
-        </h3>
+        <h3 className="font-display font-bold text-2xl mt-4 text-brand">Vielen Dank!</h3>
         <p className="mt-3 text-foreground/70 leading-relaxed text-sm">
-          Wir melden uns innerhalb von 24 Stunden bei Ihnen. In dringenden
-          Fällen erreichen Sie uns telefonisch.
+          Wir melden uns persönlich bei Ihnen. In dringenden Fällen erreichen Sie uns telefonisch.
         </p>
         <div className="mt-6 flex flex-col gap-2 text-sm">
           <a
-            href="tel:+4961909769990"
+            href="tel:+4961909266134"
             className="inline-flex items-center gap-2 text-brand hover:text-accent"
           >
-            <Phone className="h-4 w-4" /> 06190 9769990
+            <Phone className="h-4 w-4" /> 06190 9266134
           </a>
           <a
             href="mailto:info@loni-galabau.de"
@@ -94,7 +86,7 @@ export function ServiceMiniContact({
           Ihr Projekt, unser Handwerk.
         </h3>
         <p className="mt-2 text-sm text-foreground/65">
-          Kostenloser Vor-Ort-Termin. Antwort in 24 h.
+          Schildern Sie uns Ihr Vorhaben – wir besprechen die nächsten Schritte.
         </p>
       </div>
 
@@ -119,16 +111,20 @@ export function ServiceMiniContact({
           onChange={(v) => setForm((f) => ({ ...f, phone: v }))}
         />
         <div>
-          <label className="block text-xs font-medium tracking-wider uppercase text-brand/70 mb-1.5">
+          <label
+            htmlFor={messageId}
+            className="block text-xs font-medium tracking-wider uppercase text-brand/70 mb-1.5"
+          >
             Ihre Nachricht
           </label>
           <textarea
+            id={messageId}
+            minLength={10}
+            maxLength={5000}
             required
             rows={4}
             value={form.message}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, message: e.target.value }))
-            }
+            onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
             placeholder={`Worum geht es bei Ihrem ${serviceTitle}-Projekt?`}
             className="w-full rounded-lg border border-brand/15 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
           />
@@ -139,9 +135,7 @@ export function ServiceMiniContact({
         <input
           type="checkbox"
           checked={form.consent}
-          onChange={(e) =>
-            setForm((f) => ({ ...f, consent: e.target.checked }))
-          }
+          onChange={(e) => setForm((f) => ({ ...f, consent: e.target.checked }))}
           className="mt-0.5 h-4 w-4 rounded border-brand/30 text-accent focus:ring-accent"
         />
         <span>
@@ -154,7 +148,10 @@ export function ServiceMiniContact({
       </label>
 
       {error && (
-        <div className="rounded-lg bg-destructive/10 border border-destructive/30 px-3 py-2 text-xs text-destructive">
+        <div
+          role="alert"
+          className="rounded-lg bg-destructive/10 border border-destructive/30 px-3 py-2 text-xs text-destructive"
+        >
           {error}
         </div>
       )}
@@ -194,12 +191,18 @@ function Field({
   type?: string;
   required?: boolean;
 }) {
+  const id = useId();
   return (
     <div>
-      <label className="block text-xs font-medium tracking-wider uppercase text-brand/70 mb-1.5">
+      <label
+        htmlFor={id}
+        className="block text-xs font-medium tracking-wider uppercase text-brand/70 mb-1.5"
+      >
         {label}
       </label>
       <input
+        id={id}
+        autoComplete={type === "email" ? "email" : type === "tel" ? "tel" : "name"}
         type={type}
         required={required}
         value={value}

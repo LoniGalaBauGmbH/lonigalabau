@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import {
   Outlet,
+  useRouterState,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -12,6 +13,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { CookieBanner } from "@/components/site/CookieBanner";
 import { InquiryModal } from "@/components/site/InquiryModal";
 import { TrackingScripts } from "@/components/site/TrackingScripts";
+import { getSiteImages } from "@/lib/site.functions";
+import { canonicalUrl, PRIVATE_PATH } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -38,7 +41,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="font-serif text-3xl text-brand">Etwas ist schiefgelaufen</h1>
-        <p className="mt-4 text-sm text-foreground/70">{error.message}</p>
+        <p className="mt-4 text-sm text-foreground/70">
+          Die Seite ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.
+        </p>
         <div className="mt-6 flex justify-center gap-3">
           <button
             onClick={() => {
@@ -59,6 +64,14 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: async ({ context }) => {
+    const images = await context.queryClient.ensureQueryData({
+      queryKey: ["site-images"],
+      queryFn: () => getSiteImages(),
+      staleTime: 300000,
+    });
+    return { images };
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -70,38 +83,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Loni Galabau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
       },
       { name: "author", content: "Loni Galabau GmbH" },
-      {
-        property: "og:title",
-        content: "Loni Galabau GmbH – Garten- und Landschaftsbau Hattersheim",
-      },
-      {
-        property: "og:description",
-        content:
-          "Loni Galabau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
-      },
+
       { property: "og:type", content: "website" },
-      {
-        name: "twitter:title",
-        content: "Loni Galabau GmbH – Garten- und Landschaftsbau Hattersheim",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Loni Galabau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
-      },
+
       {
         property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4aa87039-5088-407f-9dca-a24645a87f7a/id-preview-7c516dec--3821610f-33d3-48dc-9fea-dccbec49139d.lovable.app-1779971593823.png",
+        content: "https://www.loni-galabau.de/images/social-preview.jpg",
       },
       {
         name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4aa87039-5088-407f-9dca-a24645a87f7a/id-preview-7c516dec--3821610f-33d3-48dc-9fea-dccbec49139d.lovable.app-1779971593823.png",
+        content: "https://www.loni-galabau.de/images/social-preview.jpg",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: "/images/partner/loni.svg" },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/jakarta-normal-latin.woff2",
+        crossOrigin: "anonymous",
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -110,10 +115,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const { path, meta } = useRouterState({
+    select: (s) => ({ path: s.location.pathname, meta: s.matches.flatMap((m) => m.meta || []) }),
+  });
+  const title = [...meta].reverse().find((m) => m && "title" in m)?.title || "Loni GalaBau GmbH";
+  const desc = [...meta].reverse().find((m) => m && "name" in m && m.name === "description");
+  const description =
+    desc && "content" in desc
+      ? String(desc.content)
+      : "Garten- und Landschaftsbau aus Hattersheim am Main.";
   return (
     <html lang="de">
       <head>
         <HeadContent />
+        <link rel="canonical" href={canonicalUrl(path)} />
+        <meta property="og:url" content={canonicalUrl(path)} />
+        <meta property="og:locale" content="de_DE" />
+        <meta property="og:title" content={String(title)} />
+        <meta property="og:description" content={description} />
+        <meta name="twitter:title" content={String(title)} />
+        <meta name="twitter:description" content={description} />
+        {PRIVATE_PATH.test(path) && <meta name="robots" content="noindex,nofollow" />}
       </head>
       <body>
         {children}

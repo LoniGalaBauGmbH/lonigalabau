@@ -6,10 +6,12 @@ export function SubmissionNotification({
   id,
   table,
   sentAt,
+  deliveryStatus,
 }: {
   id: string;
   table: "contact_requests" | "applications";
   sentAt?: string | null;
+  deliveryStatus?: string | null;
 }) {
   const send = useServerFn(adminSendSubmissionNotification);
   const [sent, setSent] = useState(!!sentAt);
@@ -17,6 +19,18 @@ export function SubmissionNotification({
   const [error, setError] = useState("");
   return (
     <div className="mt-4 rounded-xl bg-brand/5 p-4 text-sm text-brand">
+      {deliveryStatus && (
+        <p role="status" className="mb-2 font-semibold">
+          {{
+            delivered: "Zustellung vom Empfänger-Mailserver bestätigt.",
+            bounced: "Zustellung fehlgeschlagen: Nachricht zurückgewiesen.",
+            complained: "Der Empfänger hat die Nachricht als Spam gemeldet.",
+            failed: "Versand fehlgeschlagen.",
+            delayed: "Zustellung verzögert. Der Maildienst versucht es weiter.",
+            unknown: "Zustellstatus derzeit nicht abrufbar.",
+          }[deliveryStatus] || deliveryStatus}
+        </p>
+      )}
       <p role="status">
         {sent
           ? "E-Mail-Benachrichtigung vom Versanddienst angenommen."
