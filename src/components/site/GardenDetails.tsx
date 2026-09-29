@@ -3,6 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import { useSelectionIndicator } from "@/hooks/useSelectionIndicator";
+import "./Motion.css";
 const garden = projectPhotos[34].src;
 
 const details = [
@@ -57,6 +59,7 @@ export function GardenDetails() {
   const [active, setActive] = useState(0);
   const id = useId();
   const detail = details[active];
+  const { groupRef, indicatorRef } = useSelectionIndicator(active);
   return (
     <section className="px-6 py-24 md:px-10 md:py-32" aria-labelledby={id + "-heading"}>
       <div className="mx-auto max-w-[1480px]">
@@ -82,7 +85,7 @@ export function GardenDetails() {
         </p>
         <div className="grid items-stretch gap-0 overflow-hidden rounded-[2rem] bg-brand lg:grid-cols-[1.25fr_1fr]">
           {/* Mobile uses the photo's full aspect ratio without container-query units. */}
-          <div className="relative aspect-[3/4] w-full min-w-0 overflow-hidden lg:aspect-auto lg:[container-type:size]">
+          <div className="garden-scene relative aspect-[3/4] w-full min-w-0 overflow-hidden lg:aspect-auto lg:[container-type:size]">
             <div className="absolute inset-0 h-full w-full lg:inset-auto lg:left-1/2 lg:top-1/2 lg:h-[max(100cqh,133.333333cqw)] lg:w-[max(100cqw,75cqh)] lg:-translate-x-1/2 lg:-translate-y-1/2">
               <ProjectImage
                 src={garden}
@@ -103,7 +106,7 @@ export function GardenDetails() {
                   onClick={() => setActive(i)}
                   style={item.position}
                   className={
-                    "absolute z-10 grid size-11 -translate-x-1/2 -translate-y-1/2 touch-manipulation place-items-center rounded-full shadow-lg ring-1 ring-black/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-12 " +
+                    "garden-hotspot absolute z-10 grid size-11 -translate-x-1/2 -translate-y-1/2 touch-manipulation place-items-center rounded-full shadow-lg ring-1 ring-black/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-12 " +
                     (active === i
                       ? "bg-accent text-brand"
                       : "bg-white/95 text-brand hover:bg-accent")
@@ -119,7 +122,12 @@ export function GardenDetails() {
             </span>
           </div>
           <div className="flex min-w-0 flex-col p-6 text-brand-foreground md:p-10 xl:p-14">
-            <div className="flex flex-wrap gap-2" aria-label="Gartendetails auswählen">
+            <div
+              ref={groupRef}
+              className="garden-selections relative isolate flex flex-wrap gap-2"
+              aria-label="Gartendetails auswählen"
+            >
+              <span ref={indicatorRef} className="garden-selection-indicator" aria-hidden="true" />
               {details.map((item, i) => (
                 <button
                   key={item.title}
@@ -128,7 +136,7 @@ export function GardenDetails() {
                   aria-controls={id + "-detail"}
                   onClick={() => setActive(i)}
                   className={
-                    "rounded-full px-4 py-3 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent " +
+                    "relative z-[1] rounded-full px-4 py-3 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent " +
                     (active === i
                       ? "bg-accent text-brand"
                       : "bg-white/10 text-white hover:bg-white/20")
@@ -144,10 +152,7 @@ export function GardenDetails() {
               aria-live="polite"
               aria-atomic="true"
             >
-              <div
-                key={detail.title}
-                className="motion-safe:animate-in motion-safe:fade-in-0 motion-safe:duration-300"
-              >
+              <div>
                 <div className="mb-7 aspect-[16/7] overflow-hidden rounded-2xl" aria-hidden="true">
                   <ProjectImage
                     src={garden}
@@ -155,7 +160,7 @@ export function GardenDetails() {
                     width={1024}
                     height={1024}
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className="garden-detail-preview h-full w-full object-cover"
                     style={{
                       objectPosition: detail.origin,
                       transform: "scale(1.65)",
@@ -163,12 +168,23 @@ export function GardenDetails() {
                     }}
                   />
                 </div>
-                <h3 className="max-w-md font-serif text-3xl leading-tight text-white md:text-4xl">
-                  {detail.heading}
-                </h3>
-                <p className="mt-5 max-w-md text-base leading-relaxed text-brand-foreground/75">
-                  {detail.text}
-                </p>
+                <div className="grid">
+                  {details.map((item, i) => (
+                    <div
+                      key={item.title}
+                      className="garden-detail-copy col-start-1 row-start-1"
+                      data-active={i === active}
+                      aria-hidden={i !== active}
+                    >
+                      <h3 className="max-w-md font-serif text-3xl leading-tight text-white md:text-4xl">
+                        {item.heading}
+                      </h3>
+                      <p className="mt-5 max-w-md text-base leading-relaxed text-brand-foreground/75">
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
               <Link
                 to="/leistungen/$slug"

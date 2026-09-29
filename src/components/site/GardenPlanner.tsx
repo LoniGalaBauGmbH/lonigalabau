@@ -41,6 +41,7 @@ import {
   type Question,
 } from "@/lib/garden-planner";
 import "./GardenPlanner.css";
+import "./Motion.css";
 
 const DRAFT_KEY = "loni-garden-planner-v1";
 const stepLabels: Record<string, string> = {
@@ -408,7 +409,7 @@ export function GardenPlanner() {
   const nameFor = (id: string) => stepLabels[id] || TRADES.find((t) => t.id === id)?.title || id;
 
   return (
-    <div className="garden-planner">
+    <div className="site-ui garden-planner">
       <header className="planner-header">
         <Link to="/" aria-label="Zur Loni-Galabau-Website">
           <img src={images.logo} alt="Loni Galabau" width={180} height={40} />

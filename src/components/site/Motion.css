@@ -1,0 +1,225 @@
+:root {
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.2, 1.45, 0.45, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-ui :where(button, a.inline-flex, a[class*="rounded-full"]) {
+    transition-property: color, background-color, border-color, box-shadow, opacity, scale;
+    transition-duration: 180ms, 180ms, 180ms, 240ms, 180ms, 340ms;
+    transition-timing-function: ease, ease, ease, ease, ease, var(--ease-spring);
+  }
+  .site-ui :where(button, a.inline-flex, a[class*="rounded-full"]):active:not(:disabled) {
+    scale: 0.96;
+    transition-duration: 90ms;
+  }
+  .site-ui :where(button, a) > :is(.lucide-arrow-right, .lucide-arrow-up-right) {
+    transition: translate 280ms var(--ease-settle);
+  }
+  .site-ui :where(label[data-selected], .planner-choice, .planner-trade) {
+    transition:
+      background-color 220ms ease,
+      box-shadow 220ms ease,
+      scale 340ms var(--ease-spring);
+  }
+  .site-ui :where(label[data-selected], .planner-choice, .planner-trade):active {
+    scale: 0.98;
+  }
+  .site-ui :where(label[data-selected="true"], [data-state="checked"]) .lucide-check {
+    animation: selection-check 300ms var(--ease-spring) both;
+  }
+  .site-ui .lucide-check :is(path, polyline) {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 0;
+    animation: selection-stroke 280ms ease both;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .site-ui :where(button, a):hover > .lucide-arrow-right {
+    translate: 3px 0;
+  }
+  .site-ui :where(button, a):hover > .lucide-arrow-up-right {
+    translate: 2px -2px;
+  }
+}
+
+@keyframes selection-check {
+  from {
+    opacity: 0;
+    scale: 0.65;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes selection-stroke {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.service-carousel {
+  --service-image-shift: 0px;
+}
+.service-carousel [data-service-card] {
+  transform-origin: center center;
+  scale: 0.965;
+  transition:
+    scale 600ms var(--ease-settle),
+    filter 600ms ease;
+}
+.service-carousel [data-service-card][data-active="true"] {
+  scale: 1;
+}
+.service-carousel [data-service-image] {
+  transform: translateX(var(--service-image-shift)) scale(1.09);
+}
+.service-carousel [data-service-copy] {
+  translate: 0 5px;
+  transition: translate 550ms var(--ease-settle);
+}
+.service-carousel [data-active="true"] [data-service-copy] {
+  translate: 0 0;
+}
+.service-carousel [data-dragging="true"] {
+  cursor: grabbing;
+}
+.service-carousel [data-dragging="true"] a {
+  cursor: grabbing;
+}
+.service-position {
+  height: 3px;
+  width: 80px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  border-radius: 99px;
+}
+.service-position span {
+  display: block;
+  height: 100%;
+  background: var(--brand);
+  border-radius: inherit;
+  transition: translate 500ms var(--ease-settle);
+}
+.garden-selection-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    translate 460ms var(--ease-spring),
+    width 350ms var(--ease-settle),
+    height 350ms var(--ease-settle);
+}
+.garden-selections[data-indicator-ready="true"] .garden-selection-indicator {
+  visibility: visible;
+}
+.garden-selections[data-indicator-ready="true"] button[aria-pressed="true"] {
+  background: transparent;
+}
+.garden-detail-preview {
+  transition:
+    object-position 650ms var(--ease-settle),
+    transform-origin 650ms var(--ease-settle);
+}
+.garden-detail-copy[data-active="false"] {
+  visibility: hidden;
+}
+.gallery-flight {
+  position: fixed;
+  z-index: 130;
+  object-fit: cover;
+  pointer-events: none;
+  max-width: none;
+  box-shadow: 0 24px 70px rgb(0 0 0 / 18%);
+}
+.gallery-dialog {
+  transition: opacity 280ms ease;
+}
+.gallery-overlay {
+  transition: opacity 360ms ease;
+}
+.gallery-dialog[data-closing="true"],
+.gallery-overlay[data-closing="true"] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gallery-dialog {
+    animation: gallery-surface-in 380ms var(--ease-settle) backwards;
+  }
+  [data-gallery-frame] > img {
+    animation: gallery-photo-in 320ms var(--ease-settle) both;
+  }
+  .garden-detail-copy[data-active="true"] {
+    animation: detail-arrive 360ms var(--ease-settle) both;
+  }
+  .garden-hotspot[aria-pressed="true"] > svg {
+    animation: hotspot-select 420ms var(--ease-spring) both;
+  }
+}
+@keyframes gallery-surface-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes gallery-photo-in {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes detail-arrive {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes hotspot-select {
+  0% {
+    scale: 0.65;
+    rotate: -35deg;
+  }
+  100% {
+    scale: 1;
+    rotate: 0deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-carousel [data-service-card],
+  .service-carousel [data-service-copy] {
+    scale: 1;
+    translate: none;
+    transition: none;
+  }
+  .service-carousel [data-service-image] {
+    transform: none;
+  }
+  .service-position span {
+    transition: none;
+  }
+  .garden-selection-indicator,
+  .garden-detail-preview {
+    transition: none;
+  }
+  .gallery-dialog,
+  .gallery-overlay {
+    transition: none;
+  }
+}

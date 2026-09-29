@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { getServiceImage } from "@/lib/service-images";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import "./Motion.css";
 
 type Service = {
   id: string;
@@ -29,15 +30,45 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
     if (!api) return;
     const update = () => setSelected(api.selectedScrollSnap());
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const applyMotion = () => api.reInit({ duration: motion.matches ? 0 : 25 });
+    const slides = api.slideNodes();
+    const parallax = () => {
+      if (motion.matches) return;
+      const viewport = api.rootNode().getBoundingClientRect();
+      // Read positions first, then write, so dragging does not alternate layout reads/writes.
+      const offsets = slides.map((slide) => {
+        const rect = slide.getBoundingClientRect();
+        return Math.max(-14, Math.min(14, ((rect.left - viewport.left) / viewport.width) * -18));
+      });
+      slides.forEach((slide, i) =>
+        slide.style.setProperty("--service-image-shift", offsets[i] + "px"),
+      );
+    };
+    const down = () => {
+      api.rootNode().dataset.dragging = "true";
+    };
+    const up = () => {
+      delete api.rootNode().dataset.dragging;
+    };
+    const applyMotion = () => {
+      api.reInit({ duration: motion.matches ? 0 : 32 });
+      parallax();
+    };
     api.on("select", update);
     api.on("reInit", update);
+    api.on("scroll", parallax);
+    api.on("reInit", parallax);
+    api.on("pointerDown", down);
+    api.on("pointerUp", up);
     motion.addEventListener("change", applyMotion);
     applyMotion();
     update();
     return () => {
       api.off("select", update);
       api.off("reInit", update);
+      api.off("scroll", parallax);
+      api.off("reInit", parallax);
+      api.off("pointerDown", down);
+      api.off("pointerUp", up);
       motion.removeEventListener("change", applyMotion);
     };
   }, [api]);
@@ -48,10 +79,10 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
   return (
     <Carousel
       setApi={setApi}
-      opts={{ align: "start", loop: services.length > 2 }}
+      opts={{ align: "start", loop: services.length > 2, dragThreshold: 8, skipSnaps: false }}
       aria-label="Unsere Gewerke"
       aria-roledescription="Karussell"
-      className="min-w-0"
+      className="service-carousel min-w-0"
     >
       <CarouselContent className="-ml-5 touch-pan-y">
         {services.map((service, i) => (
@@ -65,6 +96,8 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
               to="/leistungen/$slug"
               params={{ slug: service.slug }}
               draggable={false}
+              data-service-card
+              data-active={selected === i}
               className="group relative isolate block aspect-[3/4] overflow-hidden rounded-[2rem] bg-brand text-brand-foreground focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent"
             >
               <ProjectImage
@@ -73,7 +106,8 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
                 sizes="(max-width: 639px) 85vw, (max-width: 1023px) 55vw, 36vw"
                 loading="lazy"
                 draggable={false}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.05] motion-reduce:transition-none"
+                data-service-image
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand/95 via-brand/30 to-transparent" />
               <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-5 text-brand-foreground md:p-6">
@@ -86,7 +120,7 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
                   </span>
                 )}
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-6 pt-14 md:p-7">
+              <div data-service-copy className="absolute inset-x-0 bottom-0 p-6 pt-14 md:p-7">
                 <h3
                   lang="de"
                   className="break-words hyphens-auto font-display text-xl font-extrabold leading-tight text-brand-foreground lg:text-2xl"
@@ -123,6 +157,11 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
           </span>
           <span className="hidden sm:inline">Ziehen oder weiterblättern</span>
           <span className="sm:hidden">Wischen & entdecken</span>
+          <span className="service-position hidden md:block" aria-hidden="true">
+            <span
+              style={{ width: 100 / services.length + "%", translate: selected * 100 + "% 0" }}
+            />
+          </span>
         </div>
         <div className="flex gap-3">
           <CarouselPrevious

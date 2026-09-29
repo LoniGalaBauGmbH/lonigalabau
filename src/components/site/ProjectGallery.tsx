@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { ArrowLeft, ArrowRight, MapPin, X } from "lucide-react";
 import {
@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/dialog";
 import projectFallback from "@/assets/project-villa.jpg";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import { flyImage, imageFrame, type ImageFrame } from "@/lib/gallery-motion";
+import "./Motion.css";
 
 type GalleryProject = {
   title: string;
@@ -52,26 +54,93 @@ export function ProjectGallery({
   initialIndex?: number;
 }) {
   const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const origin = useRef<ImageFrame | null>(null);
+  const flight = useRef<(() => void) | null>(null);
+  const mounted = useRef(true);
+  const openingFrame = useRef(0);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
   const uploaded = [...new Set((project.images ?? []).filter((src) => src.trim()))];
   const images = uploaded.length ? uploaded : [projectFallback];
   const current = Math.min(index, images.length - 1);
-  const move = (direction: number) =>
-    setIndex((value) => (value + direction + images.length) % images.length);
+  const show = (next: number) => {
+    if (closing) return;
+    flight.current?.();
+    setIndex(next);
+  };
+  const move = (direction: number) => show((current + direction + images.length) % images.length);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      cancelAnimationFrame(openingFrame.current);
+      flight.current?.();
+    };
+  }, []);
+  const clearFlight = () => {
+    if (frameRef.current) frameRef.current.style.opacity = "";
+    flight.current = null;
+  };
+  const beginOpening = () => {
+    openingFrame.current = requestAnimationFrame(() => {
+      const target = imageFrame(frameRef.current, true, origin.current);
+      if (
+        !origin.current ||
+        !target ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      )
+        return;
+      if (frameRef.current) frameRef.current.style.opacity = "0";
+      flight.current = flyImage(origin.current, target, clearFlight);
+    });
+  };
+  const changeOpen = (next: boolean) => {
+    if (next) {
+      origin.current = imageFrame(triggerRef.current);
+      setIndex(Math.max(0, Math.min(initialIndex, images.length - 1)));
+      setClosing(false);
+      setOpen(true);
+      return;
+    }
+    if (closing) return;
+    cancelAnimationFrame(openingFrame.current);
+    flight.current?.();
+    const from = imageFrame(frameRef.current, true);
+    const to = imageFrame(triggerRef.current);
+    if (!from || !to || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setOpen(false);
+      return;
+    }
+    setClosing(true);
+    if (frameRef.current) frameRef.current.style.opacity = "0";
+    flight.current = flyImage(from, to, () => {
+      clearFlight();
+      if (mounted.current) {
+        setClosing(false);
+        setOpen(false);
+      }
+    });
+  };
   const control =
     "grid size-11 shrink-0 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
   return (
-    <Dialog
-      onOpenChange={(open) => {
-        if (open) setIndex(Math.max(0, Math.min(initialIndex, images.length - 1)));
-      }}
-    >
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog open={open} onOpenChange={changeOpen}>
+      <DialogTrigger ref={triggerRef} asChild>
+        {children}
+      </DialogTrigger>
       <DialogPortal>
-        <DialogOverlay className="z-[120] bg-black/80 backdrop-blur-sm motion-reduce:animate-none" />
+        <DialogOverlay
+          data-closing={closing}
+          className="gallery-overlay z-[120] bg-black/70 backdrop-blur-md motion-reduce:animate-none"
+        />
         <DialogPrimitive.Content
-          className="fixed left-1/2 top-1/2 z-[121] flex max-h-[94dvh] w-[calc(100%-1.5rem)] max-w-7xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-y-auto rounded-3xl bg-brand text-brand-foreground shadow-2xl outline-none data-[state=open]:animate-in data-[state=open]:fade-in-0 duration-200 motion-reduce:animate-none"
+          data-closing={closing}
+          onOpenAutoFocus={beginOpening}
+          className="site-ui gallery-dialog fixed left-1/2 top-1/2 z-[121] flex max-h-[94dvh] w-[calc(100%-1.5rem)] max-w-7xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-y-auto rounded-3xl bg-brand text-brand-foreground shadow-2xl outline-none"
           onKeyDown={(event) => {
             if (images.length < 2) return;
             if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
@@ -97,6 +166,8 @@ export function ProjectGallery({
             </DialogClose>
           </div>
           <div
+            ref={frameRef}
+            data-gallery-frame
             className="relative h-[min(50dvh,640px)] min-h-48 shrink-0 touch-pan-y bg-black/20 md:h-[min(65dvh,760px)]"
             onPointerDown={(event) => {
               if (event.pointerType === "touch") {
@@ -140,7 +211,7 @@ export function ProjectGallery({
                       type="button"
                       aria-label={"Bild " + (i + 1) + " anzeigen"}
                       aria-pressed={current === i}
-                      onClick={() => setIndex(i)}
+                      onClick={() => show(i)}
                       className={
                         "h-14 w-20 shrink-0 overflow-hidden rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent " +
                         (current === i

@@ -15,6 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { ContactAttachments } from "./ContactAttachments";
 import { useContactAttachments } from "@/hooks/useContactAttachments";
+import "./Motion.css";
 import {
   BUDGETS,
   CHANNELS,
@@ -149,7 +150,7 @@ export function ProjectInquiryForm({
   const content = (
     <div
       className={
-        "mx-auto grid w-full max-w-[1320px] overflow-hidden bg-white lg:grid-cols-[0.8fr_1.6fr] " +
+        "site-ui mx-auto grid w-full max-w-[1320px] overflow-hidden bg-white lg:grid-cols-[0.8fr_1.6fr] " +
         (isModal ? "" : "rounded-[2rem] md:rounded-[2.5rem]")
       }
     >
@@ -655,6 +656,7 @@ function Choices({
         {options.map((option, index) => (
           <label
             key={option}
+            data-selected={value === option}
             htmlFor={uid + "-" + index}
             className={
               "relative flex min-h-12 cursor-pointer items-center justify-between gap-3 px-4 py-3 text-sm transition-colors focus-within:ring-2 focus-within:ring-brand focus-within:ring-offset-2 " +

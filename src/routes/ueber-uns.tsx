@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Heart, Handshake, Leaf, Sparkles, Quote, MapPin } from "lucide-react";
-import { PageShell } from "@/components/site/PageShell";
+import { PageShell, Reveal } from "@/components/site/PageShell";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import founder from "@/assets/about-founder-valon.webp";
 import heroGarden from "@/assets/hero-garden.jpg";
@@ -75,44 +74,6 @@ const VALUES = [
     d: "Jeder Garten ist anders. Unsere Konzepte entstehen individuell – technisch fundiert, kreativ und exakt auf Ihre Anforderungen.",
   },
 ];
-
-function useReveal<T extends HTMLElement>() {
-  const ref = useRef<T | null>(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setShown(true);
-            io.disconnect();
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return { ref, shown };
-}
-
-function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const { ref, shown } = useReveal<HTMLDivElement>();
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-    >
-      {children}
-    </div>
-  );
-}
 
 function AboutPage() {
   const { images } = useSiteImages();

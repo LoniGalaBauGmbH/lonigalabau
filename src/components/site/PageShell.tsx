@@ -1,7 +1,10 @@
-import { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
+import { useLocation } from "@tanstack/react-router";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { WhatsAppButton } from "./WhatsAppButton";
+import "./Motion.css";
+import { useScrollChoreography } from "@/hooks/useScrollChoreography";
 
 export function PageShell({
   children,
@@ -10,14 +13,21 @@ export function PageShell({
   children: ReactNode;
   transparentHeader?: boolean;
 }) {
+  const mainRef = useRef<HTMLElement>(null);
+  const path = useLocation({ select: (location) => location.pathname });
+  useScrollChoreography(mainRef, path);
   return (
-    <div className="min-h-screen bg-background">
+    <div className="site-ui min-h-screen bg-background">
       <Header transparent={transparentHeader} />
-      <main className={transparentHeader ? "" : "pt-24 md:pt-28"}>{children}</main>
+      <main ref={mainRef} className={transparentHeader ? "" : "pt-24 md:pt-28"}>{children}</main>
       <Footer />
       <WhatsAppButton />
     </div>
   );
+}
+
+export function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+  return <div data-reveal="block" data-reveal-delay={delay}>{children}</div>;
 }
 
 export function PageIntro({
