@@ -149,7 +149,9 @@ export const adminListApplications = createServerFn({ method: "GET" })
     try {
       const { data, error } = await supabaseAdmin
         .from("applications")
-        .select("*, jobs(title, slug)")
+        .select(
+          "id,name,email,phone,message,status,created_at,notes,notes_version,notification_sent_at,notification_email_id,customer_confirmation_requested_at,customer_confirmation_sent_at,customer_confirmation_email_id,job_id,cv_path,jobs(title, slug)",
+        )
         .order("created_at", { ascending: false });
       if (error) return [];
       return withDeliveryStatus(data ?? []);
@@ -217,7 +219,9 @@ export const adminListContacts = createServerFn({ method: "GET" })
     try {
       const { data, error } = await supabaseAdmin
         .from("contact_requests")
-        .select("*")
+        .select(
+          "id,name,email,phone,message,status,created_at,notes,notes_version,notification_sent_at,notification_email_id,customer_confirmation_requested_at,customer_confirmation_sent_at,customer_confirmation_email_id,subject,image_paths",
+        )
         .order("created_at", { ascending: false });
       if (error) return [];
       return withDeliveryStatus(data ?? []);
@@ -361,10 +365,21 @@ export const adminDeleteSubmission = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
-async function withDeliveryStatus<T extends { notification_email_id: string | null }>(rows: T[]) {
-  const ids = rows.map((row) => row.notification_email_id).filter((id): id is string => !!id);
+async function withDeliveryStatus<
+  T extends {
+    notification_email_id: string | null;
+    customer_confirmation_email_id?: string | null;
+  },
+>(rows: T[]) {
+  const ids = rows
+    .flatMap((row) => [row.notification_email_id, row.customer_confirmation_email_id])
+    .filter((id): id is string => !!id);
   if (!ids.length)
-    return rows.map((row) => ({ ...row, notification_status: null as string | null }));
+    return rows.map((row) => ({
+      ...row,
+      notification_status: null as string | null,
+      customer_confirmation_status: null as string | null,
+    }));
   const { data, error } = await supabaseAdmin
     .from("email_delivery")
     .select("email_id,status")
@@ -373,5 +388,8 @@ async function withDeliveryStatus<T extends { notification_email_id: string | nu
   return rows.map((row) => ({
     ...row,
     notification_status: error ? "unknown" : statuses.get(row.notification_email_id || "") || null,
+    customer_confirmation_status: error
+      ? "unknown"
+      : statuses.get(row.customer_confirmation_email_id || "") || null,
   }));
 }

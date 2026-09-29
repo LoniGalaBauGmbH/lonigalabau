@@ -168,21 +168,20 @@ function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
         </div>
 
-        {/* floating stat card */}
-        <div className="absolute right-6 md:right-10 top-28 md:top-32 z-10">
-          <div className="rounded-3xl backdrop-blur-md bg-white/5 px-7 py-5 md:px-9 md:py-7 text-right">
-            <div className="display text-4xl md:text-5xl text-white">Seit 2011</div>
-            <div className="text-[11px] tracking-[0.22em] uppercase text-white/80 mt-1">
-              Im Garten- & Landschaftsbau
+        <div className="relative z-[1] max-w-[1480px] mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-16 md:pb-24 pt-28 md:pt-32 lg:pt-72">
+          {/* In normal flow on smaller screens, so the badge never covers the headline. */}
+          <div className="self-start mb-9 sm:self-end lg:absolute lg:right-10 lg:top-32 lg:mb-0">
+            <div className="rounded-3xl backdrop-blur-md bg-white/5 px-5 py-4 md:px-9 md:py-7 text-left sm:text-right">
+              <div className="display text-3xl sm:text-4xl md:text-5xl text-white">Seit 2011</div>
+              <div className="text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-white/80 mt-1">
+                Im Garten- & Landschaftsbau
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="relative z-[1] max-w-[1480px] mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-16 md:pb-24 pt-44 md:pt-56">
           <div className="max-w-5xl animate-fade-up">
             <h1
               lang="de"
-              className="display break-words hyphens-auto text-white text-[clamp(2.75rem,8vw,8rem)]"
+              className="display break-words hyphens-auto text-white text-[clamp(2rem,8vw,8rem)]"
             >
               Ihr Garten
               <br />

@@ -1,3 +1,4 @@
+import { submissionTicket } from "./submission-ticket";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { renderSubmissionEmail } from "./submission-email";
 import { EMAIL_LOGO_ATTACHMENTS } from "./email-logo-assets.server";
@@ -24,7 +25,13 @@ export function notificationMessage(
   return {
     to: [NOTIFICATION_TO],
     reply_to: record.email,
-    subject: (title + " · " + (jobTitle || record.subject || record.name))
+    subject: (
+      submissionTicket(record.id, table === "applications") +
+      " · " +
+      title +
+      " · " +
+      (jobTitle || record.subject || record.name)
+    )
       .replace(/[\r\n]/g, " ")
       .slice(0, 200),
     ...renderSubmissionEmail(record, table === "applications", jobTitle, files, adminUrl),

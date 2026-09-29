@@ -19,6 +19,10 @@ export type Database = {
           name: string;
           notes: string;
           notes_version: number;
+          customer_confirmation_requested_at: string | null;
+          customer_confirmation_sent_at: string | null;
+          customer_confirmation_email_id: string | null;
+          customer_confirmation_payload: Json | null;
           notification_email_id: string | null;
           notification_sent_at: string | null;
           phone: string | null;
@@ -34,6 +38,10 @@ export type Database = {
           name: string;
           notes?: string;
           notes_version?: number;
+          customer_confirmation_requested_at?: string | null;
+          customer_confirmation_sent_at?: string | null;
+          customer_confirmation_email_id?: string | null;
+          customer_confirmation_payload?: Json | null;
           notification_email_id?: string | null;
           notification_sent_at?: string | null;
           phone?: string | null;
@@ -49,6 +57,10 @@ export type Database = {
           name?: string;
           notes?: string;
           notes_version?: number;
+          customer_confirmation_requested_at?: string | null;
+          customer_confirmation_sent_at?: string | null;
+          customer_confirmation_email_id?: string | null;
+          customer_confirmation_payload?: Json | null;
           notification_email_id?: string | null;
           notification_sent_at?: string | null;
           phone?: string | null;
@@ -74,6 +86,10 @@ export type Database = {
           name: string;
           notes: string;
           notes_version: number;
+          customer_confirmation_requested_at: string | null;
+          customer_confirmation_sent_at: string | null;
+          customer_confirmation_email_id: string | null;
+          customer_confirmation_payload: Json | null;
           notification_email_id: string | null;
           notification_sent_at: string | null;
           phone: string | null;
@@ -89,6 +105,10 @@ export type Database = {
           name: string;
           notes?: string;
           notes_version?: number;
+          customer_confirmation_requested_at?: string | null;
+          customer_confirmation_sent_at?: string | null;
+          customer_confirmation_email_id?: string | null;
+          customer_confirmation_payload?: Json | null;
           notification_email_id?: string | null;
           notification_sent_at?: string | null;
           phone?: string | null;
@@ -104,6 +124,10 @@ export type Database = {
           name?: string;
           notes?: string;
           notes_version?: number;
+          customer_confirmation_requested_at?: string | null;
+          customer_confirmation_sent_at?: string | null;
+          customer_confirmation_email_id?: string | null;
+          customer_confirmation_payload?: Json | null;
           notification_email_id?: string | null;
           notification_sent_at?: string | null;
           phone?: string | null;

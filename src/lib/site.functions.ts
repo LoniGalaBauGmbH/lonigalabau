@@ -9,7 +9,7 @@ import {
 } from "@/lib/validators";
 import { persistContactSubmission } from "@/lib/contact-submission.server";
 import { persistApplicationSubmission } from "@/lib/application-submission.server";
-import { attemptSubmissionNotification } from "@/lib/submission-notification.server";
+import { attemptSubmissionEmails } from "@/lib/customer-confirmation.server";
 import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
 import { enforceFormQuota } from "@/lib/form-quota.server";
@@ -220,7 +220,7 @@ export const createContactRequest = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     await enforceFormQuota(data.email);
     const result = await persistContactSubmission(supabaseAdmin, data);
-    await attemptSubmissionNotification(supabaseAdmin, "contact_requests", result.id);
+    await attemptSubmissionEmails(supabaseAdmin, "contact_requests", result.id);
     return { ok: true };
   });
 
@@ -239,7 +239,7 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
       ...buildPlannerPayload(data.plan),
       attachments: data.attachments,
     });
-    await attemptSubmissionNotification(supabaseAdmin, "contact_requests", result.id);
+    await attemptSubmissionEmails(supabaseAdmin, "contact_requests", result.id);
     return { ok: true };
   });
 
@@ -248,7 +248,7 @@ export const createApplication = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     await enforceFormQuota(data.email);
     const result = await persistApplicationSubmission(supabaseAdmin, data);
-    await attemptSubmissionNotification(supabaseAdmin, "applications", result.id);
+    await attemptSubmissionEmails(supabaseAdmin, "applications", result.id);
     return { ok: true };
   });
 

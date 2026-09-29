@@ -14,6 +14,7 @@ import {
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { getServiceImage } from "@/lib/service-images";
 import { ProjectImage } from "./ProjectImage";
+import { HomeLogoLink } from "./HomeLogoLink";
 import "./Header.css";
 
 const links = [
@@ -97,7 +98,13 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
       >
         <div className="site-header-glass" aria-hidden="true" />
         <div className="site-header-inner">
-          <Link to="/" className="site-header-logo" aria-label="Loni Galabau – Startseite">
+          <HomeLogoLink
+            className="site-header-logo"
+            onNavigate={() => {
+              setOpen(false);
+              setDesktopMenu("");
+            }}
+          >
             <img
               src={images.logo}
               alt="Loni Galabau"
@@ -105,7 +112,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
               height={40}
               fetchPriority="high"
             />
-          </Link>
+          </HomeLogoLink>
           <NavigationMenu.Root
             className="site-desktop-nav"
             aria-label="Hauptnavigation"
@@ -232,7 +239,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
         >
           <DialogTitle className="sr-only">Navigation</DialogTitle>
           <div className="site-mobile-menu-top">
-            <Link to="/" onClick={() => setOpen(false)} aria-label="Loni Galabau – Startseite">
+            <HomeLogoLink onNavigate={() => setOpen(false)}>
               <img
                 src={images.logo}
                 alt="Loni Galabau"
@@ -240,7 +247,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 height={40}
                 fetchPriority="high"
               />
-            </Link>
+            </HomeLogoLink>
             <DialogClose asChild>
               <button
                 ref={closeButton}

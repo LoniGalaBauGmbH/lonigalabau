@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import logoVerband from "@/assets/logo-gartenverband.svg";
 import { FooterDocuments } from "./FooterDocuments";
+import { HomeLogoLink } from "./HomeLogoLink";
 
 const services: [string, string][] = [
   ["natursteinarbeiten", "Natursteinarbeiten"],
@@ -61,7 +62,9 @@ export function Footer() {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10">
           {/* Brand column */}
           <div className="lg:col-span-4 space-y-8">
-            <img src={images.logo_white} alt="Loni Galabau GmbH" className="h-14 w-auto" />
+            <HomeLogoLink className="inline-block">
+              <img src={images.logo_white} alt="Loni Galabau GmbH" className="h-14 w-auto" />
+            </HomeLogoLink>
             <p className="text-sm leading-relaxed opacity-70 max-w-sm">
               Garten- und Landschaftsbau aus Hattersheim. Seit Jahren stehen wir für Präzision,
               ehrliches Handwerk und Gärten, die Bestand haben.

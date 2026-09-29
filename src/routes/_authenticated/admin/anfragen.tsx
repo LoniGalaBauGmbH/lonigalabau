@@ -1,3 +1,4 @@
+import { submissionTicket } from "@/lib/submission-ticket";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -39,6 +40,9 @@ type ContactRequest = {
   created_at: string;
   notification_sent_at?: string | null;
   notification_status?: string | null;
+  customer_confirmation_requested_at?: string | null;
+  customer_confirmation_sent_at?: string | null;
+  customer_confirmation_status?: string | null;
   notes?: string;
   notes_version?: number;
 };
@@ -178,6 +182,7 @@ function Page() {
     data?.filter((c) => {
       const matchesTab = c.status === activeTab;
       const matchesSearch =
+        submissionTicket(c.id, false).toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (c.phone && c.phone.includes(searchQuery)) ||
@@ -441,6 +446,9 @@ function Page() {
                 table="contact_requests"
                 sentAt={selectedLead.notification_sent_at}
                 deliveryStatus={selectedLead.notification_status}
+                customerRequestedAt={selectedLead.customer_confirmation_requested_at}
+                customerSentAt={selectedLead.customer_confirmation_sent_at}
+                customerDeliveryStatus={selectedLead.customer_confirmation_status}
               />
               <div className="mt-6 flex flex-wrap gap-2.5">
                 <a

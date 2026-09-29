@@ -1,7 +1,7 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { Webhook } from "svix";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
-import { attemptSubmissionNotification } from "./submission-notification.server";
+import { attemptSubmissionEmails } from "./customer-confirmation.server";
 
 export async function notificationOperations(request: Request): Promise<Response | null> {
   const path = new URL(request.url).pathname;
@@ -22,12 +22,15 @@ export async function notificationOperations(request: Request): Promise<Response
     )
       return new Response(null, { status: 401 });
     let attempted = 0,
-      sent = 0;
+      sent = 0,
+      confirmations = 0;
     for (const table of ["contact_requests", "applications"] as const) {
       const { data, error } = await supabaseAdmin
         .from(table)
         .select("id")
-        .is("notification_sent_at", null)
+        .or(
+          "notification_sent_at.is.null,and(customer_confirmation_requested_at.not.is.null,customer_confirmation_sent_at.is.null)",
+        )
         .gte("created_at", new Date(Date.now() - 23 * 60 * 60 * 1000).toISOString())
         .lt("created_at", new Date(Date.now() - 2 * 60 * 1000).toISOString())
         .order("created_at")
@@ -35,10 +38,12 @@ export async function notificationOperations(request: Request): Promise<Response
       if (error) return new Response("Queue unavailable", { status: 503 });
       for (const row of data || []) {
         attempted++;
-        if ((await attemptSubmissionNotification(supabaseAdmin, table, row.id)).sent) sent++;
+        const result = await attemptSubmissionEmails(supabaseAdmin, table, row.id);
+        if (result.sent) sent++;
+        if (result.confirmationSent) confirmations++;
       }
     }
-    return Response.json({ attempted, sent });
+    return Response.json({ attempted, sent, confirmations });
   }
   const secret = process.env.RESEND_WEBHOOK_SECRET;
   if (!secret) return new Response(null, { status: 503 });

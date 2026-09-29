@@ -1,3 +1,4 @@
+import { submissionTicket } from "@/lib/submission-ticket";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -41,6 +42,9 @@ type Application = {
   created_at: string;
   notification_sent_at?: string | null;
   notification_status?: string | null;
+  customer_confirmation_requested_at?: string | null;
+  customer_confirmation_sent_at?: string | null;
+  customer_confirmation_status?: string | null;
   notes?: string;
   notes_version?: number;
   jobs?: {
@@ -152,6 +156,7 @@ function Page() {
     data?.filter((a) => {
       const matchesTab = a.status === activeTab;
       const matchesSearch =
+        submissionTicket(a.id, true).toLowerCase().includes(searchQuery.toLowerCase()) ||
         a.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         a.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (a.phone && a.phone.includes(searchQuery)) ||
@@ -442,6 +447,9 @@ function Page() {
                   table="applications"
                   sentAt={selectedCandidate.notification_sent_at}
                   deliveryStatus={selectedCandidate.notification_status}
+                  customerRequestedAt={selectedCandidate.customer_confirmation_requested_at}
+                  customerSentAt={selectedCandidate.customer_confirmation_sent_at}
+                  customerDeliveryStatus={selectedCandidate.customer_confirmation_status}
                 />
                 {selectedCandidate.cv_path && (
                   <button

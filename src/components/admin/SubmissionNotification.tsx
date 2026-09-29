@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { adminSendSubmissionNotification } from "@/lib/admin.functions";
+import { submissionTicket } from "@/lib/submission-ticket";
 
 export function SubmissionNotification({
   id,
   table,
   sentAt,
   deliveryStatus,
+  customerRequestedAt,
+  customerSentAt,
+  customerDeliveryStatus,
 }: {
   id: string;
   table: "contact_requests" | "applications";
   sentAt?: string | null;
   deliveryStatus?: string | null;
+  customerRequestedAt?: string | null;
+  customerSentAt?: string | null;
+  customerDeliveryStatus?: string | null;
 }) {
   const send = useServerFn(adminSendSubmissionNotification);
   const [sent, setSent] = useState(!!sentAt);
@@ -19,6 +26,28 @@ export function SubmissionNotification({
   const [error, setError] = useState("");
   return (
     <div className="mt-4 rounded-xl bg-brand/5 p-4 text-sm text-brand">
+      <p className="mb-3 font-semibold break-words">
+        Ticket {submissionTicket(id, table === "applications")}
+      </p>
+      {customerRequestedAt && (
+        <div className="mb-4 border-b border-brand/10 pb-4" role="status">
+          <p className="font-semibold">Eingangsbestätigung an den Kunden</p>
+          <p className="mt-1">
+            {customerDeliveryStatus === "delivered"
+              ? "Zustellung vom Empfänger-Mailserver bestätigt."
+              : ["bounced", "complained", "failed"].includes(customerDeliveryStatus || "")
+                ? "Zustellung fehlgeschlagen oder beanstandet. Bitte die Kontaktadresse prüfen."
+                : customerDeliveryStatus === "delayed"
+                  ? "Zustellung verzögert. Der Versanddienst versucht es weiter."
+                  : customerSentAt
+                    ? "Vom Versanddienst angenommen."
+                    : Date.now() - Date.parse(customerRequestedAt) > 23 * 60 * 60 * 1000
+                      ? "Bestätigung ausstehend. Bitte den Versand prüfen und die Person bei Bedarf persönlich kontaktieren."
+                      : "Noch ausstehend. Ein erneuter Versandversuch erfolgt automatisch."}
+          </p>
+        </div>
+      )}
+      <p className="mb-1 font-semibold">Interne Benachrichtigung</p>
       {deliveryStatus && (
         <p role="status" className="mb-2 font-semibold">
           {{

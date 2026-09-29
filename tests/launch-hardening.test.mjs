@@ -169,7 +169,7 @@ test("signed delivery webhooks are accepted, forged/expired/invalid events are r
           },
         },
       },
-      "./submission-notification.server": {},
+      "./customer-confirmation.server": {},
     },
     { RESEND_WEBHOOK_SECRET: secret, NOTIFICATION_CRON_SECRET: "private-cron" },
   );

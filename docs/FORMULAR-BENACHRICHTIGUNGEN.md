@@ -4,8 +4,9 @@ Kontaktseite, Projektanfrage und Gartenplaner speichern Anfragen in `contact_req
 Bewerbungen werden in `applications` gespeichert. Anschließend versendet der Server
 eine Benachrichtigung an **webseite@loni-galabau.de**, einschließlich aller eingegebenen
 Felder und der zugehörigen Anhänge. Antworten auf die Nachricht gehen durch `reply_to`
-an die im Formular angegebene Adresse. Es werden keine automatischen Kundenantworten
-oder Angebote verschickt; der E-Mail-Assistent bleibt ein separates Vorhaben.
+an die im Formular angegebene Adresse. Zusätzlich erhält die absendende Person eine
+automatische Eingangsbestätigung. Individuelle KI-Antworten und Angebote bleiben
+ein separates Vorhaben.
 
 Alle vier Formularwege verwenden dieselbe strukturierte E-Mail-Gestaltung:
 Kontaktkopf, separate Themenabschnitte, zweispaltige Datenzeilen, Nachricht,
@@ -37,11 +38,49 @@ fehlgeschlagene Speicherung räumt bereits für diesen Vorgang hochgeladene Date
 
 Ein Mailfehler verwirft keine gespeicherte Anfrage. Im Adminbereich zeigt der Vorgang
 den ausstehenden Versand und bietet einen geschützten Knopf zum erneuten Senden.
-Ein automatischer Hintergrund-Retry ist nicht eingerichtet. Erfolgreiche Annahme
+Der bestehende geschützte Cron-Aufruf versucht ausstehende interne Nachrichten und
+Kundenbestätigungen alle fünf Minuten erneut. Erfolgreiche Annahme
 durch Resend setzt `notification_sent_at`; das ist **keine Zustellbestätigung**.
 Den Zustellstatus zeigt Resend am jeweiligen E-Mail-Vorgang (`last_event`).
 Eine stabile Idempotency-ID verhindert doppelte Versandaufträge bei kurzfristigen
 Wiederholungen; bereits als versendet markierte Vorgänge werden übersprungen.
+
+## Automatische Kundenbestätigungen
+
+Nach erfolgreicher Speicherung senden alle öffentlichen Kontaktwege, die Projektanfrage,
+der Gartenplaner und die Bewerbung eine eigene Bestätigung an die Formularadresse.
+Der Ablauf steht in `customer-confirmation.server.ts`. Die interne Benachrichtigung
+und die Kundenbestätigung werden unabhängig voneinander versucht.
+
+- Vier passende Textvarianten; Bewerbungen mit Teambild, Kundenanfragen mit Gartenfoto.
+- Loni- und Verbandslogo sowie Fotos als eingebettete CID-Bilder, ohne externe Bildabrufe.
+- Stabile Ticketnummer im Betreff, Inhalt, interner Nachricht und Adminbereich; dort suchbar.
+- Antworten auf die Bestätigung gehen an `webseite@loni-galabau.de`.
+- Keine Wiederholung von freiem Kundentext oder privaten Anhängen in der automatischen Antwort.
+- Keine nachträglichen Bestätigungen an Datensätze von vor der Einführung.
+
+Die Migration `20260929141932_customer_confirmations.sql` ergänzt getrennte
+Versandfelder. Ein unveränderlicher Resend-Payload wird vor dem Versand privat am
+Vorgang gespeichert. Parallele Aufrufe verwenden denselben Snapshot und den Schlüssel
+`customer-confirmation/<table>/<id>`. Das schützt auch dann gegen doppelte Bestätigungen,
+wenn der Provider die E-Mail angenommen hat, aber die Speicherung des Status scheitert.
+Die Snapshot-Daten werden mit dem Vorgang gelöscht und niemals an die Admin-Liste übertragen.
+
+Resend behält [Idempotency-Schlüssel 24 Stunden](https://resend.com/docs/dashboard/emails/idempotency-keys).
+Deshalb enden automatische Wiederholungen nach 23 Stunden; ein unklarer alter Versand
+wird nicht blind wiederholt. Das Adminfenster kennzeichnet solche Fälle zur persönlichen
+Prüfung. Signierte Zustellereignisse zeigen die Annahme durch den Empfänger-Mailserver
+sowie Rückläufer und Verzögerungen für beide Nachrichten getrennt an.
+
+`SITE_ADMIN_ORIGIN` bestimmt die Links zu Projekten, Team und Datenschutz. Beim Wechsel
+auf die endgültige Domain auch diese Servervariable aktualisieren und veröffentlichen.
+`scripts/generate-customer-email-assets.mjs` erzeugt die Bildanhänge aus den freigegebenen
+Website-Fotos; `customer-confirmation-email.ts` enthält HTML und Textfassung.
+
+Am 29.09.2026 wurden Kontakt, Projektanfrage, Gartenplaner und Bewerbung mit synthetischen
+SYSTEMTEST-Datensätzen an das eigene Website-Postfach geprüft: alle vier Bestätigungen
+und vier internen Meldungen wurden von Resend als `delivered` gemeldet. Wiederholte
+Aufrufe der bestätigten Vorgänge lösten keinen weiteren Versand aus.
 
 ## Adminzugang
 
