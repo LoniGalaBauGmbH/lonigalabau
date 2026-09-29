@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 import { useSiteImages } from "@/hooks/useSiteImages";
 import logoVerband from "@/assets/logo-gartenverband.svg";
+import { FooterDocuments } from "./FooterDocuments";
 
 const services: [string, string][] = [
   ["natursteinarbeiten", "Natursteinarbeiten"],
@@ -22,13 +23,14 @@ const navLinks: [string, string][] = [
   ["/konfigurator", "Gartenplaner"],
   ["/jobs", "Jobs"],
   ["/kontakt", "Kontakt"],
+  ["/downloads", "Downloads"],
 ];
 
 export function Footer() {
   const { images } = useSiteImages();
 
   return (
-    <footer className="bg-brand text-brand-foreground mt-24">
+    <footer className="bg-brand text-brand-foreground mt-24 [&_h2]:text-brand-foreground [&_h3]:text-brand-foreground">
       {/* Top CTA bar */}
       <div className="border-b border-brand-foreground/10">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -157,6 +159,8 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      <FooterDocuments />
 
       {/* Bottom legal bar */}
       <div className="border-t border-brand-foreground/10">

@@ -17,6 +17,12 @@ const PARTNERS = [
     label: "Partner im Fachverband",
     detail: "Garten-, Landschafts- und Sportplatzbau",
   },
+  {
+    src: "/images/partner/zertifizierung-bau.svg",
+    name: "Zertifizierung Bau GmbH",
+    label: "Partner",
+    detail: "Zertifizierung Bau GmbH",
+  },
 ];
 
 export function Awards() {
@@ -32,17 +38,20 @@ export function Awards() {
             Partner & Mitgliedschaften.
           </h2>
         </div>
-        <div className="grid gap-12 sm:grid-cols-3 sm:gap-8">
+        <div className="grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
           {PARTNERS.map((p) => (
             <div key={p.src} className="text-center flex flex-col items-center">
-              <div className="h-24 w-full flex items-center justify-center mb-6">
+              <div className="h-32 w-full flex items-center justify-center mb-6">
                 <img
                   src={p.src}
                   alt={p.name}
                   width={240}
                   height={96}
                   loading="lazy"
-                  className="h-full w-auto max-w-[240px] object-contain"
+                  className={
+                    "w-auto max-w-[min(240px,100%)] object-contain " +
+                    (p.src.endsWith("zertifizierung-bau.svg") ? "h-32" : "h-24")
+                  }
                 />
               </div>
               <p className="font-display font-bold text-brand">{p.label}</p>
