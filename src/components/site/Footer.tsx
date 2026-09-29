@@ -180,7 +180,7 @@ export function Footer() {
 
       {/* Bottom legal bar */}
       <div className="border-t border-brand-foreground/10">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-[11px] uppercase tracking-[0.2em] opacity-50">
+        <div className="max-w-7xl mx-auto px-6 pt-6 pb-24 md:pb-28 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-[11px] uppercase tracking-[0.2em] opacity-50">
           <p>© {new Date().getFullYear()} Loni Galabau GmbH · Alle Rechte vorbehalten</p>
           <div className="flex items-center flex-wrap gap-x-6 gap-y-2">
             <Link to="/impressum" className="hover:opacity-100 hover:text-accent transition">Impressum</Link>

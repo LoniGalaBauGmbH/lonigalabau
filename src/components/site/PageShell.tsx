@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { WhatsAppButton } from "./WhatsAppButton";
 
 export function PageShell({
   children,
@@ -14,6 +15,7 @@ export function PageShell({
       <Header transparent={transparentHeader} />
       <main className={transparentHeader ? "" : "pt-24 md:pt-28"}>{children}</main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
