@@ -163,9 +163,11 @@ export function Footer() {
             </div>
 
             <div className="flex items-center gap-3 pt-4 border-t border-brand-foreground/10">
-              <div className="bg-brand-foreground rounded-md p-1.5 shrink-0">
-                <img src={logoVerband} alt="Fachverband Garten-, Landschafts- und Sportplatzbau" className="h-10 w-auto" />
-              </div>
+              <img
+                src={logoVerband}
+                alt="Fachverband Garten-, Landschafts- und Sportplatzbau"
+                className="h-[52px] w-auto shrink-0 brightness-0 invert"
+              />
               <p className="text-[11px] opacity-60 leading-snug">
                 Mitglied im Fachverband<br />
                 Garten-, Landschafts- und<br />
