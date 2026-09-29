@@ -37,7 +37,7 @@ const details = [
     title: "Rasen",
     heading: "Grün, das Raum gibt.",
     text: "Eine kleine Rasenfläche auf der oberen Ebene setzt einen ruhigen grünen Akzent. Klar gefasste Kanten verbinden sie mit den Mauern und den angrenzenden Pflanzbereichen.",
-    position: { left: "23%", top: "31.5%" },
+    position: { left: "23%", top: "30%" },
     origin: "23% 31.5%",
     service: "rasenanlagen",
     link: "Rasenanlagen ansehen",
@@ -77,16 +77,21 @@ export function GardenDetails() {
             zusammenspielen.
           </p>
         </div>
+        <p className="mb-4 text-sm text-brand/75 lg:hidden">
+          Tippen Sie auf die Plus-Punkte im Bild.
+        </p>
         <div className="grid items-stretch gap-0 overflow-hidden rounded-[2rem] bg-brand lg:grid-cols-[1.25fr_1fr]">
-          <div className="relative aspect-square min-w-0 overflow-hidden [container-type:size] lg:aspect-auto">
-            <div className="absolute left-1/2 top-1/2 h-[max(100cqh,133.333333cqw)] w-[max(100cqw,75cqh)] -translate-x-1/2 -translate-y-1/2">
+          {/* Mobile uses the photo's full aspect ratio without container-query units. */}
+          <div className="relative aspect-[3/4] w-full min-w-0 overflow-hidden lg:aspect-auto lg:[container-type:size]">
+            <div className="absolute inset-0 h-full w-full lg:inset-auto lg:left-1/2 lg:top-1/2 lg:h-[max(100cqh,133.333333cqw)] lg:w-[max(100cqw,75cqh)] lg:-translate-x-1/2 lg:-translate-y-1/2">
               <ProjectImage
                 src={garden}
                 alt="Terrassengarten mit WPC, Naturstein und Pflanzbeeten"
                 width={1200}
                 height={1600}
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+                draggable={false}
               />
               {details.map((item, i) => (
                 <button
@@ -98,7 +103,7 @@ export function GardenDetails() {
                   onClick={() => setActive(i)}
                   style={item.position}
                   className={
-                    "absolute grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-12 " +
+                    "absolute z-10 grid size-11 -translate-x-1/2 -translate-y-1/2 touch-manipulation place-items-center rounded-full shadow-lg ring-1 ring-black/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-12 " +
                     (active === i
                       ? "bg-accent text-brand"
                       : "bg-white/95 text-brand hover:bg-accent")
@@ -108,8 +113,9 @@ export function GardenDetails() {
                 </button>
               ))}
             </div>
-            <span className="absolute bottom-4 left-4 rounded-full bg-brand/80 px-3 py-1.5 text-xs tracking-wide text-white md:bottom-6 md:left-6">
-              Ein Garten von Loni
+            <span className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-brand/90 px-3 py-2 text-sm text-white md:bottom-6 md:left-6">
+              <span className="lg:hidden">{detail.title}</span>
+              <span className="hidden lg:inline">Ein Garten von Loni</span>
             </span>
           </div>
           <div className="flex min-w-0 flex-col p-6 text-brand-foreground md:p-10 xl:p-14">
