@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "./contact-attachments";
+import { applicationDocumentSchema } from "./application-document";
 
 export const contactSchema = z.object({
   name: z.string().trim().min(1, "Name erforderlich").max(200),
@@ -13,11 +14,13 @@ export const contactSchema = z.object({
     .default([]),
 });
 export type ContactInput = z.infer<typeof contactSchema>;
-export const contactSubmissionSchema = contactSchema.extend({
-  attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
-}).refine((data) => data.image_paths.length + data.attachments.length <= MAX_CONTACT_FILES, {
-  message: "Es sind höchstens 3 Anhänge pro Anfrage möglich.",
-});
+export const contactSubmissionSchema = contactSchema
+  .extend({
+    attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
+  })
+  .refine((data) => data.image_paths.length + data.attachments.length <= MAX_CONTACT_FILES, {
+    message: "Es sind höchstens 3 Anhänge pro Anfrage möglich.",
+  });
 
 export const applicationSchema = z.object({
   job_id: z.string().uuid(),
@@ -28,6 +31,12 @@ export const applicationSchema = z.object({
   cv_path: z.string().max(500).optional().or(z.literal("")),
 });
 export type ApplicationInput = z.infer<typeof applicationSchema>;
+export const applicationSubmissionSchema = applicationSchema
+  .omit({ cv_path: true })
+  .extend({
+    document: applicationDocumentSchema.optional(),
+  })
+  .strict();
 
 export const newsletterSchema = z.object({
   email: z.string().trim().email().max(320),

@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { randomUUID } from "node:crypto";
 import { contactSubmissionSchema } from "./validators";
 import { MAX_CONTACT_FILE_BYTES } from "./contact-attachments";
 import { preparePublicUpload } from "./public-upload.server";
@@ -17,6 +18,7 @@ export async function persistContactSubmission(
   });
   const bucket = client.storage.from("configurator-images");
   const uploaded: string[] = [];
+  const id = randomUUID();
   try {
     for (const file of files) {
       const { error } = await bucket.upload(file.path, file.buffer, {
@@ -31,6 +33,7 @@ export async function persistContactSubmission(
       uploaded.push(file.path);
     }
     const { error } = await client.from("contact_requests").insert({
+      id,
       name: data.name,
       email: data.email,
       phone: data.phone || null,
@@ -42,7 +45,7 @@ export async function persistContactSubmission(
       throw new Error(
         "Die Anfrage konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
       );
-    return { ok: true };
+    return { ok: true, id };
   } catch (error) {
     if (uploaded.length) {
       try {

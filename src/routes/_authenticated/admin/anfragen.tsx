@@ -21,6 +21,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { toast } from "sonner";
+import { SubmissionNotification } from "@/components/admin/SubmissionNotification";
 
 export const Route = createFileRoute("/_authenticated/admin/anfragen")({ component: Page });
 
@@ -34,6 +35,7 @@ type ContactRequest = {
   image_paths?: string[];
   status: string;
   created_at: string;
+  notification_sent_at?: string | null;
 };
 
 function PrivateAttachment({ path, index }: { path: string; index: number }) {
@@ -384,6 +386,7 @@ function Page() {
               </div>
 
               {/* Quick Communication Actions bar */}
+              <SubmissionNotification key={selectedLead.id} id={selectedLead.id} table="contact_requests" sentAt={selectedLead.notification_sent_at} />
               <div className="mt-6 flex flex-wrap gap-2.5">
                 <a
                   href={`mailto:${selectedLead.email}?subject=Ihre Anfrage bei Loni Galabau GmbH`}

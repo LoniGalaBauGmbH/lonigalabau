@@ -133,6 +133,8 @@ function harness(overrides = {}) {
         return load("src/integrations/supabase/admin-middleware.ts");
       if (id === "@/lib/validators") return load("src/lib/validators.ts");
       if (id === "./contact-attachments") return load("src/lib/contact-attachments.ts");
+      if (id === "./application-document") return load("src/lib/application-document.ts");
+      if (id === "@/lib/submission-notification.server") return load("src/lib/submission-notification.server.ts");
       if (id === "@/lib/admin.functions") return load("src/lib/admin.functions.ts");
       if (id === "@/integrations/supabase/client")
         return {

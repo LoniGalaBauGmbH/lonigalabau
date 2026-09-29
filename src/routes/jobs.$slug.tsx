@@ -1,11 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Loader2 } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { PageShell } from "@/components/site/PageShell";
-import { getJobBySlug, createApplication, publicUploadFile } from "@/lib/site.functions";
+import { getJobBySlug, createApplication } from "@/lib/site.functions";
 import { applicationSchema } from "@/lib/validators";
-import { supabase } from "@/integrations/supabase/client";
+import { validateApplicationDocument } from "@/lib/application-document";
+import { ApplicationUpload } from "@/components/site/ApplicationUpload";
 
 const jobQuery = (slug: string) =>
   queryOptions({ queryKey: ["job", slug], queryFn: () => getJobBySlug({ data: { slug } }) });
@@ -24,7 +26,9 @@ export const Route = createFileRoute("/jobs/$slug")({
     <PageShell>
       <div className="max-w-3xl mx-auto px-6 py-32 text-center">
         <h1 className="font-serif text-5xl">Stelle nicht gefunden</h1>
-        <Link to="/jobs" className="mt-6 inline-block text-accent">← Alle Stellen</Link>
+        <Link to="/jobs" className="mt-6 inline-block text-accent">
+          ← Alle Stellen
+        </Link>
       </div>
     </PageShell>
   ),
@@ -34,7 +38,7 @@ function Page() {
   const { slug } = Route.useParams();
   const { data: job } = useSuspenseQuery(jobQuery(slug));
   const apply = useServerFn(createApplication);
-  const uploadFn = useServerFn(publicUploadFile);
+  const submitting = useRef(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<"idle" | "ok" | "err" | "loading">("idle");
@@ -44,37 +48,41 @@ function Page() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!job) return;
+    if (!job || submitting.current) return;
+    submitting.current = true;
     setStatus("loading");
     setErrorMsg("");
     try {
-      let cvPath = "";
+      const parsed = applicationSchema.omit({ cv_path: true }).parse({ job_id: job.id, ...form });
+      let document;
       if (file) {
-        if (file.size > 10 * 1024 * 1024) throw new Error("Lebenslauf max. 10 MB");
-        const ext = file.name.split(".").pop() || "pdf";
-        const path = `${job.id}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-
-        // Convert file to base64 safely
+        const problem = validateApplicationDocument(file);
+        if (problem) throw new Error(problem);
         const base64 = await new Promise<string>((resolve, reject) => {
           const reader = new FileReader();
-          reader.onload = () => resolve(reader.result as string);
-          reader.onerror = () => reject(new Error("Lesefehler"));
+          reader.onload = () => resolve(String(reader.result).split(",")[1]);
+          reader.onerror = () =>
+            reject(
+              new Error("Die PDF konnte nicht gelesen werden. Bitte wählen Sie sie erneut aus."),
+            );
+          reader.onabort = () => reject(new Error("Das Lesen der PDF wurde abgebrochen."));
           reader.readAsDataURL(file);
         });
-
-        const { path: uploadedPath } = await uploadFn({
-          data: { bucket: "cvs", path, base64, contentType: file.type }
-        });
-        cvPath = uploadedPath;
+        document = { name: file.name, base64, contentType: "application/pdf" as const };
       }
-      const parsed = applicationSchema.parse({ job_id: job.id, ...form, cv_path: cvPath });
-      await apply({ data: parsed });
+      await apply({ data: { ...parsed, document } });
       setStatus("ok");
       setForm({ name: "", email: "", phone: "", message: "" });
       setFile(null);
     } catch (err: unknown) {
       setStatus("err");
-      setErrorMsg(err instanceof Error ? err.message : "Unbekannter Fehler");
+      setErrorMsg(
+        err instanceof Error && !err.message.startsWith("[")
+          ? err.message
+          : "Bitte prüfen Sie Ihre Angaben und versuchen Sie es erneut.",
+      );
+    } finally {
+      submitting.current = false;
     }
   }
 
@@ -82,8 +90,12 @@ function Page() {
     <PageShell>
       <section className="px-6">
         <div className="max-w-4xl mx-auto py-10">
-          <Link to="/jobs" className="text-sm opacity-60 hover:opacity-100">← Alle Stellen</Link>
-          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl mt-6 break-words hyphens-auto">{job.title}</h1>
+          <Link to="/jobs" className="text-sm opacity-60 hover:opacity-100">
+            ← Alle Stellen
+          </Link>
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl mt-6 break-words hyphens-auto">
+            {job.title}
+          </h1>
           <div className="mt-3 flex flex-wrap gap-3 text-xs uppercase tracking-widest opacity-60">
             {job.location && <span>{job.location}</span>}
             {job.employment_type && <span>· {job.employment_type}</span>}
@@ -103,44 +115,114 @@ function Page() {
       </section>
 
       <section className="px-6 pb-24">
-        <div className="max-w-3xl mx-auto bg-surface rounded-[2rem] p-8 md:p-12 shadow-sm">
+        <div className="max-w-3xl mx-auto bg-surface rounded-[2rem] p-6 sm:p-8 md:p-12 shadow-sm">
           <h2 className="font-serif text-3xl">Jetzt bewerben</h2>
-          <p className="opacity-70 mt-2">Senden Sie uns Ihre Unterlagen direkt über das Formular.</p>
+          <p className="opacity-70 mt-2">
+            Stellen Sie sich kurz vor. Ihren Lebenslauf oder weitere Unterlagen können Sie als PDF
+            ergänzen.
+          </p>
 
           {status === "ok" ? (
-            <div className="mt-8 p-6 bg-accent/15 rounded-2xl">
-              <p className="font-medium">Vielen Dank für Ihre Bewerbung! Wir melden uns zeitnah bei Ihnen.</p>
+            <div role="status" className="mt-8 p-6 bg-accent/15 rounded-2xl">
+              <p className="font-medium">
+                Vielen Dank für Ihre Bewerbung! Wir melden uns zeitnah bei Ihnen.
+              </p>
             </div>
           ) : (
-            <form className="mt-8 space-y-4" onSubmit={onSubmit}>
-              <Field label="Name *">
-                <input required maxLength={200} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input" />
-              </Field>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Field label="E-Mail *">
-                  <input required type="email" maxLength={320} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="input" />
+            <form
+              className="mt-8"
+              onSubmit={onSubmit}
+              aria-label="Bewerbungsformular"
+              aria-busy={status === "loading"}
+            >
+              <fieldset disabled={status === "loading"} className="min-w-0 space-y-6">
+                <legend className="sr-only">Ihre Bewerbung</legend>
+                <Field label="Name *">
+                  <input
+                    required
+                    autoComplete="name"
+                    maxLength={200}
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="input"
+                  />
                 </Field>
-                <Field label="Telefon">
-                  <input maxLength={50} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="input" />
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Field label="E-Mail *">
+                    <input
+                      required
+                      type="email"
+                      autoComplete="email"
+                      maxLength={320}
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      className="input"
+                    />
+                  </Field>
+                  <Field label="Telefon">
+                    <input
+                      type="tel"
+                      autoComplete="tel"
+                      maxLength={50}
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      className="input"
+                    />
+                  </Field>
+                </div>
+                <Field label="Nachricht">
+                  <textarea
+                    maxLength={5000}
+                    rows={5}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="input resize-none"
+                  />
                 </Field>
-              </div>
-              <Field label="Nachricht">
-                <textarea maxLength={5000} rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="input resize-none" />
-              </Field>
-              <Field label="Lebenslauf (PDF, max. 10 MB)">
-                <input type="file" accept=".pdf,.doc,.docx" onChange={(e) => setFile(e.target.files?.[0] || null)} className="w-full min-w-0 text-sm" />
-              </Field>
-              {status === "err" && <p className="text-sm text-red-600">Fehler: {errorMsg}</p>}
-              <button type="submit" disabled={status === "loading"} className="bg-brand text-brand-foreground px-7 py-3 rounded-full text-sm font-medium hover:bg-brand/90 disabled:opacity-50">
-                {status === "loading" ? "Wird gesendet…" : "Bewerbung absenden"}
-              </button>
+                <ApplicationUpload file={file} onChange={setFile} disabled={status === "loading"} />
+                <p className="text-sm leading-relaxed text-brand/65">
+                  Ihre Angaben verwenden wir zur Bearbeitung Ihrer Bewerbung. Mehr dazu in unseren{" "}
+                  <Link
+                    to="/datenschutz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-4"
+                  >
+                    Datenschutzhinweisen (neuer Tab)
+                  </Link>
+                  .
+                </p>
+                {status === "err" && (
+                  <p role="alert" className="text-sm text-red-700">
+                    {errorMsg} Ihre Eingaben bleiben erhalten.
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 bg-brand text-brand-foreground px-7 py-3 rounded-full text-sm font-medium hover:bg-brand/90 disabled:opacity-50"
+                >
+                  {status === "loading" ? (
+                    <>
+                      <Loader2
+                        size={17}
+                        className="animate-spin motion-reduce:animate-none"
+                        aria-hidden="true"
+                      />
+                      Bewerbung wird gesendet …
+                    </>
+                  ) : (
+                    "Bewerbung absenden"
+                  )}
+                </button>
+              </fieldset>
             </form>
           )}
         </div>
       </section>
 
       <style>{`
-        .input { width: 100%; background: white; border: 1px solid color-mix(in oklab, var(--brand) 10%, transparent); border-radius: 1rem; padding: 0.75rem 1rem; font-size: 0.95rem; }
+        .input { width: 100%; min-width: 0; background: white; border: 1px solid color-mix(in oklab, var(--brand) 10%, transparent); border-radius: 1rem; padding: 0.75rem 1rem; font-size: 1rem; }
         .input:focus { outline: none; border-color: var(--accent); }
       `}</style>
     </PageShell>
@@ -150,7 +232,7 @@ function Page() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="block text-xs uppercase tracking-widest opacity-60 mb-2">{label}</span>
+      <span className="block text-sm font-medium text-brand mb-2">{label}</span>
       {children}
     </label>
   );

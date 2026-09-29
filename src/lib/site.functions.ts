@@ -1,8 +1,14 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
-import { contactSubmissionSchema, applicationSchema, newsletterSchema } from "@/lib/validators";
+import {
+  contactSubmissionSchema,
+  applicationSubmissionSchema,
+  newsletterSchema,
+} from "@/lib/validators";
 import { persistContactSubmission } from "@/lib/contact-submission.server";
+import { persistApplicationSubmission } from "@/lib/application-submission.server";
+import { attemptSubmissionNotification } from "@/lib/submission-notification.server";
 import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
 import { publicUploadSchema, preparePublicUpload } from "@/lib/public-upload.server";
@@ -176,29 +182,35 @@ export const getJobBySlug = createServerFn({ method: "GET" })
 
 export const createContactRequest = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => contactSubmissionSchema.parse(d))
-  .handler(({ data }) => persistContactSubmission(supabaseAdmin, data));
+  .handler(async ({ data }) => {
+    const result = await persistContactSubmission(supabaseAdmin, data);
+    await attemptSubmissionNotification(supabaseAdmin, "contact_requests", result.id);
+    return { ok: true };
+  });
 
 export const createGardenPlannerRequest = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => z.object({
-    plan: plannerStateSchema,
-    attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
-  }).parse(data))
-  .handler(({ data }) => persistContactSubmission(supabaseAdmin, {
-    ...buildPlannerPayload(data.plan), attachments: data.attachments,
-  }));
+  .inputValidator((data: unknown) =>
+    z
+      .object({
+        plan: plannerStateSchema,
+        attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
+      })
+      .parse(data),
+  )
+  .handler(async ({ data }) => {
+    const result = await persistContactSubmission(supabaseAdmin, {
+      ...buildPlannerPayload(data.plan),
+      attachments: data.attachments,
+    });
+    await attemptSubmissionNotification(supabaseAdmin, "contact_requests", result.id);
+    return { ok: true };
+  });
 
 export const createApplication = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => applicationSchema.parse(d))
+  .inputValidator((d: unknown) => applicationSubmissionSchema.parse(d))
   .handler(async ({ data }) => {
-    const { error } = await supabaseAdmin.from("applications").insert({
-      job_id: data.job_id,
-      name: data.name,
-      email: data.email,
-      phone: data.phone || null,
-      message: data.message || null,
-      cv_path: data.cv_path || null,
-    });
-    if (error) throw new Error(error.message);
+    const result = await persistApplicationSubmission(supabaseAdmin, data);
+    await attemptSubmissionNotification(supabaseAdmin, "applications", result.id);
     return { ok: true };
   });
 

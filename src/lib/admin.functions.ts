@@ -3,6 +3,16 @@ import { z } from "zod";
 import { requireAdmin } from "@/integrations/supabase/admin-middleware";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { serviceSchema, jobSchema, projectSchema } from "@/lib/validators";
+import { notifySavedSubmission } from "@/lib/submission-notification.server";
+
+export const adminSendSubmissionNotification = createServerFn({ method: "POST" })
+  .middleware([requireAdmin])
+  .inputValidator((data: unknown) =>
+    z
+      .object({ table: z.enum(["contact_requests", "applications"]), id: z.string().uuid() })
+      .parse(data),
+  )
+  .handler(({ data }) => notifySavedSubmission(supabaseAdmin, data.table, data.id));
 
 export const adminWhoami = createServerFn({ method: "GET" })
   .middleware([requireAdmin])
@@ -171,8 +181,13 @@ export const adminPhotoSignedUrl = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const bucket = supabaseAdmin.storage.from("configurator-images");
     const { data: info } = await bucket.info(data.path);
-    const name = typeof info?.metadata?.originalName === "string" ? info.metadata.originalName : data.path;
-    const { data: signed, error } = await bucket.createSignedUrl(data.path, 60 * 10, data.path.endsWith(".pdf") ? { download: name } : undefined);
+    const name =
+      typeof info?.metadata?.originalName === "string" ? info.metadata.originalName : data.path;
+    const { data: signed, error } = await bucket.createSignedUrl(
+      data.path,
+      60 * 10,
+      data.path.endsWith(".pdf") ? { download: name } : undefined,
+    );
     if (error) throw new Error("Der Anhang konnte nicht geöffnet werden.");
     return { url: signed.signedUrl, name };
   });

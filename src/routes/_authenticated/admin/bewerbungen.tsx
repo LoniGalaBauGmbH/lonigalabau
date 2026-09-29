@@ -19,6 +19,7 @@ import {
   Award
 } from "lucide-react";
 import { toast } from "sonner";
+import { SubmissionNotification } from "@/components/admin/SubmissionNotification";
 
 export const Route = createFileRoute("/_authenticated/admin/bewerbungen")({ component: Page });
 
@@ -32,6 +33,7 @@ type Application = {
   cv_path: string | null;
   status: string;
   created_at: string;
+  notification_sent_at?: string | null;
   jobs?: {
     title?: string;
     slug?: string;
@@ -316,6 +318,7 @@ function Page() {
 
               {/* Direct Actions */}
               <div className="mt-6 flex flex-wrap gap-2.5">
+                <SubmissionNotification key={selectedCandidate.id} id={selectedCandidate.id} table="applications" sentAt={selectedCandidate.notification_sent_at} />
                 {selectedCandidate.cv_path && (
                   <button 
                     onClick={() => openCv(selectedCandidate.cv_path!)}
