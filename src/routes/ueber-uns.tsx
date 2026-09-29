@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Heart, Handshake, Leaf, Sparkles, Quote, MapPin } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { useSiteImages } from "@/hooks/useSiteImages";
-import founder from "@/assets/about-founder.jpg";
+import founder from "@/assets/about-founder-valon.webp";
 import heroGarden from "@/assets/hero-garden.jpg";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
@@ -344,11 +344,11 @@ function AboutPage() {
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10 py-24 md:py-32 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           <div className="lg:col-span-5">
             <div className="relative max-w-md">
-              <div className="aspect-square overflow-hidden rounded-3xl">
+              <div className="aspect-[4/5] overflow-hidden rounded-3xl">
                 <ProjectImage
                   src={founder}
-                  alt="Geschäftsführer Loni Galabau GmbH"
-                  width={1024}
+                  alt="Valon Sinanaj – Geschäftsführer der Loni GalaBau GmbH"
+                  width={830}
                   height={1024}
                   loading="lazy"
                   className="h-full w-full object-cover"
