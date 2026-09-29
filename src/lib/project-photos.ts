@@ -270,6 +270,12 @@ export const projectPhotos = {
     smallWidth: 600,
     alt: "Bagger und Radlader bei Erdarbeiten im Abendlicht",
   },
+  "99": {
+    src: "/images/projekte/loni-team-baustelle.webp",
+    width: 1448,
+    smallWidth: 800,
+    alt: "Das Team von Loni GalaBau gemeinsam auf einer Baustelle",
+  },
 } as const;
 const byName = new Map(
   Object.values(projectPhotos).map((photo) => [photo.src.split("/").pop(), photo]),

@@ -11,7 +11,7 @@
     "entwaesserung": 85
   },
   "siteImages": {
-    "about_hero_bg": 34,
+    "about_hero_bg": 99,
     "before_garden": 96,
     "after_garden": 97
   },
@@ -59,7 +59,8 @@
     "91": "/images/projekte/gartenweg-mit-treppe.webp",
     "94": "/images/projekte/naturnahe-spielflaeche.webp",
     "96": "/images/projekte/terrasse-vorher.webp",
-    "97": "/images/projekte/terrasse-nachher.webp"
+    "97": "/images/projekte/terrasse-nachher.webp",
+    "99": "/images/projekte/loni-team-baustelle.webp"
   },
   "projects": [
     {

@@ -147,12 +147,13 @@ function AboutPage() {
 
           <div className="lg:col-span-5">
             <div className="relative">
-              <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-surface shadow-2xl shadow-brand/10">
+              <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-surface shadow-2xl shadow-brand/10">
                 <ProjectImage
                   src={images.about_hero_bg}
-                  alt="Loni Garten- und Landschaftsbau – Projekteindruck"
-                  width={1024}
-                  height={1280}
+                  alt="Das Team von Loni GalaBau gemeinsam auf einer Baustelle"
+                  width={1448}
+                  height={1086}
+                  sizes="(min-width: 1024px) 42vw, 100vw"
                   className="h-full w-full object-cover"
                 />
               </div>

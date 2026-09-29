@@ -36,7 +36,7 @@ export function useSiteImages() {
     hero_bg: data?.hero_bg || heroDefault,
     before_garden: data?.before_garden || projectPhotos[96].src,
     after_garden: data?.after_garden || projectPhotos[97].src,
-    about_hero_bg: data?.about_hero_bg || projectPhotos[34].src,
+    about_hero_bg: data?.about_hero_bg || projectPhotos[99].src,
     service_detail_bg: data?.service_detail_bg || heroDefault,
     contact_portrait: data?.contact_portrait || contactPortraitDefault,
   };

@@ -8,6 +8,8 @@ Für den Vorher-Nachher-Regler wurden am 29.09.2026 zwei weitere, ausdrücklich 
 
 Für „Wir sind in jeder Hinsicht anders“ wurde die vom Nutzer ausgewählte Datei `Startseite 2.Bild.png` ergänzt (Nr. 098): Bagger und Radlader im Abendlicht. WebP-Exporte in 941 × 1672 und 600 × 1066 Pixeln; der mittige Ausschnitt im bestehenden 4:5-Bildrahmen zeigt beide Maschinen. Das Startseiten-Hero bleibt unverändert.
 
+Für den Einstieg „Wer wir wirklich sind“ auf „Über uns“ wurde `Team Bild.jpg` ergänzt (Nr. 099). Der 4:3-Bildrahmen zeigt die ganze Gruppe. WebP-Exporte in 1448 × 1086 und 800 × 600 Pixeln ohne EXIF-/GPS-Metadaten. Der Import mit `node --env-file=.env scripts/import-project-gallery.mjs --apply --about-hero-only` aktualisiert ausschließlich `about_hero_bg`.
+
 | Nr. | Originaldatei | Kategorie | Motiv | Auswahl |
 |---|---|---|---|---|
 | 001 | 4431de2a-5442-4fdb-bf13-6f6b37533fe5.JPG | Gärten & Rasen | Garten bei Nacht, durch ein Fenster fotografiert | Reserve |

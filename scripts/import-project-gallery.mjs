@@ -7,17 +7,23 @@ import { createClient } from "@supabase/supabase-js";
 
 const content = JSON.parse(fs.readFileSync("content/project-gallery.json", "utf8"));
 const comparisonOnly = process.argv.includes("--comparison-only");
+const aboutHeroOnly = process.argv.includes("--about-hero-only");
+assert.ok(!(comparisonOnly && aboutHeroOnly), "Choose a single image import scope.");
+const imageKeys = comparisonOnly
+  ? ["before_garden", "after_garden"]
+  : aboutHeroOnly
+    ? ["about_hero_bg"]
+    : null;
+const imagesOnly = imageKeys !== null;
 const siteImages = Object.fromEntries(
-  Object.entries(content.siteImages).filter(
-    ([key]) => !comparisonOnly || ["before_garden", "after_garden"].includes(key),
-  ),
+  Object.entries(content.siteImages).filter(([key]) => !imageKeys || imageKeys.includes(key)),
 );
-const photos = comparisonOnly
+const photos = imagesOnly
   ? Object.values(siteImages).map((id) => content.photos[id])
   : Object.values(content.photos);
 if (!process.argv.includes("--apply")) {
   console.log(
-    `Ready: ${photos.length} photos, ${comparisonOnly ? 0 : content.projects.length} galleries. Use --apply to import.`,
+    `Ready: ${photos.length} photos, ${imagesOnly ? 0 : content.projects.length} galleries. Use --apply to import.`,
   );
   process.exit(0);
 }
@@ -82,7 +88,7 @@ for (let i = 0; i < uploads.length; i += 5) {
 }
 const url = (src) =>
   bucket.getPublicUrl(`${content.collection}/${path.basename(src)}`).data.publicUrl;
-if (!comparisonOnly) {
+if (!imagesOnly) {
   for (const [slug, photoId] of Object.entries(content.services)) {
     const service = services.find((s) => s.slug === slug);
     assert.ok(service, slug);
@@ -104,8 +110,8 @@ if (!comparisonOnly) {
     ),
   );
 }
-// The scoped comparison import preserves every other image setting and all galleries.
-if (comparisonOnly || process.argv.includes("--site-images")) {
+// Scoped image imports preserve every other image setting and all galleries.
+if (imagesOnly || process.argv.includes("--site-images")) {
   const latest = await checked(
     client.from("site_settings").select("value").eq("key", "images").maybeSingle(),
   );
@@ -135,19 +141,19 @@ const current = await checked(
   client.from("site_settings").select("value").eq("key", "images").maybeSingle(),
 );
 assert.equal(current?.value?.hero_bg, previousImages.hero_bg);
-if (comparisonOnly) {
+if (imagesOnly) {
   for (const [key, id] of Object.entries(siteImages)) {
     assert.equal(current?.value?.[key], url(content.photos[id]));
   }
-  const withoutComparison = (images) =>
+  const withoutSelectedImages = (images) =>
     Object.fromEntries(Object.entries(images).filter(([key]) => !Object.hasOwn(siteImages, key)));
-  assert.deepEqual(withoutComparison(current.value), withoutComparison(previousImages));
+  assert.deepEqual(withoutSelectedImages(current.value), withoutSelectedImages(previousImages));
 }
 console.log(
   JSON.stringify({
     uploaded: uploads.length,
-    services: comparisonOnly ? 0 : Object.keys(content.services).length,
-    galleries: comparisonOnly ? 0 : verified.length,
+    services: imagesOnly ? 0 : Object.keys(content.services).length,
+    galleries: imagesOnly ? 0 : verified.length,
     homepageHeroUnchanged: true,
   }),
 );
