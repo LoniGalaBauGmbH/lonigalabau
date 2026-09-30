@@ -39,6 +39,8 @@ export async function sendCustomerConfirmation(client: Client, table: Submission
     if (!siteOrigin.startsWith("https://")) throw new Error("Ungültige Website-Adresse.");
     const message = renderCustomerConfirmation({
       id,
+      ticket_number: record.ticket_number,
+      ticket_format_version: record.ticket_format_version,
       kind,
       createdAt: record.created_at,
       attachmentCount: application ? Number(!!record.cv_path) : (record.image_paths || []).length,

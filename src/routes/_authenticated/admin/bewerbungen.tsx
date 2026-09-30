@@ -32,6 +32,8 @@ export const Route = createFileRoute("/_authenticated/admin/bewerbungen")({ comp
 
 type Application = {
   id: string;
+  ticket_number?: number;
+  ticket_format_version?: number;
   job_id: string | null;
   name: string;
   email: string;
@@ -156,7 +158,7 @@ function Page() {
     data?.filter((a) => {
       const matchesTab = a.status === activeTab;
       const matchesSearch =
-        matchesSubmissionTicket(a.id, searchQuery, true) ||
+        matchesSubmissionTicket(a.id, searchQuery, true, a) ||
         a.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         a.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (a.phone && a.phone.includes(searchQuery)) ||
@@ -442,6 +444,7 @@ function Page() {
                   }}
                 />
                 <SubmissionNotification
+                  ticket={selectedCandidate}
                   key={selectedCandidate.id}
                   id={selectedCandidate.id}
                   table="applications"

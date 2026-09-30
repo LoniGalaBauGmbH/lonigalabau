@@ -1,7 +1,7 @@
-import { submissionTicket } from "./submission-ticket";
+import { submissionTicket, type SubmissionTicketFields } from "./submission-ticket";
 
 export type ConfirmationKind = "contact" | "project" | "planner" | "application";
-export type ConfirmationInput = {
+export type ConfirmationInput = SubmissionTicketFields & {
   id: string;
   kind: ConfirmationKind;
   createdAt: string;
@@ -17,7 +17,7 @@ const escapeHtml = (value: string) =>
 
 export function renderCustomerConfirmation(input: ConfirmationInput) {
   const application = input.kind === "application";
-  const ticket = submissionTicket(input.id, application);
+  const ticket = submissionTicket(input.id, application, input);
   const date = new Intl.DateTimeFormat("de-DE", {
     dateStyle: "long",
     timeStyle: "short",

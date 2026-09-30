@@ -22,6 +22,8 @@ function harness({ inactive = false, insertError = false, uploadError = false } 
 }
 test("application saves every field and associates only its freshly uploaded document", async () => {
   const h=harness(); const result=await persistApplicationSubmission(h.client,application);
+  assert.equal(h.records[0].ticket_format_version, 2);
+  assert.equal(h.records[0].ticket_number, undefined, "database assigns the number");
   assert.equal(h.records[0].id,result.id); assert.equal(h.records[0].phone,application.phone); assert.equal(h.records[0].message,application.message);
   assert.equal(h.records[0].cv_path,h.uploads[0][0]); assert.equal(h.uploads[0][2].metadata.originalName,"Unterlagen.pdf"); assert.equal(h.uploads[0][2].upsert,false);
 });

@@ -34,6 +34,7 @@ export async function persistContactSubmission(
     }
     const { error } = await client.from("contact_requests").insert({
       id,
+      ticket_format_version: 2,
       name: data.name,
       email: data.email,
       phone: data.phone || null,

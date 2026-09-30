@@ -14,6 +14,8 @@ export type Database = {
           cv_path: string | null;
           email: string;
           id: string;
+          ticket_number: number;
+          ticket_format_version: number;
           job_id: string | null;
           message: string | null;
           name: string;
@@ -33,6 +35,8 @@ export type Database = {
           cv_path?: string | null;
           email: string;
           id?: string;
+          ticket_number?: never;
+          ticket_format_version?: number;
           job_id?: string | null;
           message?: string | null;
           name: string;
@@ -52,6 +56,8 @@ export type Database = {
           cv_path?: string | null;
           email?: string;
           id?: string;
+          ticket_number?: never;
+          ticket_format_version?: number;
           job_id?: string | null;
           message?: string | null;
           name?: string;
@@ -81,6 +87,8 @@ export type Database = {
           created_at: string;
           email: string;
           id: string;
+          ticket_number: number;
+          ticket_format_version: number;
           image_paths: string[];
           message: string;
           name: string;
@@ -100,6 +108,8 @@ export type Database = {
           created_at?: string;
           email: string;
           id?: string;
+          ticket_number?: never;
+          ticket_format_version?: number;
           image_paths?: string[];
           message: string;
           name: string;
@@ -119,6 +129,8 @@ export type Database = {
           created_at?: string;
           email?: string;
           id?: string;
+          ticket_number?: never;
+          ticket_format_version?: number;
           image_paths?: string[];
           message?: string;
           name?: string;

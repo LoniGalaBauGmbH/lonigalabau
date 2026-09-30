@@ -183,3 +183,22 @@ CRM-Notizen, sind durch diesen Datenbankwechsel noch nicht erledigt.
 Grundlagen: [Supabase API-Schlüssel](https://supabase.com/docs/guides/getting-started/api-keys),
 [Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security),
 [öffentliche und private Buckets](https://supabase.com/docs/guides/storage/buckets/fundamentals).
+
+## Kurze Vorgangsnummern (30.09.2026)
+
+`updates/short_submission_tickets.sql` wurde als Cloud-Migration
+`20260930102447_short_submission_tickets` im neuen Projekt ausgeführt.
+Anfragen und Bewerbungen erhalten jeweils eine eindeutige, dauerhaft gespeicherte
+Identitätsnummer ab 1000. Der Server setzt für neue Vorgänge `ticket_format_version: 2`;
+Mail und Adminbereich zeigen damit beispielsweise `A-1042` beziehungsweise `B-1042`.
+Die Sequenzen niemals zurücksetzen. UUIDs bleiben interne IDs.
+
+Bestehende Datensätze und Inserts älterer Worker behalten Formatversion 1. Dadurch
+bleiben wiederholte Versandversuche und gespeicherte Bestätigungspayloads identisch.
+Die Admin-Suche unterstützt auch die bisherigen Base32-/LG-Referenzen und UUIDs.
+RLS und private Tabellen-/Sequenzrechte bleiben erhalten.
+
+Prüfung: `node scripts/check-submission-tickets.mjs PFAD_ZU_PGLITE_DIST_INDEX_JS`
+prüft Altbestand, Eindeutigkeit, alte/neue Worker, Nummern nach Löschung, Constraints
+und Sequenzrechte. Zusätzlich wurden echte Inserts als `service_role` in einer
+zurückgerollten Cloud-Transaktion geprüft; keine E-Mails wurden dabei versandt.

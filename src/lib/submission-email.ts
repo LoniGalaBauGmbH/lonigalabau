@@ -1,5 +1,5 @@
-import { submissionTicket } from "./submission-ticket";
-export type EmailRecord = {
+import { submissionTicket, type SubmissionTicketFields } from "./submission-ticket";
+export type EmailRecord = SubmissionTicketFields & {
   id: string;
   name: string;
   email: string;
@@ -101,7 +101,7 @@ export function renderSubmissionEmail(
   adminUrl: string,
 ) {
   const { sections, channel, notice } = emailSections(record, application);
-  const ticket = submissionTicket(record.id, application);
+  const ticket = submissionTicket(record.id, application, record);
   const title = application
     ? "Neue Bewerbung"
     : record.subject?.startsWith("Gartenplaner:")

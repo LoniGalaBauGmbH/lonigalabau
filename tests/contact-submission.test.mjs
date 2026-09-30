@@ -81,6 +81,8 @@ test("files and PDF attachments are linked to the contact only after successful 
   await persistContactSubmission(h.client, { ...lead, attachments: [attachment(), pdf] });
   assert.equal(h.uploads.length, 2);
   assert.equal(h.records.length, 1);
+  assert.equal(h.records[0].ticket_format_version, 2);
+  assert.equal(h.records[0].ticket_number, undefined, "database assigns the number");
   assert.equal(h.records[0].image_paths.join(), h.uploads.map((file) => file.path).join());
   assert.equal(h.uploads[1].options.metadata.originalName, "Gartenplan.pdf");
   assert.equal(h.uploads[1].options.upsert, false);

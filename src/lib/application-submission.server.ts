@@ -33,6 +33,7 @@ export async function persistApplicationSubmission(
     }
     const { error } = await client.from("applications").insert({
       id,
+      ticket_format_version: 2,
       job_id: data.job_id,
       name: data.name,
       email: data.email,

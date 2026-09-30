@@ -64,6 +64,8 @@ function harness({ sent = false, failed = false, missingKey = false, missingFile
   );
   const record = {
     id: "11111111-1111-4111-8111-111111111111",
+    ticket_number: 1042,
+    ticket_format_version: 2,
     name: "<img onerror='bad'>",
     email: "qa@example.invalid",
     phone: "123",
@@ -122,6 +124,18 @@ test("already accepted notification is not sent again", async () => {
   await h.notifySavedSubmission(h.client, "contact_requests", h.record.id);
   assert.equal(h.calls.length, 0);
 });
+
+test("old pending notifications keep identical content after adding database ticket numbers", () => {
+  const h = harness();
+  const previous = { ...h.record, ticket_number: undefined, ticket_format_version: undefined };
+  const migrated = { ...h.record, ticket_format_version: 1 };
+  for (const table of ["contact_requests", "applications"]) {
+    assert.deepEqual(
+      h.notificationMessage(previous, table, "", []),
+      h.notificationMessage(migrated, table, "", []),
+    );
+  }
+});
 test("all form notifications show the same compact reference in subject, HTML and plain text", () => {
   const h = harness();
   for (const [table, subject] of [
@@ -131,7 +145,11 @@ test("all form notifications show the same compact reference in subject, HTML an
     ["applications", "Bewerbung"],
   ]) {
     const message = h.notificationMessage({ ...h.record, subject }, table, "", []);
-    const ticket = ticketModule.exports.submissionTicket(h.record.id, table === "applications");
+    const ticket = ticketModule.exports.submissionTicket(
+      h.record.id,
+      table === "applications",
+      h.record,
+    );
     for (const part of [message.subject, message.html, message.text]) {
       assert.ok(part.includes(ticket));
       assert.ok(!part.includes(h.record.id));

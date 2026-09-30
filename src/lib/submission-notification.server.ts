@@ -1,6 +1,6 @@
 import { submissionTicket } from "./submission-ticket";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { renderSubmissionEmail } from "./submission-email";
+import { renderSubmissionEmail, type EmailRecord } from "./submission-email";
 import { EMAIL_LOGO_ATTACHMENTS } from "./email-logo-assets.server";
 
 export type SubmissionTable = "contact_requests" | "applications";
@@ -8,14 +8,7 @@ export const NOTIFICATION_TO = "webseite@loni-galabau.de";
 const SITE = process.env.SITE_ADMIN_ORIGIN || "https://loni-galabau.serhad1999.chatgpt.site";
 
 export function notificationMessage(
-  record: {
-    id: string;
-    name: string;
-    email: string;
-    phone?: string | null;
-    subject?: string | null;
-    message?: string | null;
-  },
+  record: EmailRecord,
   table: SubmissionTable,
   jobTitle: string,
   files: string[],
@@ -26,7 +19,7 @@ export function notificationMessage(
     to: [NOTIFICATION_TO],
     reply_to: record.email,
     subject: (
-      submissionTicket(record.id, table === "applications") +
+      submissionTicket(record.id, table === "applications", record) +
       " · " +
       title +
       " · " +

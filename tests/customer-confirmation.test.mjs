@@ -8,6 +8,8 @@ function harness(config = {}) {
     events = [];
   const record = {
     id: "12345678-abcd-4321-a123-1234abcdef01",
+    ticket_number: 1042,
+    ticket_format_version: 2,
     created_at: new Date().toISOString(),
     customer_confirmation_requested_at: new Date().toISOString(),
     name: "Untrusted name",
@@ -123,7 +125,7 @@ test("all four form variants produce branded receipts, stable tickets, embedded 
     assert.equal(body.to.join(), h.record.email);
     assert.equal(body.reply_to, "webseite@loni-galabau.de");
     assert.ok(body.subject.includes(noun));
-    const ticket = (table === "applications" ? "B" : "A") + "-14D2PF2NWVVR1";
+    const ticket = (table === "applications" ? "B" : "A") + "-1042";
     assert.ok(body.subject.includes(ticket));
     for (const part of [body.html, body.text]) {
       assert.ok(part.includes(ticket));
@@ -151,6 +153,16 @@ test("accepted and pre-rollout submissions do not send a confirmation", async ()
     await h.sendCustomerConfirmation(h.client, "contact_requests", h.record.id);
     assert.equal(h.calls.length, 0);
   }
+});
+
+test("older tickets retain their original receipt payload across the short-ticket rollout", async () => {
+  const h = harness({ record: { ticket_format_version: 1 }, providerFails: true });
+  await h.attemptCustomerConfirmation(h.client, "contact_requests", h.record.id);
+  assert.ok(JSON.parse(h.calls[0].options.body).subject.includes("A-14D2PF2NWVVR1"));
+  h.record.ticket_format_version = 2;
+  h.config.providerFails = false;
+  await h.sendCustomerConfirmation(h.client, "contact_requests", h.record.id);
+  assert.equal(h.calls[0].options.body, h.calls[1].options.body);
 });
 test("missing record, snapshot failure and configuration failure cannot send unsaved mail", async () => {
   for (const config of [

@@ -30,6 +30,8 @@ export const Route = createFileRoute("/_authenticated/admin/anfragen")({ compone
 
 type ContactRequest = {
   id: string;
+  ticket_number?: number;
+  ticket_format_version?: number;
   name: string;
   email: string;
   phone: string | null;
@@ -182,7 +184,7 @@ function Page() {
     data?.filter((c) => {
       const matchesTab = c.status === activeTab;
       const matchesSearch =
-        matchesSubmissionTicket(c.id, searchQuery) ||
+        matchesSubmissionTicket(c.id, searchQuery, false, c) ||
         c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (c.phone && c.phone.includes(searchQuery)) ||
@@ -441,6 +443,7 @@ function Page() {
                 }}
               />
               <SubmissionNotification
+                ticket={selectedLead}
                 key={selectedLead.id}
                 id={selectedLead.id}
                 table="contact_requests"

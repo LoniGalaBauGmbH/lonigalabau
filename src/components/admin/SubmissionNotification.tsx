@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { adminSendSubmissionNotification } from "@/lib/admin.functions";
-import { submissionTicket } from "@/lib/submission-ticket";
+import { submissionTicket, type SubmissionTicketFields } from "@/lib/submission-ticket";
 
 export function SubmissionNotification({
   id,
+  ticket,
   table,
   sentAt,
   deliveryStatus,
@@ -13,6 +14,7 @@ export function SubmissionNotification({
   customerDeliveryStatus,
 }: {
   id: string;
+  ticket?: SubmissionTicketFields;
   table: "contact_requests" | "applications";
   sentAt?: string | null;
   deliveryStatus?: string | null;
@@ -27,7 +29,7 @@ export function SubmissionNotification({
   return (
     <div className="mt-4 rounded-xl bg-brand/5 p-4 text-sm text-brand">
       <p className="mb-3 font-semibold break-words">
-        Ticket {submissionTicket(id, table === "applications")}
+        Ticket {submissionTicket(id, table === "applications", ticket)}
       </p>
       {customerRequestedAt && (
         <div className="mb-4 border-b border-brand/10 pb-4" role="status">
