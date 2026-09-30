@@ -673,7 +673,7 @@ function ServicePage({
       )}
 
       {/* 10. LUXURY FINAL CALL TO ACTION */}
-      <section className="px-6 md:px-10 pb-24 md:pb-32 bg-surface">
+      <section className="px-6 md:px-10 py-16 md:py-24 bg-surface">
         <div className="max-w-[1480px] mx-auto rounded-[2.5rem] bg-brand text-brand-foreground p-12 md:p-24 text-center relative overflow-hidden shadow-xl shadow-brand/10">
           <div
             aria-hidden

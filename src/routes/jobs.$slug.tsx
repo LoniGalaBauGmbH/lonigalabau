@@ -154,7 +154,7 @@ function Page() {
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-3xl mx-auto bg-surface rounded-[2rem] p-6 sm:p-8 md:p-12 shadow-sm">
           <h2 className="font-serif text-3xl">Jetzt bewerben</h2>
           <p className="opacity-70 mt-2">

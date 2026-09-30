@@ -237,7 +237,7 @@ function AboutPage() {
       </section>
 
       {/* 6. CTA */}
-      <section className="px-6 md:px-10 py-24 md:py-32 bg-surface">
+      <section className="px-6 md:px-10 py-16 md:py-24 bg-surface">
         <div className="max-w-4xl mx-auto text-center">
           <span className="eyebrow eyebrow-bracket text-brand/70">Lust auf ein Gespräch?</span>
           <h2 className="display mt-6 text-[clamp(2rem,4.5vw,3.75rem)] text-brand">

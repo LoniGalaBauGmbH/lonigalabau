@@ -25,7 +25,7 @@ function ImpressumPage() {
         lead="Pflichtangaben gemäß § 5 DDG."
       />
 
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
           <Card icon={Building2} title="Anbieter">
             <p>Loni Galabau GmbH</p>

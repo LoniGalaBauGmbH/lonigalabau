@@ -62,7 +62,7 @@ function Page() {
         title={project.title}
         lead={project.description}
       />
-      <section className="px-6 md:px-10 pb-24 max-w-[1480px] mx-auto">
+      <section className="px-6 md:px-10 pb-16 md:pb-24 max-w-[1480px] mx-auto">
         <div className="flex flex-wrap justify-between gap-4 mb-10 text-sm text-brand">
           <Link to="/projekte" className="underline underline-offset-4">
             ← Alle Projektgalerien

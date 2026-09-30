@@ -33,7 +33,7 @@ function DownloadsPage() {
         }
         lead="Hier finden Sie unsere Bescheinigungen und Weiterbildungsnachweise. Direkt ansehen oder als PDF für Ihre Unterlagen herunterladen."
       />
-      <div className="mx-auto max-w-7xl px-6 pb-8">
+      <div className="mx-auto max-w-7xl px-6 pb-16 md:pb-24">
         <nav aria-label="Dokumentkategorien" className="mb-12 flex flex-wrap gap-3">
           {categories.map((category, index) => (
             <a

@@ -477,7 +477,7 @@ function Page() {
       </section>
 
       {/* CTA STRIP */}
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto relative rounded-[2rem] overflow-hidden">
           <ProjectImage
             src={images.about_hero_bg}

@@ -597,7 +597,7 @@ export function ProjectInquiryForm({
   return isModal ? (
     content
   ) : (
-    <section id="projektanfrage" className="scroll-mt-28 px-4 pb-24 pt-4 md:px-10 md:pb-36">
+    <section id="projektanfrage" className="scroll-mt-28 px-4 py-16 md:px-10 md:py-24">
       {content}
     </section>
   );

@@ -83,7 +83,7 @@ function DatenschutzPage() {
         title={<>Datenschutz</>}
         lead="Welche Daten wir verarbeiten und welche Rechte Sie haben."
       />
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
           <nav aria-label="Inhalt der Datenschutzerklärung" className="lg:col-span-4">
             <div className="lg:sticky lg:top-28 rounded-3xl bg-surface p-6">

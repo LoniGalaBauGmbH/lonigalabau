@@ -9,7 +9,10 @@ export const Route = createFileRoute("/jobs/")({
   head: () => ({
     meta: [
       { title: "Jobs – Loni Galabau GmbH" },
-      { name: "description", content: "Offene Stellen bei Loni Galabau GmbH in Hattersheim am Main." },
+      {
+        name: "description",
+        content: "Offene Stellen bei Loni Galabau GmbH in Hattersheim am Main.",
+      },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(q),
@@ -22,12 +25,18 @@ function Page() {
     <PageShell>
       <PageIntro
         eyebrow="Karriere"
-        title={<>Werden Sie Teil unseres <span className="italic">Teams</span>.</>}
+        title={
+          <>
+            Werden Sie Teil unseres <span className="italic">Teams</span>.
+          </>
+        }
         lead="Wir suchen Menschen, die Handwerk lieben und sich aktiv an der Gestaltung außergewöhnlicher Außenanlagen beteiligen wollen."
       />
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-4xl mx-auto space-y-4">
-          {jobs.length === 0 && <p className="opacity-60">Aktuell sind keine Stellen ausgeschrieben.</p>}
+          {jobs.length === 0 && (
+            <p className="opacity-60">Aktuell sind keine Stellen ausgeschrieben.</p>
+          )}
           {jobs.map((j) => (
             <Link
               key={j.id}
@@ -43,7 +52,9 @@ function Page() {
                     {j.employment_type && <span>· {j.employment_type}</span>}
                   </div>
                 </div>
-                <span className="text-sm font-medium text-brand group-hover:text-accent">Jetzt bewerben →</span>
+                <span className="text-sm font-medium text-brand group-hover:text-accent">
+                  Jetzt bewerben →
+                </span>
               </div>
             </Link>
           ))}

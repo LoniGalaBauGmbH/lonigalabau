@@ -34,7 +34,7 @@ function Page() {
         }
         lead="Von Erdarbeiten und Entwässerung bis zu Terrasse, Pflanzen und Zaun: Hier finden Sie die Leistungen für Ihr Vorhaben in Hattersheim und im Rhein-Main-Gebiet."
       />
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto">
           <ServiceCarousel services={services} />
         </div>

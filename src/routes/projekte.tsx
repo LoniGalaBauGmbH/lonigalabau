@@ -33,7 +33,7 @@ function Page() {
         }
         lead="Eigene Aufnahmen aus unseren Projekten – nach Leistungen zusammengestellt. Entdecken Sie fertige Anlagen, Materialien und Einblicke in die Ausführung."
       />
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
           {projects.length === 0 && (
             <p className="opacity-60">Aktuell sind keine Projekte hinterlegt.</p>

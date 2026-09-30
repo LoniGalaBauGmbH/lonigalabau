@@ -41,7 +41,7 @@ function AGBPage() {
         }
         lead="Von der ersten Anfrage zum abgestimmten Angebot."
       />
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-3xl mx-auto grid gap-6">
           {SECTIONS.map((s, i) => (
             <article key={s.h} className="bg-surface rounded-3xl p-7 md:p-8">
