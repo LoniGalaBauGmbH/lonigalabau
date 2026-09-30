@@ -119,7 +119,7 @@ function Page() {
         <div className="max-w-7xl mx-auto pt-10 md:pt-16 pb-16 md:pb-24 grid lg:grid-cols-12 gap-10 items-end">
           <Reveal className="lg:col-span-7">
             <span className="eyebrow eyebrow-bracket text-brand">In Kontakt treten</span>
-            <h1 className="display text-5xl md:text-7xl lg:text-[5.5rem] mt-6 leading-[1.02] text-brand text-balance">
+            <h1 className="display text-5xl md:text-7xl lg:text-[5.5rem] mt-6 text-brand text-balance">
               Lassen Sie uns über <span className="italic font-light">Ihren Garten</span> sprechen.
             </h1>
             <p className="mt-8 text-lg md:text-xl max-w-xl text-foreground/75 leading-relaxed">

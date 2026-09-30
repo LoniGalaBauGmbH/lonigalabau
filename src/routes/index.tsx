@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { ProjectInquiryForm } from "@/components/site/ProjectInquiryForm";
 import { StatsBand } from "@/components/site/StatsBand";
+import { TeamPhoto } from "@/components/site/TeamPhoto";
 import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { GardenDetails } from "@/components/site/GardenDetails";
 import { ProjectGallery } from "@/components/site/ProjectGallery";
@@ -252,7 +253,7 @@ function HomePage() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-7">
               <span className="eyebrow eyebrow-bracket text-brand">So arbeiten wir</span>
-              <h2 className="display text-[clamp(2.25rem,5.8vw,4.5rem)] mt-5 text-brand leading-[1.05]">
+              <h2 className="display text-[clamp(2.25rem,5.8vw,4.5rem)] mt-5 text-brand">
                 Schön geplant.
                 <br />
                 <span className="text-brand-muted">Bis in den Unterbau.</span>
@@ -285,14 +286,10 @@ function HomePage() {
                 ))}
               </div>
               <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                <ProjectImage
-                  src={projectPhotos[99].src}
-                  alt="Das Loni-Team gemeinsam auf der Baustelle"
-                  width={1448}
-                  height={1086}
+                <TeamPhoto
+                  src={images.about_hero_bg}
                   sizes="(min-width: 640px) 160px, 80vw"
-                  loading="lazy"
-                  className="w-full sm:w-40 aspect-[4/3] object-cover rounded-2xl shrink-0"
+                  className="w-full sm:w-40 rounded-2xl"
                 />
                 <div>
                   <p className="font-semibold text-brand">Die Menschen hinter der Arbeit.</p>
@@ -444,7 +441,7 @@ function HomePage() {
           <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-8 space-y-6">
               <span className="eyebrow eyebrow-bracket text-brand">Angebots-Assistent</span>
-              <h2 className="display text-3xl md:text-5xl text-brand leading-[1.1]">
+              <h2 className="display text-3xl md:text-5xl text-brand">
                 Ihr Gartenprojekt. Klar geplant.
                 <br />
                 <span className="font-normal text-brand-muted">Schritt für Schritt mit uns.</span>

@@ -5,6 +5,7 @@ import { useSiteImages } from "@/hooks/useSiteImages";
 import founder from "@/assets/about-founder-valon.webp";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import { TeamPhoto } from "@/components/site/TeamPhoto";
 const svcGarten = projectPhotos[81].src;
 const svcPflaster = projectPhotos[30].src;
 const svcNaturstein = projectPhotos[19].src;
@@ -74,7 +75,7 @@ function AboutPage() {
         <div className="max-w-[1480px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
           <div className="lg:col-span-7">
             <span className="eyebrow eyebrow-bracket text-accent">Über uns</span>
-            <h1 className="display text-[clamp(3rem,7vw,7rem)] mt-6 text-brand leading-[0.95]">
+            <h1 className="display text-[clamp(3rem,7vw,7rem)] mt-6 text-brand">
               Wer wir
               <br />
               <span className="italic font-light text-brand-muted">wirklich</span> sind.
@@ -97,17 +98,13 @@ function AboutPage() {
 
           <div className="lg:col-span-5">
             <div className="relative">
-              <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-surface shadow-2xl shadow-brand/10">
-                <ProjectImage
-                  src={images.about_hero_bg}
-                  alt="Das Team von Loni GalaBau gemeinsam auf einer Baustelle"
-                  width={1448}
-                  height={1086}
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-5 -left-5 bg-brand text-brand-foreground px-6 py-4 rounded-2xl shadow-xl shadow-brand/20">
+              <TeamPhoto
+                src={images.about_hero_bg}
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                loading="eager"
+                className="w-full rounded-3xl shadow-2xl shadow-brand/10"
+              />
+              <div className="pointer-events-none absolute -bottom-5 -left-5 bg-brand text-brand-foreground px-6 py-4 rounded-2xl shadow-xl shadow-brand/20">
                 <div className="text-[10px] tracking-[0.24em] uppercase text-accent font-display font-semibold">
                   Seit 2011
                 </div>
@@ -137,7 +134,7 @@ function AboutPage() {
           </div>
           <div className="lg:col-span-7">
             <span className="eyebrow text-accent">Menschen hinter Loni</span>
-            <h2 className="display mt-5 text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] text-white">
+            <h2 className="display mt-5 text-[clamp(2.25rem,5vw,4rem)] text-white">
               Valon Sinanaj.
             </h2>
             <p className="mt-3 text-accent font-semibold">Geschäftsführer</p>
@@ -170,7 +167,7 @@ function AboutPage() {
         <div className="max-w-[1480px] mx-auto">
           <div className="max-w-3xl mb-10 md:mb-14">
             <span className="eyebrow text-brand/70">Ein Blick auf unsere Arbeit</span>
-            <h2 className="display mt-5 text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] text-brand">
+            <h2 className="display mt-5 text-[clamp(2rem,4vw,3.5rem)] text-brand">
               Vom Gartenraum{" "}
               <span className="italic font-light text-brand-muted">bis zur Fuge.</span>
             </h2>
@@ -203,7 +200,7 @@ function AboutPage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
               <span className="eyebrow eyebrow-bracket text-brand/70">So arbeiten wir</span>
-              <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand leading-[1] max-w-2xl">
+              <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand max-w-2xl">
                 Was Sie von uns
                 <br />
                 <span className="italic font-light text-brand-muted">erwarten können.</span>
@@ -243,7 +240,7 @@ function AboutPage() {
       <section className="px-6 md:px-10 py-24 md:py-32 bg-surface">
         <div className="max-w-4xl mx-auto text-center">
           <span className="eyebrow eyebrow-bracket text-brand/70">Lust auf ein Gespräch?</span>
-          <h2 className="display mt-6 text-[clamp(2rem,4.5vw,3.75rem)] text-brand leading-[1.05]">
+          <h2 className="display mt-6 text-[clamp(2rem,4.5vw,3.75rem)] text-brand">
             Erzählen Sie uns von
             <br />
             <span className="italic font-light text-brand-muted">Ihrem Garten.</span>

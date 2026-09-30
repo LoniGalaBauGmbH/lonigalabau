@@ -168,9 +168,9 @@ export function ProjectGallery({
           <div
             ref={frameRef}
             data-gallery-frame
-            className="relative h-[min(50dvh,640px)] min-h-48 shrink-0 touch-pan-y bg-black/20 md:h-[min(65dvh,760px)]"
+            className="relative h-[min(50dvh,640px)] min-h-48 shrink-0 [touch-action:pan-y_pinch-zoom] bg-black/20 md:h-[min(65dvh,760px)]"
             onPointerDown={(event) => {
-              if (event.pointerType === "touch") {
+              if (event.pointerType === "touch" && images.length > 1) {
                 pointerStart.current = { x: event.clientX, y: event.clientY };
                 event.currentTarget.setPointerCapture(event.pointerId);
               }
@@ -249,13 +249,15 @@ export function ProjectGallery({
                 </div>
               </div>
             )}
-            <p
-              className="mb-3 text-sm text-brand-foreground/65"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              Bild {current + 1} von {images.length}
-            </p>
+            {images.length > 1 && (
+              <p
+                className="mb-3 text-sm text-brand-foreground/65"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                Bild {current + 1} von {images.length}
+              </p>
+            )}
             <DialogDescription className="max-w-4xl whitespace-pre-line text-base leading-relaxed text-brand-foreground/85">
               {project.description || "Ein Blick auf die Gestaltung dieser Außenanlage."}
             </DialogDescription>

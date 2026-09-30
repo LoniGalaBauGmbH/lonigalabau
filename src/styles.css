@@ -160,7 +160,9 @@
     font-family: var(--font-display);
     font-weight: 800;
     letter-spacing: -0.035em;
-    line-height: 0.92;
+    /* Room for uppercase umlauts between wrapped headline lines. */
+    --tw-leading: 1.15;
+    line-height: 1.15;
     text-transform: uppercase;
   }
   .eyebrow {

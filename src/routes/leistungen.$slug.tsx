@@ -296,7 +296,7 @@ function ServicePage({
                     </span>
                   )}
                 </div>
-                <h1 className="font-serif font-semibold text-4xl md:text-5xl lg:text-6xl text-brand leading-[1.05] tracking-tight">
+                <h1 className="font-serif font-semibold text-4xl md:text-5xl lg:text-6xl text-brand leading-[1.15] tracking-tight">
                   {data.title}
                 </h1>
               </div>

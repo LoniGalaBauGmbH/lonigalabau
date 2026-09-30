@@ -68,7 +68,7 @@ export function GardenDetails() {
             <span className="eyebrow text-brand">Gartenideen</span>
             <h2
               id={id + "-heading"}
-              className="display mt-5 text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.05] text-brand"
+              className="display mt-5 text-[clamp(2.25rem,4.5vw,4rem)] text-brand"
             >
               Das Ganze steckt
               <br />

@@ -12,7 +12,7 @@ export function BeforeAfterSlider() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
             <span className="eyebrow eyebrow-bracket text-brand">Vorher & Nachher</span>
-            <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand leading-[1.05]">
+            <h2 className="display mt-6 text-[clamp(2.25rem,4.5vw,4rem)] text-brand">
               Von der Baustelle
               <br />
               <span className="italic font-light text-brand-muted">zur fertigen Terrasse.</span>
