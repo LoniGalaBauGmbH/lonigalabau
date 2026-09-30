@@ -1,4 +1,5 @@
 import { PUBLIC_ORIGIN, PRIVATE_PATH, LEGACY_REDIRECTS, STATIC_PATHS, sitemapXml } from "./seo";
+import guideContent from "../content/ratgeber.json";
 
 export async function publicUtilityResponse(request: Request): Promise<Response | null> {
   const url = new URL(request.url);
@@ -44,6 +45,9 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
       path,
       modified: undefined as string | undefined,
     }));
+    guideContent.forEach((article) =>
+      entries.push({ path: `/ratgeber/${article.slug}`, modified: article.updatedAt }),
+    );
     results.forEach((r, i) =>
       r.data?.forEach((row) =>
         entries.push({

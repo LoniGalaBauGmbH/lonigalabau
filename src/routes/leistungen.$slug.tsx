@@ -42,6 +42,7 @@ import { getServiceImage } from "@/lib/service-images";
 import { ServiceFAQ } from "@/components/leistungen/ServiceFAQ";
 import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
+import { guides } from "@/lib/ratgeber";
 
 const slugQuery = (slug: string) =>
   queryOptions({
@@ -600,6 +601,34 @@ function ServicePage({
       </section>
 
       {/* 9. WEITERE LEISTUNGEN - Sage Themed hover scroller */}
+      {guides.some((article) => article.relatedServiceSlugs.includes(slug)) && (
+        <section className="px-6 md:px-10 pb-20" aria-labelledby="service-guides">
+          <div className="max-w-[1480px] mx-auto border-t border-brand/15 pt-10">
+            <h2 id="service-guides" className="text-3xl font-serif text-brand">
+              Gut vorbereitet in Ihr Projekt
+            </h2>
+            <p className="mt-4 text-base text-brand/70">
+              Diese Ratgeber helfen bei den nächsten Entscheidungen.
+            </p>
+            <ul className="grid md:grid-cols-2 gap-5 mt-7">
+              {guides
+                .filter((article) => article.relatedServiceSlugs.includes(slug))
+                .slice(0, 2)
+                .map((article) => (
+                  <li key={article.slug}>
+                    <Link
+                      to="/ratgeber/$slug"
+                      params={{ slug: article.slug }}
+                      className="block rounded-xl bg-surface p-6 text-lg font-medium text-brand underline underline-offset-4 hover:text-brand/70"
+                    >
+                      {article.title}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </section>
+      )}
       <Suspense key={slug} fallback={<DeferredSection label="Weitere Leistungen werden geladen" />}>
         <RelatedServices slug={slug} />
       </Suspense>

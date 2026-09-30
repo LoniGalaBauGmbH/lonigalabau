@@ -20,11 +20,17 @@ import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as AgbRouteImport } from './routes/agb'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RatgeberIndexRouteImport } from './routes/ratgeber.index'
+import { Route as OpenseoIndexRouteImport } from './routes/openseo.index'
 import { Route as LeistungenIndexRouteImport } from './routes/leistungen.index'
 import { Route as JobsIndexRouteImport } from './routes/jobs.index'
+import { Route as RatgeberSlugRouteImport } from './routes/ratgeber.$slug'
 import { Route as ProjekteIdRouteImport } from './routes/projekte_.$id'
+import { Route as OpenseoNutzungRouteImport } from './routes/openseo.nutzung'
+import { Route as OpenseoDatenschutzRouteImport } from './routes/openseo.datenschutz'
 import { Route as LeistungenSlugRouteImport } from './routes/leistungen.$slug'
 import { Route as JobsSlugRouteImport } from './routes/jobs.$slug'
+import { Route as AutorenSerhadMarasliRouteImport } from './routes/autoren.serhad-marasli'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
 import { Route as AuthenticatedAdminTrackingRouteImport } from './routes/_authenticated/admin/tracking'
 import { Route as AuthenticatedAdminProjekteRouteImport } from './routes/_authenticated/admin/projekte'
@@ -88,6 +94,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RatgeberIndexRoute = RatgeberIndexRouteImport.update({
+  id: '/ratgeber/',
+  path: '/ratgeber/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpenseoIndexRoute = OpenseoIndexRouteImport.update({
+  id: '/openseo/',
+  path: '/openseo/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeistungenIndexRoute = LeistungenIndexRouteImport.update({
   id: '/leistungen/',
   path: '/leistungen/',
@@ -98,9 +114,24 @@ const JobsIndexRoute = JobsIndexRouteImport.update({
   path: '/jobs/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RatgeberSlugRoute = RatgeberSlugRouteImport.update({
+  id: '/ratgeber/$slug',
+  path: '/ratgeber/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjekteIdRoute = ProjekteIdRouteImport.update({
   id: '/projekte_/$id',
   path: '/projekte/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpenseoNutzungRoute = OpenseoNutzungRouteImport.update({
+  id: '/openseo/nutzung',
+  path: '/openseo/nutzung',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpenseoDatenschutzRoute = OpenseoDatenschutzRouteImport.update({
+  id: '/openseo/datenschutz',
+  path: '/openseo/datenschutz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeistungenSlugRoute = LeistungenSlugRouteImport.update({
@@ -111,6 +142,11 @@ const LeistungenSlugRoute = LeistungenSlugRouteImport.update({
 const JobsSlugRoute = JobsSlugRouteImport.update({
   id: '/jobs/$slug',
   path: '/jobs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutorenSerhadMarasliRoute = AutorenSerhadMarasliRouteImport.update({
+  id: '/autoren/serhad-marasli',
+  path: '/autoren/serhad-marasli',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
@@ -171,11 +207,17 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
+  '/openseo/datenschutz': typeof OpenseoDatenschutzRoute
+  '/openseo/nutzung': typeof OpenseoNutzungRoute
   '/projekte/$id': typeof ProjekteIdRoute
+  '/ratgeber/$slug': typeof RatgeberSlugRoute
   '/jobs/': typeof JobsIndexRoute
   '/leistungen/': typeof LeistungenIndexRoute
+  '/openseo/': typeof OpenseoIndexRoute
+  '/ratgeber/': typeof RatgeberIndexRoute
   '/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
   '/admin/bewerbungen': typeof AuthenticatedAdminBewerbungenRoute
   '/admin/bilder': typeof AuthenticatedAdminBilderRoute
@@ -196,11 +238,17 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
+  '/openseo/datenschutz': typeof OpenseoDatenschutzRoute
+  '/openseo/nutzung': typeof OpenseoNutzungRoute
   '/projekte/$id': typeof ProjekteIdRoute
+  '/ratgeber/$slug': typeof RatgeberSlugRoute
   '/jobs': typeof JobsIndexRoute
   '/leistungen': typeof LeistungenIndexRoute
+  '/openseo': typeof OpenseoIndexRoute
+  '/ratgeber': typeof RatgeberIndexRoute
   '/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
   '/admin/bewerbungen': typeof AuthenticatedAdminBewerbungenRoute
   '/admin/bilder': typeof AuthenticatedAdminBilderRoute
@@ -223,11 +271,17 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
+  '/openseo/datenschutz': typeof OpenseoDatenschutzRoute
+  '/openseo/nutzung': typeof OpenseoNutzungRoute
   '/projekte_/$id': typeof ProjekteIdRoute
+  '/ratgeber/$slug': typeof RatgeberSlugRoute
   '/jobs/': typeof JobsIndexRoute
   '/leistungen/': typeof LeistungenIndexRoute
+  '/openseo/': typeof OpenseoIndexRoute
+  '/ratgeber/': typeof RatgeberIndexRoute
   '/_authenticated/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
   '/_authenticated/admin/bewerbungen': typeof AuthenticatedAdminBewerbungenRoute
   '/_authenticated/admin/bilder': typeof AuthenticatedAdminBilderRoute
@@ -250,11 +304,17 @@ export interface FileRouteTypes {
     | '/login'
     | '/projekte'
     | '/ueber-uns'
+    | '/autoren/serhad-marasli'
     | '/jobs/$slug'
     | '/leistungen/$slug'
+    | '/openseo/datenschutz'
+    | '/openseo/nutzung'
     | '/projekte/$id'
+    | '/ratgeber/$slug'
     | '/jobs/'
     | '/leistungen/'
+    | '/openseo/'
+    | '/ratgeber/'
     | '/admin/anfragen'
     | '/admin/bewerbungen'
     | '/admin/bilder'
@@ -275,11 +335,17 @@ export interface FileRouteTypes {
     | '/login'
     | '/projekte'
     | '/ueber-uns'
+    | '/autoren/serhad-marasli'
     | '/jobs/$slug'
     | '/leistungen/$slug'
+    | '/openseo/datenschutz'
+    | '/openseo/nutzung'
     | '/projekte/$id'
+    | '/ratgeber/$slug'
     | '/jobs'
     | '/leistungen'
+    | '/openseo'
+    | '/ratgeber'
     | '/admin/anfragen'
     | '/admin/bewerbungen'
     | '/admin/bilder'
@@ -301,11 +367,17 @@ export interface FileRouteTypes {
     | '/login'
     | '/projekte'
     | '/ueber-uns'
+    | '/autoren/serhad-marasli'
     | '/jobs/$slug'
     | '/leistungen/$slug'
+    | '/openseo/datenschutz'
+    | '/openseo/nutzung'
     | '/projekte_/$id'
+    | '/ratgeber/$slug'
     | '/jobs/'
     | '/leistungen/'
+    | '/openseo/'
+    | '/ratgeber/'
     | '/_authenticated/admin/anfragen'
     | '/_authenticated/admin/bewerbungen'
     | '/_authenticated/admin/bilder'
@@ -328,11 +400,17 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   ProjekteRoute: typeof ProjekteRoute
   UeberUnsRoute: typeof UeberUnsRoute
+  AutorenSerhadMarasliRoute: typeof AutorenSerhadMarasliRoute
   JobsSlugRoute: typeof JobsSlugRoute
   LeistungenSlugRoute: typeof LeistungenSlugRoute
+  OpenseoDatenschutzRoute: typeof OpenseoDatenschutzRoute
+  OpenseoNutzungRoute: typeof OpenseoNutzungRoute
   ProjekteIdRoute: typeof ProjekteIdRoute
+  RatgeberSlugRoute: typeof RatgeberSlugRoute
   JobsIndexRoute: typeof JobsIndexRoute
   LeistungenIndexRoute: typeof LeistungenIndexRoute
+  OpenseoIndexRoute: typeof OpenseoIndexRoute
+  RatgeberIndexRoute: typeof RatgeberIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -414,6 +492,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ratgeber/': {
+      id: '/ratgeber/'
+      path: '/ratgeber'
+      fullPath: '/ratgeber/'
+      preLoaderRoute: typeof RatgeberIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/openseo/': {
+      id: '/openseo/'
+      path: '/openseo'
+      fullPath: '/openseo/'
+      preLoaderRoute: typeof OpenseoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/leistungen/': {
       id: '/leistungen/'
       path: '/leistungen'
@@ -428,11 +520,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JobsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ratgeber/$slug': {
+      id: '/ratgeber/$slug'
+      path: '/ratgeber/$slug'
+      fullPath: '/ratgeber/$slug'
+      preLoaderRoute: typeof RatgeberSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projekte_/$id': {
       id: '/projekte_/$id'
       path: '/projekte/$id'
       fullPath: '/projekte/$id'
       preLoaderRoute: typeof ProjekteIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/openseo/nutzung': {
+      id: '/openseo/nutzung'
+      path: '/openseo/nutzung'
+      fullPath: '/openseo/nutzung'
+      preLoaderRoute: typeof OpenseoNutzungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/openseo/datenschutz': {
+      id: '/openseo/datenschutz'
+      path: '/openseo/datenschutz'
+      fullPath: '/openseo/datenschutz'
+      preLoaderRoute: typeof OpenseoDatenschutzRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leistungen/$slug': {
@@ -447,6 +560,13 @@ declare module '@tanstack/react-router' {
       path: '/jobs/$slug'
       fullPath: '/jobs/$slug'
       preLoaderRoute: typeof JobsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/autoren/serhad-marasli': {
+      id: '/autoren/serhad-marasli'
+      path: '/autoren/serhad-marasli'
+      fullPath: '/autoren/serhad-marasli'
+      preLoaderRoute: typeof AutorenSerhadMarasliRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin/': {
@@ -546,11 +666,17 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   ProjekteRoute: ProjekteRoute,
   UeberUnsRoute: UeberUnsRoute,
+  AutorenSerhadMarasliRoute: AutorenSerhadMarasliRoute,
   JobsSlugRoute: JobsSlugRoute,
   LeistungenSlugRoute: LeistungenSlugRoute,
+  OpenseoDatenschutzRoute: OpenseoDatenschutzRoute,
+  OpenseoNutzungRoute: OpenseoNutzungRoute,
   ProjekteIdRoute: ProjekteIdRoute,
+  RatgeberSlugRoute: RatgeberSlugRoute,
   JobsIndexRoute: JobsIndexRoute,
   LeistungenIndexRoute: LeistungenIndexRoute,
+  OpenseoIndexRoute: OpenseoIndexRoute,
+  RatgeberIndexRoute: RatgeberIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

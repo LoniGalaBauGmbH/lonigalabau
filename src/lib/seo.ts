@@ -18,6 +18,8 @@ export const STATIC_PATHS = [
   "/ueber-uns",
   "/leistungen",
   "/projekte",
+  "/ratgeber",
+  "/autoren/serhad-marasli",
   "/konfigurator",
   "/jobs",
   "/kontakt",

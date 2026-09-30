@@ -14,14 +14,17 @@ import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
 import { enforceFormQuota } from "@/lib/form-quota.server";
 import { serviceTopics } from "@/lib/service-topics";
+import { publicContentQuery } from "@/lib/public-content-cache.server";
 
 export const getServices = createServerFn({ method: "GET" }).handler(async () => {
   try {
-    const { data, error } = await supabaseAdmin
-      .from("services")
-      .select("id,slug,title,category,short_text,hero_image,sort_order")
-      .eq("active", true)
-      .order("sort_order", { ascending: true });
+    const { data, error } = await publicContentQuery("services", () =>
+      supabaseAdmin
+        .from("services")
+        .select("id,slug,title,category,short_text,hero_image,sort_order")
+        .eq("active", true)
+        .order("sort_order", { ascending: true }),
+    );
     if (error) {
       console.warn("getServices DB warning:", error.message);
       setResponseStatus(503);
@@ -155,15 +158,17 @@ export const getProjectById = createServerFn({ method: "GET" })
 
 export const getFeaturedProject = createServerFn({ method: "GET" }).handler(async () => {
   try {
-    const { data, error } = await supabaseAdmin
-      .from("projects")
-      .select("id,title,location,description,images")
-      .eq("active", true)
-      .filter("images", "neq", "{}")
-      .order("featured", { ascending: false })
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
+    const { data, error } = await publicContentQuery("featured-project", () =>
+      supabaseAdmin
+        .from("projects")
+        .select("id,title,location,description,images")
+        .eq("active", true)
+        .filter("images", "neq", "{}")
+        .order("featured", { ascending: false })
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+    );
     if (error) {
       console.warn("getFeaturedProject DB warning:", error.message);
       setResponseStatus(503);

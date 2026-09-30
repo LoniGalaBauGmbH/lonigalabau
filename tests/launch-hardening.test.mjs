@@ -30,7 +30,12 @@ function moduleAt(path, imports = {}, env = {}) {
   return module.exports;
 }
 const seo = moduleAt("src/lib/seo.ts");
-const policy = moduleAt("src/lib/http-policy.server.ts", { "./seo": seo });
+const policy = moduleAt("src/lib/http-policy.server.ts", {
+  "./seo": seo,
+  "../content/ratgeber.json": JSON.parse(
+    readFileSync(new URL("../src/content/ratgeber.json", import.meta.url), "utf8"),
+  ),
+});
 
 test("public image settings reject tracking origins, private buckets and origin lookalikes", () => {
   const validators = moduleAt("src/lib/validators.ts", {

@@ -176,9 +176,9 @@ export function GardenDetails() {
                       data-active={i === active}
                       aria-hidden={i !== active}
                     >
-                      <h3 className="max-w-md font-serif text-3xl leading-tight text-white md:text-4xl">
+                      <p className="max-w-md font-serif text-3xl leading-tight text-white md:text-4xl">
                         {item.heading}
-                      </h3>
+                      </p>
                       <p className="mt-5 max-w-md text-base leading-relaxed text-brand-foreground/75">
                         {item.text}
                       </p>

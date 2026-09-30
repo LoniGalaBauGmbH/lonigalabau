@@ -16,6 +16,7 @@ import { ServiceCarousel } from "@/components/site/ServiceCarousel";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import { safeJsonLd } from "@/lib/seo";
 import "@/components/site/HomeHero.css";
 const aboutImg = projectPhotos[98].src;
 
@@ -122,7 +123,7 @@ function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: safeJsonLd({
             "@context": "https://schema.org",
             "@type": "HomeAndConstructionBusiness",
             name: "Loni Galabau GmbH",

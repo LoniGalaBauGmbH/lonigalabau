@@ -1,5 +1,13 @@
 # Arbeitsregeln für dieses Projekt
 
+## Projektgedächtnis
+
+Vor der Fortsetzung [PROJEKTGEDAECHTNIS.md](PROJEKTGEDAECHTNIS.md) lesen.
+Nach wesentlichen Änderungen den belegten Stand, Veröffentlichungen, Prüfungen
+und offene Punkte dort aktualisieren. Zugangsdaten und private Exporte gehören
+nicht in das Gedächtnis. Historische Angaben ersetzen, wenn sie überholt sind;
+begonnene Aufgaben nicht als abgeschlossen dokumentieren.
+
 ## GitHub-Synchronisierung
 
 Der Nutzer hat am 28.09.2026 dauerhaft beauftragt, abgeschlossene Projektänderungen

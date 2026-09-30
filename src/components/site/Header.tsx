@@ -21,6 +21,7 @@ const links = [
   { to: "/ueber-uns", label: "Über uns" },
   { to: "/leistungen", label: "Leistungen" },
   { to: "/projekte", label: "Projekte" },
+  { to: "/ratgeber", label: "Ratgeber" },
   { to: "/konfigurator", label: "Gartenplaner" },
   { to: "/jobs", label: "Jobs" },
   { to: "/kontakt", label: "Kontakt" },

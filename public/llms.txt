@@ -1,0 +1,32 @@
+# Loni GalaBau GmbH
+
+> Garten- und Landschaftsbau aus Hattersheim am Main im Rhein-Main-Gebiet. Dieser Wegweiser beschreibt die öffentlichen Inhalte der Unternehmenswebsite.
+
+## Unternehmen und Kontakt
+
+- [Unternehmen](https://www.loni-galabau.de/ueber-uns): Informationen zu Loni GalaBau.
+- [Kontakt](https://www.loni-galabau.de/kontakt): Projektanfrage und Kontaktdaten.
+- [Gartenplaner](https://www.loni-galabau.de/konfigurator): Vorhaben strukturiert beschreiben und anfragen.
+- [Impressum](https://www.loni-galabau.de/impressum): Rechtliche Anbieterangaben.
+
+Loni Galabau GmbH, Auf der Roos 3, 65795 Hattersheim am Main. Telefon: +49 6190 9266134. E-Mail: info@loni-galabau.de.
+
+## Leistungen
+
+- [Gartengestaltung](https://www.loni-galabau.de/leistungen/gartengestaltung)
+- [Pflasterarbeiten](https://www.loni-galabau.de/leistungen/pflasterarbeiten)
+- [Natursteinarbeiten](https://www.loni-galabau.de/leistungen/natursteinarbeiten)
+- [Rasenanlagen](https://www.loni-galabau.de/leistungen/rasenanlagen)
+- [Bewässerungsanlagen](https://www.loni-galabau.de/leistungen/bewaesserungsanlagen)
+- [Zaunarbeiten](https://www.loni-galabau.de/leistungen/zaunarbeiten)
+- [Erdarbeiten](https://www.loni-galabau.de/leistungen/erdarbeiten)
+- [Entwässerung](https://www.loni-galabau.de/leistungen/entwaesserung)
+
+## Ratgeber und eigene Arbeiten
+
+- [Ratgeber](https://www.loni-galabau.de/ratgeber): Entscheidungshilfen zu Planung, Materialien und Vorbereitung von Gartenprojekten.
+- [Serhad Marasli](https://www.loni-galabau.de/autoren/serhad-marasli): Autor der Ratgeber.
+- [Projekte](https://www.loni-galabau.de/projekte): Bilder und Informationen aus dem Arbeitsbestand.
+- [Sitemap](https://www.loni-galabau.de/sitemap.xml): Aktuelle öffentliche Seiten.
+
+Leistungsumfang, Termine und Preise werden für das konkrete Grundstück besprochen. Die Ratgeber ersetzen keine Bestandsaufnahme oder individuelle Ausführungsplanung. Das Unternehmen bietet über diese Website keine öffentliche Zahlungs-, Commerce- oder MCP-API an.
