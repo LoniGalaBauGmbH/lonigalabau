@@ -4,7 +4,7 @@ import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { getServices } from "@/lib/site.functions";
 import { ServiceCarousel } from "@/components/site/ServiceCarousel";
 
-const q = queryOptions({ queryKey: ["services"], queryFn: () => getServices() });
+const q = queryOptions({ staleTime: 60_000, queryKey: ["services"], queryFn: () => getServices() });
 
 export const Route = createFileRoute("/leistungen/")({
   head: () => ({

@@ -7,7 +7,7 @@ import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { ArrowUpRight } from "lucide-react";
 import { ProjectImage } from "@/components/site/ProjectImage";
 
-const q = queryOptions({ queryKey: ["projects"], queryFn: () => getProjects() });
+const q = queryOptions({ staleTime: 60_000, queryKey: ["projects"], queryFn: () => getProjects() });
 
 export const Route = createFileRoute("/projekte")({
   head: () => ({

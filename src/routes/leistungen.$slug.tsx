@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { ServiceProjectPhotos } from "@/components/site/ServiceProjectPhotos";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
@@ -43,18 +44,21 @@ import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 
 const slugQuery = (slug: string) =>
   queryOptions({
+    staleTime: 60_000,
     queryKey: ["service", slug],
     queryFn: () => getServiceBySlug({ data: { slug } }),
   });
 
 const projectsByServiceQuery = (serviceId: string) =>
   queryOptions({
+    staleTime: 60_000,
     queryKey: ["projects-by-service", serviceId],
     queryFn: () => getProjectsByService({ data: { serviceId } }),
   });
 
 const relatedQuery = (excludeSlug: string) =>
   queryOptions({
+    staleTime: 60_000,
     queryKey: ["related-services", excludeSlug],
     queryFn: () => getRelatedServices({ data: { excludeSlug } }),
   });
@@ -81,10 +85,10 @@ export const Route = createFileRoute("/leistungen/$slug")({
     };
   },
   loader: async ({ context, params }) => {
+    void context.queryClient.prefetchQuery(relatedQuery(params.slug));
     const data = await context.queryClient.ensureQueryData(slugQuery(params.slug));
     if (!data) throw notFound();
     void context.queryClient.prefetchQuery(projectsByServiceQuery(data.id));
-    void context.queryClient.prefetchQuery(relatedQuery(params.slug));
     return data;
   },
   component: Page,
@@ -155,8 +159,6 @@ function ServicePage({
   data: NonNullable<Awaited<ReturnType<typeof getServiceBySlug>>>;
 }) {
   const img = getServiceImage(slug, data.hero_image);
-  const { data: projects = [] } = useSuspenseQuery(projectsByServiceQuery(data.id));
-  const { data: related = [] } = useSuspenseQuery(relatedQuery(slug));
 
   const benefits = (() => {
     const custom = data.custom_benefits as { t: string; d: string }[] | null;
@@ -438,28 +440,9 @@ function ServicePage({
       </section>
 
       {/* 7. PORTFOLIO REFERENCES */}
-      {projects.length > 0 && (
-        <section className="px-6 md:px-10 pb-24 md:pb-32">
-          <div className="max-w-[1480px] mx-auto">
-            <div className="flex items-end justify-between flex-wrap gap-6 mb-12 pb-6">
-              <div>
-                <span className="eyebrow eyebrow-bracket text-accent">Referenzen</span>
-                <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand">
-                  Einblicke in unsere Projekte.
-                </h2>
-              </div>
-              <Link
-                to="/projekte"
-                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
-              >
-                Ganzes Portfolio <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <ServiceProjectPhotos projects={projects} />
-          </div>
-        </section>
-      )}
+      <Suspense key={data.id} fallback={<DeferredSection label="Projektbilder werden geladen" />}>
+        <ServiceProjects serviceId={data.id} />
+      </Suspense>
 
       {/* 4. VISUAL BENEFITS - Sage themed cards with exact matched Lucide Icons */}
       {benefits.length > 0 && (
@@ -616,61 +599,9 @@ function ServicePage({
       </section>
 
       {/* 9. WEITERE LEISTUNGEN - Sage Themed hover scroller */}
-      {related.length > 0 && (
-        <section className="px-6 md:px-10 pb-24 pt-24 bg-brand/[0.01]">
-          <div className="max-w-[1480px] mx-auto">
-            <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
-              <div>
-                <span className="eyebrow eyebrow-bracket text-brand/70">Dienstleistungen</span>
-                <h2 className="font-serif font-semibold text-2xl md:text-3xl text-brand mt-2">
-                  Weitere Fachbereiche
-                </h2>
-              </div>
-              <Link
-                to="/leistungen"
-                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
-              >
-                Alle Gewerke <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {related.slice(0, 3).map((s) => (
-                <Link
-                  key={s.id}
-                  to="/leistungen/$slug"
-                  params={{ slug: s.slug }}
-                  className="group relative rounded-3xl overflow-hidden aspect-[4/3] block shadow-sm hover:shadow-md transition-shadow duration-300"
-                >
-                  <ProjectImage
-                    src={getServiceImage(s.slug, s.hero_image)}
-                    alt={s.title}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand/90 via-brand/20 to-transparent" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end text-brand-foreground">
-                    {s.category && (
-                      <span className="text-[9px] uppercase tracking-[0.22em] text-accent font-display font-bold mb-2">
-                        {s.category}
-                      </span>
-                    )}
-                    <h3 className="font-display font-bold text-lg flex items-center justify-between gap-3 text-brand-foreground">
-                      {s.title}
-                      <span className="relative w-8 h-8 rounded-full flex items-center justify-center overflow-hidden shrink-0">
-                        <span className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                        <span className="relative text-brand-foreground group-hover:text-brand transition-colors duration-500 text-sm">
-                          →
-                        </span>
-                      </span>
-                    </h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <Suspense key={slug} fallback={<DeferredSection label="Weitere Leistungen werden geladen" />}>
+        <RelatedServices slug={slug} />
+      </Suspense>
 
       {/* 10. LUXURY FINAL CALL TO ACTION */}
       <section className="px-6 md:px-10 py-16 md:py-24 bg-surface">
@@ -890,4 +821,105 @@ function buildBenefits(slug: string): BenefitItem[] {
   ];
 
   return map[slug] ?? defaultBenefits;
+}
+
+function DeferredSection({ label }: { label: string }) {
+  return (
+    <div className="min-h-80 mx-6 mb-24 rounded-3xl bg-brand/5" role="status">
+      <span className="sr-only">{label}</span>
+    </div>
+  );
+}
+
+function ServiceProjects({ serviceId }: { serviceId: string }) {
+  const { data: projects } = useSuspenseQuery(projectsByServiceQuery(serviceId));
+  return (
+    <>
+      {projects.length > 0 && (
+        <section className="px-6 md:px-10 pb-24 md:pb-32">
+          <div className="max-w-[1480px] mx-auto">
+            <div className="flex items-end justify-between flex-wrap gap-6 mb-12 pb-6">
+              <div>
+                <span className="eyebrow eyebrow-bracket text-accent">Referenzen</span>
+                <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand">
+                  Einblicke in unsere Projekte.
+                </h2>
+              </div>
+              <Link
+                to="/projekte"
+                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
+              >
+                Ganzes Portfolio <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <ServiceProjectPhotos projects={projects} />
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
+function RelatedServices({ slug }: { slug: string }) {
+  const { data: related } = useSuspenseQuery(relatedQuery(slug));
+  return (
+    <>
+      {related.length > 0 && (
+        <section className="px-6 md:px-10 pb-24 pt-24 bg-brand/[0.01]">
+          <div className="max-w-[1480px] mx-auto">
+            <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
+              <div>
+                <span className="eyebrow eyebrow-bracket text-brand/70">Dienstleistungen</span>
+                <h2 className="font-serif font-semibold text-2xl md:text-3xl text-brand mt-2">
+                  Weitere Fachbereiche
+                </h2>
+              </div>
+              <Link
+                to="/leistungen"
+                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
+              >
+                Alle Gewerke <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {related.slice(0, 3).map((s) => (
+                <Link
+                  key={s.id}
+                  to="/leistungen/$slug"
+                  params={{ slug: s.slug }}
+                  className="group relative rounded-3xl overflow-hidden aspect-[4/3] block shadow-sm hover:shadow-md transition-shadow duration-300"
+                >
+                  <ProjectImage
+                    src={getServiceImage(s.slug, s.hero_image)}
+                    alt={s.title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand/90 via-brand/20 to-transparent" />
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end text-brand-foreground">
+                    {s.category && (
+                      <span className="text-[9px] uppercase tracking-[0.22em] text-accent font-display font-bold mb-2">
+                        {s.category}
+                      </span>
+                    )}
+                    <h3 className="font-display font-bold text-lg flex items-center justify-between gap-3 text-brand-foreground">
+                      {s.title}
+                      <span className="relative w-8 h-8 rounded-full flex items-center justify-center overflow-hidden shrink-0">
+                        <span className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        <span className="relative text-brand-foreground group-hover:text-brand transition-colors duration-500 text-sm">
+                          →
+                        </span>
+                      </span>
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
 }

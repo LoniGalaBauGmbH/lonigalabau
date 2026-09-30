@@ -9,6 +9,9 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    defaultPreload: "intent",
+    // A finished navigation must never wait for a cosmetic loading animation.
+    defaultPendingMinMs: 0,
     dehydrate: () => ({ queryCache: JSON.stringify(dehydrate(queryClient)) }),
     hydrate: (data) => {
       hydrate(queryClient, JSON.parse(data.queryCache));

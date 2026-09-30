@@ -26,12 +26,21 @@ import partnerRose from "@/assets/partners/rose-gleisbau.webp";
 import partnerVgf from "@/assets/partners/vgf.png";
 import partnerFrankfurt from "@/assets/partners/frankfurt.svg";
 
-const servicesQuery = queryOptions({ queryKey: ["services"], queryFn: () => getServices() });
+const servicesQuery = queryOptions({
+  staleTime: 60_000,
+  queryKey: ["services"],
+  queryFn: () => getServices(),
+});
 const featuredQuery = queryOptions({
+  staleTime: 60_000,
   queryKey: ["featured-project"],
   queryFn: () => getFeaturedProject(),
 });
-const partnersQuery = queryOptions({ queryKey: ["partners"], queryFn: () => getSitePartners() });
+const partnersQuery = queryOptions({
+  staleTime: 60_000,
+  queryKey: ["partners"],
+  queryFn: () => getSitePartners(),
+});
 
 export const Route = createFileRoute("/")({
   head: () => ({

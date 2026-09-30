@@ -13,6 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { CookieBanner } from "@/components/site/CookieBanner";
 import { InquiryModal } from "@/components/site/InquiryModal";
 import { TrackingScripts } from "@/components/site/TrackingScripts";
+import { NavigationFeedback } from "@/components/site/NavigationFeedback";
 import { getSiteImages } from "@/lib/site.functions";
 import { canonicalUrl, PRIVATE_PATH } from "@/lib/seo";
 import appCss from "../styles.css?url";
@@ -183,6 +184,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <AuthSync />
       <Outlet />
+      <NavigationFeedback />
       <CookieBanner />
       <InquiryModal />
       <TrackingScripts />

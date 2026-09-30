@@ -3,7 +3,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { getJobs } from "@/lib/site.functions";
 
-const q = queryOptions({ queryKey: ["jobs"], queryFn: () => getJobs() });
+const q = queryOptions({ staleTime: 60_000, queryKey: ["jobs"], queryFn: () => getJobs() });
 
 export const Route = createFileRoute("/jobs/")({
   head: () => ({

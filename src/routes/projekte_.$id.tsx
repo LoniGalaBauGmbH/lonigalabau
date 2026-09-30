@@ -6,6 +6,8 @@ import { getProjectById } from "@/lib/site.functions";
 import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/projekte_/$id")({
+  staleTime: 60_000,
+  preloadStaleTime: 60_000,
   loader: async ({ params }) => {
     if (!/^[0-9a-f-]{36}$/i.test(params.id)) throw notFound();
     const project = await getProjectById({ data: { id: params.id } });

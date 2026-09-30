@@ -1,0 +1,127 @@
+.navigation-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 160;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.navigation-progress[data-pending="true"] {
+  opacity: 1;
+}
+
+.navigation-progress::after {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: var(--accent);
+  transform: translateX(-100%);
+}
+
+.navigation-progress[data-pending="true"]::after {
+  animation: navigation-travel 1.2s ease-in-out infinite;
+}
+
+.navigation-feedback {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background: rgb(17 44 25 / 56%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 140ms ease-out,
+    visibility 0s 140ms;
+}
+
+.navigation-feedback[data-pending="true"] {
+  opacity: 1;
+  visibility: visible;
+  /* Quick navigations finish before this appears. No timers hold up the page. */
+  transition:
+    opacity 160ms ease-out 220ms,
+    visibility 0s 220ms;
+}
+
+.navigation-feedback-brand {
+  display: grid;
+  justify-items: center;
+  gap: 25px;
+  color: white;
+}
+
+.navigation-feedback-brand img {
+  width: min(270px, 64vw);
+  height: auto;
+  animation: navigation-breathe 1.8s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.navigation-feedback-track {
+  width: 64px;
+  height: 2px;
+  background: rgb(255 255 255 / 22%);
+  overflow: hidden;
+}
+
+.navigation-feedback-track::after {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: white;
+  animation: navigation-travel 1.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.navigation-feedback[data-pending="true"] img,
+.navigation-feedback[data-pending="true"] .navigation-feedback-track::after {
+  animation-play-state: running;
+}
+
+.navigation-feedback-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+@keyframes navigation-travel {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(350%);
+  }
+}
+
+@keyframes navigation-breathe {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation-progress::after,
+  .navigation-feedback-brand img,
+  .navigation-feedback-track::after {
+    animation: none !important;
+    transform: none;
+  }
+  .navigation-feedback,
+  .navigation-feedback[data-pending="true"] {
+    transition-duration: 0s;
+  }
+}

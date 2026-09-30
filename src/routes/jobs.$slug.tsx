@@ -11,7 +11,11 @@ import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import { ApplicationUpload } from "@/components/site/ApplicationUpload";
 
 const jobQuery = (slug: string) =>
-  queryOptions({ queryKey: ["job", slug], queryFn: () => getJobBySlug({ data: { slug } }) });
+  queryOptions({
+    staleTime: 60_000,
+    queryKey: ["job", slug],
+    queryFn: () => getJobBySlug({ data: { slug } }),
+  });
 
 export const Route = createFileRoute("/jobs/$slug")({
   head: ({ loaderData: loaded }) => {
