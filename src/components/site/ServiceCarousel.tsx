@@ -132,7 +132,7 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
                 </p>
                 <div className="mt-6 flex items-center justify-between gap-3">
                   <span className="text-sm font-semibold text-white/85 group-hover:text-accent">
-                    Mehr erfahren
+                    Leistung ansehen
                   </span>
                   <span className="grid size-10 place-items-center rounded-full transition-colors group-hover:bg-accent group-hover:text-brand">
                     <ArrowUpRight className="size-5" aria-hidden="true" />

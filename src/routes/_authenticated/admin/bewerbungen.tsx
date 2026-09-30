@@ -1,4 +1,4 @@
-import { submissionTicket } from "@/lib/submission-ticket";
+import { matchesSubmissionTicket } from "@/lib/submission-ticket";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -156,7 +156,7 @@ function Page() {
     data?.filter((a) => {
       const matchesTab = a.status === activeTab;
       const matchesSearch =
-        submissionTicket(a.id, true).toLowerCase().includes(searchQuery.toLowerCase()) ||
+        matchesSubmissionTicket(a.id, searchQuery, true) ||
         a.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         a.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (a.phone && a.phone.includes(searchQuery)) ||

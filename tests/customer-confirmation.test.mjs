@@ -123,9 +123,11 @@ test("all four form variants produce branded receipts, stable tickets, embedded 
     assert.equal(body.to.join(), h.record.email);
     assert.equal(body.reply_to, "webseite@loni-galabau.de");
     assert.ok(body.subject.includes(noun));
-    assert.match(body.subject, /LG-[AB]-12345678-ABCDEF01/);
+    const ticket = (table === "applications" ? "B" : "A") + "-14D2PF2NWVVR1";
+    assert.ok(body.subject.includes(ticket));
     for (const part of [body.html, body.text]) {
-      assert.ok(part.includes("LG-"));
+      assert.ok(part.includes(ticket));
+      assert.ok(!part.includes(h.record.id));
       assert.ok(part.includes("1 Anhang"));
       assert.ok(!part.includes("untrusted.invalid"));
     }

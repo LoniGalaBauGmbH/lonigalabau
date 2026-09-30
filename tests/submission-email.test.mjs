@@ -9,7 +9,7 @@ function load(name){const module={exports:{}};vm.runInNewContext(ts.transpileMod
 const {renderSubmissionEmail,emailSections}=load('submission-email');
 const p=load('garden-planner');
 const inquiry=load('project-inquiry');
-const base={id:'test-id',name:'SYSTEMTEST <Name>',email:'qa@example.invalid',phone:'012345'};
+const base={id:'12345678-abcd-4321-a123-1234abcdef01',name:'SYSTEMTEST <Name>',email:'qa@example.invalid',phone:'012345'};
 const admin='https://example.invalid/admin';
 test('contact and application emails preserve line breaks with real HTML and escape user content',()=>{
  for(const application of [false,true]){

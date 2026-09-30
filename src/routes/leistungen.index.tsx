@@ -10,7 +10,11 @@ export const Route = createFileRoute("/leistungen/")({
   head: () => ({
     meta: [
       { title: "Leistungen – Loni Galabau GmbH" },
-      { name: "description", content: "Unsere Leistungen: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung, Zäune, Rasen, Erdarbeiten, Entwässerung." },
+      {
+        name: "description",
+        content:
+          "Unsere Leistungen: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung, Zäune, Rasen, Erdarbeiten, Entwässerung.",
+      },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(q),
@@ -23,8 +27,12 @@ function Page() {
     <PageShell>
       <PageIntro
         eyebrow="Leistungen"
-        title={<>Wir sind in jeder Hinsicht <span className="italic">anders</span>.</>}
-        lead="Vom Naturstein bis zur smarten Bewässerung – wir gestalten den perfekten Gartenraum, individuell angepasst an Ihren Lebensstil."
+        title={
+          <>
+            Gärten, Wege und <span className="italic">Außenanlagen.</span>
+          </>
+        }
+        lead="Von Erdarbeiten und Entwässerung bis zu Terrasse, Pflanzen und Zaun: Hier finden Sie die Leistungen für Ihr Vorhaben in Hattersheim und im Rhein-Main-Gebiet."
       />
       <section className="px-6 pb-24">
         <div className="max-w-7xl mx-auto">

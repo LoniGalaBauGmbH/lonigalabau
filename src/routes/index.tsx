@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { ArrowUpRight, Link2, Leaf, Sparkles, Heart } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { ProjectInquiryForm } from "@/components/site/ProjectInquiryForm";
 import { StatsBand } from "@/components/site/StatsBand";
@@ -63,47 +63,39 @@ const clients = [
 
 const values = [
   {
-    Icon: Link2,
-    t: "Wir verwirklichen Träume!",
-    d: "Wir lassen Ihre Designträume Wirklichkeit werden, indem wir Ihre persönlichen Vorstellungen mit unserer Erfahrung seit 2011 im Bereich Garten- und Landschaftsbau kreativ verbinden.",
+    t: "Material, das zur Nutzung passt",
+    d: "Sitzplatz, Gartenweg oder Einfahrt: Wir besprechen mit Ihnen, welche Oberflächen und welcher Aufbau dafür geeignet sind.",
   },
   {
-    Icon: Leaf,
-    t: "Nachhaltigkeit im Blick",
-    d: "Nachhaltigkeit ist fester Bestandteil unserer Pflegearbeit. Mit dem Einsatz nachhaltiger Produkte und sorgfältig ausgewählten Pflegemaßnahmen tragen wir dazu bei, Gärten und Grünflächen langfristig gesund und lebendig zu erhalten.",
+    t: "Wasser und Höhen mitgedacht",
+    d: "Gefälle, Entwässerung und Übergänge zum Haus gehören von Anfang an zur Planung – genauso wie der sichtbare Belag.",
   },
   {
-    Icon: Sparkles,
-    t: "Kreativität entfesselt!",
-    d: "Unsere Gartendesigns verbinden kreative Ideen mit funktionalen Lösungen. So entstehen individuelle Gärten, die nicht nur hervorstechen, sondern auch praktische Herausforderungen sinnvoll lösen.",
-  },
-  {
-    Icon: Heart,
-    t: "Leidenschaft in jeder Arbeit",
-    d: "Die Schaffung schöner, nachhaltiger Außenanlagen ist unsere große Leidenschaft. Jeder Garten ist individuell und stellt uns vor neue Herausforderungen. Genau darin liegt unsere Stärke: Materialien und Pflanzen harmonisch zu verbinden und so einzigartige Gartenlandschaften zu gestalten.",
+    t: "Ein Garten für Ihren Alltag",
+    d: "Wie möchten Sie Ihren Garten nutzen? Wie viel Pflege passt in Ihren Alltag? Danach richten wir Pflanzen, Flächen und Ausstattung aus.",
   },
 ];
 
 const steps = [
   {
     n: "01",
-    t: "Design-Beratung",
-    d: "Im ersten Schritt setzen wir uns mit Ihnen zusammen, um Ihre Wünsche und Vorstellungen für den Garten ausführlich zu besprechen und zu verstehen.",
+    t: "Vorhaben besprechen",
+    d: "Sie erzählen uns, was Sie verändern möchten. Wir klären Wünsche, Nutzung und die Bedingungen auf Ihrem Grundstück.",
   },
   {
     n: "02",
-    t: "Individuelle Planung",
-    d: "Wenn gewünscht, entwirft unser Partner ein individuelles und passgenaues Gartendesign, das genau auf Ihre Vorstellungen und die Besonderheiten Ihres Grundstücks zugeschnitten ist.",
+    t: "Planung abstimmen",
+    d: "Wir besprechen Materialien, Aufbau und Leistungsumfang. Für eine weitergehende Gartenplanung beziehen wir bei Bedarf unseren Planungspartner ein.",
   },
   {
     n: "03",
-    t: "Umsetzung & Bau",
-    d: "Nach Fertigstellung des Entwurfs stellen wir Ihnen das Konzept persönlich vor und gehen alle Details gemeinsam durch. Nach Ihrer Freigabe starten wir unmittelbar mit der Einplanung und der fachgerechten Umsetzung.",
+    t: "Angebot & Ausführung",
+    d: "Sie erhalten ein Angebot für die besprochenen Arbeiten. Nach Ihrer Freigabe stimmen wir den Ablauf ab und setzen das Vorhaben um.",
   },
   {
     n: "04",
-    t: "Gestaltung & Ausstattung",
-    d: "Im Bereich Gestaltung & Ausstattung integrieren wir zeitgemäße Lösungen wie Gartenbeleuchtung, automatische Bewässerung und Mähroboter. So verbinden wir Funktionalität, Komfort und ein gepflegtes Erscheinungsbild.",
+    t: "Gemeinsam durchgehen",
+    d: "Zum Abschluss sehen wir uns das Ergebnis gemeinsam an und besprechen, worauf Sie bei Nutzung und Pflege achten sollten.",
   },
 ];
 
@@ -184,9 +176,8 @@ function HomePage() {
             </h1>
 
             <p className="home-hero-description max-w-2xl text-white/90 font-normal">
-              Gärten sind mehr als nur Grünflächen – sie sind Orte der Entspannung, Inspiration und
-              Naturverbundenheit. Wir verwandeln Ihren Außenbereich in eine harmonische Oase, die
-              Ästhetik und Funktionalität vereint.
+              Garten- und Landschaftsbau aus Hattersheim für das Rhein-Main-Gebiet. Wir gestalten
+              Gärten, Terrassen und Außenanlagen – passend zu Ihrem Grundstück und Ihrem Alltag.
             </p>
 
             <div className="home-hero-actions flex flex-wrap items-center">
@@ -194,7 +185,7 @@ function HomePage() {
                 to="/kontakt"
                 className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-accent hover:text-brand transition"
               >
-                Mehr erfahren
+                Projekt anfragen
               </Link>
               <Link
                 to="/leistungen"
@@ -256,17 +247,15 @@ function HomePage() {
       <StatsBand />
 
       {/* VALUES */}
-      <section className="px-6 md:px-10 py-24 md:py-36">
+      <section className="px-6 md:px-10 py-16 md:py-24">
         <div className="max-w-[1480px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-7">
-              <span className="eyebrow eyebrow-bracket text-brand">Unsere Werte</span>
-              <h2 className="display text-[clamp(2.25rem,8vw,5.5rem)] mt-6 text-brand leading-[1.05]">
-                Wir sind{" "}
-                <span className="text-brand-muted">
-                  in jeder
-                  <br className="hidden lg:inline" /> Hinsicht anders
-                </span>
+              <span className="eyebrow eyebrow-bracket text-brand">So arbeiten wir</span>
+              <h2 className="display text-[clamp(2.25rem,5.8vw,4.5rem)] mt-5 text-brand leading-[1.05]">
+                Schön geplant.
+                <br />
+                <span className="text-brand-muted">Bis in den Unterbau.</span>
               </h2>
             </div>
             <div className="lg:col-span-5 lg:pt-6 flex lg:justify-end">
@@ -274,27 +263,48 @@ function HomePage() {
                 to="/ueber-uns"
                 className="inline-flex items-center gap-2 bg-brand text-brand-foreground px-10 py-5 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-brand/90 transition"
               >
-                Mehr erfahren
+                Loni kennenlernen
               </Link>
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mt-20">
-            <div className="lg:col-span-6 space-y-14">
-              {values.map(({ Icon, t, d }) => (
-                <div key={t}>
-                  <div className="size-12 grid place-items-center mb-5">
-                    <Icon className="h-5 w-5 text-brand" strokeWidth={1.8} />
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mt-10 md:mt-14 items-center">
+            <div className="lg:col-span-6">
+              <p className="text-xl md:text-2xl leading-relaxed text-brand max-w-xl">
+                Eine schöne Terrasse beginnt mit einem Unterbau, den später niemand mehr sieht. Auf
+                diese Details kommt es uns an.
+              </p>
+              <div className="mt-8 space-y-7">
+                {values.map(({ t, d }) => (
+                  <div key={t}>
+                    <h3 className="text-lg font-display font-bold text-brand">{t}</h3>
+                    <p className="mt-2 text-base text-foreground/75 leading-relaxed max-w-xl">
+                      {d}
+                    </p>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-display font-extrabold text-brand">
-                    {t}
-                  </h3>
-                  <p className="mt-3 text-base text-foreground/75 leading-relaxed max-w-xl">{d}</p>
+                ))}
+              </div>
+              <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                <ProjectImage
+                  src={projectPhotos[99].src}
+                  alt="Das Loni-Team gemeinsam auf der Baustelle"
+                  width={1448}
+                  height={1086}
+                  sizes="(min-width: 640px) 160px, 80vw"
+                  loading="lazy"
+                  className="w-full sm:w-40 aspect-[4/3] object-cover rounded-2xl shrink-0"
+                />
+                <div>
+                  <p className="font-semibold text-brand">Die Menschen hinter der Arbeit.</p>
+                  <p className="mt-2 text-sm text-foreground/75 leading-relaxed max-w-sm">
+                    Unser Team auf der Baustelle und im Büro begleitet Ihr Vorhaben. Lernen Sie
+                    Valon Sinanaj und Loni GalaBau kennen.
+                  </p>
                 </div>
-              ))}
+              </div>
             </div>
 
-            <div className="lg:col-span-6 lg:sticky lg:top-32 h-fit">
+            <div className="lg:col-span-6 h-fit">
               <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl">
                 <ProjectImage
                   src={aboutImg}
@@ -312,29 +322,35 @@ function HomePage() {
       </section>
 
       {/* PROCESS */}
-      <section className="bg-brand text-brand-foreground px-6 md:px-10 py-24 md:py-36">
+      <section className="bg-brand text-brand-foreground px-6 md:px-10 py-16 md:py-20">
         <div className="max-w-[1480px] mx-auto">
           <span className="eyebrow eyebrow-bracket text-brand-foreground/70">
-            Wie es funktioniert
+            Von der Anfrage zur Umsetzung
           </span>
           <h2
             lang="de"
-            className="display break-words hyphens-auto text-[clamp(2rem,5vw,4.5rem)] mt-6 text-brand-foreground max-w-6xl"
+            className="display break-words hyphens-auto text-[clamp(2rem,4vw,3.5rem)] mt-5 text-brand-foreground max-w-4xl"
           >
-            EINFACHE SCHRITTE FÜR <br />
-            IHRE <span className="text-accent">GARTENGESTALTUNG</span>
+            Ihr Vorhaben.
+            <br />
+            <span className="text-accent">Die nächsten Schritte.</span>
           </h2>
 
-          <div className="mt-20 grid md:grid-cols-2 gap-x-16 gap-y-14 relative">
-            {steps.map((s, i) => (
-              <div key={s.n} className={`relative md:px-8 ${i < 2 ? "md:pb-14" : "md:pt-4"}`}>
-                <h3 className="text-2xl md:text-3xl text-accent font-display font-extrabold tracking-tight">
-                  {s.n} <span className="text-brand-foreground/30 mx-2">|</span> {s.t}
-                </h3>
-                <p className="mt-5 text-brand-foreground/75 leading-relaxed max-w-md">{s.d}</p>
-              </div>
+          <ol className="mt-10 md:mt-14 grid sm:grid-cols-2 xl:grid-cols-4 gap-8 xl:gap-10">
+            {steps.map((s) => (
+              <li key={s.n} className="flex gap-4 sm:block">
+                <span className="font-display text-xl text-accent font-semibold sm:block sm:mb-5">
+                  {s.n}
+                </span>
+                <div>
+                  <h3 className="text-xl text-brand-foreground font-display font-bold tracking-tight">
+                    {s.t}
+                  </h3>
+                  <p className="mt-3 text-brand-foreground/80 leading-relaxed max-w-md">{s.d}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 

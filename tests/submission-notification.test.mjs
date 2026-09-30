@@ -122,6 +122,23 @@ test("already accepted notification is not sent again", async () => {
   await h.notifySavedSubmission(h.client, "contact_requests", h.record.id);
   assert.equal(h.calls.length, 0);
 });
+test("all form notifications show the same compact reference in subject, HTML and plain text", () => {
+  const h = harness();
+  for (const [table, subject] of [
+    ["contact_requests", "Kontakt"],
+    ["contact_requests", "Projektanfrage: Terrasse"],
+    ["contact_requests", "Gartenplaner: Pflaster"],
+    ["applications", "Bewerbung"],
+  ]) {
+    const message = h.notificationMessage({ ...h.record, subject }, table, "", []);
+    const ticket = ticketModule.exports.submissionTicket(h.record.id, table === "applications");
+    for (const part of [message.subject, message.html, message.text]) {
+      assert.ok(part.includes(ticket));
+      assert.ok(!part.includes(h.record.id));
+    }
+    assert.equal(message.tags.find((tag) => tag.name === "submission_id").value, h.record.id);
+  }
+});
 test("missing configuration, unavailable attachments and provider failures leave notifications pending", async () => {
   for (const config of [{ failed: true }, { missingKey: true }, { missingFile: true }]) {
     const h = harness(config);

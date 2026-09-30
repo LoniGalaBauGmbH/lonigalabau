@@ -363,7 +363,7 @@ function ServicePage({
               { v: "Erfahrung seit 2011", sub: "Garten- und Landschaftsbau", Icon: Award },
               {
                 v: "Eigener Fuhrpark",
-                sub: "Maximale Schlagkraft · Eigene Bagger & Lader",
+                sub: "Eigene Bagger und Radlader",
                 Icon: Truck,
               },
               { v: "Klares Angebot", sub: "Umfang und Kosten vorab besprechen", Icon: Coins },
@@ -405,7 +405,7 @@ function ServicePage({
                 Qualität & Anspruch
               </span>
               <h3 className="font-serif font-semibold text-2xl md:text-3xl text-brand-foreground leading-tight">
-                Warum Loni die erste Wahl ist.
+                Worauf wir bei Ihrem Vorhaben achten.
               </h3>
               <p className="text-sm text-brand-foreground/75 leading-relaxed font-sans">
                 Wir betrachten Ihren Außenbereich als Ganzes: Nutzung, Gelände, Materialien und
@@ -414,7 +414,7 @@ function ServicePage({
               <div className="pt-4 border-t border-brand-foreground/20 flex flex-col gap-3 text-xs text-brand-foreground/90 font-display uppercase tracking-widest font-semibold">
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="h-4 w-4 text-accent" />
-                  <span>ISO-konforme Ausführung</span>
+                  <span>Details vorab abstimmen</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="h-4 w-4 text-accent" />
@@ -427,7 +427,7 @@ function ServicePage({
             <div className="lg:col-span-8 space-y-6">
               <span className="eyebrow eyebrow-bracket text-brand/70">Über die Leistung</span>
               <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand leading-tight">
-                Planungskompetenz trifft handwerkliche Präzision.
+                Was zu Ihrem Grundstück passt.
               </h2>
               <div className="text-base md:text-lg text-foreground/80 leading-[1.85] whitespace-pre-line font-sans space-y-4">
                 {data.long_text || data.short_text}
@@ -700,7 +700,7 @@ function ServicePage({
                 to="/kontakt"
                 className="inline-flex items-center gap-2 bg-white text-brand px-9 py-4 rounded-full text-xs uppercase tracking-[0.2em] font-semibold hover:bg-accent transition shadow-md"
               >
-                Termin buchen
+                Besichtigung anfragen
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
               <a
