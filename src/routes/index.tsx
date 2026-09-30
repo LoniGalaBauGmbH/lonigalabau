@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Hydrate } from "@tanstack/react-start";
+import { visible } from "@tanstack/react-start/hydration";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
@@ -172,6 +174,7 @@ function HomePage() {
             <img
               src={images.hero_bg}
               fetchPriority="high"
+              decoding="async"
               alt="Modern gestalteter Garten in der Abenddämmerung"
               width={1920}
               height={1080}
@@ -419,7 +422,12 @@ function HomePage() {
             </div>
           </div>
 
-          <ServiceCarousel services={services} />
+          <Hydrate
+            when={visible({ rootMargin: "800px" })}
+            prefetch={visible({ rootMargin: "1200px" })}
+          >
+            <ServiceCarousel services={services} />
+          </Hydrate>
         </div>
       </section>
 
@@ -535,7 +543,9 @@ function HomePage() {
         </div>
       </section>
       <FAQ />
-      <ProjectInquiryForm />
+      <Hydrate when={visible({ rootMargin: "800px" })} prefetch={visible({ rootMargin: "1200px" })}>
+        <ProjectInquiryForm />
+      </Hydrate>
     </PageShell>
   );
 }

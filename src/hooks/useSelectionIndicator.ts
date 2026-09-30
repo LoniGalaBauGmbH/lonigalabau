@@ -11,9 +11,14 @@ export function useSelectionIndicator(active: number) {
     const update = () => {
       const selected = group.querySelector<HTMLElement>('[aria-pressed="true"]');
       if (!selected) return;
-      indicator.style.width = selected.offsetWidth + "px";
-      indicator.style.height = selected.offsetHeight + "px";
-      indicator.style.translate = selected.offsetLeft + "px " + selected.offsetTop + "px";
+      // Finish all layout reads before changing styles.
+      const width = selected.offsetWidth;
+      const height = selected.offsetHeight;
+      const left = selected.offsetLeft;
+      const top = selected.offsetTop;
+      indicator.style.width = width + "px";
+      indicator.style.height = height + "px";
+      indicator.style.translate = left + "px " + top + "px";
       group.dataset.indicatorReady = "true";
     };
     update();

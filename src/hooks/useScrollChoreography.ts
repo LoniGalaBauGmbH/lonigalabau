@@ -6,6 +6,8 @@ export function useScrollChoreography(ref: RefObject<HTMLElement | null>, route:
   useEffect(() => {
     const root = ref.current;
     if (!root || reduced || !("IntersectionObserver" in window)) return;
+    // Keep mobile content visible without measuring and preparing every offscreen reveal.
+    if (window.matchMedia("(max-width: 767px), (pointer: coarse)").matches) return;
     const animations = new Map<HTMLElement, Animation>();
     const candidates = new Map<HTMLElement, number>();
     root

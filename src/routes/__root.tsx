@@ -1,3 +1,4 @@
+import "../styles.css";
 import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import {
   Outlet,
@@ -15,7 +16,6 @@ import { TrackingScripts } from "@/components/site/TrackingScripts";
 import { NavigationFeedback } from "@/components/site/NavigationFeedback";
 import { getSiteImages } from "@/lib/site.functions";
 import { canonicalUrl, PRIVATE_PATH } from "@/lib/seo";
-import appCss from "../styles.css?url";
 import logoDefault from "@/assets/logo-loni.svg";
 
 function NotFoundComponent() {
@@ -103,15 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: loaderData?.images.logo || logoDefault,
         fetchPriority: "high",
       },
-      { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-v2.png" },
-      {
-        rel: "preload",
-        as: "font",
-        type: "font/woff2",
-        href: "/fonts/jakarta-normal-latin.woff2",
-        crossOrigin: "anonymous",
-      },
     ],
   }),
   shellComponent: RootShell,
