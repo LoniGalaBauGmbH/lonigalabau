@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 import { useEffect } from "react";
 
-import { supabase } from "@/integrations/supabase/client";
 import { CookieBanner } from "@/components/site/CookieBanner";
 import { InquiryModal } from "@/components/site/InquiryModal";
 import { TrackingScripts } from "@/components/site/TrackingScripts";
@@ -17,6 +16,7 @@ import { NavigationFeedback } from "@/components/site/NavigationFeedback";
 import { getSiteImages } from "@/lib/site.functions";
 import { canonicalUrl, PRIVATE_PATH } from "@/lib/seo";
 import appCss from "../styles.css?url";
+import logoDefault from "@/assets/logo-loni.svg";
 
 function NotFoundComponent() {
   return (
@@ -72,7 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     });
     return { images };
   },
-  head: () => ({
+  head: ({ loaderData }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -97,6 +97,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: loaderData?.images.logo || logoDefault,
+        fetchPriority: "high",
+      },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-v2.png" },
       {
@@ -151,28 +157,40 @@ function AuthSync() {
   useEffect(() => {
     let pending: ReturnType<typeof setTimeout> | undefined;
     let userId: string | null = null;
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
-      const nextUserId = session?.user.id ?? null;
-      const identityChanged = userId !== nextUserId;
-      userId = nextUserId;
-      if (event === "INITIAL_SESSION") return;
+    let disposed = false;
+    let unsubscribe: (() => void) | undefined;
+    void import("@/integrations/supabase/client")
+      .then(({ supabase }) => {
+        if (disposed) return;
+        const {
+          data: { subscription },
+        } = supabase.auth.onAuthStateChange((event, session) => {
+          const nextUserId = session?.user.id ?? null;
+          const identityChanged = userId !== nextUserId;
+          userId = nextUserId;
+          if (event === "INITIAL_SESSION") return;
 
-      if (identityChanged || event === "SIGNED_OUT") {
-        // Remove the previous account's data, including in-flight queries.
-        qc.clear();
-        router.clearCache();
-      }
-      // Run outside the Auth callback's lock: beforeLoad reads the session.
-      clearTimeout(pending);
-      pending = setTimeout(() => {
-        void router.invalidate();
-      }, 0);
-    });
+          if (identityChanged || event === "SIGNED_OUT") {
+            // Remove the previous account's data, including in-flight queries.
+            qc.clear();
+            router.clearCache();
+          }
+          // Run outside the Auth callback's lock: beforeLoad reads the session.
+          clearTimeout(pending);
+          pending = setTimeout(() => {
+            void router.invalidate();
+          }, 0);
+        });
+        unsubscribe = () => subscription.unsubscribe();
+      })
+      .catch(() => {
+        // Protected routes still verify the session and report a failed client load.
+        console.error("Die Anmeldestatus-Synchronisierung konnte nicht geladen werden.");
+      });
     return () => {
+      disposed = true;
       clearTimeout(pending);
-      subscription.unsubscribe();
+      unsubscribe?.();
     };
   }, [router, qc]);
   return null;

@@ -66,7 +66,13 @@ export function Footer({ showContactCta = true }: { showContactCta?: boolean }) 
           {/* Brand column */}
           <div className="lg:col-span-4 space-y-8">
             <HomeLogoLink className="inline-block">
-              <img src={images.logo_white} alt="Loni Galabau GmbH" className="h-14 w-auto" />
+              <img
+                src={images.logo_white}
+                alt="Loni Galabau GmbH"
+                className="h-14 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
             </HomeLogoLink>
             <p className="text-sm leading-relaxed opacity-70 max-w-sm">
               Garten- und Landschaftsbau aus Hattersheim. Seit Jahren stehen wir für Präzision,
@@ -152,6 +158,8 @@ export function Footer({ showContactCta = true }: { showContactCta?: boolean }) 
               <img
                 src={logoVerband}
                 alt="Fachverband Garten-, Landschafts- und Sportplatzbau"
+                loading="lazy"
+                decoding="async"
                 className="h-[52px] w-auto shrink-0 brightness-0 invert"
               />
               <p className="text-[11px] opacity-60 leading-snug">

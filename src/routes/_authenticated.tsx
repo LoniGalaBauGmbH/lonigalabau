@@ -7,7 +7,6 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { adminWhoami } from "@/lib/admin.functions";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import {
@@ -29,6 +28,7 @@ export const Route = createFileRoute("/_authenticated")({
   // The session lives in browser storage. Server functions enforce access separately.
   ssr: false,
   beforeLoad: async () => {
+    const { supabase } = await import("@/integrations/supabase/client");
     const { data, error } = await supabase.auth.getSession();
     if (error || !data.session) {
       throw redirect({ to: "/login", replace: true });
@@ -46,6 +46,7 @@ export const Route = createFileRoute("/_authenticated")({
 function AdminAccessError() {
   const [signOutError, setSignOutError] = useState("");
   async function switchAccount() {
+    const { supabase } = await import("@/integrations/supabase/client");
     const { error } = await supabase.auth.signOut({ scope: "local" });
     if (error) {
       setSignOutError("Die Abmeldung ist fehlgeschlagen. Bitte versuche es erneut.");
@@ -108,10 +109,22 @@ function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setEmail(data.user?.email ?? null));
+    let active = true;
+    void import("@/integrations/supabase/client")
+      .then(({ supabase }) => supabase.auth.getUser())
+      .then(({ data }) => {
+        if (active) setEmail(data.user?.email ?? null);
+      })
+      .catch(() => {
+        if (active) setEmail(null);
+      });
+    return () => {
+      active = false;
+    };
   }, []);
 
   async function signOut() {
+    const { supabase } = await import("@/integrations/supabase/client");
     await supabase.auth.signOut();
     router.navigate({ to: "/login" });
   }

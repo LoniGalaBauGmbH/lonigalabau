@@ -6,7 +6,7 @@ import { getSiteImages } from "@/lib/site.functions";
 // Default local code imports as fallback assets
 import logoDefault from "@/assets/logo-loni.svg";
 import logoWhiteDefault from "@/assets/logo-loni-white.svg";
-import heroDefault from "@/assets/hero-garden.jpg";
+import heroDefault from "@/assets/performance/hero-garden-1920.webp";
 import { projectPhotos } from "@/lib/project-photos";
 import contactPortraitDefault from "@/assets/about-founder-valon.webp";
 

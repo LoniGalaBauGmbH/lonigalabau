@@ -18,6 +18,12 @@ import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { safeJsonLd } from "@/lib/seo";
 import "@/components/site/HomeHero.css";
+import heroWebp from "@/assets/performance/hero-garden-1920.webp";
+import heroAvif from "@/assets/performance/hero-garden-1920.avif";
+import workPhoto from "@/assets/performance/bagger-radlader-941.webp";
+import workPhotoSmall from "@/assets/performance/bagger-radlader-600.webp";
+import workPhotoAvif from "@/assets/performance/bagger-radlader-941.avif";
+import workPhotoSmallAvif from "@/assets/performance/bagger-radlader-600.avif";
 const aboutImg = projectPhotos[98].src;
 
 import partnerBickhardt from "@/assets/partners/bickhardt-bau.png";
@@ -161,14 +167,17 @@ function HomePage() {
       {/* HERO */}
       <section className="home-hero relative w-full overflow-hidden text-white">
         <div className="absolute inset-0">
-          <img
-            src={images.hero_bg}
-            fetchPriority="high"
-            alt="Modern gestalteter Garten in der Abenddämmerung"
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover animate-slow-zoom"
-          />
+          <picture>
+            {images.hero_bg === heroWebp && <source type="image/avif" srcSet={heroAvif} />}
+            <img
+              src={images.hero_bg}
+              fetchPriority="high"
+              alt="Modern gestalteter Garten in der Abenddämmerung"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-cover animate-slow-zoom"
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
         </div>
 
@@ -313,15 +322,24 @@ function HomePage() {
 
             <div className="lg:col-span-6 h-fit">
               <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl">
-                <ProjectImage
-                  src={aboutImg}
-                  alt="Bagger und Radlader bei Erdarbeiten im Abendlicht"
-                  width={941}
-                  height={1672}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet={`${workPhotoSmallAvif} 600w, ${workPhotoAvif} 941w`}
+                    sizes="(min-width: 1480px) 700px, (min-width: 1024px) 46vw, calc(100vw - 48px)"
+                  />
+                  <img
+                    src={workPhoto}
+                    srcSet={`${workPhotoSmall} 600w, ${workPhoto} 941w`}
+                    alt="Bagger und Radlader bei Erdarbeiten im Abendlicht"
+                    width={941}
+                    height={1672}
+                    sizes="(min-width: 1480px) 700px, (min-width: 1024px) 46vw, calc(100vw - 48px)"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
               </div>
             </div>
           </div>

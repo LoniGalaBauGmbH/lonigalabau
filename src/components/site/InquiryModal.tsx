@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { ProjectInquiryForm } from "./ProjectInquiryForm";
+const ProjectInquiryForm = lazy(() =>
+  import("./ProjectInquiryForm").then((module) => ({ default: module.ProjectInquiryForm })),
+);
 
 export function InquiryModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +63,15 @@ export function InquiryModal() {
 
         {/* Scrollable Container */}
         <div className="overflow-y-auto flex-1 w-full scroll-smooth">
-          <ProjectInquiryForm isModal={true} onClose={() => setIsOpen(false)} />
+          <Suspense
+            fallback={
+              <p role="status" className="p-8">
+                Anfrageformular wird geladen …
+              </p>
+            }
+          >
+            <ProjectInquiryForm isModal={true} onClose={() => setIsOpen(false)} />
+          </Suspense>
         </div>
       </div>
 

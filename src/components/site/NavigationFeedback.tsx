@@ -16,7 +16,7 @@ export function NavigationFeedback() {
       <div className="navigation-progress" data-pending={pending} aria-hidden="true" />
       <div className="navigation-feedback" data-pending={pending} aria-hidden="true">
         <div className="navigation-feedback-brand">
-          <img src={logo} alt="" width={270} height={52} />
+          {pending && <img src={logo} alt="" width={270} height={52} decoding="async" />}
           <span className="navigation-feedback-track" />
           <span className="navigation-feedback-label">Einen Augenblick …</span>
         </div>

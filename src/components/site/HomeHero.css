@@ -33,6 +33,13 @@
   margin-top: 2.5rem;
   gap: 2rem;
 }
+@media (max-width: 767px) {
+  /* Above-the-fold content is visible on the first paint, without a fade delay. */
+  .home-hero-copy.animate-fade-up,
+  .home-hero .animate-slow-zoom {
+    animation: none;
+  }
+}
 @media (min-width: 640px) {
   .home-hero-badge {
     align-self: flex-end;

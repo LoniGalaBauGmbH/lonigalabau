@@ -10,6 +10,7 @@ Vor jeder Fortsetzung lesen; nach wesentlichen Änderungen belegte Ergebnisse un
 - Nutzerwunsch: vollständige SEO-Bearbeitung aller öffentlichen Seiten, Anmeldung zur Google-Indexierung und dauerhaftes Projektgedächtnis.
 - **Erledigt:** Google-OAuth-App „Loni OpenSEO“ steht nach ausdrücklicher Nutzerfreigabe auf **In production**. Die separate Google-App-Verifizierung ist damit nicht erteilt.
 - **Live in Version 36:** Ratgeber mit sechs Beiträgen, Übersichtsseite, eigenen Bildern, Kontaktformularen und Autorenprofil Serhad Marasli. Gesamten öffentlichen Seitenbestand live geprüft.
+- **Live in Version 38:** mobile Performance verbessert: PageSpeed 81 → 88, LCP 4,201 → 3,301 s; Desktop 99. Messung vom 30.09.2026, 17:17 MESZ, keine CrUX-Felddaten. Details in `docs/Mobile-Performance-2026-09-30.md`.
 - Dieses Gedächtnis liegt im Repository und wird über `AGENTS.md` bei späteren Arbeiten eingebunden.
 
 ## Adressen, Projekte und Ablagen
@@ -36,9 +37,10 @@ Sites-IDs, Supabase-Projektreferenz und OpenSEO-Projekt-ID sind Zuordnungen, kei
 
 ## Veröffentlichungsstand
 
-- Bestätigter Sites-Stand: **Version 36**, veröffentlicht am 30.09.2026 um 16:44 MESZ; parallele Ticket- und Favicon-Änderungen aus Version 34 erhalten.
+- Bestätigter Sites-Stand: **Version 38**, veröffentlicht am 30.09.2026 um 17:17 MESZ; Ratgeber, Autorenprofil sowie vorherige Ticket-/Favicon-Änderungen erhalten.
+- Version 38: Quellcommit `038622931f4787576e7edd2c5df9bf62f587e601`, Deployment `appgdep_6abd27f27a04819192c01eae20c4fd9b`. Nachträgliche Messdokumentation ändert den Live-Programmcode nicht.
 - Version 36: Quellcommit `d022c938ddba74603b9cbd9d5ed86a01fa0cfc6f`, Deployment `appgdep_6abd2034bbac819192b9c33934f276bd`. Nachträgliche Dokumentationskorrekturen ändern den Live-Programmcode nicht.
-- Beim aktuellen Öffnen des Sites-Quellcheckouts: Commit `381dcb82bc17253656cc3f4bbebd3b341e0eed00`. Vor weiterer Veröffentlichung erneut prüfen.
+- Beim Öffnen des Performance-Arbeitsstands: Commit `326fb4ae0a48fb63ad01761bd3bbd0b7da985aa1`. Vor weiterer Veröffentlichung erneut prüfen.
 - Der umfassende SEO-Release wurde bereits mit **Version 33** am 30.09.2026 um 12:11 Uhr MESZ veröffentlicht; GitHub-SEO-Commit `1d55a6dfcaeeed4cc627b3bedd1ee908bc0eb843`.
 - Version 35: Quellcommit `96188f55a1d40b6e361b599855e44c1daf5232a0`, Deployment `appgdep_6abd1beeb76081919c5a532a71d68480`. 37 öffentliche Sitemap-Seiten live geprüft.
 - Veröffentlichungsbelege liegen im privaten Aufgabenordner; eine erfolgreiche GitHub-Synchronisierung allein ist kein Deployment.
@@ -146,9 +148,11 @@ $node = "$env:USERPROFILE\.cache\codex-runtimes\codex-primary-runtime\dependenci
 
 ## Offene Punkte und Pflege
 
-- Programmstand Version 36 ist veröffentlicht und geprüft. Abschließenden Dokumentationsstand mit GitHub synchronisieren; Commit-Nachweis wird im Abschluss bzw. privaten Veröffentlichungsbeleg geführt.
-- Mobile Performance neu messen: Nutzerbericht 70/100, LCP 4,05 s; aktuelle kostenlose PageSpeed-Aufrufe für Startseite/Ratgeber scheiterten mit HTTP 429/Tageslimit. Keine aktuellen neuen Laborscores oder CrUX-Werte behaupten.
-- Hostinggrenzen: erste HTTP→HTTPS-Umleitung derzeit 302, Bild-Cache-Header revalidieren auf Hosting-/Storage-Ebene. App-Worker kann vorgeschaltete Providerantworten nicht durch lokale Headerdateien korrigieren. Nachweis/Einordnung in `docs/SEO-Audit-2026-09-30.md`.
+- Programmstand Version 38 ist veröffentlicht und geprüft. GitHub-Commit-Nachweis im Abschluss bzw. privaten Veröffentlichungsbeleg führen.
+- Mobile Performance am 30.09.2026 erfolgreich über die offizielle PageSpeed-Oberfläche gemessen: **88/100, LCP 3,3 s**, vorher 81/100 und 4,2 s. Der Zwischenstand Version 37 erzielte 79/100; alle Läufe im Performance-Bericht dokumentiert. Kein aktueller CrUX-Felddatensatz vorhanden. LCP-Ziel bis 2,5 s noch nicht erreicht; verbleibend insbesondere CSS-Ladekette und weitere JS-Aufteilung.
+- Ratgeber-Stichprobe um 17:19 MESZ: mobil **94/100**, LCP 2,7 s, TBT 0 ms, CLS 0,005; Barrierefreiheit 97 mit offenem Kontrasthinweis. Kein Vorhervergleich für diese URL vorhanden. Artikelvorschau-Bilder bieten weiteres Kompressionspotenzial.
+- Standardhero und großes Baustellenbild mit AVIF/WebP, zusammen rund 58 % weniger Bytes für die großen AVIF-Varianten. Zentrales JS-Paket rund 38 % kleiner; SDK separat geladen, Auth-/MFA-Prüfungen erhalten. Mobile Animationen am Seitenanfang entfernt, frühe unsichtbare Logo-Downloads vermieden. 87 bestehende plus drei zusätzliche Auth-RPC-Tests, Typprüfung, gezieltes Linting und Build bestanden. Live-SSR-Audit von 41 HTML-Seiten um 17:18 MESZ ohne Befund.
+- Hostinggrenzen: erster HTTP→HTTPS-Schritt weiterhin 302. GET-Stichprobe korrigiert die frühere HEAD-Auswertung: geprüftes Supabase-Bild hat ein Jahr Browser-TTL und CDN-HIT; Sites-Assets CDN-HIT plus ETag/304, aber Browser-Revalidierung und teilweise unpassender MIME-Typ. Vorgeschaltete Providerantworten lassen sich nicht durch wirkungslose lokale Headerdateien korrigieren. Details in `docs/Mobile-Performance-2026-09-30.md`.
 - Fehlende pauschale `title`-Attribute, eine Textquote unter 25 %, dekoratives `alt=""`, fehlendes hreflang ohne Sprachvarianten und fehlende Agenten-Commerce-Schnittstellen sind keine pauschalen SEO-Mängel. Kein universelles „100/100“ oder Ranking versprechen.
 - Indexentwicklung und neue Suchanfragen später anhand aktueller GSC-Daten prüfen; Ranking-/Anfragenwirkung der SEO-Änderungen noch nicht gemessen.
 - Google-Unternehmensprofil: Optimierungs-/Verifikationsstand hier **ungeprüft**. Einzelner Local-Pack-Treffer ersetzt keine Profilprüfung.
