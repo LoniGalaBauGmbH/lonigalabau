@@ -15,6 +15,7 @@ import { ServiceCarousel } from "@/components/site/ServiceCarousel";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import "@/components/site/HomeHero.css";
 const aboutImg = projectPhotos[98].src;
 
 import partnerBickhardt from "@/assets/partners/bickhardt-bau.png";
@@ -155,7 +156,7 @@ function HomePage() {
         }}
       />
       {/* HERO */}
-      <section className="relative min-h-[100svh] w-full overflow-hidden text-white">
+      <section className="home-hero relative w-full overflow-hidden text-white">
         <div className="absolute inset-0">
           <img
             src={images.hero_bg}
@@ -168,33 +169,27 @@ function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
         </div>
 
-        <div className="relative z-[1] max-w-[1480px] mx-auto px-6 md:px-10 min-h-[100svh] flex flex-col justify-end pb-16 md:pb-24 pt-28 md:pt-32 lg:pt-72">
-          {/* In normal flow on smaller screens, so the badge never covers the headline. */}
-          <div className="self-start mb-9 sm:self-end lg:absolute lg:right-10 lg:top-32 lg:mb-0">
-            <div className="rounded-3xl backdrop-blur-md bg-white/5 px-5 py-4 md:px-9 md:py-7 text-left sm:text-right">
-              <div className="display text-3xl sm:text-4xl md:text-5xl text-white">Seit 2011</div>
-              <div className="text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-white/80 mt-1">
-                Im Garten- & Landschaftsbau
-              </div>
+        <div className="home-hero-inner relative z-[1] max-w-[1480px] mx-auto px-6 md:px-10">
+          <div className="home-hero-badge rounded-3xl backdrop-blur-md bg-white/5">
+            <div className="home-hero-year display text-white">Seit 2011</div>
+            <div className="home-hero-caption uppercase text-white/80 mt-1">
+              Im Garten- & Landschaftsbau
             </div>
           </div>
-          <div className="max-w-5xl animate-fade-up">
-            <h1
-              lang="de"
-              className="display break-words hyphens-auto text-white text-[clamp(2rem,8vw,8rem)]"
-            >
+          <div className="home-hero-copy max-w-5xl animate-fade-up">
+            <h1 lang="de" className="home-hero-title display break-words hyphens-auto text-white">
               Ihr Garten
               <br />
               <span className="text-white">unsere Leidenschaft</span>
             </h1>
 
-            <p className="mt-10 max-w-2xl text-lg md:text-xl text-white/90 leading-relaxed font-normal">
+            <p className="home-hero-description max-w-2xl text-white/90 font-normal">
               Gärten sind mehr als nur Grünflächen – sie sind Orte der Entspannung, Inspiration und
               Naturverbundenheit. Wir verwandeln Ihren Außenbereich in eine harmonische Oase, die
               Ästhetik und Funktionalität vereint.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-8">
+            <div className="home-hero-actions flex flex-wrap items-center">
               <Link
                 to="/kontakt"
                 className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-accent hover:text-brand transition"

@@ -292,7 +292,7 @@
     align-items: center;
     gap: 7px;
     position: relative;
-    padding: 12px 10px;
+    padding: 12px 6px 12px 14px;
     border-radius: 999px;
     cursor: pointer;
     white-space: nowrap;
@@ -308,15 +308,14 @@
   .site-desktop-link::after {
     content: "";
     position: absolute;
-    bottom: 3px;
-    left: calc(50% - 2px);
+    top: calc(50% - 2px);
+    left: 4px;
     width: 4px;
     height: 4px;
     border-radius: 50%;
     background: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 280ms ease;
+    transform: scale(0);
+    transition: transform 220ms var(--nav-ease);
   }
   .site-desktop-link:hover,
   .site-desktop-link[aria-current="page"],
@@ -325,8 +324,11 @@
     background: color-mix(in srgb, currentColor 6%, transparent);
   }
   .site-desktop-link[aria-current="page"]::after,
-  .site-desktop-link[data-active="true"]::after {
-    transform: scaleX(1);
+  .site-desktop-link[data-active="true"]::after,
+  .site-desktop-link[data-state="open"]::after,
+  .site-desktop-link:hover::after,
+  .site-desktop-link:focus-visible::after {
+    transform: scale(1);
   }
 }
 .site-header .site-services-trigger:active:not(:disabled) {
@@ -361,21 +363,39 @@
   top: 100%;
   left: 24px;
   right: 24px;
+  color: var(--brand);
+  opacity: 0;
+  translate: 0 -6px;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    translate 240ms var(--nav-ease),
+    visibility 0s 240ms;
+}
+.site-mega-menu[data-state="open"] {
+  opacity: 1;
+  translate: 0 0;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+/* Keep pointer travel through the header padding inside the open menu. */
+.site-mega-menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -28px;
+  height: 28px;
+}
+.site-mega-surface {
   max-height: calc(100dvh - 110px);
   overflow-y: auto;
   overscroll-behavior: contain;
   border-radius: 24px;
   background: var(--background);
-  color: var(--brand);
   box-shadow: 0 28px 70px rgb(10 35 20 / 20%);
-  transform-origin: top center;
-}
-.site-mega-menu[data-state="open"] {
-  animation: mega-in 300ms var(--nav-ease) both;
-}
-.site-mega-menu[data-state="closed"] {
-  animation: mega-out 180ms ease both;
-  pointer-events: none;
 }
 .site-mega-layout {
   display: grid;
@@ -574,22 +594,6 @@
   color: white;
   padding-inline: 14px;
 }
-@keyframes mega-in {
-  from {
-    opacity: 0;
-    translate: 0 -10px;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
-@keyframes mega-out {
-  to {
-    opacity: 0;
-    translate: 0 -6px;
-  }
-}
 @media (min-width: 1024px) and (max-width: 1199px) {
   .site-header-inner {
     padding-inline: 24px;
@@ -604,7 +608,8 @@
   .site-desktop-link {
     font-size: 0.72rem;
     letter-spacing: 0.08em;
-    padding-inline: 8px;
+    padding-left: 12px;
+    padding-right: 4px;
   }
   .site-header .site-nav-contact {
     padding-inline: 14px;

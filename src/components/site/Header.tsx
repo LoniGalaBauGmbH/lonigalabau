@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { ArrowRight, ArrowUpRight, ChevronDown, Phone, X } from "lucide-react";
@@ -12,8 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useSiteImages } from "@/hooks/useSiteImages";
-import { getServiceImage } from "@/lib/service-images";
-import { ProjectImage } from "./ProjectImage";
+import { getMenuThumbnail, MENU_FEATURE_IMAGE } from "@/lib/menu-images";
 import { HomeLogoLink } from "./HomeLogoLink";
 import "./Header.css";
 
@@ -52,8 +51,34 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
   const [desktopMenu, setDesktopMenu] = useState("");
   const [mobileServices, setMobileServices] = useState(false);
   const closeButton = useRef<HTMLButtonElement>(null);
+  const menuImages = useRef<HTMLImageElement[]>([]);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const { images } = useSiteImages();
+
+  const warmMenuImages = useCallback(() => {
+    if (menuImages.current.length || !window.matchMedia("(min-width: 1024px)").matches) return;
+    menuImages.current = [
+      MENU_FEATURE_IMAGE,
+      ...services.map(({ slug }) => getMenuThumbnail(slug)),
+    ].map((src) => {
+      const image = new Image();
+      image.decoding = "async";
+      image.fetchPriority = "low";
+      image.src = src;
+      void image.decode().catch(() => {});
+      return image;
+    });
+  }, []);
+
+  useEffect(() => {
+    // Warm the desktop menu after initial rendering, without competing with the hero.
+    if ("requestIdleCallback" in window) {
+      const idle = window.requestIdleCallback(warmMenuImages, { timeout: 1500 });
+      return () => window.cancelIdleCallback(idle);
+    }
+    const timer = setTimeout(warmMenuImages, 350);
+    return () => clearTimeout(timer);
+  }, [warmMenuImages]);
 
   useEffect(() => {
     // Separate thresholds keep the header from flickering around one scroll position.
@@ -118,7 +143,9 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             aria-label="Hauptnavigation"
             value={desktopMenu}
             onValueChange={setDesktopMenu}
-            delayDuration={160}
+            delayDuration={0}
+            onPointerEnter={warmMenuImages}
+            onFocus={warmMenuImages}
           >
             <NavigationMenu.List className="site-desktop-list">
               {links.map((link) =>
@@ -130,70 +157,85 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                     >
                       Leistungen <ChevronDown className="size-3.5" aria-hidden="true" />
                     </NavigationMenu.Trigger>
-                    <NavigationMenu.Content className="site-mega-menu">
-                      <div className="site-mega-layout">
-                        <NavigationMenu.Link asChild>
-                          <Link to="/konfigurator" className="site-mega-feature">
-                            <ProjectImage
-                              src={getServiceImage("gartengestaltung")}
-                              alt="Garten mit Rasen und Terrassen"
-                              sizes="320px"
-                            />
-                            <span className="site-mega-feature-copy">
-                              <span className="site-mega-eyebrow">Gemeinsam draußen gestalten</span>
-                              <strong>
-                                Ihr Garten.
-                                <br />
-                                Viele Möglichkeiten.
-                              </strong>
-                              <span className="site-mega-feature-cta">
-                                Projekt planen <ArrowUpRight size={18} aria-hidden="true" />
+                    <NavigationMenu.Content
+                      className="site-mega-menu"
+                      forceMount
+                      inert={desktopMenu !== "services"}
+                      aria-hidden={desktopMenu !== "services"}
+                    >
+                      <div className="site-mega-surface">
+                        <div className="site-mega-layout">
+                          <NavigationMenu.Link asChild>
+                            <Link to="/konfigurator" className="site-mega-feature">
+                              <img
+                                src={MENU_FEATURE_IMAGE}
+                                alt="Garten mit Rasen und Terrassen"
+                                width={640}
+                                height={800}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                              <span className="site-mega-feature-copy">
+                                <span className="site-mega-eyebrow">
+                                  Gemeinsam draußen gestalten
+                                </span>
+                                <strong>
+                                  Ihr Garten.
+                                  <br />
+                                  Viele Möglichkeiten.
+                                </strong>
+                                <span className="site-mega-feature-cta">
+                                  Projekt planen <ArrowUpRight size={18} aria-hidden="true" />
+                                </span>
                               </span>
-                            </span>
-                          </Link>
-                        </NavigationMenu.Link>
-                        <div className="site-mega-services">
-                          <div className="site-mega-topline">
-                            <span className="site-mega-eyebrow">Unsere Leistungen</span>
-                            <NavigationMenu.Link asChild>
-                              <Link to="/leistungen">
-                                Alle ansehen <ArrowRight size={15} aria-hidden="true" />
-                              </Link>
-                            </NavigationMenu.Link>
-                          </div>
-                          <div className="site-mega-grid">
-                            {services.map((service) => (
-                              <NavigationMenu.Link asChild key={service.slug}>
-                                <Link
-                                  to="/leistungen/$slug"
-                                  params={{ slug: service.slug }}
-                                  className="site-mega-service"
-                                  activeOptions={{ exact: true }}
-                                >
-                                  <ProjectImage
-                                    src={getServiceImage(service.slug)}
-                                    alt=""
-                                    sizes="64px"
-                                    loading="lazy"
-                                  />
-                                  <span>
-                                    <strong>{service.title}</strong>
-                                    <small>{service.detail}</small>
-                                  </span>
-                                  <ArrowUpRight size={16} aria-hidden="true" />
+                            </Link>
+                          </NavigationMenu.Link>
+                          <div className="site-mega-services">
+                            <div className="site-mega-topline">
+                              <span className="site-mega-eyebrow">Unsere Leistungen</span>
+                              <NavigationMenu.Link asChild>
+                                <Link to="/leistungen">
+                                  Alle ansehen <ArrowRight size={15} aria-hidden="true" />
                                 </Link>
                               </NavigationMenu.Link>
-                            ))}
+                            </div>
+                            <div className="site-mega-grid">
+                              {services.map((service) => (
+                                <NavigationMenu.Link asChild key={service.slug}>
+                                  <Link
+                                    to="/leistungen/$slug"
+                                    params={{ slug: service.slug }}
+                                    className="site-mega-service"
+                                    activeOptions={{ exact: true }}
+                                  >
+                                    <img
+                                      src={getMenuThumbnail(service.slug)}
+                                      alt=""
+                                      width={176}
+                                      height={176}
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
+                                    <span>
+                                      <strong>{service.title}</strong>
+                                      <small>{service.detail}</small>
+                                    </span>
+                                    <ArrowUpRight size={16} aria-hidden="true" />
+                                  </Link>
+                                </NavigationMenu.Link>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="site-mega-footer">
-                        <span>Noch nicht sicher, was Ihr Garten braucht?</span>
-                        <NavigationMenu.Link asChild>
-                          <Link to="/kontakt">
-                            Wir beraten Sie persönlich <ArrowUpRight size={16} aria-hidden="true" />
-                          </Link>
-                        </NavigationMenu.Link>
+                        <div className="site-mega-footer">
+                          <span>Noch nicht sicher, was Ihr Garten braucht?</span>
+                          <NavigationMenu.Link asChild>
+                            <Link to="/kontakt">
+                              Wir beraten Sie persönlich{" "}
+                              <ArrowUpRight size={16} aria-hidden="true" />
+                            </Link>
+                          </NavigationMenu.Link>
+                        </div>
                       </div>
                     </NavigationMenu.Content>
                   </NavigationMenu.Item>
@@ -291,11 +333,13 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                               params={{ slug: service.slug }}
                               onClick={() => setOpen(false)}
                             >
-                              <ProjectImage
-                                src={getServiceImage(service.slug)}
+                              <img
+                                src={getMenuThumbnail(service.slug)}
                                 alt=""
-                                sizes="40px"
+                                width={176}
+                                height={176}
                                 loading="lazy"
+                                decoding="async"
                               />
                               <span>{service.title}</span>
                               <ArrowUpRight size={15} aria-hidden="true" />

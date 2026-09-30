@@ -1,0 +1,83 @@
+.home-hero,
+.home-hero-inner {
+  min-height: 100svh;
+}
+.home-hero-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+.home-hero-badge {
+  align-self: flex-start;
+  margin-bottom: 2.25rem;
+  padding: 1rem 1.25rem;
+}
+.home-hero-year {
+  font-size: 1.875rem;
+}
+.home-hero-caption {
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+}
+.home-hero-title {
+  font-size: clamp(2rem, 8vw, 8rem);
+}
+.home-hero-description {
+  margin-top: 2.5rem;
+  font-size: 1.125rem;
+  line-height: 1.625;
+}
+.home-hero-actions {
+  margin-top: 2.5rem;
+  gap: 2rem;
+}
+@media (min-width: 640px) {
+  .home-hero-badge {
+    align-self: flex-end;
+    text-align: right;
+  }
+  .home-hero-year {
+    font-size: 2.25rem;
+  }
+  .home-hero-caption {
+    font-size: 0.6875rem;
+  }
+}
+/* Fit the available browser height as well as width, without clipping enlarged text. */
+@media (min-width: 768px) {
+  .home-hero-inner {
+    --hero-gap: clamp(1rem, 3svh, 2.5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    row-gap: var(--hero-gap);
+    padding-top: clamp(6rem, 12svh, 8.5rem);
+    padding-bottom: clamp(1.5rem, 5svh, 4rem);
+  }
+  .home-hero-badge {
+    justify-self: end;
+    align-self: start;
+    margin: 0;
+    padding: clamp(0.75rem, 2svh, 1.5rem) clamp(1.25rem, 2.5vw, 2.25rem);
+  }
+  .home-hero-year {
+    font-size: clamp(1.75rem, 4.5svh, 3rem);
+  }
+  .home-hero-copy {
+    align-self: end;
+  }
+  .home-hero-title {
+    font-size: clamp(2rem, min(8vw, 9svh), 8rem);
+  }
+  .home-hero-description {
+    margin-top: var(--hero-gap);
+    font-size: clamp(1rem, 2.4svh, 1.25rem);
+    line-height: 1.5;
+  }
+  .home-hero-actions {
+    margin-top: var(--hero-gap);
+    gap: 1rem 2rem;
+  }
+}
