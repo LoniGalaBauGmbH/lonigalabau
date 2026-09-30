@@ -8,10 +8,11 @@ const q = queryOptions({ staleTime: 60_000, queryKey: ["jobs"], queryFn: () => g
 export const Route = createFileRoute("/jobs/")({
   head: () => ({
     meta: [
-      { title: "Jobs – Loni Galabau GmbH" },
+      { title: "Jobs im Garten- und Landschaftsbau | Loni GalaBau" },
       {
         name: "description",
-        content: "Offene Stellen bei Loni Galabau GmbH in Hattersheim am Main.",
+        content:
+          "Jobs bei Loni GalaBau in Hattersheim am Main: Aktuelle Stellen im Garten- und Landschaftsbau, Aufgaben und Anforderungen ansehen und online bewerben.",
       },
     ],
   }),
@@ -46,7 +47,7 @@ function Page() {
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <h3 className="font-serif text-2xl md:text-3xl">{j.title}</h3>
+                  <h2 className="font-serif text-2xl md:text-3xl">{j.title}</h2>
                   <div className="mt-2 flex flex-wrap gap-3 text-xs uppercase tracking-widest text-foreground/60">
                     {j.location && <span>{j.location}</span>}
                     {j.employment_type && <span>· {j.employment_type}</span>}

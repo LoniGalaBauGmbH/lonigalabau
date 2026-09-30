@@ -13,6 +13,7 @@ import { attemptSubmissionEmails } from "@/lib/customer-confirmation.server";
 import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
 import { enforceFormQuota } from "@/lib/form-quota.server";
+import { serviceTopics } from "@/lib/service-topics";
 
 export const getServices = createServerFn({ method: "GET" }).handler(async () => {
   try {
@@ -93,14 +94,18 @@ export const getRelatedServices = createServerFn({ method: "GET" })
         .select("id,slug,title,category,short_text,hero_image")
         .eq("active", true)
         .neq("slug", data.excludeSlug)
-        .order("sort_order", { ascending: true })
-        .limit(6);
+        .order("sort_order", { ascending: true });
       if (error) {
         console.warn("getRelatedServices DB warning:", error.message);
         setResponseStatus(503);
         throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
       }
-      return rows ?? [];
+      const preferred = serviceTopics[data.excludeSlug]?.related ?? [];
+      const rank = (slug: string) => {
+        const index = preferred.indexOf(slug);
+        return index === -1 ? preferred.length : index;
+      };
+      return (rows ?? []).sort((a, b) => rank(a.slug) - rank(b.slug)).slice(0, 3);
     } catch (err) {
       console.warn("getRelatedServices fetch failed:", err);
       setResponseStatus(503);

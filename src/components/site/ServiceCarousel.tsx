@@ -22,7 +22,13 @@ type Service = {
   hero_image?: string | null;
 };
 
-export function ServiceCarousel({ services }: { services: Service[] }) {
+export function ServiceCarousel({
+  services,
+  headingLevel: Heading = "h3",
+}: {
+  services: Service[];
+  headingLevel?: "h2" | "h3";
+}) {
   const [api, setApi] = useState<CarouselApi>();
   const [selected, setSelected] = useState(0);
 
@@ -121,12 +127,12 @@ export function ServiceCarousel({ services }: { services: Service[] }) {
                 )}
               </div>
               <div data-service-copy className="absolute inset-x-0 bottom-0 p-6 pt-14 md:p-7">
-                <h3
+                <Heading
                   lang="de"
                   className="break-words hyphens-auto font-display text-xl font-extrabold leading-tight text-brand-foreground lg:text-2xl"
                 >
                   {service.title}
-                </h3>
+                </Heading>
                 <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-white/85">
                   {service.short_text}
                 </p>

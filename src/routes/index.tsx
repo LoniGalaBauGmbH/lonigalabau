@@ -45,11 +45,11 @@ const partnersQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Loni Galabau GmbH – Ihr Garten, unsere Leidenschaft" },
+      { title: "Garten- und Landschaftsbau Hattersheim | Loni GalaBau" },
       {
         name: "description",
         content:
-          "Garten- und Landschaftsbau aus Hattersheim am Main. Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten und mehr.",
+          "Garten- und Landschaftsbau aus Hattersheim am Main: Gartengestaltung, Pflasterarbeiten, Naturstein, Rasen und Zäune im Rhein-Main-Gebiet. Projekt anfragen.",
       },
     ],
   }),
@@ -180,14 +180,14 @@ function HomePage() {
           </div>
           <div className="home-hero-copy max-w-5xl animate-fade-up">
             <h1 lang="de" className="home-hero-title display break-words hyphens-auto text-white">
-              Ihr Garten
-              <br />
-              <span className="text-white">unsere Leidenschaft</span>
+              Garten- und <br />
+              <span className="text-white">Landschaftsbau</span>
             </h1>
 
             <p className="home-hero-description max-w-2xl text-white/90 font-normal">
-              Garten- und Landschaftsbau aus Hattersheim für das Rhein-Main-Gebiet. Wir gestalten
-              Gärten, Terrassen und Außenanlagen – passend zu Ihrem Grundstück und Ihrem Alltag.
+              Aus Hattersheim am Main für Frankfurt und das Rhein-Main-Gebiet. Wir gestalten Ihren
+              Garten, bauen Terrassen und pflastern Einfahrten – passend zu Ihrem Grundstück und
+              Ihrem Alltag.
             </p>
 
             <div className="home-hero-actions flex flex-wrap items-center">
@@ -367,8 +367,28 @@ function HomePage() {
             <div className="lg:col-span-8">
               <span className="eyebrow eyebrow-bracket text-brand">Leistungen</span>
               <h2 className="display text-[clamp(2.5rem,6vw,5.5rem)] mt-6 text-brand">
-                Unsere Gewerke
+                Gärten und Außenanlagen
               </h2>
+              <p className="mt-6 max-w-2xl text-base text-foreground/75 leading-relaxed">
+                Von der{" "}
+                <Link
+                  to="/leistungen/$slug"
+                  params={{ slug: "gartengestaltung" }}
+                  className="underline underline-offset-4 hover:text-brand"
+                >
+                  Gartengestaltung
+                </Link>{" "}
+                bis zu{" "}
+                <Link
+                  to="/leistungen/$slug"
+                  params={{ slug: "pflasterarbeiten" }}
+                  className="underline underline-offset-4 hover:text-brand"
+                >
+                  Pflasterarbeiten
+                </Link>
+                : Wir stimmen Flächen, Bepflanzung und Technik aufeinander ab. Auch einzelne
+                Arbeiten an einem bestehenden Garten können Sie bei uns anfragen.
+              </p>
             </div>
             <div className="lg:col-span-4 lg:text-right">
               <Link

@@ -7,7 +7,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { getJobBySlug, createApplication } from "@/lib/site.functions";
 import { applicationSchema } from "@/lib/validators";
 import { validateApplicationDocument } from "@/lib/application-document";
-import { canonicalUrl, safeJsonLd } from "@/lib/seo";
+import { canonicalUrl, safeJsonLd, xmlEscape } from "@/lib/seo";
 import { ApplicationUpload } from "@/components/site/ApplicationUpload";
 
 const jobQuery = (slug: string) =>
@@ -22,7 +22,9 @@ export const Route = createFileRoute("/jobs/$slug")({
     const loaderData = loaded as { title: string; location: string | null } | undefined;
     return {
       meta: [
-        { title: `${loaderData?.title || "Stellenangebot"} – Loni GalaBau GmbH` },
+        {
+          title: `${loaderData?.title || "Stellenangebot"} in ${loaderData?.location || "Hattersheim am Main"} | Loni GalaBau`,
+        },
         {
           name: "description",
           content: loaderData
@@ -111,7 +113,16 @@ function Page() {
             "@context": "https://schema.org",
             "@type": "JobPosting",
             title: job.title,
-            description: job.description,
+            description: [
+              ["Aufgaben", job.description],
+              ["Anforderungen", job.requirements],
+            ]
+              .filter(([, text]) => text?.trim())
+              .map(
+                ([heading, text]) =>
+                  `<h2>${heading}</h2><p>${xmlEscape(text!).replace(/\r?\n/g, "<br>")}</p>`,
+              )
+              .join(""),
             datePosted: job.created_at,
             employmentType: job.employment_type === "Vollzeit" ? "FULL_TIME" : undefined,
             hiringOrganization: {

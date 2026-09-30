@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import { serviceTopics } from "@/lib/service-topics";
 import { ServiceProjectPhotos } from "@/components/site/ServiceProjectPhotos";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
@@ -313,9 +314,9 @@ function ServicePage({
                   <ShieldCheck className="h-5 w-5 text-brand" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-display font-bold text-xs uppercase tracking-wider text-brand">
+                  <p className="font-display font-bold text-xs uppercase tracking-wider text-brand">
                     Persönlich koordiniert
-                  </h4>
+                  </p>
                   <p className="text-[12px] text-foreground/60 leading-relaxed">
                     Wir stimmen Arbeitsschritte, Material und Maschineneinsatz auf Ihr Projekt ab.
                     Sie haben einen persönlichen Ansprechpartner.
@@ -380,9 +381,9 @@ function ServicePage({
                   <s.Icon className="h-5 w-5 text-brand" strokeWidth={1.8} />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="font-display font-extrabold text-brand text-base md:text-lg leading-tight">
+                  <p className="font-display font-extrabold text-brand text-base md:text-lg leading-tight">
                     {s.v}
-                  </h3>
+                  </p>
                   <p className="text-[12px] text-foreground/60 leading-relaxed font-sans">
                     {s.sub}
                   </p>
@@ -406,9 +407,9 @@ function ServicePage({
               <span className="text-[10px] tracking-[0.24em] uppercase text-accent font-display font-semibold">
                 Qualität & Anspruch
               </span>
-              <h3 className="font-serif font-semibold text-2xl md:text-3xl text-brand-foreground leading-tight">
+              <h2 className="font-serif font-semibold text-2xl md:text-3xl text-brand-foreground leading-tight">
                 Worauf wir bei Ihrem Vorhaben achten.
-              </h3>
+              </h2>
               <p className="text-sm text-brand-foreground/75 leading-relaxed font-sans">
                 Wir betrachten Ihren Außenbereich als Ganzes: Nutzung, Gelände, Materialien und
                 Pflegeaufwand. Daraus entwickeln wir gemeinsam eine passende Umsetzung.
@@ -429,7 +430,7 @@ function ServicePage({
             <div className="lg:col-span-8 space-y-6">
               <span className="eyebrow eyebrow-bracket text-brand/70">Über die Leistung</span>
               <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand leading-tight">
-                Was zu Ihrem Grundstück passt.
+                {serviceTopics[slug]?.heading ?? `${data.title} für Ihr Grundstück`}
               </h2>
               <div className="text-base md:text-lg text-foreground/80 leading-[1.85] whitespace-pre-line font-sans space-y-4">
                 {data.long_text || data.short_text}
@@ -454,7 +455,7 @@ function ServicePage({
                 Was wir abdecken.
               </h2>
               <p className="text-sm text-foreground/60 mt-2">
-                Unser vollumfängliches Leistungsspektrum im Detail.
+                Welche Arbeiten sinnvoll sind, klären wir anhand Ihres Grundstücks und Vorhabens.
               </p>
             </div>
 
@@ -546,7 +547,7 @@ function ServicePage({
           <div className="mb-16">
             <span className="eyebrow eyebrow-bracket text-accent">Strukturierter Ablauf</span>
             <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand mt-4">
-              In vier Schritten zum Meisterwerk.
+              So setzen wir Ihr Vorhaben um.
             </h2>
             <p className="text-sm text-foreground/60 mt-2">
               Ein durchdachter und transparenter Ablauf für planbare Bauphasen.
@@ -872,7 +873,7 @@ function RelatedServices({ slug }: { slug: string }) {
               <div>
                 <span className="eyebrow eyebrow-bracket text-brand/70">Dienstleistungen</span>
                 <h2 className="font-serif font-semibold text-2xl md:text-3xl text-brand mt-2">
-                  Weitere Fachbereiche
+                  Passende Leistungen für Ihr Vorhaben
                 </h2>
               </div>
               <Link

@@ -13,7 +13,7 @@ const svcNaturstein = projectPhotos[19].src;
 export const Route = createFileRoute("/ueber-uns")({
   head: () => ({
     meta: [
-      { title: "Über uns – Loni Galabau GmbH" },
+      { title: "Unser Gartenbau-Team aus Hattersheim | Loni GalaBau" },
       {
         name: "description",
         content:

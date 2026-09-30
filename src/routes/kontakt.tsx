@@ -12,11 +12,11 @@ import { ContactAttachments } from "@/components/site/ContactAttachments";
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
-      { title: "Kontakt – Loni Galabau GmbH" },
+      { title: "Kontakt & Projektanfrage | Loni GalaBau Hattersheim" },
       {
         name: "description",
         content:
-          "Sprechen Sie mit Loni Galabau in Hattersheim. Persönliche Beratung, faire Angebote und schnelle Rückmeldung – telefonisch, per E-Mail oder Formular.",
+          "Ihr Gartenprojekt in Hattersheim und Rhein-Main: Loni GalaBau telefonisch, per E-Mail oder Formular kontaktieren. Fotos und Angaben zum Vorhaben mitsenden.",
       },
     ],
   }),

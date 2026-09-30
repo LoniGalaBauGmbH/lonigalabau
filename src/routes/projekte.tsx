@@ -12,8 +12,12 @@ const q = queryOptions({ staleTime: 60_000, queryKey: ["projects"], queryFn: () 
 export const Route = createFileRoute("/projekte")({
   head: () => ({
     meta: [
-      { title: "Projekte – Loni Galabau GmbH" },
-      { name: "description", content: "Eine Auswahl realisierter Gärten und Außenanlagen." },
+      { title: "Gartenbau-Referenzen: Gärten & Außenanlagen | Loni GalaBau" },
+      {
+        name: "description",
+        content:
+          "Eigene Projektfotos von Loni GalaBau: Gärten, Terrassen, Pflasterflächen und Natursteinarbeiten. Entdecken Sie Materialien und Einblicke in die Ausführung.",
+      },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(q),
@@ -63,7 +67,7 @@ function Page() {
                     {p.location}
                   </span>
                 )}
-                <h3 className="font-serif text-3xl mt-2">{p.title}</h3>
+                <h2 className="font-serif text-3xl mt-2">{p.title}</h2>
                 <p className="mt-3 opacity-80 leading-relaxed">{p.description}</p>
                 <Link
                   to="/projekte/$id"

@@ -23,7 +23,16 @@ export const Route = createFileRoute("/projekte_/$id")({
           loaderData?.description || "Einblicke in unsere Arbeit im Garten- und Landschaftsbau.",
       },
       ...(loaderData?.images?.[0]
-        ? [{ property: "og:image", content: new URL(loaderData.images[0], canonicalUrl("/")).href }]
+        ? [
+            {
+              property: "og:image",
+              content: new URL(loaderData.images[0], canonicalUrl("/")).href,
+            },
+            {
+              name: "twitter:image",
+              content: new URL(loaderData.images[0], canonicalUrl("/")).href,
+            },
+          ]
         : []),
     ],
   }),
