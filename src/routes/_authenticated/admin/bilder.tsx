@@ -1,3 +1,4 @@
+import { publicImageToDataUrl as fileToBase64 } from "@/lib/public-image-upload";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -24,15 +25,6 @@ import {
   Layers,
   Users,
 } from "lucide-react";
-
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = () => reject(new Error("Lesefehler"));
-    reader.readAsDataURL(file);
-  });
-}
 
 export const Route = createFileRoute("/_authenticated/admin/bilder")({
   component: Page,

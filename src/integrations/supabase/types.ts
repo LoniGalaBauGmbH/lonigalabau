@@ -138,21 +138,42 @@ export type Database = {
       };
       email_delivery: {
         Row: {
+          contact_request_id: string | null;
+          application_id: string | null;
           email_id: string;
           occurred_at: string;
           status: string;
         };
         Insert: {
+          contact_request_id?: string | null;
+          application_id?: string | null;
           email_id: string;
           occurred_at: string;
           status: string;
         };
         Update: {
+          contact_request_id?: string | null;
+          application_id?: string | null;
           email_id?: string;
           occurred_at?: string;
           status?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "email_delivery_contact_request_id_fkey";
+            columns: ["contact_request_id"];
+            isOneToOne: false;
+            referencedRelation: "contact_requests";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "email_delivery_application_id_fkey";
+            columns: ["application_id"];
+            isOneToOne: false;
+            referencedRelation: "applications";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       form_rate_limits: {
         Row: {
@@ -386,6 +407,16 @@ export type Database = {
       };
       record_email_delivery: {
         Args: { p_at: string; p_id: string; p_status: string };
+        Returns: undefined;
+      };
+      record_submission_email_delivery: {
+        Args: {
+          p_at: string;
+          p_id: string;
+          p_status: string;
+          p_source: string | null;
+          p_submission_id: string | null;
+        };
         Returns: undefined;
       };
     };

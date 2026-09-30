@@ -33,7 +33,7 @@ export function PageShell({
       >
         {children}
       </main>
-      <Footer />
+      <Footer showContactCta={path !== "/kontakt"} />
       <WhatsAppButton />
     </div>
   );

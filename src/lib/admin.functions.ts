@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireAdmin } from "@/integrations/supabase/admin-middleware";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
-import { serviceSchema, jobSchema, projectSchema } from "@/lib/validators";
+import { serviceSchema, jobSchema, projectSchema, publicImageUrlSchema } from "@/lib/validators";
 import { notifySavedSubmission } from "@/lib/submission-notification.server";
 
 export const adminSendSubmissionNotification = createServerFn({ method: "POST" })
@@ -246,7 +246,7 @@ export const adminUpdateContactStatus = createServerFn({ method: "POST" })
 
 export const adminUpdateSiteImages = createServerFn({ method: "POST" })
   .middleware([requireAdmin])
-  .inputValidator((d: unknown) => z.record(z.string().max(2048)).parse(d))
+  .inputValidator((d: unknown) => z.record(publicImageUrlSchema).parse(d))
   .handler(async ({ data }) => {
     const clean: Record<string, string> = {};
     for (const [k, v] of Object.entries(data)) {
@@ -291,7 +291,9 @@ export const adminUploadFile = createServerFn({ method: "POST" })
 
 export const adminUpdateSitePartners = createServerFn({ method: "POST" })
   .middleware([requireAdmin])
-  .inputValidator((d: unknown) => z.array(z.object({ name: z.string(), src: z.string() })).parse(d))
+  .inputValidator((d: unknown) =>
+    z.array(z.object({ name: z.string(), src: publicImageUrlSchema })).parse(d),
+  )
   .handler(async ({ data }) => {
     const { error } = await supabaseAdmin
       .from("site_settings")

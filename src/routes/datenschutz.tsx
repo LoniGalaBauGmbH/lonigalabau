@@ -22,7 +22,7 @@ const SECTIONS = [
   [
     "hosting",
     "Bereitstellung der Website",
-    "Beim Abruf werden insbesondere IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browserinformationen und technische Fehlerdaten verarbeitet, um die Website auszuliefern und Angriffe abzuwehren. Die Veröffentlichung erfolgt über Sites von OpenAI unter Einsatz der Cloudflare-Infrastruktur. Grundlage ist unser berechtigtes Interesse an einer sicheren und funktionsfähigen Website (Art. 6 Abs. 1 lit. f DSGVO).",
+    "Beim Abruf werden insbesondere IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browserinformationen und technische Fehlerdaten verarbeitet, um die Website auszuliefern und Angriffe abzuwehren. Die Veröffentlichung erfolgt über Sites von OpenAI unter Einsatz der Cloudflare-Infrastruktur. Zum Schutz vor automatisierten Zugriffen setzt die Hosting-Infrastruktur das Cookie __cf_bm ein. Es läuft laut Cloudflare nach 30 Minuten Inaktivität ab und dient nicht der Werbemessung. Grundlage ist unser berechtigtes Interesse an einer sicheren und funktionsfähigen Website (Art. 6 Abs. 1 lit. f DSGVO).",
   ],
   [
     "anfragen",
@@ -37,7 +37,12 @@ const SECTIONS = [
   [
     "dienstleister",
     "Datenbank und E-Mail-Dienste",
-    "Anfragen, Bewerbungen und Anhänge werden im zugriffsgeschützten Supabase-Projekt der Website gespeichert. Für dieses Projekt ist die Region EU-West (Irland) eingerichtet. Benachrichtigungen einschließlich der eingereichten Unterlagen werden über Resend an unser internes Postfach webseite@loni-galabau.de übermittelt. Die Bearbeitung im Postfach erfolgt über Microsoft 365. Diese technischen Dienstleister erhalten die für ihre jeweilige Aufgabe erforderlichen Daten. Eine EU-Region schließt mögliche Zugriffe aus anderen Ländern, beispielsweise für Support, nicht grundsätzlich aus.",
+    "Anfragen, Bewerbungen und Anhänge werden im zugriffsgeschützten Supabase-Projekt der Website gespeichert. Für dieses Projekt ist die Region EU-West (Irland) eingerichtet. Über Resend erhalten Sie eine automatische Eingangsbestätigung an die angegebene E-Mail-Adresse. Die Nachricht enthält eine Vorgangsnummer und Hinweise zur weiteren Bearbeitung. Wir speichern Empfängeradresse, vorbereiteten Bestätigungstext, Versandkennung und Zustellungsstatus, um den Versand nachvollziehen und bei Fehlern wiederholen zu können. Öffnungs- und Klicktracking sind deaktiviert; Logos und Bilder sind direkt in die E-Mail eingebettet. Interne Benachrichtigungen einschließlich der eingereichten Unterlagen werden ebenfalls über Resend an webseite@loni-galabau.de übermittelt. Die Bearbeitung im Postfach erfolgt über Microsoft 365. Öffentliche Website-Bilder werden teilweise ebenfalls aus unserem Supabase-Speicher geladen. Dabei erhält Supabase die für die Bildauslieferung erforderlichen Verbindungsdaten. Diese technischen Dienstleister erhalten die für ihre jeweilige Aufgabe erforderlichen Daten. Eine EU-Region schließt mögliche Zugriffe aus anderen Ländern, beispielsweise für Support, nicht grundsätzlich aus.",
+  ],
+  [
+    "missbrauchsschutz",
+    "Schutz der Formulare vor Missbrauch",
+    "Zur Begrenzung automatisierter oder wiederholter Einsendungen verarbeiten wir vorübergehend Ihre IP-Adresse und die eingegebene E-Mail-Adresse. In der Datenbank werden daraus mit einem geheimen Schlüssel abgeleitete Kennwerte gespeichert, nicht die IP-Adresse im Klartext. Die Zähler gelten für 15 Minuten; abgelaufene Einträge werden beim nächsten Formularaufruf bereinigt. Sie dienen ausschließlich dem Schutz der Formulare und des E-Mail-Versands. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Es wird kein externer CAPTCHA-Dienst eingebunden.",
   ],
   [
     "ausland",
@@ -52,7 +57,7 @@ const SECTIONS = [
   [
     "browser",
     "Lokale Speicherung im Browser",
-    "Die Anmeldung im Adminbereich verwendet technisch notwendige Sitzungsdaten. Auf ausdrücklichen Wunsch können Sie einen Gartenplaner-Entwurf für bis zu sieben Tage auf Ihrem Gerät speichern. Name, E-Mail, Telefon, Anschrift, Freitext, Termindetails und Anhänge werden dabei nicht gespeichert. Sie können den Entwurf im Gartenplaner oder über die Browser-Einstellungen löschen. Der Zugriff auf notwendige Speicherdaten richtet sich nach § 25 Abs. 2 TDDDG; für die ausdrücklich angeforderte Entwurfsfunktion erfolgt die Speicherung erst durch Ihren Klick.",
+    "Die Anmeldung im Adminbereich verwendet technisch notwendige Sitzungsdaten. Auf ausdrücklichen Wunsch können Sie einen Gartenplaner-Entwurf auf Ihrem Gerät speichern. Er ist sieben Tage wiederherstellbar. Abgelaufene oder ungültige Entwürfe werden beim nächsten Aufruf des Gartenplaners entfernt. Name, E-Mail, Telefon, Anschrift, Freitext, Termindetails und Anhänge werden dabei nicht gespeichert. Sie können den Entwurf im Gartenplaner oder über die Browser-Einstellungen löschen. Der Zugriff auf notwendige Speicherdaten richtet sich nach § 25 Abs. 2 Nr. 2 TDDDG; für die ausdrücklich angeforderte Entwurfsfunktion erfolgt die Speicherung erst durch Ihren Klick.",
   ],
   [
     "externe",
@@ -105,7 +110,7 @@ function DatenschutzPage() {
                 <p className="mt-4 leading-relaxed text-foreground/85">{text}</p>
               </article>
             ))}
-            <p className="text-sm text-foreground/75">Stand: 29. September 2026</p>
+            <p className="text-sm text-foreground/75">Stand: 30. September 2026</p>
           </div>
         </div>
       </section>

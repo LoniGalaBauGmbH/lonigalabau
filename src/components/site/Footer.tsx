@@ -27,35 +27,37 @@ const navLinks: [string, string][] = [
   ["/downloads", "Downloads"],
 ];
 
-export function Footer() {
+export function Footer({ showContactCta = true }: { showContactCta?: boolean }) {
   const { images } = useSiteImages();
 
   return (
     <footer className="bg-brand text-brand-foreground [&_h2]:text-brand-foreground [&_h3]:text-brand-foreground">
       {/* Top CTA bar */}
-      <div className="border-b border-brand-foreground/10">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <span className="eyebrow opacity-60">Kontakt</span>
-            <h3 className="font-display uppercase tracking-tight text-2xl md:text-3xl mt-2">
-              Bereit für Ihr Gartenprojekt?
-            </h3>
+      {showContactCta && (
+        <div className="border-b border-brand-foreground/10">
+          <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <span className="eyebrow opacity-60">Kontakt</span>
+              <h3 className="font-display uppercase tracking-tight text-2xl md:text-3xl mt-2">
+                Bereit für Ihr Gartenprojekt?
+              </h3>
+            </div>
+            <Link
+              to="/kontakt"
+              onClick={(e) => {
+                if (typeof window !== "undefined") {
+                  e.preventDefault();
+                  window.dispatchEvent(new Event("loni:open-inquiry"));
+                }
+              }}
+              className="group inline-flex items-center gap-3 bg-accent text-brand px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest hover:bg-brand-foreground transition-colors"
+            >
+              Anfrage stellen
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
           </div>
-          <Link
-            to="/kontakt"
-            onClick={(e) => {
-              if (typeof window !== "undefined") {
-                e.preventDefault();
-                window.dispatchEvent(new Event("loni:open-inquiry"));
-              }
-            }}
-            className="group inline-flex items-center gap-3 bg-accent text-brand px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-widest hover:bg-brand-foreground transition-colors"
-          >
-            Anfrage stellen
-            <span className="transition-transform group-hover:translate-x-1">→</span>
-          </Link>
         </div>
-      </div>
+      )}
 
       {/* Main grid */}
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">

@@ -60,6 +60,13 @@ export function DeleteSubmission({
               setError("");
               try {
                 await remove({ data: { table, id, confirmation: "LÖSCHEN" } });
+                try {
+                  localStorage.removeItem(
+                    `${table === "applications" ? "ats" : "crm"}-notes-${id}`,
+                  );
+                } catch {
+                  // The saved record is already deleted even if browser storage is unavailable.
+                }
                 setOpen(false);
                 onDeleted();
               } catch (e) {

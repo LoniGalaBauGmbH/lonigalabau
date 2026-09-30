@@ -39,7 +39,7 @@ export async function persistContactSubmission(
       phone: data.phone || null,
       subject: data.subject || null,
       message: data.message,
-      image_paths: [...data.image_paths, ...uploaded],
+      image_paths: uploaded,
     });
     if (error)
       throw new Error(

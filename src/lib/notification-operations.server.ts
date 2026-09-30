@@ -51,7 +51,11 @@ export async function notificationOperations(request: Request): Promise<Response
     return new Response(null, { status: 413 });
   const raw = await request.text();
   if (raw.length > 65536) return new Response(null, { status: 413 });
-  let event: { type?: string; created_at?: string; data?: { email_id?: string } };
+  let event: {
+    type?: string;
+    created_at?: string;
+    data?: { email_id?: string; tags?: Record<string, unknown> };
+  };
   try {
     new Webhook(secret).verify(raw, {
       "svix-id": request.headers.get("svix-id") || "",
@@ -82,10 +86,18 @@ export async function notificationOperations(request: Request): Promise<Response
   )
     return new Response(null, { status: 400 });
   // No addresses, message bodies or attachments are stored from the provider event.
-  const { error } = await supabaseAdmin.rpc("record_email_delivery", {
+  const source = event.data.tags?.source;
+  const submissionId = event.data.tags?.submission_id;
+  const tagged =
+    (source === "contact_requests" || source === "applications") &&
+    typeof submissionId === "string" &&
+    /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(submissionId);
+  const { error } = await supabaseAdmin.rpc("record_submission_email_delivery", {
     p_id: event.data.email_id,
     p_status: status,
     p_at: event.created_at,
+    p_source: tagged ? source : null,
+    p_submission_id: tagged ? submissionId : null,
   });
   return new Response(null, { status: error ? 503 : 204 });
 }

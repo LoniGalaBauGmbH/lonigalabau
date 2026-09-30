@@ -16,9 +16,10 @@ export function CookieBanner() {
           solchen Diensten ist daher nicht erforderlich.
         </DialogDescription>
         <p className="text-sm leading-relaxed">
-          Eine Admin-Anmeldung benötigt Sitzungsdaten. Gartenplaner-Entwürfe werden nur gespeichert,
-          wenn Sie selbst „Entwurf speichern“ wählen. Sie können diese im Gartenplaner wieder
-          löschen.
+          Die Hosting-Infrastruktur nutzt das Sicherheits-Cookie __cf_bm zum Schutz vor
+          automatisierten Zugriffen (30 Minuten Inaktivität). Eine Admin-Anmeldung benötigt
+          Sitzungsdaten. Gartenplaner-Entwürfe werden nur gespeichert, wenn Sie selbst „Entwurf
+          speichern“ wählen. Sie können diese im Gartenplaner wieder löschen.
         </p>
         <a href="/datenschutz" className="text-sm underline underline-offset-4">
           Datenschutzerklärung lesen

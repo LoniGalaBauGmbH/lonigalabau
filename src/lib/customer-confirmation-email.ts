@@ -59,13 +59,13 @@ export function renderCustomerConfirmation(input: ConfirmationInput) {
         ],
       ];
   const inspirationTitle = application
-    ? "Gutes Handwerk.<br>Ein starkes Team."
-    : "Aus einer Idee wird<br>Ihr Lieblingsplatz.";
+    ? "Ihre Bewerbung.<br>Unser nächster Schritt."
+    : "Ihr Vorhaben.<br>Persönlich besprochen.";
   const inspiration = application
-    ? "Garten- und Landschaftsbau ist Teamarbeit. Lernen Sie die Menschen kennen, die bei Loni gemeinsam anpacken."
-    : "Ob Terrasse, Bepflanzung oder ein ganz neuer Garten: Seit 2011 sind wir im Garten- und Landschaftsbau tätig. Mit Erfahrung und einem Blick fürs Detail begleiten wir Ihr Vorhaben.";
-  const cta = application ? "Unser Team kennenlernen" : "Unsere Projekte entdecken";
-  const url = input.siteOrigin + (application ? "/ueber-uns" : "/projekte");
+    ? "Wenn für die Prüfung Ihrer Bewerbung noch Angaben fehlen, melden wir uns bei Ihnen. Sie brauchen Ihre Unterlagen nicht erneut zu senden."
+    : "Wir prüfen Ihre Angaben und klären mit Ihnen, welche Informationen für den nächsten Schritt benötigt werden. Eine Beauftragung entsteht erst durch eine gesonderte Vereinbarung.";
+  const cta = "Kontakt zu Ihrer Anfrage";
+  const url = input.siteOrigin + "/kontakt";
   const attachments = input.attachmentCount
     ? `${input.attachmentCount} ${input.attachmentCount === 1 ? "Anhang" : "Anhänge"} erhalten`
     : "Keine Anhänge beigefügt";

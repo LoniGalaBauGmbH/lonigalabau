@@ -2,6 +2,27 @@ import { z } from "zod";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "./contact-attachments";
 import { applicationDocumentSchema } from "./application-document";
 
+export const publicImageUrlSchema = z
+  .string()
+  .trim()
+  .max(2048)
+  .refine((value) => {
+    if (!value) return true;
+    if (value.startsWith("/") && !value.startsWith("//") && !/[\\\s]/.test(value)) return true;
+    try {
+      const url = new URL(value);
+      return (
+        url.protocol === "https:" &&
+        !url.username &&
+        !url.password &&
+        url.origin === "https://fvctfguvupdcscthrxeb.supabase.co" &&
+        /^\/storage\/v1\/object\/public\/(?:service-images|project-images)\//.test(url.pathname)
+      );
+    } catch {
+      return false;
+    }
+  }, "Bitte ein Bild hochladen oder einen lokalen Bildpfad verwenden. Externe Bildanbieter sind deaktiviert.");
+
 export const contactSchema = z.object({
   name: z.string().trim().min(1, "Name erforderlich").max(200),
   email: z.string().trim().email("Ungültige E-Mail").max(320),
@@ -16,6 +37,11 @@ export const contactSchema = z.object({
 export type ContactInput = z.infer<typeof contactSchema>;
 export const contactSubmissionSchema = contactSchema
   .extend({
+    // A visitor cannot claim a file uploaded with another private request.
+    image_paths: z
+      .array(z.string())
+      .max(0, "Bitte laden Sie Anhänge mit dieser Anfrage neu hoch.")
+      .default([]),
     attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
   })
   .refine((data) => data.image_paths.length + data.attachments.length <= MAX_CONTACT_FILES, {
@@ -54,7 +80,7 @@ export const serviceSchema = z.object({
   category: z.string().trim().max(120).optional().or(z.literal("")),
   short_text: z.string().trim().max(500).default(""),
   long_text: z.string().trim().max(10000).default(""),
-  hero_image: z.string().max(500).nullable().optional().or(z.literal("")),
+  hero_image: publicImageUrlSchema.nullable().optional(),
   sort_order: z.coerce.number().int().default(0),
   active: z.boolean().default(true),
   meta_title: z.string().trim().max(200).optional().or(z.literal("")),
@@ -104,7 +130,7 @@ export const projectSchema = z.object({
   service_id: z.string().uuid().optional().or(z.literal("")),
   location: z.string().trim().max(200).optional().or(z.literal("")),
   description: z.string().trim().max(10000).default(""),
-  images: z.array(z.string()).default([]),
+  images: z.array(publicImageUrlSchema).default([]),
   featured: z.boolean().default(false),
   active: z.boolean().default(true),
 });

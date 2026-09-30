@@ -1,16 +1,22 @@
+import { publicImageToDataUrl as fileToBase64 } from "@/lib/public-image-upload";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
-import { adminListServices, adminUpsertService, adminDeleteService, adminUploadFile } from "@/lib/admin.functions";
+import {
+  adminListServices,
+  adminUpsertService,
+  adminDeleteService,
+  adminUploadFile,
+} from "@/lib/admin.functions";
 import { serviceSchema, type ServiceInput } from "@/lib/validators";
-import { 
-  Sprout, 
-  Layers, 
-  Plus, 
-  Edit3, 
-  Trash2, 
-  X, 
+import {
+  Sprout,
+  Layers,
+  Plus,
+  Edit3,
+  Trash2,
+  X,
   AlertCircle,
   Upload,
   ToggleLeft,
@@ -23,37 +29,28 @@ import {
   Globe,
   HelpCircle,
   MapPin,
-  Award
+  Award,
 } from "lucide-react";
 import { toast } from "sonner";
-
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = () => reject(new Error("Lesefehler"));
-    reader.readAsDataURL(file);
-  });
-}
 
 export const Route = createFileRoute("/_authenticated/admin/leistungen")({
   component: Page,
 });
 
-const empty: ServiceInput = { 
-  slug: "", 
-  title: "", 
-  category: "Gartengestaltung", 
-  short_text: "", 
-  long_text: "", 
-  hero_image: "", 
-  sort_order: 0, 
+const empty: ServiceInput = {
+  slug: "",
+  title: "",
+  category: "Gartengestaltung",
+  short_text: "",
+  long_text: "",
+  hero_image: "",
+  sort_order: 0,
   active: true,
   meta_title: "",
   meta_description: "",
   geo_focus: "",
   custom_benefits: [],
-  custom_faqs: []
+  custom_faqs: [],
 };
 
 function Page() {
@@ -62,12 +59,12 @@ function Page() {
   const del = useServerFn(adminDeleteService);
   const uploadFn = useServerFn(adminUploadFile);
   const qc = useQueryClient();
-  
-  const { data, isLoading } = useQuery({ 
-    queryKey: ["admin-services"], 
-    queryFn: () => list() 
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["admin-services"],
+    queryFn: () => list(),
   });
-  
+
   const [editing, setEditing] = useState<ServiceInput | null>(null);
   const [showSeo, setShowSeo] = useState(false);
   const [showBenefits, setShowBenefits] = useState(false);
@@ -87,8 +84,8 @@ function Page() {
       toast.success(editing.id ? "Leistung aktualisiert" : "Gewerk erfolgreich angelegt");
       setEditing(null);
       qc.invalidateQueries({ queryKey: ["admin-services"] });
-    } catch (e2: unknown) { 
-      setErr(e2 instanceof Error ? e2.message : "Fehler bei der Validierung."); 
+    } catch (e2: unknown) {
+      setErr(e2 instanceof Error ? e2.message : "Fehler bei der Validierung.");
       toast.error("Validierungsfehler");
     } finally {
       setSaving(false);
@@ -96,7 +93,12 @@ function Page() {
   }
 
   async function remove(id: string) {
-    if (!confirm("Möchten Sie dieses Gewerk wirklich löschen? Dies blendet alle verknüpften Detailseiten aus.")) return;
+    if (
+      !confirm(
+        "Möchten Sie dieses Gewerk wirklich löschen? Dies blendet alle verknüpften Detailseiten aus.",
+      )
+    )
+      return;
     try {
       await del({ data: { id } });
       toast.success("Dienstleistung gelöscht");
@@ -126,7 +128,7 @@ function Page() {
       const base64 = await fileToBase64(file);
 
       const { url } = await uploadFn({
-        data: { bucket: "service-images", path, base64, contentType: file.type }
+        data: { bucket: "service-images", path, base64, contentType: file.type },
       });
 
       setEditing({ ...editing, hero_image: url });
@@ -150,7 +152,7 @@ function Page() {
     setEditing({
       ...editing,
       title: val,
-      slug: editing.id ? editing.slug : generatedSlug
+      slug: editing.id ? editing.slug : generatedSlug,
     });
   };
 
@@ -159,15 +161,20 @@ function Page() {
       {/* HEADER */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
         <div>
-          <p className="text-xs uppercase tracking-widest text-accent font-semibold font-display">Services & Gewerke</p>
-          <h1 className="font-serif text-3xl md:text-4xl mt-1 text-brand tracking-tight">Leistungs-Manager</h1>
+          <p className="text-xs uppercase tracking-widest text-accent font-semibold font-display">
+            Services & Gewerke
+          </p>
+          <h1 className="font-serif text-3xl md:text-4xl mt-1 text-brand tracking-tight">
+            Leistungs-Manager
+          </h1>
           <p className="opacity-60 text-sm mt-2 max-w-xl">
-            Verwalten Sie die Haupt-Dienstleistungen und Gewerke Ihrer Webseite. Steuern Sie Beschreibungen und Bildmaterial.
+            Verwalten Sie die Haupt-Dienstleistungen und Gewerke Ihrer Webseite. Steuern Sie
+            Beschreibungen und Bildmaterial.
           </p>
         </div>
 
-        <button 
-          onClick={() => setEditing({ ...empty })} 
+        <button
+          onClick={() => setEditing({ ...empty })}
           className="flex items-center gap-2 bg-brand text-brand-foreground px-5 py-3 rounded-full text-xs font-bold font-display uppercase tracking-wider hover:bg-brand/90 transition shadow-sm self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" /> Neues Gewerk
@@ -183,19 +190,25 @@ function Page() {
             <div className="bg-surface rounded-3xl p-16 text-center border border-brand/5 shadow-sm">
               <Sprout className="w-12 h-12 text-brand/20 mx-auto mb-4" />
               <h3 className="font-serif text-lg text-brand">Keine Leistungen angelegt</h3>
-              <p className="text-xs text-foreground/50 mt-1">Klicken Sie oben auf "Neues Gewerk", um Ihren ersten Service zu veröffentlichen.</p>
+              <p className="text-xs text-foreground/50 mt-1">
+                Klicken Sie oben auf "Neues Gewerk", um Ihren ersten Service zu veröffentlichen.
+              </p>
             </div>
           ) : (
             data?.map((s) => (
-              <div 
-                key={s.id} 
+              <div
+                key={s.id}
                 className="bg-surface border border-brand/10 rounded-3xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-shadow shadow-sm"
               >
                 <div className="flex items-center gap-4 min-w-0">
                   {/* Image Thumbnail */}
                   <div className="w-16 h-12 rounded-xl bg-background border border-brand/5 overflow-hidden shrink-0 flex items-center justify-center">
                     {s.hero_image ? (
-                      <img src={s.hero_image} alt={s.title} className="w-full h-full object-cover" />
+                      <img
+                        src={s.hero_image}
+                        alt={s.title}
+                        className="w-full h-full object-cover"
+                      />
                     ) : (
                       <ImageIcon className="w-5 h-5 text-foreground/35" />
                     )}
@@ -203,22 +216,32 @@ function Page() {
 
                   <div className="min-w-0 space-y-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="font-serif text-lg font-bold text-brand leading-snug">{s.title}</h3>
+                      <h3 className="font-serif text-lg font-bold text-brand leading-snug">
+                        {s.title}
+                      </h3>
                       <span className="text-[9px] bg-brand/5 text-brand/75 font-mono px-2 py-0.5 rounded-md border border-brand/10">
                         /{s.slug}
                       </span>
                     </div>
                     <div className="flex items-center gap-3 text-xs text-foreground/50 flex-wrap">
-                      <span className="flex items-center gap-1 font-semibold text-accent"><Layers className="w-3.5 h-3.5" /> {s.category || "Gartengestaltung"}</span>
-                      <span className="flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5" /> Sortier-Index: {s.sort_order}</span>
+                      <span className="flex items-center gap-1 font-semibold text-accent">
+                        <Layers className="w-3.5 h-3.5" /> {s.category || "Gartengestaltung"}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <TrendingUp className="w-3.5 h-3.5" /> Sortier-Index: {s.sort_order}
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4 justify-between md:justify-end shrink-0 border-t md:border-t-0 pt-4 md:pt-0 border-brand/5">
-                  <span className={`text-[9px] font-display font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${
-                    s.active ? "bg-emerald-100 text-emerald-800" : "bg-foreground/10 text-foreground/50"
-                  }`}>
+                  <span
+                    className={`text-[9px] font-display font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${
+                      s.active
+                        ? "bg-emerald-100 text-emerald-800"
+                        : "bg-foreground/10 text-foreground/50"
+                    }`}
+                  >
                     {s.active ? "Aktiv" : "Inaktiv"}
                   </span>
 
@@ -232,22 +255,27 @@ function Page() {
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>
-                    <button 
-                      onClick={() => setEditing({
-                        ...s,
-                        meta_title: s.meta_title || "",
-                        meta_description: s.meta_description || "",
-                        geo_focus: s.geo_focus || "",
-                        custom_benefits: s.custom_benefits || [],
-                        custom_faqs: s.custom_faqs || []
-                      } as any)} 
+                    <button
+                      onClick={() =>
+                        setEditing({
+                          ...s,
+                          category: s.category || "",
+                          meta_title: s.meta_title || "",
+                          meta_description: s.meta_description || "",
+                          geo_focus: s.geo_focus || "",
+                          custom_benefits: serviceSchema.shape.custom_benefits.parse(
+                            s.custom_benefits || [],
+                          ),
+                          custom_faqs: serviceSchema.shape.custom_faqs.parse(s.custom_faqs || []),
+                        })
+                      }
                       className="p-2.5 hover:bg-brand/5 border border-brand/10 text-brand rounded-full transition"
                       title="Bearbeiten"
                     >
                       <Edit3 className="w-4 h-4" />
                     </button>
-                    <button 
-                      onClick={() => remove(s.id!)} 
+                    <button
+                      onClick={() => remove(s.id!)}
                       className="p-2.5 hover:bg-red-50 border border-red-100 text-red-600 rounded-full transition"
                       title="Löschen"
                     >
@@ -272,7 +300,6 @@ function Page() {
 
           {/* Drawer */}
           <div className="fixed top-0 right-0 h-full w-full max-w-xl bg-surface shadow-2xl z-50 flex flex-col border-l border-brand/10 animate-slide-in-right">
-
             {/* Sticky Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-brand/10 shrink-0 bg-surface">
               <div>
@@ -295,7 +322,6 @@ function Page() {
             {/* Scrollable Content */}
             <form onSubmit={save} className="flex-1 overflow-y-auto">
               <div className="px-6 py-6 space-y-5">
-
                 {err && (
                   <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-2xl text-sm flex items-start gap-2">
                     <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
@@ -322,7 +348,9 @@ function Page() {
                       pattern="^[a-z0-9\\-]+$"
                       title="Nur Kleinbuchstaben, Ziffern und Bindestrich"
                       value={editing.slug}
-                      onChange={(e) => setEditing({ ...editing, slug: e.target.value.toLowerCase().trim() })}
+                      onChange={(e) =>
+                        setEditing({ ...editing, slug: e.target.value.toLowerCase().trim() })
+                      }
                       placeholder="natursteinarbeiten"
                       className="i font-mono"
                     />
@@ -345,7 +373,9 @@ function Page() {
                     <input
                       type="number"
                       value={editing.sort_order}
-                      onChange={(e) => setEditing({ ...editing, sort_order: parseInt(e.target.value) || 0 })}
+                      onChange={(e) =>
+                        setEditing({ ...editing, sort_order: parseInt(e.target.value) || 0 })
+                      }
                       className="i"
                     />
                   </F>
@@ -353,11 +383,17 @@ function Page() {
 
                 {/* Hero Image */}
                 <div className="space-y-2">
-                  <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">Hero-Bild</span>
+                  <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">
+                    Hero-Bild
+                  </span>
                   <div className="flex gap-4 items-center p-4 border border-brand/10 bg-background rounded-2xl">
                     <div className="w-20 h-14 rounded-xl bg-surface border overflow-hidden flex items-center justify-center shrink-0">
                       {editing.hero_image ? (
-                        <img src={editing.hero_image} alt="Vorschau" className="w-full h-full object-cover" />
+                        <img
+                          src={editing.hero_image}
+                          alt="Vorschau"
+                          className="w-full h-full object-cover"
+                        />
                       ) : (
                         <ImageIcon className="w-6 h-6 text-foreground/30" />
                       )}
@@ -374,10 +410,20 @@ function Page() {
                         <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-brand/20 hover:bg-brand/5 cursor-pointer text-xs font-semibold text-brand transition">
                           <Upload className="w-3.5 h-3.5" />
                           {uploading ? "Hochladen..." : "Hochladen"}
-                          <input type="file" accept="image/*" onChange={handleImageUpload} disabled={uploading} className="hidden" />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                            disabled={uploading}
+                            className="hidden"
+                          />
                         </label>
                         {editing.hero_image && (
-                          <button type="button" onClick={() => setEditing({ ...editing, hero_image: "" })} className="text-xs text-red-500 hover:underline">
+                          <button
+                            type="button"
+                            onClick={() => setEditing({ ...editing, hero_image: "" })}
+                            className="text-xs text-red-500 hover:underline"
+                          >
                             Entfernen
                           </button>
                         )}
@@ -419,11 +465,19 @@ function Page() {
                         <Globe className="w-4 h-4" />
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold font-display uppercase tracking-wider text-brand">SEO & Geo-Marketing</h4>
-                        <p className="text-[10px] text-foreground/45 mt-0.5">Suchmaschinen-Metadaten & Regionaler Fokus</p>
+                        <h4 className="text-xs font-bold font-display uppercase tracking-wider text-brand">
+                          SEO & Geo-Marketing
+                        </h4>
+                        <p className="text-[10px] text-foreground/45 mt-0.5">
+                          Suchmaschinen-Metadaten & Regionaler Fokus
+                        </p>
                       </div>
                     </div>
-                    {showSeo ? <ChevronUp className="w-4 h-4 text-brand/50" /> : <ChevronDown className="w-4 h-4 text-brand/50" />}
+                    {showSeo ? (
+                      <ChevronUp className="w-4 h-4 text-brand/50" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-brand/50" />
+                    )}
                   </button>
 
                   {showSeo && (
@@ -434,7 +488,9 @@ function Page() {
                             <input
                               type="text"
                               value={editing.meta_title || ""}
-                              onChange={(e) => setEditing({ ...editing, meta_title: e.target.value })}
+                              onChange={(e) =>
+                                setEditing({ ...editing, meta_title: e.target.value })
+                              }
                               placeholder="z.B. Pflasterarbeiten Frankfurt | Loni"
                               className="i text-xs"
                             />
@@ -459,7 +515,9 @@ function Page() {
                           <textarea
                             rows={3}
                             value={editing.meta_description || ""}
-                            onChange={(e) => setEditing({ ...editing, meta_description: e.target.value })}
+                            onChange={(e) =>
+                              setEditing({ ...editing, meta_description: e.target.value })
+                            }
                             placeholder="z.B. Exklusive Pflasterarbeiten in Frankfurt & Hattersheim. ✔ Meisterbetrieb ✔ Festpreisgarantie. Jetzt anfragen!"
                             className="i resize-none text-xs"
                           />
@@ -485,17 +543,27 @@ function Page() {
                         <Award className="w-4 h-4" />
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold font-display uppercase tracking-wider text-brand">Vorteile & Leistungsumfang</h4>
-                        <p className="text-[10px] text-foreground/45 mt-0.5">Ersetzt den standardmäßig angezeigten Leistungsumfang (max. 6 Boxen)</p>
+                        <h4 className="text-xs font-bold font-display uppercase tracking-wider text-brand">
+                          Vorteile & Leistungsumfang
+                        </h4>
+                        <p className="text-[10px] text-foreground/45 mt-0.5">
+                          Ersetzt den standardmäßig angezeigten Leistungsumfang (max. 6 Boxen)
+                        </p>
                       </div>
                     </div>
-                    {showBenefits ? <ChevronUp className="w-4 h-4 text-brand/50" /> : <ChevronDown className="w-4 h-4 text-brand/50" />}
+                    {showBenefits ? (
+                      <ChevronUp className="w-4 h-4 text-brand/50" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-brand/50" />
+                    )}
                   </button>
 
                   {showBenefits && (
                     <div className="p-4 border border-brand/10 bg-background/10 rounded-2xl space-y-4 animate-fade-down">
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] uppercase tracking-widest text-accent font-bold">Leistungsumfang ({(editing.custom_benefits || []).length} / 6)</span>
+                        <span className="text-[10px] uppercase tracking-widest text-accent font-bold">
+                          Leistungsumfang ({(editing.custom_benefits || []).length} / 6)
+                        </span>
                         <button
                           type="button"
                           disabled={(editing.custom_benefits || []).length >= 6}
@@ -512,16 +580,22 @@ function Page() {
 
                       {(editing.custom_benefits || []).length === 0 ? (
                         <p className="text-xs text-foreground/45 text-center py-4 bg-background/20 rounded-xl">
-                          Keine benutzerdefinierten Vorteile. Es wird der Standard-Leistungsumfang des Gewerks angezeigt.
+                          Keine benutzerdefinierten Vorteile. Es wird der Standard-Leistungsumfang
+                          des Gewerks angezeigt.
                         </p>
                       ) : (
                         <div className="space-y-3">
                           {(editing.custom_benefits || []).map((item, idx) => (
-                            <div key={idx} className="p-3.5 bg-surface border border-brand/5 rounded-xl space-y-2 relative group shadow-sm">
+                            <div
+                              key={idx}
+                              className="p-3.5 bg-surface border border-brand/5 rounded-xl space-y-2 relative group shadow-sm"
+                            >
                               <button
                                 type="button"
                                 onClick={() => {
-                                  const current = (editing.custom_benefits || []).filter((_, i) => i !== idx);
+                                  const current = (editing.custom_benefits || []).filter(
+                                    (_, i) => i !== idx,
+                                  );
                                   setEditing({ ...editing, custom_benefits: current });
                                 }}
                                 className="absolute top-2 right-2 text-red-500 hover:text-red-700 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -529,7 +603,7 @@ function Page() {
                               >
                                 <Trash2 className="w-3.5 h-3.5" />
                               </button>
-                              
+
                               <input
                                 required
                                 type="text"
@@ -574,17 +648,27 @@ function Page() {
                         <HelpCircle className="w-4 h-4" />
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold font-display uppercase tracking-wider text-brand">Fragen & Antworten (FAQ)</h4>
-                        <p className="text-[10px] text-foreground/45 mt-0.5">Ersetzt die Standard-Häufigen Fragen (FAQs) dieses Gewerks</p>
+                        <h4 className="text-xs font-bold font-display uppercase tracking-wider text-brand">
+                          Fragen & Antworten (FAQ)
+                        </h4>
+                        <p className="text-[10px] text-foreground/45 mt-0.5">
+                          Ersetzt die Standard-Häufigen Fragen (FAQs) dieses Gewerks
+                        </p>
                       </div>
                     </div>
-                    {showFaqs ? <ChevronUp className="w-4 h-4 text-brand/50" /> : <ChevronDown className="w-4 h-4 text-brand/50" />}
+                    {showFaqs ? (
+                      <ChevronUp className="w-4 h-4 text-brand/50" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-brand/50" />
+                    )}
                   </button>
 
                   {showFaqs && (
                     <div className="p-4 border border-brand/10 bg-background/10 rounded-2xl space-y-4 animate-fade-down">
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] uppercase tracking-widest text-accent font-bold">FAQ-Liste ({(editing.custom_faqs || []).length})</span>
+                        <span className="text-[10px] uppercase tracking-widest text-accent font-bold">
+                          FAQ-Liste ({(editing.custom_faqs || []).length})
+                        </span>
                         <button
                           type="button"
                           onClick={() => {
@@ -600,16 +684,22 @@ function Page() {
 
                       {(editing.custom_faqs || []).length === 0 ? (
                         <p className="text-xs text-foreground/45 text-center py-4 bg-background/20 rounded-xl">
-                          Keine benutzerdefinierten FAQs. Es werden die Standard-FAQs des Gewerks angezeigt.
+                          Keine benutzerdefinierten FAQs. Es werden die Standard-FAQs des Gewerks
+                          angezeigt.
                         </p>
                       ) : (
                         <div className="space-y-3">
                           {(editing.custom_faqs || []).map((item, idx) => (
-                            <div key={idx} className="p-3.5 bg-surface border border-brand/5 rounded-xl space-y-2 relative group shadow-sm">
+                            <div
+                              key={idx}
+                              className="p-3.5 bg-surface border border-brand/5 rounded-xl space-y-2 relative group shadow-sm"
+                            >
                               <button
                                 type="button"
                                 onClick={() => {
-                                  const current = (editing.custom_faqs || []).filter((_, i) => i !== idx);
+                                  const current = (editing.custom_faqs || []).filter(
+                                    (_, i) => i !== idx,
+                                  );
                                   setEditing({ ...editing, custom_faqs: current });
                                 }}
                                 className="absolute top-2 right-2 text-red-500 hover:text-red-700 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -653,12 +743,20 @@ function Page() {
                 <div className="flex items-center justify-between gap-4 p-3.5 rounded-2xl border border-brand/10 bg-background/50">
                   <div>
                     <p className="text-sm font-semibold text-brand">Gewerk online anzeigen?</p>
-                    <p className="text-xs opacity-50">Inaktive Gewerke werden auf der Webseite ausgeblendet.</p>
+                    <p className="text-xs opacity-50">
+                      Inaktive Gewerke werden auf der Webseite ausgeblendet.
+                    </p>
                   </div>
-                  <button type="button" onClick={() => setEditing({ ...editing, active: !editing.active })} className="transition-colors shrink-0">
-                    {editing.active
-                      ? <ToggleRight className="w-10 h-10 text-brand" />
-                      : <ToggleLeft className="w-10 h-10 text-foreground/30" />}
+                  <button
+                    type="button"
+                    onClick={() => setEditing({ ...editing, active: !editing.active })}
+                    className="transition-colors shrink-0"
+                  >
+                    {editing.active ? (
+                      <ToggleRight className="w-10 h-10 text-brand" />
+                    ) : (
+                      <ToggleLeft className="w-10 h-10 text-foreground/30" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -678,8 +776,13 @@ function Page() {
                   className="bg-brand text-brand-foreground px-8 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand/90 transition shadow-sm disabled:opacity-50 flex items-center gap-2"
                 >
                   {saving ? (
-                    <><div className="size-3.5 rounded-full border border-white/30 border-t-white animate-spin" />Speichert...</>
-                  ) : "Gewerk speichern"}
+                    <>
+                      <div className="size-3.5 rounded-full border border-white/30 border-t-white animate-spin" />
+                      Speichert...
+                    </>
+                  ) : (
+                    "Gewerk speichern"
+                  )}
                 </button>
               </div>
             </form>
@@ -711,7 +814,9 @@ function Page() {
 function F({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block space-y-1">
-      <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">{label}</span>
+      <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">
+        {label}
+      </span>
       {children}
     </label>
   );

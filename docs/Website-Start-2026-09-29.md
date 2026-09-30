@@ -138,3 +138,96 @@ Weiterführend:
 [Passwortschutz](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection),
 [RLS-Infohinweis](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy),
 [Postgres-Sicherheitsupdate](https://supabase.com/changelog/postgres-15-19-17-11-breaking-changes).
+
+## Datenschutz-Nachprüfung am 30. September 2026
+
+Der Betreiber hat bestätigt, dass AVV/DPA und verbindliche Löschfristen noch nicht
+geprüft beziehungsweise festgelegt sind. Die folgenden technischen Prüfungen sind
+keine vollständige rechtliche Freigabe.
+
+### Geprüft und verbessert
+
+- Vier lokale WOFF2-Schriften, kein Google-Fonts-Abruf; Schriftquellen per CSP auf
+  die eigene Website begrenzt. Tracking-Einstellungen in der aktiven Datenbank leer,
+  keine aktiven Analyse-/Werbeskripte. Karten und WhatsApp sind externe Links ohne
+  eingebettete Drittanbieter-Widgets. Der Hosting-Schutz setzt das Cookie `__cf_bm`
+  mit 30 Minuten Laufzeit; Datenschutzseite und Cookieinformationen nennen es jetzt.
+- Öffentliche Bilder sind auf eigene Pfade und die beiden öffentlichen Bild-Buckets
+  des eigenen Supabase-Projekts begrenzt (Validierung und CSP). Externe Links erhalten
+  durch `Referrer-Policy: no-referrer` keine Herkunfts-URL. Die untersuchten 135 lokalen
+  Rasterbilder enthielten keine EXIF-, XMP- oder IPTC-Metadaten. Künftige JPG-/PNG-/WebP-
+  Fotos werden beim normalen Admin-Upload neu kodiert; SVG/GIF und direkte API-Uploads
+  sind von dieser Browser-Neukodierung nicht erfasst.
+- RLS für alle zehn Tabellen aktiv; private Anfragen, Bewerbungen, Zustellstatus und
+  Quoten per öffentlicher REST-Anfrage nicht lesbar (HTTP 401). Browserrollen dürfen
+  diese Tabellen nicht verändern. Bewerbungs- und Anfrage-Buckets bleiben privat;
+  Administratoren erhalten kurzlebige Downloadlinks. Öffentliche Registrierung ist aus.
+- Gäste können keine schon vorhandenen privaten Dateipfade an eine neue Anfrage
+  hängen. Es werden ausschließlich neu validierte Uploads dieses Vorgangs gespeichert.
+  Allgemeine Server-Fehlerprotokolle enthalten keine vollständigen Fehlerobjekte mehr.
+- Gartenplaner-Entwürfe enthalten keine Kontakt-/Freitextdaten. Manipulierte, ungültige
+  oder abgelaufene Entwürfe werden beim nächsten Öffnen entfernt. Sieben Tage sind die
+  Wiederherstellungsfrist, kein versprochenes Hintergrund-Löschintervall im Browser.
+- Neue Zustellstatus-Daten sind ihrem Vorgang zugeordnet. Die additive Migration
+  `supabase/bootstrap/updates/privacy_delivery_cleanup.sql` wurde angewandt. Eine
+  ausdrücklich ausgeführte Vorgangslöschung entfernt auch zugehörige Zustellstatus;
+  verspätete Webhooks erzeugen sie nicht erneut. Alte Statuszeilen werden anhand der
+  gespeicherten Provider-IDs ebenfalls bei der Vorgangslöschung bereinigt. Verknüpfung,
+  terminale Status, beide Löschwege, späte Ereignisse und Rollen wurden mit synthetischen
+  Daten in einer vollständig zurückgerollten Transaktion geprüft. Keine Kundendaten
+  wurden bei dieser Prüfung gelöscht, keine Testmails versendet.
+- Resend-Domain verifiziert, Versandregion eu-west-1, Öffnungs- und Klicktracking
+  deaktiviert. Die API hat verpflichtendes TLS (`enforced`) für die Domain angenommen.
+  Empfänger ohne TLS können dadurch nicht beliefert werden. Kein erneuter echter
+  Zustelltest in dieser Datenschutzprüfung. Logo/Bild bleiben in Bestätigungsmails
+  eingebettet; neue Mails konzentrieren sich auf Eingang und Bearbeitung des Vorgangs.
+
+Die Kontaktseite wurde auf eine klare Kontaktspalte und ein Formular reduziert.
+Anhänge, Pflichtfeldprüfung und Versand bleiben erhalten; zusätzliche Kontaktkarten,
+die dekorative Kartenfläche und die doppelte Abschluss-Aufforderung entfallen.
+
+### Noch vom Betreiber zu erledigen
+
+1. **Verträge und Transfers:** Tatsächliche Vertragspartner und AVV/DPA für Sites/OpenAI,
+   Supabase, Resend und Microsoft 365 dokumentieren; Unterauftragnehmer, Regionen,
+   Drittlandtransfers und passende Garantien prüfen. Eine EU-Versandregion allein
+   bedeutet nicht, dass sämtliche Verarbeitung ausschließlich in der EU erfolgt.
+2. **Löschkonzept:** Zweckende, Fristen, Zuständigkeit und Ausnahmen für Anfragen,
+   Bewerbungen, E-Mails, Anhänge, Exporte und Backups verbindlich festlegen. Als
+   Arbeitsvorschlag: erledigte Anfragen ohne Auftrag nach sechs Monaten prüfen;
+   abgelehnte Bewerbungen regelmäßig sechs Monate nach Abschluss löschen, soweit
+   keine dokumentierte andere Rechtsgrundlage oder Rechtsverfolgung entgegensteht.
+   Das ist keine pauschale gesetzliche Frist. Vertrags-/Buchhaltungsunterlagen getrennt
+   nach den tatsächlich geltenden Aufbewahrungspflichten behandeln. Noch keine
+   automatische Kundenlöschung aktiviert. Provider-Protokolle/Postfächer separat erfassen.
+3. **Zugänge:** Beide Administratoren haben derzeit keinen verifizierten zweiten Faktor.
+   Authenticator im Adminbereich einrichten. Supabase meldet weiterhin fehlenden
+   Schutz gegen geleakte Passwörter; Verfügbarkeit im gebuchten Tarif prüfen und
+   aktivieren. Rotation des früher geteilten Resend-Schlüssels ist nicht nachgewiesen.
+4. **Patch und Wiederherstellung:** Live-Datenbankstand 17.6.1.166; Sicherheitsupdate
+   auf den angebotenen aktuellen Stand nach DB-/Storage-Sicherung und Restore-Test
+   planen. Das Upgrade wurde in diesem Arbeitsschritt nicht ausgeführt.
+5. **Organisation:** Verarbeitungsverzeichnis, Betroffenenanfragen, Zugriffsrechte in
+   Microsoft 365 und Nachweise zur Veröffentlichung von Mitarbeiter-/Projektfotos
+   prüfen. Öffentlich angebotene Urkunden nochmals auf erforderliche Personenangaben
+   prüfen; nicht alle Namen, geschäftlichen Kontaktdaten und Unterschriften sind geschwärzt.
+
+### Hosting und Performance
+
+Sites liefert die aktuelle Website über Cloudflare aus. Sechs einfache HTTP-Abrufe
+aus der lokalen Verbindung ergaben für `/kontakt` 158–186 ms, `/datenschutz` 133–186 ms
+und `/` 306 ms beim zweiten beziehungsweise 2.469 ms beim ersten Abruf bis zum ersten
+Antwortbyte. Das ist eine kleine Momentaufnahme, keine Core-Web-Vitals-Messung und
+kein belastbarer Anbieter-Vergleich. Verbindungsaufbau, Cache und Anwendung können
+den ersten Abruf beeinflussen. Vercel und Netlify unterstützen TanStack Start; für
+den dauerhaften Firmenbetrieb ist ein eigenes Hostingkonto organisatorisch sinnvoll.
+Ein Wechsel garantiert keine bessere LCP/INP. DNS und Hosting wurden nicht geändert.
+
+Quellen:
+[Lokale Google-Fonts-Einbindung](https://datenschutz.hessen.de/datenschutz/internet-und-medien/google-fonts-abmahnungen),
+[Cloudflare-Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/),
+[Resend TLS](https://resend.com/docs/dashboard/domains/tls),
+[Resend DPA](https://resend.com/legal/dpa),
+[Resend Tracking](https://resend.com/docs/dashboard/domains/tracking),
+[Vercel TanStack Start](https://vercel.com/kb/guide/deploy-a-tanstack-start-app-to-vercel),
+[Netlify TanStack Start](https://docs.netlify.com/build/frameworks/framework-setup-guides/tanstack-start/).

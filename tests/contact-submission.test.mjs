@@ -115,28 +115,26 @@ test("a partial upload failure removes only files created by that submission", a
   assert.equal(h.records.length, 0);
 });
 
-test("a failed contact insert removes newly uploaded files but not older configurator photos", async () => {
+test("a failed contact insert removes newly uploaded files", async () => {
   const h = harness({ failedInsert: true });
-  const previous = "11111111-1111-4111-8111-111111111111.jpg";
-  await assert.rejects(
-    () => persistContactSubmission(h.client, { ...lead, image_paths: [previous] }),
-    /gespeichert/,
-  );
+  await assert.rejects(() => persistContactSubmission(h.client, lead), /gespeichert/);
   assert.equal(h.removals.join(), h.uploads[0].path);
-  assert.ok(!h.removals.includes(previous));
 });
 
-test("existing contact and configurator submissions remain compatible without new attachments", async () => {
+test("a public submission cannot claim another request's existing private attachment", async () => {
   const h = harness();
   const previous = "11111111-1111-4111-8111-111111111111.jpg";
-  await persistContactSubmission(h.client, {
-    name: lead.name,
-    email: lead.email,
-    message: lead.message,
-    image_paths: [previous],
-  });
-  assert.equal(h.records[0].image_paths[0], previous);
-  assert.equal(h.uploads.length, 0);
+  await assert.rejects(
+    () =>
+      persistContactSubmission(h.client, {
+        name: lead.name,
+        email: lead.email,
+        message: lead.message,
+        image_paths: [previous],
+      }),
+    /neu hoch/,
+  );
+  assert.equal(h.records.length + h.uploads.length + h.removals.length, 0);
 });
 
 test("limits and formats are enforced in both the picker and submission schema", () => {

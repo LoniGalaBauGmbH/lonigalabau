@@ -516,8 +516,7 @@ export function ProjectInquiryForm({
                             >
                               Datenschutzhinweise (neuer Tab)
                             </a>{" "}
-                            gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung
-                            dieser Anfrage zu. *
+                            gelesen und zur Kenntnis genommen. *
                           </label>
                         </div>
                         {errors.consent && (

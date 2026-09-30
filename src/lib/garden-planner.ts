@@ -615,7 +615,8 @@ export function validatePlannerStep(s: PlannerState, step: string): PlannerError
     if (!["E-Mail", "Telefon"].includes(s.channel)) e.channel = "Bitte einen Kontaktweg wählen.";
     if (s.channel === "Telefon" && s.phone.replace(/\D/g, "").length < 6)
       e.phone = "Für einen Rückruf benötigen wir Ihre Telefonnummer.";
-    if (!s.consent) e.consent = "Bitte stimmen Sie der Bearbeitung Ihrer Anfrage zu.";
+    if (!s.consent)
+      e.consent = "Bitte bestätigen Sie, dass Sie die Datenschutzhinweise gelesen haben.";
   }
   return e;
 }

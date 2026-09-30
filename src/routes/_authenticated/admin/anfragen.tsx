@@ -529,7 +529,9 @@ function Page() {
               <div className="space-y-3">
                 <p className="text-[10px] uppercase tracking-widest text-foreground/40 font-bold flex items-center justify-between">
                   <span>Interne Notizen</span>
-                  <span className="text-[9px] opacity-60 normal-case">(Lokal gespeichert)</span>
+                  <span className="text-[9px] opacity-60 normal-case">
+                    (Im geschützten Adminbereich gespeichert)
+                  </span>
                 </p>
                 <textarea
                   rows={4}

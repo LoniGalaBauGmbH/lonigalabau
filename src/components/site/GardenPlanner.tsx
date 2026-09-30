@@ -257,21 +257,36 @@ export function GardenPlanner() {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(DRAFT_KEY);
-      if (raw && raw.length < 50000) {
+      if (raw) {
+        if (raw.length >= 50000) throw new Error("Invalid draft");
         const data = JSON.parse(raw);
-        if (data.version === 1 && Date.now() - data.savedAt < 7 * 24 * 60 * 60 * 1000) {
+        if (
+          data.version === 1 &&
+          Number.isFinite(data.savedAt) &&
+          data.savedAt <= Date.now() &&
+          Date.now() - data.savedAt < 7 * 24 * 60 * 60 * 1000
+        ) {
           const parsed = plannerDraftSchema.safeParse(data.form);
           if (parsed.success) {
             const safe = privatePlannerDraft(parsed.data);
             setDraft(safe);
-            localStorage.setItem(DRAFT_KEY, JSON.stringify({ ...data, form: safe }));
+            localStorage.setItem(
+              DRAFT_KEY,
+              JSON.stringify({ version: 1, savedAt: data.savedAt, form: safe }),
+            );
+          } else {
+            localStorage.removeItem(DRAFT_KEY);
           }
         } else {
           localStorage.removeItem(DRAFT_KEY);
         }
       }
     } catch {
-      /* Storage is optional; the planner works without it. */
+      try {
+        localStorage.removeItem(DRAFT_KEY);
+      } catch {
+        /* Storage is optional. */
+      }
     }
   }, []);
   useEffect(() => {
@@ -329,7 +344,7 @@ export function GardenPlanner() {
         JSON.stringify({ version: 1, savedAt: Date.now(), form: safe }),
       );
       setNotice(
-        "Entwurf für 7 Tage auf diesem Gerät gespeichert. Name, Kontaktdaten, Anschrift, Freitext, Termindetails und Anhänge werden nicht mitgespeichert.",
+        "Entwurf auf diesem Gerät gespeichert und 7 Tage wiederherstellbar. Abgelaufene Entwürfe werden beim nächsten Öffnen des Planers entfernt. Name, Kontaktdaten, Anschrift, Freitext, Termindetails und Anhänge werden nicht mitgespeichert.",
       );
     } catch {
       setNotice(
@@ -931,8 +946,7 @@ export function GardenPlanner() {
                               >
                                 Datenschutzhinweise
                               </Link>{" "}
-                              gelesen und stimme der Verarbeitung meiner Angaben und Anhänge zur
-                              Bearbeitung dieser Anfrage zu. *
+                              gelesen und zur Kenntnis genommen. *
                             </span>
                           </label>
                           {errors.consent && (

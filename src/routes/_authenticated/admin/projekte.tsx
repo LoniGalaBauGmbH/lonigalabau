@@ -1,52 +1,45 @@
+import { publicImageToDataUrl as fileToBase64 } from "@/lib/public-image-upload";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
-import { 
-  adminListProjects, 
-  adminUpsertProject, 
+import {
+  adminListProjects,
+  adminUpsertProject,
   adminDeleteProject,
   adminListServices,
-  adminUploadFile
+  adminUploadFile,
 } from "@/lib/admin.functions";
 import { projectSchema, type ProjectInput } from "@/lib/validators";
-import { 
-  Hammer, 
-  MapPin, 
-  Plus, 
-  Edit3, 
-  Trash2, 
-  X, 
+import {
+  Hammer,
+  MapPin,
+  Plus,
+  Edit3,
+  Trash2,
+  X,
   AlertCircle,
   Upload,
   ToggleLeft,
   ToggleRight,
   Image as ImageIcon,
   Layers,
-  Star
+  Star,
 } from "lucide-react";
 import { toast } from "sonner";
 
 /** Reads a File as a base64 data-URL string */
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = () => reject(new Error("Datei konnte nicht gelesen werden"));
-    reader.readAsDataURL(file);
-  });
-}
 
 export const Route = createFileRoute("/_authenticated/admin/projekte")({ component: Page });
 
-const empty: ProjectInput = { 
-  title: "", 
-  service_id: "", 
-  location: "", 
-  description: "", 
-  images: [], 
-  featured: false, 
-  active: true 
+const empty: ProjectInput = {
+  title: "",
+  service_id: "",
+  location: "",
+  description: "",
+  images: [],
+  featured: false,
+  active: true,
 };
 
 function Page() {
@@ -57,14 +50,14 @@ function Page() {
   const uploadFn = useServerFn(adminUploadFile);
   const qc = useQueryClient();
 
-  const { data: projects, isLoading: isProjectsLoading } = useQuery({ 
-    queryKey: ["admin-projects"], 
-    queryFn: () => listProjects() 
+  const { data: projects, isLoading: isProjectsLoading } = useQuery({
+    queryKey: ["admin-projects"],
+    queryFn: () => listProjects(),
   });
 
   const { data: services } = useQuery({
     queryKey: ["admin-services-list"],
-    queryFn: () => listServices()
+    queryFn: () => listServices(),
   });
 
   const [editing, setEditing] = useState<ProjectInput | null>(null);
@@ -77,7 +70,7 @@ function Page() {
     const v = p ? { ...p } : { ...empty };
     setEditing({
       ...v,
-      service_id: v.service_id || ""
+      service_id: v.service_id || "",
     });
     setNewUrl("");
     setErr("");
@@ -91,11 +84,15 @@ function Page() {
     try {
       const parsed = projectSchema.parse(editing);
       await upsert({ data: parsed });
-      toast.success(editing.id ? "Referenzprojekt aktualisiert" : "Neues Referenzprojekt veröffentlicht");
+      toast.success(
+        editing.id ? "Referenzprojekt aktualisiert" : "Neues Referenzprojekt veröffentlicht",
+      );
       setEditing(null);
       qc.invalidateQueries({ queryKey: ["admin-projects"] });
-    } catch (e2: unknown) { 
-      setErr(e2 instanceof Error ? e2.message : "Ein unerwarteter Validierungsfehler ist aufgetreten."); 
+    } catch (e2: unknown) {
+      setErr(
+        e2 instanceof Error ? e2.message : "Ein unerwarteter Validierungsfehler ist aufgetreten.",
+      );
       toast.error("Validierung fehlgeschlagen");
     } finally {
       setSaving(false);
@@ -103,7 +100,12 @@ function Page() {
   }
 
   async function remove(id: string) {
-    if (!confirm("Möchten Sie dieses Referenzprojekt wirklich unwiderruflich aus dem Portfolio löschen?")) return;
+    if (
+      !confirm(
+        "Möchten Sie dieses Referenzprojekt wirklich unwiderruflich aus dem Portfolio löschen?",
+      )
+    )
+      return;
     try {
       await del({ data: { id } });
       toast.success("Referenzprojekt gelöscht");
@@ -137,7 +139,7 @@ function Page() {
         const base64 = await fileToBase64(file);
 
         const { url } = await uploadFn({
-          data: { bucket: "project-images", path, base64, contentType: file.type }
+          data: { bucket: "project-images", path, base64, contentType: file.type },
         });
         updatedImages.push(url);
       }
@@ -175,15 +177,20 @@ function Page() {
       {/* HEADER */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
         <div>
-          <p className="text-xs uppercase tracking-widest text-accent font-semibold font-display">Portfolio</p>
-          <h1 className="font-serif text-3xl md:text-4xl mt-1 text-brand tracking-tight">Referenzprojekte</h1>
+          <p className="text-xs uppercase tracking-widest text-accent font-semibold font-display">
+            Portfolio
+          </p>
+          <h1 className="font-serif text-3xl md:text-4xl mt-1 text-brand tracking-tight">
+            Referenzprojekte
+          </h1>
           <p className="opacity-60 text-sm mt-2 max-w-xl">
-            Verwalten Sie Ihre abgeschlossenen Gartenprojekte im Portfolio. Laden Sie mehrere Fotos hoch und weisen Sie diese Gewerken zu.
+            Verwalten Sie Ihre abgeschlossenen Gartenprojekte im Portfolio. Laden Sie mehrere Fotos
+            hoch und weisen Sie diese Gewerken zu.
           </p>
         </div>
 
-        <button 
-          onClick={() => open()} 
+        <button
+          onClick={() => open()}
           className="flex items-center gap-2 bg-brand text-brand-foreground px-5 py-3 rounded-full text-xs font-bold font-display uppercase tracking-wider hover:bg-brand/90 transition shadow-sm self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" /> Neues Projekt
@@ -199,28 +206,38 @@ function Page() {
             <div className="col-span-full bg-surface rounded-3xl p-16 text-center border border-brand/5 shadow-sm">
               <Hammer className="w-12 h-12 text-brand/20 mx-auto mb-4" />
               <h3 className="font-serif text-lg text-brand">Keine Referenzprojekte online</h3>
-              <p className="text-xs text-foreground/50 mt-1">Klicken Sie oben auf "Neues Projekt", um Ihre erste Gartengestaltung zu präsentieren.</p>
+              <p className="text-xs text-foreground/50 mt-1">
+                Klicken Sie oben auf "Neues Projekt", um Ihre erste Gartengestaltung zu
+                präsentieren.
+              </p>
             </div>
           ) : (
             projects?.map((p) => {
-              const linkedService = services?.find(s => s.id === p.service_id);
+              const linkedService = services?.find((s) => s.id === p.service_id);
               const previewImage = p.images && p.images.length > 0 ? p.images[0] : null;
 
               return (
-                <div 
-                  key={p.id} 
+                <div
+                  key={p.id}
                   className="bg-surface border border-brand/10 rounded-3xl overflow-hidden flex flex-col justify-between hover:shadow-md transition-all group shadow-sm"
                 >
                   {/* Photo Preview card */}
                   <div className="aspect-[4/3] w-full bg-background border-b border-brand/5 relative overflow-hidden flex items-center justify-center shrink-0">
                     {previewImage ? (
-                      <img src={previewImage} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <img
+                        src={previewImage}
+                        alt={p.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
                     ) : (
                       <ImageIcon className="w-8 h-8 text-foreground/20" />
                     )}
 
                     {p.featured && (
-                      <span className="absolute top-4 left-4 bg-amber-500 text-white p-2 rounded-full shadow-lg" title="Featured Projekt">
+                      <span
+                        className="absolute top-4 left-4 bg-amber-500 text-white p-2 rounded-full shadow-lg"
+                        title="Featured Projekt"
+                      >
                         <Star className="w-4 h-4 fill-white" />
                       </span>
                     )}
@@ -235,10 +252,20 @@ function Page() {
                   {/* Details block */}
                   <div className="p-6 flex-1 flex flex-col justify-between gap-4">
                     <div className="space-y-2">
-                      <h3 className="font-serif text-lg font-bold text-brand leading-snug">{p.title}</h3>
+                      <h3 className="font-serif text-lg font-bold text-brand leading-snug">
+                        {p.title}
+                      </h3>
                       <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-xs text-foreground/50">
-                        {p.location && <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5 text-accent" /> {p.location}</span>}
-                        {linkedService && <span className="flex items-center gap-1 font-semibold text-brand/70"><Layers className="w-3.5 h-3.5" /> {linkedService.title}</span>}
+                        {p.location && (
+                          <span className="flex items-center gap-1">
+                            <MapPin className="w-3.5 h-3.5 text-accent" /> {p.location}
+                          </span>
+                        )}
+                        {linkedService && (
+                          <span className="flex items-center gap-1 font-semibold text-brand/70">
+                            <Layers className="w-3.5 h-3.5" /> {linkedService.title}
+                          </span>
+                        )}
                       </div>
                       <p className="text-sm text-foreground/75 leading-relaxed line-clamp-3 font-light pt-1">
                         {p.description}
@@ -246,22 +273,26 @@ function Page() {
                     </div>
 
                     <div className="pt-4 border-t border-brand/5 flex items-center justify-between">
-                      <span className={`text-[9px] font-display font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${
-                        p.active ? "bg-emerald-100 text-emerald-800" : "bg-foreground/10 text-foreground/50"
-                      }`}>
+                      <span
+                        className={`text-[9px] font-display font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${
+                          p.active
+                            ? "bg-emerald-100 text-emerald-800"
+                            : "bg-foreground/10 text-foreground/50"
+                        }`}
+                      >
                         {p.active ? "Aktiv" : "Inaktiv"}
                       </span>
 
                       <div className="flex gap-2">
-                        <button 
-                          onClick={() => open(p as ProjectInput)} 
+                        <button
+                          onClick={() => open(p as ProjectInput)}
                           className="p-2 hover:bg-brand/5 border border-brand/10 text-brand rounded-full transition"
                           title="Bearbeiten"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </button>
-                        <button 
-                          onClick={() => remove(p.id!)} 
+                        <button
+                          onClick={() => remove(p.id!)}
                           className="p-2 hover:bg-red-50 border border-red-100 text-red-600 rounded-full transition"
                           title="Löschen"
                         >
@@ -288,7 +319,6 @@ function Page() {
 
           {/* Drawer panel */}
           <div className="fixed top-0 right-0 h-full w-full max-w-xl bg-surface shadow-2xl z-50 flex flex-col border-l border-brand/10 animate-slide-in-right">
-
             {/* ── Sticky Header ── */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-brand/10 shrink-0 bg-surface">
               <div>
@@ -311,7 +341,6 @@ function Page() {
             {/* ── Scrollable Content ── */}
             <form onSubmit={save} className="flex-1 overflow-y-auto">
               <div className="px-6 py-6 space-y-6">
-
                 {/* Error */}
                 {err && (
                   <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-2xl text-sm flex items-start gap-2">
@@ -341,8 +370,10 @@ function Page() {
                         className="i"
                       >
                         <option value="">Allgemein</option>
-                        {services?.map(s => (
-                          <option key={s.id} value={s.id}>{s.title}</option>
+                        {services?.map((s) => (
+                          <option key={s.id} value={s.id}>
+                            {s.title}
+                          </option>
                         ))}
                       </select>
                     </F>
@@ -389,7 +420,11 @@ function Page() {
                         key={idx}
                         className="relative aspect-square rounded-xl overflow-hidden border border-brand/10 bg-background group"
                       >
-                        <img src={imgUrl} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
+                        <img
+                          src={imgUrl}
+                          alt={`Foto ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
                         <button
                           type="button"
                           onClick={() => handleRemoveImage(idx)}
@@ -406,11 +441,13 @@ function Page() {
                     ))}
 
                     {/* Upload-Slot */}
-                    <label className={`aspect-square rounded-xl border-2 border-dashed flex flex-col items-center justify-center cursor-pointer transition ${
-                      uploading
-                        ? "border-accent/30 bg-accent/5 text-accent/50 cursor-wait"
-                        : "border-brand/20 hover:border-brand/40 bg-background hover:bg-brand/5 text-foreground/40 hover:text-brand"
-                    }`}>
+                    <label
+                      className={`aspect-square rounded-xl border-2 border-dashed flex flex-col items-center justify-center cursor-pointer transition ${
+                        uploading
+                          ? "border-accent/30 bg-accent/5 text-accent/50 cursor-wait"
+                          : "border-brand/20 hover:border-brand/40 bg-background hover:bg-brand/5 text-foreground/40 hover:text-brand"
+                      }`}
+                    >
                       <Upload className="w-5 h-5 mb-1" />
                       <span className="text-[9px] font-bold uppercase tracking-wider">
                         {uploading ? "Lädt..." : "Upload"}
@@ -449,39 +486,49 @@ function Page() {
 
                 {/* ── Toggles ── */}
                 <div className="space-y-3">
-                  <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">Einstellungen</span>
+                  <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">
+                    Einstellungen
+                  </span>
 
                   <div className="flex items-center justify-between gap-4 p-3.5 rounded-2xl border border-brand/10 bg-background/50">
                     <div>
-                      <p className="text-sm font-semibold text-brand">Auf Startseite hervorheben?</p>
-                      <p className="text-[10px] opacity-50">Zeigt das Projekt im Featured-Bereich.</p>
+                      <p className="text-sm font-semibold text-brand">
+                        Auf Startseite hervorheben?
+                      </p>
+                      <p className="text-[10px] opacity-50">
+                        Zeigt das Projekt im Featured-Bereich.
+                      </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setEditing({ ...editing, featured: !editing.featured })}
                       className="transition-colors shrink-0"
                     >
-                      {editing.featured
-                        ? <ToggleRight className="w-10 h-10 text-amber-500" />
-                        : <ToggleLeft className="w-10 h-10 text-foreground/30" />
-                      }
+                      {editing.featured ? (
+                        <ToggleRight className="w-10 h-10 text-amber-500" />
+                      ) : (
+                        <ToggleLeft className="w-10 h-10 text-foreground/30" />
+                      )}
                     </button>
                   </div>
 
                   <div className="flex items-center justify-between gap-4 p-3.5 rounded-2xl border border-brand/10 bg-background/50">
                     <div>
                       <p className="text-sm font-semibold text-brand">Projekt öffentlich listen?</p>
-                      <p className="text-[10px] opacity-50">Schaltet die Ansicht im Portfolio frei.</p>
+                      <p className="text-[10px] opacity-50">
+                        Schaltet die Ansicht im Portfolio frei.
+                      </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setEditing({ ...editing, active: !editing.active })}
                       className="transition-colors shrink-0"
                     >
-                      {editing.active
-                        ? <ToggleRight className="w-10 h-10 text-brand" />
-                        : <ToggleLeft className="w-10 h-10 text-foreground/30" />
-                      }
+                      {editing.active ? (
+                        <ToggleRight className="w-10 h-10 text-brand" />
+                      ) : (
+                        <ToggleLeft className="w-10 h-10 text-foreground/30" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -506,7 +553,9 @@ function Page() {
                       <div className="size-3.5 rounded-full border border-white/30 border-t-white animate-spin" />
                       Speichert...
                     </>
-                  ) : "Projekt speichern"}
+                  ) : (
+                    "Projekt speichern"
+                  )}
                 </button>
               </div>
             </form>
@@ -538,7 +587,9 @@ function Page() {
 function F({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block space-y-1">
-      <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">{label}</span>
+      <span className="block text-[10px] uppercase tracking-widest opacity-50 font-extrabold">
+        {label}
+      </span>
       {children}
     </label>
   );

@@ -31,6 +31,41 @@ function moduleAt(path, imports = {}, env = {}) {
 }
 const seo = moduleAt("src/lib/seo.ts");
 const policy = moduleAt("src/lib/http-policy.server.ts", { "./seo": seo });
+
+test("public image settings reject tracking origins, private buckets and origin lookalikes", () => {
+  const validators = moduleAt("src/lib/validators.ts", {
+    "./contact-attachments": moduleAt("src/lib/contact-attachments.ts"),
+    "./application-document": moduleAt("src/lib/application-document.ts"),
+  });
+  const schema = validators.publicImageUrlSchema;
+  for (const url of [
+    "",
+    "/images/team.webp",
+    "https://fvctfguvupdcscthrxeb.supabase.co/storage/v1/object/public/project-images/team.webp",
+  ]) {
+    assert.equal(schema.safeParse(url).success, true, url);
+  }
+  for (const url of [
+    "//tracker.example/pixel",
+    "/\\tracker.example/pixel",
+    "https://tracker.example/pixel",
+    "https://fvctfguvupdcscthrxeb.supabase.co.evil.test/storage/v1/object/public/project-images/a.png",
+    "https://fvctfguvupdcscthrxeb.supabase.co:8443/storage/v1/object/public/project-images/a.png",
+    "https://fvctfguvupdcscthrxeb.supabase.co/storage/v1/object/sign/cvs/private.pdf?token=x",
+  ]) {
+    assert.equal(schema.safeParse(url).success, false, url);
+  }
+  const headers = policy.secureResponse(
+    new Request("https://www.loni-galabau.de"),
+    new Response(),
+  ).headers;
+  assert.equal(headers.get("referrer-policy"), "no-referrer");
+  assert.match(headers.get("content-security-policy"), /font-src 'self'/);
+  assert.equal(
+    headers.get("content-security-policy").match(/img-src[^;]+/)[0],
+    "img-src 'self' data: blob: https://fvctfguvupdcscthrxeb.supabase.co",
+  );
+});
 test("legacy URLs preserve queries and normalize the preferred host", async () => {
   for (const [old, next] of Object.entries(seo.LEGACY_REDIRECTS)) {
     const response = await policy.publicUtilityResponse(
@@ -176,7 +211,11 @@ test("signed delivery webhooks are accepted, forged/expired/invalid events are r
   const body = JSON.stringify({
     type: "email.delivered",
     created_at: new Date().toISOString(),
-    data: { email_id: "test-id", to: ["sensitive@example.test"] },
+    data: {
+      email_id: "test-id",
+      to: ["sensitive@example.test"],
+      tags: { source: "contact_requests", submission_id: "aa000000-0000-4000-8000-000000000001" },
+    },
   });
   const request = (payload = body, date = new Date(), signature) =>
     new Request("https://site.test/api/notifications/resend", {
@@ -190,6 +229,9 @@ test("signed delivery webhooks are accepted, forged/expired/invalid events are r
     });
   assert.equal((await api.notificationOperations(request())).status, 204);
   assert.equal(calls.length, 1);
+  assert.equal(calls[0][0], "record_submission_email_delivery");
+  assert.equal(calls[0][1].p_source, "contact_requests");
+  assert.equal(calls[0][1].p_submission_id, "aa000000-0000-4000-8000-000000000001");
   assert.equal(calls[0][1].p_status, "delivered");
   assert.doesNotMatch(JSON.stringify(calls), /sensitive@/);
   assert.equal(
@@ -210,4 +252,12 @@ test("signed delivery webhooks are accepted, forged/expired/invalid events are r
     401,
   );
   assert.equal(calls.length, 1);
+  const legacy = JSON.stringify({
+    type: "email.delivered",
+    created_at: new Date().toISOString(),
+    data: { email_id: "legacy-id" },
+  });
+  assert.equal((await api.notificationOperations(request(legacy))).status, 204);
+  assert.equal(calls[1][1].p_source, null);
+  assert.equal(calls[1][1].p_submission_id, null);
 });
