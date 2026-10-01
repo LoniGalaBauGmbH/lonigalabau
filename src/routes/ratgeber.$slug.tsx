@@ -127,7 +127,7 @@ function Article() {
             </section>
             <section className="guide-services" aria-labelledby="leistungen">
               <h2 id="leistungen">Passende Leistungen</h2>
-              <p>Für die Umsetzung in Hattersheim und im Rhein-Main-Gebiet:</p>
+              <p>Für die Umsetzung Ihres Projekts – deutschlandweit:</p>
               <div>
                 {article.relatedServiceSlugs.map((slug) => (
                   <Link key={slug} to="/leistungen/$slug" params={{ slug }}>

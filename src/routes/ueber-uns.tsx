@@ -17,7 +17,7 @@ export const Route = createFileRoute("/ueber-uns")({
       {
         name: "description",
         content:
-          "Seit 2011 im Garten- und Landschaftsbau tätig. Lernen Sie das Team der Loni GalaBau GmbH aus Hattersheim am Main kennen.",
+          "Seit 2011 im Garten- und Landschaftsbau tätig, deutschlandweit im Einsatz. Lernen Sie unser Team mit Sitz in Hattersheim am Main bei Frankfurt kennen.",
       },
     ],
   }),
@@ -74,21 +74,22 @@ function AboutPage() {
       <section className="px-6 md:px-10 pt-8 md:pt-16 pb-24 md:pb-32">
         <div className="max-w-[1480px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
           <div className="lg:col-span-7">
-            <span className="eyebrow eyebrow-bracket text-accent">Über uns</span>
+            <span className="eyebrow eyebrow-bracket text-accent-ink">Über uns</span>
             <h1 className="display text-[clamp(3rem,7vw,7rem)] mt-6 text-brand">
               Wer wir
               <br />
               <span className="italic font-light text-brand-muted">wirklich</span> sind.
             </h1>
             <p className="mt-10 text-lg md:text-xl max-w-xl text-foreground/75 leading-relaxed">
-              Wir sind Loni GalaBau aus Hattersheim. Unser Team auf der Baustelle und im Büro
-              begleitet Ihr Vorhaben – vom ersten Gespräch bis zur Umsetzung.
+              Wir sind Loni GalaBau mit Sitz in Hattersheim am Main bei Frankfurt und arbeiten
+              deutschlandweit. Unser Team auf der Baustelle und im Büro begleitet Ihr Vorhaben – vom
+              ersten Gespräch bis zur Umsetzung.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
               <div className="flex items-center gap-2 text-brand">
                 <MapPin className="h-4 w-4 text-accent" strokeWidth={1.6} />
                 <span className="font-display font-semibold uppercase tracking-[0.18em]">
-                  Hattersheim · Rhein-Main
+                  Sitz in Hattersheim · Deutschlandweit tätig
                 </span>
               </div>
 
@@ -149,7 +150,7 @@ function AboutPage() {
               </p>
               <p>
                 Seit 2011 sind wir im Garten- und Landschaftsbau tätig. Heute arbeiten wir für
-                private, gewerbliche und öffentliche Auftraggeber im Rhein-Main-Gebiet.
+                private, gewerbliche und öffentliche Auftraggeber in ganz Deutschland.
               </p>
             </div>
             <Link

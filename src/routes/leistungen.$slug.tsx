@@ -42,7 +42,7 @@ import { getServiceImage } from "@/lib/service-images";
 import { ServiceFAQ } from "@/components/leistungen/ServiceFAQ";
 import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
-import { guides } from "@/lib/ratgeber";
+import { guides } from "@/lib/guide-index";
 
 const slugQuery = (slug: string) =>
   queryOptions({
@@ -87,10 +87,15 @@ export const Route = createFileRoute("/leistungen/$slug")({
     };
   },
   loader: async ({ context, params }) => {
-    void context.queryClient.prefetchQuery(relatedQuery(params.slug));
-    const data = await context.queryClient.ensureQueryData(slugQuery(params.slug));
-    if (!data) throw notFound();
-    void context.queryClient.prefetchQuery(projectsByServiceQuery(data.id));
+    // All rendered queries must be ready when the router serializes its cache.
+    const [data] = await Promise.all([
+      context.queryClient.ensureQueryData(slugQuery(params.slug)).then(async (service) => {
+        if (!service) throw notFound();
+        await context.queryClient.ensureQueryData(projectsByServiceQuery(service.id));
+        return service;
+      }),
+      context.queryClient.ensureQueryData(relatedQuery(params.slug)),
+    ]);
     return data;
   },
   component: Page,
@@ -98,7 +103,7 @@ export const Route = createFileRoute("/leistungen/$slug")({
     <PageShell>
       <div className="max-w-3xl mx-auto px-6 py-32 text-center">
         <h1 className="display text-5xl text-brand">Leistung nicht gefunden</h1>
-        <Link to="/leistungen" className="mt-6 inline-block text-accent hover:underline">
+        <Link to="/leistungen" className="mt-6 inline-block text-accent-ink hover:underline">
           ← Zurück zur Übersicht
         </Link>
       </div>
@@ -250,7 +255,7 @@ function ServicePage({
                   name: "Loni GalaBau GmbH",
                   url: canonicalUrl("/"),
                 },
-                areaServed: { "@type": "Place", name: "Rhein-Main-Gebiet" },
+                areaServed: { "@type": "Country", name: "Deutschland" },
               },
               {
                 "@type": "BreadcrumbList",
@@ -292,11 +297,11 @@ function ServicePage({
               <div className="space-y-4">
                 <div className="flex items-center gap-4 flex-wrap">
                   {data.category && (
-                    <span className="eyebrow eyebrow-bracket text-accent/90">{data.category}</span>
+                    <span className="eyebrow eyebrow-bracket text-accent-ink">{data.category}</span>
                   )}
                   {data.geo_focus && (
-                    <span className="flex items-center gap-1.5 text-[9px] uppercase tracking-widest text-accent font-bold font-display bg-brand/5 px-3 py-1 rounded-full">
-                      <MapPin className="w-3.5 h-3.5 text-accent" /> {data.geo_focus}
+                    <span className="flex items-center gap-1.5 text-[9px] uppercase tracking-widest text-accent-ink font-bold font-display bg-brand/5 px-3 py-1 rounded-full">
+                      <MapPin className="w-3.5 h-3.5 text-accent-ink" /> {data.geo_focus}
                     </span>
                   )}
                 </div>
@@ -337,7 +342,7 @@ function ServicePage({
                   href="tel:+4961909266134"
                   className="inline-flex items-center gap-2.5 border border-brand/20 text-brand px-8 py-4 rounded-full text-xs uppercase tracking-[0.2em] font-semibold hover:bg-brand/5 transition"
                 >
-                  <Phone className="h-4 w-4 text-accent" strokeWidth={1.8} />
+                  <Phone className="h-4 w-4 text-accent-ink" strokeWidth={1.8} />
                   06190 9266134
                 </a>
               </div>
@@ -350,6 +355,8 @@ function ServicePage({
                   <ProjectImage
                     src={img}
                     alt={data.title}
+                    fetchPriority="high"
+                    sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) calc(100vw - 80px), (max-width: 1560px) 40vw, 600px"
                     className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 ease-out"
                   />
                 </div>
@@ -451,7 +458,7 @@ function ServicePage({
         <section className="px-6 md:px-10 pb-24 md:pb-32">
           <div className="max-w-[1480px] mx-auto">
             <div className="mb-14">
-              <span className="eyebrow eyebrow-bracket text-accent">Leistungsumfang</span>
+              <span className="eyebrow eyebrow-bracket text-accent-ink">Leistungsumfang</span>
               <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand mt-4">
                 Was wir abdecken.
               </h2>
@@ -534,7 +541,7 @@ function ServicePage({
                   <div className="text-[10px] uppercase tracking-widest text-brand-foreground font-bold mt-1">
                     {stat.l}
                   </div>
-                  <div className="text-xs text-brand-foreground/50">{stat.sub}</div>
+                  <div className="text-xs text-brand-foreground/75">{stat.sub}</div>
                 </div>
               ))}
             </div>
@@ -546,7 +553,7 @@ function ServicePage({
       <section id="ablauf" className="px-6 md:px-10 pb-24 md:pb-32">
         <div className="max-w-[1480px] mx-auto">
           <div className="mb-16">
-            <span className="eyebrow eyebrow-bracket text-accent">Strukturierter Ablauf</span>
+            <span className="eyebrow eyebrow-bracket text-accent-ink">Strukturierter Ablauf</span>
             <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand mt-4">
               So setzen wir Ihr Vorhaben um.
             </h2>
@@ -870,14 +877,14 @@ function ServiceProjects({ serviceId }: { serviceId: string }) {
           <div className="max-w-[1480px] mx-auto">
             <div className="flex items-end justify-between flex-wrap gap-6 mb-12 pb-6">
               <div>
-                <span className="eyebrow eyebrow-bracket text-accent">Referenzen</span>
+                <span className="eyebrow eyebrow-bracket text-accent-ink">Referenzen</span>
                 <h2 className="font-serif font-semibold text-3xl md:text-4xl text-brand">
                   Einblicke in unsere Projekte.
                 </h2>
               </div>
               <Link
                 to="/projekte"
-                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
+                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent-ink transition border-b border-brand/20 pb-0.5"
               >
                 Ganzes Portfolio <ArrowRight className="h-4 w-4" />
               </Link>
@@ -907,7 +914,7 @@ function RelatedServices({ slug }: { slug: string }) {
               </div>
               <Link
                 to="/leistungen"
-                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent transition border-b border-brand/20 pb-0.5"
+                className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent-ink transition border-b border-brand/20 pb-0.5"
               >
                 Alle Gewerke <ArrowRight className="h-4 w-4" />
               </Link>

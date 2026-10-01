@@ -8,6 +8,11 @@ import { contactSchema } from "@/lib/validators";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { useContactAttachments } from "@/hooks/useContactAttachments";
 import { ContactAttachments } from "@/components/site/ContactAttachments";
+import portraitOriginal from "@/assets/about-founder-valon.webp";
+import portrait160 from "@/assets/performance/about-founder-valon-160.webp";
+import portrait320 from "@/assets/performance/about-founder-valon-320.webp";
+import portrait160Avif from "@/assets/performance/about-founder-valon-160.avif";
+import portrait320Avif from "@/assets/performance/about-founder-valon-320.avif";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
@@ -16,7 +21,7 @@ export const Route = createFileRoute("/kontakt")({
       {
         name: "description",
         content:
-          "Ihr Gartenprojekt in Hattersheim und Rhein-Main: Loni GalaBau telefonisch, per E-Mail oder Formular kontaktieren. Fotos und Angaben zum Vorhaben mitsenden.",
+          "Ihr Gartenprojekt in ganz Deutschland: Loni GalaBau telefonisch, per E-Mail oder Formular kontaktieren. Fotos und Angaben zum Vorhaben mitsenden.",
       },
     ],
   }),
@@ -79,13 +84,33 @@ function Page() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <aside aria-label="Direkter Kontakt" className="lg:col-span-4">
               <div className="flex items-center gap-4">
-                <img
-                  src={images.contact_portrait}
-                  alt="Valon Sinanaj"
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 rounded-2xl object-cover object-top"
-                />
+                <picture className="shrink-0">
+                  {images.contact_portrait === portraitOriginal && (
+                    <source
+                      type="image/avif"
+                      srcSet={`${portrait160Avif} 160w, ${portrait320Avif} 320w`}
+                      sizes="80px"
+                    />
+                  )}
+                  <img
+                    src={
+                      images.contact_portrait === portraitOriginal
+                        ? portrait160
+                        : images.contact_portrait
+                    }
+                    srcSet={
+                      images.contact_portrait === portraitOriginal
+                        ? `${portrait160} 160w, ${portrait320} 320w`
+                        : undefined
+                    }
+                    sizes="80px"
+                    decoding="async"
+                    alt="Valon Sinanaj"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 rounded-2xl object-cover object-top"
+                  />
+                </picture>
                 <div>
                   <p className="font-semibold text-brand">Valon Sinanaj</p>
                   <p className="text-sm text-foreground/70 mt-1">Ihr Ansprechpartner</p>

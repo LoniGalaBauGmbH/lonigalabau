@@ -17,8 +17,8 @@ const GENERIC: QA[] = [
     a: "Wir stimmen Leistungsumfang und Materialien mit Ihnen ab. Das Angebot beschreibt die vereinbarten Leistungen; Änderungen besprechen wir vor der Ausführung.",
   },
   {
-    q: "In welchem Umkreis sind Sie tätig?",
-    a: "Wir arbeiten im gesamten Rhein-Main-Gebiet – Hattersheim, Frankfurt, Kelkheim, Hofheim und im Main-Taunus-Kreis.",
+    q: "In welchem Gebiet sind Sie tätig?",
+    a: "Wir arbeiten deutschlandweit. Unser Firmensitz ist in Hattersheim am Main bei Frankfurt. Beschreiben Sie uns Ihr Vorhaben und den Projektort – wir stimmen die nächsten Schritte persönlich mit Ihnen ab.",
   },
   {
     q: "Welche Garantie geben Sie auf Ihre Arbeit?",
@@ -186,7 +186,7 @@ export function ServiceFAQ({
     : [...(SERVICE_FAQS[slug] ?? []), ...GENERIC].slice(0, 7);
   return (
     <div>
-      <span className="eyebrow eyebrow-bracket text-accent">FAQ</span>
+      <span className="eyebrow eyebrow-bracket text-accent-ink">FAQ</span>
       <h2 className="display text-[clamp(1.75rem,3.5vw,2.75rem)] mt-4 text-brand leading-[1.05]">
         Häufige Fragen.
       </h2>

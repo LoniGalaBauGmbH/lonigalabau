@@ -9,11 +9,11 @@ const q = queryOptions({ staleTime: 60_000, queryKey: ["services"], queryFn: () 
 export const Route = createFileRoute("/leistungen/")({
   head: () => ({
     meta: [
-      { title: "Gartenbau-Leistungen in Hattersheim | Loni GalaBau" },
+      { title: "Gartenbau-Leistungen deutschlandweit | Loni GalaBau" },
       {
         name: "description",
         content:
-          "Gartengestaltung, Pflasterarbeiten, Naturstein, Zaunbau und Rollrasen: Entdecken Sie unsere Gartenbau-Leistungen für Hattersheim und das Rhein-Main-Gebiet.",
+          "Gartengestaltung, Pflasterarbeiten, Naturstein, Zaunbau und Rollrasen: Entdecken Sie unsere Gartenbau-Leistungen in ganz Deutschland.",
       },
     ],
   }),
@@ -32,7 +32,7 @@ function Page() {
             Gartenbau für Ihre <span className="italic">Außenanlage.</span>
           </>
         }
-        lead="Von Erdarbeiten und Entwässerung bis zu Terrasse, Pflanzen und Zaun: Hier finden Sie die Leistungen für Ihr Vorhaben in Hattersheim und im Rhein-Main-Gebiet."
+        lead="Von Erdarbeiten und Entwässerung bis zu Terrasse, Pflanzen und Zaun: Hier finden Sie die Leistungen für Ihr Vorhaben in ganz Deutschland."
       />
       <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto">

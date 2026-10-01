@@ -359,7 +359,7 @@ export function ProjectInquiryForm({
                             value={form.zip}
                             onChange={(event) => update("zip", event.target.value)}
                             className={inputClass}
-                            placeholder="z. B. 65795 Hattersheim"
+                            placeholder="Postleitzahl und Ort Ihres Projekts"
                           />
                         </Field>
                       </div>

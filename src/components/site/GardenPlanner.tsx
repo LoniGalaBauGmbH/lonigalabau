@@ -451,7 +451,14 @@ export function GardenPlanner() {
       <div className="planner-layout">
         <aside className="planner-sidebar">
           <div className="planner-sidebar-photo">
-            <img src={images.hero_bg} alt="" />
+            <img
+              src={images.hero_bg}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              width={1920}
+              height={1080}
+            />
             <div>
               <span className="planner-eyebrow">Ihr Garten. Ihr Plan.</span>
               <p>
@@ -701,7 +708,7 @@ export function GardenPlanner() {
                                 value={form.city}
                                 onChange={(e) => change("city", e.target.value)}
                                 maxLength={60}
-                                placeholder="z. B. Hattersheim am Main"
+                                placeholder="Ort Ihres Projekts in Deutschland"
                               />
                             </Field>
                           </div>

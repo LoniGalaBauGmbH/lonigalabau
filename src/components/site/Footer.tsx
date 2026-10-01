@@ -75,8 +75,8 @@ export function Footer({ showContactCta = true }: { showContactCta?: boolean }) 
               />
             </HomeLogoLink>
             <p className="text-sm leading-relaxed opacity-70 max-w-sm">
-              Garten- und Landschaftsbau aus Hattersheim. Seit Jahren stehen wir für Präzision,
-              ehrliches Handwerk und Gärten, die Bestand haben.
+              Garten- und Landschaftsbau deutschlandweit. Unser Sitz ist in Hattersheim am Main bei
+              Frankfurt. Wir stehen für Präzision, ehrliches Handwerk und Gärten, die Bestand haben.
             </p>
             <address className="not-italic text-sm space-y-1 opacity-80">
               <p>Loni Galabau GmbH</p>

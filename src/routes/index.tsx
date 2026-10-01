@@ -54,11 +54,11 @@ const partnersQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Garten- und Landschaftsbau Hattersheim | Loni GalaBau" },
+      { title: "Garten- und Landschaftsbau deutschlandweit | Loni GalaBau" },
       {
         name: "description",
         content:
-          "Garten- und Landschaftsbau aus Hattersheim am Main: Gartengestaltung, Pflasterarbeiten, Naturstein, Rasen und Zäune im Rhein-Main-Gebiet. Projekt anfragen.",
+          "Garten- und Landschaftsbau deutschlandweit: Gartengestaltung, Pflasterarbeiten, Naturstein, Rasen und Zäune. Sitz in Hattersheim bei Frankfurt. Jetzt anfragen.",
       },
     ],
   }),
@@ -155,14 +155,7 @@ function HomePage() {
                 closes: "18:00",
               },
             ],
-            areaServed: [
-              { "@type": "City", name: "Hattersheim am Main" },
-              { "@type": "City", name: "Frankfurt am Main" },
-              { "@type": "City", name: "Wiesbaden" },
-              { "@type": "City", name: "Mainz" },
-              { "@type": "City", name: "Darmstadt" },
-              { "@type": "Place", name: "Rhein-Main-Gebiet" },
-            ],
+            areaServed: { "@type": "Country", name: "Deutschland" },
           }),
         }}
       />
@@ -198,9 +191,9 @@ function HomePage() {
             </h1>
 
             <p className="home-hero-description max-w-2xl text-white/90 font-normal">
-              Aus Hattersheim am Main für Frankfurt und das Rhein-Main-Gebiet. Wir gestalten Ihren
-              Garten, bauen Terrassen und pflastern Einfahrten – passend zu Ihrem Grundstück und
-              Ihrem Alltag.
+              Deutschlandweit für Sie im Einsatz – mit Sitz in Hattersheim am Main bei Frankfurt.
+              Wir gestalten Ihren Garten, bauen Terrassen und pflastern Einfahrten – passend zu
+              Ihrem Grundstück und Ihrem Alltag.
             </p>
 
             <div className="home-hero-actions flex flex-wrap items-center">

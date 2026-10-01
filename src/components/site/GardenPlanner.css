@@ -20,7 +20,7 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: color-mix(in srgb, var(--brand) 70%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
   min-height: 44px;
 }
 .planner-layout {
@@ -110,7 +110,7 @@
   margin: 24px 12px 0;
   font-size: 14px;
   line-height: 1.7;
-  color: color-mix(in srgb, var(--brand) 65%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-main {
   min-width: 0;
@@ -124,7 +124,7 @@
   gap: 16px;
   font-size: 13px;
   margin-bottom: 12px;
-  color: color-mix(in srgb, var(--brand) 65%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-title {
   margin-bottom: 32px;
@@ -146,7 +146,7 @@
   line-height: 1.7;
   margin-top: 16px;
   max-width: 660px;
-  color: color-mix(in srgb, var(--brand) 73%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-label {
   display: block;
@@ -158,7 +158,7 @@
 .planner-hint {
   font-size: 14px;
   line-height: 1.6;
-  color: color-mix(in srgb, var(--brand) 65%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-choice {
   display: flex;
@@ -208,7 +208,7 @@
   font-size: 14px;
   line-height: 1.5;
   margin-top: 7px;
-  color: color-mix(in srgb, var(--brand) 65%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-trade:hover {
   background: color-mix(in srgb, var(--brand) 4%, white);
@@ -300,7 +300,7 @@ textarea.planner-input {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  color: color-mix(in srgb, var(--brand) 60%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-select > svg {
   width: 16px;
@@ -316,7 +316,7 @@ textarea.planner-input {
   margin-top: 12px;
   font-size: 14px;
   line-height: 1.5;
-  color: color-mix(in srgb, var(--brand) 70%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
   cursor: pointer;
 }
 .planner-unknown > button {
@@ -421,14 +421,14 @@ textarea.planner-input {
   font-size: 14px;
 }
 .planner-photo-guide li > span {
-  color: color-mix(in srgb, var(--brand) 50%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
   font-size: 12px;
   padding-top: 3px;
 }
 .planner-photo-guide p {
   margin-top: 3px;
   line-height: 1.5;
-  color: color-mix(in srgb, var(--brand) 65%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-summary {
   display: grid;
@@ -466,7 +466,7 @@ textarea.planner-input {
   line-height: 1.6;
 }
 .planner-summary dt {
-  color: color-mix(in srgb, var(--brand) 60%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-summary dd,
 .planner-summary-files p {
@@ -547,7 +547,7 @@ textarea.planner-input {
 .planner-draft-actions p {
   font-size: 12px;
   margin-top: 4px;
-  color: color-mix(in srgb, var(--brand) 60%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
 }
 .planner-notice {
   padding: 18px 20px;
@@ -572,7 +572,7 @@ textarea.planner-input {
   align-items: center;
 }
 .planner-next li > span {
-  color: color-mix(in srgb, var(--brand) 55%, transparent);
+  color: color-mix(in srgb, var(--brand) 80%, transparent);
   font-size: 12px;
 }
 @media (max-width: 1023px) {

@@ -36,6 +36,7 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
     <ProjectImage
       src={src}
       alt={alt}
+      original
       sizes="(max-width: 1280px) 96vw, 1280px"
       onError={() => setFailed(true)}
       className="h-full w-full object-contain"

@@ -145,13 +145,13 @@ function Page() {
       />
       <section className="px-6">
         <div className="max-w-4xl mx-auto py-10">
-          <Link to="/jobs" className="text-sm opacity-60 hover:opacity-100">
+          <Link to="/jobs" className="text-sm opacity-80 hover:opacity-100">
             ← Alle Stellen
           </Link>
           <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl mt-6 break-words hyphens-auto">
             {job.title}
           </h1>
-          <div className="mt-3 flex flex-wrap gap-3 text-xs uppercase tracking-widest opacity-60">
+          <div className="mt-3 flex flex-wrap gap-3 text-xs uppercase tracking-widest opacity-80">
             {job.location && <span>{job.location}</span>}
             {job.employment_type && <span>· {job.employment_type}</span>}
           </div>

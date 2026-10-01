@@ -3,7 +3,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { GuideCard } from "@/components/site/GuideCard";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
-import { guides } from "@/lib/ratgeber";
+import { guides } from "@/lib/guide-index";
 import "@/components/site/Ratgeber.css";
 
 export const Route = createFileRoute("/ratgeber/")({
@@ -35,7 +35,7 @@ function Ratgeber() {
           <div className="guide-intro-bottom">
             <p>
               Ideen einordnen, Materialien verstehen und die nächsten Schritte planen. Unser Wissen
-              für Ihren Garten in Hattersheim und im Rhein-Main-Gebiet.
+              für Ihr Gartenprojekt – von unserem Team aus Hattersheim, deutschlandweit im Einsatz.
             </p>
             <a href="#alle-ratgeber" className="guide-text-link">
               Alle Ratgeber entdecken

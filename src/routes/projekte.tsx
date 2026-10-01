@@ -40,9 +40,9 @@ function Page() {
       <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
           {projects.length === 0 && (
-            <p className="opacity-60">Aktuell sind keine Projekte hinterlegt.</p>
+            <p className="opacity-80">Aktuell sind keine Projekte hinterlegt.</p>
           )}
-          {projects.map((p) => (
+          {projects.map((p, index) => (
             <article key={p.id} className="bg-surface rounded-[2rem] overflow-hidden shadow-sm">
               <ProjectGallery project={p}>
                 <button
@@ -53,7 +53,9 @@ function Page() {
                   <ProjectImage
                     src={p.images?.[0] || projectFallback}
                     alt={p.title}
-                    loading="lazy"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1328px) calc(50vw - 40px), 624px"
                     className="h-full w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.03] motion-reduce:transition-none"
                   />
                   <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 rounded-full bg-brand/90 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm group-hover:bg-brand">
@@ -63,7 +65,7 @@ function Page() {
               </ProjectGallery>
               <div className="p-8">
                 {p.location && (
-                  <span className="text-xs uppercase tracking-widest text-accent font-bold">
+                  <span className="text-xs uppercase tracking-widest text-accent-ink font-bold">
                     {p.location}
                   </span>
                 )}

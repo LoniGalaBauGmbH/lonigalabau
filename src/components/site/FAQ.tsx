@@ -20,8 +20,8 @@ const FAQS = [
     a: "Ja. Ob Pflegeeinsatz, einzelne Pflanzung oder kompletter Neubau – wir nehmen jedes Projekt mit der gleichen Sorgfalt an.",
   },
   {
-    q: "In welchem Umkreis sind Sie tätig?",
-    a: "Wir arbeiten im gesamten Rhein-Main-Gebiet – schwerpunktmäßig in Hattersheim, Frankfurt am Main, Kelkheim, Hofheim und dem Main-Taunus-Kreis.",
+    q: "In welchem Gebiet sind Sie tätig?",
+    a: "Wir arbeiten deutschlandweit. Unser Firmensitz ist in Hattersheim am Main bei Frankfurt. Beschreiben Sie uns Ihr Vorhaben und den Projektort – wir stimmen die nächsten Schritte persönlich mit Ihnen ab.",
   },
   {
     q: "Übernehmen Sie auch die Pflege nach Fertigstellung?",

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { GuideCard } from "@/components/site/GuideCard";
-import { guides } from "@/lib/ratgeber";
+import { guides } from "@/lib/guide-index";
 import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import "@/components/site/Ratgeber.css";
 

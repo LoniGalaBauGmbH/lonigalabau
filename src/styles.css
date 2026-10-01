@@ -48,6 +48,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-accent-ink: oklch(0.45 0.13 135);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -228,5 +229,51 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-slow-zoom {
     animation: none !important;
+  }
+}
+
+/* Legible secondary text on public light surfaces. */
+@layer utilities {
+  .site-ui
+    :where(
+      [class~="text-brand/20"],
+      [class~="text-brand/25"],
+      [class~="text-brand/30"],
+      [class~="text-brand/35"],
+      [class~="text-brand/40"],
+      [class~="text-brand/45"],
+      [class~="text-brand/50"],
+      [class~="text-brand/55"],
+      [class~="text-brand/60"],
+      [class~="text-brand/65"],
+      [class~="text-brand/70"]
+    ) {
+    color: color-mix(in srgb, var(--brand) 80%, transparent);
+  }
+
+  .site-ui
+    :where(
+      [class~="text-foreground/20"],
+      [class~="text-foreground/25"],
+      [class~="text-foreground/30"],
+      [class~="text-foreground/35"],
+      [class~="text-foreground/40"],
+      [class~="text-foreground/45"],
+      [class~="text-foreground/50"],
+      [class~="text-foreground/55"],
+      [class~="text-foreground/60"],
+      [class~="text-foreground/65"],
+      [class~="text-foreground/70"]
+    ) {
+    color: color-mix(in srgb, var(--foreground) 75%, transparent);
+  }
+
+  .site-ui
+    :where(
+      [class~="placeholder:text-brand/40"],
+      [class~="placeholder:text-foreground/40"]
+    )::placeholder {
+    color: color-mix(in srgb, var(--foreground) 75%, transparent);
+    opacity: 1;
   }
 }

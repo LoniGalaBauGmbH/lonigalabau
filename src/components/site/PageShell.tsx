@@ -59,7 +59,7 @@ export function PageIntro({
   return (
     <section className="px-6">
       <div className="max-w-7xl mx-auto py-16 md:py-28">
-        {eyebrow && <span className="eyebrow eyebrow-bracket text-accent">{eyebrow}</span>}
+        {eyebrow && <span className="eyebrow eyebrow-bracket text-accent-ink">{eyebrow}</span>}
         <h1
           lang="de"
           className="display break-words hyphens-auto text-5xl md:text-7xl lg:text-8xl mt-6 max-w-5xl text-balance text-brand"

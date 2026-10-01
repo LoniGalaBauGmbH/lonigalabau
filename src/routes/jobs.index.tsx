@@ -36,7 +36,7 @@ function Page() {
       <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-4xl mx-auto space-y-4">
           {jobs.length === 0 && (
-            <p className="opacity-60">Aktuell sind keine Stellen ausgeschrieben.</p>
+            <p className="opacity-80">Aktuell sind keine Stellen ausgeschrieben.</p>
           )}
           {jobs.map((j) => (
             <Link

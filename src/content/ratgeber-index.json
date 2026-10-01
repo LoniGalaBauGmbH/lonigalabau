@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "pflasterarbeiten-kosten-einfahrt",
+    "title": "Was kosten Pflasterarbeiten? So beurteilen Sie ein Angebot für Ihre Einfahrt",
+    "excerpt": "Ein Quadratmeterpreis erklärt selten das ganze Projekt. Diese Punkte helfen Ihnen, den Aufwand Ihrer Einfahrt einzuordnen und Angebote sinnvoll zu vergleichen.",
+    "category": "Pflaster & Terrasse",
+    "readingMinutes": 5,
+    "image": "/images/projekte/gepflasterter-hauseingang.webp",
+    "imageCaption": "Gepflasterter Hauseingang mit klar gefassten Übergängen.",
+    "relatedServiceSlugs": ["pflasterarbeiten", "erdarbeiten", "entwaesserung"],
+    "updatedAt": "2026-10-01"
+  },
+  {
+    "slug": "rollrasen-oder-einsaat",
+    "title": "Rollrasen oder Einsaat: Welche Lösung passt zu Ihrem Garten?",
+    "excerpt": "Schnell eine geschlossene grüne Fläche oder Rasen von Anfang an entwickeln lassen? Entscheidend sind nicht nur Optik und Material, sondern auch Boden und Betreuung.",
+    "category": "Rasen & Garten",
+    "readingMinutes": 5,
+    "image": "/images/projekte/rasenflaeche-mit-hecke.webp",
+    "imageCaption": "Rasenfläche mit angrenzender Hecke und befestigten Gartenbereichen.",
+    "relatedServiceSlugs": ["rasenanlagen", "erdarbeiten", "bewaesserungsanlagen"],
+    "updatedAt": "2026-09-30"
+  },
+  {
+    "slug": "garten-umgestalten-in-etappen",
+    "title": "Den Garten in Etappen umgestalten: So bleibt die Reihenfolge sinnvoll",
+    "excerpt": "Sie müssen nicht alles gleichzeitig verändern. Ein gemeinsames Zielbild hilft, einzelne Bauabschnitte sinnvoll zu verbinden und fertige Bereiche zu erhalten.",
+    "category": "Gartenplanung",
+    "readingMinutes": 5,
+    "image": "/images/projekte/terrassenunterkonstruktion.webp",
+    "imageCaption": "Eine Terrasse im Aufbau: Vorarbeiten werden später vom fertigen Belag verdeckt.",
+    "relatedServiceSlugs": ["gartengestaltung", "erdarbeiten", "pflasterarbeiten"],
+    "updatedAt": "2026-10-01"
+  },
+  {
+    "slug": "terrasse-entwaesserung-planen",
+    "title": "Wasser auf der Terrasse: Was eine passende Entwässerung berücksichtigen muss",
+    "excerpt": "Eine zusätzliche Rinne ist nicht automatisch die Lösung. Entscheidend ist, wo das Regenwasser herkommt, wie es aufgenommen wird und wohin es weiterfließen kann.",
+    "category": "Wasser & Außenanlagen",
+    "readingMinutes": 5,
+    "image": "/images/projekte/terrasse-mit-entwaesserungsrinne.webp",
+    "imageCaption": "Entwässerungsrinne am Rand einer Terrasse.",
+    "relatedServiceSlugs": ["entwaesserung", "pflasterarbeiten", "erdarbeiten"],
+    "updatedAt": "2026-09-30"
+  },
+  {
+    "slug": "gartenbewaesserung-planen",
+    "title": "Gartenbewässerung planen: Was vor der Installation geklärt sein sollte",
+    "excerpt": "Eine automatische Bewässerung beginnt mit den Gartenflächen und dem verfügbaren Wasser. Erst danach folgen Leitungen, Regner, Tropfbewässerung und Steuerung.",
+    "category": "Wasser & Außenanlagen",
+    "readingMinutes": 5,
+    "image": "/images/projekte/tropfbewaesserung-im-pflanzbeet.webp",
+    "imageCaption": "Tropfbewässerung direkt im Pflanzbeet.",
+    "relatedServiceSlugs": ["bewaesserungsanlagen", "rasenanlagen", "gartengestaltung"],
+    "updatedAt": "2026-10-01"
+  },
+  {
+    "slug": "naturstein-terrasse-materialwahl",
+    "title": "Naturstein für die Terrasse auswählen: Oberfläche, Format und Alltag zusammendenken",
+    "excerpt": "Die Farbe ist nur ein Teil der Entscheidung. Eine Natursteinterrasse sollte zu Nutzung, Umgebung und Pflege passen – und als vollständiger Aufbau geplant werden.",
+    "category": "Pflaster & Terrasse",
+    "readingMinutes": 5,
+    "image": "/images/projekte/natursteinweg-unter-pergola.webp",
+    "imageCaption": "Natursteinbelag mit Sitzplatz unter einer Pergola.",
+    "relatedServiceSlugs": ["natursteinarbeiten", "pflasterarbeiten", "entwaesserung"],
+    "updatedAt": "2026-09-30"
+  }
+]

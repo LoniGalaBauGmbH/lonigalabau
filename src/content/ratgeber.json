@@ -7,11 +7,7 @@
     "excerpt": "Ein Quadratmeterpreis erklärt selten das ganze Projekt. Diese Punkte helfen Ihnen, den Aufwand Ihrer Einfahrt einzuordnen und Angebote sinnvoll zu vergleichen.",
     "category": "Pflaster & Terrasse",
     "readingMinutes": 5,
-    "relatedServiceSlugs": [
-      "pflasterarbeiten",
-      "erdarbeiten",
-      "entwaesserung"
-    ],
+    "relatedServiceSlugs": ["pflasterarbeiten", "erdarbeiten", "entwaesserung"],
     "sections": [
       {
         "heading": "Warum die Fläche allein noch keinen Preis ergibt",
@@ -66,7 +62,7 @@
         "heading": "So bereiten Sie Ihre Anfrage vor",
         "paragraphs": [
           "Für eine erste Anfrage reichen eine kurze Beschreibung, ungefähre Maße und aussagekräftige Fotos. Zeigen Sie die Einfahrt aus mehreren Richtungen, die Zufahrt zur Baustelle und die Übergänge an Haus oder Garage. Teilen Sie mit, was Sie behalten möchten und ob Wasseransammlungen oder Setzungen aufgefallen sind. Einen fertigen Ausführungsplan müssen Sie dafür noch nicht haben.",
-          "Loni GalaBau bespricht Pflastervorhaben in Hattersheim und im Rhein-Main-Gebiet persönlich mit Ihnen. Nach Klärung der Ausgangslage werden Material und Umfang abgestimmt. So entsteht ein Angebot, das auf Ihre Einfahrt bezogen ist und die Arbeiten verständlich beschreibt."
+          "Loni GalaBau bespricht Pflastervorhaben in ganz Deutschland persönlich mit Ihnen. Nach Klärung der Ausgangslage werden Material und Umfang abgestimmt. So entsteht ein Angebot, das auf Ihre Einfahrt bezogen ist und die Arbeiten verständlich beschreibt."
         ]
       }
     ],
@@ -95,7 +91,7 @@
       "https://www.aco.de/anwendungen/galabau/rund-ums-haus"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-09-30",
+    "updatedAt": "2026-10-01",
     "image": "/images/projekte/gepflasterter-hauseingang.webp",
     "imageCaption": "Gepflasterter Hauseingang mit klar gefassten Übergängen."
   },
@@ -107,11 +103,7 @@
     "excerpt": "Schnell eine geschlossene grüne Fläche oder Rasen von Anfang an entwickeln lassen? Entscheidend sind nicht nur Optik und Material, sondern auch Boden und Betreuung.",
     "category": "Rasen & Garten",
     "readingMinutes": 5,
-    "relatedServiceSlugs": [
-      "rasenanlagen",
-      "erdarbeiten",
-      "bewaesserungsanlagen"
-    ],
+    "relatedServiceSlugs": ["rasenanlagen", "erdarbeiten", "bewaesserungsanlagen"],
     "sections": [
       {
         "heading": "Zuerst die spätere Nutzung klären",
@@ -207,11 +199,7 @@
     "excerpt": "Sie müssen nicht alles gleichzeitig verändern. Ein gemeinsames Zielbild hilft, einzelne Bauabschnitte sinnvoll zu verbinden und fertige Bereiche zu erhalten.",
     "category": "Gartenplanung",
     "readingMinutes": 5,
-    "relatedServiceSlugs": [
-      "gartengestaltung",
-      "erdarbeiten",
-      "pflasterarbeiten"
-    ],
+    "relatedServiceSlugs": ["gartengestaltung", "erdarbeiten", "pflasterarbeiten"],
     "sections": [
       {
         "heading": "Ein Zielbild vor dem ersten Bauabschnitt",
@@ -267,7 +255,7 @@
         "heading": "Mit einer überschaubaren Anfrage beginnen",
         "paragraphs": [
           "Für das erste Gespräch benötigen Sie keinen vollständig ausgearbeiteten Gartenplan. Fotos, ein einfacher Grundriss und Ihre Prioritätenliste reichen, um das Vorhaben zu erläutern. Zeigen Sie auch die Zugänge zum Grundstück und notieren Sie, welche Arbeiten Sie eventuell selbst übernehmen möchten. Offen gebliebene Fragen sind eine gute Grundlage für die weitere Abstimmung.",
-          "Loni GalaBau begleitet Gartenumgestaltungen in Hattersheim und im Rhein-Main-Gebiet. Wir besprechen Bestand, Materialien und Leistungsumfang mit Ihnen. Für eine weitergehende Gartenplanung beziehen wir bei Bedarf unseren Planungspartner ein. Die abgestimmte Reihenfolge richtet sich nach Ihrem Grundstück und den einzelnen Bauabschnitten."
+          "Loni GalaBau begleitet Gartenumgestaltungen in ganz Deutschland. Wir besprechen Bestand, Materialien und Leistungsumfang mit Ihnen. Für eine weitergehende Gartenplanung beziehen wir bei Bedarf unseren Planungspartner ein. Die abgestimmte Reihenfolge richtet sich nach Ihrem Grundstück und den einzelnen Bauabschnitten."
         ]
       }
     ],
@@ -296,7 +284,7 @@
       "https://lwg.bayern.de/landespflege/gartendokumente/merkblaetter/250785/index.php"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-09-30",
+    "updatedAt": "2026-10-01",
     "image": "/images/projekte/terrassenunterkonstruktion.webp",
     "imageCaption": "Eine Terrasse im Aufbau: Vorarbeiten werden später vom fertigen Belag verdeckt."
   },
@@ -308,11 +296,7 @@
     "excerpt": "Eine zusätzliche Rinne ist nicht automatisch die Lösung. Entscheidend ist, wo das Regenwasser herkommt, wie es aufgenommen wird und wohin es weiterfließen kann.",
     "category": "Wasser & Außenanlagen",
     "readingMinutes": 5,
-    "relatedServiceSlugs": [
-      "entwaesserung",
-      "pflasterarbeiten",
-      "erdarbeiten"
-    ],
+    "relatedServiceSlugs": ["entwaesserung", "pflasterarbeiten", "erdarbeiten"],
     "sections": [
       {
         "heading": "Das beobachtete Problem möglichst genau beschreiben",
@@ -410,11 +394,7 @@
     "excerpt": "Eine automatische Bewässerung beginnt mit den Gartenflächen und dem verfügbaren Wasser. Erst danach folgen Leitungen, Regner, Tropfbewässerung und Steuerung.",
     "category": "Wasser & Außenanlagen",
     "readingMinutes": 5,
-    "relatedServiceSlugs": [
-      "bewaesserungsanlagen",
-      "rasenanlagen",
-      "gartengestaltung"
-    ],
+    "relatedServiceSlugs": ["bewaesserungsanlagen", "rasenanlagen", "gartengestaltung"],
     "sections": [
       {
         "heading": "Die Gartenflächen vor den Geräten erfassen",
@@ -461,7 +441,7 @@
       {
         "heading": "Checkliste für das erste Planungsgespräch",
         "paragraphs": [
-          "Mit einer einfachen Skizze und wenigen Angaben lässt sich das Vorhaben bereits gezielt besprechen. Sie müssen vorher weder einen Hersteller noch konkrete Geräte festlegen. Beschreiben Sie vor allem die Flächen, Ihre Nutzung und die vorhandenen Anschlüsse. Loni GalaBau stimmt Gartenbewässerung in Hattersheim und im Rhein-Main-Gebiet mit den übrigen Gartenarbeiten ab."
+          "Mit einer einfachen Skizze und wenigen Angaben lässt sich das Vorhaben bereits gezielt besprechen. Sie müssen vorher weder einen Hersteller noch konkrete Geräte festlegen. Beschreiben Sie vor allem die Flächen, Ihre Nutzung und die vorhandenen Anschlüsse. Loni GalaBau stimmt Gartenbewässerung in ganz Deutschland mit den übrigen Gartenarbeiten ab."
         ],
         "checklist": [
           "Welche Rasen-, Beet- und Pflanzbereiche sollen versorgt werden?",
@@ -501,7 +481,7 @@
       "https://www.gardena.com/ch-de/c/entdecke/mygarden/planungstool/faq-gartenplaner/sprinklersystem-planer"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-09-30",
+    "updatedAt": "2026-10-01",
     "image": "/images/projekte/tropfbewaesserung-im-pflanzbeet.webp",
     "imageCaption": "Tropfbewässerung direkt im Pflanzbeet."
   },
@@ -513,11 +493,7 @@
     "excerpt": "Die Farbe ist nur ein Teil der Entscheidung. Eine Natursteinterrasse sollte zu Nutzung, Umgebung und Pflege passen – und als vollständiger Aufbau geplant werden.",
     "category": "Pflaster & Terrasse",
     "readingMinutes": 5,
-    "relatedServiceSlugs": [
-      "natursteinarbeiten",
-      "pflasterarbeiten",
-      "entwaesserung"
-    ],
+    "relatedServiceSlugs": ["natursteinarbeiten", "pflasterarbeiten", "entwaesserung"],
     "sections": [
       {
         "heading": "Mit der Nutzung der Terrasse beginnen",

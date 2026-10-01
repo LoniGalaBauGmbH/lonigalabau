@@ -76,11 +76,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Loni Galabau GmbH – Garten- und Landschaftsbau Hattersheim" },
+      { title: "Loni GalaBau – Garten- und Landschaftsbau deutschlandweit" },
       {
         name: "description",
         content:
-          "Loni Galabau GmbH gestaltet hochwertige Außenanlagen im Rhein-Main-Gebiet: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten, Bewässerung und mehr.",
+          "Loni GalaBau gestaltet Außenanlagen in ganz Deutschland: Natursteinarbeiten, Gartengestaltung, Pflasterarbeiten und Bewässerung. Sitz in Hattersheim am Main.",
       },
       { name: "author", content: "Loni Galabau GmbH" },
 
@@ -121,7 +121,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
   const description =
     desc && "content" in desc
       ? String(desc.content)
-      : "Garten- und Landschaftsbau aus Hattersheim am Main.";
+      : "Garten- und Landschaftsbau deutschlandweit. Sitz in Hattersheim am Main bei Frankfurt.";
   return (
     <html lang="de">
       <head>

@@ -4,6 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/generate-guide-index.mjs",
     "dev": "vite dev",
     "build": "vite build",
     "postbuild": "node scripts/finalize-site-worker.mjs",

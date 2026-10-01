@@ -50,7 +50,7 @@ export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
     return (
       <div className="rounded-2xl border border-brand/10 bg-surface p-8 md:p-10">
         <div className="flex items-center gap-3 text-brand">
-          <CheckCircle2 className="h-6 w-6 text-accent" strokeWidth={1.5} />
+          <CheckCircle2 className="h-6 w-6 text-accent-ink" strokeWidth={1.5} />
           <span className="eyebrow text-brand/60">Anfrage gesendet</span>
         </div>
         <h3 className="font-display font-bold text-2xl mt-4 text-brand">Vielen Dank!</h3>
@@ -60,13 +60,13 @@ export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
         <div className="mt-6 flex flex-col gap-2 text-sm">
           <a
             href="tel:+4961909266134"
-            className="inline-flex items-center gap-2 text-brand hover:text-accent"
+            className="inline-flex items-center gap-2 text-brand hover:text-accent-ink"
           >
             <Phone className="h-4 w-4" /> 06190 9266134
           </a>
           <a
             href="mailto:info@loni-galabau.de"
-            className="inline-flex items-center gap-2 text-brand hover:text-accent"
+            className="inline-flex items-center gap-2 text-brand hover:text-accent-ink"
           >
             <Mail className="h-4 w-4" /> info@loni-galabau.de
           </a>
@@ -81,7 +81,7 @@ export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
       className="rounded-2xl border border-brand/10 bg-surface p-7 md:p-9 space-y-4"
     >
       <div>
-        <span className="eyebrow text-accent">Direkt anfragen</span>
+        <span className="eyebrow text-accent-ink">Direkt anfragen</span>
         <h3 className="font-display font-bold text-[clamp(1.25rem,2vw,1.625rem)] mt-3 text-brand leading-[1.15]">
           Ihr Projekt, unser Handwerk.
         </h3>
@@ -136,7 +136,7 @@ export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
           type="checkbox"
           checked={form.consent}
           onChange={(e) => setForm((f) => ({ ...f, consent: e.target.checked }))}
-          className="mt-0.5 h-4 w-4 rounded border-brand/30 text-accent focus:ring-accent"
+          className="mt-0.5 h-4 w-4 rounded border-brand/30 text-accent-ink focus:ring-accent"
         />
         <span>
           Ich stimme der Verarbeitung meiner Daten gemäß{" "}
@@ -159,7 +159,7 @@ export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
       <button
         type="submit"
         disabled={state === "loading"}
-        className="w-full inline-flex items-center justify-center gap-2 bg-brand text-brand-foreground py-3.5 rounded-full text-sm font-semibold hover:bg-brand/90 transition disabled:opacity-60"
+        className="w-full inline-flex items-center justify-center gap-2 bg-brand text-brand-foreground py-3.5 rounded-full text-sm font-semibold hover:bg-brand/90 transition disabled:opacity-80"
       >
         {state === "loading" ? (
           <>

@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ProjectImage } from "./ProjectImage";
-import type { Guide } from "@/lib/ratgeber";
+import type { GuideSummary } from "@/lib/guide-index";
 
-export function GuideCard({ article }: { article: Guide }) {
+export function GuideCard({ article }: { article: GuideSummary }) {
   return (
     <article className="guide-card">
       <Link to="/ratgeber/$slug" params={{ slug: article.slug }} className="guide-card-link">
