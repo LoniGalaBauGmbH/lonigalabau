@@ -107,8 +107,16 @@ export function ServiceCarousel({
               className="group relative isolate block aspect-[3/4] overflow-hidden rounded-[2rem] bg-brand text-brand-foreground focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent"
             >
               <ProjectImage
-                src={getServiceImage(service.slug, service.hero_image ?? null)}
-                alt={service.title}
+                src={
+                  service.slug === "erdarbeiten"
+                    ? "/images/projekte/volvo-bagger-erdarbeiten.webp"
+                    : getServiceImage(service.slug, service.hero_image ?? null)
+                }
+                alt={
+                  service.slug === "erdarbeiten"
+                    ? "Volvo-Kettenbagger in einer ausgehobenen Baugrube"
+                    : service.title
+                }
                 sizes="(max-width: 639px) 85vw, (max-width: 1023px) 55vw, 36vw"
                 loading="lazy"
                 draggable={false}

@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { projectPhotos } from "@/lib/project-photos";
@@ -59,7 +59,21 @@ export function GardenDetails() {
   const [active, setActive] = useState(0);
   const id = useId();
   const detail = details[active];
+  const detailRef = useRef<HTMLDivElement>(null);
   const { groupRef, indicatorRef } = useSelectionIndicator(active);
+  const selectDetail = (index: number) => {
+    setActive(index);
+    if (!window.matchMedia("(max-width: 1023px)").matches) return;
+    // Wait for React to render the selected detail, including repeated hotspot taps.
+    window.requestAnimationFrame(() => {
+      detailRef.current?.scrollIntoView({
+        block: "start",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    });
+  };
   return (
     <section className="px-6 py-24 md:px-10 md:py-32" aria-labelledby={id + "-heading"}>
       <div className="mx-auto max-w-[1480px]">
@@ -103,7 +117,7 @@ export function GardenDetails() {
                   aria-label={item.title + " im Garten entdecken"}
                   aria-pressed={active === i}
                   aria-controls={id + "-detail"}
-                  onClick={() => setActive(i)}
+                  onClick={() => selectDetail(i)}
                   style={item.position}
                   className={
                     "garden-hotspot absolute z-10 grid size-11 -translate-x-1/2 -translate-y-1/2 touch-manipulation place-items-center rounded-full shadow-lg ring-1 ring-black/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-12 " +
@@ -134,7 +148,7 @@ export function GardenDetails() {
                   type="button"
                   aria-pressed={active === i}
                   aria-controls={id + "-detail"}
-                  onClick={() => setActive(i)}
+                  onClick={() => selectDetail(i)}
                   className={
                     "relative z-[1] rounded-full px-4 py-3 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent " +
                     (active === i
@@ -148,6 +162,7 @@ export function GardenDetails() {
             </div>
             <div
               id={id + "-detail"}
+              ref={detailRef}
               className="mt-8 flex flex-1 flex-col"
               aria-live="polite"
               aria-atomic="true"

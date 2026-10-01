@@ -228,5 +228,10 @@
     "width": 1200,
     "height": 1600,
     "widths": [320, 640, 960]
+  },
+  "volvo-bagger-erdarbeiten.webp": {
+    "width": 941,
+    "height": 1672,
+    "widths": [320, 640, 941]
   }
 }
