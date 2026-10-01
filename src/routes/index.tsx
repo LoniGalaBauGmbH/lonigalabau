@@ -414,7 +414,7 @@ function HomePage() {
                 to="/leistungen"
                 className="inline-flex items-center gap-2 text-brand text-sm uppercase tracking-[0.2em] font-semibold border-b border-brand/40 pb-1 hover:border-brand transition"
               >
-                Alle Leistungen <ArrowUpRight className="h-4 w-4" />
+                Leistungen entdecken <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
           </div>

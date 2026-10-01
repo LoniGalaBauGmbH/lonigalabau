@@ -1,6 +1,6 @@
 const FACTS = [
   { value: "Seit 2011", label: "Im Garten- und Landschaftsbau" },
-  { value: "8 Leistungen", label: "Für Gärten und Außenanlagen" },
+  { value: "Vielseitig", label: "Individuelle Lösungen für Ihr Vorhaben" },
   { value: "Deutschlandweit", label: "Aus Hattersheim am Main" },
   { value: "Persönlich", label: "Von der Anfrage bis zur Umsetzung" },
 ];

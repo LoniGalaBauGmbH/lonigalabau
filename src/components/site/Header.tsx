@@ -351,7 +351,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                             onClick={() => setOpen(false)}
                             className="site-mobile-all"
                           >
-                            Alle Leistungen ansehen <ArrowRight size={16} aria-hidden="true" />
+                            Leistungsübersicht <ArrowRight size={16} aria-hidden="true" />
                           </Link>
                         </div>
                       </div>

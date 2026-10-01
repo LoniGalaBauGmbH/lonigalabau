@@ -916,7 +916,7 @@ function RelatedServices({ slug }: { slug: string }) {
                 to="/leistungen"
                 className="inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-widest text-brand hover:text-accent-ink transition border-b border-brand/20 pb-0.5"
               >
-                Alle Gewerke <ArrowRight className="h-4 w-4" />
+                Weitere Leistungen <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
