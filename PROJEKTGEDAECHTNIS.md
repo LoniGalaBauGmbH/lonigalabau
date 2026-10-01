@@ -16,7 +16,7 @@ Vor jeder Fortsetzung lesen; nach wesentlichen Änderungen belegte Ergebnisse un
 - Dieses Gedächtnis liegt im Repository und wird über `AGENTS.md` bei späteren Arbeiten eingebunden.
 - **Ratgeber vertieft, final live in Version 48 (01.10., 11:19 MESZ):** alle sechs Beiträge um konkrete Vergleiche, Kurzüberblicke und belegte Projektgalerie-Verweise ergänzt. Autorenrolle vom Nutzer bestätigt: **Serhad Marasli, Bau- & Operations Manager**. Nutzerkorrektur: **Name nur dezent nennen, Loni GalaBau gestalterisch in den Vordergrund stellen**; die Autorenansicht hat die Überschrift „Über unsere Ratgeber“ statt einer großen Namensüberschrift. 101 Tests, Typprüfung, gezieltes Linting und Build bestanden; finaler Live-Audit um 11:20 MESZ: acht Ratgeber-Seiten, 15 weitere interne Ziele und 42 Bildantworten ohne Befund. Details in `docs/Ratgeber-SEO-2026-10-01.md`.
 - **WebP-Korrektur in Version 48:** Die in Ratgebern und `ProjectImage` verwendeten öffentlichen WebP-Bilder laufen produktiv über eine geprüfte Asset-Route mit korrektem `image/webp`, ETag/304 und einem Tag Cache. AVIF bleibt direkt statisch. Alte statische WebP-URLs behalten gegebenenfalls den falschen Provider-MIME-Typ; keine pauschale Behebung aller Hostingheader behaupten.
-- **Indexierung am 01.10.2026:** letzter URL-Prüfstand: ein Ratgeber indexiert, fünf nicht indexiert. Neuer Antrag für Naturstein nach der Inhaltsveröffentlichung gegen 11:08 MESZ von Google wegen Tageskontingent abgelehnt; danach keine weiteren Versuche. Kein neuer Antrag angenommen, keine vollständige Indexierung behaupten.
+- **Indexierung am 01.10.2026:** Vormittäglicher URL-Prüfstand: ein Ratgeber indexiert, fünf nicht indexiert; durch den nachmittäglichen vollständigen Audit überholt (siehe unten). Neuer Antrag für Naturstein nach der Inhaltsveröffentlichung gegen 11:08 MESZ von Google wegen Tageskontingent abgelehnt; danach keine weiteren Versuche. Kein neuer Antrag angenommen, keine vollständige Indexierung behaupten.
 
 ## Adressen, Projekte und Ablagen
 
@@ -205,3 +205,12 @@ Repository-Belege, relativ zum Repository-Hauptverzeichnis:
 Im privaten, unversionierten Aufgabenordner liegen Recherche-/Kostenbelege, Veröffentlichungsnachweise, SSR-/Live-Audits und GSC-Ergebnisse einschließlich Sitemap, Einzelanträgen und Quota. Diese privaten Dateien werden nicht im öffentlichen Repository verlinkt oder veröffentlicht.
 
 Bei Widersprüchen: aktuelle verifizierte Live-/API-Nachweise und jüngste Nutzerkorrekturen vor historischen README-Aussagen verwenden.
+
+## SEO-/GEO-Audit vom 01.10.2026
+
+- Auf Nutzerauftrag vollständigen Audit und aktuelle Primärquellenrecherche erstellt: `docs/SEO-GEO-Audit-2026-10-01.md`. Keine Websiteänderung und kein Deployment durch diesen Audit.
+- Live-Crawl V53 um 15:44–15:46 MESZ: 38 Sitemap-Seiten plus vier Hilfsseiten, 320 reale Bild-/PDF-Ziele. Sitemap-Seiten HTTP 200, eindeutige Titel/Beschreibungen, eine H1, passende Canonicals, keine Index-/Snippet-Sperren. 22 WebP-Ziele liefern application/octet-stream; als offene Verbesserung dokumentiert.
+- Neue lesende OpenSEO-GSC-Prüfung aller 38 URLs: **20 indexiert, 10 gecrawlt nicht indexiert, 2 gefunden nicht indexiert, 6 unbekannt**. Alle acht Leistungen indexiert; jetzt **zwei von sechs Ratgebern** indexiert (Etappenplanung und Terrassenentwässerung), eine von zehn Projektgalerien. Google-Canonical bei allen 20 indexierten URLs passend. Indexstatus betrifft zuletzt gecrawlte Fassungen, nicht automatisch die aktuelle V53. Keine Indexierungsanträge ausgelöst.
+- GSC-Suchleistung 31.08.–28.09.2026: fünf ausgegebene Seitenzeilen mit zusammen 44 Klicks/1.592 Impressionen; 77 Query-Zeilen. Zeitraum vor Ratgeberstart; keine Erfolgsbehauptung für neue Texte. Private Rohdaten außerhalb Repository.
+- Aktuelle PSI-API-Prüfung HTTP 429; keine neuen V53-Leistungswerte und keine CrUX-/INP-Bestätigung. Historische V45-Werte getrennt zitiert. Keine DataForSEO-Kosten verursacht.
+- Prioritäten: reale Fallstudien, bestätigtes breiteres Leistungsangebot, Indexierungsursachen, Bild-MIME, konsistente Firmen-Schema-IDs, Botlogs, Profilabgleich und Anfrage-/GEO-Messung. Aktuelle Google-Dokumentation enthält Generative-AI-Leistungsbericht; FAQ-Rich-Results seit 07.05.2026 entfernt. Keine universelle 100/100-Garantie.
