@@ -1,4 +1,5 @@
 import catalog from "@/content/photo-variants.json";
+import { publicImageUrl } from "./public-image-url";
 
 const storageOrigin = "https://fvctfguvupdcscthrxeb.supabase.co";
 const storagePath = "/storage/v1/object/public/project-images/referenzen-2026/";
@@ -23,11 +24,13 @@ export function optimizedPhoto(src: string) {
   if (!item || !name) return;
   const base = `/images/optimized-v1/${name.replace(/\.webp$/, "")}`;
   const srcSet = (format: "avif" | "webp") =>
-    item.widths.map((width) => `${base}-${width}.${format} ${width}w`).join(", ");
+    item.widths
+      .map((width) => `${publicImageUrl(`${base}-${width}.${format}`)} ${width}w`)
+      .join(", ");
   return {
     width: item.width,
     height: item.height,
-    src: `${base}-640.webp`,
+    src: publicImageUrl(`${base}-640.webp`),
     avif: srcSet("avif"),
     webp: srcSet("webp"),
   };

@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import { photoAlt, photoSrcSet } from "@/lib/project-photos";
 import { optimizedPhoto } from "@/lib/photo-variants";
+import { publicImageUrl } from "@/lib/public-image-url";
 
 export function ProjectImage({
   src,
@@ -15,7 +16,7 @@ export function ProjectImage({
       {...props}
       width={props.width ?? photo?.width}
       height={props.height ?? photo?.height}
-      src={photo?.src ?? src}
+      src={photo?.src ?? publicImageUrl(src)}
       alt={photoAlt(src, alt)}
       srcSet={photo?.webp ?? photoSrcSet(src)}
       sizes={sizes}

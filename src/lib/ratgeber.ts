@@ -1,7 +1,19 @@
 import content from "@/content/ratgeber.json";
 import { canonicalUrl } from "./seo";
+import { publicImageUrl } from "./public-image-url";
 
-export type Guide = (typeof content)[number];
+type GuideSection = {
+  heading: string;
+  paragraphs: string[];
+  checklist?: string[];
+  comparison?: { caption: string; columns: string[]; rows: string[][] };
+  references?: { label: string; url: string }[];
+};
+export type Guide = Omit<(typeof content)[number], "sections"> & {
+  sections: GuideSection[];
+  takeaways?: string[];
+  projectExample?: { projectId: string; title: string; description: string; linkLabel: string };
+};
 export const guides: Guide[] = content;
 export const serviceNames: Record<string, string> = {
   pflasterarbeiten: "Pflasterarbeiten",
@@ -27,7 +39,7 @@ export function guideSchema(article: Guide) {
         mainEntityOfPage: url,
         headline: article.title,
         description: article.metaDescription,
-        image: canonicalUrl(article.image),
+        image: canonicalUrl(publicImageUrl(article.image)),
         datePublished: article.publishedAt,
         dateModified: article.updatedAt,
         inLanguage: "de-DE",
@@ -36,6 +48,8 @@ export function guideSchema(article: Guide) {
           "@type": "Person",
           "@id": canonicalUrl("/autoren/serhad-marasli") + "#person",
           name: "Serhad Marasli",
+          jobTitle: "Bau- & Operations Manager",
+          worksFor: { "@type": "Organization", name: "Loni Galabau GmbH", url: canonicalUrl("/") },
           url: canonicalUrl("/autoren/serhad-marasli"),
         },
         publisher: { "@type": "Organization", name: "Loni Galabau GmbH", url: canonicalUrl("/") },

@@ -1,9 +1,9 @@
 [
   {
     "slug": "pflasterarbeiten-kosten-einfahrt",
-    "title": "Was kosten Pflasterarbeiten? So beurteilen Sie ein Angebot für Ihre Einfahrt",
-    "metaTitle": "Pflasterarbeiten: Kosten verstehen | Loni GalaBau",
-    "metaDescription": "Welche Arbeiten bestimmen die Kosten einer gepflasterten Einfahrt? Unterbau, Material, Entwässerung und Angebotsumfang verständlich erklärt.",
+    "title": "Pflasterarbeiten: Kostenfaktoren und Angebote für Ihre Einfahrt vergleichen",
+    "metaTitle": "Pflasterarbeiten: Kostenfaktoren & Angebote | Loni GalaBau",
+    "metaDescription": "Pflasterangebote für Ihre Einfahrt vergleichen: Welche Kosten für Rückbau, Unterbau, Material und Entwässerung dazugehören und welche Angaben Sie brauchen.",
     "excerpt": "Ein Quadratmeterpreis erklärt selten das ganze Projekt. Diese Punkte helfen Ihnen, den Aufwand Ihrer Einfahrt einzuordnen und Angebote sinnvoll zu vergleichen.",
     "category": "Pflaster & Terrasse",
     "readingMinutes": 5,
@@ -15,6 +15,43 @@
           "Zwei Einfahrten können gleich groß sein und trotzdem unterschiedliche Arbeiten erfordern. Bei der einen liegt bereits ein geeigneter Aufbau vor, bei der anderen müssen alte Beläge entfernt, Boden ausgehoben und Höhen neu abgestimmt werden. Ein Preis, der nur das Verlegen der Steine beschreibt, lässt sich deshalb nicht direkt mit einem Angebot einschließlich aller Vorarbeiten vergleichen.",
           "Für eine erste Orientierung ist die bessere Frage: Was soll am Ende funktionieren und welche Arbeiten sind dafür vorgesehen? Notieren Sie die Nutzung, den aktuellen Zustand und Ihre Gestaltungswünsche. Daraus lässt sich ein nachvollziehbarer Leistungsumfang entwickeln. Erst auf dieser gemeinsamen Grundlage sind Preisvergleiche hilfreich."
         ]
+      },
+      {
+        "heading": "Diese Positionen gehören in den Kostenvergleich",
+        "paragraphs": [
+          "Gehen Sie zwei Angebote Position für Position durch. Eine fehlende Leistung macht ein Angebot zunächst unvollständig vergleichbar. Klären Sie außerdem, ob Mengen geschätzt oder aufgemessen sind und ob die genannten Summen die Umsatzsteuer enthalten."
+        ],
+        "comparison": {
+          "caption": "Angebotsvergleich für eine Einfahrt – Leistungsumfang vor dem Quadratmeterpreis prüfen",
+          "columns": ["Position", "Diese Angaben vergleichen", "Warum das zählt"],
+          "rows": [
+            [
+              "Rückbau und Entsorgung",
+              "Vorhandener Belag, Aushubmenge, Abtransport und Entsorgung",
+              "Bei einer Bestandsfläche können Vorarbeiten einen wesentlichen Teil des Aufwands ausmachen."
+            ],
+            [
+              "Unterbau und Einfassung",
+              "Geplanter Aufbau, einzubauende Materialien, Randlängen und Anschlüsse",
+              "Tragschichten und Ränder gehören zur nutzbaren Fläche, auch wenn sie später kaum sichtbar sind."
+            ],
+            [
+              "Belag und Verlegung",
+              "Steinsorte, Format, Fläche, Muster und Zuschnitte",
+              "Material und Verlegedetails beeinflussen den Aufwand."
+            ],
+            [
+              "Entwässerung",
+              "Rinnen, Leitungswege, vorhandene Anschlüsse und zu klärende Randbedingungen",
+              "Die Position sollte zur geplanten Wasserführung passen."
+            ],
+            [
+              "Gesamtsumme",
+              "Gleicher Leistungsumfang, gleiche Flächenbasis, brutto oder netto",
+              "Erst dann ist eine Gegenüberstellung von Gesamt- oder Quadratmeterpreisen sinnvoll."
+            ]
+          ]
+        }
       },
       {
         "heading": "Nutzung und Zufahrt früh beschreiben",
@@ -93,7 +130,18 @@
     "publishedAt": "2026-09-30",
     "updatedAt": "2026-10-01",
     "image": "/images/projekte/gepflasterter-hauseingang.webp",
-    "imageCaption": "Gepflasterter Hauseingang mit klar gefassten Übergängen."
+    "imageCaption": "Gepflasterter Hauseingang mit klar gefassten Übergängen.",
+    "projectExample": {
+      "projectId": "186ed51f-a3a3-4961-b5e4-9b88a08470a2",
+      "title": "Wege, Terrassen und Hauseingänge",
+      "description": "Die Galerie zeigt unter anderem einen gepflasterten Hauseingang mit eingefasstem Höhenwechsel sowie großformatige Terrassenplatten. Sie macht unterschiedliche Flächen und Übergänge sichtbar, die bei der Beschreibung eines Vorhabens berücksichtigt werden sollten.",
+      "linkLabel": "Pflaster- und Plattenarbeiten aus unserem Bildarchiv"
+    },
+    "takeaways": [
+      "Ein vergleichbarer Preis braucht einen vergleichbaren Leistungsumfang: nur Verlegen und ein kompletter Neuaufbau sind unterschiedliche Angebote.",
+      "Rückbau, Entsorgung, Unterbau, Steinmaterial, Einfassungen und Entwässerung getrennt prüfen.",
+      "Für eine belastbare Kalkulation helfen Maße, Fotos, die geplante Nutzung und Angaben zur Zufahrt."
+    ]
   },
   {
     "slug": "rollrasen-oder-einsaat",
@@ -102,9 +150,64 @@
     "metaDescription": "Rollrasen oder Rasen einsäen: Unterschiede bei Vorbereitung, Zeit, Pflege und Angebot. So treffen Sie eine passende Entscheidung für Ihren Garten.",
     "excerpt": "Schnell eine geschlossene grüne Fläche oder Rasen von Anfang an entwickeln lassen? Entscheidend sind nicht nur Optik und Material, sondern auch Boden und Betreuung.",
     "category": "Rasen & Garten",
-    "readingMinutes": 5,
+    "readingMinutes": 6,
     "relatedServiceSlugs": ["rasenanlagen", "erdarbeiten", "bewaesserungsanlagen"],
     "sections": [
+      {
+        "heading": "Rollrasen oder Einsaat: Zeit, Pflege und Aufwand im Vergleich",
+        "paragraphs": [
+          "Eine grüne Fläche ist nicht automatisch eine belastbare Spielfläche. Die folgenden Zeiten helfen bei der Planung. Sie setzen passende Temperaturen, einen vorbereiteten Boden und zuverlässige Pflege voraus; entscheidend bleibt die Entwicklung vor Ort.",
+          "Die Herstellerangaben zur intensiven Nutzung von Rollrasen unterscheiden sich. Für die Terminplanung sollten Sie mehrere Wochen Reserve einrechnen und die tatsächliche Verwurzelung prüfen lassen. Wetter, Pflege und Beanspruchung können den Zeitpunkt verschieben."
+        ],
+        "comparison": {
+          "caption": "Orientierungswerte bei passenden Bedingungen; keine feste Nutzungsfreigabe nach Kalender",
+          "columns": ["Entscheidungspunkt", "Rollrasen", "Einsaat"],
+          "rows": [
+            [
+              "Wann ist die Fläche grün?",
+              "Das Grün ist nach dem Verlegen vorhanden.",
+              "Viele Rasengräser laufen unter günstigen Bedingungen nach etwa 2–3 Wochen auf. Einzelne Arten zeigen sich früher."
+            ],
+            [
+              "Was braucht die Anfangsphase?",
+              "In den ersten rund zwei Wochen besonders auf Feuchtigkeit und Bodenkontakt achten. Sichtbare neue Wurzeln können sich nach etwa 10–14 Tagen zeigen.",
+              "Das Saatbett in den ersten etwa 3–4 Wochen gleichmäßig feucht halten. Die ersten Halme bedeuten noch nicht, dass alle Gräser der Mischung entwickelt sind."
+            ],
+            [
+              "Ab wann lässt sich die Fläche nutzen?",
+              "Bei gutem Anwachsen ist häufig nach etwa 2–3 Wochen eine feste Verbindung zum Boden erreicht. Belastung erst steigern, wenn die Soden sicher verwurzelt sind.",
+              "Bis eine dichte, belastbare Narbe entsteht, können mehrere Monate vergehen. Der erste Schnitt bei etwa 8–10 cm Wuchshöhe ist ein Pflege-Schritt, keine Freigabe für Fußball oder häufiges Toben."
+            ],
+            [
+              "Wo entstehen die Kosten?",
+              "Höherer Materialeinsatz, Lieferung sowie das zeitnahe Verteilen und Verlegen der schweren Rollen.",
+              "Saatgut ist meist günstiger. Vorbereitung und anschließende Pflege bleiben erforderlich; Wasser und Betreuungsaufwand gehören in den Vergleich."
+            ]
+          ]
+        },
+        "references": [
+          {
+            "label": "Bayerische Landesanstalt für Weinbau und Gartenbau: Basiswissen Rasenbau",
+            "url": "https://www.lwg.bayern.de/landespflege/gartendokumente/fachartikel/136193/index.php"
+          },
+          {
+            "label": "Kiepenkerl / Bruno Nebelung: Rollrasen verlegen",
+            "url": "https://www.kiepenkerl.de/rasen-anlegen/rollrasen-verlegen/"
+          },
+          {
+            "label": "Schwab Rollrasen: Verlegung und Anfangspflege",
+            "url": "https://schwab-rollrasen.de/rasenwissen/verlegen/"
+          },
+          {
+            "label": "COMPO: Rasen neu anlegen",
+            "url": "https://www.compo.de/ratgeber/pflanzenpflege/rasen/anlegen-pflegen/rasen-neu-anlegen"
+          },
+          {
+            "label": "Hortipendium: Rasenneuanlage; Quelle Gartenakademie Rheinland-Pfalz / DLR Rheinpfalz",
+            "url": "https://www.hortipendium.de/Rasenneuanlage"
+          }
+        ]
+      },
       {
         "heading": "Zuerst die spätere Nutzung klären",
         "paragraphs": [
@@ -141,17 +244,17 @@
         ]
       },
       {
-        "heading": "So fällt der Vergleich leichter",
+        "heading": "Ein fairer Vergleich für Ihre Rasenanlage",
         "paragraphs": [
           "Stellen Sie für beide Varianten dieselben Fragen. Die Entscheidung muss zu Ihrem Tagesablauf und zum gesamten Gartenprojekt passen. Lassen Sie sich erklären, welche Unterschiede im Angebot auf Material, Vorbereitung und Betreuung zurückgehen. Eine schnelle grüne Ansicht und ein sinnvoller Gesamtumfang sind verschiedene Kriterien, die Sie getrennt beurteilen können."
         ],
         "checklist": [
-          "Wie schnell soll die Fläche vor allem optisch geschlossen wirken?",
-          "Wann und wie intensiv möchten Sie sie tatsächlich nutzen?",
-          "Wer kümmert sich nach der Anlage um Bewässerung und Kontrolle?",
-          "Welche Boden- und Höhenarbeiten sind bei beiden Varianten enthalten?",
-          "Sind noch Bauarbeiten oder Leitungen unter der Fläche vorgesehen?",
-          "Welche Pflege wird vereinbart und welche übernehmen Sie selbst?"
+          "Flächengröße und Bodenzustand – einschließlich nötigem Abtrag, Entsorgung und Bodenverbesserung",
+          "Zugang für Geräte, Transportwege und Lieferung bis zur Fläche",
+          "Gewünschte Nutzung, passende Gräsermischung und Zeitpunkt der ersten Belastung",
+          "Anschlusshöhen sowie geplante Bauarbeiten oder Leitungen unter der Rasenfläche",
+          "Leistungsumfang für Lieferung, Verlegung oder Aussaat und Anfangspflege",
+          "Zuständigkeit für Bewässerung und Kontrolle – auch bei Urlaub oder Abwesenheit"
         ]
       },
       {
@@ -164,8 +267,8 @@
     ],
     "faqs": [
       {
-        "q": "Ist Rollrasen sofort voll belastbar?",
-        "a": "Nein. Die Fläche wirkt nach der Verlegung bereits geschlossen, muss aber am neuen Standort anwachsen. Wann welche Nutzung sinnvoll ist, hängt vom Zustand und den Bedingungen ab und sollte bei der Übergabe besprochen werden."
+        "q": "Wann ist Rollrasen belastbar?",
+        "a": "Die Fläche ist direkt grün, muss aber erst anwachsen. Zwei bis drei Wochen können bei passenden Bedingungen zur Verwurzelung reichen. Für intensive Nutzung sollten Sie mehrere Wochen Reserve einplanen. Entscheidend sind der Zustand vor Ort und die bei der Übergabe vereinbarte Anwachsprüfung."
       },
       {
         "q": "Braucht eine Einsaat weniger Bodenvorbereitung?",
@@ -184,12 +287,28 @@
     },
     "sourceURLs": [
       "https://www.lwg.bayern.de/landespflege/gartendokumente/fachartikel/136193/index.php",
-      "https://lwg.bayern.de/gartenakademie/gartendokumente/wochentipps/377674/index.php"
+      "https://lwg.bayern.de/gartenakademie/gartendokumente/wochentipps/377674/index.php",
+      "https://www.kiepenkerl.de/rasen-anlegen/rollrasen-verlegen/",
+      "https://schwab-rollrasen.de/rasenwissen/verlegen/",
+      "https://www.compo.de/ratgeber/pflanzenpflege/rasen/anlegen-pflegen/rasen-neu-anlegen",
+      "https://www.hortipendium.de/Rasenneuanlage",
+      "https://www.neudorff.de/magazin/rasen-saeen-und-pflegen"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-09-30",
+    "updatedAt": "2026-10-01",
     "image": "/images/projekte/rasenflaeche-mit-hecke.webp",
-    "imageCaption": "Rasenfläche mit angrenzender Hecke und befestigten Gartenbereichen."
+    "imageCaption": "Rasenfläche mit angrenzender Hecke und befestigten Gartenbereichen.",
+    "projectExample": {
+      "projectId": "79d2d6c8-a737-4c4d-a223-73215ae94074",
+      "title": "Rasen als grüner Mittelpunkt",
+      "description": "Eine Rasenfläche mit Hecke und rundem Sitzplatz sowie Rasen an einer geschwungenen Beetkante zeigen unterschiedliche Einbindungen in den Garten. Ob die dargestellten Flächen durch Rollrasen oder Einsaat entstanden sind, ist in der Galerie nicht dokumentiert.",
+      "linkLabel": "Rasenflächen und ihre Übergänge ansehen"
+    },
+    "takeaways": [
+      "Rollrasen ist direkt grün, braucht aber Zeit zum Anwachsen. Sichtbares Grün und volle Belastbarkeit sind verschiedene Dinge.",
+      "Bei Einsaat sind Keimung und Entwicklung einzuplanen; eine belastbare Grasnarbe kann mehrere Monate brauchen.",
+      "Vergleichen Sie bei beiden Varianten den vollständigen Aufwand einschließlich Boden, Lieferung und Anfangspflege."
+    ]
   },
   {
     "slug": "garten-umgestalten-in-etappen",
@@ -207,6 +326,38 @@
           "Vielleicht reicht das Budget zunächst für eine Terrasse, während Rasen, Beete und Sichtschutz später folgen sollen. Eine solche Aufteilung kann gut zum Alltag passen. Wichtig ist, die späteren Bereiche trotzdem mitzudenken. Der Bundesverband Garten-, Landschafts- und Sportplatzbau beschreibt auf Mein Traumgarten ein Grundkonzept als Ausgangspunkt, von dem aus die Umsetzung schrittweise erfolgen kann.",
           "Das Zielbild muss zu Beginn noch nicht jedes Pflanzendetail festlegen. Es sollte aber zeigen, wo Sie sitzen, wie Sie durch den Garten gehen und welche Bereiche langfristig frei oder bepflanzt bleiben sollen. Damit wird aus einer Reihe einzelner Wünsche ein zusammenhängendes Vorhaben."
         ]
+      },
+      {
+        "heading": "Ein Etappenplan mit klaren Entscheidungspunkten",
+        "paragraphs": [
+          "Die folgende Reihenfolge ist eine Planungshilfe. Die tatsächlichen Abschnitte hängen von Ihrem Grundstück ab. Entscheidend ist, dass jeder Abschnitt an die spätere Gesamtlösung anschließen kann."
+        ],
+        "comparison": {
+          "caption": "Beispielhafte Planungsabfolge, kein fester Bauzeitenplan",
+          "columns": ["Schritt", "Jetzt klären", "Vor dem nächsten Abschnitt"],
+          "rows": [
+            [
+              "Gesamtbild",
+              "Welche Flächen und Funktionen werden gebraucht? Was bleibt erhalten?",
+              "Zielbild, Prioritäten und vorgesehene Abschnitte abstimmen."
+            ],
+            [
+              "Vorbereitung",
+              "Höhen, Boden, Wasserwege und unterirdische Leitungen zusammen betrachten.",
+              "Anschlusspunkte und spätere Zugänglichkeit festhalten."
+            ],
+            [
+              "Wege und Aufenthaltsflächen",
+              "Beläge, Einfassungen und Übergänge an Haus oder Garten festlegen.",
+              "Wasserführung und Anschluss an spätere Flächen berücksichtigen."
+            ],
+            [
+              "Pflanzen und Rasen",
+              "Standort, Nutzung und Pflege im fertigen Garten einordnen.",
+              "Anfangspflege und Bewässerung für die neue Bepflanzung organisieren."
+            ]
+          ]
+        }
       },
       {
         "heading": "Den Bestand bewusst bewerten",
@@ -286,7 +437,18 @@
     "publishedAt": "2026-09-30",
     "updatedAt": "2026-10-01",
     "image": "/images/projekte/terrassenunterkonstruktion.webp",
-    "imageCaption": "Eine Terrasse im Aufbau: Vorarbeiten werden später vom fertigen Belag verdeckt."
+    "imageCaption": "Eine Terrasse im Aufbau: Vorarbeiten werden später vom fertigen Belag verdeckt.",
+    "projectExample": {
+      "projectId": "86e3d235-2950-493d-b2ac-e7f9d86e01fb",
+      "title": "Vorbereitung unter der Oberfläche",
+      "description": "Zu sehen sind eine Terrassenunterkonstruktion vor Verlegung des Decks sowie eine Natursteintreppe mit Mauern während der Bauphase. Die beiden Aufnahmen stammen aus unterschiedlichen Projekten und zeigen keine zeitliche Abfolge desselben Gartens.",
+      "linkLabel": "Einblicke in Vorarbeiten und Bauphasen"
+    },
+    "takeaways": [
+      "Zuerst einen Gesamtplan für Nutzung, Höhen und Leitungswege entwickeln; danach sinnvolle Bauabschnitte festlegen.",
+      "Vorarbeiten und spätere Anschlüsse so abstimmen, dass fertige Flächen möglichst nicht wieder geöffnet werden müssen.",
+      "Für jeden Abschnitt Umfang, Budget und nutzbaren Zwischenzustand vereinbaren."
+    ]
   },
   {
     "slug": "terrasse-entwaesserung-planen",
@@ -304,6 +466,38 @@
           "Nach einem Regenschauer bleibt eine Pfütze stehen, Wasser sammelt sich vor der Tür oder eine vorhandene Rinne läuft sichtbar über. Diese Beobachtungen sehen ähnlich aus, können aber unterschiedliche Ursachen haben. Bevor ein Bauteil ausgewählt wird, lohnt eine kurze Dokumentation: Wo tritt das Wasser auf, bei welchem Regen und wie lange bleibt es stehen?",
           "Fotos aus mehreren Richtungen helfen, die Situation einzuordnen. Markieren Sie den betroffenen Bereich in einer Skizze und notieren Sie, ob sich in letzter Zeit etwas verändert hat, etwa ein neuer Belag oder eine angrenzende Fläche. Bei eindringendem Wasser am Gebäude sollten die betroffenen Anschlüsse fachlich geprüft werden; eine Ferndiagnose anhand eines einzelnen Fotos reicht dafür nicht."
         ]
+      },
+      {
+        "heading": "Diese Beobachtungen helfen beim ersten Gespräch",
+        "paragraphs": [
+          "Dokumentieren Sie die Situation möglichst nach Regen aus mehreren Blickrichtungen. Die Beobachtungen grenzen die Fragen ein; die Ursache lässt sich aus einem Foto allein nicht sicher bestimmen."
+        ],
+        "comparison": {
+          "caption": "Beobachtungshilfe für die Planung der Terrassenentwässerung",
+          "columns": ["Beobachtung", "Hilfreiche Dokumentation", "Im Gespräch klären"],
+          "rows": [
+            [
+              "Pfützen bleiben auf dem Belag",
+              "Lage, Ausdehnung und Dauer nach dem Regen",
+              "Höhenverlauf, Oberfläche und vorgesehene Wasserwege"
+            ],
+            [
+              "Wasser sammelt sich an der Tür",
+              "Fotos vom Türanschluss und den angrenzenden Flächen",
+              "Übergang zum Gebäude und Anschlussdetails"
+            ],
+            [
+              "Eine Rinne läuft über",
+              "Rinnenverlauf, sichtbare Verschmutzungen und vorhandene Pläne",
+              "Zustand, Zufluss und weiterer Anschlussweg"
+            ],
+            [
+              "Wasser läuft vom Nachbarbereich zu",
+              "Fotos und Skizze der umliegenden Flächen",
+              "Welche Flächen im Entwässerungskonzept berücksichtigt werden müssen"
+            ]
+          ]
+        }
       },
       {
         "heading": "Die Wasserführung als zusammenhängenden Weg betrachten",
@@ -382,9 +576,20 @@
       "https://www.umweltbundesamt.de/themen/wasser/wasser-bewirtschaften/regenwasserbewirtschaftung"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-09-30",
+    "updatedAt": "2026-10-01",
     "image": "/images/projekte/terrasse-mit-entwaesserungsrinne.webp",
-    "imageCaption": "Entwässerungsrinne am Rand einer Terrasse."
+    "imageCaption": "Entwässerungsrinne am Rand einer Terrasse.",
+    "projectExample": {
+      "projectId": "9cce7291-71ea-43c7-86a0-8543691b9323",
+      "title": "Entwässerung an Übergängen",
+      "description": "Die Galerie zeigt eine lange Entwässerungsrinne an einer Terrasse, eine Rinne vor einer Garage und eine Rinne am Übergang von Pflasterfläche zur Straße. Die Aufnahmen zeigen die Lage an der Oberfläche; der weitere Wasserweg ist darauf nicht dokumentiert.",
+      "linkLabel": "Entwässerungsrinnen an Terrasse und Garage ansehen"
+    },
+    "takeaways": [
+      "Beobachten Sie zuerst, woher das Wasser kommt und wo es stehen bleibt – Fotos nach Regen sind besonders hilfreich.",
+      "Oberfläche, Gefälle, Rinne und weiterer Wasserweg müssen gemeinsam betrachtet werden.",
+      "Anschlüsse und Versickerung werden für das konkrete Grundstück geprüft; eine zusätzliche Rinne allein löst nicht jede Ursache."
+    ]
   },
   {
     "slug": "gartenbewaesserung-planen",
@@ -402,6 +607,38 @@
           "Wer eine Gartenbewässerung plant, begegnet schnell Regnern, Schläuchen und Steuergeräten. Für eine passende Anlage ist jedoch zuerst wichtig, welche Flächen versorgt werden sollen. Rasen, Staudenbeete, Hecken und Kübel können unterschiedliche Anforderungen haben. Die LWG nennt unter anderem Pflanzenart, Witterung, Substrat sowie Sonne und Wind als Einflussfaktoren auf den Wasserbedarf.",
           "Zeichnen Sie den Garten grob auf und markieren Sie die Pflanzbereiche. Ergänzen Sie Wege, Terrasse und Flächen, die nicht beregnet werden sollen. Notieren Sie auch geplante Veränderungen. Eine Anlage für den heutigen Garten kann sonst kurz nach dem Einbau nicht mehr zur tatsächlichen Aufteilung passen."
         ]
+      },
+      {
+        "heading": "Bewässerungsbereiche sinnvoll aufteilen",
+        "paragraphs": [
+          "Skizzieren Sie Rasenflächen, Beete und Kübel getrennt. Ergänzen Sie sonnige und schattige Bereiche sowie vorhandene Wasseranschlüsse. Daraus lässt sich besprechen, welche Bereiche gemeinsam versorgt werden können."
+        ],
+        "comparison": {
+          "caption": "Planungshilfe für verschiedene Gartenbereiche",
+          "columns": ["Bereich", "Mögliche Bewässerung", "Besonders zu klären"],
+          "rows": [
+            [
+              "Rasenfläche",
+              "Regner für eine flächige Verteilung",
+              "Form der Fläche, Reichweite und Übergänge an Wege oder Haus"
+            ],
+            [
+              "Pflanzbeet und Hecke",
+              "Tropfbewässerung im Bereich der Pflanzen",
+              "Pflanzabstände, Leitungsverlauf und unterschiedlicher Wasserbedarf"
+            ],
+            [
+              "Kübel und einzelne Pflanzstellen",
+              "Passende Einzelversorgung",
+              "Standort, Substrat, Abfluss und Kontrolle während Abwesenheit"
+            ],
+            [
+              "Steuerung und Betrieb",
+              "Abgestimmte Bewässerungszeiten und gegebenenfalls Sensorik",
+              "Wasserquelle, nutzbare Fördermenge, Wartung und Anpassung an Wetter und Pflanzen"
+            ]
+          ]
+        }
       },
       {
         "heading": "Den Wasseranschluss als Planungsgrundlage verstehen",
@@ -483,7 +720,18 @@
     "publishedAt": "2026-09-30",
     "updatedAt": "2026-10-01",
     "image": "/images/projekte/tropfbewaesserung-im-pflanzbeet.webp",
-    "imageCaption": "Tropfbewässerung direkt im Pflanzbeet."
+    "imageCaption": "Tropfbewässerung direkt im Pflanzbeet.",
+    "projectExample": {
+      "projectId": "696cfc1a-4f27-48c0-a593-ff5ceffa0f73",
+      "title": "Bewässerung und Pflanzflächen",
+      "description": "Die erste Aufnahme zeigt einen Tropfschlauch in einem Pflanzbeet. Weitere Bilder zeigen ein Beet entlang eines geschwungenen Wegs und Bepflanzung am Holzdeck. Sie geben einen Eindruck unterschiedlicher Pflanzflächen; ein gemeinsames Bewässerungssystem für alle gezeigten Flächen ist nicht dokumentiert.",
+      "linkLabel": "Tropfbewässerung und Pflanzflächen aus unseren Arbeiten"
+    },
+    "takeaways": [
+      "Rasen, Beete und Kübel haben unterschiedliche Anforderungen; teilen Sie die Planung in passende Bereiche auf.",
+      "Die Wasserquelle, verfügbare Wassermenge und Leitungswege werden vor der Auswahl von Regnern und Steuerung geklärt.",
+      "Automatik unterstützt die Versorgung, braucht aber eine passende Einstellung und regelmäßige Kontrolle."
+    ]
   },
   {
     "slug": "naturstein-terrasse-materialwahl",
@@ -492,9 +740,63 @@
     "metaDescription": "Welcher Naturstein passt zur Terrasse? Oberfläche, Nutzung, Muster, Aufbau und Pflege sinnvoll beurteilen – mit Fragen für die Materialauswahl.",
     "excerpt": "Die Farbe ist nur ein Teil der Entscheidung. Eine Natursteinterrasse sollte zu Nutzung, Umgebung und Pflege passen – und als vollständiger Aufbau geplant werden.",
     "category": "Pflaster & Terrasse",
-    "readingMinutes": 5,
+    "readingMinutes": 7,
     "relatedServiceSlugs": ["natursteinarbeiten", "pflasterarbeiten", "entwaesserung"],
     "sections": [
+      {
+        "heading": "Vier Natursteine und passende Oberflächen als Orientierung",
+        "paragraphs": [
+          "Vergleichen Sie eine konkrete Steinsorte samt Bearbeitung und technischen Angaben. Der Gesteinsname allein beantwortet weder die Frost- noch die Rutschfrage. Die Beispiele zeigen Auswahlmöglichkeiten; die Eignung für Ihre Terrasse wird am angebotenen Produkt und am geplanten Aufbau geprüft."
+        ],
+        "comparison": {
+          "caption": "Natursteinbeispiele im Vergleich – Auswahl und Verfügbarkeit projektbezogen abstimmen",
+          "columns": [
+            "Material und Beispiel",
+            "Oberfläche und Wirkung",
+            "Was vor der Auswahl zu prüfen ist"
+          ],
+          "rows": [
+            [
+              "Granit, etwa Nammeringer Grau-Blau",
+              "Körniges, blaugraues Bild; als geflammte, gestockte oder sandgestrahlte Ausführung erhältlich.",
+              "Rutschhemmung der gewählten Bearbeitung und Außen-Eignung prüfen. Auch bei widerstandsfähigen Silikatgesteinen unterscheidet sich die Fleckempfindlichkeit."
+            ],
+            [
+              "Kalkstein, etwa Dietfurter Kalkstein gala",
+              "Beige oder graue Varianten, beispielsweise sandgestrahlt oder gestockt.",
+              "Der Hersteller weist diese Sorte ausdrücklich als frostbeständig für außen aus. Daraus folgt keine Eignung jedes Kalksteins. Säurehaltige Reiniger und Essig können Kalkstein angreifen."
+            ],
+            [
+              "Travertin, etwa Classic hell",
+              "Creme- bis beigefarbene Porenstruktur; offenporige und stärker strukturierte Bearbeitungen unterscheiden sich von geschliffenen, gefüllten Flächen.",
+              "Passende Außen-Ausführung und Nass-Rutschhemmung klären. Als Kalkstein braucht Travertin eine auf seine Säureempfindlichkeit abgestimmte Pflege: säurehaltige Haushaltsreiniger vermeiden. Porenfüllung und Schutzbehandlung mit dem Lieferanten abstimmen."
+            ],
+            [
+              "Sandstein, etwa Maulbronner oder Mainsandstein",
+              "Je nach Sorte und Bearbeitung gestrahlt, gesägt oder geschliffen erhältlich; das konkrete Muster entscheidet über die gewünschte Haptik.",
+              "Frostnachweis für die angebotene Sorte einsehen. Fleckempfindlichkeit und Reaktion auf Reiniger können deutlich variieren; vor der Reinigung an unauffälliger Stelle testen."
+            ]
+          ]
+        },
+        "references": [
+          {
+            "label": "Kusser Granitwerke: Natursteindatenbank",
+            "url": "https://kusser.com/resources/natursteindatenbank"
+          },
+          {
+            "label": "Franken-Schotter: Dietfurter Kalkstein gala",
+            "url": "https://www.franken-schotter.com/natursteine/dietfurter-kalkstein-gala/"
+          },
+          {
+            "label": "TRACO Manufactur: Travertin Classic hell",
+            "url": "https://www.traco-manufactur.com/naturstein-travertin-classic-hell"
+          },
+          {
+            "label": "Lithofin: Sandstein außen reinigen, schützen und pflegen",
+            "url": "https://www.lithofin.de/fileadmin/Downloads/INFO/D/info_D_45002_SandsteinAussen.pdf"
+          }
+        ]
+      },
       {
         "heading": "Mit der Nutzung der Terrasse beginnen",
         "paragraphs": [
@@ -510,10 +812,17 @@
         ]
       },
       {
-        "heading": "Oberfläche als Gestaltung und Nutzungsfrage betrachten",
+        "heading": "Oberfläche, Gestaltung und Rutschhemmung gemeinsam beurteilen",
         "paragraphs": [
           "Die Bearbeitung der Oberfläche verändert den Eindruck eines Steins und seine Nutzungseigenschaften. Betrachten Sie das Material deshalb möglichst als tatsächliches Muster, nicht nur als Foto. Für Außenbeläge gehören die vorgesehenen Bedingungen und Anforderungen an sicheres Begehen in die Auswahl. Die BIV-Veröffentlichung nennt Oberflächen ausdrücklich als Teil der Eignungsbeurteilung.",
-          "Prüfen Sie mit dem ausführenden Betrieb, wie sich die Oberfläche zu Ihren Wünschen verhält. Ein lebhaftes Material kann gut zu einer ruhigen Fassade passen; ein zurückhaltender Belag kann vorhandene Gartenstrukturen stärker wirken lassen. Solche Gestaltungsentscheidungen sind persönlich. Wichtig ist, sie von der technischen Eignung zu unterscheiden und beide vor der Bestellung abzustimmen."
+          "Prüfen Sie mit dem ausführenden Betrieb, wie sich die Oberfläche zu Ihren Wünschen verhält. Ein lebhaftes Material kann gut zu einer ruhigen Fassade passen; ein zurückhaltender Belag kann vorhandene Gartenstrukturen stärker wirken lassen. Solche Gestaltungsentscheidungen sind persönlich. Wichtig ist, sie von der technischen Eignung zu unterscheiden und beide vor der Bestellung abzustimmen.",
+          "Geflammte oder gestockte Flächen können für Außenbereiche geeignet sein. Ob die Rutschhemmung genügt, hängt auch vom Gestein und der Nutzung ab. Verschmutzung und Biofilm verschlechtern den Halt. Ein Nassmuster hilft bei der Auswahl; es ersetzt keinen erforderlichen technischen Nachweis."
+        ],
+        "references": [
+          {
+            "label": "Deutscher Naturwerkstein-Verband: BTI 1.3 Massivstufen und Treppenbeläge außen, Ausgabe 2022",
+            "url": "https://dnv.online/wp-content/uploads/2024/04/BTI1.3_Massivstufen-Treppenbelaege-2022.pdf"
+          }
         ]
       },
       {
@@ -538,18 +847,30 @@
         ]
       },
       {
-        "heading": "Diese Fragen helfen bei der Materialauswahl",
+        "heading": "Imprägnierung schützt nicht vor Säure",
+        "paragraphs": [
+          "Eine abgestimmte Imprägnierung kann die Aufnahme von Wasser und Öl verringern. Sie macht Kalkstein jedoch nicht säurefest. Verwenden Sie einen für Material und Fuge geeigneten Reiniger und beachten Sie die Pflegeangaben. Die Behandlung sollte zuerst an einer Probefläche geprüft werden."
+        ],
+        "references": [
+          {
+            "label": "Lithofin: Kalkstein außen reinigen, schützen und pflegen",
+            "url": "https://www.lithofin.de/fileadmin/Downloads/INFO/D/info_D_43002_KalksteinAussen.pdf"
+          }
+        ]
+      },
+      {
+        "heading": "Diese Angaben machen die Materialwahl konkret",
         "paragraphs": [
           "Sie müssen vor einer Anfrage noch keinen Stein festgelegt haben. Bringen Sie Fotos der Terrasse und ihrer Umgebung, ungefähre Maße und gern Beispiele für die gewünschte Wirkung mit. Loni GalaBau bespricht Natursteinarbeiten im Zusammenhang mit Garten, Nutzung und vorhandenen Anschlüssen. Material, Format und Umfang werden für das konkrete Vorhaben abgestimmt."
         ],
         "checklist": [
-          "Wie wird die Terrasse im Alltag genutzt?",
-          "Welche Angaben liegen zur Eignung des konkreten Steins vor?",
-          "Welche Oberfläche passt zu Nutzung und gewünschter Wirkung?",
-          "Wie wird das zu erwartende Gesamtbild bemustert?",
-          "Wie passen Format und Fugenbild zum Grundriss?",
-          "Welche Vorarbeiten, Anschlüsse und Entwässerung sind vorgesehen?",
-          "Welche Pflegehinweise gelten für genau dieses Material?"
+          "Nutzung der Terrasse, Anschlusshöhen und vorgesehene Entwässerung",
+          "Handelsname und genaue Natursteinsorte",
+          "Gewählte Oberflächenbearbeitung und passendes Muster",
+          "Nachweis der Frostbeständigkeit für die angebotene Ware",
+          "Rutschverhalten im vorgesehenen Einsatz, besonders bei Nässe",
+          "Plattenformat und Stärke passend zum Aufbau und zur Belastung",
+          "Reinigungs- und Pflegehinweise für Stein und Fuge"
         ]
       }
     ],
@@ -576,11 +897,29 @@
     "sourceURLs": [
       "https://cms.bivsteinmetz.de/docs/bivjb2021_069351.pdf",
       "https://www.aco.de/fassadenentwaesserung/planungsinformationen-fassadenrinnen/einsatzbereiche-aco-fassadenrinnen",
-      "https://www.kann.de/produkte/reinigung-zubehoer/wischpflege/"
+      "https://www.kann.de/produkte/reinigung-zubehoer/wischpflege/",
+      "https://dnv.online/wp-content/uploads/2024/04/BTI1.3_Massivstufen-Treppenbelaege-2022.pdf",
+      "https://kusser.com/resources/natursteindatenbank",
+      "https://www.franken-schotter.com/natursteine/dietfurter-kalkstein-gala/",
+      "https://www.traco-manufactur.com/naturstein-travertin-classic-hell",
+      "https://www.lithofin.de/fileadmin/Downloads/INFO/D/info_D_41002_GranitAussen.pdf",
+      "https://www.lithofin.de/fileadmin/Downloads/INFO/D/info_D_43002_KalksteinAussen.pdf",
+      "https://www.lithofin.de/fileadmin/Downloads/INFO/D/info_D_45002_SandsteinAussen.pdf"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-09-30",
+    "updatedAt": "2026-10-01",
     "image": "/images/projekte/natursteinweg-unter-pergola.webp",
-    "imageCaption": "Natursteinbelag mit Sitzplatz unter einer Pergola."
+    "imageCaption": "Natursteinbelag mit Sitzplatz unter einer Pergola.",
+    "projectExample": {
+      "projectId": "9a819fcf-5b1c-4170-a114-9f7570aea902",
+      "title": "Terrassen und Gärten am Wasser",
+      "description": "Aufnahme 4 der Galerie zeigt einen Natursteinweg und einen Sitzplatz unter einer Pergola. Weitere Bilder der Galerie zeigen Holzdecks, Natursteinmauern und Gartenbereiche am Wasser. Die Zusammenstellung hilft, Materialien im Umfeld zu betrachten; sie dokumentiert kein einheitliches Projekt.",
+      "linkLabel": "Natursteinweg und Sitzplatz im Gartenkontext ansehen"
+    },
+    "takeaways": [
+      "Vergleichen Sie die genaue Steinsorte mit ihrer Oberfläche, nicht nur den Oberbegriff Granit, Kalkstein oder Sandstein.",
+      "Frostbeständigkeit und Rutschverhalten müssen zum angebotenen Produkt und zur geplanten Nutzung passen.",
+      "Ein Muster bei trockener und nasser Oberfläche sowie passende Pflegehinweise helfen bei der Auswahl."
+    ]
   }
 ]

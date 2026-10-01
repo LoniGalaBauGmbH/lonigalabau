@@ -8,11 +8,11 @@ import "@/components/site/Ratgeber.css";
 export const Route = createFileRoute("/autoren/serhad-marasli")({
   head: () => ({
     meta: [
-      { title: "Serhad Marasli – Autor im Gartenratgeber | Loni GalaBau" },
+      { title: "Über unsere Ratgeber | Loni GalaBau" },
       {
         name: "description",
         content:
-          "Die Ratgeber von Serhad Marasli bei Loni GalaBau: Entscheidungshilfen zu Gartenplanung, Pflaster, Rasen, Naturstein und Bewässerung.",
+          "Hintergründe zu den Ratgebern von Loni GalaBau: verständliche Informationen zu Gartenplanung, Pflaster, Rasen, Naturstein und Bewässerung.",
       },
       { name: "author", content: "Serhad Marasli" },
     ],
@@ -34,21 +34,29 @@ function Author() {
                 "@type": "Person",
                 "@id": canonicalUrl("/autoren/serhad-marasli") + "#person",
                 name: "Serhad Marasli",
+                jobTitle: "Bau- & Operations Manager",
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Loni Galabau GmbH",
+                  url: canonicalUrl("/"),
+                },
                 url: canonicalUrl("/autoren/serhad-marasli"),
               },
             }),
           }}
         />
         <header className="guide-index-intro">
-          <span className="guide-kicker">Autor im Loni Gartenratgeber</span>
-          <h1>Serhad Marasli</h1>
+          <span className="guide-kicker">Loni GalaBau</span>
+          <h1>Über unsere Ratgeber.</h1>
           <div className="guide-intro-bottom">
             <p>
-              Hier finden Sie meine Beiträge zu Gartenplanung und Außenanlagen. Sie helfen dabei,
-              Wünsche zu sortieren, Materialien einzuordnen und ein persönliches Projektgespräch
-              vorzubereiten.
+              Unsere Beiträge zu Gartenplanung und Außenanlagen helfen dabei, Wünsche zu sortieren,
+              Materialien einzuordnen und ein persönliches Projektgespräch vorzubereiten.
             </p>
           </div>
+          <p className="mt-6 text-sm leading-relaxed">
+            Autor: Serhad Marasli · Bau- &amp; Operations Manager bei Loni GalaBau
+          </p>
         </header>
         <section className="max-w-3xl text-lg leading-relaxed pb-16" aria-labelledby="redaktion">
           <h2 id="redaktion" className="text-3xl mb-5">
@@ -57,7 +65,14 @@ function Author() {
           <p>
             Die Ratgeber verbinden konkrete Fragen von Gartenbesitzern mit fachlichen Grundlagen.
             Herangezogene Fachinformationen sind am jeweiligen Artikel verlinkt. Bilder stammen aus
-            dem Bildarchiv von Loni GalaBau.
+            dem Bildarchiv von Loni GalaBau und führen zu den passenden Projektgalerien. Die dort
+            sichtbaren Arbeiten veranschaulichen Materialien und Gartensituationen; konkrete Kosten
+            und Ausführungsdetails werden für jedes Vorhaben gesondert geklärt.
+          </p>
+          <p className="mt-5">
+            Wir arbeiten deutschlandweit, mit Firmensitz in Hattersheim am Main bei Frankfurt.
+            Fachliche Ergänzungen an den Beiträgen werden mit einem sichtbaren Aktualisierungsdatum
+            kenntlich gemacht.
           </p>
           <p className="mt-5">
             Ein Artikel kann die Bedingungen auf Ihrem Grundstück nicht vollständig abbilden. Für
@@ -71,7 +86,7 @@ function Author() {
         </section>
         <section className="guide-related" aria-labelledby="autor-beitraege">
           <div className="guide-section-heading">
-            <h2 id="autor-beitraege">Meine Ratgeber</h2>
+            <h2 id="autor-beitraege">Unsere Ratgeber</h2>
           </div>
           <div className="guide-grid">
             {guides.map((article) => (

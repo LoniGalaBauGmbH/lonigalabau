@@ -288,9 +288,10 @@ function metadata(src: string) {
 export function photoSrcSet(src: string) {
   const photo = metadata(src);
   return photo
-    ? `${src.replace(/\.webp$/, "-small.webp")} ${photo.smallWidth}w, ${src} ${photo.width}w`
+    ? `${publicImageUrl(src.replace(/\.webp$/, "-small.webp"))} ${photo.smallWidth}w, ${publicImageUrl(src)} ${photo.width}w`
     : undefined;
 }
 export function photoAlt(src: string, fallback: string) {
   return fallback === "" ? "" : (metadata(src)?.alt ?? fallback);
 }
+import { publicImageUrl } from "./public-image-url";
