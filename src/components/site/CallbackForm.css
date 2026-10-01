@@ -199,6 +199,28 @@
     border-color 160ms,
     box-shadow 160ms;
 }
+/* Keep iOS's native date theme from overriding the field's border-box width. */
+.callback-field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.callback-field input[type="date"]::-webkit-date-and-time-value {
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+.callback-field input[type="date"]::-webkit-datetime-edit {
+  min-width: 0;
+  padding: 0;
+  justify-content: center;
+  text-align: center;
+}
 .callback-field input::placeholder {
   color: #6b7c6e;
   font-size: 0.875rem;
