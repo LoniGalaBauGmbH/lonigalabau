@@ -13,6 +13,8 @@ import { attemptSubmissionEmails } from "@/lib/customer-confirmation.server";
 import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
 import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
 import { enforceFormQuota } from "@/lib/form-quota.server";
+import { validateCallback } from "@/lib/callback-request";
+import { persistCallbackSubmission } from "@/lib/callback-submission.server";
 import { serviceTopics } from "@/lib/service-topics";
 import { publicContentQuery } from "@/lib/public-content-cache.server";
 
@@ -223,6 +225,19 @@ export const getJobBySlug = createServerFn({ method: "GET" })
       setResponseStatus(503);
       throw new Error("Die Inhalte sind vorübergehend nicht verfügbar.");
     }
+  });
+
+export const createCallbackRequest = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => {
+    const parsed = validateCallback(input);
+    if (!parsed.success) throw new Error(parsed.error.issues[0].message);
+    return parsed.data;
+  })
+  .handler(async ({ data }) => {
+    await enforceFormQuota(data.email, data.phone);
+    const result = await persistCallbackSubmission(supabaseAdmin, data);
+    await attemptSubmissionEmails(supabaseAdmin, "contact_requests", result.id);
+    return { ok: true };
   });
 
 export const createContactRequest = createServerFn({ method: "POST" })

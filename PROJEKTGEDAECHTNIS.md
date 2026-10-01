@@ -39,7 +39,8 @@ Sites-IDs, Supabase-Projektreferenz und OpenSEO-Projekt-ID sind Zuordnungen, kei
 
 ## Veröffentlichungsstand
 
-- Bestätigter Sites-Stand: **Version 45**, veröffentlicht am 01.10.2026 um 10:06:50 MESZ. Quellcommit `08e12ac0b44aa37356891bf3ac8c48472fc0fcd8`, Deployment `appgdep_6abe1484300481918ead8bb330d18175`. Version 43 war der erste Optimierungs-/Deutschlandweit-Release; 42 und 44 wurden nur gespeichert. Spätere Dokumentationscommits ändern den Live-Programmcode nicht.
+- Bestätigter Sites-Stand: **Version 46**, veröffentlicht am 01.10.2026 um 10:31 MESZ. Rückrufformular und Performance-Stand aus Version 45 zusammengeführt; Quellcommit `26fa51ade5020a8dc94a4dea0cb94eafe6eeb0af`, Deployment `appgdep_6abe1a33698481919d1c4c64678d76b5`. Nachträgliche Dokumentation ändert den veröffentlichten Programmcode nicht.
+- Version 45, veröffentlicht am 01.10.2026 um 10:06:50 MESZ. Quellcommit `08e12ac0b44aa37356891bf3ac8c48472fc0fcd8`, Deployment `appgdep_6abe1484300481918ead8bb330d18175`. Version 43 war der erste Optimierungs-/Deutschlandweit-Release; 42 und 44 wurden nur gespeichert. Spätere Dokumentationscommits ändern den Live-Programmcode nicht.
 - Die Ausgangsmessung vom Morgen des 01.10.2026 betraf noch Version 41. Die daraus abgeleiteten Änderungen wurden anschließend mit Versionen 43 und 45 veröffentlicht; Verlauf und alle Messergebnisse in `docs/Unterseiten-Performance-2026-10-01.md`.
 - Version 41: Quellcommit `e123304bc561f77e8becdf48a2925f6f844fe74b`, Deployment `appgdep_6abd339c4fd08191970a3703da19e5fe`. Einziger Programmcode-Unterschied gegenüber Version 40: Fontpreload entfernt; keine Cacheänderung. Nachträgliche Messdokumentation ändert den Live-Programmcode nicht.
 - Version 40: Quellcommit `ba280c07df3a4c8c2439cb47c9a94b716d2cb9f0`, Deployment `appgdep_6abd30b377e88191a0809bb4e1ffc0bf`. Nachträgliche Messdokumentation ändert den Live-Programmcode nicht.
@@ -52,6 +53,9 @@ Sites-IDs, Supabase-Projektreferenz und OpenSEO-Projekt-ID sind Zuordnungen, kei
 - Ältere Aussagen in `README.md`/`project_state.md`, wonach Hosting oder Domainwechsel noch ausstehen, sind teilweise überholt.
 
 ## Architektur und wichtige Zuständigkeiten
+
+- **Rückrufbereich live in Version 46 (01.10.2026):** kompakter Dreischritt Name → Kontakt → Wunschzeit direkt nach „Schön geplant. Bis in den Unterbau.“ auf der Startseite; Hero-Bild unverändert, Hero-CTA führt zu `/#rueckruf`. Vor-/Nachname, Telefon, optionale E-Mail, Wunschtag/-zeit und Datenschutzbestätigung. Sanfte Übergänge, Zurück mit Werterhalt, reduzierte Bewegung und mobile Feldanordnung.
+- Backend für Rückrufwünsche verwendet `contact_requests` und bestehende private Admin-/Mailwege. Cloud-Migration `20261001074449_callback_requests` ausgeführt; E-Mail darf bei vorhandener Telefonnummer NULL sein. Kein Kundenmailversuch ohne E-Mail. Mit E-Mail bestehende gebrandete Bestätigung und kurze Ticketnummer. Mo–Fr 07:00–17:30, mindestens 60 Minuten Vorlauf in Europe/Berlin; ausdrücklich keine Terminbuchung. Browserablauf inkl. Zurück/Datumswerterhalt sowie Darstellung bei 320/390/1366 px geprüft. Gesamtsuite vor Multistep 95/95 bestanden; nach Multistep 19/19 betroffene Tests, Typprüfung und gezieltes ESLint erfolgreich. Isolierte und zurückgerollte Cloud-DB-Prüfung erfolgreich, keine echten Testmails versandt. Nach Zusammenführung des neueren Performance-Stands bestanden erneut die komplette Testsuite, TypeScript und Produktionsbuild. Veröffentlicht am 01.10.2026 um 10:31 MESZ als Version 46, Quellcommit `26fa51ade5020a8dc94a4dea0cb94eafe6eeb0af`, Deployment `appgdep_6abe1a33698481919d1c4c64678d76b5`.
 
 - Website: React 19, TypeScript, TanStack Start/Router/Query, Vite 7, Tailwind CSS; serverseitig gerenderte öffentliche Seiten.
 - Hosting: Sites mit Cloudflare Worker; Nitro-Preset `cloudflare-module` erzeugt `dist/server` und `dist/client`.

@@ -112,9 +112,10 @@ function harness(config = {}) {
     config,
   };
 }
-test("all four form variants produce branded receipts, stable tickets, embedded photos and plain text", async () => {
+test("all form variants produce branded receipts, stable tickets, embedded photos and plain text", async () => {
   for (const [table, subject, noun] of [
     ["contact_requests", "Kontakt", "Nachricht"],
+    ["contact_requests", "Rückrufwunsch: Fr., 02.10.2026 · 10:30 Uhr", "Rückrufwunsch"],
     ["contact_requests", "Projektanfrage: Terrasse", "Projektanfrage"],
     ["contact_requests", "Gartenplaner: Pflaster", "Gartenplanung"],
     ["applications", "", "Bewerbung"],
@@ -148,6 +149,7 @@ test("accepted and pre-rollout submissions do not send a confirmation", async ()
   for (const record of [
     { customer_confirmation_sent_at: "2026-09-29" },
     { customer_confirmation_requested_at: null },
+    { email: null },
   ]) {
     const h = harness({ record });
     await h.sendCustomerConfirmation(h.client, "contact_requests", h.record.id);
@@ -236,7 +238,7 @@ test("expired uncertain deliveries are not replayed after the provider deduplica
 });
 test("public routes send receipts only after successful persistence and retry queue includes customer failures", () => {
   const source = fs.readFileSync(new URL("../src/lib/site.functions.ts", import.meta.url), "utf8");
-  assert.equal((source.match(/await attemptSubmissionEmails/g) || []).length, 3);
+  assert.equal((source.match(/await attemptSubmissionEmails/g) || []).length, 4);
   for (const block of source
     .split("export const ")
     .filter((b) => /createContactRequest|createGardenPlannerRequest|createApplication/.test(b))) {

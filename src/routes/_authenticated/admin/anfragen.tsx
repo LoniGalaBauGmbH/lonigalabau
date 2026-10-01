@@ -33,7 +33,7 @@ type ContactRequest = {
   ticket_number?: number;
   ticket_format_version?: number;
   name: string;
-  email: string;
+  email: string | null;
   phone: string | null;
   subject: string | null;
   message: string;
@@ -186,7 +186,7 @@ function Page() {
       const matchesSearch =
         matchesSubmissionTicket(c.id, searchQuery, false, c) ||
         c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (c.email || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
         (c.phone && c.phone.includes(searchQuery)) ||
         c.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (c.subject && c.subject.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -311,7 +311,7 @@ function Page() {
                     </div>
                     <div className="flex items-center gap-3 text-xs text-foreground/50 flex-wrap">
                       <span className="flex items-center gap-1">
-                        <Mail className="w-3.5 h-3.5" /> {c.email}
+                        <Mail className="w-3.5 h-3.5" /> {c.email || "Rückruf ohne E-Mail"}
                       </span>
                       {c.phone && (
                         <span className="flex items-center gap-1">
@@ -454,13 +454,15 @@ function Page() {
                 customerDeliveryStatus={selectedLead.customer_confirmation_status}
               />
               <div className="mt-6 flex flex-wrap gap-2.5">
-                <a
-                  href={`mailto:${selectedLead.email}?subject=Ihre Anfrage bei Loni Galabau GmbH`}
-                  className="flex items-center gap-2 text-xs font-semibold px-4.5 py-2.5 bg-brand text-brand-foreground rounded-full hover:bg-brand/90 transition shadow-sm"
-                >
-                  <Mail className="w-3.5 h-3.5" /> E-Mail schreiben{" "}
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                {selectedLead.email && (
+                  <a
+                    href={`mailto:${selectedLead.email}?subject=Ihre Anfrage bei Loni Galabau GmbH`}
+                    className="flex items-center gap-2 text-xs font-semibold px-4.5 py-2.5 bg-brand text-brand-foreground rounded-full hover:bg-brand/90 transition shadow-sm"
+                  >
+                    <Mail className="w-3.5 h-3.5" /> E-Mail schreiben{" "}
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
                 {selectedLead.phone && (
                   <a
                     href={`tel:${selectedLead.phone}`}

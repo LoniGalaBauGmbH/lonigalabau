@@ -125,6 +125,30 @@ test("already accepted notification is not sent again", async () => {
   assert.equal(h.calls.length, 0);
 });
 
+test("phone-only callback notifications include the requested time without an invalid reply-to", () => {
+  const h = harness();
+  const message = h.notificationMessage(
+    {
+      ...h.record,
+      email: null,
+      subject: "Rückrufwunsch: 02.10.2026",
+      message:
+        "RÜCKRUF · Wunschzeitpunkt\nVorname: Anna\nNachname: Müller\nWunschdatum: 02.10.2026\nWunschuhrzeit: 10:30 Uhr (Europe/Berlin)",
+    },
+    "contact_requests",
+    "",
+    [],
+  );
+  assert.equal(Object.hasOwn(message, "reply_to"), false);
+  assert.equal(message.to.join(), "webseite@loni-galabau.de");
+  for (const part of [message.html, message.text]) {
+    assert.ok(part.includes("10:30 Uhr"));
+    assert.ok(part.includes("A-1042"));
+    assert.ok(part.includes("Bitte rufen Sie"));
+    assert.ok(!part.includes("auf diese E-Mail antworten"));
+  }
+});
+
 test("old pending notifications keep identical content after adding database ticket numbers", () => {
   const h = harness();
   const previous = { ...h.record, ticket_number: undefined, ticket_format_version: undefined };

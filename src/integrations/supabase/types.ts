@@ -85,7 +85,7 @@ export type Database = {
       contact_requests: {
         Row: {
           created_at: string;
-          email: string;
+          email: string | null;
           id: string;
           ticket_number: number;
           ticket_format_version: number;
@@ -106,7 +106,7 @@ export type Database = {
         };
         Insert: {
           created_at?: string;
-          email: string;
+          email: string | null;
           id?: string;
           ticket_number?: never;
           ticket_format_version?: number;
@@ -127,7 +127,7 @@ export type Database = {
         };
         Update: {
           created_at?: string;
-          email?: string;
+          email?: string | null;
           id?: string;
           ticket_number?: never;
           ticket_format_version?: number;

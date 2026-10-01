@@ -202,3 +202,22 @@ Prüfung: `node scripts/check-submission-tickets.mjs PFAD_ZU_PGLITE_DIST_INDEX_J
 prüft Altbestand, Eindeutigkeit, alte/neue Worker, Nummern nach Löschung, Constraints
 und Sequenzrechte. Zusätzlich wurden echte Inserts als `service_role` in einer
 zurückgerollten Cloud-Transaktion geprüft; keine E-Mails wurden dabei versandt.
+
+## Rückrufanfragen (01.10.2026)
+
+`updates/callback_requests.sql` wurde als `20261001074449_callback_requests`
+im Projekt `fvctfguvupdcscthrxeb` angewandt. `contact_requests.email` darf für
+Rückrufwünsche NULL sein; ein zusätzlicher CHECK verlangt dann eine Telefonnummer.
+RLS und Grants bleiben unverändert. Bestehende Kontakt-/Bewerbungsformulare
+verlangen weiterhin eine E-Mail-Adresse.
+
+Der eigene Server-Endpunkt prüft Namen, Telefonnummer, optionale E-Mail,
+Werktag (Mo–Fr), halbstündige Uhrzeiten 07:00–17:30 und mindestens eine Stunde
+Vorlauf in Europe/Berlin. Anfragen landen im vorhandenen Adminbereich und in der
+internen Benachrichtigung. Ohne E-Mail wird keine Kundenbestätigung eingereiht;
+mit E-Mail nutzt sie den bestehenden Versand mit kurzer Ticketnummer.
+Wunschzeiten sind ausdrücklich keine bestätigten Termine.
+
+Prüfungen: isolierte Migration mit bestehendem Datensatz, NULL-/Telefon-CHECKs,
+zurückgerollter echter Service-Role-Insert sowie automatisierte Tests für
+Validierung, Speicherung, Mailweitergabe und Quoten. Keine Testmail versandt.

@@ -4,6 +4,7 @@ import { visible } from "@tanstack/react-start/hydration";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
+import { CallbackForm } from "@/components/site/CallbackForm";
 import { ProjectInquiryForm } from "@/components/site/ProjectInquiryForm";
 import { StatsBand } from "@/components/site/StatsBand";
 import { TeamPhoto } from "@/components/site/TeamPhoto";
@@ -198,10 +199,11 @@ function HomePage() {
 
             <div className="home-hero-actions flex flex-wrap items-center">
               <Link
-                to="/kontakt"
+                to="/"
+                hash="rueckruf"
                 className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-accent hover:text-brand transition"
               >
-                Projekt anfragen
+                Rückruf anfragen
               </Link>
               <Link
                 to="/leistungen"
@@ -341,6 +343,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <CallbackForm />
 
       {/* PROCESS */}
       <section className="bg-brand text-brand-foreground px-6 md:px-10 py-16 md:py-20">

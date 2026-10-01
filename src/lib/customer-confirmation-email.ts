@@ -1,6 +1,6 @@
 import { submissionTicket, type SubmissionTicketFields } from "./submission-ticket";
 
-export type ConfirmationKind = "contact" | "project" | "planner" | "application";
+export type ConfirmationKind = "contact" | "project" | "planner" | "application" | "callback";
 export type ConfirmationInput = SubmissionTicketFields & {
   id: string;
   kind: ConfirmationKind;
@@ -24,19 +24,23 @@ export function renderCustomerConfirmation(input: ConfirmationInput) {
     timeZone: "Europe/Berlin",
   }).format(new Date(input.createdAt));
   const noun = {
+    callback: "Rückrufwunsch",
     contact: "Nachricht",
     project: "Projektanfrage",
     planner: "Gartenplanung",
     application: "Bewerbung",
   }[input.kind];
+  const possessive = input.kind === "callback" ? "Ihr" : "Ihre";
   const headline = application
     ? "Ihre Bewerbung<br>ist angekommen."
     : "Ihre Anfrage<br>ist angekommen.";
   const intro = application
     ? "Vielen Dank für Ihr Interesse an Loni GalaBau. Wir haben Ihre Bewerbung erhalten und freuen uns darauf, Sie kennenzulernen."
-    : input.kind === "planner"
-      ? "Vielen Dank für Ihre Gartenplanung. Ihre Angaben sind bei uns eingegangen und geben uns eine gute Grundlage, um Ihr Vorhaben mit Ihnen zu besprechen."
-      : "Vielen Dank für Ihr Vertrauen in Loni GalaBau. Ihre Nachricht ist bei uns eingegangen. Wir freuen uns darauf, mehr über Ihr Vorhaben zu erfahren.";
+    : input.kind === "callback"
+      ? "Vielen Dank für Ihren Rückrufwunsch. Wir haben Ihre Telefonnummer und Ihren Wunschzeitpunkt erhalten. Wir versuchen, Sie zu dieser Zeit zu erreichen. Dies ist eine Eingangsbestätigung, noch keine verbindliche Terminbestätigung."
+      : input.kind === "planner"
+        ? "Vielen Dank für Ihre Gartenplanung. Ihre Angaben sind bei uns eingegangen und geben uns eine gute Grundlage, um Ihr Vorhaben mit Ihnen zu besprechen."
+        : "Vielen Dank für Ihr Vertrauen in Loni GalaBau. Ihre Nachricht ist bei uns eingegangen. Wir freuen uns darauf, mehr über Ihr Vorhaben zu erfahren.";
   const steps = application
     ? [
         [
@@ -48,16 +52,27 @@ export function renderCustomerConfirmation(input: ConfirmationInput) {
           "Anschließend besprechen wir mit Ihnen die nächsten Schritte.",
         ],
       ]
-    : [
-        [
-          "Wir prüfen Ihr Vorhaben.",
-          "Wir sehen uns Ihre Angaben und vorhandenen Unterlagen in Ruhe an.",
-        ],
-        [
-          "Wir besprechen die nächsten Schritte.",
-          "Wir melden uns bei Ihnen, klären offene Fragen und stimmen bei Bedarf einen Vor-Ort-Termin ab.",
-        ],
-      ];
+    : input.kind === "callback"
+      ? [
+          [
+            "Wir berücksichtigen Ihren Wunsch.",
+            "Unser Team sieht sich Ihren gewünschten Tag und die Uhrzeit an.",
+          ],
+          [
+            "Wir rufen Sie zurück.",
+            "Wir melden uns unter der angegebenen Telefonnummer, um Ihr Anliegen persönlich zu besprechen.",
+          ],
+        ]
+      : [
+          [
+            "Wir prüfen Ihr Vorhaben.",
+            "Wir sehen uns Ihre Angaben und vorhandenen Unterlagen in Ruhe an.",
+          ],
+          [
+            "Wir besprechen die nächsten Schritte.",
+            "Wir melden uns bei Ihnen, klären offene Fragen und stimmen bei Bedarf einen Vor-Ort-Termin ab.",
+          ],
+        ];
   const inspirationTitle = application
     ? "Ihre Bewerbung.<br>Unser nächster Schritt."
     : "Ihr Vorhaben.<br>Persönlich besprochen.";
@@ -102,9 +117,9 @@ export function renderCustomerConfirmation(input: ConfirmationInput) {
     "Falls Sie keine Anfrage gestellt haben, können Sie uns kurz Bescheid geben.",
     `Datenschutz: ${input.siteOrigin}/datenschutz`,
   ].join("\n");
-  const html = `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>Ihre ${noun} ist angekommen</title><style>@media(max-width:480px){.pad{padding-left:22px!important;padding-right:22px!important}.title{font-size:32px!important;line-height:38px!important}.outer{padding:10px 6px!important}}</style></head>
+  const html = `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>${possessive} ${noun} ist angekommen</title><style>@media(max-width:480px){.pad{padding-left:22px!important;padding-right:22px!important}.title{font-size:32px!important;line-height:38px!important}.outer{padding:10px 6px!important}}</style></head>
 <body style="margin:0;padding:0;background:#edf1e9;font-family:Arial,Helvetica,sans-serif;color:#24432c">
-<div style="display:none;font-size:1px;color:#edf1e9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden">Vielen Dank! Ihre ${noun} ist bei uns eingegangen. Ticket ${ticket}.</div>
+<div style="display:none;font-size:1px;color:#edf1e9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden">Vielen Dank! ${possessive} ${noun} ist bei uns eingegangen. Ticket ${ticket}.</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#edf1e9"><tr><td class="outer" align="center" style="padding:32px 12px">
 <!--[if mso]><table role="presentation" width="640"><tr><td><![endif]--><table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="width:100%;max-width:640px;border-collapse:collapse">
 <tr><td class="pad" bgcolor="#1e4826" style="padding:34px 40px 0"><img src="cid:loni-logo" width="220" height="42" alt="Loni GalaBau GmbH" style="display:block;width:220px;max-width:100%;height:auto;border:0"></td></tr>
@@ -119,5 +134,5 @@ ${steps.map(([title, copy], index) => `<tr><td class="pad" style="padding:15px 4
 <tr><td class="pad" bgcolor="#1e4826" style="padding:28px 40px"><table role="presentation" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top"><p style="margin:0 0 9px;font-size:15px;font-weight:bold;color:#ffffff">Loni GalaBau GmbH</p><p style="margin:0;font-size:13px;line-height:22px;color:#d6e3d0">Auf der Roos 3 · 65795 Hattersheim am Main<br><a href="tel:+4961909266134" style="color:#ffffff;text-decoration:none">06190 9266134</a><br>Mo–Fr · 07:00–18:00 Uhr<br><a href="mailto:webseite@loni-galabau.de" style="color:#ffffff;text-decoration:underline">webseite@loni-galabau.de</a></p></td><td width="55" valign="top" align="right"><img src="cid:gartenverband-logo" width="45" height="60" alt="Fachverband" style="display:block;border:0"></td></tr></table></td></tr>
 <tr><td class="pad" style="padding:23px 40px;font-size:11px;line-height:18px;color:#788274">Geschäftsführer: Valon Sinanaj · Amtsgericht Frankfurt am Main · HRB 125735<br><br>${application ? "Automatische Eingangsbestätigung – noch keine Zusage." : "Automatische Eingangsbestätigung – noch kein Angebot und keine Auftragsbestätigung."} Falls Sie keine Anfrage gestellt haben, können Sie uns kurz Bescheid geben.<br><br><a href="${escapeHtml(input.siteOrigin)}/datenschutz" style="color:#526454">Datenschutz</a> &nbsp;·&nbsp; <a href="${escapeHtml(input.siteOrigin)}/impressum" style="color:#526454">Impressum</a></td></tr>
 </table><!--[if mso]></td></tr></table><![endif]--></td></tr></table></body></html>`;
-  return { subject: `Ihre ${noun} ist angekommen · ${ticket}`, html, text };
+  return { subject: `${possessive} ${noun} ist angekommen · ${ticket}`, html, text };
 }

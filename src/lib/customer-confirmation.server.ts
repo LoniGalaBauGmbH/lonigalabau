@@ -16,7 +16,8 @@ export async function sendCustomerConfirmation(client: Client, table: Submission
   const { data: record, error } = await read();
   if (error || !record) throw new Error("Vorgang nicht verfügbar.");
   // Records from before the rollout deliberately receive no retrospective email.
-  if (!record.customer_confirmation_requested_at) return { sent: false, skipped: true };
+  if (!record.customer_confirmation_requested_at || !record.email)
+    return { sent: false, skipped: true };
   if (record.customer_confirmation_sent_at) return { sent: true, alreadySent: true };
   if (Date.now() - Date.parse(record.customer_confirmation_requested_at) > 23 * 60 * 60 * 1000)
     throw new Error("Bestätigung außerhalb des sicheren Wiederholungszeitraums. Bitte prüfen.");
@@ -28,11 +29,13 @@ export async function sendCustomerConfirmation(client: Client, table: Submission
     const application = table === "applications";
     const kind = application
       ? "application"
-      : record.subject?.startsWith("Gartenplaner:")
-        ? "planner"
-        : record.subject?.startsWith("Projektanfrage:")
-          ? "project"
-          : "contact";
+      : record.subject?.startsWith("Rückrufwunsch:")
+        ? "callback"
+        : record.subject?.startsWith("Gartenplaner:")
+          ? "planner"
+          : record.subject?.startsWith("Projektanfrage:")
+            ? "project"
+            : "contact";
     const siteOrigin = new URL(
       process.env.SITE_ADMIN_ORIGIN || "https://loni-galabau.serhad1999.chatgpt.site",
     ).origin;

@@ -164,6 +164,16 @@ test("quota rejection and database outage fail closed", async () => {
   await assert.rejects(failed.api.enforceFormQuota("x@example.test"), /vorübergehend/);
   assert.equal(failed.status[0], 503);
 });
+
+test("callback quotas use network and normalized phone, without a shared empty-email bucket", async () => {
+  for (const phone of ["0176 12345678", "+49 176 12345678", "0049 (0)176 12345678"]) {
+    const h = quotaHarness({ data: true, error: null });
+    await h.api.enforceFormQuota("", phone);
+    assert.equal(h.calls.length, 2);
+    assert.equal(h.calls[1].p_key, h.api.quotaKey("test-only-secret", "phone", "4917612345678"));
+    assert.doesNotMatch(JSON.stringify(h.calls), /12345678/);
+  }
+});
 test("planner drafts retain selections while dropping personal and free-text details", () => {
   const attachments = moduleAt("src/lib/contact-attachments.ts");
   const document = moduleAt("src/lib/application-document.ts");

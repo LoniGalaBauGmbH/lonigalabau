@@ -9,7 +9,7 @@ export function quotaKey(secret: string, scope: string, value: string) {
 }
 
 /** Atomic shared limits before storage writes and mail delivery; raw IPs are never stored. */
-export async function enforceFormQuota(email: string) {
+export async function enforceFormQuota(email: string, phone?: string) {
   const request = getRequest();
   const secret =
     process.env.FORM_RATE_LIMIT_SECRET ||
@@ -18,10 +18,18 @@ export async function enforceFormQuota(email: string) {
   if (!secret) throw new Error("Das Formular ist vorübergehend nicht verfügbar.");
   // Cloudflare overwrites this header at the edge. Never trust user-controlled X-Forwarded-For.
   const address = request.headers.get("cf-connecting-ip") || "unavailable";
-  for (const [scope, value, limit] of [
+  const limits: [string, string, number][] = [
     ["network", address, address === "unavailable" ? 100 : 12],
-    ["email", email.trim().toLowerCase(), 5],
-  ] as const) {
+  ];
+  if (email.trim()) limits.push(["email", email.trim().toLowerCase(), 5]);
+  if (phone) {
+    let normalized = phone.replace(/\D/g, "");
+    if (normalized.startsWith("00")) normalized = normalized.slice(2);
+    else if (normalized.startsWith("0")) normalized = "49" + normalized.slice(1);
+    normalized = normalized.replace(/^490/, "49");
+    limits.push(["phone", normalized, 5]);
+  }
+  for (const [scope, value, limit] of limits) {
     const { data, error } = await supabaseAdmin.rpc("consume_form_quota", {
       p_key: quotaKey(secret, scope, value),
       p_limit: limit,

@@ -17,7 +17,7 @@ export function notificationMessage(
   const adminUrl = SITE + (table === "applications" ? "/admin/bewerbungen" : "/admin/anfragen");
   return {
     to: [NOTIFICATION_TO],
-    reply_to: record.email,
+    ...(record.email ? { reply_to: record.email } : {}),
     subject: (
       submissionTicket(record.id, table === "applications", record) +
       " · " +
