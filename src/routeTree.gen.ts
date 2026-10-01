@@ -32,12 +32,14 @@ import { Route as LeistungenSlugRouteImport } from './routes/leistungen.$slug'
 import { Route as JobsSlugRouteImport } from './routes/jobs.$slug'
 import { Route as AutorenSerhadMarasliRouteImport } from './routes/autoren.serhad-marasli'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminWissensbankRouteImport } from './routes/_authenticated/admin/wissensbank'
 import { Route as AuthenticatedAdminTrackingRouteImport } from './routes/_authenticated/admin/tracking'
 import { Route as AuthenticatedAdminProjekteRouteImport } from './routes/_authenticated/admin/projekte'
 import { Route as AuthenticatedAdminLeistungenRouteImport } from './routes/_authenticated/admin/leistungen'
 import { Route as AuthenticatedAdminJobsRouteImport } from './routes/_authenticated/admin/jobs'
 import { Route as AuthenticatedAdminBilderRouteImport } from './routes/_authenticated/admin/bilder'
 import { Route as AuthenticatedAdminBewerbungenRouteImport } from './routes/_authenticated/admin/bewerbungen'
+import { Route as AuthenticatedAdminAssistentRouteImport } from './routes/_authenticated/admin/assistent'
 import { Route as AuthenticatedAdminAnfragenRouteImport } from './routes/_authenticated/admin/anfragen'
 
 const UeberUnsRoute = UeberUnsRouteImport.update({
@@ -154,6 +156,12 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedAdminWissensbankRoute =
+  AuthenticatedAdminWissensbankRouteImport.update({
+    id: '/admin/wissensbank',
+    path: '/admin/wissensbank',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminTrackingRoute =
   AuthenticatedAdminTrackingRouteImport.update({
     id: '/admin/tracking',
@@ -189,6 +197,12 @@ const AuthenticatedAdminBewerbungenRoute =
     path: '/admin/bewerbungen',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedAdminAssistentRoute =
+  AuthenticatedAdminAssistentRouteImport.update({
+    id: '/admin/assistent',
+    path: '/admin/assistent',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminAnfragenRoute =
   AuthenticatedAdminAnfragenRouteImport.update({
     id: '/admin/anfragen',
@@ -219,12 +233,14 @@ export interface FileRoutesByFullPath {
   '/openseo/': typeof OpenseoIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
   '/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
+  '/admin/assistent': typeof AuthenticatedAdminAssistentRoute
   '/admin/bewerbungen': typeof AuthenticatedAdminBewerbungenRoute
   '/admin/bilder': typeof AuthenticatedAdminBilderRoute
   '/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/admin/leistungen': typeof AuthenticatedAdminLeistungenRoute
   '/admin/projekte': typeof AuthenticatedAdminProjekteRoute
   '/admin/tracking': typeof AuthenticatedAdminTrackingRoute
+  '/admin/wissensbank': typeof AuthenticatedAdminWissensbankRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -250,12 +266,14 @@ export interface FileRoutesByTo {
   '/openseo': typeof OpenseoIndexRoute
   '/ratgeber': typeof RatgeberIndexRoute
   '/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
+  '/admin/assistent': typeof AuthenticatedAdminAssistentRoute
   '/admin/bewerbungen': typeof AuthenticatedAdminBewerbungenRoute
   '/admin/bilder': typeof AuthenticatedAdminBilderRoute
   '/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/admin/leistungen': typeof AuthenticatedAdminLeistungenRoute
   '/admin/projekte': typeof AuthenticatedAdminProjekteRoute
   '/admin/tracking': typeof AuthenticatedAdminTrackingRoute
+  '/admin/wissensbank': typeof AuthenticatedAdminWissensbankRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -283,12 +301,14 @@ export interface FileRoutesById {
   '/openseo/': typeof OpenseoIndexRoute
   '/ratgeber/': typeof RatgeberIndexRoute
   '/_authenticated/admin/anfragen': typeof AuthenticatedAdminAnfragenRoute
+  '/_authenticated/admin/assistent': typeof AuthenticatedAdminAssistentRoute
   '/_authenticated/admin/bewerbungen': typeof AuthenticatedAdminBewerbungenRoute
   '/_authenticated/admin/bilder': typeof AuthenticatedAdminBilderRoute
   '/_authenticated/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/_authenticated/admin/leistungen': typeof AuthenticatedAdminLeistungenRoute
   '/_authenticated/admin/projekte': typeof AuthenticatedAdminProjekteRoute
   '/_authenticated/admin/tracking': typeof AuthenticatedAdminTrackingRoute
+  '/_authenticated/admin/wissensbank': typeof AuthenticatedAdminWissensbankRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -316,12 +336,14 @@ export interface FileRouteTypes {
     | '/openseo/'
     | '/ratgeber/'
     | '/admin/anfragen'
+    | '/admin/assistent'
     | '/admin/bewerbungen'
     | '/admin/bilder'
     | '/admin/jobs'
     | '/admin/leistungen'
     | '/admin/projekte'
     | '/admin/tracking'
+    | '/admin/wissensbank'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -347,12 +369,14 @@ export interface FileRouteTypes {
     | '/openseo'
     | '/ratgeber'
     | '/admin/anfragen'
+    | '/admin/assistent'
     | '/admin/bewerbungen'
     | '/admin/bilder'
     | '/admin/jobs'
     | '/admin/leistungen'
     | '/admin/projekte'
     | '/admin/tracking'
+    | '/admin/wissensbank'
     | '/admin'
   id:
     | '__root__'
@@ -379,12 +403,14 @@ export interface FileRouteTypes {
     | '/openseo/'
     | '/ratgeber/'
     | '/_authenticated/admin/anfragen'
+    | '/_authenticated/admin/assistent'
     | '/_authenticated/admin/bewerbungen'
     | '/_authenticated/admin/bilder'
     | '/_authenticated/admin/jobs'
     | '/_authenticated/admin/leistungen'
     | '/_authenticated/admin/projekte'
     | '/_authenticated/admin/tracking'
+    | '/_authenticated/admin/wissensbank'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -576,6 +602,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/wissensbank': {
+      id: '/_authenticated/admin/wissensbank'
+      path: '/admin/wissensbank'
+      fullPath: '/admin/wissensbank'
+      preLoaderRoute: typeof AuthenticatedAdminWissensbankRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/tracking': {
       id: '/_authenticated/admin/tracking'
       path: '/admin/tracking'
@@ -618,6 +651,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminBewerbungenRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/assistent': {
+      id: '/_authenticated/admin/assistent'
+      path: '/admin/assistent'
+      fullPath: '/admin/assistent'
+      preLoaderRoute: typeof AuthenticatedAdminAssistentRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/anfragen': {
       id: '/_authenticated/admin/anfragen'
       path: '/admin/anfragen'
@@ -630,23 +670,27 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteChildren {
   AuthenticatedAdminAnfragenRoute: typeof AuthenticatedAdminAnfragenRoute
+  AuthenticatedAdminAssistentRoute: typeof AuthenticatedAdminAssistentRoute
   AuthenticatedAdminBewerbungenRoute: typeof AuthenticatedAdminBewerbungenRoute
   AuthenticatedAdminBilderRoute: typeof AuthenticatedAdminBilderRoute
   AuthenticatedAdminJobsRoute: typeof AuthenticatedAdminJobsRoute
   AuthenticatedAdminLeistungenRoute: typeof AuthenticatedAdminLeistungenRoute
   AuthenticatedAdminProjekteRoute: typeof AuthenticatedAdminProjekteRoute
   AuthenticatedAdminTrackingRoute: typeof AuthenticatedAdminTrackingRoute
+  AuthenticatedAdminWissensbankRoute: typeof AuthenticatedAdminWissensbankRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAdminAnfragenRoute: AuthenticatedAdminAnfragenRoute,
+  AuthenticatedAdminAssistentRoute: AuthenticatedAdminAssistentRoute,
   AuthenticatedAdminBewerbungenRoute: AuthenticatedAdminBewerbungenRoute,
   AuthenticatedAdminBilderRoute: AuthenticatedAdminBilderRoute,
   AuthenticatedAdminJobsRoute: AuthenticatedAdminJobsRoute,
   AuthenticatedAdminLeistungenRoute: AuthenticatedAdminLeistungenRoute,
   AuthenticatedAdminProjekteRoute: AuthenticatedAdminProjekteRoute,
   AuthenticatedAdminTrackingRoute: AuthenticatedAdminTrackingRoute,
+  AuthenticatedAdminWissensbankRoute: AuthenticatedAdminWissensbankRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 

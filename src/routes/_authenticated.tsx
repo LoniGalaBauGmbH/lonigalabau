@@ -22,6 +22,8 @@ import {
   Globe,
   Menu,
   X,
+  Sparkles,
+  BookOpen,
 } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated")({
@@ -97,6 +99,8 @@ const navItems = [
   { to: "/admin/jobs", label: "Jobs", Icon: Briefcase },
   { to: "/admin/bewerbungen", label: "Bewerbungen", Icon: Users },
   { to: "/admin/anfragen", label: "Anfragen", Icon: Mail },
+  { to: "/admin/assistent", label: "KI-Assistent", Icon: Sparkles },
+  { to: "/admin/wissensbank", label: "Wissensbank", Icon: BookOpen },
   { to: "/admin/bilder", label: "Bilder", Icon: ImageIcon },
   { to: "/admin/tracking", label: "Tracking", Icon: BarChart2 },
 ];

@@ -1,7 +1,8 @@
 export const PUBLIC_ORIGIN = "https://www.loni-galabau.de";
 export const canonicalUrl = (path: string) =>
   PUBLIC_ORIGIN + (path === "/" ? "/" : path.replace(/\/+$/, ""));
-export const PRIVATE_PATH = /^\/(?:admin(?:\/|$)|login(?:\/|$)|_server(?:\/|$)|api(?:\/|$))/;
+export const PRIVATE_PATH =
+  /^\/(?:admin(?:\/|$)|login(?:\/|$)|_serverFn(?:\/|$)|_server(?:\/|$)|api(?:\/|$))/;
 export const LEGACY_REDIRECTS: Record<string, string> = {
   "/datenschtuz": "/datenschutz",
   "/service-details/natursteinarbeiten": "/leistungen/natursteinarbeiten",

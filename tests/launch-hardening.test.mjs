@@ -109,6 +109,26 @@ test("private responses cannot be cached or indexed; launch pages can be indexed
     /noindex/,
   );
 });
+test("successful GET server-function responses override public caching and cannot be indexed", async () => {
+  // TanStack's generated RPCs use /_serverFn/, including assistantCases in the production build.
+  const rpcPath = "/_serverFn/858558ccff5cd5ae09228588dbdec215c484f971f2b223d1fdd4d0763cd4a8ef";
+  const response = policy.secureResponse(
+    new Request("https://www.loni-galabau.de" + rpcPath, { method: "GET" }),
+    new Response(JSON.stringify({ cases: [{ title: "Private test case" }] }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=3600",
+      },
+    }),
+  );
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(response.headers.get("x-robots-tag"), "noindex, nofollow");
+  assert.equal(response.headers.get("content-type"), "application/json");
+  assert.deepEqual(await response.json(), { cases: [{ title: "Private test case" }] });
+  assert.equal(seo.PRIVATE_PATH.test("/_serverFn-public"), false);
+});
 test("sitemaps and structured data escape untrusted text", () => {
   assert.match(seo.sitemapXml([{ path: "/a?x=1&y=2", modified: "invalid" }]), /&amp;/);
   assert.doesNotMatch(seo.sitemapXml([{ path: "/", modified: "invalid" }]), /lastmod/);
