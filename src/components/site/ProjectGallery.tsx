@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import projectFallback from "@/assets/project-villa.jpg";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import { photoAlt } from "@/lib/project-photos";
 import { flyImage, imageFrame, type ImageFrame } from "@/lib/gallery-motion";
 import "./Motion.css";
 
@@ -257,6 +258,11 @@ export function ProjectGallery({
                 aria-atomic="true"
               >
                 Bild {current + 1} von {images.length}
+              </p>
+            )}
+            {uploaded.length > 0 && (
+              <p className="mb-4 text-base text-brand-foreground">
+                {photoAlt(images[current], project.title + " · Aufnahme " + (current + 1))}
               </p>
             )}
             <DialogDescription className="max-w-4xl whitespace-pre-line text-base leading-relaxed text-brand-foreground/85">

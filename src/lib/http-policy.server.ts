@@ -1,5 +1,13 @@
 import { PUBLIC_ORIGIN, PRIVATE_PATH, LEGACY_REDIRECTS, STATIC_PATHS, sitemapXml } from "./seo";
 import guideContent from "../content/ratgeber.json";
+import { projectGalleryLastModified } from "./project-gallery-editorial";
+
+// These pages received substantive copy changes in the 01.10.2026 SEO release.
+const STATIC_CONTENT_MODIFIED: Record<string, string> = {
+  "/": "2026-10-01T14:39:01Z",
+  "/leistungen": "2026-10-01T14:39:01Z",
+  "/projekte": "2026-10-01T14:39:01Z",
+};
 
 export async function publicUtilityResponse(request: Request): Promise<Response | null> {
   const url = new URL(request.url);
@@ -43,7 +51,7 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
     if (results.some((r) => r.error)) throw new Error("Sitemap source unavailable");
     const entries = STATIC_PATHS.map((path) => ({
       path,
-      modified: undefined as string | undefined,
+      modified: STATIC_CONTENT_MODIFIED[path] as string | undefined,
     }));
     guideContent.forEach((article) =>
       entries.push({ path: `/ratgeber/${article.slug}`, modified: article.updatedAt }),
@@ -64,7 +72,10 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
     projects.data
       ?.filter((project) => project.images?.length)
       .forEach((project) =>
-        entries.push({ path: "/projekte/" + project.id, modified: project.updated_at }),
+        entries.push({
+          path: "/projekte/" + project.id,
+          modified: projectGalleryLastModified(project.id, project.images, project.updated_at),
+        }),
       );
     return new Response(sitemapXml(entries), {
       headers: {

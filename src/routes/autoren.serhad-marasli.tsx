@@ -2,7 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { GuideCard } from "@/components/site/GuideCard";
 import { guides } from "@/lib/guide-index";
-import { canonicalUrl, safeJsonLd } from "@/lib/seo";
+import {
+  canonicalUrl,
+  editorialAuthorSchema,
+  organizationSchema,
+  WEBSITE_ID,
+  safeJsonLd,
+} from "@/lib/seo";
 import "@/components/site/Ratgeber.css";
 
 export const Route = createFileRoute("/autoren/serhad-marasli")({
@@ -29,19 +35,18 @@ function Author() {
           dangerouslySetInnerHTML={{
             __html: safeJsonLd({
               "@context": "https://schema.org",
-              "@type": "ProfilePage",
-              mainEntity: {
-                "@type": "Person",
-                "@id": canonicalUrl("/autoren/serhad-marasli") + "#person",
-                name: "Serhad Marasli",
-                jobTitle: "Bau- & Operations Manager",
-                worksFor: {
-                  "@type": "Organization",
-                  name: "Loni Galabau GmbH",
-                  url: canonicalUrl("/"),
+              "@graph": [
+                organizationSchema(),
+                {
+                  "@type": "ProfilePage",
+                  "@id": canonicalUrl("/autoren/serhad-marasli") + "#webpage",
+                  url: canonicalUrl("/autoren/serhad-marasli"),
+                  name: "Über unsere Ratgeber | Loni GalaBau",
+                  inLanguage: "de-DE",
+                  isPartOf: { "@id": WEBSITE_ID },
+                  mainEntity: editorialAuthorSchema(),
                 },
-                url: canonicalUrl("/autoren/serhad-marasli"),
-              },
+              ],
             }),
           }}
         />

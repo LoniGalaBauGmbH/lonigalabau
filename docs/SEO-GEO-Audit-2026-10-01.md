@@ -2,6 +2,8 @@
 
 **Website:** https://www.loni-galabau.de/  
 **Stand:** 01.10.2026; Live-Crawl 15:44–15:46 MESZ, veröffentlichte Website V53.  
+**Nachprüfung 01.10., 16:15 MESZ:** Die Sitemap enthält bereits bei 25/38 URLs lastmod; die ursprüngliche XML-Auswertung war fehlerhaft und wurde korrigiert. Auch alle 17 verschiedenen Social-Preview-Bildadressen wurden nachträglich mit HTTP 200 und passendem Bildtyp bestätigt.
+
 **Auftrag:** Bestandsaufnahme und Recherche, keine Websiteänderung oder Veröffentlichung.  
 **GEO:** Sichtbarkeit und korrekte Darstellung in generativen Suchsystemen, einschließlich Google AI Overviews/AI Mode, ChatGPT-Suche, Perplexity und Bing/Copilot.
 
@@ -23,7 +25,7 @@ Das ist keine Garantie für Indexierung, Rankings oder KI-Zitate. Ein seriöser 
 | P2 | Unternehmensschema über stabile IDs verbinden | Homepage-Unternehmen ohne @id; Service-/Autor-/Artikelobjekte verwenden eingebettete Firmenobjekte | Einheitliches #organization, übereinstimmende bestätigte Firmendaten, Rich-Results-Prüfung |
 | P2 | Aktuelle mobile Leistungs- und Felddaten messen | Frische PSI-API-Abfrage mit HTTP 429 gescheitert; bestehende Labormessungen betreffen V45 | Neue repräsentative Messungen und, sobald verfügbar, CrUX-Daten für V53/Nachfolger |
 | P2 | Externe Firmenprofile auf bundesweite Tätigkeit prüfen | Such-Snippets von Verzeichnissen enthalten teilweise alte regionale Beschreibung | Tatsächliche Profile überprüft; korrekte Firma/Adresse/Telefon und sachliches Einsatzgebiet |
-| P3 | Redirects, Quellenlinks und Sitemap-lastmod pflegen | HTTP-Apex benötigt zwei Weiterleitungen; zwei Quellenlinks leiten weiter; lastmod fehlt | Kürzere permanente Weiterleitungen, aktuelle Quellenziele, ehrliche Änderungsdaten |
+| P3 | Redirects, Quellenlinks und Sitemap-lastmod pflegen | HTTP-Apex benötigt zwei Weiterleitungen; zwei Quellenlinks leiten weiter; statische Seiten ohne lastmod | Kürzere permanente Weiterleitungen, aktuelle Quellenziele, ehrliche Änderungsdaten |
 
 P1 = zuerst bearbeiten, P2 = danach verbessern, P3 = Pflege. Kein P0-Ausfall im getesteten öffentlichen Bestand festgestellt. Offene Konto- und Felddaten können diese Einstufung verändern.
 
@@ -39,7 +41,7 @@ Private Rohdaten liegen außerhalb des öffentlichen Repositorys unter SEO-Reche
 
 | Prüfung | Ergebnis | Bewertung |
 |---|---|---|
-| Sitemap | HTTP 200; 38 Einträge, keine lastmod-Angaben | Funktionsfähig; Änderungsdaten optional und nur bei echten Änderungen sinnvoll |
+| Sitemap | HTTP 200; 38 Einträge, davon 25 mit lastmod | Funktionsfähig; dynamische Änderungsdaten vorhanden, statische Seiten dürfen lastmod weglassen |
 | Öffentliche Sitemap-Seiten | 38/38 HTTP 200 | Bestanden |
 | Canonical | 38/38 genau eine passende selbstreferenzielle www-URL | Bestanden |
 | Robots / Snippets | Keine noindex-/nosnippet-Sperre auf den 38 Seiten | Indexierbar, nicht automatisch indexiert |
@@ -115,7 +117,7 @@ Die Website ist neu und wurde heute mehrfach verändert. Alte Suchleistungsdaten
 
 ## 5. Titel, Beschreibungen und Überschriften
 
-38 eindeutige Titel und 38 eindeutige Meta-Beschreibungen; keine fehlende H1 und keine im Hauptbereich erkannte Überschriftenstufe übersprungen. Social-Preview-Bildreferenz auf allen 38 Seiten vorhanden; diese gesonderten OG-Adressen wurden nicht vollständig zusätzlich als Bildabrufe validiert.
+38 eindeutige Titel und 38 eindeutige Meta-Beschreibungen; keine fehlende H1 und keine im Hauptbereich erkannte Überschriftenstufe übersprungen. Social-Preview-Bildreferenz auf allen 38 Seiten vorhanden; nachträgliche HEAD-Prüfung aller 17 verschiedenen OG-Adressen: HTTP 200 und passende Bildtypen.
 
 Titel und Beschreibung sollten Nutzen und Suchintention präzise ausdrücken. Die bundesweite Tätigkeit und der Sitz in Hattersheim sind korrekt zu unterscheiden. Nicht jeden Titel mit zahlreichen Städten oder Synonymen auffüllen. Google definiert keine starre 60-/160-Zeichen-Grenze und kann Titel und Snippets verändern. Die rund 199 Zeichen der Beschreibung der Bewässerungs-Projektgalerie sind daher ein redaktioneller Prüfpunkt, kein automatischer Rankingfehler. [Titel](https://developers.google.com/search/docs/appearance/title-link), [Snippets](https://developers.google.com/search/docs/appearance/snippet).
 

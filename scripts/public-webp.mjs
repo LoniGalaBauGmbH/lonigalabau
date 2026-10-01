@@ -45,7 +45,12 @@ export async function publicWebpResponse(request, env, allowedPaths) {
   const headers = new Headers(response.headers);
   headers.set("Content-Type", "image/webp");
   headers.set("X-Content-Type-Options", "nosniff");
-  headers.set("Cache-Control", "public, max-age=86400");
+  headers.set(
+    "Cache-Control",
+    /^\/assets\/[\w.-]+-[\w-]{8,}\.webp$/.test(assetPath)
+      ? "public, max-age=31536000, immutable"
+      : "public, max-age=86400",
+  );
   return new Response(request.method === "HEAD" || response.status === 304 ? null : response.body, {
     status: response.status,
     statusText: response.statusText,

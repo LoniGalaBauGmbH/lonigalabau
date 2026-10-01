@@ -32,6 +32,7 @@ function moduleAt(path, imports = {}, env = {}) {
 const seo = moduleAt("src/lib/seo.ts");
 const policy = moduleAt("src/lib/http-policy.server.ts", {
   "./seo": seo,
+  "./project-gallery-editorial": moduleAt("src/lib/project-gallery-editorial.ts"),
   "../content/ratgeber.json": JSON.parse(
     readFileSync(new URL("../src/content/ratgeber.json", import.meta.url), "utf8"),
   ),

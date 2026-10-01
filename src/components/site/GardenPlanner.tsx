@@ -1,3 +1,4 @@
+import { publicImageUrl } from "@/lib/public-image-url";
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
@@ -452,7 +453,7 @@ export function GardenPlanner() {
         <aside className="planner-sidebar">
           <div className="planner-sidebar-photo">
             <img
-              src={images.hero_bg}
+              src={publicImageUrl(images.hero_bg)}
               alt=""
               loading="lazy"
               decoding="async"

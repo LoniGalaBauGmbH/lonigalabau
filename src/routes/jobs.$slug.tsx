@@ -7,7 +7,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { getJobBySlug, createApplication } from "@/lib/site.functions";
 import { applicationSchema } from "@/lib/validators";
 import { validateApplicationDocument } from "@/lib/application-document";
-import { canonicalUrl, safeJsonLd, xmlEscape } from "@/lib/seo";
+import { canonicalUrl, organizationSchema, safeJsonLd, xmlEscape } from "@/lib/seo";
 import { ApplicationUpload } from "@/components/site/ApplicationUpload";
 
 const jobQuery = (slug: string) =>
@@ -125,12 +125,7 @@ function Page() {
               .join(""),
             datePosted: job.created_at,
             employmentType: job.employment_type === "Vollzeit" ? "FULL_TIME" : undefined,
-            hiringOrganization: {
-              "@type": "Organization",
-              name: "Loni GalaBau GmbH",
-              sameAs: "https://www.loni-galabau.de",
-              logo: "https://www.loni-galabau.de/images/partner/loni.svg",
-            },
+            hiringOrganization: organizationSchema(),
             jobLocation: {
               "@type": "Place",
               address: {

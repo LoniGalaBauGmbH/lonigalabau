@@ -1,8 +1,10 @@
+import { publicImageUrl } from "@/lib/public-image-url";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Mail, Phone, MapPin, Clock, CheckCircle2 } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
+import { publicPageSchema, safeJsonLd } from "@/lib/seo";
 import { createContactRequest } from "@/lib/site.functions";
 import { contactSchema } from "@/lib/validators";
 import { useSiteImages } from "@/hooks/useSiteImages";
@@ -69,6 +71,14 @@ function Page() {
 
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd(
+            publicPageSchema("/kontakt", "Kontakt und Projektanfrage", "ContactPage"),
+          ),
+        }}
+      />
       <section className="px-6 pt-10 md:pt-16 pb-16 md:pb-24">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl mb-10 md:mb-14">
@@ -95,12 +105,12 @@ function Page() {
                   <img
                     src={
                       images.contact_portrait === portraitOriginal
-                        ? portrait160
-                        : images.contact_portrait
+                        ? publicImageUrl(portrait160)
+                        : publicImageUrl(images.contact_portrait)
                     }
                     srcSet={
                       images.contact_portrait === portraitOriginal
-                        ? `${portrait160} 160w, ${portrait320} 320w`
+                        ? `${publicImageUrl(portrait160)} 160w, ${publicImageUrl(portrait320)} 320w`
                         : undefined
                     }
                     sizes="80px"

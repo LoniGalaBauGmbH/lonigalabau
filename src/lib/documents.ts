@@ -78,6 +78,8 @@ export const qualificationDocuments: QualificationDocument[] = [
   },
 ];
 
+import { publicImageUrl } from "./public-image-url";
+
 export const documentFile = (id: string) => `/downloads/${id}.pdf`;
 export const documentImage = (id: string, thumbnail = false) =>
-  `/images/qualifikationen/${id}${thumbnail ? "-thumb" : ""}.webp`;
+  publicImageUrl(`/images/qualifikationen/${id}${thumbnail ? "-thumb" : ""}.webp`);

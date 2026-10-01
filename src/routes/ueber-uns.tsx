@@ -1,6 +1,8 @@
+import { publicImageUrl } from "@/lib/public-image-url";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Heart, Handshake, Leaf, Sparkles, MapPin } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
+import { publicPageSchema, safeJsonLd } from "@/lib/seo";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import founder from "@/assets/about-founder-valon.webp";
 import { projectPhotos } from "@/lib/project-photos";
@@ -70,6 +72,12 @@ function AboutPage() {
 
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd(publicPageSchema("/ueber-uns", "Über Loni GalaBau", "AboutPage")),
+        }}
+      />
       {/* 1. HERO – split layout */}
       <section className="px-6 md:px-10 pt-8 md:pt-16 pb-24 md:pb-32">
         <div className="max-w-[1480px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-end">
@@ -124,7 +132,7 @@ function AboutPage() {
           <div className="lg:col-span-5">
             <div className="max-w-md aspect-[4/5] overflow-hidden rounded-3xl">
               <ProjectImage
-                src={founder}
+                src={publicImageUrl(founder)}
                 alt="Valon Sinanaj – Geschäftsführer der Loni GalaBau GmbH"
                 width={830}
                 height={1024}

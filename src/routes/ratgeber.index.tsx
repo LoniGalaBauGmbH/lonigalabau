@@ -4,6 +4,7 @@ import { ProjectImage } from "@/components/site/ProjectImage";
 import { GuideCard } from "@/components/site/GuideCard";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 import { guides } from "@/lib/guide-index";
+import { publicPageSchema, safeJsonLd } from "@/lib/seo";
 import "@/components/site/Ratgeber.css";
 
 export const Route = createFileRoute("/ratgeber/")({
@@ -24,6 +25,19 @@ function Ratgeber() {
   const featured = guides[2];
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd(
+            publicPageSchema(
+              "/ratgeber",
+              "Garten-Ratgeber",
+              "CollectionPage",
+              guides.map((article) => ({ path: "/ratgeber/" + article.slug, name: article.title })),
+            ),
+          ),
+        }}
+      />
       <div className="guides">
         <header className="guide-index-intro guide-wrap">
           <div className="guide-kicker">Der Loni Gartenratgeber</div>

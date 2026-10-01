@@ -1,3 +1,4 @@
+import { publicImageUrl } from "@/lib/public-image-url";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Hydrate } from "@tanstack/react-start";
 import { visible } from "@tanstack/react-start/hydration";
@@ -16,23 +17,25 @@ import { Awards } from "@/components/site/Awards";
 import { FAQ } from "@/components/site/FAQ";
 import { getServices, getFeaturedProject, getSitePartners } from "@/lib/site.functions";
 import { ServiceCarousel } from "@/components/site/ServiceCarousel";
+import { AdditionalServices } from "@/components/site/AdditionalServices";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
-import { safeJsonLd } from "@/lib/seo";
+import { organizationSchema, websiteSchema, safeJsonLd } from "@/lib/seo";
 import "@/components/site/HomeHero.css";
 import heroWebp from "@/assets/performance/hero-garden-1920.webp";
 import heroAvif from "@/assets/performance/hero-garden-1920.avif";
 import workPhoto from "@/assets/performance/bagger-radlader-941.webp";
-import workPhotoSmall from "@/assets/performance/bagger-radlader-600.webp";
+import workPhotoSmall from "@/assets/performance/bagger-radlader-640.webp";
 import workPhotoAvif from "@/assets/performance/bagger-radlader-941.avif";
-import workPhotoSmallAvif from "@/assets/performance/bagger-radlader-600.avif";
+import workPhotoSmallAvif from "@/assets/performance/bagger-radlader-640.avif";
 const aboutImg = projectPhotos[98].src;
 
 import partnerBickhardt from "@/assets/partners/bickhardt-bau.png";
 import partnerHattersheim from "@/assets/partners/hattersheim.png";
 import partnerLimbach from "@/assets/partners/limbach.webp";
-import partnerRose from "@/assets/partners/rose-gleisbau.webp";
+import partnerRose from "@/assets/performance/rose-gleisbau-200.webp";
+import partnerRoseAvif from "@/assets/performance/rose-gleisbau-200.avif";
 import partnerVgf from "@/assets/partners/vgf.png";
 import partnerFrankfurt from "@/assets/partners/frankfurt.svg";
 
@@ -73,12 +76,12 @@ export const Route = createFileRoute("/")({
 });
 
 const clients = [
-  { name: "Bickhardt Bau", src: partnerBickhardt },
-  { name: "Stadt Hattersheim", src: partnerHattersheim },
-  { name: "Stadt Frankfurt am Main", src: partnerFrankfurt },
-  { name: "Limbach Gruppe", src: partnerLimbach },
-  { name: "ROSE Gleisbau", src: partnerRose },
-  { name: "VGF", src: partnerVgf },
+  { name: "Bickhardt Bau", src: partnerBickhardt, width: 512, height: 220 },
+  { name: "Stadt Hattersheim", src: partnerHattersheim, width: 512, height: 137 },
+  { name: "Stadt Frankfurt am Main", src: partnerFrankfurt, width: 1024, height: 154 },
+  { name: "Limbach Gruppe", src: partnerLimbach, width: 512, height: 128 },
+  { name: "ROSE Gleisbau", src: partnerRose, width: 200, height: 99 },
+  { name: "VGF", src: partnerVgf, width: 512, height: 182 },
 ];
 
 const values = [
@@ -134,29 +137,7 @@ function HomePage() {
         dangerouslySetInnerHTML={{
           __html: safeJsonLd({
             "@context": "https://schema.org",
-            "@type": "HomeAndConstructionBusiness",
-            name: "Loni Galabau GmbH",
-            url: "https://www.loni-galabau.de",
-            logo: "https://www.loni-galabau.de/images/partner/loni.svg",
-            image: "https://www.loni-galabau.de/images/social-preview.jpg",
-            telephone: "+49-6190-9266134",
-            email: "info@loni-galabau.de",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "Auf der Roos 3",
-              addressLocality: "Hattersheim am Main",
-              postalCode: "65795",
-              addressCountry: "DE",
-            },
-            openingHoursSpecification: [
-              {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                opens: "07:00",
-                closes: "18:00",
-              },
-            ],
-            areaServed: { "@type": "Country", name: "Deutschland" },
+            "@graph": [organizationSchema(), websiteSchema()],
           }),
         }}
       />
@@ -166,7 +147,7 @@ function HomePage() {
           <picture>
             {images.hero_bg === heroWebp && <source type="image/avif" srcSet={heroAvif} />}
             <img
-              src={images.hero_bg}
+              src={publicImageUrl(images.hero_bg)}
               fetchPriority="high"
               decoding="async"
               alt="Modern gestalteter Garten in der Abenddämmerung"
@@ -238,12 +219,18 @@ function HomePage() {
                 key={`${c.name}-${i}`}
                 className="shrink-0 px-10 md:px-16 flex items-center justify-center"
               >
-                <img
-                  src={c.src}
-                  alt={c.name}
-                  loading="lazy"
-                  className="h-12 md:h-16 w-auto max-w-[200px] object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                />
+                <picture>
+                  {c.src === partnerRose && <source type="image/avif" srcSet={partnerRoseAvif} />}
+                  <img
+                    src={publicImageUrl(c.src)}
+                    alt={c.name}
+                    width={clients.find((item) => item.src === c.src)?.width || 200}
+                    height={clients.find((item) => item.src === c.src)?.height || 64}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-12 md:h-16 w-auto max-w-[200px] object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </picture>
               </div>
             ))}
           </div>
@@ -323,12 +310,12 @@ function HomePage() {
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet={`${workPhotoSmallAvif} 600w, ${workPhotoAvif} 941w`}
+                    srcSet={`${workPhotoSmallAvif} 640w, ${workPhotoAvif} 941w`}
                     sizes="(min-width: 1480px) 700px, (min-width: 1024px) 46vw, calc(100vw - 48px)"
                   />
                   <img
-                    src={workPhoto}
-                    srcSet={`${workPhotoSmall} 600w, ${workPhoto} 941w`}
+                    src={publicImageUrl(workPhoto)}
+                    srcSet={`${publicImageUrl(workPhotoSmall)} 640w, ${publicImageUrl(workPhoto)} 941w`}
                     alt="Bagger und Radlader bei Erdarbeiten im Abendlicht"
                     width={941}
                     height={1672}
@@ -424,6 +411,7 @@ function HomePage() {
             prefetch={visible({ rootMargin: "1200px" })}
           >
             <ServiceCarousel services={services} />
+            <AdditionalServices />
           </Hydrate>
         </div>
       </section>

@@ -6,6 +6,7 @@ import projectFallback from "@/assets/project-villa.jpg";
 import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { ArrowUpRight } from "lucide-react";
 import { ProjectImage } from "@/components/site/ProjectImage";
+import { publicPageSchema, safeJsonLd } from "@/lib/seo";
 
 const q = queryOptions({ staleTime: 60_000, queryKey: ["projects"], queryFn: () => getProjects() });
 
@@ -28,6 +29,19 @@ function Page() {
   const { data: projects } = useSuspenseQuery(q);
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd(
+            publicPageSchema(
+              "/projekte",
+              "Projektgalerien von Loni GalaBau",
+              "CollectionPage",
+              projects.map((project) => ({ path: "/projekte/" + project.id, name: project.title })),
+            ),
+          ),
+        }}
+      />
       <PageIntro
         eyebrow="Referenzen"
         title={
@@ -35,7 +49,7 @@ function Page() {
             Unsere Arbeit. <span className="italic">In Bildern.</span>
           </>
         }
-        lead="Eigene Aufnahmen aus unseren Projekten – nach Leistungen zusammengestellt. Entdecken Sie fertige Anlagen, Materialien und Einblicke in die Ausführung."
+        lead="Eigene Aufnahmen aus unseren Arbeiten – nach Themen zusammengestellt. Die Galerien verbinden Einblicke aus verschiedenen Außenanlagen. Entdecken Sie sichtbare Details, passende Leistungen und Fragen für Ihre Planung."
       />
       <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">

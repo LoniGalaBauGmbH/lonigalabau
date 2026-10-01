@@ -111,3 +111,26 @@ test("HEAD and conditional responses have no body; upstream errors stay uncached
     assert.equal(r.headers.get("cache-control"), "no-store");
   }
 });
+
+test("versioned WebP assets are immutable while editable public images can refresh", async () => {
+  const versioned = "/assets/hero-garden-1920-abcdefgh.webp";
+  for (const [path, expected] of [
+    [versioned, "public, max-age=31536000, immutable"],
+    [asset, "public, max-age=86400"],
+  ]) {
+    const response = await publicWebpResponse(
+      new Request("https://www.loni-galabau.de/__public-webp" + path),
+      {
+        ASSETS: {
+          fetch: async () =>
+            new Response("RIFF1234WEBP", {
+              headers: { "Content-Type": "application/octet-stream" },
+            }),
+        },
+      },
+      new Set([versioned, asset]),
+    );
+    assert.equal(response.headers.get("content-type"), "image/webp");
+    assert.equal(response.headers.get("cache-control"), expected);
+  }
+});

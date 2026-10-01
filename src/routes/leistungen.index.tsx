@@ -3,6 +3,8 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { getServices } from "@/lib/site.functions";
 import { ServiceCarousel } from "@/components/site/ServiceCarousel";
+import { AdditionalServices } from "@/components/site/AdditionalServices";
+import { publicPageSchema, safeJsonLd } from "@/lib/seo";
 
 const q = queryOptions({ staleTime: 60_000, queryKey: ["services"], queryFn: () => getServices() });
 
@@ -13,7 +15,7 @@ export const Route = createFileRoute("/leistungen/")({
       {
         name: "description",
         content:
-          "Gartengestaltung, Pflasterarbeiten, Naturstein, Zaunbau und Rollrasen: Entdecken Sie unsere Gartenbau-Leistungen in ganz Deutschland.",
+          "Gartengestaltung, Pflaster, Naturstein, Erdarbeiten und mehr: Loni GalaBau arbeitet deutschlandweit. Weitere Leistungen auf Anfrage. Jetzt Vorhaben besprechen.",
       },
     ],
   }),
@@ -25,6 +27,22 @@ function Page() {
   const { data: services } = useSuspenseQuery(q);
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd(
+            publicPageSchema(
+              "/leistungen",
+              "Unsere Leistungen",
+              "CollectionPage",
+              services.map((service) => ({
+                path: "/leistungen/" + service.slug,
+                name: service.title,
+              })),
+            ),
+          ),
+        }}
+      />
       <PageIntro
         eyebrow="Leistungen"
         title={
@@ -37,6 +55,7 @@ function Page() {
       <section className="px-6 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto">
           <ServiceCarousel services={services} headingLevel="h2" />
+          <AdditionalServices />
         </div>
       </section>
     </PageShell>

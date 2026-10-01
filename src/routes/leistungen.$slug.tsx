@@ -40,7 +40,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { getProjectsByService, getRelatedServices, getServiceBySlug } from "@/lib/site.functions";
 import { getServiceImage } from "@/lib/service-images";
 import { ServiceFAQ } from "@/components/leistungen/ServiceFAQ";
-import { canonicalUrl, safeJsonLd } from "@/lib/seo";
+import { canonicalUrl, organizationSchema, safeJsonLd } from "@/lib/seo";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 import { guides } from "@/lib/guide-index";
 
@@ -247,14 +247,11 @@ function ServicePage({
             "@graph": [
               {
                 "@type": "Service",
+                "@id": canonicalUrl("/leistungen/" + slug) + "#service",
                 name: data.title,
                 description: data.short_text,
                 url: canonicalUrl("/leistungen/" + slug),
-                provider: {
-                  "@type": "HomeAndConstructionBusiness",
-                  name: "Loni GalaBau GmbH",
-                  url: canonicalUrl("/"),
-                },
+                provider: organizationSchema(),
                 areaServed: { "@type": "Country", name: "Deutschland" },
               },
               {

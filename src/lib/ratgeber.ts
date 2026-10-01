@@ -1,5 +1,5 @@
 import content from "@/content/ratgeber.json";
-import { canonicalUrl } from "./seo";
+import { canonicalUrl, editorialAuthorSchema, organizationSchema } from "./seo";
 import { publicImageUrl } from "./public-image-url";
 
 type GuideSection = {
@@ -44,15 +44,8 @@ export function guideSchema(article: Guide) {
         dateModified: article.updatedAt,
         inLanguage: "de-DE",
         articleSection: article.category,
-        author: {
-          "@type": "Person",
-          "@id": canonicalUrl("/autoren/serhad-marasli") + "#person",
-          name: "Serhad Marasli",
-          jobTitle: "Bau- & Operations Manager",
-          worksFor: { "@type": "Organization", name: "Loni Galabau GmbH", url: canonicalUrl("/") },
-          url: canonicalUrl("/autoren/serhad-marasli"),
-        },
-        publisher: { "@type": "Organization", name: "Loni Galabau GmbH", url: canonicalUrl("/") },
+        author: editorialAuthorSchema(),
+        publisher: organizationSchema(),
       },
       {
         "@type": "BreadcrumbList",
