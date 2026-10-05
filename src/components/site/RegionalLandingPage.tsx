@@ -108,10 +108,7 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
               <div className="region-hero-copy">
                 <span className="region-kicker">{page.kicker}</span>
                 <h1>{page.h1}</h1>
-                <p className="region-lead">
-                  Ihr Garten soll zu Ihrem Leben passen. Wir gestalten Terrassen, Wege und
-                  Grünflächen in {page.shortName} – von Ihrer ersten Idee bis zur Umsetzung.
-                </p>
+                <p className="region-lead">{page.heroLead}</p>
                 <div className="region-districts">
                   <MapPin aria-hidden="true" size={19} />
                   <p>{page.districts.join(" · ")}</p>

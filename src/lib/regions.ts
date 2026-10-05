@@ -17,6 +17,7 @@ export interface RegionPage {
   description: string;
   h1: string;
   kicker: string;
+  heroLead: string;
   intro: string[];
   districts: string[];
   focus: string;
