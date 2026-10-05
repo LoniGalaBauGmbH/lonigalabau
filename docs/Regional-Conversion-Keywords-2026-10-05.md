@@ -1,6 +1,6 @@
 # Keywordrecherche für die zehn Ortsseiten
 
-Stand: **05.10.2026, 09:49 MESZ**. Die Recherche wurde mit der vorhandenen lokalen **OpenSEO-Instanz und deren DataForSEO-MCP-Werkzeugen** durchgeführt. Sie umfasst alle zehn angeforderten Stadtseiten. An den Website-Inhalten wurden durch diese Recherche keine Änderungen vorgenommen.
+Keywordstand: **05.10.2026, 09:49 MESZ**; technischer Live-Audit: **05.10.2026, 10:12 MESZ**. Die Recherche wurde mit der vorhandenen lokalen **OpenSEO-Instanz und deren DataForSEO-MCP-Werkzeugen** durchgeführt. Sie umfasst alle zehn angeforderten Stadtseiten. An den Website-Inhalten wurden durch diese Recherche keine Änderungen vorgenommen.
 
 ## Quelle, Umfang und Grenzen
 
@@ -107,4 +107,49 @@ Die allgemeine Hero-H1 mit Garten- und Landschaftsbau plus Ort bleibt geeignet. 
 
 Die vollständigen aktuellen Anfragen, Rohantworten und das Kostenprotokoll liegen privat im lokalen Aufgabenordner **`SEO-Recherche-2026-10-05`**, außerhalb des Website-Repositorys. Dort dokumentieren `02-regional-metrics.json`, `03-regional-serps.json`, `04-saved-regional.json` und `05-saved-after.json` Abrufzeit, Originaldaten und Speicherung. Zugangsdaten oder private Rohexporte wurden nicht in diesen Bericht übernommen.
 
-Nach Veröffentlichung des geänderten Seitenstands ist ein kostenloser technischer OpenSEO-Audit mit **`runLighthouse: false`** vorgesehen. Er wurde für diesen Bericht noch nicht gestartet. Indexierung, tatsächliche Suchleistung und Anfragewirkung bleiben davon getrennte Prüfungen. Aus dieser Recherche entsteht keine Automation.
+## Kostenloser OpenSEO-Live-Audit nach Veröffentlichung von V59
+
+Der technische Audit wurde **erst nach der bestätigten Veröffentlichung von V59** gestartet. Bezug der Veröffentlichung: Deploymentstatus `succeeded`, Aktualisierung **05.10.2026, 08:10:27,016892 UTC**, Sites-Quellstand **`2a5064cce64f51da8aa942fe7b7577f655edc470`**. Diese Veröffentlichungsdaten stammen aus der bestätigten Deploymentantwort; die nachfolgend genannten Crawl-Ergebnisse stammen aus OpenSEO.
+
+- Werkzeug: `run_site_audit`, Projekt `d2065474-40c3-4bde-a87c-7ff129ddaecd`, Start-URL `https://www.loni-galabau.de`, Crawl-Obergrenze **100**, ausdrücklich **`runLighthouse: false`**. Die Obergrenze verhindert, dass zusätzlich gefundene Downloads die 49 Sitemap-Seiten abschneiden; sie ist keine Anzahl geprüfter HTML-Seiten.
+- Audit-ID: **`a96a97e5-d983-449f-86b1-142c798ade9b`**. [Audit in der vorhandenen lokalen OpenSEO-Instanz öffnen](http://127.0.0.1:3001/p/d2065474-40c3-4bde-a87c-7ff129ddaecd/audit?auditId=a96a97e5-d983-449f-86b1-142c798ade9b).
+- `get_audit_status` bestätigte **`completed`**, Phase `completed`, **56/56** gecrawlte Ziele, keinen Fehlercode. Start **10:11:06 MESZ**, Abschluss **10:12:03,055 MESZ**. Alle drei Lighthouse-Zähler sind **0**.
+- `get_audit_issues` lieferte **7 vollständige Befundzeilen**: **0 critical**, **1 warning**, **6 info**. Es wurde mit derselben Audit-ID und `limit: 1000` gelesen; das Ergebnis ist nicht abgeschnitten.
+- `get_audit_pages` lieferte **56 vollständige Seiten-/Dateizeilen**, Gesamtzahl ebenfalls 56, mit derselben Audit-ID und `limit: 1000`.
+- Die öffentlich abgerufene [Sitemap](https://www.loni-galabau.de/sitemap.xml) antwortete mit **HTTP 200** und enthält **49 URLs**. Der URL-Abgleich mit `get_audit_pages` ist vollständig: **49/49 enthalten**, **0 fehlend**, alle **HTTP 200**, `fetchClass: ok` und `isIndexable: true` laut Werkzeug.
+- Die übrigen **7 Ziele** sind sechs verlinkte PDF-Downloads und `/login`, ebenfalls HTTP 200 und ohne Zugriffssperre. Sie gehören nicht zu den 49 Sitemap-HTML-Seiten. Der Login ist absichtlich nicht indexierbar; die PDF-Zeilen besitzen keine HTML-Metadaten.
+
+Status, Befundliste und Einzelseiten wurden getrennt gelesen und abgeglichen. Ein abgeschlossener Crawl allein wurde nicht als Beweis für fehlerfreie Seiten verwendet.
+
+### Nachweis der zehn Ortsseiten
+
+Alle zehn URLs stehen in der Live-Sitemap und wurden im selben Audit gelesen. Titel und Beschreibungen sind jeweils vorhanden und unter diesen zehn Seiten eindeutig. Für diese URLs enthält die vollständige Issue-Antwort **keinen Befund**.
+
+| Ortsseite | HTTP | Abrufklasse | Indexierbar laut OpenSEO | Befunde für diese URL |
+| --- | ---: | --- | --- | ---: |
+| [Hattersheim](https://www.loni-galabau.de/gartenbau-hattersheim) | 200 | ok | ja | 0 |
+| [Kelsterbach](https://www.loni-galabau.de/gartenbau-kelsterbach) | 200 | ok | ja | 0 |
+| [Hofheim am Taunus](https://www.loni-galabau.de/gartenbau-hofheim) | 200 | ok | ja | 0 |
+| [Kriftel](https://www.loni-galabau.de/gartenbau-kriftel) | 200 | ok | ja | 0 |
+| [Flörsheim am Main](https://www.loni-galabau.de/gartenbau-floersheim) | 200 | ok | ja | 0 |
+| [Hochheim am Main](https://www.loni-galabau.de/gartenbau-hochheim) | 200 | ok | ja | 0 |
+| [Frankfurt-Höchst](https://www.loni-galabau.de/gartenbau-frankfurt-hoechst) | 200 | ok | ja | 0 |
+| [Bad Soden am Taunus](https://www.loni-galabau.de/gartenbau-bad-soden) | 200 | ok | ja | 0 |
+| [Sulzbach (Taunus)](https://www.loni-galabau.de/gartenbau-sulzbach-taunus) | 200 | ok | ja | 0 |
+| [Eschborn](https://www.loni-galabau.de/gartenbau-eschborn) | 200 | ok | ja | 0 |
+
+### Befunde auf der übrigen Website und Einordnung
+
+| Schweregrad / Typ | Betroffene URL | Tatsächlicher Messwert | Einordnung / nächster sinnvoller Schritt |
+| --- | --- | --- | --- |
+| warning / `thin-content` | `/jobs` | 145 Wörter laut Crawl | Bei nächster Pflege auf hilfreiche Informationen für Bewerber prüfen. Die pauschale Wortgrenze ist kein Beleg für schlechte Rankings; keine Texte nur für eine Wortzahl ergänzen. |
+| info / `noindex-page` | `/login` | Meta `noindex,nofollow`, Header `noindex, nofollow` | Beabsichtigter Schutz des Admin-Einstiegs; beibehalten. |
+| info / `slow-response` | `/ratgeber/pflasterarbeiten-kosten-einfahrt` | 1.634 ms | Einzelne Crawl-Antwort; bei wiederholt langsamen Antworten gezielt Server-/Cache-Verhalten prüfen. |
+| info / `slow-response` | `/agb` | 1.906 ms | Einzelne Crawl-Antwort; kein Lighthouse- oder Core-Web-Vitals-Wert. |
+| info / `slow-response` | `/downloads/fll-ztv-wegebau.pdf` | 1.526 ms | Antwort eines PDF-Downloads, keine HTML-Seite; separat von den Ortsseiten bewerten. |
+| info / `title-too-long` | `/einsatzgebiete` | 62 Zeichen | OpenSEO-Zeichengrenze überschritten. Bei nächster Titelpflege Lesbarkeit prüfen; 62 Zeichen beweisen keine tatsächliche Abschneidung in jeder Google-Darstellung. |
+| info / `title-too-long` | `/jobs/landschaftsgaertner-m-w-d` | 67 Zeichen | Bei nächster Titelpflege eine kürzere, weiterhin verständliche Fassung prüfen. |
+
+Die Tool-Wortzahlen beziehen sich auf den gecrawlten Seiteninhalt einschließlich wiederkehrender Seitenelemente. Aus den Einzelantwortzeiten entsteht keine allgemeine Performancebewertung. Der Audit verursachte keine weitere Keywordabfrage und verwendete kein Lighthouse. Er bestätigte technische Abrufbarkeit und die gemeldete Indexierbarkeit; eine tatsächliche Google-Indexierung, Rankings, Anfragewirkung und vollständige visuelle oder Formularprüfung sind damit nicht gemessen.
+
+Die Audit-Rohantworten liegen privat außerhalb des Website-Repositorys im selben lokalen Aufgabenordner: `06-audit-start.json`, `07-audit-status.json`, `08-audit-issues.json`, `09-audit-pages.json`. `live-sitemap.xml` dokumentiert den tatsächlichen Sitemap-Abruf; `10-audit-verification.json` enthält den URL-Abgleich. Es wurde keine Automation eingerichtet und keine weitere Website-Datei für diesen Audit geändert.

@@ -43,5 +43,15 @@ Auf weitere Nutzerkorrektur erhalten auch die beiden unteren Inhaltsabschnitte j
 
 168 Anwendungstests, abschließende Typprüfung, gezieltes ESLint und der aktualisierte Produktionsbuild bestanden. Lokaler HTML-/Asset-Audit: elf Regional-/Übersichtsseiten, 265 Bildziele, 32 interne Ziele und 49 Sitemap-URLs ohne Befund. Jede Stadtseite hat genau ein Rückrufformular, zwei weitere Detailfotos und die Team-/Nachweisbereiche; Karten-Iframes werden weiterhin erst nach Freigabe geladen.
 
-Nach Fertigstellung der weiteren Layoutkorrekturen erteilte der Nutzer am 05.10.2026 ausdrücklich die Freigabe **„Ja, jetzt veröffentlichen und sichern“** für alle zehn Stadtseiten. Die zuvor zweimal blockierende automatische Freigabeprüfung kann damit erneut anhand der direkten Freigabe entscheiden. Veröffentlichung und GitHub-Sicherung laufen; noch kein Live-Erfolg in diesem Quellstand dokumentiert.
+Nach Fertigstellung der weiteren Layoutkorrekturen erteilte der Nutzer am 05.10.2026 ausdrücklich die Freigabe **„Ja, jetzt veröffentlichen und sichern“** für alle zehn Stadtseiten. Die automatische Freigabeprüfung ließ den Workflow nach der direkten Nutzerfreigabe zu. Die Veröffentlichung und Sicherung des Programmstands sind abgeschlossen; der abschließende Stand ist unten dokumentiert.
 
+
+## Finaler Live-Stand
+
+**Version 59**: erfolgreich öffentlich veröffentlicht am **05.10.2026, 10:10:27 MESZ**, Deploymentstatus succeeded. Quellcommit 2a5064cce64f51da8aa942fe7b7577f655edc470; Deployment appgdep_6ac35b5b3d148191b3abd7d499d79f09.
+
+- Live-Browser Hattersheim: neues Hero-Bild geladen, Glashintergrund und Blur vorhanden, Buttons untereinander mit Abstand.
+- Live-Audit 2026-10-05T08:12:23.293Z: **elf Regional-/Übersichtsseiten, 265 Bildziele, 32 interne Ziele und alle 49 Sitemap-Seiten ohne Befund** in den ausgeführten HTML-/Asset-/Linkprüfungen. Jede Stadtseite: genau ein Rückrufformular, acht frühe Galeriefotos, zwei Detailfotos, Team/Fachnachweise und weiterhin keine Karten-Iframes vor Aktivierung.
+- Kostenloser OpenSEO-Audit am 05.10.2026: 56 Ziele einschließlich aller 49 Sitemap-Seiten, **alle zehn Ortsseiten ohne Issues**. Gesamtsite: 0 critical, 1 warning (/jobs thin-content) und 6 info; genaue URLs und Einordnung im Keywordbericht. Kein Lighthouse und keine zusätzliche bezahlte Keywordabfrage.
+- [Programmstand auf GitHub main](https://github.com/LoniGalaBauGmbH/lonigalabau/commit/8fab327362c65418aae6850e378bba08c0aee940): Quellbaum exakt mit dem geprüften lokalen Stand abgeglichen, ohne Force-Update. Die nachträgliche Statusdokumentation verändert keinen veröffentlichten Programmcode.
+- Keine Live-Testanfrage abgeschickt. Die technische Prüfung belegt keine Google-Indexierung, Rankingsteigerung oder höhere Anfragenquote.
