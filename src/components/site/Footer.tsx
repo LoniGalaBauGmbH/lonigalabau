@@ -21,6 +21,7 @@ const navLinks: [string, string][] = [
   ["/ueber-uns", "Über uns"],
   ["/leistungen", "Leistungen"],
   ["/projekte", "Projekte"],
+  ["/einsatzgebiete", "Einsatzgebiete"],
   ["/ratgeber", "Ratgeber"],
   ["/konfigurator", "Gartenplaner"],
   ["/jobs", "Jobs"],

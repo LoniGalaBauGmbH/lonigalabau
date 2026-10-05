@@ -60,9 +60,14 @@ const SECTIONS = [
     "Die Anmeldung im Adminbereich verwendet technisch notwendige Sitzungsdaten. Auf ausdrücklichen Wunsch können Sie einen Gartenplaner-Entwurf auf Ihrem Gerät speichern. Er ist sieben Tage wiederherstellbar. Abgelaufene oder ungültige Entwürfe werden beim nächsten Aufruf des Gartenplaners entfernt. Name, E-Mail, Telefon, Anschrift, Freitext, Termindetails und Anhänge werden dabei nicht gespeichert. Sie können den Entwurf im Gartenplaner oder über die Browser-Einstellungen löschen. Der Zugriff auf notwendige Speicherdaten richtet sich nach § 25 Abs. 2 Nr. 2 TDDDG; für die ausdrücklich angeforderte Entwurfsfunktion erfolgt die Speicherung erst durch Ihren Klick.",
   ],
   [
+    "google-maps",
+    "Google-Maps-Karten auf den Ortsseiten",
+    "Auf unseren Ortsseiten können Sie eine Google-Maps-Karte des jeweiligen Ortes anzeigen. Vor dem Klick auf „Google-Maps-Karte anzeigen“ wird keine Karte und keine Verbindung zu Google geladen. Mit dem Klick willigen Sie in das Laden der Karte ein. Dabei erhält Google unter anderem Ihre IP-Adresse und technische Browserinformationen; Google kann Cookies oder vergleichbare Speichertechniken verwenden. Anbieter für Nutzer im Europäischen Wirtschaftsraum ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Eine Verarbeitung durch Google-Unternehmen in anderen Ländern, auch den USA, ist möglich. Grundlage für das optionale Laden ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG, soweit Speichertechniken eingesetzt werden). Die Freigabe gilt nur für die aktuell geöffnete Ortsseite und wird nicht dauerhaft gespeichert. Über „Karte ausblenden“ können Sie die Einbindung für die Zukunft beenden. Bereits an Google übermittelte Daten werden dadurch nicht zurückgerufen. Stattdessen können Sie den Ort auch über den Kartenlink öffnen.",
+  ],
+  [
     "externe",
-    "Schriften, Karten und WhatsApp",
-    "Die Schriftarten werden von dieser Website geladen. Karten werden nicht automatisch eingebettet. Erst beim Öffnen eines Kartenlinks wird eine Verbindung zu Google Maps beziehungsweise OpenStreetMap hergestellt. Der WhatsApp-Button ist ein externer Link; vor dem Anklicken wird darüber keine Verbindung zu WhatsApp aufgebaut. Bei der Nutzung gelten zusätzlich die Datenschutzinformationen des gewählten Anbieters. Alternativ können Sie Telefon, E-Mail und das Kontaktformular verwenden.",
+    "Schriften, Kartenlinks und WhatsApp",
+    "Die Schriftarten werden von dieser Website geladen. Bei externen Kartenlinks wird erst beim Öffnen eine Verbindung zu Google Maps beziehungsweise OpenStreetMap hergestellt. Der WhatsApp-Button ist ein externer Link; vor dem Anklicken wird darüber keine Verbindung zu WhatsApp aufgebaut. Bei der Nutzung gelten zusätzlich die Datenschutzinformationen des gewählten Anbieters. Alternativ können Sie Telefon, E-Mail und das Kontaktformular verwenden.",
   ],
   [
     "tracking",
@@ -108,9 +113,21 @@ function DatenschutzPage() {
               <article key={id} id={id} className="scroll-mt-28">
                 <h2 className="text-2xl font-semibold text-brand">{title}</h2>
                 <p className="mt-4 leading-relaxed text-foreground/85">{text}</p>
+                {id === "google-maps" && (
+                  <p className="mt-4">
+                    <a
+                      href="https://policies.google.com/privacy?hl=de"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 text-brand"
+                    >
+                      Datenschutzhinweise von Google
+                    </a>
+                  </p>
+                )}
               </article>
             ))}
-            <p className="text-sm text-foreground/75">Stand: 30. September 2026</p>
+            <p className="text-sm text-foreground/75">Stand: 5. Oktober 2026</p>
           </div>
         </div>
       </section>

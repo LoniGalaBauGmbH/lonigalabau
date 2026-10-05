@@ -22,6 +22,7 @@ export const STATIC_PATHS = [
   "/ueber-uns",
   "/leistungen",
   "/projekte",
+  "/einsatzgebiete",
   "/ratgeber",
   "/autoren/serhad-marasli",
   "/konfigurator",

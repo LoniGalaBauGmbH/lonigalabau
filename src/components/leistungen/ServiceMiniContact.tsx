@@ -5,7 +5,13 @@ import { CheckCircle2, Loader2, Mail, Phone, ShieldCheck } from "lucide-react";
 import { createContactRequest } from "@/lib/site.functions";
 import { contactSchema } from "@/lib/validators";
 
-export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
+export function ServiceMiniContact({
+  serviceTitle,
+  messagePlaceholder,
+}: {
+  serviceTitle: string;
+  messagePlaceholder?: string;
+}) {
   const messageId = useId();
   const submit = useServerFn(createContactRequest);
   const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
@@ -125,7 +131,7 @@ export function ServiceMiniContact({ serviceTitle }: { serviceTitle: string }) {
             rows={4}
             value={form.message}
             onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-            placeholder={`Worum geht es bei Ihrem ${serviceTitle}-Projekt?`}
+            placeholder={messagePlaceholder ?? `Worum geht es bei Ihrem ${serviceTitle}-Projekt?`}
             className="w-full rounded-lg border border-brand/15 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
           />
         </div>

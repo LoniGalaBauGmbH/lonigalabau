@@ -1,0 +1,138 @@
+.region-project-gallery {
+  padding-block: 48px 64px;
+  scroll-margin-top: 24px;
+}
+
+.region-project-gallery-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+}
+
+.region-project-gallery-heading h2 {
+  margin-top: 15px;
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.region-project-gallery-heading p {
+  max-width: 450px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--brand) 88%, var(--background));
+}
+
+.region-project-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.region-project-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: 4px;
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+}
+
+.region-project-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 250ms ease;
+}
+
+.region-project-photo:hover img {
+  transform: scale(1.035);
+}
+
+.region-project-photo:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 5px;
+}
+
+.region-project-photo-label {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 40%;
+  padding: 30px 16px 16px;
+  background: linear-gradient(transparent, rgb(0 0 0 / 80%));
+  color: white;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.region-project-photo-label svg {
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 1050px) {
+  .region-project-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .region-project-gallery {
+    padding-block: 32px 42px;
+  }
+
+  .region-project-gallery-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .region-project-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .region-project-photo-label {
+    gap: 8px;
+    padding: 28px 12px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .region-project-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .region-project-photo-label {
+    padding: 30px 16px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .region-project-photo img {
+    transition: none;
+  }
+
+  .region-project-photo:hover img {
+    transform: none;
+  }
+}

@@ -36,6 +36,9 @@ const policy = moduleAt("src/lib/http-policy.server.ts", {
   "../content/ratgeber.json": JSON.parse(
     readFileSync(new URL("../src/content/ratgeber.json", import.meta.url), "utf8"),
   ),
+  "../content/regions.json": JSON.parse(
+    readFileSync(new URL("../src/content/regions.json", import.meta.url), "utf8"),
+  ),
 });
 
 test("public image settings reject tracking origins, private buckets and origin lookalikes", () => {
@@ -66,6 +69,10 @@ test("public image settings reject tracking origins, private buckets and origin 
     new Response(),
   ).headers;
   assert.equal(headers.get("referrer-policy"), "no-referrer");
+  assert.equal(
+    headers.get("content-security-policy").match(/frame-src[^;]+/)[0],
+    "frame-src https://www.google.com/maps https://www.google.com/maps/",
+  );
   assert.match(headers.get("content-security-policy"), /font-src 'self'/);
   assert.equal(
     headers.get("content-security-policy").match(/img-src[^;]+/)[0],

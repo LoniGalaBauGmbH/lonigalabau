@@ -1,0 +1,198 @@
+.regional-map {
+  --regional-map-land: #eceee5;
+  --regional-map-green: #dbe4d4;
+  --regional-map-road: #fafbf5;
+  --regional-map-water: #d2e0db;
+  width: min(1280px, calc(100% - 48px));
+  margin-inline: auto;
+  padding-block: 26px 65px;
+  color: var(--brand);
+  scroll-margin-top: 24px;
+}
+.regional-map-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.regional-map-kicker {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 12px;
+  line-height: 1.8;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.regional-map-heading h2 {
+  font-size: clamp(28px, 3.3vw, 42px);
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+.regional-map-heading > p {
+  max-width: 390px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--brand) 88%, var(--background));
+}
+.regional-map-frame {
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  min-height: 440px;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--brand) 16%, transparent);
+  border-radius: 6px;
+  background: var(--regional-map-land);
+}
+.regional-map-pattern,
+.regional-map-frame iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.regional-map-pattern {
+  z-index: -1;
+}
+.regional-map-placeholder {
+  width: min(440px, calc(100% - 48px));
+  margin-block: 26px;
+  padding: 28px 30px 25px;
+  border: 1px solid color-mix(in srgb, var(--brand) 14%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--surface) 97%, transparent);
+  box-shadow: 0 8px 34px rgb(36 58 37 / 5%);
+  text-align: center;
+}
+.regional-map-pin {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 15px;
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+  border-radius: 100%;
+  background: var(--background);
+}
+.regional-map-city {
+  display: block;
+  font-size: clamp(21px, 2.4vw, 27px);
+  line-height: 1.35;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.regional-map-placeholder > p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.regional-map-load {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 100%;
+  min-height: 48px;
+  margin-top: 22px;
+  padding: 13px 22px;
+  border-radius: 100px;
+  background: var(--brand);
+  color: var(--brand-foreground);
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 650;
+  cursor: pointer;
+}
+.regional-map-load:hover {
+  background: color-mix(in srgb, var(--brand) 90%, black);
+}
+.regional-map-load svg {
+  flex-shrink: 0;
+}
+.regional-map-placeholder > .regional-map-privacy {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--brand) 88%, var(--background));
+}
+.regional-map-privacy a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.regional-map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 17px;
+}
+.regional-map-footer :where(a, button) {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  font-size: 13px;
+  line-height: 1.8;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.regional-map-footer button {
+  cursor: pointer;
+}
+.regional-map :where(a, button):focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 5px;
+}
+@media (max-width: 800px) {
+  .regional-map-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
+  .regional-map-heading > p {
+    max-width: 650px;
+  }
+}
+@media (max-width: 600px) {
+  .regional-map {
+    width: calc(100% - 36px);
+    padding-block: 15px 45px;
+  }
+  .regional-map-heading {
+    margin-bottom: 23px;
+  }
+  .regional-map-kicker {
+    font-size: 11px;
+  }
+  .regional-map-heading h2 {
+    font-size: 29px;
+    hyphens: auto;
+  }
+  .regional-map-frame {
+    min-height: 420px;
+  }
+  .regional-map-placeholder {
+    width: calc(100% - 30px);
+    margin-block: 18px;
+    padding: 23px 20px;
+  }
+  .regional-map-load {
+    gap: 9px;
+    padding-inline: 16px;
+    font-size: 13px;
+  }
+  .regional-map-footer {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+}

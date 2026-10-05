@@ -15,6 +15,17 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KonfiguratorRouteImport } from './routes/konfigurator'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as GartenbauSulzbachTaunusRouteImport } from './routes/gartenbau-sulzbach-taunus'
+import { Route as GartenbauKriftelRouteImport } from './routes/gartenbau-kriftel'
+import { Route as GartenbauKelsterbachRouteImport } from './routes/gartenbau-kelsterbach'
+import { Route as GartenbauHofheimRouteImport } from './routes/gartenbau-hofheim'
+import { Route as GartenbauHochheimRouteImport } from './routes/gartenbau-hochheim'
+import { Route as GartenbauHattersheimRouteImport } from './routes/gartenbau-hattersheim'
+import { Route as GartenbauFrankfurtHoechstRouteImport } from './routes/gartenbau-frankfurt-hoechst'
+import { Route as GartenbauFloersheimRouteImport } from './routes/gartenbau-floersheim'
+import { Route as GartenbauEschbornRouteImport } from './routes/gartenbau-eschborn'
+import { Route as GartenbauBadSodenRouteImport } from './routes/gartenbau-bad-soden'
+import { Route as EinsatzgebieteRouteImport } from './routes/einsatzgebiete'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as AgbRouteImport } from './routes/agb'
@@ -70,6 +81,62 @@ const KonfiguratorRoute = KonfiguratorRouteImport.update({
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauSulzbachTaunusRoute = GartenbauSulzbachTaunusRouteImport.update({
+  id: '/gartenbau-sulzbach-taunus',
+  path: '/gartenbau-sulzbach-taunus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauKriftelRoute = GartenbauKriftelRouteImport.update({
+  id: '/gartenbau-kriftel',
+  path: '/gartenbau-kriftel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauKelsterbachRoute = GartenbauKelsterbachRouteImport.update({
+  id: '/gartenbau-kelsterbach',
+  path: '/gartenbau-kelsterbach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauHofheimRoute = GartenbauHofheimRouteImport.update({
+  id: '/gartenbau-hofheim',
+  path: '/gartenbau-hofheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauHochheimRoute = GartenbauHochheimRouteImport.update({
+  id: '/gartenbau-hochheim',
+  path: '/gartenbau-hochheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauHattersheimRoute = GartenbauHattersheimRouteImport.update({
+  id: '/gartenbau-hattersheim',
+  path: '/gartenbau-hattersheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauFrankfurtHoechstRoute =
+  GartenbauFrankfurtHoechstRouteImport.update({
+    id: '/gartenbau-frankfurt-hoechst',
+    path: '/gartenbau-frankfurt-hoechst',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GartenbauFloersheimRoute = GartenbauFloersheimRouteImport.update({
+  id: '/gartenbau-floersheim',
+  path: '/gartenbau-floersheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauEschbornRoute = GartenbauEschbornRouteImport.update({
+  id: '/gartenbau-eschborn',
+  path: '/gartenbau-eschborn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauBadSodenRoute = GartenbauBadSodenRouteImport.update({
+  id: '/gartenbau-bad-soden',
+  path: '/gartenbau-bad-soden',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EinsatzgebieteRoute = EinsatzgebieteRouteImport.update({
+  id: '/einsatzgebiete',
+  path: '/einsatzgebiete',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DownloadsRoute = DownloadsRouteImport.update({
@@ -215,6 +282,17 @@ export interface FileRoutesByFullPath {
   '/agb': typeof AgbRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
+  '/einsatzgebiete': typeof EinsatzgebieteRoute
+  '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
+  '/gartenbau-eschborn': typeof GartenbauEschbornRoute
+  '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
+  '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
+  '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
+  '/gartenbau-hochheim': typeof GartenbauHochheimRoute
+  '/gartenbau-hofheim': typeof GartenbauHofheimRoute
+  '/gartenbau-kelsterbach': typeof GartenbauKelsterbachRoute
+  '/gartenbau-kriftel': typeof GartenbauKriftelRoute
+  '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
@@ -248,6 +326,17 @@ export interface FileRoutesByTo {
   '/agb': typeof AgbRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
+  '/einsatzgebiete': typeof EinsatzgebieteRoute
+  '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
+  '/gartenbau-eschborn': typeof GartenbauEschbornRoute
+  '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
+  '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
+  '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
+  '/gartenbau-hochheim': typeof GartenbauHochheimRoute
+  '/gartenbau-hofheim': typeof GartenbauHofheimRoute
+  '/gartenbau-kelsterbach': typeof GartenbauKelsterbachRoute
+  '/gartenbau-kriftel': typeof GartenbauKriftelRoute
+  '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
@@ -283,6 +372,17 @@ export interface FileRoutesById {
   '/agb': typeof AgbRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
+  '/einsatzgebiete': typeof EinsatzgebieteRoute
+  '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
+  '/gartenbau-eschborn': typeof GartenbauEschbornRoute
+  '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
+  '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
+  '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
+  '/gartenbau-hochheim': typeof GartenbauHochheimRoute
+  '/gartenbau-hofheim': typeof GartenbauHofheimRoute
+  '/gartenbau-kelsterbach': typeof GartenbauKelsterbachRoute
+  '/gartenbau-kriftel': typeof GartenbauKriftelRoute
+  '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
@@ -318,6 +418,17 @@ export interface FileRouteTypes {
     | '/agb'
     | '/datenschutz'
     | '/downloads'
+    | '/einsatzgebiete'
+    | '/gartenbau-bad-soden'
+    | '/gartenbau-eschborn'
+    | '/gartenbau-floersheim'
+    | '/gartenbau-frankfurt-hoechst'
+    | '/gartenbau-hattersheim'
+    | '/gartenbau-hochheim'
+    | '/gartenbau-hofheim'
+    | '/gartenbau-kelsterbach'
+    | '/gartenbau-kriftel'
+    | '/gartenbau-sulzbach-taunus'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
@@ -351,6 +462,17 @@ export interface FileRouteTypes {
     | '/agb'
     | '/datenschutz'
     | '/downloads'
+    | '/einsatzgebiete'
+    | '/gartenbau-bad-soden'
+    | '/gartenbau-eschborn'
+    | '/gartenbau-floersheim'
+    | '/gartenbau-frankfurt-hoechst'
+    | '/gartenbau-hattersheim'
+    | '/gartenbau-hochheim'
+    | '/gartenbau-hofheim'
+    | '/gartenbau-kelsterbach'
+    | '/gartenbau-kriftel'
+    | '/gartenbau-sulzbach-taunus'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
@@ -385,6 +507,17 @@ export interface FileRouteTypes {
     | '/agb'
     | '/datenschutz'
     | '/downloads'
+    | '/einsatzgebiete'
+    | '/gartenbau-bad-soden'
+    | '/gartenbau-eschborn'
+    | '/gartenbau-floersheim'
+    | '/gartenbau-frankfurt-hoechst'
+    | '/gartenbau-hattersheim'
+    | '/gartenbau-hochheim'
+    | '/gartenbau-hofheim'
+    | '/gartenbau-kelsterbach'
+    | '/gartenbau-kriftel'
+    | '/gartenbau-sulzbach-taunus'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
@@ -420,6 +553,17 @@ export interface RootRouteChildren {
   AgbRoute: typeof AgbRoute
   DatenschutzRoute: typeof DatenschutzRoute
   DownloadsRoute: typeof DownloadsRoute
+  EinsatzgebieteRoute: typeof EinsatzgebieteRoute
+  GartenbauBadSodenRoute: typeof GartenbauBadSodenRoute
+  GartenbauEschbornRoute: typeof GartenbauEschbornRoute
+  GartenbauFloersheimRoute: typeof GartenbauFloersheimRoute
+  GartenbauFrankfurtHoechstRoute: typeof GartenbauFrankfurtHoechstRoute
+  GartenbauHattersheimRoute: typeof GartenbauHattersheimRoute
+  GartenbauHochheimRoute: typeof GartenbauHochheimRoute
+  GartenbauHofheimRoute: typeof GartenbauHofheimRoute
+  GartenbauKelsterbachRoute: typeof GartenbauKelsterbachRoute
+  GartenbauKriftelRoute: typeof GartenbauKriftelRoute
+  GartenbauSulzbachTaunusRoute: typeof GartenbauSulzbachTaunusRoute
   ImpressumRoute: typeof ImpressumRoute
   KonfiguratorRoute: typeof KonfiguratorRoute
   KontaktRoute: typeof KontaktRoute
@@ -481,6 +625,83 @@ declare module '@tanstack/react-router' {
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-sulzbach-taunus': {
+      id: '/gartenbau-sulzbach-taunus'
+      path: '/gartenbau-sulzbach-taunus'
+      fullPath: '/gartenbau-sulzbach-taunus'
+      preLoaderRoute: typeof GartenbauSulzbachTaunusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-kriftel': {
+      id: '/gartenbau-kriftel'
+      path: '/gartenbau-kriftel'
+      fullPath: '/gartenbau-kriftel'
+      preLoaderRoute: typeof GartenbauKriftelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-kelsterbach': {
+      id: '/gartenbau-kelsterbach'
+      path: '/gartenbau-kelsterbach'
+      fullPath: '/gartenbau-kelsterbach'
+      preLoaderRoute: typeof GartenbauKelsterbachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-hofheim': {
+      id: '/gartenbau-hofheim'
+      path: '/gartenbau-hofheim'
+      fullPath: '/gartenbau-hofheim'
+      preLoaderRoute: typeof GartenbauHofheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-hochheim': {
+      id: '/gartenbau-hochheim'
+      path: '/gartenbau-hochheim'
+      fullPath: '/gartenbau-hochheim'
+      preLoaderRoute: typeof GartenbauHochheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-hattersheim': {
+      id: '/gartenbau-hattersheim'
+      path: '/gartenbau-hattersheim'
+      fullPath: '/gartenbau-hattersheim'
+      preLoaderRoute: typeof GartenbauHattersheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-frankfurt-hoechst': {
+      id: '/gartenbau-frankfurt-hoechst'
+      path: '/gartenbau-frankfurt-hoechst'
+      fullPath: '/gartenbau-frankfurt-hoechst'
+      preLoaderRoute: typeof GartenbauFrankfurtHoechstRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-floersheim': {
+      id: '/gartenbau-floersheim'
+      path: '/gartenbau-floersheim'
+      fullPath: '/gartenbau-floersheim'
+      preLoaderRoute: typeof GartenbauFloersheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-eschborn': {
+      id: '/gartenbau-eschborn'
+      path: '/gartenbau-eschborn'
+      fullPath: '/gartenbau-eschborn'
+      preLoaderRoute: typeof GartenbauEschbornRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-bad-soden': {
+      id: '/gartenbau-bad-soden'
+      path: '/gartenbau-bad-soden'
+      fullPath: '/gartenbau-bad-soden'
+      preLoaderRoute: typeof GartenbauBadSodenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/einsatzgebiete': {
+      id: '/einsatzgebiete'
+      path: '/einsatzgebiete'
+      fullPath: '/einsatzgebiete'
+      preLoaderRoute: typeof EinsatzgebieteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/downloads': {
@@ -704,6 +925,17 @@ const rootRouteChildren: RootRouteChildren = {
   AgbRoute: AgbRoute,
   DatenschutzRoute: DatenschutzRoute,
   DownloadsRoute: DownloadsRoute,
+  EinsatzgebieteRoute: EinsatzgebieteRoute,
+  GartenbauBadSodenRoute: GartenbauBadSodenRoute,
+  GartenbauEschbornRoute: GartenbauEschbornRoute,
+  GartenbauFloersheimRoute: GartenbauFloersheimRoute,
+  GartenbauFrankfurtHoechstRoute: GartenbauFrankfurtHoechstRoute,
+  GartenbauHattersheimRoute: GartenbauHattersheimRoute,
+  GartenbauHochheimRoute: GartenbauHochheimRoute,
+  GartenbauHofheimRoute: GartenbauHofheimRoute,
+  GartenbauKelsterbachRoute: GartenbauKelsterbachRoute,
+  GartenbauKriftelRoute: GartenbauKriftelRoute,
+  GartenbauSulzbachTaunusRoute: GartenbauSulzbachTaunusRoute,
   ImpressumRoute: ImpressumRoute,
   KonfiguratorRoute: KonfiguratorRoute,
   KontaktRoute: KontaktRoute,

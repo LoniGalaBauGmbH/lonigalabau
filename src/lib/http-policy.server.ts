@@ -1,12 +1,14 @@
 import { PUBLIC_ORIGIN, PRIVATE_PATH, LEGACY_REDIRECTS, STATIC_PATHS, sitemapXml } from "./seo";
 import guideContent from "../content/ratgeber.json";
+import regionContent from "../content/regions.json";
 import { projectGalleryLastModified } from "./project-gallery-editorial";
 
-// These pages received substantive copy changes in the 01.10.2026 SEO release.
+// Real content dates for the October SEO releases, not dates of sitemap requests.
 const STATIC_CONTENT_MODIFIED: Record<string, string> = {
   "/": "2026-10-01T14:39:01Z",
   "/leistungen": "2026-10-01T14:39:01Z",
   "/projekte": "2026-10-01T14:39:01Z",
+  "/einsatzgebiete": "2026-10-05T06:54:30Z",
 };
 
 export async function publicUtilityResponse(request: Request): Promise<Response | null> {
@@ -56,6 +58,9 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
     guideContent.forEach((article) =>
       entries.push({ path: `/ratgeber/${article.slug}`, modified: article.updatedAt }),
     );
+    regionContent.forEach((region) =>
+      entries.push({ path: `/${region.slug}`, modified: region.updatedAt }),
+    );
     results.forEach((r, i) =>
       r.data?.forEach((row) =>
         entries.push({
@@ -102,7 +107,7 @@ export function secureResponse(request: Request, response: Response) {
   if (!local) {
     headers.set(
       "Content-Security-Policy",
-      "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://fvctfguvupdcscthrxeb.supabase.co; font-src 'self'; connect-src 'self' https://fvctfguvupdcscthrxeb.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+      "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://fvctfguvupdcscthrxeb.supabase.co; font-src 'self'; connect-src 'self' https://fvctfguvupdcscthrxeb.supabase.co; frame-src https://www.google.com/maps https://www.google.com/maps/; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
     );
     headers.set("Strict-Transport-Security", "max-age=15552000");
   }
