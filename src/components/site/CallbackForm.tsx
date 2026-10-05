@@ -44,7 +44,14 @@ const steps = [
   },
 ];
 
-export function CallbackForm() {
+export function CallbackForm({
+  variant = "default",
+  heading = "Rückruf anfragen",
+}: {
+  variant?: "default" | "compact";
+  heading?: string;
+} = {}) {
+  const compact = variant === "compact";
   const send = useServerFn(createCallbackRequest);
   const uid = useId();
   const [form, setForm] = useState(emptyForm);
@@ -155,21 +162,37 @@ export function CallbackForm() {
   const pending = status === "pending";
 
   return (
-    <section id="rueckruf" className="callback-section" aria-labelledby={id("title")}>
+    <section
+      id="rueckruf"
+      className={`callback-section${compact ? " callback-section--compact" : ""}`}
+      aria-labelledby={id("title")}
+    >
       <div className="callback-card">
-        <div className="callback-intro">
-          <span className="callback-icon">
-            <Phone aria-hidden="true" size={23} />
-          </span>
-          <div>
-            <h2 id={id("title")}>
-              Ein Gespräch.
-              <br />
-              <span>Ein guter Anfang.</span>
-            </h2>
-            <p>Wir rufen Sie zurück. Persönlich und unverbindlich.</p>
+        {compact ? (
+          <div className="callback-compact-intro">
+            <span className="callback-icon">
+              <Phone aria-hidden="true" size={20} />
+            </span>
+            <div>
+              <h2 id={id("title")}>{heading}</h2>
+              <p>Persönlich und unverbindlich.</p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="callback-intro">
+            <span className="callback-icon">
+              <Phone aria-hidden="true" size={23} />
+            </span>
+            <div>
+              <h2 id={id("title")}>
+                Ein Gespräch.
+                <br />
+                <span>Ein guter Anfang.</span>
+              </h2>
+              <p>Wir rufen Sie zurück. Persönlich und unverbindlich.</p>
+            </div>
+          </div>
+        )}
         {status === "success" ? (
           <div className="callback-success" role="status">
             <span className="callback-success-icon">
@@ -246,7 +269,7 @@ export function CallbackForm() {
                             autoComplete="given-name"
                             maxLength={90}
                             required
-                            placeholder="Ihr Vorname"
+                            placeholder={compact ? "Vorname" : "Ihr Vorname"}
                             value={form.firstName}
                             onChange={(e) => update("firstName", e.target.value)}
                           />
@@ -259,7 +282,7 @@ export function CallbackForm() {
                             autoComplete="family-name"
                             maxLength={90}
                             required
-                            placeholder="Ihr Nachname"
+                            placeholder={compact ? "Nachname" : "Ihr Nachname"}
                             value={form.lastName}
                             onChange={(e) => update("lastName", e.target.value)}
                           />

@@ -1,0 +1,237 @@
+.region-details {
+  display: grid;
+  min-width: 0;
+  gap: clamp(44px, 6vw, 80px);
+  padding-block: 8px 64px;
+}
+
+.region-details .region-detail-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "title photo" "copy photo";
+  align-items: center;
+  row-gap: 0;
+  column-gap: clamp(32px, 5.5vw, 80px);
+  min-width: 0;
+  padding-top: clamp(28px, 3.5vw, 44px);
+  border-top: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+  scroll-margin-top: 7.5rem;
+}
+
+.region-details .region-detail-section:nth-child(even) {
+  grid-template-areas: "photo title" "photo copy";
+}
+
+.region-details .region-detail-copy {
+  grid-area: copy;
+  align-self: start;
+  min-width: 0;
+}
+
+.region-details .region-detail-title {
+  grid-area: title;
+  align-self: end;
+  min-width: 0;
+  margin: 0 0 22px;
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.region-details .region-detail-copy p {
+  max-width: 60ch;
+  margin-block: 16px;
+  font-size: 17px;
+  line-height: 1.9;
+  color: color-mix(in srgb, var(--brand) 88%, var(--background));
+  overflow-wrap: break-word;
+}
+
+.region-details .region-detail-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.region-details .region-detail-copy p:first-child {
+  margin-top: 0;
+}
+
+.region-details .region-detail-photo {
+  grid-area: photo;
+  align-self: center;
+  display: grid;
+  min-width: 0;
+  margin: 0;
+  gap: 12px;
+}
+
+.region-details .region-detail-photo img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.region-details .region-detail-photo figcaption {
+  font-size: 12px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--brand) 76%, var(--background));
+  overflow-wrap: break-word;
+}
+
+.region-preparation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  min-width: 0;
+  gap: clamp(28px, 5vw, 64px);
+  padding-block: 12px 64px;
+}
+
+.region-preparation-grid > section {
+  min-width: 0;
+  margin: 0;
+  scroll-margin-top: 7.5rem;
+}
+
+.region-preparation-grid .region-checklist {
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid color-mix(in srgb, var(--brand) 12%, transparent);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.region-preparation-grid :is(.region-checklist, .region-faq) h2 {
+  margin: 14px 0 26px;
+  font-size: clamp(28px, 2.8vw, 34px);
+  line-height: 1.26;
+  letter-spacing: -0.035em;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.region-preparation-grid .region-preparation-note {
+  margin: 0 0 22px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--brand) 88%, var(--background));
+  overflow-wrap: break-word;
+}
+
+.region-preparation-grid .region-checklist .region-text-link {
+  margin-top: 24px;
+}
+
+.region-preparation-grid .region-checklist ul {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 18px;
+  list-style: none;
+}
+
+.region-preparation-grid .region-checklist li {
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.region-preparation-grid .region-checklist li > span {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.region-preparation-grid .region-faq details {
+  padding: 18px 20px;
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--background) 65%, white);
+}
+
+.region-preparation-grid .region-faq details + details {
+  margin-top: 12px;
+}
+
+.region-preparation-grid .region-faq summary {
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+.region-preparation-grid .region-faq details p {
+  margin: 14px 0 0;
+  font-size: 16px;
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--brand) 88%, var(--background));
+  overflow-wrap: break-word;
+}
+
+.region-details a,
+.region-preparation-grid a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.region-details a:hover,
+.region-preparation-grid a:hover {
+  text-decoration-thickness: 2px;
+}
+
+@media (max-width: 800px) {
+  .region-details {
+    gap: 44px;
+    padding-bottom: 48px;
+  }
+
+  .region-details .region-detail-section,
+  .region-details .region-detail-section:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "title" "photo" "copy";
+    gap: 28px;
+  }
+
+  .region-details .region-detail-title {
+    margin-bottom: 0;
+  }
+
+  .region-preparation-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    padding-bottom: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .region-details .region-detail-title {
+    font-size: 28px;
+  }
+
+  .region-details .region-detail-copy p {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  .region-preparation-grid .region-checklist {
+    padding: 24px 20px;
+  }
+
+  .region-preparation-grid :is(.region-checklist, .region-faq) h2 {
+    margin-bottom: 24px;
+  }
+
+  .region-preparation-grid .region-faq details {
+    padding: 18px 16px;
+  }
+
+  .region-preparation-grid .region-faq summary {
+    font-size: 16px;
+  }
+}

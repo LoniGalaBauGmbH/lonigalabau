@@ -60,7 +60,7 @@
     "relatedSlugs": ["gartenbau-kriftel", "gartenbau-floersheim", "gartenbau-frankfurt-hoechst"],
     "imageAlt": "Rasengarten mit Plattenterrasse und Hecke entlang der Grundstücksgrenze",
     "imageCaption": "Rasengarten mit Plattenterrasse – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-kelsterbach",
@@ -120,10 +120,14 @@
         "answer": "Weniger schwer erreichbare Restflächen, klare Beetkanten und eine zur Licht- und Wassersituation passende Bepflanzung können den Aufwand verringern. Pflegefrei wird ein Garten dadurch nicht. Wir stimmen die Gestaltung auf Ihre tatsächliche spätere Nutzung ab."
       }
     ],
-    "relatedSlugs": ["gartenbau-hattersheim", "gartenbau-frankfurt-hoechst", "gartenbau-floersheim"],
+    "relatedSlugs": [
+      "gartenbau-hattersheim",
+      "gartenbau-frankfurt-hoechst",
+      "gartenbau-floersheim"
+    ],
     "imageAlt": "Anthrazitfarbener Sichtschutz zwischen zwei Gebäuden",
     "imageCaption": "Anthrazitfarbener Sichtschutz – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-hofheim",
@@ -137,7 +141,15 @@
       "Hofheim am Taunus umfasst neben der Kernstadt die Stadtteile Marxheim, Diedenbergen, Lorsbach, Langenhain, Wallau und Wildsachsen. Die Lage am Taunus macht Höhenunterschiede zu einem sinnvollen Planungsthema; ob Ihr Grundstück tatsächlich eine Hanglösung braucht, zeigen jedoch erst seine Maße und der vorhandene Aufbau. Loni GalaBau betrachtet Gelände, Zugänge und Aufenthaltsflächen als gemeinsame Aufgabe.",
       "Soll eine Terrasse besser erreichbar werden oder ein Garten mehrere nutzbare Ebenen erhalten, beginnt die [Gartengestaltung](/leistungen/gartengestaltung) mit den Anschlusshöhen. Wo liegen Türen, Treppen und Nachbargrenzen? Wie bewegt sich Wasser über die Fläche? Mit diesen Angaben lässt sich zwischen einer kleinen Geländeanpassung und einem Vorhaben unterscheiden, das zusätzliche technische Planung benötigt."
     ],
-    "districts": ["Hofheim", "Marxheim", "Diedenbergen", "Lorsbach", "Langenhain", "Wallau", "Wildsachsen"],
+    "districts": [
+      "Hofheim",
+      "Marxheim",
+      "Diedenbergen",
+      "Lorsbach",
+      "Langenhain",
+      "Wallau",
+      "Wildsachsen"
+    ],
     "focus": "Terrassen und Wege bei Höhenunterschieden sinnvoll verbinden, den Baustellenzugang berücksichtigen und Anforderungen an Abstützung, Stufen und Entwässerung vor der Materialwahl für das konkrete Grundstück klären.",
     "sections": [
       {
@@ -186,7 +198,7 @@
     "relatedSlugs": ["gartenbau-kriftel", "gartenbau-hattersheim", "gartenbau-bad-soden"],
     "imageAlt": "Natursteinmauer mit angrenzender Außentreppe als Übergang zwischen Geländehöhen",
     "imageCaption": "Natursteinmauer mit Außentreppe – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-kriftel",
@@ -249,7 +261,7 @@
     "relatedSlugs": ["gartenbau-hofheim", "gartenbau-hattersheim", "gartenbau-sulzbach-taunus"],
     "imageAlt": "Rasenfläche mit Hecke und einem runden Sitzbereich",
     "imageCaption": "Rasenfläche mit Hecke und rundem Sitzbereich – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-floersheim",
@@ -312,7 +324,7 @@
     "relatedSlugs": ["gartenbau-hattersheim", "gartenbau-hochheim", "gartenbau-hofheim"],
     "imageAlt": "Gepflasterter Hauseingang mit eingefasstem Höhenübergang",
     "imageCaption": "Gepflasterter Hauseingang mit Höhenübergang – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-hochheim",
@@ -375,7 +387,7 @@
     "relatedSlugs": ["gartenbau-floersheim", "gartenbau-hofheim", "gartenbau-hattersheim"],
     "imageAlt": "Holzterrasse neben einer Natursteintreppe als Verbindung zum Garten",
     "imageCaption": "Holzterrasse mit Natursteintreppe – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-frankfurt-hoechst",
@@ -438,7 +450,7 @@
     "relatedSlugs": ["gartenbau-hattersheim", "gartenbau-kelsterbach", "gartenbau-sulzbach-taunus"],
     "imageAlt": "Sichtschutzelemente aus Holz in Metallrahmen entlang einer Außenfläche",
     "imageCaption": "Sichtschutz aus Holz in Metallrahmen – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-bad-soden",
@@ -501,7 +513,7 @@
     "relatedSlugs": ["gartenbau-sulzbach-taunus", "gartenbau-eschborn", "gartenbau-hofheim"],
     "imageAlt": "Terrassenfläche aus großformatigen Platten mit gleichmäßigem Fugenbild",
     "imageCaption": "Großformatige Terrassenplatten – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-sulzbach-taunus",
@@ -564,7 +576,7 @@
     "relatedSlugs": ["gartenbau-bad-soden", "gartenbau-eschborn", "gartenbau-frankfurt-hoechst"],
     "imageAlt": "Gepflasterter Weg mit angrenzenden Gräsern und klarer Randführung",
     "imageCaption": "Pflasterweg mit Gräsern – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   },
   {
     "slug": "gartenbau-eschborn",
@@ -624,9 +636,13 @@
         "answer": "Beschreiben Sie den gewünschten Umfang in Ihrer Anfrage. Zusätzliche Leistungen und eine mögliche wiederkehrende Pflege müssen konkret abgestimmt werden. Die Planung berücksichtigt bereits, wie Beete, Rasen und Anschlüsse für die spätere Versorgung erreichbar bleiben."
       }
     ],
-    "relatedSlugs": ["gartenbau-sulzbach-taunus", "gartenbau-bad-soden", "gartenbau-frankfurt-hoechst"],
+    "relatedSlugs": [
+      "gartenbau-sulzbach-taunus",
+      "gartenbau-bad-soden",
+      "gartenbau-frankfurt-hoechst"
+    ],
     "imageAlt": "Staudenpflanzung entlang eines befestigten Wegs im Stadtraum",
     "imageCaption": "Staudenpflanzung entlang eines Wegs – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-05T06:54:30Z"
+    "updatedAt": "2026-10-05T08:05:34.223Z"
   }
 ]

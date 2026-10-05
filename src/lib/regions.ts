@@ -31,6 +31,13 @@ export interface RegionPage {
 
 export const regions: RegionPage[] = content;
 
+export const regionalHeroImage = {
+  src: publicImageUrl("/images/regionen/garten-hero-ki-2026-1920.webp"),
+  avif: "/images/regionen/garten-hero-ki-2026-960.avif 960w, /images/regionen/garten-hero-ki-2026-1920.avif 1920w",
+  webp: `${publicImageUrl("/images/regionen/garten-hero-ki-2026-960.webp")} 960w, ${publicImageUrl("/images/regionen/garten-hero-ki-2026-1920.webp")} 1920w`,
+  caption: "KI-generierte Gartenvisualisierung mit Terrasse, Rasen und Staudenpflanzung",
+};
+
 export function getRegion(slug: string): RegionPage {
   const page = regions.find((region) => region.slug === slug);
   if (!page) throw new Error("Unbekannte Ortsseite");
@@ -80,8 +87,8 @@ export function regionSchema(page: RegionPage) {
         dateModified: page.updatedAt,
         primaryImageOfPage: {
           "@type": "ImageObject",
-          contentUrl: canonicalUrl(regionImage(page).src),
-          caption: page.imageCaption,
+          contentUrl: canonicalUrl(regionalHeroImage.src),
+          caption: regionalHeroImage.caption,
         },
       },
       {

@@ -1,12 +1,18 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Check, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Check, MapPin, Phone, Images, Users, MessagesSquare } from "lucide-react";
 import { PageShell } from "./PageShell";
 import { RegionalProjectGallery } from "./RegionalProjectGallery";
 import { RegionalMap } from "./RegionalMap";
+import { CallbackForm } from "./CallbackForm";
+import { RegionalTeam } from "./RegionalTeam";
+import { RegionalProof } from "./RegionalProof";
+import { ProjectImage } from "./ProjectImage";
+import { getRegionGallery } from "@/lib/region-gallery";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
-import { getRegion, regionImage, regions, type RegionPage } from "@/lib/regions";
+import { getRegion, regionImage, regionalHeroImage, regions, type RegionPage } from "@/lib/regions";
 import "./RegionalLandingPage.css";
+import "./RegionalDetails.css";
 
 const serviceSlugs = new Set([
   "gartengestaltung",
@@ -71,45 +77,85 @@ function RegionalImage({
 
 export function RegionalLandingPage({ page }: { page: RegionPage }) {
   const related = page.relatedSlugs.map(getRegion).slice(0, 3);
+  const detailPhotos = getRegionGallery(page.slug);
   return (
-    <PageShell>
+    <PageShell transparentHeader>
       <article className="regions" lang="de">
-        <header className="region-wrap region-header">
-          <nav aria-label="Brotkrümelnavigation" className="region-breadcrumb">
-            <Link to="/">Startseite</Link>
-            <span aria-hidden="true">/</span>
-            <a href="/einsatzgebiete">Einsatzgebiete</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">{page.city}</span>
-          </nav>
-          <div className="region-hero">
-            <div className="region-hero-copy">
-              <span className="region-kicker">{page.kicker}</span>
-              <h1>{page.h1}</h1>
-              <p className="region-lead">
-                <RegionalText>{page.intro[0]}</RegionalText>
-              </p>
-              <a href="#anfrage" className="region-button">
-                Projekt anfragen <ArrowUpRight aria-hidden="true" size={19} />
-              </a>
-              <a href="#projektbilder" className="region-hero-gallery-link region-text-link">
-                Projektbilder ansehen <ArrowUpRight aria-hidden="true" size={17} />
-              </a>
-              <div className="region-districts">
-                <MapPin aria-hidden="true" size={19} />
-                <p>{page.districts.join(" · ")}</p>
+        <header className="region-header">
+          <picture className="region-hero-background" aria-hidden="true">
+            <source type="image/avif" srcSet={regionalHeroImage.avif} sizes="100vw" />
+            <img
+              src={regionalHeroImage.src}
+              srcSet={regionalHeroImage.webp}
+              sizes="100vw"
+              alt=""
+              width={1920}
+              height={1080}
+              fetchPriority="high"
+              decoding="async"
+            />
+          </picture>
+          <div className="region-hero-overlay" aria-hidden="true" />
+          <div className="region-hero-inner">
+            <nav aria-label="Brotkrümelnavigation" className="region-breadcrumb">
+              <Link to="/">Startseite</Link>
+              <span aria-hidden="true">/</span>
+              <a href="/einsatzgebiete">Einsatzgebiete</a>
+              <span aria-hidden="true">/</span>
+              <span aria-current="page">{page.city}</span>
+            </nav>
+            <div className="region-hero">
+              <div className="region-hero-copy">
+                <span className="region-kicker">{page.kicker}</span>
+                <h1>{page.h1}</h1>
+                <p className="region-lead">
+                  Ihr Garten soll zu Ihrem Leben passen. Wir gestalten Terrassen, Wege und
+                  Grünflächen in {page.shortName} – von Ihrer ersten Idee bis zur Umsetzung.
+                </p>
+                <div className="region-districts">
+                  <MapPin aria-hidden="true" size={19} />
+                  <p>{page.districts.join(" · ")}</p>
+                </div>
+              </div>
+              <div className="region-hero-callback">
+                <CallbackForm key={page.slug} variant="compact" />
+              </div>
+              <div className="region-hero-actions">
+                <a href="#anfrage" className="region-button">
+                  Projekt anfragen <ArrowUpRight aria-hidden="true" size={19} />
+                </a>
+                <a href="#projektbilder" className="region-text-link">
+                  Projektbilder ansehen <ArrowUpRight aria-hidden="true" size={17} />
+                </a>
               </div>
             </div>
-            <figure className="region-hero-image">
-              <RegionalImage
-                page={page}
-                sizes="(max-width: 800px) calc(100vw - 36px), (max-width: 1328px) 44vw, 580px"
-                priority
-              />
-              <figcaption>{page.imageCaption}</figcaption>
-            </figure>
+            <p className="region-hero-caption">
+              KI-generierte Gartenvisualisierung · echte Arbeiten weiter unten
+            </p>
           </div>
         </header>
+
+        <div className="region-wrap region-trust-strip" aria-label="Loni GalaBau kennenlernen">
+          <a href="#projektbilder">
+            <Images aria-hidden="true" size={22} />
+            <span>
+              <strong>Echte Einblicke</strong>Fotos aus unseren Arbeiten
+            </span>
+          </a>
+          <a href="#loni-team">
+            <Users aria-hidden="true" size={22} />
+            <span>
+              <strong>Ein Team, das anpackt</strong>Menschen hinter Ihrem Projekt
+            </span>
+          </a>
+          <a href="#rueckruf">
+            <MessagesSquare aria-hidden="true" size={22} />
+            <span>
+              <strong>Persönlich besprechen</strong>Rückruf zum Wunschtermin anfragen
+            </span>
+          </a>
+        </div>
+        <RegionalProjectGallery key={page.slug} slug={page.slug} />
 
         <div className="region-wrap region-body">
           <aside className="region-aside">
@@ -145,16 +191,16 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
           </aside>
 
           <div className="region-prose">
-            {page.intro.length > 1 && (
+            {page.intro.length > 0 && (
               <div className="region-introduction">
-                {page.intro.slice(1).map((paragraph) => (
+                {page.intro.map((paragraph) => (
                   <p key={paragraph}>
                     <RegionalText>{paragraph}</RegionalText>
                   </p>
                 ))}
               </div>
             )}
-            {page.sections.map((section, index) => (
+            {page.sections.slice(0, 1).map((section, index) => (
               <section key={section.heading} id={`abschnitt-${index + 1}`}>
                 <h2>{section.heading}</h2>
                 {section.paragraphs.map((paragraph) => (
@@ -164,36 +210,117 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
                 ))}
               </section>
             ))}
-            <section className="region-checklist" aria-labelledby="vorbereitung">
-              <span className="region-kicker">Gut vorbereitet</span>
-              <h2 id="vorbereitung">Für unser erstes Gespräch</h2>
-              <ul>
-                {page.checklist.map((item) => (
-                  <li key={item}>
-                    <Check aria-hidden="true" size={18} />
-                    <span>
-                      <RegionalText>{item}</RegionalText>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-            <section className="region-faq" id="fragen" aria-labelledby="region-faq-title">
-              <span className="region-kicker">Noch eine Frage?</span>
-              <h2 id="region-faq-title">Gartenbau in {page.shortName}: häufige Fragen</h2>
-              {page.faqs.map((faq) => (
-                <details key={faq.question}>
-                  <summary>{faq.question}</summary>
-                  <p>
-                    <RegionalText>{faq.answer}</RegionalText>
-                  </p>
-                </details>
-              ))}
-            </section>
           </div>
         </div>
 
-        <RegionalProjectGallery key={page.slug} slug={page.slug} />
+        <RegionalTeam />
+        <RegionalProof />
+        <section className="region-wrap region-process" aria-labelledby="region-process-title">
+          <div className="region-section-heading">
+            <div>
+              <span className="region-kicker">Ein klarer nächster Schritt</span>
+              <h2 id="region-process-title">So wird aus Ihrer Idee ein Gartenprojekt.</h2>
+            </div>
+            <a href="#rueckruf" className="region-text-link">
+              Vorhaben besprechen <ArrowUpRight aria-hidden="true" size={17} />
+            </a>
+          </div>
+          <ol>
+            <li>
+              <span>01</span>
+              <h3>Ihre Wünsche kennenlernen</h3>
+              <p>
+                Sie erzählen uns, was Sie verändern möchten. Fotos, ungefähre Maße und Ihre
+                Prioritäten geben uns einen ersten Einblick.
+              </p>
+            </li>
+            <li>
+              <span>02</span>
+              <h3>Die passende Lösung abstimmen</h3>
+              <p>
+                Wir besprechen Nutzung, Materialien und die Bedingungen vor Ort. Daraus klären wir
+                den Umfang und die Grundlage für Ihr Angebot.
+              </p>
+            </li>
+            <li>
+              <span>03</span>
+              <h3>Die Umsetzung planen</h3>
+              <p>
+                Wenn alles passt, stimmen wir Termine und den Bauablauf mit Ihnen ab – damit Sie
+                wissen, wie es weitergeht.
+              </p>
+            </li>
+          </ol>
+        </section>
+
+        <div className="region-wrap region-details">
+          {page.sections.slice(1).map((section, index) => {
+            const photo = detailPhotos[index === 0 ? 2 : 0];
+            return (
+              <section
+                className="region-detail-section"
+                key={section.heading}
+                id={`abschnitt-${index + 2}`}
+              >
+                <h2 className="region-detail-title">{section.heading}</h2>
+                <div className="region-detail-copy">
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>
+                      <RegionalText>{paragraph}</RegionalText>
+                    </p>
+                  ))}
+                </div>
+                {photo && (
+                  <figure className="region-detail-photo">
+                    <ProjectImage
+                      src={photo.src}
+                      alt={photo.alt}
+                      sizes="(max-width: 800px) calc(100vw - 36px), (max-width: 1328px) 44vw, 560px"
+                      loading="lazy"
+                    />
+                    <figcaption>{photo.label} · Einblick in unsere Arbeiten</figcaption>
+                  </figure>
+                )}
+              </section>
+            );
+          })}
+        </div>
+        <div className="region-wrap region-preparation-grid">
+          <section className="region-checklist" aria-labelledby="vorbereitung">
+            <span className="region-kicker">Gut vorbereitet</span>
+            <h2 id="vorbereitung">Für unser erstes Gespräch</h2>
+            <p className="region-preparation-note">
+              Auch wenn noch nicht alles feststeht: Erzählen Sie uns zunächst von Ihrer Idee. Diese
+              Angaben helfen bei der weiteren Planung.
+            </p>
+            <ul>
+              {page.checklist.map((item) => (
+                <li key={item}>
+                  <Check aria-hidden="true" size={18} />
+                  <span>
+                    <RegionalText>{item}</RegionalText>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <a href="#rueckruf" className="region-text-link">
+              Ihre Idee besprechen <ArrowUpRight aria-hidden="true" size={17} />
+            </a>
+          </section>
+          <section className="region-faq" id="fragen" aria-labelledby="region-faq-title">
+            <span className="region-kicker">Noch eine Frage?</span>
+            <h2 id="region-faq-title">Gartenbau in {page.shortName}: häufige Fragen</h2>
+            {page.faqs.map((faq) => (
+              <details key={faq.question}>
+                <summary>{faq.question}</summary>
+                <p>
+                  <RegionalText>{faq.answer}</RegionalText>
+                </p>
+              </details>
+            ))}
+          </section>
+        </div>
+
         <RegionalMap key={page.slug + "-map"} city={page.city} />
 
         <section className="region-wrap region-contact" aria-labelledby="anfrage-title">
