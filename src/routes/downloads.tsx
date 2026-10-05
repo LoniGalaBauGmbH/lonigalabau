@@ -11,7 +11,7 @@ export const Route = createFileRoute("/downloads")({
       {
         name: "description",
         content:
-          "Ausbilderanerkennung, Präqualifikation und Weiterbildungsnachweise von Loni GalaBau: Dokumente ansehen und als PDF herunterladen.",
+          "Steuerliche Bescheinigungen, Präqualifikation und Qualifikationsnachweise von Loni GalaBau: Dokumente ansehen und als PDF herunterladen.",
       },
     ],
   }),
@@ -19,14 +19,19 @@ export const Route = createFileRoute("/downloads")({
 });
 
 function DownloadsPage() {
-  const categories = ["Ausbildung", "Fachliche Nachweise", "Arbeitsschutz"] as const;
+  const categories = [
+    "Steuerliche Bescheinigungen",
+    "Ausbildung",
+    "Fachliche Nachweise",
+    "Arbeitsschutz",
+  ] as const;
   return (
     <PageShell>
       <PageIntro
         eyebrow="Dokumente & Nachweise"
         title={
           <span className="block text-[clamp(2rem,8vw,3rem)] md:text-[inherit]">
-            Qualifikation.
+            Unsere Nachweise.
             <br />
             <span className="font-light italic">Schwarz auf weiß.</span>
           </span>
@@ -91,7 +96,7 @@ function DownloadsPage() {
                           </span>
                         </button>
                       </DocumentPreview>
-                      <div>
+                      <div className="min-w-0 hyphens-auto [overflow-wrap:anywhere]">
                         <p className="mb-2 text-xs font-medium text-brand/60">
                           {doc.issuer} · {doc.date}
                         </p>
@@ -101,8 +106,13 @@ function DownloadsPage() {
                         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand/75">
                           {doc.description}
                         </p>
+                        {doc.validUntil && (
+                          <p className="mt-3 text-xs font-semibold text-brand">
+                            Gültig bis {doc.validUntil} · {doc.pageCount} Seiten
+                          </p>
+                        )}
                       </div>
-                      <div className="col-start-2 flex flex-wrap items-center gap-3 lg:col-start-3 lg:ml-5 lg:flex-col lg:items-stretch">
+                      <div className="col-span-2 col-start-1 flex flex-wrap items-center gap-3 sm:col-span-1 sm:col-start-2 lg:col-start-3 lg:ml-5 lg:flex-col lg:items-stretch">
                         <a
                           href={documentFile(doc.id)}
                           download={`Loni-GalaBau-${doc.id}.pdf`}
@@ -128,8 +138,9 @@ function DownloadsPage() {
           ))}
         </div>
         <p className="mt-12 max-w-3xl text-sm leading-relaxed text-brand/60">
-          Die Unterlagen zeigen den jeweils angegebenen Ausstellungsstand. Persönliche Angaben, die
-          für den Nachweis nicht erforderlich sind, wurden in den öffentlichen Kopien geschwärzt.
+          Die Unterlagen zeigen den jeweils angegebenen Ausstellungsstand. Die steuerlichen
+          Bescheinigungen stehen vollständig im Original bereit. Bei den übrigen Nachweisen sind
+          nicht erforderliche persönliche Angaben in den öffentlichen Kopien geschwärzt.
         </p>
       </div>
     </PageShell>

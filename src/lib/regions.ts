@@ -124,7 +124,7 @@ export function regionSchema(page: RegionPage) {
 export function regionsOverviewSchema() {
   return publicPageSchema(
     "/einsatzgebiete",
-    "Gartenbau vor Ort – Main-Taunus-Kreis und Frankfurt-West",
+    "Garten- und Landschaftsbau deutschlandweit – Einsatzgebiete",
     "CollectionPage",
     regions.map((page) => ({ path: `/${page.slug}`, name: page.city })),
   );

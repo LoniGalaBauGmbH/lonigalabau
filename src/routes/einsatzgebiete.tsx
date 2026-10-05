@@ -8,11 +8,11 @@ const overviewImage = regionImage(getRegion("gartenbau-hattersheim"));
 export const Route = createFileRoute("/einsatzgebiete")({
   head: () => ({
     meta: [
-      { title: "Gartenbau im Main-Taunus-Kreis & Frankfurt-West | Loni GalaBau" },
+      { title: "Einsatzgebiete: Gartenbau deutschlandweit | Loni GalaBau" },
       {
         name: "description",
         content:
-          "Gartenbau in Hattersheim, Hofheim und weiteren Orten im Main-Taunus-Kreis, Frankfurt-West und Kelsterbach. Loni GalaBau: deutschlandweit im Einsatz.",
+          "Garten- und Landschaftsbau deutschlandweit: Loni GalaBau aus Hattersheim freut sich auf Ihr Projekt. Zehn Ortsseiten zeigen regionale Beispiele im Rhein-Main-Gebiet.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: canonicalUrl(overviewImage.src) },

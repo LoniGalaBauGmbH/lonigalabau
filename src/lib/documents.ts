@@ -3,13 +3,41 @@ export type QualificationDocument = {
   title: string;
   shortTitle: string;
   issuer: string;
-  category: "Ausbildung" | "Fachliche Nachweise" | "Arbeitsschutz";
+  category: "Ausbildung" | "Fachliche Nachweise" | "Arbeitsschutz" | "Steuerliche Bescheinigungen";
   date: string;
+  validUntil?: string;
+  pageCount?: number;
   description: string;
   featured: boolean;
 };
 
 export const qualificationDocuments: QualificationDocument[] = [
+  {
+    id: "freistellungsbescheinigung-48b-estg",
+    title: "Freistellungsbescheinigung nach § 48b EStG",
+    shortTitle: "Freistellung § 48b EStG",
+    issuer: "Finanzamt Wiesbaden",
+    category: "Steuerliche Bescheinigungen",
+    date: "25.09.2025",
+    validUntil: "26.04.2027",
+    pageCount: 2,
+    description:
+      "Bescheinigung zur Freistellung vom Steuerabzug bei Bauleistungen. Gültig vom 27.10.2025 bis 26.04.2027.",
+    featured: true,
+  },
+  {
+    id: "nachweis-13b-ustg",
+    title: "Nachweis zur Steuerschuldnerschaft nach § 13b UStG",
+    shortTitle: "Nachweis § 13b UStG",
+    issuer: "Finanzamt Wiesbaden",
+    category: "Steuerliche Bescheinigungen",
+    date: "27.03.2025",
+    validUntil: "24.03.2027",
+    pageCount: 2,
+    description:
+      "Nachweis zur Steuerschuldnerschaft des Leistungsempfängers bei Bauleistungen. Gültig bis einschließlich 24.03.2027.",
+    featured: true,
+  },
   {
     id: "praequalifikation-bau",
     title: "Präqualifikation für Bauunternehmen",
@@ -83,3 +111,5 @@ import { publicImageUrl } from "./public-image-url";
 export const documentFile = (id: string) => `/downloads/${id}.pdf`;
 export const documentImage = (id: string, thumbnail = false) =>
   publicImageUrl(`/images/qualifikationen/${id}${thumbnail ? "-thumb" : ""}.webp`);
+export const documentPageImage = (id: string, page: number) =>
+  publicImageUrl(`/images/qualifikationen/${id}${page > 1 ? `-seite-${page}` : ""}.webp`);

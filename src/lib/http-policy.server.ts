@@ -8,7 +8,7 @@ const STATIC_CONTENT_MODIFIED: Record<string, string> = {
   "/": "2026-10-01T14:39:01Z",
   "/leistungen": "2026-10-01T14:39:01Z",
   "/projekte": "2026-10-01T14:39:01Z",
-  "/einsatzgebiete": "2026-10-05T06:54:30Z",
+  "/einsatzgebiete": "2026-10-05T08:37:51Z",
 };
 
 export async function publicUtilityResponse(request: Request): Promise<Response | null> {

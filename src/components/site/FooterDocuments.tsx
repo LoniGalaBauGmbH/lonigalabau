@@ -8,7 +8,7 @@ export function FooterDocuments() {
     <section aria-labelledby="footer-documents-title" className="mx-auto max-w-7xl px-6 pb-12">
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/15 pt-8">
         <h2 id="footer-documents-title" className="text-sm font-semibold">
-          Qualifikation zum Nachlesen.
+          Nachweise & Bescheinigungen.
         </h2>
         <Link
           to="/downloads"
@@ -17,7 +17,7 @@ export function FooterDocuments() {
           Alle Downloads <ArrowUpRight className="size-4" aria-hidden="true" />
         </Link>
       </div>
-      <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-4">
         {qualificationDocuments
           .filter((doc) => doc.featured)
           .map((doc) => (

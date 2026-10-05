@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Download, X, ZoomIn, ZoomOut } from "lucide-react";
-import { documentFile, documentImage, type QualificationDocument } from "@/lib/documents";
+import { ChevronLeft, ChevronRight, Download, X, ZoomIn, ZoomOut } from "lucide-react";
+import { documentFile, documentPageImage, type QualificationDocument } from "@/lib/documents";
 
 export function DocumentPreview({
   document,
@@ -12,6 +12,13 @@ export function DocumentPreview({
 }) {
   const [zoomed, setZoomed] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [page, setPage] = useState(1);
+  const pageCount = document.pageCount ?? 1;
+  const changePage = (next: number) => {
+    setPage(next);
+    setZoomed(false);
+    setFailed(false);
+  };
   const control =
     "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
@@ -20,6 +27,7 @@ export function DocumentPreview({
       onOpenChange={() => {
         setZoomed(false);
         setFailed(false);
+        setPage(1);
       }}
     >
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
@@ -53,8 +61,9 @@ export function DocumentPreview({
               </p>
             ) : (
               <img
-                src={documentImage(document.id)}
-                alt={`${document.title} – Dokumentenscan`}
+                key={page}
+                src={documentPageImage(document.id, page)}
+                alt={`${document.title} – Dokumentenscan, Seite ${page} von ${pageCount}`}
                 onError={() => setFailed(true)}
                 className={
                   zoomed
@@ -64,6 +73,34 @@ export function DocumentPreview({
               />
             )}
           </div>
+          {pageCount > 1 && (
+            <nav
+              aria-label="Dokumentseiten"
+              className="flex shrink-0 items-center justify-center gap-4 pt-3"
+            >
+              <button
+                type="button"
+                aria-label="Vorherige Dokumentseite"
+                disabled={page === 1}
+                onClick={() => changePage(page - 1)}
+                className={`${control} hover:bg-brand/10 disabled:cursor-default disabled:opacity-30`}
+              >
+                <ChevronLeft className="size-4" aria-hidden="true" />
+              </button>
+              <span aria-live="polite" aria-atomic="true" className="text-sm tabular-nums">
+                Seite {page} von {pageCount}
+              </span>
+              <button
+                type="button"
+                aria-label="Nächste Dokumentseite"
+                disabled={page === pageCount}
+                onClick={() => changePage(page + 1)}
+                className={`${control} hover:bg-brand/10 disabled:cursor-default disabled:opacity-30`}
+              >
+                <ChevronRight className="size-4" aria-hidden="true" />
+              </button>
+            </nav>
+          )}
           <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 p-4 md:px-7">
             <button
               type="button"

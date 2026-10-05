@@ -382,28 +382,36 @@ export function RegionsOverviewPage() {
             <span aria-hidden="true">/</span>
             <span aria-current="page">Einsatzgebiete</span>
           </nav>
-          <span className="region-kicker">Loni GalaBau · Von Hattersheim aus</span>
-          <h1>Gartenbau im Main-Taunus-Kreis und Frankfurt-West</h1>
+          <span className="region-kicker">
+            Loni GalaBau · Von Hattersheim aus in ganz Deutschland
+          </span>
+          <h1>Garten- und Landschaftsbau deutschlandweit</h1>
           <div className="region-overview-lead">
             <p>
-              Jeder Ort hat seinen eigenen Charakter. Und jedes Grundstück braucht einen eigenen
-              Plan. Entdecken Sie unsere Ansätze für Gärten und Außenanlagen im Main-Taunus-Kreis,
-              im Frankfurter Westen und im benachbarten Kelsterbach.
+              Von unserem Firmensitz in Hattersheim am Main planen und gestalten wir Gärten und
+              Außenanlagen in ganz Deutschland. Ob privater Garten, Hof oder gewerbliche
+              Außenanlage: Erzählen Sie uns von Ihrer Idee und dem gewünschten Projektort.
             </p>
-            <a href="#orte" className="region-text-link">
-              Ihren Ort entdecken <ArrowUpRight aria-hidden="true" size={17} />
-            </a>
+            <div className="region-overview-actions">
+              <a href="#anfrage" className="region-button">
+                Projekt in Ihrem Ort anfragen <ArrowUpRight aria-hidden="true" size={17} />
+              </a>
+              <a href="#orte" className="region-text-link">
+                Regionale Beispiele ansehen <ArrowUpRight aria-hidden="true" size={17} />
+              </a>
+            </div>
           </div>
           <p className="region-scope-note">
-            Diese Orte sind regionale Beispiele unseres Angebots. Loni GalaBau arbeitet
-            deutschlandweit; unser Firmensitz ist Hattersheim am Main.
+            Ihr Ort ist nicht aufgeführt? Wir freuen uns auch auf Anfragen aus allen anderen Orten
+            in Deutschland. Die zehn Ortsseiten unten zeigen regionale Beispiele rund um unseren
+            Firmensitz.
           </p>
         </header>
 
         <section className="region-wrap region-overview" id="orte" aria-labelledby="orte-title">
           <div className="region-section-heading">
-            <h2 id="orte-title">Ihr Ort. Ihr Vorhaben.</h2>
-            <p>Planung und Handwerk für Garten, Hof und Einfahrt.</p>
+            <h2 id="orte-title">Zehn Orte im Rhein-Main-Gebiet</h2>
+            <p>Regionale Beispiele im Main-Taunus-Kreis, in Frankfurt-West und Kelsterbach.</p>
           </div>
           <div className="region-card-grid">
             {regions.map((page) => (
@@ -434,12 +442,12 @@ export function RegionsOverviewPage() {
 
         <section className="region-wrap region-contact" aria-labelledby="anfrage-title">
           <div className="region-contact-copy">
-            <span className="region-kicker">Wir hören uns Ihre Ideen an</span>
+            <span className="region-kicker">Ihr Projektort · Überall in Deutschland</span>
             <h2 id="anfrage-title">Was möchten Sie draußen verändern?</h2>
             <p>
               Ein neuer Garten, eine erneuerte Einfahrt oder eine Außenanlage für Ihr Unternehmen:
-              Schildern Sie uns Ihr Vorhaben und nennen Sie den Projektort. Wir besprechen mit
-              Ihnen, wie es weitergehen kann.
+              Wir freuen uns auf Ihre Anfrage aus ganz Deutschland. Schildern Sie uns Ihr Vorhaben
+              und nennen Sie den Projektort. Wir besprechen mit Ihnen, wie es weitergehen kann.
             </p>
             <Link to="/leistungen" className="region-text-link">
               Unsere Leistungen kennenlernen <ArrowUpRight aria-hidden="true" size={17} />
