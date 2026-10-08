@@ -27,15 +27,18 @@ export async function sendCustomerConfirmation(client: Client, table: Submission
   let payload = record.customer_confirmation_payload;
   if (!payload) {
     const application = table === "applications";
-    const kind = application
-      ? "application"
-      : record.subject?.startsWith("Rückrufwunsch:")
-        ? "callback"
-        : record.subject?.startsWith("Gartenplaner:")
-          ? "planner"
-          : record.subject?.startsWith("Projektanfrage:")
-            ? "project"
-            : "contact";
+    const partner = table === "partner_applications";
+    const kind = partner
+      ? "partner"
+      : application
+        ? "application"
+        : record.subject?.startsWith("Rückrufwunsch:")
+          ? "callback"
+          : record.subject?.startsWith("Gartenplaner:")
+            ? "planner"
+            : record.subject?.startsWith("Projektanfrage:")
+              ? "project"
+              : "contact";
     const siteOrigin = new URL(
       process.env.SITE_ADMIN_ORIGIN || "https://loni-galabau.serhad1999.chatgpt.site",
     ).origin;
@@ -46,7 +49,11 @@ export async function sendCustomerConfirmation(client: Client, table: Submission
       ticket_format_version: record.ticket_format_version,
       kind,
       createdAt: record.created_at,
-      attachmentCount: application ? Number(!!record.cv_path) : (record.image_paths || []).length,
+      attachmentCount: partner
+        ? Number(!!record.certificate_path) + Number(!!record.vat_certificate_path)
+        : application
+          ? Number(!!record.cv_path)
+          : (record.image_paths || []).length,
       siteOrigin,
     });
     const candidate = {
@@ -63,7 +70,7 @@ export async function sendCustomerConfirmation(client: Client, table: Submission
       // Never repeat customer attachments or arbitrary free text in an automatic reply.
       attachments: [
         ...EMAIL_LOGO_ATTACHMENTS,
-        CUSTOMER_EMAIL_PHOTOS[application ? "application" : "contact"],
+        CUSTOMER_EMAIL_PHOTOS[application || partner ? "application" : "contact"],
       ],
     };
     const { error: snapshotError } = await client

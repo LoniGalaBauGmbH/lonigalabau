@@ -29,6 +29,7 @@ export const STATIC_PATHS = [
   "/jobs",
   "/kontakt",
   "/downloads",
+  "/partner-werden",
   "/impressum",
   "/datenschutz",
   "/agb",

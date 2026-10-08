@@ -15,7 +15,7 @@ export function SubmissionNotification({
 }: {
   id: string;
   ticket?: SubmissionTicketFields;
-  table: "contact_requests" | "applications";
+  table: "contact_requests" | "applications" | "partner_applications";
   sentAt?: string | null;
   deliveryStatus?: string | null;
   customerRequestedAt?: string | null;
@@ -29,11 +29,19 @@ export function SubmissionNotification({
   return (
     <div className="mt-4 rounded-xl bg-brand/5 p-4 text-sm text-brand">
       <p className="mb-3 font-semibold break-words">
-        Ticket {submissionTicket(id, table === "applications", ticket)}
+        Ticket{" "}
+        {submissionTicket(
+          id,
+          table === "partner_applications" ? "partner" : table === "applications",
+          ticket,
+        )}
       </p>
       {customerRequestedAt && (
         <div className="mb-4 border-b border-brand/10 pb-4" role="status">
-          <p className="font-semibold">Eingangsbestätigung an den Kunden</p>
+          <p className="font-semibold">
+            Eingangsbestätigung{" "}
+            {table === "partner_applications" ? "an den Betrieb" : "an den Kunden"}
+          </p>
           <p className="mt-1">
             {customerDeliveryStatus === "delivered"
               ? "Zustellung vom Empfänger-Mailserver bestätigt."

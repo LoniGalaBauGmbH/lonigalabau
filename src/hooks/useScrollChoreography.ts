@@ -13,6 +13,7 @@ export function useScrollChoreography(ref: RefObject<HTMLElement | null>, route:
     root
       .querySelectorAll<HTMLElement>("[data-reveal], section h2, section img")
       .forEach((element) => {
+        if (element.tagName === "H2" && element.closest(".partner-page")) return;
         if (element.closest("form, .garden-scene, .garden-detail-preview, .service-carousel"))
           return;
         if (element.parentElement?.closest("[data-reveal]")) return;

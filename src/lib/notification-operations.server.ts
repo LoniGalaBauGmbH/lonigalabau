@@ -24,7 +24,7 @@ export async function notificationOperations(request: Request): Promise<Response
     let attempted = 0,
       sent = 0,
       confirmations = 0;
-    for (const table of ["contact_requests", "applications"] as const) {
+    for (const table of ["contact_requests", "applications", "partner_applications"] as const) {
       const { data, error } = await supabaseAdmin
         .from(table)
         .select("id")
@@ -89,7 +89,9 @@ export async function notificationOperations(request: Request): Promise<Response
   const source = event.data.tags?.source;
   const submissionId = event.data.tags?.submission_id;
   const tagged =
-    (source === "contact_requests" || source === "applications") &&
+    (source === "contact_requests" ||
+      source === "applications" ||
+      source === "partner_applications") &&
     typeof submissionId === "string" &&
     /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(submissionId);
   const { error } = await supabaseAdmin.rpc("record_submission_email_delivery", {

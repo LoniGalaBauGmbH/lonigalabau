@@ -4,12 +4,88 @@ import { requireAdmin } from "@/integrations/supabase/admin-middleware";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { serviceSchema, jobSchema, projectSchema, publicImageUrlSchema } from "@/lib/validators";
 import { notifySavedSubmission } from "@/lib/submission-notification.server";
+import { attemptSubmissionEmails } from "@/lib/customer-confirmation.server";
+
+export const adminListPartners = createServerFn({ method: "GET" })
+  .middleware([requireAdmin])
+  .handler(async () => {
+    const { data, error } = await supabaseAdmin
+      .from("partner_applications")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) throw new Error("Partnerbewerbungen konnten nicht geladen werden.");
+    return withDeliveryStatus(
+      (data ?? []).map(
+        ({
+          request_token,
+          request_hash,
+          customer_confirmation_payload,
+          certificate_path,
+          vat_certificate_path,
+          ...row
+        }) => row,
+      ),
+    );
+  });
+
+export const adminUpdatePartnerStatus = createServerFn({ method: "POST" })
+  .middleware([requireAdmin])
+  .inputValidator((d: unknown) =>
+    z
+      .object({
+        id: z.string().uuid(),
+        status: z.enum(["new", "reviewing", "documents_missing", "shortlisted", "rejected"]),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data }) => {
+    const { data: row, error } = await supabaseAdmin
+      .from("partner_applications")
+      .update({ status: data.status })
+      .eq("id", data.id)
+      .select("id")
+      .single();
+    if (error || !row) throw new Error("Der Status konnte nicht gespeichert werden.");
+    return { ok: true };
+  });
+
+export const adminPartnerDocument = createServerFn({ method: "POST" })
+  .middleware([requireAdmin])
+  .inputValidator((d: unknown) =>
+    z.object({ id: z.string().uuid(), kind: z.enum(["tax", "vat"]).default("tax") }).parse(d),
+  )
+  .handler(async ({ data }) => {
+    const { data: row, error } = await supabaseAdmin
+      .from("partner_applications")
+      .select("certificate_path,certificate_name,vat_certificate_path,vat_certificate_name")
+      .eq("id", data.id)
+      .single();
+    if (error || !row) throw new Error("Der Nachweis ist nicht verfügbar.");
+    const path = data.kind === "vat" ? row.vat_certificate_path : row.certificate_path;
+    const name = data.kind === "vat" ? row.vat_certificate_name : row.certificate_name;
+    if (!path || !name) throw new Error("Dieser Nachweis wurde noch nicht eingereicht.");
+    const { data: signed, error: signError } = await supabaseAdmin.storage
+      .from("partner-documents")
+      .createSignedUrl(path, 600, { download: name });
+    if (signError || !signed) throw new Error("Der Nachweis konnte nicht geöffnet werden.");
+    return { url: signed.signedUrl };
+  });
+
+export const adminRetryPartnerEmails = createServerFn({ method: "POST" })
+  .middleware([requireAdmin])
+  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .handler(async ({ data }) =>
+    attemptSubmissionEmails(supabaseAdmin, "partner_applications", data.id),
+  );
 
 export const adminSendSubmissionNotification = createServerFn({ method: "POST" })
   .middleware([requireAdmin])
   .inputValidator((data: unknown) =>
     z
-      .object({ table: z.enum(["contact_requests", "applications"]), id: z.string().uuid() })
+      .object({
+        table: z.enum(["contact_requests", "applications", "partner_applications"]),
+        id: z.string().uuid(),
+      })
       .parse(data),
   )
   .handler(({ data }) => notifySavedSubmission(supabaseAdmin, data.table, data.id));
@@ -307,7 +383,7 @@ export const adminSaveNotes = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) =>
     z
       .object({
-        table: z.enum(["contact_requests", "applications"]),
+        table: z.enum(["contact_requests", "applications", "partner_applications"]),
         id: z.string().uuid(),
         notes: z.string().max(20000),
         version: z.number().int().min(0),
@@ -335,7 +411,7 @@ export const adminDeleteSubmission = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) =>
     z
       .object({
-        table: z.enum(["contact_requests", "applications"]),
+        table: z.enum(["contact_requests", "applications", "partner_applications"]),
         id: z.string().uuid(),
         confirmation: z.literal("LÖSCHEN"),
       })
@@ -348,10 +424,23 @@ export const adminDeleteSubmission = createServerFn({ method: "POST" })
       .eq("id", data.id)
       .single();
     if (error || !row) throw new Error("Der Vorgang konnte nicht geladen werden.");
-    const paths = "image_paths" in row ? row.image_paths : row.cv_path ? [row.cv_path] : [];
+    const paths =
+      "certificate_path" in row
+        ? [row.certificate_path, row.vat_certificate_path].filter((path): path is string => !!path)
+        : "image_paths" in row
+          ? row.image_paths
+          : row.cv_path
+            ? [row.cv_path]
+            : [];
     if (paths.length) {
       const { error: storageError } = await supabaseAdmin.storage
-        .from(data.table === "applications" ? "cvs" : "configurator-images")
+        .from(
+          data.table === "partner_applications"
+            ? "partner-documents"
+            : data.table === "applications"
+              ? "cvs"
+              : "configurator-images",
+        )
         .remove(paths);
       if (storageError)
         throw new Error(

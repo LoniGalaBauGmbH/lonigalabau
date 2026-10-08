@@ -1,9 +1,10 @@
 import { submissionTicket } from "./submission-ticket";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { renderSubmissionEmail, type EmailRecord } from "./submission-email";
+import { renderSubmissionEmail, renderPartnerEmail, type EmailRecord } from "./submission-email";
+import type { PartnerRecord } from "./partner-application";
 import { EMAIL_LOGO_ATTACHMENTS } from "./email-logo-assets.server";
 
-export type SubmissionTable = "contact_requests" | "applications";
+export type SubmissionTable = "contact_requests" | "applications" | "partner_applications";
 export const NOTIFICATION_TO = "webseite@loni-galabau.de";
 const SITE = process.env.SITE_ADMIN_ORIGIN || "https://loni-galabau.serhad1999.chatgpt.site";
 
@@ -13,21 +14,34 @@ export function notificationMessage(
   jobTitle: string,
   files: string[],
 ) {
-  const title = table === "applications" ? "Neue Bewerbung" : "Neue Website-Anfrage";
-  const adminUrl = SITE + (table === "applications" ? "/admin/bewerbungen" : "/admin/anfragen");
+  const partner = table === "partner_applications";
+  const title = partner
+    ? "Neue Partnerbewerbung"
+    : table === "applications"
+      ? "Neue Bewerbung"
+      : "Neue Website-Anfrage";
+  const adminUrl =
+    SITE +
+    (partner
+      ? "/admin/partner"
+      : table === "applications"
+        ? "/admin/bewerbungen"
+        : "/admin/anfragen");
   return {
     to: [NOTIFICATION_TO],
     ...(record.email ? { reply_to: record.email } : {}),
     subject: (
-      submissionTicket(record.id, table === "applications", record) +
+      submissionTicket(record.id, partner ? "partner" : table === "applications", record) +
       " · " +
       title +
       " · " +
-      (jobTitle || record.subject || record.name)
+      (partner ? (record as PartnerRecord).company_name : jobTitle || record.subject || record.name)
     )
       .replace(/[\r\n]/g, " ")
       .slice(0, 200),
-    ...renderSubmissionEmail(record, table === "applications", jobTitle, files, adminUrl),
+    ...(partner
+      ? renderPartnerEmail(record as PartnerRecord, adminUrl)
+      : renderSubmissionEmail(record, table === "applications", jobTitle, files, adminUrl)),
     headers: { "Auto-Submitted": "auto-generated" },
     tags: [
       { name: "source", value: table },
@@ -45,6 +59,13 @@ export async function notifySavedSubmission(
   const { data: record, error } = await client.from(table).select("*").eq("id", id).single();
   if (error || !record) throw new Error("Der gespeicherte Vorgang konnte nicht geladen werden.");
   if (record.notification_sent_at) return { sent: true, alreadySent: true };
+  if (
+    table === "partner_applications" &&
+    Date.now() - Date.parse(record.created_at) > 23 * 60 * 60 * 1000
+  )
+    throw new Error(
+      "Sicherer Wiederholungszeitraum abgelaufen. Bitte den Versand persönlich prüfen.",
+    );
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.RESEND_FROM;
   if (!apiKey || !from) throw new Error("Der E-Mail-Versand ist noch nicht eingerichtet.");
@@ -59,7 +80,13 @@ export async function notifySavedSubmission(
     jobTitle = job?.title || "";
   }
   const paths: string[] =
-    table === "applications" ? (record.cv_path ? [record.cv_path] : []) : record.image_paths || [];
+    table === "partner_applications"
+      ? []
+      : table === "applications"
+        ? record.cv_path
+          ? [record.cv_path]
+          : []
+        : record.image_paths || [];
   const bucket = client.storage.from(table === "applications" ? "cvs" : "configurator-images");
   const attachments: { filename: string; content: string }[] = [];
   for (const [index, path] of paths.entries()) {

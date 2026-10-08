@@ -1,4 +1,22 @@
+import type { PartnerRecord } from "@/lib/partner-application";
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
+type PartnerInsert = Omit<
+  PartnerRecord,
+  | "id"
+  | "created_at"
+  | "ticket_number"
+  | "ticket_format_version"
+  | "status"
+  | "notes"
+  | "notes_version"
+  | "notification_sent_at"
+  | "notification_email_id"
+  | "customer_confirmation_requested_at"
+  | "customer_confirmation_sent_at"
+  | "customer_confirmation_email_id"
+  | "customer_confirmation_payload"
+> &
+  Partial<PartnerRecord>;
 
 export type Database = {
   // Allows to automatically instantiate createClient with right options
@@ -8,6 +26,12 @@ export type Database = {
   };
   public: {
     Tables: {
+      partner_applications: {
+        Row: PartnerRecord;
+        Insert: PartnerInsert;
+        Update: Partial<PartnerRecord>;
+        Relationships: [];
+      };
       applications: {
         Row: {
           created_at: string;
@@ -150,6 +174,7 @@ export type Database = {
       };
       email_delivery: {
         Row: {
+          partner_application_id: string | null;
           contact_request_id: string | null;
           application_id: string | null;
           email_id: string;
@@ -157,6 +182,7 @@ export type Database = {
           status: string;
         };
         Insert: {
+          partner_application_id?: string | null;
           contact_request_id?: string | null;
           application_id?: string | null;
           email_id: string;
@@ -164,6 +190,7 @@ export type Database = {
           status: string;
         };
         Update: {
+          partner_application_id?: string | null;
           contact_request_id?: string | null;
           application_id?: string | null;
           email_id?: string;

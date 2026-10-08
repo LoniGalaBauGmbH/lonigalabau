@@ -140,6 +140,10 @@ function harness(overrides = {}) {
       if (id === "@/lib/submission-notification.server")
         return load("src/lib/submission-notification.server.ts");
       if (id === "@/lib/admin.functions") return load("src/lib/admin.functions.ts");
+      if (id === "@/lib/customer-confirmation.server")
+        return load("src/lib/customer-confirmation.server.ts");
+      if (id.startsWith("./"))
+        return load(path.slice(0, path.lastIndexOf("/") + 1) + id.slice(2) + ".ts");
       if (id === "@/integrations/supabase/client")
         return {
           supabase: {

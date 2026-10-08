@@ -98,6 +98,7 @@ const navItems = [
   { to: "/admin/projekte", label: "Projekte", Icon: Images },
   { to: "/admin/jobs", label: "Jobs", Icon: Briefcase },
   { to: "/admin/bewerbungen", label: "Bewerbungen", Icon: Users },
+  { to: "/admin/partner", label: "Partner", Icon: Users },
   { to: "/admin/anfragen", label: "Anfragen", Icon: Mail },
   { to: "/admin/assistent", label: "KI-Assistent", Icon: Sparkles },
   { to: "/admin/wissensbank", label: "Wissensbank", Icon: BookOpen },

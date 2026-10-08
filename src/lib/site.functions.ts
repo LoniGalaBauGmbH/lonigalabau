@@ -17,6 +17,17 @@ import { validateCallback } from "@/lib/callback-request";
 import { persistCallbackSubmission } from "@/lib/callback-submission.server";
 import { serviceTopics } from "@/lib/service-topics";
 import { publicContentQuery } from "@/lib/public-content-cache.server";
+import { partnerSubmissionSchema } from "@/lib/partner-application";
+import { persistPartnerSubmission } from "@/lib/partner-submission.server";
+
+export const createPartnerApplication = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => partnerSubmissionSchema.parse(input))
+  .handler(async ({ data }) => {
+    await enforceFormQuota(data.email, data.phone);
+    const result = await persistPartnerSubmission(supabaseAdmin, data);
+    await attemptSubmissionEmails(supabaseAdmin, "partner_applications", result.id);
+    return { ok: true, ticket: result.ticket };
+  });
 
 export const getServices = createServerFn({ method: "GET" }).handler(async () => {
   try {

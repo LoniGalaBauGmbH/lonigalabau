@@ -119,19 +119,28 @@ test("all form variants produce branded receipts, stable tickets, embedded photo
     ["contact_requests", "Projektanfrage: Terrasse", "Projektanfrage"],
     ["contact_requests", "Gartenplaner: Pflaster", "Gartenplanung"],
     ["applications", "", "Bewerbung"],
+    ["partner_applications", "", "Partnerbewerbung"],
   ]) {
-    const h = harness({ subject, record: { cv_path: "private-cv.pdf" } });
+    const h = harness({
+      subject,
+      record: {
+        cv_path: "private-cv.pdf",
+        certificate_path: "private-48b.pdf",
+        vat_certificate_path: "private-13b.pdf",
+      },
+    });
     await h.sendCustomerConfirmation(h.client, table, h.record.id);
     const body = JSON.parse(h.calls[0].options.body);
     assert.equal(body.to.join(), h.record.email);
     assert.equal(body.reply_to, "webseite@loni-galabau.de");
     assert.ok(body.subject.includes(noun));
-    const ticket = (table === "applications" ? "B" : "A") + "-1042";
+    const ticket =
+      (table === "partner_applications" ? "P" : table === "applications" ? "B" : "A") + "-1042";
     assert.ok(body.subject.includes(ticket));
     for (const part of [body.html, body.text]) {
       assert.ok(part.includes(ticket));
       assert.ok(!part.includes(h.record.id));
-      assert.ok(part.includes("1 Anhang"));
+      assert.ok(part.includes(table === "partner_applications" ? "2 Anhänge" : "1 Anhang"));
       assert.ok(!part.includes("untrusted.invalid"));
     }
     for (const cid of ["loni-logo", "gartenverband-logo", "confirmation-photo-v1"]) {
@@ -238,10 +247,14 @@ test("expired uncertain deliveries are not replayed after the provider deduplica
 });
 test("public routes send receipts only after successful persistence and retry queue includes customer failures", () => {
   const source = fs.readFileSync(new URL("../src/lib/site.functions.ts", import.meta.url), "utf8");
-  assert.equal((source.match(/await attemptSubmissionEmails/g) || []).length, 4);
+  assert.equal((source.match(/await attemptSubmissionEmails/g) || []).length, 5);
   for (const block of source
     .split("export const ")
-    .filter((b) => /createContactRequest|createGardenPlannerRequest|createApplication/.test(b))) {
+    .filter((b) =>
+      /createContactRequest|createGardenPlannerRequest|createApplication|createPartnerApplication/.test(
+        b,
+      ),
+    )) {
     assert.ok(block.indexOf("await persist") < block.indexOf("await attemptSubmissionEmails"));
   }
   const retry = fs.readFileSync(

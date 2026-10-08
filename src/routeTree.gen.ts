@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 import { Route as ProjekteRouteImport } from './routes/projekte'
+import { Route as PartnerWerdenRouteImport } from './routes/partner-werden'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KonfiguratorRouteImport } from './routes/konfigurator'
@@ -46,6 +47,7 @@ import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminWissensbankRouteImport } from './routes/_authenticated/admin/wissensbank'
 import { Route as AuthenticatedAdminTrackingRouteImport } from './routes/_authenticated/admin/tracking'
 import { Route as AuthenticatedAdminProjekteRouteImport } from './routes/_authenticated/admin/projekte'
+import { Route as AuthenticatedAdminPartnerRouteImport } from './routes/_authenticated/admin/partner'
 import { Route as AuthenticatedAdminLeistungenRouteImport } from './routes/_authenticated/admin/leistungen'
 import { Route as AuthenticatedAdminJobsRouteImport } from './routes/_authenticated/admin/jobs'
 import { Route as AuthenticatedAdminBilderRouteImport } from './routes/_authenticated/admin/bilder'
@@ -61,6 +63,11 @@ const UeberUnsRoute = UeberUnsRouteImport.update({
 const ProjekteRoute = ProjekteRouteImport.update({
   id: '/projekte',
   path: '/projekte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnerWerdenRoute = PartnerWerdenRouteImport.update({
+  id: '/partner-werden',
+  path: '/partner-werden',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -241,6 +248,12 @@ const AuthenticatedAdminProjekteRoute =
     path: '/admin/projekte',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedAdminPartnerRoute =
+  AuthenticatedAdminPartnerRouteImport.update({
+    id: '/admin/partner',
+    path: '/admin/partner',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminLeistungenRoute =
   AuthenticatedAdminLeistungenRouteImport.update({
     id: '/admin/leistungen',
@@ -297,6 +310,7 @@ export interface FileRoutesByFullPath {
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
+  '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
@@ -316,6 +330,7 @@ export interface FileRoutesByFullPath {
   '/admin/bilder': typeof AuthenticatedAdminBilderRoute
   '/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/admin/leistungen': typeof AuthenticatedAdminLeistungenRoute
+  '/admin/partner': typeof AuthenticatedAdminPartnerRoute
   '/admin/projekte': typeof AuthenticatedAdminProjekteRoute
   '/admin/tracking': typeof AuthenticatedAdminTrackingRoute
   '/admin/wissensbank': typeof AuthenticatedAdminWissensbankRoute
@@ -341,6 +356,7 @@ export interface FileRoutesByTo {
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
+  '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
@@ -360,6 +376,7 @@ export interface FileRoutesByTo {
   '/admin/bilder': typeof AuthenticatedAdminBilderRoute
   '/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/admin/leistungen': typeof AuthenticatedAdminLeistungenRoute
+  '/admin/partner': typeof AuthenticatedAdminPartnerRoute
   '/admin/projekte': typeof AuthenticatedAdminProjekteRoute
   '/admin/tracking': typeof AuthenticatedAdminTrackingRoute
   '/admin/wissensbank': typeof AuthenticatedAdminWissensbankRoute
@@ -387,6 +404,7 @@ export interface FileRoutesById {
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
   '/login': typeof LoginRoute
+  '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
@@ -406,6 +424,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/bilder': typeof AuthenticatedAdminBilderRoute
   '/_authenticated/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/_authenticated/admin/leistungen': typeof AuthenticatedAdminLeistungenRoute
+  '/_authenticated/admin/partner': typeof AuthenticatedAdminPartnerRoute
   '/_authenticated/admin/projekte': typeof AuthenticatedAdminProjekteRoute
   '/_authenticated/admin/tracking': typeof AuthenticatedAdminTrackingRoute
   '/_authenticated/admin/wissensbank': typeof AuthenticatedAdminWissensbankRoute
@@ -433,6 +452,7 @@ export interface FileRouteTypes {
     | '/konfigurator'
     | '/kontakt'
     | '/login'
+    | '/partner-werden'
     | '/projekte'
     | '/ueber-uns'
     | '/autoren/serhad-marasli'
@@ -452,6 +472,7 @@ export interface FileRouteTypes {
     | '/admin/bilder'
     | '/admin/jobs'
     | '/admin/leistungen'
+    | '/admin/partner'
     | '/admin/projekte'
     | '/admin/tracking'
     | '/admin/wissensbank'
@@ -477,6 +498,7 @@ export interface FileRouteTypes {
     | '/konfigurator'
     | '/kontakt'
     | '/login'
+    | '/partner-werden'
     | '/projekte'
     | '/ueber-uns'
     | '/autoren/serhad-marasli'
@@ -496,6 +518,7 @@ export interface FileRouteTypes {
     | '/admin/bilder'
     | '/admin/jobs'
     | '/admin/leistungen'
+    | '/admin/partner'
     | '/admin/projekte'
     | '/admin/tracking'
     | '/admin/wissensbank'
@@ -522,6 +545,7 @@ export interface FileRouteTypes {
     | '/konfigurator'
     | '/kontakt'
     | '/login'
+    | '/partner-werden'
     | '/projekte'
     | '/ueber-uns'
     | '/autoren/serhad-marasli'
@@ -541,6 +565,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/bilder'
     | '/_authenticated/admin/jobs'
     | '/_authenticated/admin/leistungen'
+    | '/_authenticated/admin/partner'
     | '/_authenticated/admin/projekte'
     | '/_authenticated/admin/tracking'
     | '/_authenticated/admin/wissensbank'
@@ -568,6 +593,7 @@ export interface RootRouteChildren {
   KonfiguratorRoute: typeof KonfiguratorRoute
   KontaktRoute: typeof KontaktRoute
   LoginRoute: typeof LoginRoute
+  PartnerWerdenRoute: typeof PartnerWerdenRoute
   ProjekteRoute: typeof ProjekteRoute
   UeberUnsRoute: typeof UeberUnsRoute
   AutorenSerhadMarasliRoute: typeof AutorenSerhadMarasliRoute
@@ -597,6 +623,13 @@ declare module '@tanstack/react-router' {
       path: '/projekte'
       fullPath: '/projekte'
       preLoaderRoute: typeof ProjekteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partner-werden': {
+      id: '/partner-werden'
+      path: '/partner-werden'
+      fullPath: '/partner-werden'
+      preLoaderRoute: typeof PartnerWerdenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -844,6 +877,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminProjekteRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/partner': {
+      id: '/_authenticated/admin/partner'
+      path: '/admin/partner'
+      fullPath: '/admin/partner'
+      preLoaderRoute: typeof AuthenticatedAdminPartnerRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/leistungen': {
       id: '/_authenticated/admin/leistungen'
       path: '/admin/leistungen'
@@ -896,6 +936,7 @@ interface AuthenticatedRouteChildren {
   AuthenticatedAdminBilderRoute: typeof AuthenticatedAdminBilderRoute
   AuthenticatedAdminJobsRoute: typeof AuthenticatedAdminJobsRoute
   AuthenticatedAdminLeistungenRoute: typeof AuthenticatedAdminLeistungenRoute
+  AuthenticatedAdminPartnerRoute: typeof AuthenticatedAdminPartnerRoute
   AuthenticatedAdminProjekteRoute: typeof AuthenticatedAdminProjekteRoute
   AuthenticatedAdminTrackingRoute: typeof AuthenticatedAdminTrackingRoute
   AuthenticatedAdminWissensbankRoute: typeof AuthenticatedAdminWissensbankRoute
@@ -909,6 +950,7 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAdminBilderRoute: AuthenticatedAdminBilderRoute,
   AuthenticatedAdminJobsRoute: AuthenticatedAdminJobsRoute,
   AuthenticatedAdminLeistungenRoute: AuthenticatedAdminLeistungenRoute,
+  AuthenticatedAdminPartnerRoute: AuthenticatedAdminPartnerRoute,
   AuthenticatedAdminProjekteRoute: AuthenticatedAdminProjekteRoute,
   AuthenticatedAdminTrackingRoute: AuthenticatedAdminTrackingRoute,
   AuthenticatedAdminWissensbankRoute: AuthenticatedAdminWissensbankRoute,
@@ -940,6 +982,7 @@ const rootRouteChildren: RootRouteChildren = {
   KonfiguratorRoute: KonfiguratorRoute,
   KontaktRoute: KontaktRoute,
   LoginRoute: LoginRoute,
+  PartnerWerdenRoute: PartnerWerdenRoute,
   ProjekteRoute: ProjekteRoute,
   UeberUnsRoute: UeberUnsRoute,
   AutorenSerhadMarasliRoute: AutorenSerhadMarasliRoute,

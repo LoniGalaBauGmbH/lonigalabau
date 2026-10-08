@@ -3,7 +3,7 @@ import { z } from "zod";
 
 const MAX_BYTES = 10 * 1024 * 1024;
 export const publicUploadSchema = z.object({
-  bucket: z.enum(["configurator-images", "cvs"]),
+  bucket: z.enum(["configurator-images", "cvs", "partner-documents"]),
   // Kept for older callers; the server always generates the actual path.
   path: z.string().max(500).optional(),
   base64: z
@@ -44,9 +44,11 @@ export function preparePublicUpload(input: z.infer<typeof publicUploadSchema>) {
     extension = "pdf";
   }
   const allowed =
-    data.bucket === "cvs"
-      ? ["application/pdf", "image/jpeg", "image/png"]
-      : ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+    data.bucket === "partner-documents"
+      ? ["application/pdf"]
+      : data.bucket === "cvs"
+        ? ["application/pdf", "image/jpeg", "image/png"]
+        : ["image/jpeg", "image/png", "image/webp", "application/pdf"];
   if (
     !allowed.includes(contentType) ||
     data.contentType.replace("image/jpg", "image/jpeg") !== contentType

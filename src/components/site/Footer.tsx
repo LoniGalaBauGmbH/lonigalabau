@@ -27,6 +27,7 @@ const navLinks: [string, string][] = [
   ["/jobs", "Jobs"],
   ["/kontakt", "Kontakt"],
   ["/downloads", "Downloads"],
+  ["/partner-werden", "Partner werden"],
 ];
 
 export function Footer({ showContactCta = true }: { showContactCta?: boolean }) {

@@ -18,31 +18,37 @@ function legacyTicket(id: string, application = false) {
 }
 
 /** The database allocates unique, permanent numbers; UUIDs remain internal IDs. */
-export function submissionTicket(id: string, application = false, record?: SubmissionTicketFields) {
+export function submissionTicket(
+  id: string,
+  application: boolean | "partner" = false,
+  record?: SubmissionTicketFields,
+) {
   if (
     record?.ticket_format_version === 2 &&
     typeof record.ticket_number === "number" &&
     Number.isSafeInteger(record.ticket_number) &&
     record.ticket_number >= 1000
   ) {
-    return `${application ? "B" : "A"}-${record.ticket_number}`;
+    return `${application === "partner" ? "P" : application ? "B" : "A"}-${record.ticket_number}`;
   }
-  return legacyTicket(id, application);
+  return application === "partner"
+    ? legacyTicket(id).replace(/^A-/, "P-")
+    : legacyTicket(id, application);
 }
 
 /** Previously delivered references and full record IDs remain searchable. */
 export function matchesSubmissionTicket(
   id: string,
   query: string,
-  application = false,
+  application: boolean | "partner" = false,
   record?: SubmissionTicketFields,
 ) {
   const hex = id.replace(/-/g, "").toUpperCase();
-  const legacy = `LG-${application ? "B" : "A"}-${hex.slice(0, 8)}-${hex.slice(-8)}`;
+  const legacy = `LG-${application === "partner" ? "P" : application ? "B" : "A"}-${hex.slice(0, 8)}-${hex.slice(-8)}`;
   const search = query.trim().toUpperCase();
   return [
     submissionTicket(id, application, record),
-    legacyTicket(id, application),
+    legacyTicket(id, application === true),
     legacy,
     id.toUpperCase(),
   ].some((reference) => reference.includes(search));

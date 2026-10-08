@@ -1,4 +1,5 @@
 import { submissionTicket, type SubmissionTicketFields } from "./submission-ticket";
+import { partnerAvailability, type PartnerRecord } from "./partner-application";
 export type EmailRecord = SubmissionTicketFields & {
   id: string;
   name: string;
@@ -7,6 +8,46 @@ export type EmailRecord = SubmissionTicketFields & {
   subject?: string | null;
   message?: string | null;
 };
+
+export function renderPartnerEmail(record: PartnerRecord, adminUrl: string) {
+  const ticket = submissionTicket(record.id, "partner", record);
+  const rows: [string, string][] = [
+    ["Firma", `${record.company_name} · ${record.legal_form}`],
+    ["Geschäftsanschrift", `${record.street}, ${record.postal_code} ${record.city}, Deutschland`],
+    ["Ansprechpartner", record.name],
+    ["E-Mail", record.email],
+    ["Telefon", record.phone],
+    [
+      "Leistungen",
+      record.trades.join(", ") + (record.other_trade ? ` · ${record.other_trade}` : ""),
+    ],
+    ["Einsatzgebiet", record.service_area],
+    ["Betriebsstruktur", record.workforce === "solo" ? "Ohne Beschäftigte" : "Mit Beschäftigten"],
+    ["Verfügbare Personen", String(record.team_size)],
+    ["Verfügbarkeit", partnerAvailability(record)],
+    ["Weitere Nachunternehmen", record.uses_subcontractors ? "Ja, nach Abstimmung" : "Nein"],
+    [
+      "§ 13b UStG gültig bis",
+      record.vat_certificate_valid_until?.split("-").reverse().join(".") || "Nicht eingereicht",
+    ],
+    ["§ 48b EStG gültig bis", record.certificate_valid_until.split("-").reverse().join(".")],
+  ];
+  const text = [
+    "NEUE PARTNERBEWERBUNG",
+    `Vorgang ${ticket}`,
+    "",
+    ...rows.map(([k, v]) => `${k}: ${v}`),
+    "",
+    "NACHRICHT",
+    record.message || "Keine zusätzliche Nachricht.",
+    "",
+    "Nachweise § 48b EStG und § 13b UStG: vertraulich im Adminbereich hinterlegt.",
+    adminUrl,
+    "Die Angaben und die Nachweise sind vor einer Zusammenarbeit persönlich zu prüfen.",
+  ].join("\n");
+  const html = `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#eef2ec;font-family:Arial,sans-serif;color:#204b29"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px"><table role="presentation" width="100%" style="max-width:640px;background:white" cellpadding="0" cellspacing="0"><tr><td style="background:#204b29;padding:32px;color:white"><img src="cid:loni-logo" alt="Loni GalaBau" width="220" style="max-width:100%;height:auto"><p style="color:#c9dcbc;font-size:13px;margin-top:28px">PARTNER WERDEN · ${ticket}</p><h1 style="font-size:28px;line-height:1.3">Neue Partnerbewerbung</h1><p>${escapeHtml(record.company_name)}</p></td></tr><tr><td style="padding:24px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed">${rows.map(([k, v], i) => `<tr style="background:${i % 2 ? "white" : "#f3f6ef"}"><td width="36%" valign="top" style="padding:11px;font-size:13px;line-height:1.6;overflow-wrap:anywhere">${escapeHtml(k)}</td><td valign="top" style="padding:11px;font-size:14px;line-height:1.6;font-weight:600;overflow-wrap:anywhere">${escapeHtml(v)}</td></tr>`).join("")}</table><h2 style="font-size:18px;margin-top:28px">Nachricht</h2><p style="font-size:15px;line-height:1.7;overflow-wrap:anywhere">${lines(record.message || "Keine zusätzliche Nachricht.")}</p><h2 style="font-size:18px;margin-top:28px">Nachweise § 48b EStG und § 13b UStG</h2><p style="font-size:14px;line-height:1.7">Vertraulich im Adminbereich hinterlegt. Die Angaben und die Nachweise sind vor einer Zusammenarbeit persönlich zu prüfen.</p><a href="${escapeHtml(adminUrl)}" style="display:inline-block;padding:15px 22px;background:#204b29;color:white;text-decoration:none;border-radius:9px;margin-top:14px">Partnerbewerbung öffnen →</a></td></tr><tr><td style="padding:24px;background:#f3f6ef;font-size:12px;line-height:1.6">Loni GalaBau GmbH · Vorgang ${ticket}<br>Antworten Sie auf diese E-Mail, um den Ansprechpartner zu erreichen.</td></tr></table></td></tr></table></body></html>`;
+  return { html, text };
+}
 type Row = [string, string];
 type Section = { title: string; rows?: Row[]; text?: string };
 const escapeHtml = (text: string) =>

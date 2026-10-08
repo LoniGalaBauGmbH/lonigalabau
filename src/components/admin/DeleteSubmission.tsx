@@ -7,7 +7,7 @@ export function DeleteSubmission({
   id,
   onDeleted,
 }: {
-  table: "contact_requests" | "applications";
+  table: "contact_requests" | "applications" | "partner_applications";
   id: string;
   onDeleted: () => void;
 }) {

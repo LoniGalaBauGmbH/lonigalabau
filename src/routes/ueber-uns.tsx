@@ -265,6 +265,12 @@ function AboutPage() {
           >
             Projekt anfragen <ArrowUpRight className="h-4 w-4" />
           </Link>
+          <p className="mt-8 text-sm text-brand/75">
+            Sie möchten mit Ihrem Betrieb für Loni arbeiten?{" "}
+            <Link to="/partner-werden" className="font-semibold underline underline-offset-4">
+              Partner werden
+            </Link>
+          </p>
         </div>
       </section>
     </PageShell>

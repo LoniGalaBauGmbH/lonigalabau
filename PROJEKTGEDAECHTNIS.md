@@ -1,7 +1,8 @@
 # Projektgedächtnis – Loni GalaBau
 
-Stand: **05.10.2026**. Versioniertes Projektgedächtnis für die Website und ihre SEO-Werkzeuge.
+Stand: **08.10.2026**. Versioniertes Projektgedächtnis für die Website und ihre SEO-Werkzeuge.
 Dieses Dokument trennt belegte Ergebnisse von laufenden Aufgaben. Es enthält keine Zugangsdaten.
+**Partnerseite live in Version 63 (08.10.2026, 10:47:29 MESZ):** `/partner-werden` und geschützte Verwaltung `/admin/partner`. Nutzer verlangt inzwischen beide Pflicht-PDFs (§ 48b EStG und § 13b UStG/USt 1 TG), jeweils bis 10 MiB mit Gültigkeitsdatum. Migrationen live angewandt; insgesamt 177 Tests, Typprüfung, ESLint und Produktionsbuild erfolgreich. Responsive UI und kompletter Datenbank-/Mail-/Adminablauf geprüft. Auch auf der echten Produktionsseite zwei maximal große unterschiedliche Testdateien erfolgreich gespeichert; Wiederholung dedupliziert, beide E-Mails zugestellt, Testvorgang und Dateien gelöscht. Quellcommit `2669f089f80a30e53c187497b610a9b3a0afdc12`, Deployment `appgdep_6ac7588995988191bd4f6d0724e7522c`. Details: `docs/Partnerbewerbungen-2026-10-08.md`. GitHub-Abgleich folgt separat.
 Vor jeder Fortsetzung lesen; nach wesentlichen Änderungen belegte Ergebnisse und offene Punkte aktualisieren.
 
 ## Zweck und aktueller Auftrag
