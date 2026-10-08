@@ -1,6 +1,6 @@
 # Partner werden – Umsetzung und Prüfung
 
-Stand: 08.10.2026. Version 63 veröffentlicht; zusätzlicher GitHub-Abgleich folgt nach dieser Dokumentation.
+Stand: 08.10.2026. Version 63 veröffentlicht; GitHub-Abgleich erfolgreich.
 
 ## Umfang
 
@@ -45,4 +45,6 @@ Live ohne JavaScript geprüft: sichtbare Inhalte und genau ein korrekter Canonic
 
 Zusätzlich über die **echte Produktionsoberfläche** zwei unterschiedliche PDFs à 10 MiB eingereicht: `P-1004`, beide Dokumente bytegenau gespeichert, Wiederholung ohne neuen Datensatz oder neue E-Mails. Beide E-Mails `delivered`. Private Downloads anonym gesperrt. Testdatensatz und beide Dateien anschließend gelöscht; null verbliebene Live-Testvorgänge bestätigt.
 
-Bestehende organisatorische Datenschutzpunkte (AVV/DPA und betriebliche Löschfristen) sind nicht durch diese technische Erweiterung erledigt. GitHub-Abgleich wird separat protokolliert.
+GitHub synchronisiert: Commit `c89b67ddff30de9fec122cc5f8b42ae29cf1d286`, Inhaltsbaum `cfb377a5acd93896f8baea49d3ab856a1b768667`. Remote anschließend erneut geladen und bytegleich mit dem lokalen Quellstand verglichen. Neuere GitHub-Dokumentation erhalten; keine Zugangsdaten oder Builds übertragen. Dieser Nachtrag dokumentiert die Prüfung und ändert keinen veröffentlichten Programmcode.
+
+Bestehende organisatorische Datenschutzpunkte (AVV/DPA und betriebliche Löschfristen) sind nicht durch diese technische Erweiterung erledigt.
