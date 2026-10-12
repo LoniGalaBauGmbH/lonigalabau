@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { servicePreparation } from "@/lib/service-preparation";
 
 export function ServicePreparation({ slug }: { slug: string }) {
@@ -47,6 +48,24 @@ export function ServicePreparation({ slug }: { slug: string }) {
             </a>
           </div>
         </div>
+        {["erdarbeiten", "entwaesserung", "bewaesserungsanlagen"].includes(slug) && (
+          <div className="mt-8 border-t border-brand/15 pt-6">
+            <h3 className="font-display text-lg font-bold text-brand">
+              Regenwasser im Garten nutzen
+            </h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80">
+              Sie planen eine Zisterne? Wir betrachten Speicher, Erdarbeiten, Wasserwege und
+              Gartenbewässerung gemeinsam. Die Themenseite erklärt Einbau, Nachrüstung und die
+              Angaben für eine passende Anfrage.
+            </p>
+            <Link
+              to="/zisterne-einbauen-lassen"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+            >
+              Zisterne einbauen lassen <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

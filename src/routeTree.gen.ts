@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZisterneEinbauenLassenRouteImport } from './routes/zisterne-einbauen-lassen'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 import { Route as ProjekteRouteImport } from './routes/projekte'
 import { Route as PartnerWerdenRouteImport } from './routes/partner-werden'
@@ -58,6 +59,11 @@ import { Route as AuthenticatedAdminBewerbungenRouteImport } from './routes/_aut
 import { Route as AuthenticatedAdminAssistentRouteImport } from './routes/_authenticated/admin/assistent'
 import { Route as AuthenticatedAdminAnfragenRouteImport } from './routes/_authenticated/admin/anfragen'
 
+const ZisterneEinbauenLassenRoute = ZisterneEinbauenLassenRouteImport.update({
+  id: '/zisterne-einbauen-lassen',
+  path: '/zisterne-einbauen-lassen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UeberUnsRoute = UeberUnsRouteImport.update({
   id: '/ueber-uns',
   path: '/ueber-uns',
@@ -337,6 +343,7 @@ export interface FileRoutesByFullPath {
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
@@ -386,6 +393,7 @@ export interface FileRoutesByTo {
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
@@ -437,6 +445,7 @@ export interface FileRoutesById {
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
   '/ueber-uns': typeof UeberUnsRoute
+  '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
   '/jobs/$slug': typeof JobsSlugRoute
   '/leistungen/$slug': typeof LeistungenSlugRoute
@@ -488,6 +497,7 @@ export interface FileRouteTypes {
     | '/partner-werden'
     | '/projekte'
     | '/ueber-uns'
+    | '/zisterne-einbauen-lassen'
     | '/autoren/serhad-marasli'
     | '/jobs/$slug'
     | '/leistungen/$slug'
@@ -537,6 +547,7 @@ export interface FileRouteTypes {
     | '/partner-werden'
     | '/projekte'
     | '/ueber-uns'
+    | '/zisterne-einbauen-lassen'
     | '/autoren/serhad-marasli'
     | '/jobs/$slug'
     | '/leistungen/$slug'
@@ -587,6 +598,7 @@ export interface FileRouteTypes {
     | '/partner-werden'
     | '/projekte'
     | '/ueber-uns'
+    | '/zisterne-einbauen-lassen'
     | '/autoren/serhad-marasli'
     | '/jobs/$slug'
     | '/leistungen/$slug'
@@ -638,6 +650,7 @@ export interface RootRouteChildren {
   PartnerWerdenRoute: typeof PartnerWerdenRoute
   ProjekteRoute: typeof ProjekteRoute
   UeberUnsRoute: typeof UeberUnsRoute
+  ZisterneEinbauenLassenRoute: typeof ZisterneEinbauenLassenRoute
   AutorenSerhadMarasliRoute: typeof AutorenSerhadMarasliRoute
   JobsSlugRoute: typeof JobsSlugRoute
   LeistungenSlugRoute: typeof LeistungenSlugRoute
@@ -653,6 +666,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zisterne-einbauen-lassen': {
+      id: '/zisterne-einbauen-lassen'
+      path: '/zisterne-einbauen-lassen'
+      fullPath: '/zisterne-einbauen-lassen'
+      preLoaderRoute: typeof ZisterneEinbauenLassenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ueber-uns': {
       id: '/ueber-uns'
       path: '/ueber-uns'
@@ -1052,6 +1072,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnerWerdenRoute: PartnerWerdenRoute,
   ProjekteRoute: ProjekteRoute,
   UeberUnsRoute: UeberUnsRoute,
+  ZisterneEinbauenLassenRoute: ZisterneEinbauenLassenRoute,
   AutorenSerhadMarasliRoute: AutorenSerhadMarasliRoute,
   JobsSlugRoute: JobsSlugRoute,
   LeistungenSlugRoute: LeistungenSlugRoute,

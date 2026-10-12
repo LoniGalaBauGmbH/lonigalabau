@@ -260,6 +260,21 @@ function Article() {
                 </Link>
               </section>
             )}
+            {article.slug === "gartenbewaesserung-planen" && (
+              <section className="guide-project-example" aria-labelledby="zisterne-weiterplanen">
+                <span className="guide-kicker">Regenwasser als Wasserquelle</span>
+                <h2 id="zisterne-weiterplanen">Zisterne und Gartenbewässerung zusammen planen</h2>
+                <p>
+                  Möchten Sie Dachregenwasser speichern und für den Garten nutzen? Unsere
+                  Themenseite erklärt die Planung von Speicher, Erdarbeiten, Pumpe und Überlauf
+                  sowie die Nachrüstung im bestehenden Garten. Dort können Sie den Zisternen-Einbau
+                  direkt mit uns besprechen.
+                </p>
+                <Link to="/zisterne-einbauen-lassen" className="guide-text-link">
+                  Zisterne einbauen lassen
+                </Link>
+              </section>
+            )}
             <section className="guide-faq" aria-labelledby="fragen">
               <h2 id="fragen">Häufige Fragen</h2>
               {article.faqs.map((faq) => (

@@ -6,15 +6,21 @@ import { servicePreparation } from "./service-preparation";
 
 // Real content dates for the October SEO releases, not dates of sitemap requests.
 const STATIC_CONTENT_MODIFIED: Record<string, string> = {
-  "/": "2026-10-12T08:45:00Z",
+  "/": "2026-10-12T14:15:00Z",
   "/leistungen": "2026-10-01T14:39:01Z",
   "/projekte": "2026-10-01T14:39:01Z",
   "/einsatzgebiete": "2026-10-12T07:19:00Z",
   "/datenschutz": "2026-10-12T08:45:00Z",
   "/fachverband-mitgliedschaft": "2026-10-12T09:50:00Z",
   "/ueber-uns": "2026-10-12T09:50:00Z",
+  "/zisterne-einbauen-lassen": "2026-10-12T14:15:00Z",
 };
 const SERVICE_CONTENT_MODIFIED = "2026-10-12T08:45:00Z";
+const CISTERN_CONTENT_MODIFIED: Record<string, string> = {
+  erdarbeiten: "2026-10-12T14:15:00Z",
+  entwaesserung: "2026-10-12T14:15:00Z",
+  bewaesserungsanlagen: "2026-10-12T14:15:00Z",
+};
 const JOB_SCHEMA_MODIFIED = "2026-10-12T08:45:00Z";
 
 function latestContentDate(stored: string, editorial: string | undefined) {
@@ -79,7 +85,7 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
             row.updated_at,
             i === 0
               ? servicePreparation[row.slug]
-                ? SERVICE_CONTENT_MODIFIED
+                ? (CISTERN_CONTENT_MODIFIED[row.slug] ?? SERVICE_CONTENT_MODIFIED)
                 : undefined
               : JOB_SCHEMA_MODIFIED,
           ),

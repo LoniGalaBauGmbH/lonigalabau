@@ -66,6 +66,24 @@ export function GuideEntryLinks() {
             </article>
           ))}
         </div>
+        <div className="mt-8 flex flex-col gap-5 rounded-2xl border border-brand/15 bg-surface p-6 md:p-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="min-w-0 max-w-2xl">
+            <p className="eyebrow text-brand/75">Regenwasser nutzen</p>
+            <h3 className="mt-3 font-display text-xl font-bold text-brand">
+              Eine Zisterne für Ihren Garten?
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+              Erfahren Sie, worauf es bei Speicher, Einbau und Nachrüstung ankommt – und besprechen
+              Sie Ihr Vorhaben direkt mit uns.
+            </p>
+          </div>
+          <Link
+            to="/zisterne-einbauen-lassen"
+            className="inline-flex min-h-11 w-fit shrink-0 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+          >
+            Zisternen-Einbau kennenlernen <ArrowUpRight className="size-4" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
     </section>
   );

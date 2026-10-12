@@ -23,6 +23,7 @@ const navLinks: [string, string][] = [
   ["/projekte", "Projekte"],
   ["/einsatzgebiete", "Einsatzgebiete"],
   ["/ratgeber", "Ratgeber"],
+  ["/zisterne-einbauen-lassen", "Zisternen-Einbau"],
   ["/konfigurator", "Gartenplaner"],
   ["/jobs", "Jobs"],
   ["/kontakt", "Kontakt"],
