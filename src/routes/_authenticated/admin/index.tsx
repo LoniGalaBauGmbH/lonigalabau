@@ -2,6 +2,7 @@ import { AccountSecurity } from "@/components/admin/AccountSecurity";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
+import { adminIncomingContactsSummary } from "@/lib/incoming-contact-summary.functions";
 import {
   adminWhoami,
   adminListContacts,
@@ -60,9 +61,19 @@ function today() {
   });
 }
 
+function formatCalendarDate(value: string) {
+  return new Date(`${value}T12:00:00Z`).toLocaleDateString("de-DE", {
+    timeZone: "Europe/Berlin",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
+
 function Page() {
   const whoamiFn = useServerFn(adminWhoami);
   const contactsFn = useServerFn(adminListContacts);
+  const incomingSummaryFn = useServerFn(adminIncomingContactsSummary);
   const appsFn = useServerFn(adminListApplications);
   const servicesFn = useServerFn(adminListServices);
   const projectsFn = useServerFn(adminListProjects);
@@ -77,6 +88,13 @@ function Page() {
     queryKey: ["admin-contacts"],
     queryFn: () => contactsFn(),
     enabled: !!whoami?.isAdmin,
+  });
+  const incomingSummary = useQuery({
+    queryKey: ["admin-incoming-contacts-30d"],
+    queryFn: () => incomingSummaryFn(),
+    enabled: !!whoami?.isAdmin,
+    staleTime: 60_000,
+    retry: false,
   });
   const { data: apps = [] } = useQuery({
     queryKey: ["admin-apps"],
@@ -197,7 +215,7 @@ function Page() {
   // ── KPI Cards ─────────────────────────────────────
   const kpiCards = [
     {
-      label: "Projektanfragen",
+      label: "Kundenkontakte",
       value: totalContacts,
       badge: newContacts > 0 ? `${newContacts} neu` : null,
       badgeColor: "bg-emerald-100 text-emerald-700",
@@ -303,6 +321,69 @@ function Page() {
           )}
         </div>
       </div>
+
+      <section
+        aria-labelledby="incoming-contacts-heading"
+        className="bg-surface border border-brand/10 rounded-3xl p-6 md:p-8 shadow-sm"
+      >
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h2 id="incoming-contacts-heading" className="font-serif text-2xl text-brand">
+              Eingegangene Kundenkontakte
+            </h2>
+            <p className="text-sm text-foreground/60 mt-2">
+              Letzte 30 Kalendertage einschließlich heute, nach deutscher Zeit.
+            </p>
+            {incomingSummary.isError ? (
+              <div role="alert" className="mt-4 text-sm text-red-700">
+                <p>Die Anzahl konnte nicht geladen werden. Es wird deshalb keine Zahl angezeigt.</p>
+                <button
+                  type="button"
+                  onClick={() => void incomingSummary.refetch()}
+                  disabled={incomingSummary.isFetching}
+                  className="mt-2 underline underline-offset-4 disabled:opacity-50"
+                >
+                  {incomingSummary.isFetching ? "Wird geladen…" : "Erneut versuchen"}
+                </button>
+              </div>
+            ) : incomingSummary.data ? (
+              <div className="mt-4" aria-live="polite">
+                <p className="text-4xl font-semibold text-brand tabular-nums">
+                  {incomingSummary.data.count}
+                </p>
+                <p className="text-xs text-foreground/50 mt-2">
+                  {formatCalendarDate(incomingSummary.data.startDate)} –{" "}
+                  {formatCalendarDate(incomingSummary.data.endDate)}
+                </p>
+              </div>
+            ) : (
+              <p role="status" className="mt-4 text-sm text-foreground/60">
+                Anzahl wird geladen…
+              </p>
+            )}
+          </div>
+          <div className="md:border-l md:border-brand/10 md:pl-6">
+            <h3 className="font-semibold text-brand">
+              Ziel: 30 qualifizierte Kundenanfragen in 30 Tagen
+            </h3>
+            <p className="text-sm text-foreground/60 mt-2 leading-relaxed">
+              Die Eingangszahl zeigt noch nicht, wie viele Anfragen zu passenden Kundenprojekten
+              führen. Die Qualität muss persönlich geprüft werden. Bewerbungen und Partneranfragen
+              zählen hier nicht mit.
+            </p>
+            <p className="text-xs text-foreground/50 mt-3">
+              Die Zählung erfasst alle Kundenkontaktformulare; eine Herkunft aus Google wird damit
+              nicht nachgewiesen.
+            </p>
+            <Link
+              to="/admin/anfragen"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand mt-4 hover:underline"
+            >
+              Kundenkontakte prüfen <ChevronRight className="size-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ── KPI CARDS ───────────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">

@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check, MapPin, Phone, Images, Users, MessagesSquare } from "lucide-react";
 import { PageShell } from "./PageShell";
@@ -9,42 +8,40 @@ import { RegionalTeam } from "./RegionalTeam";
 import { RegionalProof } from "./RegionalProof";
 import { ProjectImage } from "./ProjectImage";
 import { getRegionGallery } from "@/lib/region-gallery";
+import { guides, type GuideSummary } from "@/lib/guide-index";
+import { parseContextLinks } from "@/lib/context-links";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 import { getRegion, regionImage, regionalHeroImage, regions, type RegionPage } from "@/lib/regions";
 import "./RegionalLandingPage.css";
 import "./RegionalDetails.css";
 
-const serviceSlugs = new Set([
-  "gartengestaltung",
-  "pflasterarbeiten",
-  "natursteinarbeiten",
-  "zaunarbeiten",
-  "rasenanlagen",
-  "bewaesserungsanlagen",
-  "erdarbeiten",
-  "entwaesserung",
-]);
-
 function RegionalText({ children }: { children: string }) {
-  const parts: ReactNode[] = [];
-  let cursor = 0;
-  for (const match of children.matchAll(/\[([^\]\n]+)\]\(\/leistungen\/([a-z-]+)\)/g)) {
-    const index = match.index ?? 0;
-    parts.push(children.slice(cursor, index));
-    parts.push(
-      serviceSlugs.has(match[2]) ? (
-        <Link key={index} to="/leistungen/$slug" params={{ slug: match[2] }}>
-          {match[1]}
-        </Link>
-      ) : (
-        match[0]
-      ),
-    );
-    cursor = index + match[0].length;
-  }
-  parts.push(children.slice(cursor));
-  return <>{parts}</>;
+  return (
+    <>
+      {parseContextLinks(children).map((part, index) =>
+        part.kind === "text" ? (
+          part.text
+        ) : part.section === "leistungen" ? (
+          <Link key={index} to="/leistungen/$slug" params={{ slug: part.slug }}>
+            {part.label}
+          </Link>
+        ) : (
+          <Link key={index} to="/ratgeber/$slug" params={{ slug: part.slug }}>
+            {part.label}
+          </Link>
+        ),
+      )}
+    </>
+  );
 }
+
+const overviewGuides = [
+  "garten-umgestalten-in-etappen",
+  "gartenbewaesserung-planen",
+  "terrasse-entwaesserung-planen",
+]
+  .map((slug) => guides.find((guide) => guide.slug === slug))
+  .filter((guide): guide is GuideSummary => Boolean(guide));
 
 function RegionalImage({
   page,
@@ -318,6 +315,21 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
           </section>
         </div>
 
+        {page.sources && page.sources.length > 0 && (
+          <aside className="region-wrap region-prose" aria-label="Örtliche Planungshinweise">
+            <p>
+              Weiterführende Informationen der Stadt für Ihr konkretes Grundstück:
+              {page.sources.map((source, index) => (
+                <span key={source.url}>
+                  {index === 0 ? " " : " · "}
+                  <a href={source.url}>{source.title}</a>
+                </span>
+              ))}
+              .
+            </p>
+          </aside>
+        )}
+
         <RegionalMap key={page.slug + "-map"} city={page.city} />
 
         <section className="region-wrap region-contact" aria-labelledby="anfrage-title">
@@ -400,14 +412,14 @@ export function RegionsOverviewPage() {
           </div>
           <p className="region-scope-note">
             Ihr Ort ist nicht aufgeführt? Wir freuen uns auch auf Anfragen aus allen anderen Orten
-            in Deutschland. Die zehn Ortsseiten unten zeigen regionale Beispiele rund um unseren
+            in Deutschland. Die Ortsseiten unten zeigen regionale Beispiele rund um unseren
             Firmensitz.
           </p>
         </header>
 
         <section className="region-wrap region-overview" id="orte" aria-labelledby="orte-title">
           <div className="region-section-heading">
-            <h2 id="orte-title">Zehn Orte im Rhein-Main-Gebiet</h2>
+            <h2 id="orte-title">Orte und Stadtteile im Rhein-Main-Gebiet</h2>
             <p>Regionale Beispiele im Main-Taunus-Kreis, in Frankfurt-West und Kelsterbach.</p>
           </div>
           <div className="region-card-grid">
@@ -436,6 +448,37 @@ export function RegionsOverviewPage() {
         </section>
 
         <RegionalProjectGallery slug="gartenbau-hattersheim" />
+
+        <section className="region-wrap region-related" aria-labelledby="overview-guides-title">
+          <div className="region-section-heading">
+            <div>
+              <span className="region-kicker">Gut vorbereitet</span>
+              <h2 id="overview-guides-title">Ihr Projekt vorbereiten – unabhängig vom Ort</h2>
+            </div>
+            <Link to="/ratgeber" className="region-text-link shrink-0">
+              Zur Ratgeberübersicht <ArrowUpRight aria-hidden="true" size={17} />
+            </Link>
+          </div>
+          <p className="mb-6 max-w-3xl text-base leading-relaxed">
+            Bei einem Vorhaben in Deutschland helfen Angaben zu Flächen, Anschlüssen und gewünschter
+            Nutzung. Diese Ratgeber zeigen, welche Fragen Sie vor unserem ersten Gespräch sammeln
+            können.
+          </p>
+          <div className="region-related-grid">
+            {overviewGuides.map((guide) => (
+              <Link
+                className="region-related-link"
+                key={guide.slug}
+                to="/ratgeber/$slug"
+                params={{ slug: guide.slug }}
+              >
+                <span>{guide.category}</span>
+                <h3>{guide.title}</h3>
+                <ArrowUpRight aria-hidden="true" size={22} />
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="region-wrap region-contact" aria-labelledby="anfrage-title">
           <div className="region-contact-copy">

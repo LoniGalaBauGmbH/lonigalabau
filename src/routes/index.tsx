@@ -13,6 +13,7 @@ import { BeforeAfterSlider } from "@/components/site/BeforeAfterSlider";
 import { GardenDetails } from "@/components/site/GardenDetails";
 import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { Awards } from "@/components/site/Awards";
+import { GuideEntryLinks } from "@/components/site/GuideEntryLinks";
 
 import { FAQ } from "@/components/site/FAQ";
 import { getServices, getFeaturedProject, getSitePartners } from "@/lib/site.functions";
@@ -370,9 +371,12 @@ function HomePage() {
       <section className="px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1480px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
-            <div className="lg:col-span-8 min-w-0">
+            <div className="min-w-0 lg:col-span-8">
               <span className="eyebrow eyebrow-bracket text-brand">Leistungen</span>
-              <h2 className="display text-[clamp(2rem,6vw,5.5rem)] mt-6 text-brand">
+              <h2
+                lang="de"
+                className="display text-[clamp(2.5rem,6vw,5.5rem)] mt-6 text-brand hyphens-auto [overflow-wrap:anywhere]"
+              >
                 Gärten und Außenanlagen
               </h2>
               <p className="mt-6 max-w-2xl text-base text-foreground/75 leading-relaxed">
@@ -396,7 +400,7 @@ function HomePage() {
                 Arbeiten an einem bestehenden Garten können Sie bei uns anfragen.
               </p>
             </div>
-            <div className="lg:col-span-4 lg:text-right">
+            <div className="min-w-0 lg:col-span-4 lg:text-right">
               <Link
                 to="/leistungen"
                 className="inline-flex items-center gap-2 text-brand text-sm uppercase tracking-[0.2em] font-semibold border-b border-brand/40 pb-1 hover:border-brand transition"
@@ -475,6 +479,8 @@ function HomePage() {
       )}
 
       <GardenDetails />
+
+      <GuideEntryLinks />
 
       {/* CONFIGURATOR CTA BANNER */}
       <section className="px-6 md:px-10 pt-24 md:pt-36 pb-24 md:pb-36 animate-fade-up">

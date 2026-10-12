@@ -27,6 +27,9 @@ export interface RegionPage {
   relatedSlugs: string[];
   imageAlt: string;
   imageCaption: string;
+  imageSlug?: string;
+  parentCity?: string;
+  sources?: { title: string; url: string }[];
   updatedAt: string;
 }
 
@@ -47,7 +50,8 @@ export function getRegion(slug: string): RegionPage {
 
 // Existing Loni photos illustrate a type of work, not an unverified project location.
 export function regionImage(page: RegionPage) {
-  const base = `/images/regionen/${page.slug}-loni-galabau`;
+  const imageSlug = page.imageSlug ?? page.slug;
+  const base = `/images/regionen/${imageSlug}-loni-galabau`;
   return {
     src: publicImageUrl(`${base}-960.webp`),
     avif: `${base}-640.avif 640w, ${base}-960.avif 960w`,
@@ -59,7 +63,7 @@ export function regionImage(page: RegionPage) {
       "gartenbau-kriftel",
       "gartenbau-frankfurt-hoechst",
       "gartenbau-eschborn",
-    ].includes(page.slug)
+    ].includes(imageSlug)
       ? 720
       : 1280,
   };
@@ -100,8 +104,12 @@ export function regionSchema(page: RegionPage) {
         url,
         provider: { "@id": ORGANIZATION_ID },
         areaServed: {
-          "@type": page.slug === "gartenbau-frankfurt-hoechst" ? "Place" : "City",
+          "@type":
+            page.parentCity || page.slug === "gartenbau-frankfurt-hoechst" ? "Place" : "City",
           name: page.city,
+          ...(page.parentCity
+            ? { containedInPlace: { "@type": "City", name: page.parentCity } }
+            : {}),
         },
       },
       {

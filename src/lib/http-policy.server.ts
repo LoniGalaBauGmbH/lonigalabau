@@ -5,10 +5,10 @@ import { projectGalleryLastModified } from "./project-gallery-editorial";
 
 // Real content dates for the October SEO releases, not dates of sitemap requests.
 const STATIC_CONTENT_MODIFIED: Record<string, string> = {
-  "/": "2026-10-01T14:39:01Z",
+  "/": "2026-10-12T07:19:00Z",
   "/leistungen": "2026-10-01T14:39:01Z",
   "/projekte": "2026-10-01T14:39:01Z",
-  "/einsatzgebiete": "2026-10-05T08:37:51Z",
+  "/einsatzgebiete": "2026-10-12T07:19:00Z",
 };
 
 export async function publicUtilityResponse(request: Request): Promise<Response | null> {

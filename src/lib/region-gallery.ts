@@ -54,6 +54,32 @@ type GalleryPhotoKey = keyof typeof galleryPhotos;
 // Selections reflect planning topics and do not attribute projects to a city.
 const galleriesByRegion = new Map<string, readonly GalleryPhotoKey[]>([
   [
+    "gartenbau-frankfurt-unterliederbach",
+    [
+      "pathDrain",
+      "garageDrain",
+      "terraceDrain",
+      "pavedEntrance",
+      "dripIrrigation",
+      "stoneBeet",
+      "curvedBeet",
+      "meshFence",
+    ],
+  ],
+  [
+    "gartenbau-frankfurt-zeilsheim",
+    [
+      "meshFence",
+      "gardenGate",
+      "pavedEntrance",
+      "stoneWallSlabs",
+      "entranceStairs",
+      "flowerPath",
+      "terraceSubstructure",
+      "plantedGarden",
+    ],
+  ],
+  [
     "gartenbau-hattersheim",
     [
       "pavedEntrance",

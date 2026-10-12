@@ -71,15 +71,17 @@ const slugs = [
   "gartenbau-bad-soden",
   "gartenbau-sulzbach-taunus",
   "gartenbau-eschborn",
+  "gartenbau-frankfurt-unterliederbach",
+  "gartenbau-frankfurt-zeilsheim",
 ];
 
-test("ten requested locations have distinct content and valid service and neighbor targets", () => {
+test("all researched locations have distinct content and valid service and neighbor targets", () => {
   assert.deepEqual(
     content.map((page) => page.slug),
     slugs,
   );
   for (const key of ["title", "description", "h1"]) {
-    assert.equal(new Set(content.map((page) => page[key])).size, 10);
+    assert.equal(new Set(content.map((page) => page[key])).size, slugs.length);
   }
   const allowedServices = new Set([
     "gartengestaltung",
@@ -151,7 +153,7 @@ test("regional images use complete responsive public assets with real format sig
     for (const width of [640, 960]) {
       for (const format of ["avif", "webp"]) {
         const file = new URL(
-          `../public/images/regionen/${page.slug}-loni-galabau-${width}.${format}`,
+          `../public/images/regionen/${page.imageSlug ?? page.slug}-loni-galabau-${width}.${format}`,
           import.meta.url,
         );
         assert.ok(statSync(file).size > 100);
@@ -252,5 +254,18 @@ test("gallery photo helpers provide complete optimized assets without repeating 
 test("unknown locations do not inherit a regional gallery", () => {
   for (const slug of ["", "gartenbau-unbekannt", "toString", "__proto__"]) {
     assert.deepEqual(serialize(galleryApi.getRegionGallery(slug)), [], slug);
+  }
+});
+
+test("district pilots remain places within Frankfurt and cite real municipal resources", () => {
+  for (const slug of slugs.slice(-2)) {
+    const page = api.getRegion(slug);
+    const service = serialize(api.regionSchema(page))["@graph"].find(
+      (item) => item["@type"] === "Service",
+    );
+    assert.equal(service.areaServed["@type"], "Place");
+    assert.equal(service.areaServed.containedInPlace.name, "Frankfurt am Main");
+    assert.ok(page.sources.length > 0);
+    for (const source of page.sources) assert.equal(new URL(source.url).hostname, "frankfurt.de");
   }
 });

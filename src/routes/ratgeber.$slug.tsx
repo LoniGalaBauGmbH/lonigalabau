@@ -13,6 +13,7 @@ import {
   TableCaption,
 } from "@/components/ui/table";
 import { guides, guideDate, guideSchema, serviceNames } from "@/lib/ratgeber";
+import { getRelatedGuides } from "@/lib/guide-index";
 import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import { publicImageUrl } from "@/lib/public-image-url";
 import "@/components/site/Ratgeber.css";
@@ -67,14 +68,7 @@ export const Route = createFileRoute("/ratgeber/$slug")({
 
 function Article() {
   const article = Route.useLoaderData();
-  const related = guides
-    .filter((item) => item.slug !== article.slug)
-    .sort(
-      (a, b) =>
-        Number(b.relatedServiceSlugs.some((slug) => article.relatedServiceSlugs.includes(slug))) -
-        Number(a.relatedServiceSlugs.some((slug) => article.relatedServiceSlugs.includes(slug))),
-    )
-    .slice(0, 3);
+  const related = getRelatedGuides(article.slug);
   return (
     <PageShell>
       <article className="guides">

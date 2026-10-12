@@ -12,7 +12,7 @@ export const Route = createFileRoute("/einsatzgebiete")({
       {
         name: "description",
         content:
-          "Garten- und Landschaftsbau deutschlandweit: Loni GalaBau aus Hattersheim freut sich auf Ihr Projekt. Zehn Ortsseiten zeigen regionale Beispiele im Rhein-Main-Gebiet.",
+          "Garten- und Landschaftsbau deutschlandweit mit Loni GalaBau aus Hattersheim. Lernen Sie regionale Beispiele kennen und fragen Sie Ihr Projekt in Deutschland an.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: canonicalUrl(overviewImage.src) },

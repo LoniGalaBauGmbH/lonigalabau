@@ -22,6 +22,8 @@ import { Route as GartenbauKelsterbachRouteImport } from './routes/gartenbau-kel
 import { Route as GartenbauHofheimRouteImport } from './routes/gartenbau-hofheim'
 import { Route as GartenbauHochheimRouteImport } from './routes/gartenbau-hochheim'
 import { Route as GartenbauHattersheimRouteImport } from './routes/gartenbau-hattersheim'
+import { Route as GartenbauFrankfurtZeilsheimRouteImport } from './routes/gartenbau-frankfurt-zeilsheim'
+import { Route as GartenbauFrankfurtUnterliederbachRouteImport } from './routes/gartenbau-frankfurt-unterliederbach'
 import { Route as GartenbauFrankfurtHoechstRouteImport } from './routes/gartenbau-frankfurt-hoechst'
 import { Route as GartenbauFloersheimRouteImport } from './routes/gartenbau-floersheim'
 import { Route as GartenbauEschbornRouteImport } from './routes/gartenbau-eschborn'
@@ -120,6 +122,18 @@ const GartenbauHattersheimRoute = GartenbauHattersheimRouteImport.update({
   path: '/gartenbau-hattersheim',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GartenbauFrankfurtZeilsheimRoute =
+  GartenbauFrankfurtZeilsheimRouteImport.update({
+    id: '/gartenbau-frankfurt-zeilsheim',
+    path: '/gartenbau-frankfurt-zeilsheim',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GartenbauFrankfurtUnterliederbachRoute =
+  GartenbauFrankfurtUnterliederbachRouteImport.update({
+    id: '/gartenbau-frankfurt-unterliederbach',
+    path: '/gartenbau-frankfurt-unterliederbach',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GartenbauFrankfurtHoechstRoute =
   GartenbauFrankfurtHoechstRouteImport.update({
     id: '/gartenbau-frankfurt-hoechst',
@@ -300,6 +314,8 @@ export interface FileRoutesByFullPath {
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
   '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
+  '/gartenbau-frankfurt-unterliederbach': typeof GartenbauFrankfurtUnterliederbachRoute
+  '/gartenbau-frankfurt-zeilsheim': typeof GartenbauFrankfurtZeilsheimRoute
   '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
   '/gartenbau-hochheim': typeof GartenbauHochheimRoute
   '/gartenbau-hofheim': typeof GartenbauHofheimRoute
@@ -346,6 +362,8 @@ export interface FileRoutesByTo {
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
   '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
+  '/gartenbau-frankfurt-unterliederbach': typeof GartenbauFrankfurtUnterliederbachRoute
+  '/gartenbau-frankfurt-zeilsheim': typeof GartenbauFrankfurtZeilsheimRoute
   '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
   '/gartenbau-hochheim': typeof GartenbauHochheimRoute
   '/gartenbau-hofheim': typeof GartenbauHofheimRoute
@@ -394,6 +412,8 @@ export interface FileRoutesById {
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
   '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
+  '/gartenbau-frankfurt-unterliederbach': typeof GartenbauFrankfurtUnterliederbachRoute
+  '/gartenbau-frankfurt-zeilsheim': typeof GartenbauFrankfurtZeilsheimRoute
   '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
   '/gartenbau-hochheim': typeof GartenbauHochheimRoute
   '/gartenbau-hofheim': typeof GartenbauHofheimRoute
@@ -442,6 +462,8 @@ export interface FileRouteTypes {
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
     | '/gartenbau-frankfurt-hoechst'
+    | '/gartenbau-frankfurt-unterliederbach'
+    | '/gartenbau-frankfurt-zeilsheim'
     | '/gartenbau-hattersheim'
     | '/gartenbau-hochheim'
     | '/gartenbau-hofheim'
@@ -488,6 +510,8 @@ export interface FileRouteTypes {
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
     | '/gartenbau-frankfurt-hoechst'
+    | '/gartenbau-frankfurt-unterliederbach'
+    | '/gartenbau-frankfurt-zeilsheim'
     | '/gartenbau-hattersheim'
     | '/gartenbau-hochheim'
     | '/gartenbau-hofheim'
@@ -535,6 +559,8 @@ export interface FileRouteTypes {
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
     | '/gartenbau-frankfurt-hoechst'
+    | '/gartenbau-frankfurt-unterliederbach'
+    | '/gartenbau-frankfurt-zeilsheim'
     | '/gartenbau-hattersheim'
     | '/gartenbau-hochheim'
     | '/gartenbau-hofheim'
@@ -583,6 +609,8 @@ export interface RootRouteChildren {
   GartenbauEschbornRoute: typeof GartenbauEschbornRoute
   GartenbauFloersheimRoute: typeof GartenbauFloersheimRoute
   GartenbauFrankfurtHoechstRoute: typeof GartenbauFrankfurtHoechstRoute
+  GartenbauFrankfurtUnterliederbachRoute: typeof GartenbauFrankfurtUnterliederbachRoute
+  GartenbauFrankfurtZeilsheimRoute: typeof GartenbauFrankfurtZeilsheimRoute
   GartenbauHattersheimRoute: typeof GartenbauHattersheimRoute
   GartenbauHochheimRoute: typeof GartenbauHochheimRoute
   GartenbauHofheimRoute: typeof GartenbauHofheimRoute
@@ -700,6 +728,20 @@ declare module '@tanstack/react-router' {
       path: '/gartenbau-hattersheim'
       fullPath: '/gartenbau-hattersheim'
       preLoaderRoute: typeof GartenbauHattersheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-frankfurt-zeilsheim': {
+      id: '/gartenbau-frankfurt-zeilsheim'
+      path: '/gartenbau-frankfurt-zeilsheim'
+      fullPath: '/gartenbau-frankfurt-zeilsheim'
+      preLoaderRoute: typeof GartenbauFrankfurtZeilsheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-frankfurt-unterliederbach': {
+      id: '/gartenbau-frankfurt-unterliederbach'
+      path: '/gartenbau-frankfurt-unterliederbach'
+      fullPath: '/gartenbau-frankfurt-unterliederbach'
+      preLoaderRoute: typeof GartenbauFrankfurtUnterliederbachRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gartenbau-frankfurt-hoechst': {
@@ -972,6 +1014,9 @@ const rootRouteChildren: RootRouteChildren = {
   GartenbauEschbornRoute: GartenbauEschbornRoute,
   GartenbauFloersheimRoute: GartenbauFloersheimRoute,
   GartenbauFrankfurtHoechstRoute: GartenbauFrankfurtHoechstRoute,
+  GartenbauFrankfurtUnterliederbachRoute:
+    GartenbauFrankfurtUnterliederbachRoute,
+  GartenbauFrankfurtZeilsheimRoute: GartenbauFrankfurtZeilsheimRoute,
   GartenbauHattersheimRoute: GartenbauHattersheimRoute,
   GartenbauHochheimRoute: GartenbauHochheimRoute,
   GartenbauHofheimRoute: GartenbauHofheimRoute,
