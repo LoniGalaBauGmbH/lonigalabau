@@ -37,7 +37,7 @@ export const regions: RegionPage[] = content;
 
 export const regionalHeroImage = {
   src: publicImageUrl("/images/regionen/garten-hero-ki-2026-1920.webp"),
-  avif: "/images/regionen/garten-hero-ki-2026-960.avif 960w, /images/regionen/garten-hero-ki-2026-1920.avif 1920w",
+  avif: `${publicImageUrl("/images/regionen/garten-hero-ki-2026-960.avif")} 960w, ${publicImageUrl("/images/regionen/garten-hero-ki-2026-1920.avif")} 1920w`,
   webp: `${publicImageUrl("/images/regionen/garten-hero-ki-2026-960.webp")} 960w, ${publicImageUrl("/images/regionen/garten-hero-ki-2026-1920.webp")} 1920w`,
   caption: "KI-generierte Gartenvisualisierung mit Terrasse, Rasen und Staudenpflanzung",
 };
@@ -54,7 +54,7 @@ export function regionImage(page: RegionPage) {
   const base = `/images/regionen/${imageSlug}-loni-galabau`;
   return {
     src: publicImageUrl(`${base}-960.webp`),
-    avif: `${base}-640.avif 640w, ${base}-960.avif 960w`,
+    avif: `${publicImageUrl(`${base}-640.avif`)} 640w, ${publicImageUrl(`${base}-960.avif`)} 960w`,
     webp: `${publicImageUrl(`${base}-640.webp`)} 640w, ${publicImageUrl(`${base}-960.webp`)} 960w`,
     width: 960,
     height: [

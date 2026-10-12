@@ -20,6 +20,7 @@ import { publicContentQuery } from "@/lib/public-content-cache.server";
 import { partnerSubmissionSchema } from "@/lib/partner-application";
 import { persistPartnerSubmission } from "@/lib/partner-submission.server";
 import { buildExpressPayload, expressSubmissionSchema } from "@/lib/express-inquiry";
+import { discoverySourceSchema } from "@/lib/lead-qualification";
 
 export const createExpressInquiry = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => {
@@ -279,6 +280,7 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
     z
       .object({
         plan: plannerStateSchema,
+        discoverySource: discoverySourceSchema,
         attachments: contactAttachmentsSchema.default([]),
       })
       .parse(data),
@@ -287,6 +289,7 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
     await enforceFormQuota(data.plan.email);
     const result = await persistContactSubmission(supabaseAdmin, {
       ...buildPlannerPayload(data.plan),
+      discoverySource: data.discoverySource,
       attachments: data.attachments,
     });
     await attemptSubmissionEmails(supabaseAdmin, "contact_requests", result.id);

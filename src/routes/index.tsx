@@ -451,7 +451,7 @@ function HomePage() {
             <ProjectGallery project={featured}>
               <button
                 type="button"
-                aria-label={featured.title + " – Bilder ansehen"}
+                aria-label={featured.title + " – Projekt ansehen"}
                 className="group relative block min-h-[360px] w-full overflow-hidden text-left focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-accent lg:min-h-full"
               >
                 {featured.images?.[0] ? (

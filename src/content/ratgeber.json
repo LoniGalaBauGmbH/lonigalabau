@@ -313,11 +313,11 @@
   {
     "slug": "garten-umgestalten-in-etappen",
     "title": "Den Garten in Etappen umgestalten: So bleibt die Reihenfolge sinnvoll",
-    "metaTitle": "Garten in Etappen umgestalten | Loni GalaBau",
-    "metaDescription": "Den vorhandenen Garten Schritt für Schritt verändern: Bestand, Prioritäten, Baufolge und spätere Pflege gemeinsam planen. Mit Checkliste zur Vorbereitung.",
+    "metaTitle": "Garten in Etappen umgestalten: Reihenfolge & Umfang | Loni GalaBau",
+    "metaDescription": "Garten in Etappen umgestalten lassen: Bestand erhalten, Bauabschnitte und Kostenfaktoren abstimmen. Mit Reihenfolge, Checkliste und Fragen für Ihre Anfrage.",
     "excerpt": "Sie müssen nicht alles gleichzeitig verändern. Ein gemeinsames Zielbild hilft, einzelne Bauabschnitte sinnvoll zu verbinden und fertige Bereiche zu erhalten.",
     "category": "Gartenplanung",
-    "readingMinutes": 5,
+    "readingMinutes": 7,
     "relatedServiceSlugs": ["gartengestaltung", "erdarbeiten", "pflasterarbeiten"],
     "sections": [
       {
@@ -381,6 +381,35 @@
         ]
       },
       {
+        "heading": "Terrasse zuerst: spätere Gartenarbeiten vorbereiten",
+        "paragraphs": [
+          "Soll zuerst ein Sitzplatz entstehen und der übrige Garten später folgen, lohnt eine Prüfung der späteren Anschlüsse. Die folgende Übersicht zeigt mögliche Abhängigkeiten; sie ist keine feste Baufolge. Entscheidend ist, welche späteren Arbeiten tatsächlich geplant sind und wie ihre Flächen erreichbar bleiben.",
+          "Halten Sie vorgesehene Anschlüsse und die getroffenen Entscheidungen in einer Skizze fest. Ist eine spätere Bewässerung geplant, hilft unser Leitfaden zur [Gartenbewässerung](/ratgeber/gartenbewaesserung-planen), die benötigten Angaben einzuordnen. Für den neuen Sitzplatz gehört auch die [Wasserführung der Terrasse](/ratgeber/terrasse-entwaesserung-planen) vor dem fertigen Belag in die Abstimmung."
+        ],
+        "comparison": {
+          "caption": "Mögliche spätere Arbeiten und ihre Verbindung zur ersten Etappe",
+          "columns": ["Später vorgesehen", "Vor der ersten fertigen Fläche klären"],
+          "rows": [
+            [
+              "Rasen oder neue Beete",
+              "Spätere Geländehöhen, Materialtransporte und Schutz der fertiggestellten Terrasse."
+            ],
+            [
+              "Bewässerungsanlage",
+              "Wasserquelle, vorgesehene Flächen und benötigte Leitungswege oder Querungen."
+            ],
+            [
+              "Zaun und Tor",
+              "Verlauf, mögliche Fundamente, Öffnungsrichtung und erforderliche Transportbreiten."
+            ],
+            [
+              "Weiterer Weg oder Sitzplatz",
+              "Anschlusshöhen, Einfassungen und gemeinsame Wasserführung."
+            ]
+          ]
+        }
+      },
+      {
         "heading": "Jede Etappe braucht einen nutzbaren Zwischenstand",
         "paragraphs": [
           "Ein Bauabschnitt endet nicht allein damit, dass die vorgesehenen Arbeiten erledigt sind. Überlegen Sie, wie der Garten bis zum nächsten Abschnitt genutzt wird. Sind Wege erreichbar? Bleiben offene Übergänge? Wo wird Material gelagert? Besonders bei einem bewohnten Haus hilft es, Alltag und Baustelle gemeinsam zu besprechen.",
@@ -406,7 +435,7 @@
         "heading": "Mit einer überschaubaren Anfrage beginnen",
         "paragraphs": [
           "Für das erste Gespräch benötigen Sie keinen vollständig ausgearbeiteten Gartenplan. Fotos, ein einfacher Grundriss und Ihre Prioritätenliste reichen, um das Vorhaben zu erläutern. Zeigen Sie auch die Zugänge zum Grundstück und notieren Sie, welche Arbeiten Sie eventuell selbst übernehmen möchten. Offen gebliebene Fragen sind eine gute Grundlage für die weitere Abstimmung.",
-          "Loni GalaBau begleitet Gartenumgestaltungen in ganz Deutschland. Wir besprechen Bestand, Materialien und Leistungsumfang mit Ihnen. Für eine weitergehende Gartenplanung beziehen wir bei Bedarf unseren Planungspartner ein. Die abgestimmte Reihenfolge richtet sich nach Ihrem Grundstück und den einzelnen Bauabschnitten."
+          "Loni GalaBau begleitet [Gartengestaltungen und Gartenumbauten](/leistungen/gartengestaltung) in ganz Deutschland, mit Firmensitz in Hattersheim am Main. Wir besprechen Bestand, Materialien und Leistungsumfang mit Ihnen. Für eine weitergehende Gartenplanung beziehen wir bei Bedarf unseren Planungspartner ein. Die abgestimmte Reihenfolge richtet sich nach Ihrem Grundstück und den einzelnen Bauabschnitten."
         ]
       }
     ],
@@ -422,6 +451,14 @@
       {
         "q": "Kann eine große Pflanze im Garten bleiben?",
         "a": "Das wird anhand von Zustand, Standort und vorgesehenen Arbeiten beurteilt. Teilen Sie früh mit, welche Pflanzen Ihnen wichtig sind, damit Erhalt und notwendiger Schutz berücksichtigt werden können."
+      },
+      {
+        "q": "Welche Angaben reichen für eine erste Anfrage zum Gartenumbau?",
+        "a": "Senden Sie Gesamtfotos, ungefähre Maße und Ihre wichtigsten Wünsche. Markieren Sie, was bleiben soll, und zeigen Sie Zufahrt, Stufen und vorhandene Anschlüsse. Nennen Sie Projektort und den zunächst gewünschten Abschnitt. Ein fertiger Gartenplan ist für die erste Kontaktaufnahme nicht erforderlich."
+      },
+      {
+        "q": "Kann eine spätere Etappe zeitlich offenbleiben?",
+        "a": "Das lässt sich im gemeinsamen Konzept berücksichtigen. Anschlüsse, zugängliche Arbeitsbereiche und ein nutzbarer Zwischenzustand sollten trotzdem vorher feststehen. Wenn sich Umfang oder Wünsche später verändern, werden die weiteren Schritte neu abgestimmt; Preise und Termine für künftige Abschnitte sind damit nicht automatisch festgelegt."
       }
     ],
     "cta": {
@@ -435,7 +472,7 @@
       "https://lwg.bayern.de/landespflege/gartendokumente/merkblaetter/250785/index.php"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-10-01",
+    "updatedAt": "2026-10-12",
     "image": "/images/projekte/terrassenunterkonstruktion.webp",
     "imageCaption": "Eine Terrasse im Aufbau: Vorarbeiten werden später vom fertigen Belag verdeckt.",
     "projectExample": {
@@ -452,12 +489,12 @@
   },
   {
     "slug": "terrasse-entwaesserung-planen",
-    "title": "Wasser auf der Terrasse: Was eine passende Entwässerung berücksichtigen muss",
-    "metaTitle": "Terrassenentwässerung sinnvoll planen | Loni GalaBau",
-    "metaDescription": "Stehendes Wasser auf der Terrasse? Gefälle, Rinnen, Anschlüsse und Pflege gehören zusammen. Diese Fragen helfen bei einer sinnvollen Bestandsaufnahme.",
+    "title": "Terrasse entwässern: Wasserwege, Rinnen und Anschlüsse",
+    "metaTitle": "Terrassenentwässerung planen: Rinne & Gefälle | Loni GalaBau",
+    "metaDescription": "Terrassenentwässerung nachrüsten oder neu planen: Gefälle, Rinnen, Anschlüsse und Kostenfaktoren prüfen. Mit Beobachtungshilfe und Checkliste für Ihre Anfrage.",
     "excerpt": "Eine zusätzliche Rinne ist nicht automatisch die Lösung. Entscheidend ist, wo das Regenwasser herkommt, wie es aufgenommen wird und wohin es weiterfließen kann.",
     "category": "Wasser & Außenanlagen",
-    "readingMinutes": 5,
+    "readingMinutes": 8,
     "relatedServiceSlugs": ["entwaesserung", "pflasterarbeiten", "erdarbeiten"],
     "sections": [
       {
@@ -503,7 +540,8 @@
         "heading": "Die Wasserführung als zusammenhängenden Weg betrachten",
         "paragraphs": [
           "Für eine funktionierende Entwässerung gehören anfallendes Wasser, Oberflächengefälle, Aufnahme und weitere Ableitung zusammen. Eine Rinne kann Wasser nur dort aufnehmen, wo es sie tatsächlich erreicht. Danach braucht es einen geeigneten weiteren Weg. Herstellerinformationen von ACO zeigen diesen Zusammenhang zwischen Einbausituation, Rinne und Anschluss innerhalb einer Außenanlage.",
-          "Fragen Sie bei der Planung deshalb nicht nur nach der Größe oder Farbe eines Rosts. Klären Sie, welche Flächen Wasser in den Bereich bringen und welche Höhen bereits festliegen. Bei einer bestehenden Terrasse kann die Frage nach den Übergängen zu Tür, Stufen, Garten und Nachbarflächen wichtiger sein als die Auswahl des sichtbaren Produkts."
+          "Fragen Sie bei der Planung deshalb nicht nur nach der Größe oder Farbe eines Rosts. Klären Sie, welche Flächen Wasser in den Bereich bringen und welche Höhen bereits festliegen. Bei einer bestehenden Terrasse kann die Frage nach den Übergängen zu Tür, Stufen, Garten und Nachbarflächen wichtiger sein als die Auswahl des sichtbaren Produkts.",
+          "Wenn Sie die Umsetzung besprechen möchten, finden Sie bei unserer [Entwässerung für Garten und Außenanlagen](/leistungen/entwaesserung) die Angaben, mit denen sich Bestand und Arbeitsumfang eingrenzen lassen."
         ]
       },
       {
@@ -526,6 +564,39 @@
           "Bei einer bestehenden Terrasse muss eine neue Rinne oder Leitung in die vorhandene Konstruktion integriert werden. Dazu können Arbeiten am Belag, an Einfassungen oder unter der Fläche gehören. Ein Angebot sollte erkennen lassen, welche Bereiche geöffnet und anschließend wiederhergestellt werden. Besprechen Sie außerdem, ob passende Ersatzplatten vorhanden sind und wie sichtbare Übergänge aussehen sollen.",
           "Manchmal wird die Entwässerung zusammen mit einer ohnehin geplanten Terrassenerneuerung betrachtet. Dann lassen sich Höhen, Belag und Wasserführung gemeinsam abstimmen. Ob eine punktuelle Ergänzung genügt oder ein größerer Bereich einbezogen werden sollte, ergibt sich aus dem Befund. Die Entscheidung sollte auf dem Problem und dem Bestand beruhen, nicht allein auf dem Wunsch nach einer möglichst kleinen sichtbaren Maßnahme."
         ]
+      },
+      {
+        "heading": "Was beeinflusst die Kosten einer nachgerüsteten Terrassenentwässerung?",
+        "paragraphs": [
+          "Die Länge einer Rinne beschreibt noch nicht den gesamten Aufwand. Vor dem Angebot muss geklärt werden, welche Ursache vorliegt, welche Wasserführung geeignet ist und wie die neue Lösung an den Bestand anschließt. Eine Flächengröße oder ein Produktpreis allein reicht für den Vergleich nicht aus.",
+          "Die folgenden Positionen helfen, den vereinbarten Umfang nachzuvollziehen. Nicht jede Position ist bei jedem Vorhaben erforderlich. Wird zusätzlich die Terrasse erneuert, sollten Wasserführung und [Pflasterarbeiten](/leistungen/pflasterarbeiten) gemeinsam abgegrenzt werden. Unser Ratgeber zum [Vergleich von Pflasterangeboten](/ratgeber/pflasterarbeiten-kosten-einfahrt) erläutert die Arbeiten unter und neben dem sichtbaren Belag."
+        ],
+        "comparison": {
+          "caption": "Leistungsumfang einer Nachrüstung klären, keine pauschale Preisübersicht",
+          "columns": ["Position", "Vor dem Angebot klären"],
+          "rows": [
+            [
+              "Bestandsaufnahme",
+              "Betroffene Flächen, Höhen, Gebäudeanschlüsse und vorhandene Unterlagen."
+            ],
+            [
+              "Aufnahme und weiterer Wasserweg",
+              "Geeignete Bauteile, Anschlüsse und gegebenenfalls erforderliche Untersuchungen oder Abstimmungen."
+            ],
+            [
+              "Erd- und Öffnungsarbeiten",
+              "Zugang, notwendiger Aushub und Umgang mit anfallendem Material."
+            ],
+            [
+              "Wiederherstellung",
+              "Geöffnete Beläge, Einfassungen und Grünflächen sowie vorhandenes Ersatzmaterial."
+            ],
+            [
+              "Spätere Zugänglichkeit",
+              "Erreichbare Roste, Abläufe und Kontrollstellen für das eingesetzte System."
+            ]
+          ]
+        }
       },
       {
         "heading": "Pflege und Zugänglichkeit gehören dazu",
@@ -562,6 +633,14 @@
       {
         "q": "Welche Fotos helfen bei einer Anfrage?",
         "a": "Hilfreich sind Gesamtansichten, Details der Pfützen oder überlaufenden Bereiche sowie Bilder von Tür, Rinne und Abläufen. Notieren Sie zusätzlich, wann das Problem auftritt und ob die Fläche kürzlich verändert wurde."
+      },
+      {
+        "q": "Kann eine Terrassenentwässerung nachgerüstet werden?",
+        "a": "Eine Nachrüstung lässt sich anhand des Bestands prüfen. Relevant sind Gefälle, Gebäudeanschlüsse, ein geeigneter weiterer Wasserweg und die Wiederherstellung geöffneter Flächen. Ob eine punktuelle Ergänzung genügt oder größere Arbeiten nötig werden, ergibt sich aus dem Befund."
+      },
+      {
+        "q": "Reicht ein wasserdurchlässiger Belag gegen Pfützen?",
+        "a": "Nicht automatisch. Neben der Oberfläche müssen Unterbau, Untergrund und anfallendes Wasser berücksichtigt werden. Auch Gebäudeanschlüsse und örtliche Vorgaben bleiben relevant. Die Eignung wird deshalb für das konkrete Grundstück beurteilt."
       }
     ],
     "cta": {
@@ -576,7 +655,7 @@
       "https://www.umweltbundesamt.de/themen/wasser/wasser-bewirtschaften/regenwasserbewirtschaftung"
     ],
     "publishedAt": "2026-09-30",
-    "updatedAt": "2026-10-01",
+    "updatedAt": "2026-10-12",
     "image": "/images/projekte/terrasse-mit-entwaesserungsrinne.webp",
     "imageCaption": "Entwässerungsrinne am Rand einer Terrasse.",
     "projectExample": {

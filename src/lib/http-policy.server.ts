@@ -2,14 +2,22 @@ import { PUBLIC_ORIGIN, PRIVATE_PATH, LEGACY_REDIRECTS, STATIC_PATHS, sitemapXml
 import guideContent from "../content/ratgeber.json";
 import regionContent from "../content/regions.json";
 import { projectGalleryLastModified } from "./project-gallery-editorial";
+import { servicePreparation } from "./service-preparation";
 
 // Real content dates for the October SEO releases, not dates of sitemap requests.
 const STATIC_CONTENT_MODIFIED: Record<string, string> = {
-  "/": "2026-10-12T07:19:00Z",
+  "/": "2026-10-12T08:45:00Z",
   "/leistungen": "2026-10-01T14:39:01Z",
   "/projekte": "2026-10-01T14:39:01Z",
   "/einsatzgebiete": "2026-10-12T07:19:00Z",
+  "/datenschutz": "2026-10-12T08:45:00Z",
 };
+const SERVICE_CONTENT_MODIFIED = "2026-10-12T08:45:00Z";
+const JOB_SCHEMA_MODIFIED = "2026-10-12T08:45:00Z";
+
+function latestContentDate(stored: string, editorial: string | undefined) {
+  return editorial && Date.parse(editorial) > Date.parse(stored) ? editorial : stored;
+}
 
 export async function publicUtilityResponse(request: Request): Promise<Response | null> {
   const url = new URL(request.url);
@@ -65,7 +73,14 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
       r.data?.forEach((row) =>
         entries.push({
           path: (i === 0 ? "/leistungen/" : "/jobs/") + encodeURIComponent(row.slug),
-          modified: row.updated_at,
+          modified: latestContentDate(
+            row.updated_at,
+            i === 0
+              ? servicePreparation[row.slug]
+                ? SERVICE_CONTENT_MODIFIED
+                : undefined
+              : JOB_SCHEMA_MODIFIED,
+          ),
         }),
       ),
     );

@@ -49,11 +49,19 @@ function midnightInBerlin(calendar: Date) {
 
 /** Today and the preceding 29 Berlin calendar days; the end is exclusive. */
 export function incomingContactWindow(now: Date = new Date()) {
+  return contactCalendarWindow(now, 30);
+}
+
+export function incomingTodayWindow(now: Date = new Date()) {
+  return contactCalendarWindow(now, 1);
+}
+
+function contactCalendarWindow(now: Date, days: 1 | 30) {
   if (!Number.isFinite(now.getTime())) throw new Error("Ungültiger Messzeitpunkt.");
   const { year, month, day } = calendarParts(now);
   const today = new Date(Date.UTC(year, month - 1, day));
   const firstDay = new Date(today);
-  firstDay.setUTCDate(firstDay.getUTCDate() - 29);
+  firstDay.setUTCDate(firstDay.getUTCDate() - (days - 1));
   const nextDay = new Date(today);
   nextDay.setUTCDate(nextDay.getUTCDate() + 1);
 
@@ -62,7 +70,7 @@ export function incomingContactWindow(now: Date = new Date()) {
     end: midnightInBerlin(nextDay),
     startDate: dateKey(firstDay),
     endDate: dateKey(today),
-    days: 30,
+    days,
     timeZone: TIME_ZONE,
   } as const;
 }

@@ -40,6 +40,8 @@ import { PageShell } from "@/components/site/PageShell";
 import { getProjectsByService, getRelatedServices, getServiceBySlug } from "@/lib/site.functions";
 import { getServiceImage } from "@/lib/service-images";
 import { ServiceFAQ } from "@/components/leistungen/ServiceFAQ";
+import { ServicePreparation } from "@/components/leistungen/ServicePreparation";
+import { servicePreparation } from "@/lib/service-preparation";
 import { canonicalUrl, organizationSchema, safeJsonLd } from "@/lib/seo";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 import { guides } from "@/lib/guide-index";
@@ -130,8 +132,8 @@ export const Route = createFileRoute("/leistungen/$slug")({
 const STEPS = [
   {
     n: "01",
-    t: "Vermessung & Analyse",
-    d: "Digitale Erfassung der Geländehöhen und Bodenverhältnisse vor Ort als exakte Planungsgrundlage.",
+    t: "Bestand & Anforderungen",
+    d: "Nutzung, Zugang und vorhandene Anschlüsse klären; erforderliches Aufmaß und weitere Prüfungen auf das Vorhaben abstimmen.",
   },
   {
     n: "02",
@@ -141,7 +143,7 @@ const STEPS = [
   {
     n: "03",
     t: "Logistik & Fuhrpark",
-    d: "Disposition unseres eigenen Maschinenparks und erfahrener Facharbeiter für einen termingerechten Start.",
+    d: "Material, benötigte Maschinen und Baustellenzugang für die vereinbarten Arbeiten und Termine abstimmen.",
   },
   {
     n: "04",
@@ -166,6 +168,10 @@ function ServicePage({
   data: NonNullable<Awaited<ReturnType<typeof getServiceBySlug>>>;
 }) {
   const img = getServiceImage(slug, data.hero_image);
+  const guideSlugs = servicePreparation[slug]?.guideSlugs;
+  const helpfulGuides = guideSlugs
+    ? guideSlugs.flatMap((guideSlug) => guides.filter((article) => article.slug === guideSlug))
+    : guides.filter((article) => article.relatedServiceSlugs.includes(slug)).slice(0, 2);
 
   const benefits = (() => {
     const custom = data.custom_benefits as { t: string; d: string }[] | null;
@@ -445,6 +451,8 @@ function ServicePage({
         </div>
       </section>
 
+      <ServicePreparation slug={slug} />
+
       {/* 7. PORTFOLIO REFERENCES */}
       <Suspense key={data.id} fallback={<DeferredSection label="Projektbilder werden geladen" />}>
         <ServiceProjects serviceId={data.id} />
@@ -605,7 +613,7 @@ function ServicePage({
       </section>
 
       {/* 9. WEITERE LEISTUNGEN - Sage Themed hover scroller */}
-      {guides.some((article) => article.relatedServiceSlugs.includes(slug)) && (
+      {helpfulGuides.length > 0 && (
         <section className="px-6 md:px-10 pb-20" aria-labelledby="service-guides">
           <div className="max-w-[1480px] mx-auto border-t border-brand/15 pt-10">
             <h2 id="service-guides" className="text-3xl font-serif text-brand">
@@ -615,20 +623,17 @@ function ServicePage({
               Diese Ratgeber helfen bei den nächsten Entscheidungen.
             </p>
             <ul className="grid md:grid-cols-2 gap-5 mt-7">
-              {guides
-                .filter((article) => article.relatedServiceSlugs.includes(slug))
-                .slice(0, 2)
-                .map((article) => (
-                  <li key={article.slug}>
-                    <Link
-                      to="/ratgeber/$slug"
-                      params={{ slug: article.slug }}
-                      className="block rounded-xl bg-surface p-6 text-lg font-medium text-brand underline underline-offset-4 hover:text-brand/70"
-                    >
-                      {article.title}
-                    </Link>
-                  </li>
-                ))}
+              {helpfulGuides.map((article) => (
+                <li key={article.slug}>
+                  <Link
+                    to="/ratgeber/$slug"
+                    params={{ slug: article.slug }}
+                    className="block rounded-xl bg-surface p-6 text-lg font-medium text-brand underline underline-offset-4 hover:text-brand/70"
+                  >
+                    {article.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </section>

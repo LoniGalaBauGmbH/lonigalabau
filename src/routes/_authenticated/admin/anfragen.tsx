@@ -25,6 +25,14 @@ import { toast } from "sonner";
 import { adminSaveNotes } from "@/lib/admin.functions";
 import { DeleteSubmission } from "@/components/admin/DeleteSubmission";
 import { SubmissionNotification } from "@/components/admin/SubmissionNotification";
+import { adminSetLeadQualification } from "@/lib/lead-qualification.functions";
+import {
+  LEAD_QUALIFICATIONS,
+  LEAD_QUALIFICATION_LABELS,
+  DISCOVERY_SOURCE_LABELS,
+  type LeadQualification,
+  type DiscoverySource,
+} from "@/lib/lead-qualification";
 
 export const Route = createFileRoute("/_authenticated/admin/anfragen")({ component: Page });
 
@@ -47,6 +55,10 @@ type ContactRequest = {
   customer_confirmation_status?: string | null;
   notes?: string;
   notes_version?: number;
+  lead_qualification?: LeadQualification;
+  lead_qualification_version?: number;
+  lead_qualification_reviewed_at?: string | null;
+  discovery_source?: DiscoverySource | null;
 };
 
 function PrivateAttachment({ path, index }: { path: string; index: number }) {
@@ -106,7 +118,7 @@ function Page() {
   const list = useServerFn(adminListContacts);
   const setStatus = useServerFn(adminUpdateContactStatus);
   const qc = useQueryClient();
-  const { data, isLoading } = useQuery<ContactRequest[]>({
+  const { data, isLoading, isError, refetch } = useQuery<ContactRequest[]>({
     queryKey: ["admin-contacts"],
     queryFn: () => list() as Promise<ContactRequest[]>,
   });
@@ -117,6 +129,47 @@ function Page() {
   const [notes, setNotes] = useState("");
   const saveNotes = useServerFn(adminSaveNotes);
   const [savingNotes, setSavingNotes] = useState(false);
+  const setQualificationFn = useServerFn(adminSetLeadQualification);
+  const [qualification, setQualification] = useState<LeadQualification>("unreviewed");
+  const [qualificationFilter, setQualificationFilter] = useState<LeadQualification | "all">("all");
+  const [savingQualification, setSavingQualification] = useState(false);
+
+  useEffect(() => {
+    setQualification(selectedLead?.lead_qualification ?? "unreviewed");
+  }, [selectedLead?.id, selectedLead?.lead_qualification]);
+
+  async function saveQualification() {
+    if (!selectedLead || savingQualification) return;
+    setSavingQualification(true);
+    try {
+      const result = await setQualificationFn({
+        data: {
+          id: selectedLead.id,
+          qualification,
+          version: selectedLead.lead_qualification_version ?? 0,
+        },
+      });
+      setSelectedLead((current) =>
+        current?.id === selectedLead.id
+          ? {
+              ...current,
+              lead_qualification: result.qualification as LeadQualification,
+              lead_qualification_version: result.version,
+              lead_qualification_reviewed_at: result.reviewedAt,
+            }
+          : current,
+      );
+      void qc.invalidateQueries({ queryKey: ["admin-contacts"] });
+      void qc.invalidateQueries({ queryKey: ["admin-lead-qualification-summary"] });
+      toast.success("Bewertung gespeichert");
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Die Bewertung konnte nicht gespeichert werden.",
+      );
+    } finally {
+      setSavingQualification(false);
+    }
+  }
 
   // Load notes from localStorage when a lead is selected
   useEffect(() => {
@@ -191,7 +244,12 @@ function Page() {
         c.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (c.subject && c.subject.toLowerCase().includes(searchQuery.toLowerCase()));
 
-      return matchesTab && matchesSearch;
+      return (
+        matchesTab &&
+        matchesSearch &&
+        (qualificationFilter === "all" ||
+          (c.lead_qualification ?? "unreviewed") === qualificationFilter)
+      );
     }) || [];
 
   return (
@@ -272,8 +330,39 @@ function Page() {
         </div>
       </div>
 
+      <div className="max-w-sm space-y-2">
+        <label htmlFor="lead-quality-filter" className="text-sm font-medium text-brand">
+          Qualitätsbewertung filtern
+        </label>
+        <select
+          id="lead-quality-filter"
+          value={qualificationFilter}
+          onChange={(event) =>
+            setQualificationFilter(event.target.value as LeadQualification | "all")
+          }
+          className="w-full rounded-xl border border-brand/20 bg-background p-3 text-sm"
+        >
+          <option value="all">Alle Bewertungen</option>
+          {LEAD_QUALIFICATIONS.map((value) => (
+            <option key={value} value={value}>
+              {LEAD_QUALIFICATION_LABELS[value]}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {/* CRM GRID LIST */}
-      {isLoading ? (
+      {isError ? (
+        <div
+          role="alert"
+          className="rounded-2xl border border-red-200 bg-red-50 p-5 text-red-700 text-sm"
+        >
+          Die Kundenkontakte konnten nicht geladen werden.{" "}
+          <button type="button" onClick={() => void refetch()} className="underline">
+            Erneut versuchen
+          </button>
+        </div>
+      ) : isLoading ? (
         <div className="py-20 flex flex-col items-center gap-3">
           <div className="size-10 rounded-full border-2 border-brand/20 border-t-brand animate-spin" />
           <p className="text-sm text-foreground/40">Lade Kundenkontakte…</p>
@@ -302,6 +391,9 @@ function Page() {
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
+                      <span className="rounded-full bg-brand/10 px-2 py-1 text-xs text-brand">
+                        {LEAD_QUALIFICATION_LABELS[c.lead_qualification ?? "unreviewed"]}
+                      </span>
                       <span className="font-display font-extrabold text-brand text-base">
                         {c.name}
                       </span>
@@ -440,6 +532,8 @@ function Page() {
                 onDeleted={() => {
                   setSelectedLead(null);
                   void qc.invalidateQueries({ queryKey: ["admin-contacts"] });
+                  void qc.invalidateQueries({ queryKey: ["admin-lead-qualification-summary"] });
+                  void qc.invalidateQueries({ queryKey: ["admin-incoming-contacts-30d"] });
                 }}
               />
               <SubmissionNotification
@@ -488,6 +582,54 @@ function Page() {
                   <PrivateAttachment key={path} path={path} index={index} />
                 ))}
               </div>
+
+              <section
+                className="space-y-3 rounded-2xl border border-brand/15 p-5"
+                aria-labelledby="lead-qualification-heading"
+              >
+                <h3 id="lead-qualification-heading" className="font-semibold text-brand">
+                  Qualitätsbewertung
+                </h3>
+                <p className="text-sm text-foreground/70">
+                  Als passend zählen echte, erreichbare Kundenprojekte für unsere angebotenen
+                  Leistungen. Spam, Tests und weitere Anfragen zum selben Vorhaben nicht mehrfach
+                  zählen. Diese Bewertung ist unabhängig vom Bearbeitungsstatus.
+                </p>
+                <label htmlFor="lead-qualification" className="block text-sm font-medium">
+                  Persönliche Einschätzung
+                </label>
+                <select
+                  id="lead-qualification"
+                  value={qualification}
+                  onChange={(event) => setQualification(event.target.value as LeadQualification)}
+                  disabled={savingQualification}
+                  className="w-full rounded-xl border border-brand/20 bg-background p-3 text-sm"
+                >
+                  {LEAD_QUALIFICATIONS.map((value) => (
+                    <option key={value} value={value}>
+                      {LEAD_QUALIFICATION_LABELS[value]}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  type="button"
+                  onClick={() => void saveQualification()}
+                  disabled={
+                    savingQualification ||
+                    qualification === (selectedLead.lead_qualification ?? "unreviewed")
+                  }
+                  className="rounded-full bg-brand px-4 py-2.5 text-sm text-brand-foreground disabled:opacity-50"
+                >
+                  {savingQualification ? "Wird gespeichert…" : "Bewertung speichern"}
+                </button>
+                <p className="text-xs text-foreground/60">
+                  Herkunft (freiwillige Selbstauskunft):{" "}
+                  {selectedLead.discovery_source
+                    ? DISCOVERY_SOURCE_LABELS[selectedLead.discovery_source]
+                    : "Keine Angabe"}
+                  . Eine Google-Angabe unterscheidet keine Anzeigen von unbezahlten Suchtreffern.
+                </p>
+              </section>
 
               {/* Status Update Box */}
               <div className="space-y-3">

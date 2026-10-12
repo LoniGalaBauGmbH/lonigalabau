@@ -296,13 +296,13 @@ export const adminListContacts = createServerFn({ method: "GET" })
       const { data, error } = await supabaseAdmin
         .from("contact_requests")
         .select(
-          "id,ticket_number,ticket_format_version,name,email,phone,message,status,created_at,notes,notes_version,notification_sent_at,notification_email_id,customer_confirmation_requested_at,customer_confirmation_sent_at,customer_confirmation_email_id,subject,image_paths",
+          "id,ticket_number,ticket_format_version,name,email,phone,message,status,created_at,notes,notes_version,notification_sent_at,notification_email_id,customer_confirmation_requested_at,customer_confirmation_sent_at,customer_confirmation_email_id,subject,image_paths,lead_qualification,lead_qualification_version,lead_qualification_reviewed_at,discovery_source",
         )
         .order("created_at", { ascending: false });
-      if (error) return [];
+      if (error) throw new Error("Die Kundenkontakte konnten nicht geladen werden.");
       return withDeliveryStatus(data ?? []);
     } catch {
-      return [];
+      throw new Error("Die Kundenkontakte konnten nicht geladen werden.");
     }
   });
 

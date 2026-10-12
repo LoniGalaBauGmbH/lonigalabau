@@ -63,6 +63,17 @@ test("article author, publisher and website point to the same company", () => {
   }
 });
 
+test("job employer uses Google's Organization type and the shared real company identity", () => {
+  const employer = serialize(seo.hiringOrganizationSchema());
+  const company = serialize(seo.organizationSchema());
+  assert.equal(employer["@type"], "Organization");
+  assert.equal(employer["@id"], company["@id"]);
+  assert.equal(employer.name, company.name);
+  assert.equal(employer.url, company.url);
+  assert.equal(employer.logo, company.logo);
+  assert.equal(employer.aggregateRating, undefined);
+});
+
 test("collection schema reflects supplied visible items in order and connects to the website", () => {
   const graph = serialize(
     seo.publicPageSchema("/leistungen/", "Leistungen", "CollectionPage", [

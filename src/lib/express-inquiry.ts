@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { contactAttachmentsSchema } from "./contact-attachments";
+import { discoverySourceSchema } from "./lead-qualification";
 
 export const EXPRESS_SERVICES = [
   "Gartengestaltung",
@@ -47,6 +48,7 @@ const project = z.object({
     .max(3000, "Bitte beschränken Sie die Beschreibung auf 3.000 Zeichen."),
 });
 const consent = z.object({
+  discoverySource: discoverySourceSchema,
   privacy: z.boolean().refine(Boolean, "Bitte bestätigen Sie die Datenschutzhinweise."),
   website: z.string().max(0, "Die Anfrage konnte nicht angenommen werden.").default(""),
 });
@@ -78,5 +80,6 @@ export function buildExpressPayload(input: unknown) {
       data.description,
     ].join("\n"),
     attachments: data.attachments,
+    discoverySource: data.discoverySource,
   };
 }

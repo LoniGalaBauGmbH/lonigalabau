@@ -48,7 +48,7 @@ const photoVariants = moduleAt("src/lib/photo-variants.ts", {
 const serialize = (value) => JSON.parse(JSON.stringify(value));
 
 function publicAssetFile(src) {
-  const path = new URL(src, "https://www.loni-galabau.de").pathname.replace(/^\/__public-webp/, "");
+  const path = new URL(src, "https://www.loni-galabau.de").pathname.replace(/^\/__public-assets/, "");
   assert.match(path, /^\/images\/(?:projekte|optimized-v1|regionen)\//);
   return new URL("../public" + path, import.meta.url);
 }
@@ -148,7 +148,7 @@ test("regional overview exposes every destination once with consistent canonical
 test("regional images use complete responsive public assets with real format signatures", () => {
   for (const page of content) {
     const image = api.regionImage(page);
-    assert.match(image.src, /^\/__public-webp\/images\/regionen\//);
+    assert.match(image.src, /^\/__public-assets\/images\/regionen\//);
     assert.ok(image.height === 720 || image.height === 1280);
     for (const width of [640, 960]) {
       for (const format of ["avif", "webp"]) {
@@ -208,7 +208,7 @@ test("gallery photo helpers provide complete optimized assets without repeating 
       const optimized = photoVariants.optimizedPhoto(photo.src);
       assert.ok(optimized, `${page.slug}: ${photo.src} needs responsive derivatives`);
       assert.ok(optimized.width > 0 && optimized.height > 0, photo.src);
-      assert.match(optimized.src, /^\/__public-webp\/images\/optimized-v1\//);
+      assert.match(optimized.src, /^\/__public-assets\/images\/optimized-v1\//);
       const webp = responsiveSources(optimized.webp);
       const avif = responsiveSources(optimized.avif);
       assert.deepEqual(

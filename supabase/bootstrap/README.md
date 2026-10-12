@@ -239,3 +239,49 @@ Der Security Advisor zeigte nach der Migration ausschließlich die bereits dokum
 Informationshinweise für serverseitige Tabellen ohne Browser-Policy und den bestehenden
 [Hinweis zum deaktivierten Schutz vor kompromittierten Passwörtern](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection).
 Details und Versandprüfung: `docs/Dateiuploads-2026-10-12.md`.
+
+## Anfragequalität und freiwillige Herkunft (12.10.2026, Datenbank angewandt)
+
+`updates/contact_lead_qualification.sql` wurde auf dem aktiven Projekt als
+Cloud-Migration **`20261012084431 contact_lead_qualification`** angewandt und
+anschließend rückgeprüft: vier Spalten, zwei Indizes, RLS aktiv und weiterhin keine
+Tabellenrechte für `anon`/`authenticated`. Den Update nicht erneut anwenden;
+Bootstrap oder historische Migrationen ebenfalls nicht erneut ausführen.
+Der passende Worker ist seit 12.10.2026, 11:02:12 MESZ in Website-Version 68 live.
+Öffentliche Live-Seiten und anonyme Statistikabweisung wurden geprüft; eine
+angemeldete Live-Adminbedienung ist ohne authentifizierte Browserfläche nicht belegt.
+
+Vier neue Spalten auf `contact_requests`: manuelle Qualität (`unreviewed`,
+`qualified`, `unqualified`, `spam`, `duplicate`, `test`), eigene CAS-Versionsnummer,
+Prüfzeitpunkt und optionale Herkunfts-Selbstauskunft. Altbestand und ältere Worker
+bleiben standardmäßig ungeprüft; keine automatische Qualitäts-/Herkunftszuordnung.
+Zwei Indizes unterstützen Datums-/Qualitätszählungen. RLS, Browserrechte,
+Bearbeitungsstatus, Notizen, Ticketsequenzen und private Uploads bleiben erhalten.
+
+Nur `requireAdmin`-geschützte Serverfunktionen dürfen die Qualität ändern und
+Aggregate für heute/30 Berliner Kalendertage abrufen. Die neue Statistik fordert
+nur exakte HEAD-Counts an, prüft Summen und lädt bei widersprüchlichen Teilzahlen
+einmal neu; bei Fehlern erscheint kein scheinbarer Nullwert. Ursprungstag ist
+`created_at`, nicht der Zeitpunkt der späteren persönlichen Bewertung.
+
+Die kurze Herkunftsfrage ist freiwillig und serverseitig auf feste Auswahlwerte
+begrenzt. Es werden weder Referrer, UTM-Parameter, Browserkennungen noch Suchbegriffe
+erhoben. Google-Suche/Maps sind Selbstauskünfte, kein Nachweis unbezahlter Herkunft.
+Stellen- und Partnerbewerbungen bleiben getrennt. Keine GA4-/GTM-Aktivierung.
+
+SQL-Prüfung ohne produktive Daten:
+`node scripts/check-lead-qualification.mjs PFAD_ZU_PGLITE_DIST_INDEX_JS`.
+Die lokalen Prüfungen bestätigen Altbestand-Defaults, CHECKs, CAS, unveränderte
+Status-/Notizwerte, RLS und Browserrechte. Relevante Anwendungstests: 83 bestanden;
+Typprüfung und gezieltes ESLint ebenfalls bestanden. Details und Integrationsgrenzen:
+`docs/Anfragequalifizierung-2026-10-12.md`.
+
+Cloud-Advisor nach der Anwendung: bekannte serverseitige INFO-Hinweise und bestehende
+Leaked-Password-Protection-Warnung, keine neue relevante Performance-Warnung;
+anfangs unbenutzte neue Indizes sind erwartbar.
+
+Integrierte Prüfung: 231 Anwendungstests, TypeScript, gezieltes ESLint und Build
+erfolgreich. Acht echte Backend-HEAD-Counts und eine zurückgerollte Live-Transaktion
+mit 14 erfolgreichen Prüfaussagen; keine produktiven Kontaktzeilen geladen oder
+Testmail ausgelöst. Öffentliche Browserprüfung einschließlich der fünf
+Formularwege abgeschlossen. Details: `docs/SEO-Umsetzung-2026-10-12.md`.

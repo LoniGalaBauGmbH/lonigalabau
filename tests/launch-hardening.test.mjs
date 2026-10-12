@@ -32,6 +32,7 @@ function moduleAt(path, imports = {}, env = {}) {
 const seo = moduleAt("src/lib/seo.ts");
 const policy = moduleAt("src/lib/http-policy.server.ts", {
   "./seo": seo,
+  "./service-preparation": moduleAt("src/lib/service-preparation.ts"),
   "./project-gallery-editorial": moduleAt("src/lib/project-gallery-editorial.ts"),
   "../content/ratgeber.json": JSON.parse(
     readFileSync(new URL("../src/content/ratgeber.json", import.meta.url), "utf8"),
@@ -45,6 +46,7 @@ test("public image settings reject tracking origins, private buckets and origin 
   const validators = moduleAt("src/lib/validators.ts", {
     "./contact-attachments": moduleAt("src/lib/contact-attachments.ts"),
     "./application-document": moduleAt("src/lib/application-document.ts"),
+    "./lead-qualification": moduleAt("src/lib/lead-qualification.ts"),
   });
   const schema = validators.publicImageUrlSchema;
   for (const url of [
@@ -208,6 +210,7 @@ test("planner drafts retain selections while dropping personal and free-text det
   const validators = moduleAt("src/lib/validators.ts", {
     "./contact-attachments": attachments,
     "./application-document": document,
+    "./lead-qualification": moduleAt("src/lib/lead-qualification.ts"),
   });
   const planner = moduleAt("src/lib/garden-planner.ts", { "./validators": validators });
   const draft = planner.privatePlannerDraft({

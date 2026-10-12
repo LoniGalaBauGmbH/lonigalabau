@@ -21,8 +21,8 @@ const GENERIC: QA[] = [
     a: "Wir arbeiten deutschlandweit. Unser Firmensitz ist in Hattersheim am Main bei Frankfurt. Beschreiben Sie uns Ihr Vorhaben und den Projektort – wir stimmen die nächsten Schritte persönlich mit Ihnen ab.",
   },
   {
-    q: "Welche Garantie geben Sie auf Ihre Arbeit?",
-    a: "Sie erhalten die gesetzliche Gewährleistung auf alle handwerklichen Leistungen. Zusätzliche Pflegeleistungen und Garantien bedürfen einer ausdrücklichen Vereinbarung.",
+    q: "Kann ich weitere Leistungen anfragen?",
+    a: "Die gezeigten Leistungen sind ein Einblick in unser Angebot. Beschreiben Sie die gewünschten Arbeiten und den Projektort. Wir klären, welche Leistungen wir für Ihr Vorhaben übernehmen können.",
   },
   {
     q: "Wie schnell können Sie starten?",
@@ -38,19 +38,19 @@ const SERVICE_FAQS: Record<string, QA[]> = {
     },
     {
       q: "Sind Natursteinarbeiten pflegeintensiv?",
-      a: "Nein. Hochwertige Natursteine altern in Würde. Eine jährliche Reinigung und gelegentliche Imprägnierung reichen meist aus.",
+      a: "Pflege und Reinigung hängen von Steinart, Oberfläche, Fugen und Nutzung ab. Wir besprechen die Hinweise für das ausgewählte Material. Nicht jedes Reinigungsmittel oder jede Imprägnierung passt zu jedem Naturstein.",
     },
     {
       q: "Wie verhindern Sie unschönes Fugenkraut?",
       a: "Wir setzen auf wasserdurchlässige Spezialfugenmörtel oder gebundene Verlegung. Die passende Fuge hängt vom Aufbau und der Nutzung ab; regelmäßige Pflege bleibt erforderlich.",
     },
     {
-      q: "Kann Naturstein auch im Innen- und Außenbereich kombiniert werden?",
-      a: "Ja, sehr beliebt. Wir planen fließende Übergänge zwischen Terrasse, Eingang und Innenraum mit demselben Steinbild.",
+      q: "Kann Naturstein an eine bestehende Terrasse anschließen?",
+      a: "Das wird anhand von Höhen, Aufbau und Zustand der erhaltenen Fläche beurteilt. Fotos helfen bei der ersten Einordnung; Material und Anschlüsse werden für das konkrete Vorhaben abgestimmt.",
     },
     {
       q: "Wie lange dauert eine typische Natursteinterrasse?",
-      a: "Für eine Terrasse zwischen 25–50 m² rechnen Sie mit 5–10 Arbeitstagen inklusive Unterbau, Drainage und Fugenarbeit.",
+      a: "Die Dauer hängt von Bestand, Aufbau, Material, Zugang und Arbeitsumfang ab. Wir stimmen den Ablauf nach Klärung dieser Punkte ab; die Flächengröße allein ergibt noch keinen verlässlichen Bauzeitenplan.",
     },
   ],
   pflasterarbeiten: [
@@ -68,11 +68,11 @@ const SERVICE_FAQS: Record<string, QA[]> = {
     },
     {
       q: "Wie lange dauert eine neue Einfahrt?",
-      a: "Eine durchschnittliche Einfahrt von 40–60 m² ist in 1–2 Wochen einschließlich Aushub, Unterbau und Pflasterung fertig.",
+      a: "Rückbau, Unterbau, Anschlüsse, Material und Zugänglichkeit bestimmen die Bauzeit mit. Welche Arbeiten erforderlich sind und wann die Fläche wieder genutzt werden kann, stimmen wir für Ihr Projekt ab.",
     },
     {
       q: "Können Sie altes Pflaster wiederverwenden?",
-      a: "In vielen Fällen ja – wir reinigen, sortieren und verlegen es neu. Das spart Kosten und erhält Charakter.",
+      a: "Eine Wiederverwendung lässt sich anhand von Zustand, Menge und gewünschter Nutzung prüfen. Sortierung, Ergänzungen und Neuverlegung werden im Umfang berücksichtigt. Ein Preisvorteil lässt sich daraus nicht pauschal ableiten.",
     },
   ],
   gartengestaltung: [
@@ -116,17 +116,17 @@ const SERVICE_FAQS: Record<string, QA[]> = {
     },
     {
       q: "Was passiert im Winter?",
-      a: "Wir bieten saisonale Ein- und Auswinterung der Anlage inklusive Druckluft-Entleerung.",
+      a: "Der Frostschutz richtet sich nach dem eingesetzten System und den Herstellerhinweisen. Besprechen Sie vorab, welche Vorbereitung erforderlich ist, welche Bauteile zugänglich bleiben und wer die Arbeiten übernimmt.",
     },
   ],
   rasenanlagen: [
     {
       q: "Rollrasen oder Saatrasen?",
-      a: "Rollrasen liefert sofort grüne Fläche, Saatrasen ist günstiger und etabliert sich tiefer. Wir beraten je nach Nutzung und Standort.",
+      a: "Rollrasen liefert schneller eine geschlossene Fläche; Einsaat entwickelt sich erst nach der Aussaat. Bodenvorbereitung, Standort, gewünschte Nutzung und anschließende Betreuung gehören bei beiden Varianten in die Entscheidung.",
     },
     {
       q: "Wie lange muss ich neuen Rasen schonen?",
-      a: "Bei Rollrasen 2–3 Wochen, bei Saatrasen 6–8 Wochen, bis die volle Belastbarkeit erreicht ist.",
+      a: "Die erste Nutzung richtet sich nach Anwachsen, Wetter und Belastung. Verlegter Rollrasen ist nicht sofort vollständig belastbar. Wir besprechen, woran Sie einen geeigneten Nutzungszeitpunkt erkennen und welche Pflege vorgesehen ist.",
     },
     {
       q: "Welche Vorbereitung ist nötig?",
@@ -136,7 +136,7 @@ const SERVICE_FAQS: Record<string, QA[]> = {
   zaunarbeiten: [
     {
       q: "Welche Zauntypen bauen Sie?",
-      a: "Doppelstabmatten, Holzlamellen, Gabionen, Sichtschutz-WPC und individuell geplante Sonderlösungen aus Metall.",
+      a: "Beschreiben Sie das gewünschte Material, den Verlauf und ob offene Begrenzung oder Sichtschutz gebraucht wird. Wir klären, welches System für Ihr Vorhaben passend und verfügbar ist.",
     },
     {
       q: "Brauche ich für meinen Zaun eine Genehmigung?",
@@ -150,7 +150,7 @@ const SERVICE_FAQS: Record<string, QA[]> = {
   erdarbeiten: [
     {
       q: "Welche Maschinen setzen Sie ein?",
-      a: "Vom Minibagger (1 m Durchfahrt) bis zum 5-Tonnen-Bagger – wir wählen die passende Größe für Ihre Zufahrt.",
+      a: "Die Auswahl richtet sich nach Aufgabe, Zufahrtsbreite und -höhe, Tragfähigkeit und Bewegungsraum. Senden Sie Fotos und Maße; eine geeignete Maschine lässt sich nicht allein aus einer pauschalen Durchfahrtsbreite bestimmen.",
     },
     {
       q: "Wohin geht der Aushub?",
@@ -160,7 +160,7 @@ const SERVICE_FAQS: Record<string, QA[]> = {
   entwaesserung: [
     {
       q: "Wie verhindern Sie Staunässe?",
-      a: "Wir bauen Drainagesysteme mit Filtervlies, Kiesbett und Sammelschacht – abgestimmt auf Bodenart und Versickerungsleistung.",
+      a: "Zuerst werden Ursache, Boden und möglicher weiterer Wasserweg geklärt. Je nach Befund kommen unterschiedliche Maßnahmen infrage. Eine Drainage ist nicht auf jedem Grundstück geeignet und wird nicht ohne diese Prüfung zugesagt.",
     },
     {
       q: "Was kostet eine Rigole?",

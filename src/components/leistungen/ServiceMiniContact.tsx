@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { CheckCircle2, Loader2, Mail, Phone, ShieldCheck } from "lucide-react";
 import { createContactRequest } from "@/lib/site.functions";
 import { contactSchema } from "@/lib/validators";
+import { DiscoverySourceField } from "@/components/site/DiscoverySourceField";
 
 export function ServiceMiniContact({
   serviceTitle,
@@ -22,6 +23,7 @@ export function ServiceMiniContact({
     phone: "",
     message: "",
     consent: false,
+    discoverySource: "",
   });
 
   async function onSubmit(e: React.FormEvent) {
@@ -37,6 +39,7 @@ export function ServiceMiniContact({
       phone: form.phone,
       subject: `Anfrage: ${serviceTitle}`,
       message: form.message,
+      discoverySource: form.discoverySource,
     });
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Bitte Eingaben prüfen.");
@@ -137,6 +140,11 @@ export function ServiceMiniContact({
         </div>
       </div>
 
+      <DiscoverySourceField
+        value={form.discoverySource}
+        onChange={(value) => setForm((current) => ({ ...current, discoverySource: value }))}
+        disabled={state === "loading"}
+      />
       <label className="flex items-start gap-3 text-xs text-foreground/70 leading-relaxed cursor-pointer">
         <input
           type="checkbox"

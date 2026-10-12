@@ -1,0 +1,53 @@
+import { ArrowUpRight } from "lucide-react";
+import { servicePreparation } from "@/lib/service-preparation";
+
+export function ServicePreparation({ slug }: { slug: string }) {
+  const content = servicePreparation[slug];
+  if (!content) return null;
+
+  return (
+    <section aria-labelledby="service-preparation-heading" className="px-6 pb-20 md:px-10 md:pb-28">
+      <div className="mx-auto max-w-[1480px] rounded-3xl border border-brand/10 bg-surface p-6 md:p-10">
+        <span className="eyebrow eyebrow-bracket text-brand">Angebot vorbereiten</span>
+        <h2
+          id="service-preparation-heading"
+          lang="de"
+          className="mt-4 max-w-4xl font-serif text-2xl leading-tight font-semibold text-brand hyphens-auto [overflow-wrap:anywhere] md:text-3xl"
+        >
+          {content.heading}
+        </h2>
+        <p className="mt-5 max-w-4xl text-base leading-relaxed text-foreground/80">
+          {content.lead}
+        </p>
+        <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="min-w-0">
+            <h3 className="font-display text-lg font-bold text-brand">
+              Diese Punkte beeinflussen den Aufwand
+            </h3>
+            <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-foreground/80">
+              {content.costFactors.map((factor) => (
+                <li key={factor}>{factor}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-display text-lg font-bold text-brand">
+              Diese Angaben helfen bei Ihrer Anfrage
+            </h3>
+            <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-foreground/80">
+              {content.requestChecklist.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <a
+              href="#anfrage"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4 hover:text-brand/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+            >
+              Ihr Vorhaben anfragen <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

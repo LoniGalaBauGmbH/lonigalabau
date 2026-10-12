@@ -2,7 +2,7 @@ import { AccountSecurity } from "@/components/admin/AccountSecurity";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { adminIncomingContactsSummary } from "@/lib/incoming-contact-summary.functions";
+import { adminLeadQualificationSummary } from "@/lib/lead-qualification.functions";
 import {
   adminWhoami,
   adminListContacts,
@@ -73,7 +73,7 @@ function formatCalendarDate(value: string) {
 function Page() {
   const whoamiFn = useServerFn(adminWhoami);
   const contactsFn = useServerFn(adminListContacts);
-  const incomingSummaryFn = useServerFn(adminIncomingContactsSummary);
+  const incomingSummaryFn = useServerFn(adminLeadQualificationSummary);
   const appsFn = useServerFn(adminListApplications);
   const servicesFn = useServerFn(adminListServices);
   const projectsFn = useServerFn(adminListProjects);
@@ -84,13 +84,13 @@ function Page() {
     queryFn: () => whoamiFn(),
   });
 
-  const { data: contacts = [] } = useQuery({
+  const { data: contacts = [], isError: contactsError } = useQuery({
     queryKey: ["admin-contacts"],
     queryFn: () => contactsFn(),
     enabled: !!whoami?.isAdmin,
   });
   const incomingSummary = useQuery({
-    queryKey: ["admin-incoming-contacts-30d"],
+    queryKey: ["admin-lead-qualification-summary"],
     queryFn: () => incomingSummaryFn(),
     enabled: !!whoami?.isAdmin,
     staleTime: 60_000,
@@ -216,10 +216,14 @@ function Page() {
   const kpiCards = [
     {
       label: "Kundenkontakte",
-      value: totalContacts,
+      value: contactsError ? "—" : totalContacts,
       badge: newContacts > 0 ? `${newContacts} neu` : null,
       badgeColor: "bg-emerald-100 text-emerald-700",
-      sub: newContacts > 0 ? `${newContacts} unbearbeitet` : "Alle bearbeitet",
+      sub: contactsError
+        ? "Liste nicht verfügbar"
+        : newContacts > 0
+          ? `${newContacts} unbearbeitet`
+          : "Alle bearbeitet",
       Icon: FileCheck,
       iconBg: "bg-green-100",
       iconColor: "text-green-700",
@@ -329,14 +333,17 @@ function Page() {
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <h2 id="incoming-contacts-heading" className="font-serif text-2xl text-brand">
-              Eingegangene Kundenkontakte
+              Kundenanfragen: Eingang und Qualität
             </h2>
             <p className="text-sm text-foreground/60 mt-2">
-              Letzte 30 Kalendertage einschließlich heute, nach deutscher Zeit.
+              Heute und die letzten 30 Kalendertage einschließlich heute, nach deutscher Zeit.
             </p>
             {incomingSummary.isError ? (
               <div role="alert" className="mt-4 text-sm text-red-700">
-                <p>Die Anzahl konnte nicht geladen werden. Es wird deshalb keine Zahl angezeigt.</p>
+                <p>
+                  Die Statistik konnte nicht vollständig geladen werden. Es werden deshalb keine
+                  Zahlen angezeigt.
+                </p>
                 <button
                   type="button"
                   onClick={() => void incomingSummary.refetch()}
@@ -348,13 +355,32 @@ function Page() {
               </div>
             ) : incomingSummary.data ? (
               <div className="mt-4" aria-live="polite">
-                <p className="text-4xl font-semibold text-brand tabular-nums">
-                  {incomingSummary.data.count}
-                </p>
-                <p className="text-xs text-foreground/50 mt-2">
-                  {formatCalendarDate(incomingSummary.data.startDate)} –{" "}
-                  {formatCalendarDate(incomingSummary.data.endDate)}
-                </p>
+                {[
+                  { label: "Heute", period: incomingSummary.data.today },
+                  { label: "Letzte 30 Tage", period: incomingSummary.data.last30Days },
+                ].map(({ label, period }) => (
+                  <div key={label} className="mt-4 rounded-2xl bg-brand/5 p-4">
+                    <h3 className="font-semibold text-brand">{label}</h3>
+                    <p className="text-xs text-foreground/60 mt-1">
+                      {formatCalendarDate(period.startDate)} – {formatCalendarDate(period.endDate)}
+                    </p>
+                    <dl className="mt-3 grid grid-cols-2 gap-3 text-sm">
+                      {[
+                        { label: "Eingegangen", count: period.incoming },
+                        { label: "Passend geprüft", count: period.qualified },
+                        { label: "Noch ungeprüft", count: period.unreviewed },
+                        { label: "Ausgeschlossen", count: period.excluded },
+                      ].map((item) => (
+                        <div key={item.label}>
+                          <dt className="text-xs text-foreground/65">{item.label}</dt>
+                          <dd className="text-2xl font-semibold text-brand tabular-nums">
+                            {item.count}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                ))}
               </div>
             ) : (
               <p role="status" className="mt-4 text-sm text-foreground/60">
@@ -367,13 +393,17 @@ function Page() {
               Ziel: 30 qualifizierte Kundenanfragen in 30 Tagen
             </h3>
             <p className="text-sm text-foreground/60 mt-2 leading-relaxed">
-              Die Eingangszahl zeigt noch nicht, wie viele Anfragen zu passenden Kundenprojekten
-              führen. Die Qualität muss persönlich geprüft werden. Bewerbungen und Partneranfragen
-              zählen hier nicht mit.
+              {incomingSummary.data && !incomingSummary.isError
+                ? `${incomingSummary.data.last30Days.qualified} von 30 als passend geprüfte Kundenanfragen. `
+                : ""}
+              Die Qualität wird persönlich im Adminbereich geprüft. Bewerbungen und Partneranfragen
+              zählen nicht mit; ebenso als unpassend, Spam, doppelt oder Test bewertete Kontakte.
+              Das Eingangsdatum bestimmt den Zeitraum, nicht der Tag der Bewertung.
             </p>
             <p className="text-xs text-foreground/50 mt-3">
-              Die Zählung erfasst alle Kundenkontaktformulare; eine Herkunft aus Google wird damit
-              nicht nachgewiesen.
+              Die 30-Tage-Summe belegt keinen Eingang an jedem einzelnen Tag. Freiwillige
+              Herkunftsangaben sind Selbstauskünfte und kein Nachweis organischer Google-Anfragen
+              oder bestimmter Suchbegriffe.
             </p>
             <Link
               to="/admin/anfragen"
@@ -384,6 +414,17 @@ function Page() {
           </div>
         </div>
       </section>
+
+      {contactsError && (
+        <p
+          role="alert"
+          className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+        >
+          Die Kontaktliste ist nicht verfügbar. Die bisherigen Listenkennzahlen und das
+          Kontaktdiagramm sind daher unvollständig; die separate Anfragestatistik zeigt ihren
+          eigenen Ladezustand.
+        </p>
+      )}
 
       {/* ── KPI CARDS ───────────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">

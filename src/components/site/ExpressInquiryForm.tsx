@@ -6,6 +6,7 @@ import { EXPRESS_SERVICES, expressInquirySchema, validateExpressStep } from "@/l
 import { scrollStepIntoView, useStepTransition } from "@/hooks/useStepTransition";
 import { useContactAttachments } from "@/hooks/useContactAttachments";
 import { ContactAttachments } from "./ContactAttachments";
+import { DiscoverySourceField } from "./DiscoverySourceField";
 import "./CallbackForm.css";
 
 const emptyForm = {
@@ -18,6 +19,7 @@ const emptyForm = {
   description: "",
   privacy: false,
   website: "",
+  discoverySource: "",
 };
 type Form = typeof emptyForm;
 type Errors = Partial<Record<keyof Form, string>>;
@@ -371,6 +373,11 @@ export function ExpressInquiryForm({
                     <>
                       <div className="express-attachments">
                         <ContactAttachments attachments={attachments} disabled={pending} />
+                        <DiscoverySourceField
+                          value={form.discoverySource}
+                          onChange={(value) => update("discoverySource", value)}
+                          disabled={pending}
+                        />
                       </div>
                       <details className="express-review">
                         <summary>Ihre Angaben prüfen</summary>

@@ -42,6 +42,7 @@ export async function persistContactSubmission(
       phone: data.phone || null,
       subject: data.subject || null,
       message: data.message,
+      ...(data.discoverySource ? { discovery_source: data.discoverySource } : {}),
       image_paths: uploaded,
     });
     if (error)

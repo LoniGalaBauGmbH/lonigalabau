@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { discoverySourceSchema } from "./lead-qualification";
 
 export const CALLBACK_TIMES = Array.from(
   { length: 22 },
@@ -50,6 +51,7 @@ export function callbackTimeError(
 
 export const callbackSchema = z
   .object({
+    discoverySource: discoverySourceSchema,
     firstName: z
       .string()
       .trim()
@@ -135,6 +137,7 @@ export function buildCallbackRecord(data: CallbackInput) {
     ].join("\n"),
     image_paths: [],
     ticket_format_version: 2,
+    ...(data.discoverySource ? { discovery_source: data.discoverySource } : {}),
     ...(!data.email ? { customer_confirmation_requested_at: null } : {}),
   };
 }

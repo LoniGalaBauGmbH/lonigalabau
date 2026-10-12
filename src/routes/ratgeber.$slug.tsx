@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { parseContextLinks } from "@/lib/context-links";
 import { PageShell } from "@/components/site/PageShell";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { GuideCard } from "@/components/site/GuideCard";
@@ -17,6 +18,36 @@ import { getRelatedGuides } from "@/lib/guide-index";
 import { canonicalUrl, safeJsonLd } from "@/lib/seo";
 import { publicImageUrl } from "@/lib/public-image-url";
 import "@/components/site/Ratgeber.css";
+
+function GuideText({ children }: { children: string }) {
+  return (
+    <>
+      {parseContextLinks(children).map((part, index) =>
+        part.kind === "text" ? (
+          part.text
+        ) : part.section === "leistungen" ? (
+          <Link
+            key={index}
+            to="/leistungen/$slug"
+            params={{ slug: part.slug }}
+            className="underline underline-offset-4 hover:text-brand"
+          >
+            {part.label}
+          </Link>
+        ) : (
+          <Link
+            key={index}
+            to="/ratgeber/$slug"
+            params={{ slug: part.slug }}
+            className="underline underline-offset-4 hover:text-brand"
+          >
+            {part.label}
+          </Link>
+        ),
+      )}
+    </>
+  );
+}
 
 function sourceLabel(url: string) {
   if (url.includes("GranitAussen")) return "Lithofin: Granit außen reinigen, schützen und pflegen";
@@ -71,7 +102,7 @@ function Article() {
   const related = getRelatedGuides(article.slug);
   return (
     <PageShell>
-      <article className="guides">
+      <article className="guides hyphens-auto [overflow-wrap:anywhere]" lang="de">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(guideSchema(article)) }}
@@ -159,7 +190,9 @@ function Article() {
               <section key={section.heading} id={`abschnitt-${i + 1}`}>
                 <h2>{section.heading}</h2>
                 {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph}>
+                    <GuideText>{paragraph}</GuideText>
+                  </p>
                 ))}
                 {section.checklist && (
                   <ul className="guide-checklist">

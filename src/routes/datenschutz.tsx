@@ -32,7 +32,7 @@ const SECTIONS = [
   [
     "anfragen",
     "Kontaktformulare und Gartenplaner",
-    "Wir verarbeiten Ihre Kontakt- und Projektdaten, Nachrichten sowie freiwillig hochgeladene Fotos und Dokumente zur Bearbeitung Ihrer Anfrage. In der Express-Anfrage erfassen wir Name, Telefonnummer, E-Mail-Adresse, gewünschte Leistung und Projektbeschreibung sowie auf Wunsch eine Adresse zur Angebotsvorbereitung. Dazu gehören im Gartenplaner beispielsweise Grundstück, Maße, Ausstattung und Budgetrahmen. Rechtsgrundlage für vertragsbezogene Anfragen ist Art. 6 Abs. 1 lit. b DSGVO, für andere Anliegen unser berechtigtes Interesse an deren Beantwortung nach Art. 6 Abs. 1 lit. f DSGVO. Pflichtfelder sind gekennzeichnet; ohne diese Angaben können wir eine Anfrage gegebenenfalls nicht bearbeiten. Bitte laden Sie nur für das Vorhaben erforderliche Unterlagen hoch.",
+    "Wir verarbeiten Ihre Kontakt- und Projektdaten, Nachrichten sowie freiwillig hochgeladene Fotos und Dokumente zur Bearbeitung Ihrer Anfrage. In der Express-Anfrage erfassen wir Name, Telefonnummer, E-Mail-Adresse, gewünschte Leistung und Projektbeschreibung sowie auf Wunsch eine Adresse zur Angebotsvorbereitung. Dazu gehören im Gartenplaner beispielsweise Grundstück, Maße, Ausstattung und Budgetrahmen. Rechtsgrundlage für vertragsbezogene Anfragen ist Art. 6 Abs. 1 lit. b DSGVO, für andere Anliegen unser berechtigtes Interesse an deren Beantwortung nach Art. 6 Abs. 1 lit. f DSGVO. Die freiwillige Angabe, wie Sie auf uns aufmerksam wurden, und eine persönliche interne Einordnung der Anfrage helfen uns, passende Kundenanfragen zusammengefasst auszuwerten und unser Angebot zu verbessern. Grundlage dafür ist unser berechtigtes Interesse an der Organisation und Verbesserung unserer Kundenanfragen nach Art. 6 Abs. 1 lit. f DSGVO. Die Herkunftsangabe ist eine Selbstauskunft; dafür werden keine zusätzlichen Browserkennungen, Referrer oder Suchbegriffe erfasst und keine Analysepixel geladen. Sie ist für die Bearbeitung Ihrer Anfrage nicht erforderlich. Pflichtfelder sind gekennzeichnet; ohne diese Angaben können wir eine Anfrage gegebenenfalls nicht bearbeiten. Bitte laden Sie nur für das Vorhaben erforderliche Unterlagen hoch.",
   ],
   [
     "bewerbungen",
@@ -132,7 +132,7 @@ function DatenschutzPage() {
                 )}
               </article>
             ))}
-            <p className="text-sm text-foreground/75">Stand: 5. Oktober 2026</p>
+            <p className="text-sm text-foreground/75">Stand: 12. Oktober 2026</p>
           </div>
         </div>
       </section>

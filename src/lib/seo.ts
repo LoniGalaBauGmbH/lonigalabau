@@ -104,6 +104,18 @@ export function websiteSchema() {
   };
 }
 
+/** Google JobPosting expects an Organization for the employer, with the shared identity. */
+export function hiringOrganizationSchema() {
+  const business = organizationSchema();
+  return {
+    "@type": "Organization",
+    "@id": ORGANIZATION_ID,
+    name: business.name,
+    url: business.url,
+    logo: business.logo,
+  };
+}
+
 export function editorialAuthorSchema() {
   return {
     "@type": "Person",

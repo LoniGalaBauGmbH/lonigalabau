@@ -10,6 +10,7 @@ import { contactSchema } from "@/lib/validators";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { useContactAttachments } from "@/hooks/useContactAttachments";
 import { ContactAttachments } from "@/components/site/ContactAttachments";
+import { DiscoverySourceField } from "@/components/site/DiscoverySourceField";
 import portraitOriginal from "@/assets/about-founder-valon.webp";
 import portrait160 from "@/assets/performance/about-founder-valon-160.webp";
 import portrait320 from "@/assets/performance/about-founder-valon-320.webp";
@@ -43,7 +44,15 @@ function Page() {
   const send = useServerFn(createContactRequest);
   const attachments = useContactAttachments();
   const submitting = useRef(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const emptyForm = {
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+    discoverySource: "",
+  };
+  const [form, setForm] = useState(emptyForm);
   const { images } = useSiteImages();
   const [status, setStatus] = useState<"idle" | "ok" | "err" | "loading">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -57,7 +66,7 @@ function Page() {
       const parsed = contactSchema.parse(form);
       await send({ data: { ...parsed, attachments: await attachments.serialize() } });
       setStatus("ok");
-      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      setForm(emptyForm);
       attachments.clear();
     } catch {
       setStatus("err");
@@ -283,6 +292,13 @@ function Page() {
                     </Field>
 
                     <ContactAttachments attachments={attachments} disabled={status === "loading"} />
+                    <DiscoverySourceField
+                      value={form.discoverySource}
+                      onChange={(value) =>
+                        setForm((current) => ({ ...current, discoverySource: value }))
+                      }
+                      disabled={status === "loading"}
+                    />
 
                     {status === "err" && (
                       <div

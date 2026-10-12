@@ -34,7 +34,7 @@
     "title": "Den Garten in Etappen umgestalten: So bleibt die Reihenfolge sinnvoll",
     "excerpt": "Sie müssen nicht alles gleichzeitig verändern. Ein gemeinsames Zielbild hilft, einzelne Bauabschnitte sinnvoll zu verbinden und fertige Bereiche zu erhalten.",
     "category": "Gartenplanung",
-    "readingMinutes": 5,
+    "readingMinutes": 7,
     "image": "/images/projekte/terrassenunterkonstruktion.webp",
     "imageCaption": "Eine Terrasse im Aufbau: Vorarbeiten werden später vom fertigen Belag verdeckt.",
     "relatedServiceSlugs": [
@@ -42,14 +42,14 @@
       "erdarbeiten",
       "pflasterarbeiten"
     ],
-    "updatedAt": "2026-10-01"
+    "updatedAt": "2026-10-12"
   },
   {
     "slug": "terrasse-entwaesserung-planen",
-    "title": "Wasser auf der Terrasse: Was eine passende Entwässerung berücksichtigen muss",
+    "title": "Terrasse entwässern: Wasserwege, Rinnen und Anschlüsse",
     "excerpt": "Eine zusätzliche Rinne ist nicht automatisch die Lösung. Entscheidend ist, wo das Regenwasser herkommt, wie es aufgenommen wird und wohin es weiterfließen kann.",
     "category": "Wasser & Außenanlagen",
-    "readingMinutes": 5,
+    "readingMinutes": 8,
     "image": "/images/projekte/terrasse-mit-entwaesserungsrinne.webp",
     "imageCaption": "Entwässerungsrinne am Rand einer Terrasse.",
     "relatedServiceSlugs": [
@@ -57,7 +57,7 @@
       "pflasterarbeiten",
       "erdarbeiten"
     ],
-    "updatedAt": "2026-10-01"
+    "updatedAt": "2026-10-12"
   },
   {
     "slug": "gartenbewaesserung-planen",

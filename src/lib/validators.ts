@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { contactAttachmentsSchema, MAX_CONTACT_FILES } from "./contact-attachments";
 import { applicationDocumentSchema } from "./application-document";
+import { discoverySourceSchema } from "./lead-qualification";
 
 export const publicImageUrlSchema = z
   .string()
@@ -24,6 +25,7 @@ export const publicImageUrlSchema = z
   }, "Bitte ein Bild hochladen oder einen lokalen Bildpfad verwenden. Externe Bildanbieter sind deaktiviert.");
 
 export const contactSchema = z.object({
+  discoverySource: discoverySourceSchema,
   name: z.string().trim().min(1, "Name erforderlich").max(200),
   email: z.string().trim().email("Ungültige E-Mail").max(320),
   phone: z.string().trim().max(50).optional().or(z.literal("")),

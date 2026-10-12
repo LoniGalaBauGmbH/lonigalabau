@@ -90,6 +90,18 @@ test("files and PDF attachments are linked to the contact only after successful 
   assert.equal(h.removals.length, 0);
 });
 
+test("voluntary source is stored separately while public callers cannot qualify themselves", async () => {
+  const h = harness();
+  await persistContactSubmission(h.client, { ...lead, discoverySource: "google_search", lead_qualification: "qualified", lead_qualification_version: 7, referrer: "private.invalid" });
+  assert.equal(h.records[0].discovery_source, "google_search");
+  assert.equal(h.records[0].lead_qualification, undefined);
+  assert.equal(h.records[0].lead_qualification_version, undefined);
+  assert.equal(h.records[0].referrer, undefined);
+  const empty = harness();
+  await persistContactSubmission(empty.client, { ...lead, discoverySource: "" });
+  assert.equal(empty.records[0].discovery_source, undefined);
+});
+
 test("forged attachments fail validation before any storage or database write", async () => {
   const h = harness();
   await assert.rejects(

@@ -20,6 +20,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { ContactAttachments } from "./ContactAttachments";
+import { DiscoverySourceField } from "./DiscoverySourceField";
 import { useContactAttachments } from "@/hooks/useContactAttachments";
 import { scrollStepIntoView, useStepTransition } from "@/hooks/useStepTransition";
 import { useSiteImages } from "@/hooks/useSiteImages";
@@ -227,6 +228,7 @@ function QuestionField({
 
 export function GardenPlanner() {
   const [form, setForm] = useState<PlannerState>(INITIAL_PLANNER);
+  const [discoverySource, setDiscoverySource] = useState("");
   const [active, setActive] = useState("project");
   const [visited, setVisited] = useState<string[]>(["project"]);
   const [errors, setErrors] = useState<PlannerErrors>({});
@@ -403,7 +405,7 @@ export function GardenPlanner() {
     setStatus("sending");
     try {
       const files = await attachments.serialize();
-      await send({ data: { plan: form, attachments: files } });
+      await send({ data: { plan: form, attachments: files, discoverySource } });
       setSavedFiles(attachments.items.map((i) => i.file.name));
       attachments.clear();
       removeDraft();
@@ -937,6 +939,11 @@ export function GardenPlanner() {
                               />
                             </Field>
                           </div>
+                          <DiscoverySourceField
+                            value={discoverySource}
+                            onChange={setDiscoverySource}
+                            disabled={pending}
+                          />
                           <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed">
                             <Checkbox
                               {...fieldProps("consent")}

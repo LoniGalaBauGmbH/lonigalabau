@@ -1,4 +1,5 @@
 import type { PartnerRecord } from "@/lib/partner-application";
+import type { LeadQualification, DiscoverySource } from "@/lib/lead-qualification";
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 type PartnerInsert = Omit<
   PartnerRecord,
@@ -108,6 +109,10 @@ export type Database = {
       };
       contact_requests: {
         Row: {
+          lead_qualification: LeadQualification;
+          lead_qualification_version: number;
+          lead_qualification_reviewed_at: string | null;
+          discovery_source: DiscoverySource | null;
           created_at: string;
           email: string | null;
           id: string;
@@ -129,6 +134,10 @@ export type Database = {
           subject: string | null;
         };
         Insert: {
+          lead_qualification?: LeadQualification;
+          lead_qualification_version?: number;
+          lead_qualification_reviewed_at?: string | null;
+          discovery_source?: DiscoverySource | null;
           created_at?: string;
           email: string | null;
           id?: string;
@@ -150,6 +159,10 @@ export type Database = {
           subject?: string | null;
         };
         Update: {
+          lead_qualification?: LeadQualification;
+          lead_qualification_version?: number;
+          lead_qualification_reviewed_at?: string | null;
+          discovery_source?: DiscoverySource | null;
           created_at?: string;
           email?: string | null;
           id?: string;

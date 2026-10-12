@@ -24,7 +24,7 @@ export function FooterDocuments() {
             <DocumentPreview document={doc} key={doc.id}>
               <button
                 type="button"
-                aria-label={`${doc.title} ansehen`}
+                aria-label={`${doc.issuer} ${doc.shortTitle} ansehen`}
                 className="group flex min-w-0 items-center gap-3 rounded-lg text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <img

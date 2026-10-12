@@ -71,6 +71,8 @@ export function Footer({ showContactCta = true }: { showContactCta?: boolean }) 
               <img
                 src={images.logo_white}
                 alt="Loni Galabau GmbH"
+                width={1356}
+                height={262}
                 className="h-14 w-auto"
                 loading="lazy"
                 decoding="async"
@@ -160,6 +162,8 @@ export function Footer({ showContactCta = true }: { showContactCta?: boolean }) 
               <img
                 src={logoVerband}
                 alt="Fachverband Garten-, Landschafts- und Sportplatzbau"
+                width={100}
+                height={133}
                 loading="lazy"
                 decoding="async"
                 className="h-[52px] w-auto shrink-0 brightness-0 invert"

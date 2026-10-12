@@ -212,6 +212,7 @@ for (const [name, overrides, message] of [
     const endpoints = {
       ...h.load("src/lib/admin.functions.ts"),
       ...h.load("src/lib/tracking.functions.ts"),
+      ...h.load("src/lib/lead-qualification.functions.ts"),
     };
     for (const [endpointName, endpoint] of Object.entries(endpoints)) {
       if (endpointName === "getTrackingSettings") continue;
@@ -295,4 +296,13 @@ test("an incomplete second factor redirects the browser to login", async () => {
     h.load("src/routes/_authenticated.tsx").Route.options.beforeLoad(),
     (error) => error.to === "/login",
   );
+});
+
+test("quality updates and summaries remain blocked before MFA is completed", async () => {
+  const payload = Buffer.from(JSON.stringify({ aal: "aal1" })).toString("base64url");
+  const h = harness({ authorization: `Bearer header.${payload}.signature`, auth: { data: { user: { id: userId, factors: [{ status: "verified" }] } }, error: null } });
+  const endpoints = h.load("src/lib/lead-qualification.functions.ts");
+  await assert.rejects(endpoints.adminLeadQualificationSummary(), /Authenticator/);
+  await assert.rejects(endpoints.adminSetLeadQualification({ data: { id: userId, qualification: "qualified", version: 0 } }), /Authenticator/);
+  assert.equal(h.operations.some(([kind, table]) => kind === "table" && table === "contact_requests"), false);
 });

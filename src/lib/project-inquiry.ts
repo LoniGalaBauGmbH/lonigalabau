@@ -36,6 +36,7 @@ export type InquiryForm = {
   zip: string;
   channel: string;
   consent: boolean;
+  discoverySource?: string;
 };
 export type InquiryErrors = Partial<Record<keyof InquiryForm, string>>;
 export const INITIAL_INQUIRY: InquiryForm = {
@@ -51,6 +52,7 @@ export const INITIAL_INQUIRY: InquiryForm = {
   zip: "",
   channel: "E-Mail",
   consent: false,
+  discoverySource: "",
 };
 
 export function validateInquiryStep(form: InquiryForm, step: InquiryStep): InquiryErrors {
@@ -84,6 +86,7 @@ export function validateInquiryStep(form: InquiryForm, step: InquiryStep): Inqui
 
 export function buildInquiryPayload(form: InquiryForm) {
   return contactSchema.parse({
+    discoverySource: form.discoverySource,
     name: form.name,
     email: form.email,
     phone: form.phone,

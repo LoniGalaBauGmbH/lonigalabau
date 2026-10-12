@@ -7,9 +7,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Separate public-file delivery from page routing so verified cache/MIME headers run.
+  vite: { base: "/__public-assets/" },
   // Produce a deployable Worker outside the Lovable development environment too.
   nitro: { preset: "cloudflare-module" },
   tanstackStart: {
+    router: { basepath: "/" },
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server", build: { inlineCss: true } },

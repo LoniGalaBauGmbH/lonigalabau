@@ -10,10 +10,10 @@ import {
   Phone,
 } from "lucide-react";
 import { createContactRequest } from "@/lib/site.functions";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { ContactAttachments } from "./ContactAttachments";
+import { DiscoverySourceField } from "./DiscoverySourceField";
 import { useContactAttachments } from "@/hooks/useContactAttachments";
 import { scrollStepIntoView, useStepTransition } from "@/hooks/useStepTransition";
 import "./Motion.css";
@@ -256,7 +256,6 @@ export function ProjectInquiryForm({
                       disabled={i >= step || pending}
                       onClick={() => goTo(i as InquiryStep)}
                       aria-current={i === step ? "step" : undefined}
-                      aria-label={i < step ? "Zurück zu " + item.label : item.label}
                       className={
                         "flex min-h-11 items-center gap-2 rounded-md text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand " +
                         (i <= step ? "text-brand" : "text-brand/40")
@@ -495,6 +494,11 @@ export function ProjectInquiryForm({
                           placeholder="Ihre Telefonnummer"
                         />
                       </Field>
+                      <DiscoverySourceField
+                        value={form.discoverySource || ""}
+                        onChange={(value) => update("discoverySource", value)}
+                        disabled={status === "loading"}
+                      />
                       <div>
                         <div className="flex items-start gap-3">
                           <Checkbox
@@ -650,14 +654,13 @@ function Choices({
       <p id={uid + "-label"} className="mb-3 text-sm font-medium text-brand">
         {label}
       </p>
-      <RadioGroup
+      <div
+        role="radiogroup"
         id={uid}
         aria-labelledby={uid + "-label"}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? uid + "-error" : undefined}
         tabIndex={-1}
-        value={value}
-        onValueChange={onChange}
         className={
           tiles ? "grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2" : "flex flex-wrap gap-2"
         }
@@ -673,7 +676,15 @@ function Choices({
               (value === option ? "bg-brand text-white" : "bg-brand/5 text-brand hover:bg-brand/10")
             }
           >
-            <RadioGroupItem id={uid + "-" + index} value={option} className="sr-only" />
+            <input
+              type="radio"
+              id={uid + "-" + index}
+              name={uid}
+              value={option}
+              checked={value === option}
+              onChange={() => onChange(option)}
+              className="sr-only"
+            />
             <span lang="de" className="min-w-0 break-words hyphens-auto">
               {option}
             </span>
@@ -684,7 +695,7 @@ function Choices({
             )}
           </label>
         ))}
-      </RadioGroup>
+      </div>
       {error && (
         <p id={uid + "-error"} className="mt-2 text-sm text-red-700">
           {error}
