@@ -71,6 +71,18 @@ export function emailSections(record: EmailRecord, application: boolean) {
   ];
   if (
     !application &&
+    record.subject?.startsWith("Express-Anfrage:") &&
+    message.startsWith("EXPRESS-ANFRAGE · Projektübersicht\n") &&
+    message.includes("\n\nBeschreibung:\n")
+  ) {
+    const at = message.indexOf("\n\nBeschreibung:\n");
+    sections = [
+      { title: "Projekt im Überblick", rows: message.slice(0, at).split("\n").slice(1).map(row) },
+      { title: "Beschreibung & Wünsche", text: message.slice(at + "\n\nBeschreibung:\n".length) },
+    ];
+    notice = "Die Datenschutzhinweise zur Bearbeitung wurden bestätigt.";
+  } else if (
+    !application &&
     record.subject?.startsWith("Gartenplaner:") &&
     message.startsWith("GARTENPLANER · Projektbriefing\n")
   ) {
@@ -156,13 +168,15 @@ export function renderSubmissionEmail(
   const callback = !application && record.subject?.startsWith("Rückrufwunsch:");
   const title = application
     ? "Neue Bewerbung"
-    : record.subject?.startsWith("Rückrufwunsch:")
-      ? "Neuer Rückrufwunsch"
-      : record.subject?.startsWith("Gartenplaner:")
-        ? "Neue Gartenplanung"
-        : record.subject?.startsWith("Projektanfrage:")
-          ? "Neue Projektanfrage"
-          : "Neue Kontaktanfrage";
+    : record.subject?.startsWith("Express-Anfrage:")
+      ? "Neue Express-Anfrage"
+      : record.subject?.startsWith("Rückrufwunsch:")
+        ? "Neuer Rückrufwunsch"
+        : record.subject?.startsWith("Gartenplaner:")
+          ? "Neue Gartenplanung"
+          : record.subject?.startsWith("Projektanfrage:")
+            ? "Neue Projektanfrage"
+            : "Neue Kontaktanfrage";
   const contact: Row[] = [
     ["Name", record.name],
     ["E-Mail", record.email || "Nicht angegeben – bitte anrufen"],

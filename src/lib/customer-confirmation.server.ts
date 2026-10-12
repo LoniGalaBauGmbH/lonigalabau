@@ -32,13 +32,15 @@ export async function sendCustomerConfirmation(client: Client, table: Submission
       ? "partner"
       : application
         ? "application"
-        : record.subject?.startsWith("Rückrufwunsch:")
-          ? "callback"
-          : record.subject?.startsWith("Gartenplaner:")
-            ? "planner"
-            : record.subject?.startsWith("Projektanfrage:")
-              ? "project"
-              : "contact";
+        : record.subject?.startsWith("Express-Anfrage:")
+          ? "express"
+          : record.subject?.startsWith("Rückrufwunsch:")
+            ? "callback"
+            : record.subject?.startsWith("Gartenplaner:")
+              ? "planner"
+              : record.subject?.startsWith("Projektanfrage:")
+                ? "project"
+                : "contact";
     const siteOrigin = new URL(
       process.env.SITE_ADMIN_ORIGIN || "https://loni-galabau.serhad1999.chatgpt.site",
     ).origin;

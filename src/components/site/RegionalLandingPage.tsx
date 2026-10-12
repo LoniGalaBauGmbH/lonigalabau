@@ -4,7 +4,7 @@ import { ArrowUpRight, Check, MapPin, Phone, Images, Users, MessagesSquare } fro
 import { PageShell } from "./PageShell";
 import { RegionalProjectGallery } from "./RegionalProjectGallery";
 import { RegionalMap } from "./RegionalMap";
-import { CallbackForm } from "./CallbackForm";
+import { ExpressInquiryForm } from "./ExpressInquiryForm";
 import { RegionalTeam } from "./RegionalTeam";
 import { RegionalProof } from "./RegionalProof";
 import { ProjectImage } from "./ProjectImage";
@@ -115,7 +115,7 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
                 </div>
               </div>
               <div className="region-hero-callback">
-                <CallbackForm key={page.slug} variant="compact" />
+                <ExpressInquiryForm key={page.slug} variant="compact" />
               </div>
               <div className="region-hero-actions">
                 <a href="#anfrage" className="region-button">
@@ -145,10 +145,10 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
               <strong>Ein Team, das anpackt</strong>Menschen hinter Ihrem Projekt
             </span>
           </a>
-          <a href="#rueckruf">
+          <a href="#express-anfrage">
             <MessagesSquare aria-hidden="true" size={22} />
             <span>
-              <strong>Persönlich besprechen</strong>Rückruf zum Wunschtermin anfragen
+              <strong>Persönlich besprechen</strong>Projekt kurz vorstellen
             </span>
           </a>
         </div>
@@ -218,7 +218,7 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
               <span className="region-kicker">Ein klarer nächster Schritt</span>
               <h2 id="region-process-title">So wird aus Ihrer Idee ein Gartenprojekt.</h2>
             </div>
-            <a href="#rueckruf" className="region-text-link">
+            <a href="#express-anfrage" className="region-text-link">
               Vorhaben besprechen <ArrowUpRight aria-hidden="true" size={17} />
             </a>
           </div>
@@ -300,7 +300,7 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
                 </li>
               ))}
             </ul>
-            <a href="#rueckruf" className="region-text-link">
+            <a href="#express-anfrage" className="region-text-link">
               Ihre Idee besprechen <ArrowUpRight aria-hidden="true" size={17} />
             </a>
           </section>

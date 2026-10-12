@@ -19,6 +19,20 @@ import { serviceTopics } from "@/lib/service-topics";
 import { publicContentQuery } from "@/lib/public-content-cache.server";
 import { partnerSubmissionSchema } from "@/lib/partner-application";
 import { persistPartnerSubmission } from "@/lib/partner-submission.server";
+import { buildExpressPayload, expressSubmissionSchema } from "@/lib/express-inquiry";
+
+export const createExpressInquiry = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => {
+    const result = expressSubmissionSchema.safeParse(input);
+    if (!result.success) throw new Error(result.error.issues[0].message);
+    return result.data;
+  })
+  .handler(async ({ data }) => {
+    await enforceFormQuota(data.email, data.phone);
+    const result = await persistContactSubmission(supabaseAdmin, buildExpressPayload(data));
+    await attemptSubmissionEmails(supabaseAdmin, "contact_requests", result.id);
+    return { ok: true };
+  });
 
 export const createPartnerApplication = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => partnerSubmissionSchema.parse(input))

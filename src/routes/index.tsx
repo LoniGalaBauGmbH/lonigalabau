@@ -5,7 +5,7 @@ import { visible } from "@tanstack/react-start/hydration";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
-import { CallbackForm } from "@/components/site/CallbackForm";
+import { ExpressInquiryForm } from "@/components/site/ExpressInquiryForm";
 import { ProjectInquiryForm } from "@/components/site/ProjectInquiryForm";
 import { StatsBand } from "@/components/site/StatsBand";
 import { TeamPhoto } from "@/components/site/TeamPhoto";
@@ -181,10 +181,10 @@ function HomePage() {
             <div className="home-hero-actions flex flex-wrap items-center">
               <Link
                 to="/"
-                hash="rueckruf"
+                hash="express-anfrage"
                 className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-accent hover:text-brand transition"
               >
-                Rückruf anfragen
+                Express-Anfrage
               </Link>
               <Link
                 to="/leistungen"
@@ -331,7 +331,7 @@ function HomePage() {
         </div>
       </section>
 
-      <CallbackForm />
+      <ExpressInquiryForm />
 
       {/* PROCESS */}
       <section className="bg-brand text-brand-foreground px-6 md:px-10 py-16 md:py-20">
@@ -370,9 +370,9 @@ function HomePage() {
       <section className="px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1480px] mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-8 min-w-0">
               <span className="eyebrow eyebrow-bracket text-brand">Leistungen</span>
-              <h2 className="display text-[clamp(2.5rem,6vw,5.5rem)] mt-6 text-brand">
+              <h2 className="display text-[clamp(2rem,6vw,5.5rem)] mt-6 text-brand">
                 Gärten und Außenanlagen
               </h2>
               <p className="mt-6 max-w-2xl text-base text-foreground/75 leading-relaxed">
@@ -424,7 +424,7 @@ function HomePage() {
       {featured && (
         <section className="px-6 md:px-10 pb-24 md:pb-36">
           <div className="max-w-[1480px] mx-auto bg-brand text-brand-foreground rounded-[2.5rem] overflow-hidden grid lg:grid-cols-2">
-            <div className="p-10 md:p-16 flex flex-col gap-7 justify-center">
+            <div className="min-w-0 p-6 sm:p-10 md:p-16 flex flex-col gap-7 justify-center">
               <span className="eyebrow eyebrow-bracket text-accent">Referenz</span>
               <h2 className="display text-4xl md:text-6xl text-brand-foreground">
                 {featured.title}

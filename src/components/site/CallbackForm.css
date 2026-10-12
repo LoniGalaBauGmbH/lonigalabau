@@ -179,7 +179,8 @@
   margin-left: 0.25rem;
 }
 .callback-field input,
-.callback-field select {
+.callback-field select,
+.callback-field textarea {
   display: block;
   appearance: auto;
   box-sizing: border-box;
@@ -221,13 +222,15 @@
   justify-content: center;
   text-align: center;
 }
-.callback-field input::placeholder {
+.callback-field input::placeholder,
+.callback-field textarea::placeholder {
   color: #6b7c6e;
   font-size: 0.875rem;
   opacity: 1;
 }
 .callback-field input:focus,
-.callback-field select:focus {
+.callback-field select:focus,
+.callback-field textarea:focus {
   border-color: #1e4826;
   background: #fff;
   box-shadow: 0 0 0 3px #1e482614;
@@ -652,5 +655,96 @@
   .callback-section--compact .callback-card {
     animation: none;
     transform: none;
+  }
+}
+
+.express-section {
+  position: relative;
+}
+.express-legacy-anchor {
+  position: absolute;
+  top: 0;
+  scroll-margin-top: 7rem;
+}
+.express-kicker {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.express-intro-note {
+  display: block;
+  margin-top: 1.1rem;
+  color: #526757;
+  font-size: 0.75rem;
+}
+.express-full {
+  grid-column: 1 / -1;
+}
+.express-section .callback-field textarea {
+  height: auto;
+  min-height: 6.5rem;
+  padding: 0.75rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+.express-section .callback-field select {
+  text-overflow: ellipsis;
+  padding-right: 1.25rem;
+}
+.express-section .callback-card {
+  animation: none;
+}
+.express-section .callback-step-heading h3 {
+  scroll-margin-top: 8rem;
+}
+.express-review {
+  margin-top: 1rem;
+  border-top: 1px solid #1e48261a;
+  border-bottom: 1px solid #1e48261a;
+  font-size: 0.8125rem;
+}
+.express-review summary {
+  cursor: pointer;
+  padding: 0.875rem 0;
+  font-weight: 600;
+}
+.express-review dl {
+  display: grid;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.express-review dt {
+  color: #5c6e60;
+  margin-bottom: 0.15rem;
+}
+.express-review dd {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+.express-review button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  text-decoration: underline;
+  margin-bottom: 0.25rem;
+}
+.express-review :is(button, summary):focus-visible {
+  outline: 2px solid #1e4826;
+  outline-offset: 3px;
+}
+.express-email {
+  overflow-wrap: anywhere;
+}
+.express-attachments {
+  min-width: 0;
+}
+@media (max-width: 380px) {
+  .express-section .callback-fields {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

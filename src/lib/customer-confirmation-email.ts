@@ -6,6 +6,7 @@ export type ConfirmationKind =
   | "planner"
   | "application"
   | "callback"
+  | "express"
   | "partner";
 export type ConfirmationInput = SubmissionTicketFields & {
   id: string;
@@ -32,6 +33,7 @@ export function renderCustomerConfirmation(input: ConfirmationInput) {
   }).format(new Date(input.createdAt));
   const noun = {
     callback: "Rückrufwunsch",
+    express: "Express-Anfrage",
     contact: "Nachricht",
     project: "Projektanfrage",
     planner: "Gartenplanung",
@@ -48,11 +50,13 @@ export function renderCustomerConfirmation(input: ConfirmationInput) {
     ? "Vielen Dank, dass Sie Ihren Betrieb bei Loni GalaBau vorgestellt haben. Ihre Angaben und die eingereichten Nachweise sind bei uns eingegangen. Wir prüfen Ihre Bewerbung persönlich."
     : application
       ? "Vielen Dank für Ihr Interesse an Loni GalaBau. Wir haben Ihre Bewerbung erhalten und freuen uns darauf, Sie kennenzulernen."
-      : input.kind === "callback"
-        ? "Vielen Dank für Ihren Rückrufwunsch. Wir haben Ihre Telefonnummer und Ihren Wunschzeitpunkt erhalten. Wir versuchen, Sie zu dieser Zeit zu erreichen. Dies ist eine Eingangsbestätigung, noch keine verbindliche Terminbestätigung."
-        : input.kind === "planner"
-          ? "Vielen Dank für Ihre Gartenplanung. Ihre Angaben sind bei uns eingegangen und geben uns eine gute Grundlage, um Ihr Vorhaben mit Ihnen zu besprechen."
-          : "Vielen Dank für Ihr Vertrauen in Loni GalaBau. Ihre Nachricht ist bei uns eingegangen. Wir freuen uns darauf, mehr über Ihr Vorhaben zu erfahren.";
+      : input.kind === "express"
+        ? "Vielen Dank für Ihre Express-Anfrage. Ihre Kontaktdaten und Projektangaben sind bei uns eingegangen. Wir schauen uns Ihr Vorhaben an und melden uns persönlich bei Ihnen."
+        : input.kind === "callback"
+          ? "Vielen Dank für Ihren Rückrufwunsch. Wir haben Ihre Telefonnummer und Ihren Wunschzeitpunkt erhalten. Wir versuchen, Sie zu dieser Zeit zu erreichen. Dies ist eine Eingangsbestätigung, noch keine verbindliche Terminbestätigung."
+          : input.kind === "planner"
+            ? "Vielen Dank für Ihre Gartenplanung. Ihre Angaben sind bei uns eingegangen und geben uns eine gute Grundlage, um Ihr Vorhaben mit Ihnen zu besprechen."
+            : "Vielen Dank für Ihr Vertrauen in Loni GalaBau. Ihre Nachricht ist bei uns eingegangen. Wir freuen uns darauf, mehr über Ihr Vorhaben zu erfahren.";
   const steps = partner
     ? [
         [

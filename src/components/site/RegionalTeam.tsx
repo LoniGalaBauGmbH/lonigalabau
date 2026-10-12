@@ -38,8 +38,8 @@ export function RegionalTeam() {
             <span>Unser Firmensitz: Hattersheim am Main bei Frankfurt.</span>
           </div>
           <div className="regional-team-actions">
-            <a href="#rueckruf" className="regional-team-button">
-              Rückruf anfragen <ArrowUpRight size={18} aria-hidden="true" />
+            <a href="#express-anfrage" className="regional-team-button">
+              Express-Anfrage <ArrowUpRight size={18} aria-hidden="true" />
             </a>
             <Link to="/ueber-uns" className="regional-team-link">
               Loni GalaBau kennenlernen <ArrowUpRight size={17} aria-hidden="true" />

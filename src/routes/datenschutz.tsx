@@ -32,7 +32,7 @@ const SECTIONS = [
   [
     "anfragen",
     "Kontaktformulare und Gartenplaner",
-    "Wir verarbeiten Ihre Kontakt- und Projektdaten, Nachrichten sowie freiwillig hochgeladene Fotos und Dokumente zur Bearbeitung Ihrer Anfrage. Dazu gehören im Gartenplaner beispielsweise Grundstück, Maße, Ausstattung und Budgetrahmen. Rechtsgrundlage für vertragsbezogene Anfragen ist Art. 6 Abs. 1 lit. b DSGVO, für andere Anliegen unser berechtigtes Interesse an deren Beantwortung nach Art. 6 Abs. 1 lit. f DSGVO. Pflichtfelder sind gekennzeichnet; ohne diese Angaben können wir eine Anfrage gegebenenfalls nicht bearbeiten. Bitte laden Sie nur für das Vorhaben erforderliche Unterlagen hoch.",
+    "Wir verarbeiten Ihre Kontakt- und Projektdaten, Nachrichten sowie freiwillig hochgeladene Fotos und Dokumente zur Bearbeitung Ihrer Anfrage. In der Express-Anfrage erfassen wir Name, Telefonnummer, E-Mail-Adresse, gewünschte Leistung und Projektbeschreibung sowie auf Wunsch eine Adresse zur Angebotsvorbereitung. Dazu gehören im Gartenplaner beispielsweise Grundstück, Maße, Ausstattung und Budgetrahmen. Rechtsgrundlage für vertragsbezogene Anfragen ist Art. 6 Abs. 1 lit. b DSGVO, für andere Anliegen unser berechtigtes Interesse an deren Beantwortung nach Art. 6 Abs. 1 lit. f DSGVO. Pflichtfelder sind gekennzeichnet; ohne diese Angaben können wir eine Anfrage gegebenenfalls nicht bearbeiten. Bitte laden Sie nur für das Vorhaben erforderliche Unterlagen hoch.",
   ],
   [
     "bewerbungen",
@@ -47,7 +47,7 @@ const SECTIONS = [
   [
     "missbrauchsschutz",
     "Schutz der Formulare vor Missbrauch",
-    "Zur Begrenzung automatisierter oder wiederholter Einsendungen verarbeiten wir vorübergehend Ihre IP-Adresse und die eingegebene E-Mail-Adresse. In der Datenbank werden daraus mit einem geheimen Schlüssel abgeleitete Kennwerte gespeichert, nicht die IP-Adresse im Klartext. Die Zähler gelten für 15 Minuten; abgelaufene Einträge werden beim nächsten Formularaufruf bereinigt. Sie dienen ausschließlich dem Schutz der Formulare und des E-Mail-Versands. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Es wird kein externer CAPTCHA-Dienst eingebunden.",
+    "Zur Begrenzung automatisierter oder wiederholter Einsendungen verarbeiten wir vorübergehend Ihre IP-Adresse, die eingegebene E-Mail-Adresse und bei Formularen mit Telefonnummer auch diese Telefonnummer. In der Datenbank werden daraus mit einem geheimen Schlüssel abgeleitete Kennwerte gespeichert, nicht die IP-Adresse im Klartext. Die Zähler gelten für 15 Minuten; abgelaufene Einträge werden beim nächsten Formularaufruf bereinigt. Sie dienen ausschließlich dem Schutz der Formulare und des E-Mail-Versands. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Es wird kein externer CAPTCHA-Dienst eingebunden.",
   ],
   [
     "ausland",

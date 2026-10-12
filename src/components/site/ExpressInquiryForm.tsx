@@ -1,17 +1,11 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowLeft, ArrowRight, CalendarDays, Check, Loader2, Phone } from "lucide-react";
-import { createCallbackRequest } from "@/lib/site.functions";
+import { ArrowLeft, ArrowRight, Check, Loader2, Send } from "lucide-react";
+import { createExpressInquiry } from "@/lib/site.functions";
+import { EXPRESS_SERVICES, expressInquirySchema, validateExpressStep } from "@/lib/express-inquiry";
 import { scrollStepIntoView, useStepTransition } from "@/hooks/useStepTransition";
-import {
-  berlinClock,
-  CALLBACK_TIMES,
-  callbackDateError,
-  callbackTimeError,
-  formatCallbackDate,
-  validateCallback,
-  validateCallbackStep,
-} from "@/lib/callback-request";
+import { useContactAttachments } from "@/hooks/useContactAttachments";
+import { ContactAttachments } from "./ContactAttachments";
 import "./CallbackForm.css";
 
 const emptyForm = {
@@ -19,8 +13,9 @@ const emptyForm = {
   lastName: "",
   phone: "",
   email: "",
-  date: "",
-  time: "",
+  service: "",
+  address: "",
+  description: "",
   privacy: false,
   website: "",
 };
@@ -28,31 +23,32 @@ type Form = typeof emptyForm;
 type Errors = Partial<Record<keyof Form, string>>;
 const steps = [
   {
-    label: "Name",
-    title: "Wie dürfen wir Sie ansprechen?",
-    hint: "Der erste Schritt zu Ihrem Gartenprojekt.",
-  },
-  {
     label: "Kontakt",
     title: "Wie erreichen wir Sie?",
-    hint: "Mit E-Mail erhalten Sie auch eine Eingangsbestätigung.",
+    hint: "Damit wir Ihr Vorhaben persönlich besprechen können.",
   },
   {
-    label: "Wunschzeit",
-    title: "Wann passt es Ihnen?",
-    hint: "Mo–Fr · deutsche Zeit · mindestens 1 Stunde Vorlauf.",
+    label: "Projekt",
+    title: "Was haben Sie vor?",
+    hint: "Eine kurze Beschreibung reicht für den ersten Schritt.",
+  },
+  {
+    label: "Anhänge",
+    title: "Zeigen Sie uns Ihre Idee.",
+    hint: "Fotos, Skizzen oder Pläne helfen uns. Auch ohne Anhänge können Sie anfragen.",
   },
 ];
 
-export function CallbackForm({
+export function ExpressInquiryForm({
   variant = "default",
-  heading = "Rückruf anfragen",
+  heading = "Express-Anfrage",
 }: {
   variant?: "default" | "compact";
   heading?: string;
 } = {}) {
   const compact = variant === "compact";
-  const send = useServerFn(createCallbackRequest);
+  const send = useServerFn(createExpressInquiry);
+  const attachments = useContactAttachments();
   const uid = useId();
   const [form, setForm] = useState(emptyForm);
   const [step, setStep] = useState(0);
@@ -62,7 +58,6 @@ export function CallbackForm({
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "pending" | "success" | "error">("idle");
   const [failure, setFailure] = useState("");
-  const [now, setNow] = useState<Date | null>(null);
   const submitting = useRef(false);
   const focusError = useRef(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -70,18 +65,16 @@ export function CallbackForm({
   const id = (key: string) => `${uid}-${key}`;
 
   useEffect(() => {
-    setNow(new Date());
-    const interval = window.setInterval(() => setNow(new Date()), 60_000);
-    return () => window.clearInterval(interval);
-  }, []);
-  useEffect(() => {
     if (!focusError.current) return;
     focusError.current = false;
     formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
   }, [errors]);
   useEffect(() => {
-    if (status === "success") successRef.current?.focus({ preventScroll: true });
-  }, [status]);
+    if (status === "success") {
+      successRef.current?.focus({ preventScroll: true });
+      scrollStepIntoView(successRef.current, motion.reduced);
+    }
+  }, [status, motion.reduced]);
   useEffect(() => {
     if (!navigating.current) return;
     navigating.current = false;
@@ -89,12 +82,12 @@ export function CallbackForm({
     scrollStepIntoView(headingRef.current, motion.reduced);
   }, [step, motion.reduced]);
 
-  function go(next: number) {
+  function go(next: number, nextErrors: Errors = {}) {
     if (submitting.current || motion.isMoving.current || next === step) return;
     motion.changeStep(
       () => {
         navigating.current = true;
-        setErrors({});
+        setErrors(nextErrors);
         setStatus("idle");
         setStep(next);
       },
@@ -103,37 +96,45 @@ export function CallbackForm({
   }
 
   function update<K extends keyof Form>(key: K, value: Form[K]) {
-    setForm((current) => ({ ...current, [key]: value, ...(key === "date" ? { time: "" } : {}) }));
-    setErrors((current) => ({
-      ...current,
-      [key]: key === "date" && value ? callbackDateError(String(value)) : undefined,
-      ...(key === "date" ? { time: undefined } : {}),
-    }));
+    setForm((current) => ({ ...current, [key]: value }));
+    setErrors((current) => ({ ...current, [key]: undefined }));
     if (status === "error") setStatus("idle");
   }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitting.current || motion.isMoving.current) return;
-    const parsed = validateCallbackStep(form, step);
+    const parsed =
+      step === 2 ? expressInquirySchema.safeParse(form) : validateExpressStep(form, step);
     if (!parsed.success) {
       const next: Errors = {};
       for (const issue of parsed.error.issues) next[issue.path[0] as keyof Form] ??= issue.message;
-      focusError.current = true;
-      setErrors(next);
+      const invalidStep = ["firstName", "lastName", "phone", "email"].some(
+        (key) => next[key as keyof Form],
+      )
+        ? 0
+        : ["service", "address", "description"].some((key) => next[key as keyof Form])
+          ? 1
+          : 2;
+      if (invalidStep !== step) go(invalidStep, next);
+      else {
+        focusError.current = true;
+        setErrors(next);
+      }
       return;
     }
     if (step < 2) {
       go(step + 1);
       return;
     }
-    const complete = validateCallback(form);
-    if (!complete.success) return;
     submitting.current = true;
     setStatus("pending");
     setErrors({});
     try {
-      await send({ data: complete.data });
+      await send({
+        data: { ...expressInquirySchema.parse(form), attachments: await attachments.serialize() },
+      });
+      attachments.clear();
       setStatus("success");
     } catch (error) {
       setFailure(
@@ -163,33 +164,36 @@ export function CallbackForm({
 
   return (
     <section
-      id="rueckruf"
-      className={`callback-section${compact ? " callback-section--compact" : ""}`}
+      id="express-anfrage"
+      className={`callback-section express-section${compact ? " callback-section--compact" : ""}`}
       aria-labelledby={id("title")}
     >
+      <span id="rueckruf" className="express-legacy-anchor" aria-hidden="true" />
       <div className="callback-card">
         {compact ? (
           <div className="callback-compact-intro">
             <span className="callback-icon">
-              <Phone aria-hidden="true" size={20} />
+              <Send aria-hidden="true" size={20} />
             </span>
             <div>
               <h2 id={id("title")}>{heading}</h2>
-              <p>Persönlich und unverbindlich.</p>
+              <p>Ihr Projekt. Persönlich besprochen.</p>
             </div>
           </div>
         ) : (
           <div className="callback-intro">
             <span className="callback-icon">
-              <Phone aria-hidden="true" size={23} />
+              <Send aria-hidden="true" size={23} />
             </span>
             <div>
+              <span className="express-kicker">Express-Anfrage</span>
               <h2 id={id("title")}>
-                Ein Gespräch.
+                Ihre Idee.
                 <br />
                 <span>Ein guter Anfang.</span>
               </h2>
-              <p>Wir rufen Sie zurück. Persönlich und unverbindlich.</p>
+              <p>Erzählen Sie uns kurz von Ihrem Projekt. Wir melden uns persönlich bei Ihnen.</p>
+              <span className="express-intro-note">Unverbindlich · in drei Schritten</span>
             </div>
           </div>
         )}
@@ -199,19 +203,13 @@ export function CallbackForm({
               <Check aria-hidden="true" size={30} />
             </span>
             <h3 ref={successRef} tabIndex={-1}>
-              Ihr Rückrufwunsch ist angekommen.
+              Ihre Express-Anfrage ist angekommen.
             </h3>
-            <p>Wir versuchen, Sie zum gewünschten Zeitpunkt zu erreichen.</p>
-            <div className="callback-summary">
-              <CalendarDays aria-hidden="true" size={20} />
-              <span>
-                {formatCallbackDate(form.date)}
-                <br />
-                <strong>{form.time} Uhr · deutsche Zeit</strong>
-              </span>
-            </div>
-            {form.email && <p>Sie erhalten zusätzlich eine Eingangsbestätigung per E-Mail.</p>}
-            <p className="callback-note">Der Wunschzeitpunkt ist noch kein bestätigter Termin.</p>
+            <p>Wir schauen uns Ihr Vorhaben an und melden uns persönlich bei Ihnen.</p>
+            <p>
+              Die Eingangsbestätigung mit Ihrer Ticketnummer senden wir an{" "}
+              <strong className="express-email">{form.email}</strong>.
+            </p>
           </div>
         ) : (
           <form
@@ -219,11 +217,11 @@ export function CallbackForm({
             onSubmit={submit}
             noValidate
             className="callback-form"
-            aria-label="Rückruf anfragen"
+            aria-label="Express-Anfrage"
           >
             <fieldset disabled={pending}>
-              <legend className="sr-only">Kontaktdaten und gewünschter Rückrufzeitpunkt</legend>
-              <ol className="callback-steps" aria-label="Schritte der Rückrufanfrage">
+              <legend className="sr-only">Kontaktdaten, Projekt und Anhänge</legend>
+              <ol className="callback-steps" aria-label="Schritte der Express-Anfrage">
                 {steps.map((item, index) => (
                   <li key={item.label}>
                     <button
@@ -269,7 +267,7 @@ export function CallbackForm({
                             autoComplete="given-name"
                             maxLength={90}
                             required
-                            placeholder={compact ? "Vorname" : "Ihr Vorname"}
+                            placeholder="Ihr Vorname"
                             value={form.firstName}
                             onChange={(e) => update("firstName", e.target.value)}
                           />
@@ -282,16 +280,12 @@ export function CallbackForm({
                             autoComplete="family-name"
                             maxLength={90}
                             required
-                            placeholder={compact ? "Nachname" : "Ihr Nachname"}
+                            placeholder="Ihr Nachname"
                             value={form.lastName}
                             onChange={(e) => update("lastName", e.target.value)}
                           />
                           {error("lastName")}
                         </div>
-                      </>
-                    )}
-                    {step === 1 && (
-                      <>
                         <div className="callback-field">
                           <label htmlFor={id("phone")}>Telefonnummer</label>
                           <input
@@ -308,15 +302,14 @@ export function CallbackForm({
                           {error("phone")}
                         </div>
                         <div className="callback-field">
-                          <label htmlFor={id("email")}>
-                            E-Mail <span>optional</span>
-                          </label>
+                          <label htmlFor={id("email")}>E-Mail</label>
                           <input
                             {...field("email")}
                             type="email"
                             autoComplete="email"
                             inputMode="email"
                             maxLength={320}
+                            required
                             placeholder="Für Ihre Eingangsbestätigung"
                             value={form.email}
                             onChange={(e) => update("email", e.target.value)}
@@ -325,49 +318,113 @@ export function CallbackForm({
                         </div>
                       </>
                     )}
-                    {step === 2 && (
+                    {step === 1 && (
                       <>
-                        <div className="callback-field">
-                          <label htmlFor={id("date")}>Wunschdatum</label>
-                          <input
-                            {...field("date")}
-                            type="date"
-                            min={now ? berlinClock(now).date : undefined}
-                            required
-                            value={form.date}
-                            onChange={(e) => update("date", e.target.value)}
-                          />
-                          {error("date")}
-                        </div>
-                        <div className="callback-field">
-                          <label htmlFor={id("time")}>Wunschuhrzeit</label>
+                        <div className="callback-field express-full">
+                          <label htmlFor={id("service")}>Gewünschte Leistung</label>
                           <select
-                            {...field("time")}
+                            {...field("service")}
                             required
-                            value={form.time}
-                            onChange={(e) => update("time", e.target.value)}
+                            value={form.service}
+                            onChange={(e) => update("service", e.target.value)}
                           >
-                            <option value="">Uhrzeit wählen</option>
-                            {CALLBACK_TIMES.map((time) => (
-                              <option
-                                key={time}
-                                value={time}
-                                disabled={
-                                  !!now &&
-                                  !!form.date &&
-                                  (!!callbackDateError(form.date, now) ||
-                                    !!callbackTimeError(form.date, time, now))
-                                }
-                              >
-                                {time} Uhr
+                            <option value="">Bitte auswählen</option>
+                            {EXPRESS_SERVICES.map((service) => (
+                              <option key={service} value={service}>
+                                {service}
                               </option>
                             ))}
                           </select>
-                          {error("time")}
+                          {error("service")}
+                        </div>
+                        <div className="callback-field express-full">
+                          <label htmlFor={id("description")}>Was soll gemacht werden?</label>
+                          <textarea
+                            {...field("description")}
+                            required
+                            rows={3}
+                            maxLength={3000}
+                            placeholder="Zum Beispiel: Wir möchten unsere Terrasse neu pflastern lassen, etwa 30 m² …"
+                            value={form.description}
+                            onChange={(e) => update("description", e.target.value)}
+                          />
+                          {error("description")}
+                        </div>
+                        <div className="callback-field express-full">
+                          <label htmlFor={id("address")}>
+                            Adresse für das Angebot <span>optional</span>
+                          </label>
+                          <input
+                            {...field("address")}
+                            maxLength={300}
+                            autoComplete="off"
+                            placeholder="Straße, Hausnummer, PLZ und Ort"
+                            value={form.address}
+                            onChange={(e) => update("address", e.target.value)}
+                          />
+                          {error("address")}
                         </div>
                       </>
                     )}
                   </div>
+                  {step === 2 && (
+                    <>
+                      <div className="express-attachments">
+                        <ContactAttachments attachments={attachments} disabled={pending} />
+                      </div>
+                      <details className="express-review">
+                        <summary>Ihre Angaben prüfen</summary>
+                        <dl>
+                          <div>
+                            <dt>Kontakt</dt>
+                            <dd>
+                              {form.firstName} {form.lastName}
+                              <br />
+                              {form.phone}
+                              <br />
+                              {form.email}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Leistung</dt>
+                            <dd>{form.service}</dd>
+                          </div>
+                          {form.address && (
+                            <div>
+                              <dt>Adresse</dt>
+                              <dd>{form.address}</dd>
+                            </div>
+                          )}
+                          <div>
+                            <dt>Vorhaben</dt>
+                            <dd>{form.description}</dd>
+                          </div>
+                        </dl>
+                        <button type="button" onClick={() => go(0)}>
+                          Angaben bearbeiten <ArrowLeft size={14} aria-hidden="true" />
+                        </button>
+                      </details>
+                      <div className="callback-consent-wrap">
+                        <label className="callback-consent">
+                          <input
+                            {...field("privacy")}
+                            type="checkbox"
+                            checked={form.privacy}
+                            required
+                            onChange={(e) => update("privacy", e.target.checked)}
+                          />
+                          <span>
+                            Ich habe die{" "}
+                            <a href="/datenschutz" target="_blank" rel="noopener noreferrer">
+                              Datenschutzhinweise
+                            </a>{" "}
+                            gelesen und bitte um Kontakt zu meiner Anfrage.
+                          </span>
+                        </label>
+                        {error("privacy")}
+                      </div>
+                    </>
+                  )}
                   <div className="callback-honey" aria-hidden="true">
                     <label htmlFor={id("website")}>Website</label>
                     <input
@@ -379,31 +436,6 @@ export function CallbackForm({
                       onChange={(e) => update("website", e.target.value)}
                     />
                   </div>
-                  {step === 2 && (
-                    <div className="callback-consent-wrap">
-                      <p className="callback-note">
-                        Wir berücksichtigen Ihren Wunsch. Die genaue Uhrzeit ist noch nicht
-                        bestätigt.
-                      </p>
-                      <label className="callback-consent">
-                        <input
-                          {...field("privacy")}
-                          type="checkbox"
-                          checked={form.privacy}
-                          required
-                          onChange={(e) => update("privacy", e.target.checked)}
-                        />
-                        <span>
-                          Ich habe die{" "}
-                          <a href="/datenschutz" target="_blank" rel="noopener noreferrer">
-                            Datenschutzhinweise
-                          </a>{" "}
-                          gelesen und bitte um einen Rückruf.
-                        </span>
-                      </label>
-                      {error("privacy")}
-                    </div>
-                  )}
                   <div className="callback-bottom">
                     {step > 0 ? (
                       <button type="button" className="callback-back" onClick={() => go(step - 1)}>
@@ -411,15 +443,15 @@ export function CallbackForm({
                         Zurück
                       </button>
                     ) : (
-                      <span className="callback-small-note">In drei kurzen Schritten.</span>
+                      <span className="callback-small-note">Persönlich & unverbindlich.</span>
                     )}
                     <button type="submit" className="callback-submit">
                       {pending ? (
                         <Loader2 size={18} className="animate-spin" aria-hidden="true" />
                       ) : step === 2 ? (
-                        <Phone size={18} aria-hidden="true" />
+                        <Send size={18} aria-hidden="true" />
                       ) : null}
-                      {pending ? "Wird gesendet …" : step === 2 ? "Rückruf anfragen" : "Weiter"}
+                      {pending ? "Wird gesendet …" : step === 2 ? "Anfrage senden" : "Weiter"}
                       {step < 2 && <ArrowRight size={18} aria-hidden="true" />}
                     </button>
                   </div>

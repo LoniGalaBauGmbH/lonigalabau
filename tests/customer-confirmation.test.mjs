@@ -115,6 +115,7 @@ function harness(config = {}) {
 test("all form variants produce branded receipts, stable tickets, embedded photos and plain text", async () => {
   for (const [table, subject, noun] of [
     ["contact_requests", "Kontakt", "Nachricht"],
+    ["contact_requests", "Express-Anfrage: Pflasterarbeiten", "Express-Anfrage"],
     ["contact_requests", "Rückrufwunsch: Fr., 02.10.2026 · 10:30 Uhr", "Rückrufwunsch"],
     ["contact_requests", "Projektanfrage: Terrasse", "Projektanfrage"],
     ["contact_requests", "Gartenplaner: Pflaster", "Gartenplanung"],
@@ -148,6 +149,10 @@ test("all form variants produce branded receipts, stable tickets, embedded photo
       assert.ok(body.attachments.some((a) => a.content_id === cid));
     }
     assert.equal(body.attachments.length, 3, "no private attachments forwarded");
+    if (subject.startsWith("Express-Anfrage:")) {
+      assert.ok(body.text.includes("Projektangaben"));
+      assert.ok(!body.text.includes("Wunschzeitpunkt"));
+    }
     assert.equal(body.headers["Auto-Submitted"], "auto-generated");
     assert.ok(body.html.length < 102400, "avoid Gmail clipping");
     assert.equal(h.record.customer_confirmation_email_id, "receipt-id");
@@ -247,11 +252,11 @@ test("expired uncertain deliveries are not replayed after the provider deduplica
 });
 test("public routes send receipts only after successful persistence and retry queue includes customer failures", () => {
   const source = fs.readFileSync(new URL("../src/lib/site.functions.ts", import.meta.url), "utf8");
-  assert.equal((source.match(/await attemptSubmissionEmails/g) || []).length, 5);
+  assert.equal((source.match(/await attemptSubmissionEmails/g) || []).length, 6);
   for (const block of source
     .split("export const ")
     .filter((b) =>
-      /createContactRequest|createGardenPlannerRequest|createApplication|createPartnerApplication/.test(
+      /createExpressInquiry|createContactRequest|createGardenPlannerRequest|createApplication|createPartnerApplication/.test(
         b,
       ),
     )) {
