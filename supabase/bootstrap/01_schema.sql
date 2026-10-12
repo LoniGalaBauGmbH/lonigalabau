@@ -89,7 +89,7 @@ CREATE TABLE public.contact_requests (
   phone text CHECK (length(phone) <= 50),
   subject text CHECK (length(subject) <= 200),
   message text NOT NULL CHECK (length(message) BETWEEN 1 AND 5000),
-  image_paths text[] NOT NULL DEFAULT '{}' CHECK (cardinality(image_paths) <= 3),
+  image_paths text[] NOT NULL DEFAULT '{}' CHECK (cardinality(image_paths) <= 10),
   status text NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'handled', 'archived')),
   created_at timestamptz NOT NULL DEFAULT now()
 );

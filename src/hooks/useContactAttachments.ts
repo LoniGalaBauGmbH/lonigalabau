@@ -20,7 +20,11 @@ export function useContactAttachments() {
   );
 
   function add(files: File[]) {
-    const problem = validateContactFiles(files, current.current.length);
+    const problem = validateContactFiles(
+      files,
+      current.current.length,
+      current.current.reduce((sum, item) => sum + item.file.size, 0),
+    );
     if (problem) {
       setError(problem);
       return;

@@ -11,7 +11,7 @@ import { persistContactSubmission } from "@/lib/contact-submission.server";
 import { persistApplicationSubmission } from "@/lib/application-submission.server";
 import { attemptSubmissionEmails } from "@/lib/customer-confirmation.server";
 import { buildPlannerPayload, plannerStateSchema } from "@/lib/garden-planner";
-import { contactAttachmentSchema, MAX_CONTACT_FILES } from "@/lib/contact-attachments";
+import { contactAttachmentsSchema } from "@/lib/contact-attachments";
 import { enforceFormQuota } from "@/lib/form-quota.server";
 import { validateCallback } from "@/lib/callback-request";
 import { persistCallbackSubmission } from "@/lib/callback-submission.server";
@@ -279,7 +279,7 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
     z
       .object({
         plan: plannerStateSchema,
-        attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
+        attachments: contactAttachmentsSchema.default([]),
       })
       .parse(data),
   )

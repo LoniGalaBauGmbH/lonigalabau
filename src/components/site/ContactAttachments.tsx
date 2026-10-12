@@ -62,11 +62,11 @@ export function ContactAttachments({
           className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-default disabled:opacity-50"
         >
           <Paperclip className="size-5 shrink-0" aria-hidden="true" />
-          {full ? "3 Dateien ausgewählt" : "Fotos oder PDFs auswählen"}
+          {full ? `${MAX_CONTACT_FILES} Dateien ausgewählt` : "Fotos oder PDFs auswählen"}
         </button>
         <p id={id + "-help"} className="mt-3 text-sm leading-relaxed text-brand/80">
           <span className="hidden sm:inline">Auch per Drag & Drop. </span>JPG, PNG, WebP oder PDF ·
-          bis zu 3 Dateien · jeweils max. 5 MB.
+          bis zu {MAX_CONTACT_FILES} Dateien · jeweils max. 5 MB · zusammen max. 20 MB.
         </p>
         <p className="mt-2 text-xs leading-relaxed text-brand/80">
           Zum Beispiel Gartenfotos, Skizzen oder Pläne. Die Dateien werden erst mit Ihrer Anfrage
@@ -74,7 +74,20 @@ export function ContactAttachments({
         </p>
       </div>
       {attachments.items.length > 0 && (
-        <ul aria-label="Ausgewählte Anhänge" className="mt-3 space-y-2">
+        <p className="mt-3 text-xs text-brand/80" aria-live="polite">
+          {(
+            attachments.items.reduce((sum, item) => sum + item.file.size, 0) /
+            1024 /
+            1024
+          ).toLocaleString("de-DE", { maximumFractionDigits: 1 })}{" "}
+          von 20 MB ausgewählt
+        </p>
+      )}
+      {attachments.items.length > 0 && (
+        <ul
+          aria-label="Ausgewählte Anhänge"
+          className="mt-3 max-h-80 space-y-2 overflow-y-auto overscroll-contain pr-1"
+        >
           {attachments.items.map((item) => (
             <li
               key={item.id}

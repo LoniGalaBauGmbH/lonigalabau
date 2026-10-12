@@ -142,7 +142,7 @@ test("a public submission cannot claim another request's existing private attach
 test("limits and formats are enforced in both the picker and submission schema", () => {
   const file = { name: "plan.pdf", type: "application/pdf", size: 100 };
   assert.equal(validateContactFiles([file], 0), "");
-  assert.match(validateContactFiles([file], 3), /bis zu 3/);
+  assert.match(validateContactFiles([file], 10), /bis zu 10/);
   assert.match(validateContactFiles([{ ...file, size: MAX_CONTACT_FILE_BYTES + 1 }], 0), /5 MB/);
   assert.match(
     validateContactFiles([{ ...file, name: "script.svg", type: "image/svg+xml" }], 0),
@@ -150,7 +150,7 @@ test("limits and formats are enforced in both the picker and submission schema",
   );
   assert.match(validateContactFiles([{ ...file, size: 0 }], 0), /Leere/);
   assert.equal(
-    contactSubmissionSchema.safeParse({ ...lead, attachments: Array(4).fill(attachment()) })
+    contactSubmissionSchema.safeParse({ ...lead, attachments: Array(11).fill(attachment()) })
       .success,
     false,
   );
@@ -174,4 +174,42 @@ test("oversize content is rejected on the server even if browser checks are bypa
     }),
   );
   assert.equal(h.uploads.length + h.records.length, 0);
+});
+
+test("ten attachments and exactly 20 MiB persist, but a one-byte total overflow writes nothing", async () => {
+  const bytes = Buffer.alloc(2 * 1024 * 1024);
+  png.copy(bytes);
+  const files = Array.from({ length: 10 }, (_, i) =>
+    attachment({ name: `Foto-${i}.png`, base64: bytes.toString("base64") }),
+  );
+  const good = harness();
+  await persistContactSubmission(good.client, { ...lead, attachments: files });
+  assert.equal(good.uploads.length, 10);
+  assert.equal(good.records[0].image_paths.length, 10);
+  const bad = harness();
+  const oversized = [...files];
+  oversized[9] = attachment({
+    base64: Buffer.concat([bytes, Buffer.from([0])]).toString("base64"),
+  });
+  await assert.rejects(
+    () => persistContactSubmission(bad.client, { ...lead, attachments: oversized }),
+    /zusammen maximal 20 MB/,
+  );
+  assert.equal(bad.uploads.length + bad.records.length, 0);
+  await assert.rejects(
+    () => persistContactSubmission(bad.client, { ...lead, attachments: [...files, attachment()] }),
+    /höchstens 10/,
+  );
+  assert.equal(bad.uploads.length + bad.records.length, 0);
+});
+
+test("the picker counts total bytes across separate selections and allows removal to free capacity", () => {
+  const file = { name: "Plan.pdf", type: "application/pdf", size: 2 * 1024 * 1024 };
+  assert.equal(validateContactFiles([file], 9, 18 * 1024 * 1024), "");
+  assert.match(
+    validateContactFiles([{ ...file, size: file.size + 1 }], 9, 18 * 1024 * 1024),
+    /zusammen maximal 20 MB/,
+  );
+  assert.equal(validateContactFiles([{ ...file, size: file.size + 1 }], 8, 16 * 1024 * 1024), "");
+  assert.equal(validateContactFiles(Array(10).fill({ ...file, size: 100 }), 0), "");
 });

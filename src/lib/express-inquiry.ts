@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { contactAttachmentSchema, MAX_CONTACT_FILES } from "./contact-attachments";
+import { contactAttachmentsSchema } from "./contact-attachments";
 
 export const EXPRESS_SERVICES = [
   "Gartengestaltung",
@@ -53,7 +53,7 @@ const consent = z.object({
 export const expressInquirySchema = contact.merge(project).merge(consent);
 export const expressSubmissionSchema = expressInquirySchema
   .extend({
-    attachments: z.array(contactAttachmentSchema).max(MAX_CONTACT_FILES).default([]),
+    attachments: contactAttachmentsSchema.default([]),
   })
   .strict();
 

@@ -135,7 +135,7 @@ test("express maps all fields and valid attachments into a compatible bounded co
 test("express rejects claimed existing files, unsupported types and excess files", () => {
   for (const extra of [
     { image_paths: ["private.pdf"] },
-    { attachments: Array(4).fill(pdf) },
+    { attachments: Array(11).fill(pdf) },
     { attachments: [{ ...pdf, contentType: "image/svg+xml" }] },
     { attachments: [{ ...pdf, base64: "" }] },
   ]) {

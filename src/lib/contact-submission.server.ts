@@ -1,7 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { contactSubmissionSchema } from "./validators";
-import { MAX_CONTACT_FILE_BYTES } from "./contact-attachments";
+import { MAX_CONTACT_FILE_BYTES, MAX_CONTACT_TOTAL_BYTES } from "./contact-attachments";
 import { preparePublicUpload } from "./public-upload.server";
 
 export async function persistContactSubmission(
@@ -16,6 +16,8 @@ export async function persistContactSubmission(
       throw new Error("Anhänge dürfen maximal 5 MB groß sein.");
     return { ...file, name: attachment.name };
   });
+  if (files.reduce((sum, file) => sum + file.buffer.length, 0) > MAX_CONTACT_TOTAL_BYTES)
+    throw new Error("Die Anhänge dürfen zusammen maximal 20 MB groß sein.");
   const bucket = client.storage.from("configurator-images");
   const uploaded: string[] = [];
   const id = randomUUID();

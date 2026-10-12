@@ -221,3 +221,21 @@ Wunschzeiten sind ausdrücklich keine bestätigten Termine.
 Prüfungen: isolierte Migration mit bestehendem Datensatz, NULL-/Telefon-CHECKs,
 zurückgerollter echter Service-Role-Insert sowie automatisierte Tests für
 Validierung, Speicherung, Mailweitergabe und Quoten. Keine Testmail versandt.
+## Zehn Kontaktanhänge (12.10.2026)
+
+`updates/20261012072829_contact_ten_attachments.sql` wurde als Cloud-Migration
+`contact_ten_attachments` im Projekt `fvctfguvupdcscthrxeb` angewandt.
+`contact_requests_image_paths_check` erlaubt nun bis zu zehn private Dateipfade.
+Eine zurückgerollte Transaktion bestätigte: zehn angenommen, elf abgelehnt.
+
+Express-, Kontakt-, Projekt- und Gartenplaner-Anfragen erlauben zehn JPG-/PNG-/WebP-/PDF-Dateien,
+jeweils höchstens 5 MiB und zusammen höchstens 20 MiB. Browser und Server prüfen
+das Gesamtvolumen; der Server prüft anschließend tatsächliche Dateigrößen und Signaturen
+vor dem ersten Upload. Private Bucket-, RLS- und Adminregeln bleiben erhalten.
+Der Bucket behält sein technisches Einzellimit von 10 MiB für bestehende Verwendungswege.
+Partner- und Stellenbewerbungen verwenden weiterhin ihre eigenen Dokumentregeln.
+
+Der Security Advisor zeigte nach der Migration ausschließlich die bereits dokumentierten
+Informationshinweise für serverseitige Tabellen ohne Browser-Policy und den bestehenden
+[Hinweis zum deaktivierten Schutz vor kompromittierten Passwörtern](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection).
+Details und Versandprüfung: `docs/Dateiuploads-2026-10-12.md`.
