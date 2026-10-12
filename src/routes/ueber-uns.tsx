@@ -171,6 +171,38 @@ function AboutPage() {
         </div>
       </section>
 
+      <section className="px-6 md:px-10 py-14 md:py-20 bg-background">
+        <div className="max-w-[1480px] mx-auto grid md:grid-cols-[auto_1fr] items-center gap-8 md:gap-12">
+          <img
+            src={publicImageUrl("/images/partner/gartenverband.svg")}
+            alt="Verbandszeichen der Landschaftsgärtner"
+            width={100}
+            height={133}
+            loading="lazy"
+            decoding="async"
+            className="w-[100px] h-auto"
+          />
+          <div className="max-w-3xl">
+            <span className="eyebrow text-brand/75">Ordentliches Mitglied</span>
+            <h2 className="display mt-4 text-[clamp(1.75rem,3.5vw,3rem)] text-brand">
+              Im Fachverband verbunden.
+            </h2>
+            <p className="mt-5 text-foreground/80 leading-relaxed">
+              Loni GalaBau ist ordentliches Mitglied im Fachverband Garten-, Landschafts- und
+              Sportplatzbau Hessen-Thüringen e. V. Erfahren Sie, welche fachlichen Anforderungen zur
+              Aufnahme gehören und wie wir unseren Anspruch in Ihrem Projekt umsetzen.
+            </p>
+            <Link
+              to="/fachverband-mitgliedschaft"
+              className="mt-6 inline-flex items-center gap-2 text-brand font-semibold underline underline-offset-4"
+            >
+              Unsere Mitgliedschaft kennenlernen{" "}
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CRAFT */}
       <section className="px-6 md:px-10 py-16 md:py-24 bg-surface">
         <div className="max-w-[1480px] mx-auto">

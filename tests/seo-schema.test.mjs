@@ -42,6 +42,13 @@ test("public business identity keeps one canonical identifier and the confirmed 
   assert.equal(organization.telephone, "+49-6190-9266134");
   assert.equal(organization.aggregateRating, undefined);
   assert.equal(organization.sameAs, undefined);
+  assert.equal(organization.memberOf["@type"], "Organization");
+  assert.equal(organization.memberOf.url, "https://www.galabau-ht.de/");
+  assert.equal(
+    organization.memberOf.name,
+    "Fachverband Garten-, Landschafts- und Sportplatzbau Hessen-Thüringen e. V.",
+  );
+  assert.equal(organization.hasCredential, undefined);
 });
 
 test("article author, publisher and website point to the same company", () => {

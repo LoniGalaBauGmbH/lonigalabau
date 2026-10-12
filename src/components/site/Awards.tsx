@@ -1,4 +1,15 @@
-const PARTNERS = [
+import { Link } from "@tanstack/react-router";
+import { publicImageUrl } from "@/lib/public-image-url";
+
+type Partner = {
+  src: string;
+  name: string;
+  label: string;
+  detail: string;
+  to?: "/fachverband-mitgliedschaft";
+};
+
+const PARTNERS: Partner[] = [
   {
     src: "/images/partner/creditreform.svg",
     name: "Creditreform",
@@ -14,8 +25,9 @@ const PARTNERS = [
   {
     src: "/images/partner/gartenverband.svg",
     name: "Fachverband Garten-, Landschafts- und Sportplatzbau",
-    label: "Partner im Fachverband",
-    detail: "Garten-, Landschafts- und Sportplatzbau",
+    label: "Ordentliches Mitglied",
+    detail: "Fachverband Garten-, Landschafts- und Sportplatzbau Hessen-Thüringen",
+    to: "/fachverband-mitgliedschaft",
   },
   {
     src: "/images/partner/zertifizierung-bau.svg",
@@ -39,27 +51,51 @@ export function Awards() {
           </h2>
         </div>
         <div className="grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
-          {PARTNERS.map((p) => (
-            <div key={p.src} className="text-center flex flex-col items-center">
-              <div className="h-32 w-full flex items-center justify-center mb-6">
-                <img
-                  src={p.src}
-                  alt={p.name}
-                  width={240}
-                  height={96}
-                  loading="lazy"
-                  className={
-                    "w-auto max-w-[min(240px,100%)] object-contain " +
-                    (p.src.endsWith("zertifizierung-bau.svg") ? "h-32" : "h-24")
-                  }
-                />
+          {PARTNERS.map((p) => {
+            const content = (
+              <>
+                <div className="h-32 w-full flex items-center justify-center mb-6">
+                  <img
+                    src={publicImageUrl(p.src)}
+                    alt={p.name}
+                    width={p.to ? 100 : 240}
+                    height={p.to ? 133 : 96}
+                    loading="lazy"
+                    className={
+                      "w-auto max-w-[min(240px,100%)] object-contain " +
+                      (p.src.endsWith("zertifizierung-bau.svg") ? "h-32" : "h-24")
+                    }
+                  />
+                </div>
+                <p className="font-display font-bold text-brand">{p.label}</p>
+                <p className="mt-2 text-sm text-foreground/75 max-w-[260px] leading-relaxed">
+                  {p.detail}
+                </p>
+                {p.to && (
+                  <span className="mt-4 text-sm text-brand font-semibold underline underline-offset-4">
+                    Mitgliedschaft kennenlernen →
+                  </span>
+                )}
+              </>
+            );
+            const className = "text-center flex flex-col items-center";
+            return p.to ? (
+              <Link
+                key={p.src}
+                to={p.to}
+                className={
+                  className +
+                  " rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                }
+              >
+                {content}
+              </Link>
+            ) : (
+              <div key={p.src} className={className}>
+                {content}
               </div>
-              <p className="font-display font-bold text-brand">{p.label}</p>
-              <p className="mt-2 text-sm text-foreground/75 max-w-[260px] leading-relaxed">
-                {p.detail}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

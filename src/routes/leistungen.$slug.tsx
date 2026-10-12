@@ -430,10 +430,13 @@ function ServicePage({
                   <CheckCircle2 className="h-4 w-4 text-accent" />
                   <span>Details vorab abstimmen</span>
                 </div>
-                <div className="flex items-center gap-2.5">
+                <Link
+                  to="/fachverband-mitgliedschaft"
+                  className="flex items-center gap-2.5 underline underline-offset-4 hover:text-white"
+                >
                   <CheckCircle2 className="h-4 w-4 text-accent" />
-                  <span>Partner im Fachverband</span>
-                </div>
+                  <span>Mitglied im Fachverband</span>
+                </Link>
               </div>
             </div>
 

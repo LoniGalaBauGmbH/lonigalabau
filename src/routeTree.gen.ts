@@ -28,6 +28,7 @@ import { Route as GartenbauFrankfurtHoechstRouteImport } from './routes/gartenba
 import { Route as GartenbauFloersheimRouteImport } from './routes/gartenbau-floersheim'
 import { Route as GartenbauEschbornRouteImport } from './routes/gartenbau-eschborn'
 import { Route as GartenbauBadSodenRouteImport } from './routes/gartenbau-bad-soden'
+import { Route as FachverbandMitgliedschaftRouteImport } from './routes/fachverband-mitgliedschaft'
 import { Route as EinsatzgebieteRouteImport } from './routes/einsatzgebiete'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
@@ -155,6 +156,12 @@ const GartenbauBadSodenRoute = GartenbauBadSodenRouteImport.update({
   path: '/gartenbau-bad-soden',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FachverbandMitgliedschaftRoute =
+  FachverbandMitgliedschaftRouteImport.update({
+    id: '/fachverband-mitgliedschaft',
+    path: '/fachverband-mitgliedschaft',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EinsatzgebieteRoute = EinsatzgebieteRouteImport.update({
   id: '/einsatzgebiete',
   path: '/einsatzgebiete',
@@ -310,6 +317,7 @@ export interface FileRoutesByFullPath {
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
   '/einsatzgebiete': typeof EinsatzgebieteRoute
+  '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
@@ -358,6 +366,7 @@ export interface FileRoutesByTo {
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
   '/einsatzgebiete': typeof EinsatzgebieteRoute
+  '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
@@ -408,6 +417,7 @@ export interface FileRoutesById {
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
   '/einsatzgebiete': typeof EinsatzgebieteRoute
+  '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
@@ -458,6 +468,7 @@ export interface FileRouteTypes {
     | '/datenschutz'
     | '/downloads'
     | '/einsatzgebiete'
+    | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-soden'
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
@@ -506,6 +517,7 @@ export interface FileRouteTypes {
     | '/datenschutz'
     | '/downloads'
     | '/einsatzgebiete'
+    | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-soden'
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
@@ -555,6 +567,7 @@ export interface FileRouteTypes {
     | '/datenschutz'
     | '/downloads'
     | '/einsatzgebiete'
+    | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-soden'
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
@@ -605,6 +618,7 @@ export interface RootRouteChildren {
   DatenschutzRoute: typeof DatenschutzRoute
   DownloadsRoute: typeof DownloadsRoute
   EinsatzgebieteRoute: typeof EinsatzgebieteRoute
+  FachverbandMitgliedschaftRoute: typeof FachverbandMitgliedschaftRoute
   GartenbauBadSodenRoute: typeof GartenbauBadSodenRoute
   GartenbauEschbornRoute: typeof GartenbauEschbornRoute
   GartenbauFloersheimRoute: typeof GartenbauFloersheimRoute
@@ -770,6 +784,13 @@ declare module '@tanstack/react-router' {
       path: '/gartenbau-bad-soden'
       fullPath: '/gartenbau-bad-soden'
       preLoaderRoute: typeof GartenbauBadSodenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fachverband-mitgliedschaft': {
+      id: '/fachverband-mitgliedschaft'
+      path: '/fachverband-mitgliedschaft'
+      fullPath: '/fachverband-mitgliedschaft'
+      preLoaderRoute: typeof FachverbandMitgliedschaftRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/einsatzgebiete': {
@@ -1010,6 +1031,7 @@ const rootRouteChildren: RootRouteChildren = {
   DatenschutzRoute: DatenschutzRoute,
   DownloadsRoute: DownloadsRoute,
   EinsatzgebieteRoute: EinsatzgebieteRoute,
+  FachverbandMitgliedschaftRoute: FachverbandMitgliedschaftRoute,
   GartenbauBadSodenRoute: GartenbauBadSodenRoute,
   GartenbauEschbornRoute: GartenbauEschbornRoute,
   GartenbauFloersheimRoute: GartenbauFloersheimRoute,

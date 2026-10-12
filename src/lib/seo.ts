@@ -20,6 +20,7 @@ export const LEGACY_REDIRECTS: Record<string, string> = {
 export const STATIC_PATHS = [
   "/",
   "/ueber-uns",
+  "/fachverband-mitgliedschaft",
   "/leistungen",
   "/projekte",
   "/einsatzgebiete",
@@ -90,6 +91,12 @@ export function organizationSchema() {
       },
     ],
     areaServed: { "@type": "Country", name: "Deutschland" },
+    memberOf: {
+      "@type": "Organization",
+      "@id": "https://www.galabau-ht.de/",
+      name: "Fachverband Garten-, Landschafts- und Sportplatzbau Hessen-Thüringen e. V.",
+      url: "https://www.galabau-ht.de/",
+    },
   };
 }
 

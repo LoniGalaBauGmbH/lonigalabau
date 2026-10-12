@@ -158,24 +158,32 @@ export function Footer({ showContactCta = true }: { showContactCta?: boolean }) 
               </a>
             </div>
 
-            <div className="flex items-center gap-3 pt-4 border-t border-brand-foreground/10">
-              <img
-                src={logoVerband}
-                alt="Fachverband Garten-, Landschafts- und Sportplatzbau"
-                width={100}
-                height={133}
-                loading="lazy"
-                decoding="async"
-                className="h-[52px] w-auto shrink-0 brightness-0 invert"
-              />
-              <p className="text-[11px] opacity-60 leading-snug">
-                Partner im Fachverband
+            <Link
+              to="/fachverband-mitgliedschaft"
+              className="group flex items-center gap-3 pt-4 border-t border-brand-foreground/10 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            >
+              <span className="shrink-0 rounded bg-white p-2">
+                <img
+                  src={logoVerband}
+                  alt="Verbandszeichen der Landschaftsgärtner"
+                  width={100}
+                  height={133}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-[52px] w-auto"
+                />
+              </span>
+              <span className="text-[11px] text-brand-foreground/80 leading-snug">
+                Ordentliches Mitglied
                 <br />
                 Garten-, Landschafts- und
                 <br />
                 Sportplatzbau Hessen-Thüringen
-              </p>
-            </div>
+                <span className="block mt-2 text-accent underline underline-offset-4 group-hover:text-white">
+                  Mitgliedschaft kennenlernen →
+                </span>
+              </span>
+            </Link>
           </div>
         </div>
       </div>
