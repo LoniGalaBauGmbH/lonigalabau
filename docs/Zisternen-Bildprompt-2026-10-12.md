@@ -4,7 +4,11 @@ Erstellt am 12.10.2026 mit dem integrierten Bildgenerierungswerkzeug, ohne CLI/A
 Motiv: gestalteter Garten mit schematischem Erdquerschnitt und Regenwasserspeicher.
 Die Illustration ist ausdrücklich kein reales Loni-Referenzfoto oder Ausführungsplan.
 
-Fachliche Sichtprüfung: dichter Tank, maßvolle Bettung, beruhigter Zulauf,
+**Korrektur vom 13.10.2026:** Der Nutzer erkannte einen widersprüchlichen Schlauchverlauf.
+Die folgende historische Sichtprüfung war dafür zu großzügig. Das Motiv wird durch
+die korrigierte Version ersetzt; siehe `Zisternen-Bildkorrektur-2026-10-13.md`.
+
+Historische Sichtprüfung: dichter Tank, maßvolle Bettung, beruhigter Zulauf,
 Wasserstand unter Überlauf, Pumpentechnik und seitlicher Kontrollbereich plausibel.
 Entnahme-/Pumpendarstellung bleibt schematisch; nicht als eindeutig dargestellte
 schwimmende Entnahme beschriften. Abmessungen, Anschlüsse und Rückstauschutz sind

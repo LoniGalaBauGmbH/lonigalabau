@@ -10,10 +10,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { canonicalUrl, publicPageSchema, safeJsonLd } from "@/lib/seo";
+import { publicImageUrl } from "@/lib/public-image-url";
 
 const PATH = "/zisterne-einbauen-lassen";
 const PREVIEW_IMAGE =
-  "https://www.loni-galabau.de/__public-assets/images/zisternen/zisterne-garten-schnitt-ki-1200.webp";
+  "https://www.loni-galabau.de/__public-assets/images/zisternen/zisterne-garten-schnitt-ki-v2-1200.webp";
 const IMAGE_DESCRIPTION =
   "KI-generierte Schnittillustration: gestalteter Garten mit unterirdischer Regenwasserzisterne und technischen Anschlüssen.";
 
@@ -29,6 +30,42 @@ const SYSTEM = [
   {
     title: "Den Überlauf mitplanen",
     text: "Auch eine volle Zisterne braucht einen geklärten Wasserweg. Ob Versickerung oder Kanalanschluss möglich ist, hängt von Grundstück und örtlichen Vorgaben ab.",
+  },
+];
+
+const MANUFACTURERS = [
+  {
+    name: "GRAF",
+    logo: "/images/zisternen/hersteller/graf-logo.jpg",
+    logoWidth: 500,
+    logoHeight: 500,
+    logoClassName: "h-40 w-40",
+    material: "Kunststoff-Zisternen & Flachtanks",
+    description:
+      "Die Platin-Serie bietet flache Regenwasserspeicher und abgestimmte Pakete für die Gartenbewässerung.",
+    href: "https://www.graf.info/de/regenwassernutzung-unterirdisch/regenwassertanks/flachtank-platin.html",
+  },
+  {
+    name: "REWATEC",
+    logo: "/images/zisternen/hersteller/rewatec-logo.png",
+    logoWidth: 2216,
+    logoHeight: 600,
+    logoClassName: "h-20 w-full max-w-[220px]",
+    material: "PE-Erdtanks & Gartenanlagen",
+    description:
+      "Premier Tech kombiniert Erdtanks wie NEO mit Filter, Pumpe und Wasserentnahme in verschiedenen Gartenanlagen.",
+    href: "https://www.premiertechaqua.com/de-de/regenwasser/regenwasser-komplettanlagen",
+  },
+  {
+    name: "Mall",
+    logo: "/images/zisternen/hersteller/mall-logo.svg",
+    logoWidth: 161,
+    logoHeight: 60,
+    logoClassName: "h-20 w-full max-w-[220px]",
+    material: "Betonzisternen & Entnahmestellen",
+    description:
+      "Das Garten-Paket Fontana verbindet einen Regenspeicher aus Beton mit Filter, Pumpe und einer passenden Entnahmestelle.",
+    href: "https://www.mall.info/produkte/regenwasserbewirtschaftung/regenwassernutzung/garten-paket-fontana/",
   },
 ];
 
@@ -286,6 +323,82 @@ function CisternPage() {
                 Erdarbeiten und Leitungsverlegung vor neuen Belägen erfolgen, statt fertige Flächen
                 erneut zu öffnen.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="hersteller-titel"
+          className="border-t border-brand/10 bg-surface px-6 py-16 md:px-10 md:py-24"
+        >
+          <div className="mx-auto max-w-[1400px]">
+            <div className="grid items-end gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,.8fr)] lg:gap-16">
+              <div className="min-w-0">
+                <p className="eyebrow text-accent-ink">Kunststoff oder Beton</p>
+                <h2
+                  id="hersteller-titel"
+                  className="display mt-5 text-[clamp(2rem,4vw,3.75rem)] text-brand"
+                >
+                  Der passende Speicher
+                  <br />
+                  <span className="font-light italic text-brand-muted">für Ihr Grundstück.</span>
+                </h2>
+              </div>
+              <p className="min-w-0 text-lg leading-relaxed text-foreground/75">
+                Diese Hersteller zeigen unterschiedliche Lösungen für die Regenwassernutzung.
+                Welches System zu Ihrem Vorhaben passt, klären wir anhand von Boden, Grundwasser,
+                Maschinenzugang und der späteren Belastung der Fläche.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {MANUFACTURERS.map((manufacturer) => (
+                <div
+                  key={manufacturer.name}
+                  className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-brand/10 bg-background"
+                >
+                  <div className="mx-6 mt-6 flex h-44 items-center justify-center rounded-xl bg-white px-6 md:mx-7 md:mt-7">
+                    <img
+                      src={publicImageUrl(manufacturer.logo)}
+                      alt={`${manufacturer.name} – Herstellerlogo`}
+                      width={manufacturer.logoWidth}
+                      height={manufacturer.logoHeight}
+                      loading="lazy"
+                      decoding="async"
+                      className={`max-w-full shrink-0 object-contain ${manufacturer.logoClassName}`}
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6 md:p-7">
+                    <h3 className="text-base font-semibold text-brand">{manufacturer.name}</h3>
+                    <p className="mt-2 text-sm font-medium text-brand/75">
+                      {manufacturer.material}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/75">
+                      {manufacturer.description}
+                    </p>
+                    <a
+                      href={manufacturer.href}
+                      className="mt-auto inline-flex min-h-11 items-center gap-2 self-start pt-5 text-sm font-semibold text-brand underline underline-offset-4"
+                      aria-label={`${manufacturer.name}: Zisternensysteme beim Hersteller ansehen`}
+                    >
+                      Systeme beim Hersteller ansehen
+                      <ArrowUpRight className="size-4 shrink-0" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-brand/15 pt-7 sm:flex-row sm:items-center sm:gap-8">
+              <p className="max-w-2xl text-sm leading-relaxed text-foreground/75">
+                Speicher, Filter, Pumpe und Abdeckung müssen zusammenpassen. Wir stimmen die Auswahl
+                mit den Anforderungen Ihres Grundstücks ab.
+              </p>
+              <a
+                href="#zisterne-anfragen"
+                className="inline-flex min-h-12 shrink-0 items-center gap-3 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand/90"
+              >
+                Zisternenprojekt besprechen
+                <ArrowUpRight className="size-4 shrink-0" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </section>
