@@ -13,7 +13,7 @@ const STATIC_CONTENT_MODIFIED: Record<string, string> = {
   "/datenschutz": "2026-10-12T08:45:00Z",
   "/fachverband-mitgliedschaft": "2026-10-12T09:50:00Z",
   "/ueber-uns": "2026-10-12T09:50:00Z",
-  "/zisterne-einbauen-lassen": "2026-10-13T06:22:01Z",
+  "/zisterne-einbauen-lassen": "2026-10-13T07:02:37Z",
 };
 const SERVICE_CONTENT_MODIFIED = "2026-10-12T08:45:00Z";
 const CISTERN_CONTENT_MODIFIED: Record<string, string> = {

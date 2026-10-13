@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, Check, ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { CisternIllustration } from "@/components/site/CisternIllustration";
+import { CisternOfferCheck } from "@/components/site/CisternOfferCheck";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 import {
@@ -20,18 +21,38 @@ const IMAGE_DESCRIPTION =
   "KI-generierte Schnittillustration: gestalteter Garten mit unterirdischer Regenwasserzisterne und technischen Anschlüssen.";
 const PHOTO_SIZES = "(min-width: 1536px) 670px, (min-width: 1024px) 45vw, calc(100vw - 48px)";
 
-const SYSTEM = [
+const PLOT_SITUATIONS = [
   {
-    title: "Regen sammeln & filtern",
-    text: "Dachwasser durch einen zugänglichen Filter in den Speicher leiten.",
+    title: "Neubau oder Gartenumbau",
+    points: [
+      "Baugrube und Leitungen vor den neuen Wegen und Beeten einplanen.",
+      "Zufahrt, Stellplatz für Maschinen und Platz für Aushub freihalten.",
+    ],
   },
   {
-    title: "Ruhig einleiten & entnehmen",
-    text: "Regenwasser beruhigt einleiten; Pumpe und Leitungen auf den Garten abstimmen.",
+    title: "Fertiger Garten: Zisterne nachrüsten",
+    points: [
+      "Engstellen auf dem Weg zum Einbauplatz zeigen und ausmessen.",
+      "Festhalten, welche Pflanzen und Beläge erhalten oder wiederhergestellt werden sollen.",
+    ],
   },
   {
-    title: "Den Überlauf mitplanen",
-    text: "Überschüssiges Wasser auf einem am Standort zulässigen Weg ableiten.",
+    title: "Einbau unter Einfahrt oder Stellplatz",
+    points: [
+      "Angeben, welche Fahrzeuge die Fläche später nutzen sollen.",
+      "Tank, Schacht und Abdeckung für diese Belastung gemeinsam auswählen.",
+    ],
+  },
+];
+
+const WATERING_OPTIONS = [
+  {
+    title: "Gießhahn & Gartenschlauch",
+    text: "Wo soll der Wasserhahn stehen, und wie weit reichen Sie von dort mit dem Schlauch? Diese Wege bestimmen die Lage der Entnahmestelle und die erforderliche Förderleistung mit.",
+  },
+  {
+    title: "Automatische Bewässerung",
+    text: "Welche Beete oder Rasenflächen werden versorgt, und welche Zonen laufen gleichzeitig? Tropfschläuche und Regner haben unterschiedliche Anforderungen an Wassermenge und Druck.",
   },
 ];
 
@@ -65,7 +86,7 @@ const MANUFACTURERS = [
 const STEPS = [
   {
     title: "Vorhaben klären",
-    text: "Projektort, Nutzung, Dachfläche und erste Fotos gemeinsam einordnen.",
+    text: "Projektort, Nutzung und Fotos einordnen: Welche Einbauwege kommen infrage, welche Angaben fehlen noch?",
   },
   {
     title: "Standort prüfen",
@@ -87,32 +108,32 @@ const STEPS = [
 
 const FAQS = [
   {
-    question: "Was kostet es, eine Zisterne einbauen zu lassen?",
+    question: "Welche Firma baut Zisternen ein, und was übernimmt Loni GalaBau?",
     answer:
-      "Das Angebot hängt von Speichergröße und Bauart, Baugrube, Boden, Abtransport, Maschinenzugang und Anschlüssen ab. Pumpe, Filter, Überlauf und die Wiederherstellung vorhandener Flächen kommen dazu. Fotos und Grundstücksdaten helfen beim Einstieg; für eine belastbare Kalkulation wird der konkrete Einbauort geprüft.",
+      "Loni GalaBau plant und übernimmt den abgestimmten Zisternen-Einbau mit Erdarbeiten, Tank, Leitungen und Wiederherstellung der Außenflächen. Unser Sitz ist Hattersheim am Main bei Frankfurt; wir bearbeiten Vorhaben deutschlandweit. Im Angebot wird festgehalten, welche Arbeiten enthalten sind und welche Schnittstellen zu weiteren Fachbetrieben bestehen.",
   },
   {
-    question: "Welche Zisternengröße passt zu meinem Garten?",
+    question: "Wie vergleiche ich Kosten und ein Zisternen-Komplettset mit Einbau?",
     answer:
-      "Die Größe wird aus nutzbarer Dachfläche, örtlichem Niederschlag und Wasserbedarf abgeleitet. Gartenfläche und Bewässerungsart spielen ebenfalls eine Rolle. Ein möglichst großer Tank ist nicht automatisch die sinnvollste Lösung: Ertrag, Bedarf und Platz müssen zusammenpassen.",
+      "Vergleichen Sie den vollständigen Einbauumfang: Baugrube und Bettung, Tank, Aushubabfuhr, Filter und Pumpe, Leitungen und Überlauf sowie die Wiederherstellung der Fläche. Ein Produkt-Komplettset kann eine vorbereitete Baugrube voraussetzen; auch Druckleitungen oder weitere Arbeiten sind nicht automatisch enthalten. Gleiche Tankgröße bedeutet deshalb nicht gleicher Gesamtumfang. Unsere Angebots-Checkliste hilft, offene Positionen zu klären.",
   },
   {
     question: "Kann ich eine Zisterne im bestehenden Garten nachrüsten?",
     answer:
-      "Eine Nachrüstung ist grundsätzlich prüfbar. Entscheidend sind Platz, Maschinenzugang, vorhandene Leitungen, Dachentwässerung und der Wasserweg des Überlaufs. Erhaltene Pflanzen und Beläge werden in die Planung einbezogen. Besonders sinnvoll lässt sich der Einbau mit einem ohnehin geplanten Garten- oder Terrassenumbau abstimmen.",
+      "Das hängt vor allem von Einbauplatz, Maschinenzugang, vorhandenen Leitungen, Dachentwässerung und zulässigem Überlauf ab. Fotos vom gesamten Zugang helfen dabei ebenso wie Bilder des Einbauplatzes. Wir klären auch, wo Aushub gelagert oder verladen werden kann und welche Pflanzen, Wege oder Terrassen zu schützen beziehungsweise wiederherzustellen sind.",
   },
   {
-    question: "Betonzisterne oder Kunststoffzisterne: Was ist besser?",
+    question: "Sind 5.000 oder 10.000 Liter für meine Zisterne sinnvoll?",
     answer:
-      "Beide Bauarten haben passende Einsatzbereiche. Gewicht und Einbringung, Boden, Grundwasser, mögliche Auftriebskräfte und spätere Belastungen bestimmen die Auswahl mit. Für eine befahrbare Fläche müssen Tank, Schacht und Abdeckung als vollständiges System für die vorgesehene Belastung geeignet sein.",
+      "Die Literzahl allein beantwortet das nicht. Nutzbare Dachfläche und örtlicher Niederschlag bestimmen den möglichen Ertrag; Gartenfläche, Bepflanzung und Bewässerungsart den Bedarf. Dazu kommen Platz, Boden und Nutzung über dem Tank. Ein größerer Speicher erzeugt kein zusätzliches Regenwasser und ersetzt keine abgestimmte Planung. Wir vergleichen die Größen anhand dieser Angaben statt pauschal eine Tankgröße zu empfehlen.",
   },
   {
-    question: "Braucht eine Zisterne eine Genehmigung oder Rückstausicherung?",
+    question: "Was muss auf meinem Grundstück zu Genehmigung und Rückstau geklärt werden?",
     answer:
       "Die Anforderungen hängen von Standort, Nutzung und Entwässerungsweg ab. Versickerung und Kanalanschluss werden mit der zuständigen Stelle beziehungsweise dem Entwässerungsbetrieb geklärt. Bei Kanalanschluss wird der Rückstauschutz anhand der Rückstauebene und konkreten Anschlussbedingungen geplant; eine einzelne Rückstauklappe ist keine pauschale Lösung.",
   },
   {
-    question: "Kann das Regenwasser auch im Haus genutzt werden?",
+    question: "Kann ich Regenwasser auch im Haus nutzen, und wer schließt es an?",
     answer:
       "Regenwasser ist kein Trinkwasser. Eine Nutzung im Haus benötigt ein getrenntes, gekennzeichnetes Nichttrinkwassernetz. Auch eine Trinkwassernachspeisung muss hygienisch sicher getrennt sein. Arbeiten an Trinkwasserinstallation und elektrischen Anschlüssen stimmen wir bei Bedarf mit den dafür zuständigen Fachbetrieben ab.",
   },
@@ -121,11 +142,11 @@ const FAQS = [
 export const Route = createFileRoute("/zisterne-einbauen-lassen")({
   head: () => ({
     meta: [
-      { title: "Zisterne einbauen lassen: Planung & Einbau | Loni GalaBau" },
+      { title: "Zisterne einbauen lassen & nachrüsten | Loni GalaBau" },
       {
         name: "description",
         content:
-          "Zisterne einbauen oder nachrüsten lassen: Regenwasser für den Garten nutzen. Loni GalaBau plant Erdarbeiten, Tank und Anschlüsse. Jetzt Projekt anfragen.",
+          "Zisterne einbauen oder nachrüsten lassen: Einbauumfang, Kostenfaktoren und passende Speichergröße klären. Deutschlandweit mit Loni GalaBau.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: PREVIEW_IMAGE },
@@ -188,9 +209,13 @@ function CisternPage() {
                 <span className="font-light italic">einbauen lassen.</span>
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-foreground/75">
-                Regen sammeln. Wasser speichern. Den Garten versorgen. Wir planen den
-                Zisternen-Einbau mit Ihren Außenanlagen zusammen – von der Baugrube bis zur fertigen
-                Fläche.
+                Vom Grundstück bis zum Gartenhahn: Wir planen und übernehmen den abgestimmten Einbau
+                mit Baugrube, Tank und Leitungen – einschließlich der Wiederherstellung Ihrer
+                Außenflächen.
+              </p>
+              <p className="mt-4 max-w-xl leading-relaxed text-foreground/75">
+                Nach Ihrer Anfrage klären wir mit Ihnen, welcher Einbauweg infrage kommt, welche
+                Angaben noch fehlen und wie Ihr Einbauangebot vorbereitet wird.
               </p>
               <p className="mt-5 max-w-lg text-sm leading-relaxed text-brand/70">
                 Neubau oder Nachrüstung: Loni GalaBau begleitet Ihr Vorhaben deutschlandweit, mit
@@ -208,7 +233,7 @@ function CisternPage() {
                   href="#planung"
                   className="inline-flex min-h-11 items-center gap-2 px-1 text-sm font-semibold text-brand underline underline-offset-4"
                 >
-                  So planen wir <ArrowDown className="size-4" aria-hidden="true" />
+                  Passt es auf Ihr Grundstück? <ArrowDown className="size-4" aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -263,28 +288,42 @@ function CisternPage() {
         >
           <div className="mx-auto grid max-w-[1400px] items-center gap-8 lg:grid-cols-2 lg:gap-16">
             <div className="min-w-0 lg:max-w-xl">
-              <p className="eyebrow text-accent-ink">Regenwasser im Garten nutzen</p>
+              <p className="eyebrow text-accent-ink">Welcher Einbauweg passt?</p>
               <h2
                 id="planung-titel"
                 className="display mt-5 text-[clamp(2rem,4vw,3.75rem)] text-brand"
               >
-                Regen sammeln.
+                Ihr Grundstück
                 <br />
-                <span className="font-light italic text-brand-muted">Garten versorgen.</span>
+                <span className="font-light italic text-brand-muted">entscheidet mit.</span>
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-foreground/75">
-                Eine Zisterne speichert Dachwasser für Rasen und Beete. Solange Regenwasser
-                verfügbar ist, kann es dort Trinkwasser ersetzen.
+              <p className="mt-6 leading-relaxed text-foreground/75">
+                Nicht nur die Tankgröße bestimmt den Aufwand. Öffnen Sie die Situation, die zu Ihrem
+                Vorhaben passt:
               </p>
-              <p className="mt-4 leading-relaxed text-foreground/75">
-                Wir stimmen Speichergröße, nutzbare Dachfläche und Wasserbedarf aufeinander ab – und
-                planen die fertige Gartenfläche von Anfang an mit.
-              </p>
+              <div className="mt-6 divide-y divide-brand/15" data-cistern-plot-situations>
+                {PLOT_SITUATIONS.map((situation) => (
+                  <details key={situation.title} className="group">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm py-4 font-medium text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand [&::-webkit-details-marker]:hidden">
+                      <span>{situation.title}</span>
+                      <ChevronDown
+                        className="size-4 shrink-0 transition-transform group-open:rotate-180"
+                        aria-hidden="true"
+                      />
+                    </summary>
+                    <ul className="list-disc space-y-2 pb-5 pl-4 text-sm leading-relaxed text-foreground/75">
+                      {situation.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </details>
+                ))}
+              </div>
               <a
                 href="#zisterne-anfragen"
                 className="mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-brand underline underline-offset-4"
               >
-                Ihren Garten besprechen <ArrowUpRight className="size-4" aria-hidden="true" />
+                Ihren Einbauplatz besprechen <ArrowUpRight className="size-4" aria-hidden="true" />
               </a>
             </div>
             <figure className="min-w-0">
@@ -316,27 +355,22 @@ function CisternPage() {
                   <span className="font-light italic text-brand-muted">Gezielt bewässern.</span>
                 </h2>
                 <p className="mt-6 leading-relaxed text-foreground/75">
-                  Filter, Zulauf, Pumpe und Bewässerung bilden ein System. Drei Wasserwege gehören
-                  deshalb in die Planung:
+                  Wofür möchten Sie das gespeicherte Wasser nutzen? Die Antwort entscheidet mit
+                  darüber, welche Pumpe, Leitungen und Anschlüsse gebraucht werden.
                 </p>
-                <ol className="mt-7 divide-y divide-brand/15">
-                  {SYSTEM.map((item, index) => (
-                    <li key={item.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                      <span
-                        className="shrink-0 whitespace-nowrap pt-1 text-xs font-semibold tracking-[.15em] text-accent-ink"
-                        aria-hidden="true"
-                      >
-                        0{index + 1}
-                      </span>
-                      <div className="min-w-0">
-                        <h3 className="font-display text-xl font-bold text-brand">{item.title}</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-foreground/75">
-                          {item.text}
-                        </p>
-                      </div>
+                <ul className="mt-7 divide-y divide-brand/15" data-cistern-watering-options>
+                  {WATERING_OPTIONS.map((item) => (
+                    <li key={item.title} className="py-5 first:pt-0 last:pb-0">
+                      <h3 className="font-display text-xl font-bold text-brand">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground/75">{item.text}</p>
                     </li>
                   ))}
-                </ol>
+                </ul>
+                <p className="mt-6 rounded-xl bg-background p-4 text-sm leading-relaxed text-brand/80">
+                  Zeigen Sie uns die gewünschten Entnahmestellen und Bewässerungsflächen. Anhand von
+                  Leitungswegen, Höhenunterschieden und Nutzung stimmen wir Wassermenge, Druck und
+                  Pumpe ab. Filter, Zulauf und zulässiger Überlauf werden ebenfalls mitgeplant.
+                </p>
               </div>
               <figure className="min-w-0 lg:order-first">
                 <ProjectImage
@@ -351,7 +385,48 @@ function CisternPage() {
                 </figcaption>
               </figure>
             </div>
-            <div className="mt-12 border-t border-brand/15 pt-6 md:mt-16">
+            <aside
+              aria-labelledby="speichergroesse-titel"
+              className="mt-10 rounded-2xl border border-brand/15 bg-background p-6 md:p-8"
+            >
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,.65fr)_minmax(0,1.35fr)] lg:gap-12">
+                <div className="min-w-0">
+                  <p className="eyebrow text-accent-ink">Speichergröße sinnvoll wählen</p>
+                  <h3
+                    id="speichergroesse-titel"
+                    className="mt-3 font-display text-2xl font-bold text-brand"
+                  >
+                    5.000 oder 10.000 Liter?
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">
+                    Mehr Volumen bringt nur dann einen Nutzen, wenn Regenwasserertrag und Bedarf
+                    dazu passen. Ein größerer Tank erzeugt kein zusätzliches Wasser.
+                  </p>
+                </div>
+                <ul className="grid gap-5 sm:grid-cols-3">
+                  {[
+                    {
+                      title: "Was kommt an?",
+                      text: "Nutzbare Dachfläche, Dachmaterial und örtlicher Niederschlag.",
+                    },
+                    {
+                      title: "Was wird gebraucht?",
+                      text: "Gartenfläche, Bepflanzung, Bewässerungsart und Nutzungszeiten.",
+                    },
+                    {
+                      title: "Was passt vor Ort?",
+                      text: "Einbauplatz, Boden, Grundwasser und Belastung über dem Tank.",
+                    },
+                  ].map((item) => (
+                    <li key={item.title} className="min-w-0 border-t border-brand/15 pt-4">
+                      <p className="font-semibold text-brand">{item.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground/75">{item.text}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+            <div className="mt-10 border-t border-brand/15 pt-6 md:mt-12">
               <p className="text-xs font-semibold uppercase tracking-[.14em] text-brand/60">
                 Details für die Einbauplanung
               </p>
@@ -370,6 +445,30 @@ function CisternPage() {
                     Leitungsgefälle und spätere Flächennutzung werden geprüft. Für befahrbare
                     Flächen müssen Tank, Schacht und Abdeckung zusammen geeignet sein. Ein
                     pauschaler Schichtaufbau passt nicht zu jeder Zisterne.
+                  </p>
+                  <p className="max-w-4xl pb-6 text-sm leading-relaxed text-foreground/75">
+                    Auch Abstände zum Haus und zur Grundstücksgrenze werden am Einbauort geklärt.
+                    Entscheidend sind unter anderem Baugrube, Standsicherheit, Herstellervorgaben,
+                    Grenzlage und örtliche Vorgaben. Zeigen Sie uns deshalb auch die Lage von Haus
+                    und Grundstücksgrenzen; erforderliche Abstände werden für den gewählten Behälter
+                    und Aushub festgelegt.
+                  </p>
+                </details>
+                <details id="wirtschaftlichkeit" className="group border-b border-brand/15">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm py-5 font-medium text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand [&::-webkit-details-marker]:hidden">
+                    <span>Lohnt sich eine Zisterne für meinen Garten?</span>
+                    <ChevronDown
+                      className="size-4 shrink-0 transition-transform group-open:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </summary>
+                  <p className="max-w-4xl pb-6 text-sm leading-relaxed text-foreground/75">
+                    Vergleichen Sie die Investition sowie Wartungs- und Stromkosten mit Ihrer
+                    tatsächlich nutzbaren Regenwassermenge und dem örtlichen Wasserpreis.
+                    Regenwasser ersetzt beim Gießen nur dann Trinkwasser, wenn es verfügbar ist und
+                    genutzt wird. Ob und wann sich der Einbau finanziell rechnet, hängt deshalb vom
+                    Grundstück und Ihrer Nutzung ab; eine feste Einsparung oder Amortisationszeit
+                    lässt sich daraus nicht pauschal zusagen.
                   </p>
                 </details>
                 <details id="ueberlauf" className="group border-b border-brand/15">
@@ -403,17 +502,29 @@ function CisternPage() {
                 id="nachruesten-titel"
                 className="display mt-5 text-[clamp(2rem,4vw,3.75rem)] text-brand"
               >
-                Zisterne im Garten
+                Zisterne nachrüsten.
                 <br />
-                <span className="font-light italic text-brand-muted">nachrüsten.</span>
+                <span className="font-light italic text-brand-muted">Garten mitdenken.</span>
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-foreground/75">
-                Maschinenzugang, Aushub, Leitungen und Regenrohre entscheiden mit über den
-                Einbauplatz. Pflanzen, Wege und Terrassen beziehen wir in die Planung ein.
+                Im fertigen Garten zählt auch, wie die Baustelle organisiert wird und wie die Fläche
+                danach aussehen soll. Diese Punkte gehören in die Einbauplanung:
               </p>
-              <p className="mt-4 leading-relaxed text-foreground/75">
-                Steht ein Gartenumbau an, stimmen wir Erdarbeiten und Leitungsverlegung vor neuen
-                Belägen ab. Die spätere Oberfläche und Wartungszugänge planen wir gleich mit.
+              <ul className="mt-6 space-y-4 text-sm leading-relaxed text-foreground/75">
+                {[
+                  "Welche Wege, Beete oder Terrassen müssen geschützt, geöffnet und wiederhergestellt werden?",
+                  "Wo können Aushub und Material zwischengelagert oder direkt verladen werden?",
+                  "Wie erreichen die Leitungen Fallrohre und Entnahmestellen, ohne unnötig Flächen zu öffnen?",
+                ].map((text) => (
+                  <li key={text} className="flex gap-3">
+                    <Check className="mt-0.5 size-4 shrink-0 text-accent-ink" aria-hidden="true" />
+                    <span>{text}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm leading-relaxed text-foreground/75">
+                Ist ohnehin ein Garten- oder Terrassenumbau geplant, stimmen wir Baugrube und
+                Leitungen vor den neuen Oberflächen ab. Wartungszugänge bleiben erreichbar.
               </p>
               <a
                 href="#zisterne-anfragen"
@@ -477,56 +588,7 @@ function CisternPage() {
           </div>
         </section>
 
-        <section aria-labelledby="kosten-titel" className="bg-surface px-6 py-16 md:px-10 md:py-24">
-          <div className="mx-auto grid max-w-[1400px] items-start gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="min-w-0">
-              <p className="eyebrow text-accent-ink">Kosten nachvollziehbar planen</p>
-              <h2
-                id="kosten-titel"
-                className="display mt-5 text-[clamp(2rem,4vw,3.5rem)] text-brand"
-              >
-                Was kostet der
-                <br />
-                <span className="font-light italic text-brand-muted">Zisternen-Einbau?</span>
-              </h2>
-              <p className="mt-6 leading-relaxed text-foreground/75">
-                Neben dem Tank bestimmen Baugrube, Boden, Aushubentsorgung und Maschinenzugang den
-                Preis. Technik, Leitungen, Überlauf und die Wiederherstellung der Gartenfläche
-                kommen dazu. Unser Angebot beschreibt den abgestimmten Umfang und die Schnittstellen
-                zu weiteren Fachbetrieben.
-              </p>
-              <a
-                href="#zisterne-anfragen"
-                className="mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-brand underline underline-offset-4"
-              >
-                Einbauangebot anfragen <ArrowUpRight className="size-4" aria-hidden="true" />
-              </a>
-            </div>
-            <div className="min-w-0 rounded-2xl bg-background p-7 md:p-9">
-              <h3 className="font-display text-2xl font-bold text-brand">
-                Das hilft für Ihre Anfrage
-              </h3>
-              <ul className="mt-6 space-y-4 text-sm leading-relaxed text-foreground/75">
-                {[
-                  "Projektort und Fotos vom vorgesehenen Einbauplatz",
-                  "Dachfläche und bisheriger Verlauf der Regenrohre, soweit bekannt",
-                  "Gewünschte Nutzung: Gießwasser oder automatische Bewässerung",
-                  "Zugang zum Garten sowie vorhandene Pläne und Leitungen",
-                  "Geplante Flächennutzung über dem Tank und gewünschter Zeitraum",
-                ].map((text) => (
-                  <li key={text} className="flex gap-3">
-                    <Check className="mt-0.5 size-4 shrink-0 text-accent-ink" aria-hidden="true" />
-                    <span>{text}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 border-t border-brand/10 pt-5 text-sm leading-relaxed text-brand/65">
-                Noch nicht alles bekannt? Beginnen Sie mit dem Projektort und Ihrer Idee. Die
-                offenen Punkte klären wir gemeinsam.
-              </p>
-            </div>
-          </div>
-        </section>
+        <CisternOfferCheck />
 
         <section aria-labelledby="faq-titel" className="bg-background px-6 py-16 md:px-10 md:py-24">
           <div className="mx-auto grid max-w-[1200px] gap-8 lg:grid-cols-[minmax(0,.7fr)_minmax(0,1.3fr)] lg:gap-16">
@@ -577,10 +639,31 @@ function CisternPage() {
                 <span className="font-light italic text-brand-muted">Unser nächstes Gespräch.</span>
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-foreground/75">
-                Sie möchten eine Zisterne installieren oder nachrüsten lassen? Schildern Sie uns
-                Ihren Standort und die gewünschte Nutzung. Wir besprechen, wie Speicher, Erdarbeiten
-                und Garten zusammenpassen.
+                Nennen Sie uns Projektort, geplante Nutzung und ob es um einen Neubau oder eine
+                Nachrüstung geht. Wir ordnen die Einbausituation mit Ihnen ein und klären die
+                nächsten Schritte zu Ihrem Angebot. Fehlende Grundstücksdaten sind kein Hindernis
+                für die erste Anfrage.
               </p>
+              <div
+                aria-labelledby="anfrage-fotos-titel"
+                className="mt-7 rounded-2xl border border-brand/15 bg-background p-5 md:p-6"
+              >
+                <h3 id="anfrage-fotos-titel" className="font-display text-xl font-bold text-brand">
+                  Drei Fotos für den ersten Überblick
+                </h3>
+                <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-foreground/75">
+                  <li>Den vorgesehenen Einbauplatz mit seiner Umgebung.</li>
+                  <li>Den gesamten Zugang mit Engstellen; Breite und Höhe, falls bekannt.</li>
+                  <li>Die Fallrohre und die Fläche, die Sie bewässern möchten.</li>
+                </ol>
+                <p className="mt-4 text-sm leading-relaxed text-brand/70">
+                  Fotos und vorhandene Pläne können Sie über unser{" "}
+                  <Link to="/kontakt" className="font-semibold underline underline-offset-4">
+                    Kontaktformular mit Dateiupload
+                  </Link>{" "}
+                  senden. Für die Kurzanfrage auf dieser Seite reicht zunächst Ihre Beschreibung.
+                </p>
+              </div>
               <Link
                 to="/fachverband-mitgliedschaft"
                 className="mt-7 flex min-h-11 items-start gap-3 text-sm leading-relaxed text-brand underline underline-offset-4"
@@ -614,7 +697,7 @@ function CisternPage() {
             <div className="min-w-0">
               <ServiceMiniContact
                 serviceTitle="Zisternen-Einbau"
-                messagePlaceholder="Wo soll die Zisterne eingebaut werden? Neubau oder bestehender Garten, gewünschte Nutzung und erste Grundstücksdaten helfen uns weiter."
+                messagePlaceholder="Projektort: … Neubau oder Nachrüstung: … Gewünschte Nutzung (Gießhahn oder automatische Bewässerung): … Einbauplatz und Zugang: … Was ist Ihnen besonders wichtig?"
               />
             </div>
           </div>
@@ -676,6 +759,13 @@ function CisternPage() {
                   className="underline underline-offset-4"
                 >
                   Rewatec-Zisternen
+                </a>
+                . Zum Umfang von Produktpaketen:{" "}
+                <a
+                  href="https://www.mall.info/produkte/regenwasserbewirtschaftung/regenwassernutzung/garten-paket-fontana/"
+                  className="underline underline-offset-4"
+                >
+                  Mall Garten-Paket Fontana
                 </a>
                 . Zur Planung und Rückstausicherheit:{" "}
                 <a
