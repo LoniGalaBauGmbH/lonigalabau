@@ -174,9 +174,9 @@ function HomePage() {
             </h1>
 
             <p className="home-hero-description max-w-2xl text-white/90 font-normal">
-              Deutschlandweit für Sie im Einsatz – mit Sitz in Hattersheim am Main bei Frankfurt.
-              Wir gestalten Ihren Garten, bauen Terrassen und pflastern Einfahrten – passend zu
-              Ihrem Grundstück und Ihrem Alltag.
+              Überregional für Sie im Einsatz – aus Hattersheim am Main in ganz Deutschland gut
+              vernetzt. Wir gestalten Ihren Garten, bauen Terrassen und pflastern Einfahrten –
+              passend zu Ihrem Grundstück und Ihrem Alltag.
             </p>
 
             <div className="home-hero-actions flex flex-wrap items-center">
