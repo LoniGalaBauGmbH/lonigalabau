@@ -168,7 +168,7 @@ function HomePage() {
             </div>
           </div>
           <div className="home-hero-copy max-w-5xl animate-fade-up">
-            <h1 lang="de" className="home-hero-title display break-words hyphens-auto text-white">
+            <h1 lang="de" className="home-hero-title display text-white">
               Garten- und <br />
               <span className="text-white">Landschaftsbau</span>
             </h1>

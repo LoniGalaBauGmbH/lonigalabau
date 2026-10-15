@@ -1,7 +1,10 @@
 const FACTS = [
   { value: "Seit 2011", label: "Im Garten- und Landschaftsbau" },
   { value: "Vielseitig", label: "Individuelle Lösungen für Ihr Vorhaben" },
-  { value: "Deutschlandweit", label: "Aus Hattersheim am Main" },
+  {
+    value: "Überregional",
+    label: "Aus Hattersheim am Main in ganz Deutschland gut vernetzt",
+  },
   { value: "Persönlich", label: "Von der Anfrage bis zur Umsetzung" },
 ];
 

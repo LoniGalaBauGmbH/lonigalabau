@@ -21,8 +21,18 @@
   font-size: 0.625rem;
   letter-spacing: 0.18em;
 }
+.home-hero-copy {
+  container-type: inline-size;
+  width: 100%;
+}
 .home-hero-title {
-  font-size: clamp(2rem, 8vw, 8rem);
+  /* Size the long second line against the copy column, not the viewport. */
+  font-size: clamp(1rem, 10.5cqw, 8rem);
+  overflow-wrap: normal;
+  hyphens: none;
+}
+.home-hero-title > span {
+  white-space: nowrap;
 }
 .home-hero-description {
   margin-top: 2.5rem;
@@ -76,7 +86,7 @@
     align-self: end;
   }
   .home-hero-title {
-    font-size: clamp(2rem, min(8vw, 9svh), 8rem);
+    font-size: clamp(1rem, min(10.5cqw, 9svh), 8rem);
   }
   .home-hero-description {
     margin-top: var(--hero-gap);
