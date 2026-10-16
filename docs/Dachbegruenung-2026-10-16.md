@@ -2,6 +2,8 @@
 
 Stand: 16.10.2026. Route: `/dachbegruenung`.
 
+Dieser Bericht dokumentiert die Erstveröffentlichung V76. Der anschließende beauftragte Austausch sämtlicher Fremdfotos ist in [Dachbegruenung-Bildwechsel-2026-10-16.md](Dachbegruenung-Bildwechsel-2026-10-16.md) dokumentiert; die unten genannten Fremdfotos beschreiben den historischen Stand.
+
 ## Auftrag und Abgrenzung
 
 Neue bildbetonte Unterseite mit regionaler Keywordrecherche, dezenten Scroll-Animationen und Anfragefunktion. Nutzer bestätigt ausdrücklich: vorerst allgemein formulieren und Eignung je Projekt prüfen. Keine pauschale Ausführungszusage für extensive/intensive Systeme, Dachabdichtung oder Statik. Keine erfundenen Dachreferenzen, Niederlassungen, Preise, Förderzusagen oder Qualifikationen. Unternehmenssitz bleibt Hattersheim am Main; überregionale Anfragen weiterhin möglich.

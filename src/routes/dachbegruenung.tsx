@@ -187,24 +187,24 @@ function GreenRoofPage() {
                 n: "01",
                 tag: "KLEINE DACHFLÄCHEN",
                 title: "Garage, Carport & Gartenhaus",
-                image: "gartenhaus-gruendach",
-                alt: "Beispiel eines Gartenhauses von OKOPOD mit dunkler Holzfassade und einem Sedumdach.",
+                image: "gartenhaus-visualisierung",
+                alt: "KI-Visualisierung eines Gartenhauses mit Holzfassade und begrüntem Sedumdach.",
                 text: "Auch kleine Dächer können Raum für Pflanzen bieten. Bei Garage, Carport und Gartenhaus prüfen wir zuerst Tragfähigkeit, Abdichtung und Dachneigung.",
               },
               {
                 n: "02",
                 tag: "BESTAND & NEUBAU",
                 title: "Begrünung auf dem Flachdach",
-                image: "flachdach-sedum",
-                alt: "Reales Beispiel einer Sedum-Dachbegrünung am Prince George’s Community College.",
+                image: "flachdach-visualisierung",
+                alt: "KI-Visualisierung einer Sedum-Dachbegrünung auf einem modernen Flachdach mit Kiesrand.",
                 text: "Größere Flachdächer brauchen einen abgestimmten Aufbau. Abläufe, Randbereiche, Materialtransport und spätere Pflege gehören von Anfang an dazu.",
               },
               {
                 n: "03",
                 tag: "PFLANZEN & GESTALTUNG",
                 title: "Extensiv mit Sedum",
-                image: "sedum-detail",
-                alt: "Grüne und rötlich gefärbte Sedumblätter auf einem Gründach.",
+                image: "sedum-visualisierung",
+                alt: "KI-Visualisierung grüner und rötlicher Sedumpflanzen mit kleinen gelben Blüten.",
                 text: "Niedrig wachsende Sedumpflanzen prägen viele extensive Gründächer. Welche Pflanzen passen, hängt vom Standort und Aufbau ab. Pflegeleicht heißt dabei nicht pflegefrei.",
               },
             ].map((item) => (
@@ -235,18 +235,18 @@ function GreenRoofPage() {
             ))}
           </div>
           <p className="roof-photo-note">
-            Beispielaufnahmen zur Veranschaulichung, keine Loni-Projektreferenzen.{" "}
-            <a href="#dach-bildnachweise">Bildnachweise</a>
+            Für Loni erstellte KI-Visualisierungen – Gestaltungsideen, keine Projektreferenzen.{" "}
+            <a href="#dach-bildnachweise">Zu den Bildern</a>
           </p>
         </section>
         <section className="roof-container roof-value-section" aria-labelledby="roof-value-title">
           <div className="roof-value-panel">
             <figure className="roof-value-photo">
               <RoofPhoto
-                name="gruendach-beispiel"
-                alt="Begrüntes Flachdach mit Pflanzenflächen und Kiesstreifen am UMBC-Campus."
+                name="dachflaeche-visualisierung"
+                alt="KI-Visualisierung eines begrünten Flachdachs mit Sedum und umlaufendem Kiesstreifen."
               />
-              <figcaption>Ein begrüntes Flachdach · Beispielaufnahme</figcaption>
+              <figcaption>Ein begrüntes Flachdach · KI-Visualisierung</figcaption>
             </figure>
             <div className="roof-value-copy">
               <span className="eyebrow eyebrow-bracket">GUT FÜRS UMFELD</span>
@@ -406,65 +406,10 @@ function GreenRoofPage() {
         </section>
         <aside id="dach-bildnachweise" className="roof-sources roof-container">
           <details>
-            <summary>Bildnachweise & fachliche Grundlagen</summary>
+            <summary>Zu den Bildern & fachliche Grundlagen</summary>
             <p>
-              Hero: KI-generierte Gestaltungsidee. Gartenhaus:{" "}
-              <a
-                href="https://commons.wikimedia.org/wiki/File:An_OKOPOD_with_Yakisugi_cladding_and_a_sedum_roof.jpg"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Lorna Satchell / OKOPOD
-              </a>
-              ,{" "}
-              <a
-                href="https://creativecommons.org/licenses/by/4.0/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CC BY 4.0
-              </a>
-              . Flachdach am College:{" "}
-              <a
-                href="https://commons.wikimedia.org/wiki/File:06-29-2015_CHS_green_roof-2-4.jpg"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Pgccmarketing, „06-29-2015 CHS green roof-2-4“
-              </a>
-              ,{" "}
-              <a
-                href="https://creativecommons.org/licenses/by-sa/4.0/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CC BY-SA 4.0
-              </a>
-              ; auch die hier angebotenen Bildvarianten stehen unter dieser Lizenz. Sedum:{" "}
-              <a
-                href="https://www.jba.af.mil/News/Article-Display/Article/947201/secret-gardens-save-af-money/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Rustie Kramer / U.S. Air Force
-              </a>
-              , Public Domain. UMBC-Flachdach:{" "}
-              <a
-                href="https://commons.wikimedia.org/wiki/File:Green_roof_(48820773896).jpg"
-                target="_blank"
-                rel="noreferrer"
-              >
-                umbc sustainability, „Green roof“
-              </a>
-              ,{" "}
-              <a
-                href="https://creativecommons.org/publicdomain/zero/1.0/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CC0
-              </a>
-              . Die Beispielbilder wurden verkleinert, komprimiert und zugeschnitten. Teamfoto: Loni
+              Die Dach- und Pflanzenmotive wurden mit KI für Loni GalaBau erstellt. Sie zeigen
+              Gestaltungsideen und keine ausgeführten Kundenprojekte. Das Teamfoto stammt von Loni
               GalaBau.
             </p>
             <p>
