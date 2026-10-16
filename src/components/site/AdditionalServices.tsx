@@ -12,6 +12,12 @@ export function AdditionalServices() {
           Beschreiben Sie uns die gewünschten Arbeiten und den Projektort. Wir klären mit Ihnen,
           welche Leistungen wir übernehmen können – deutschlandweit.
         </p>
+        <Link
+          to="/dachbegruenung"
+          className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+        >
+          Dachbegrünung: Möglichkeiten für Ihr Dach entdecken <span aria-hidden="true">↗</span>
+        </Link>
       </div>
       <Link
         to="/kontakt"

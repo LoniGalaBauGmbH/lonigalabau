@@ -24,6 +24,7 @@ const navLinks: [string, string][] = [
   ["/einsatzgebiete", "Einsatzgebiete"],
   ["/ratgeber", "Ratgeber"],
   ["/zisterne-einbauen-lassen", "Zisternen-Einbau"],
+  ["/dachbegruenung", "Dachbegrünung"],
   ["/konfigurator", "Gartenplaner"],
   ["/jobs", "Jobs"],
   ["/kontakt", "Kontakt"],

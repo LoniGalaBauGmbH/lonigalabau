@@ -33,7 +33,7 @@ export function PageShell({
       >
         {children}
       </main>
-      <Footer showContactCta={path !== "/kontakt" && path !== "/partner-werden"} />
+      <Footer showContactCta={!["/kontakt", "/partner-werden", "/dachbegruenung"].includes(path)} />
       {path !== "/partner-werden" && <WhatsAppButton />}
     </div>
   );

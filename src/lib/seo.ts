@@ -22,6 +22,7 @@ export const STATIC_PATHS = [
   "/ueber-uns",
   "/fachverband-mitgliedschaft",
   "/zisterne-einbauen-lassen",
+  "/dachbegruenung",
   "/leistungen",
   "/projekte",
   "/einsatzgebiete",

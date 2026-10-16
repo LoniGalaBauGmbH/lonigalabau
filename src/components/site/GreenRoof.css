@@ -1,0 +1,811 @@
+/* Page geometry only; colors, type and motion come from the shared Loni design system. */
+.roof-page {
+  color: var(--brand);
+  background: var(--background);
+  overflow-wrap: break-word;
+}
+.roof-page :where(h1, h2, h3, p, figure) {
+  margin: 0;
+}
+.roof-page :where(p, li) {
+  line-height: 1.7;
+}
+.roof-page h2 {
+  font-size: clamp(2rem, 4.3vw, 4.25rem);
+}
+.roof-page :where(a, button, summary):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+.roof-page :where([id]) {
+  scroll-margin-top: 110px;
+}
+.roof-container {
+  width: min(1480px, calc(100% - 80px));
+  margin-inline: auto;
+}
+.roof-hero {
+  position: relative;
+  isolation: isolate;
+  color: white;
+  background: var(--brand);
+}
+.roof-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.roof-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 54%;
+}
+.roof-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 24, 15, 0.65),
+    rgba(8, 24, 15, 0.08) 30%,
+    rgba(8, 24, 15, 0.76)
+  );
+}
+.roof-hero-inner {
+  min-height: min(850px, 100svh);
+  padding-top: 122px;
+  padding-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+}
+.roof-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #ffffffe0;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+.roof-breadcrumb a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.roof-hero-copy {
+  width: min(1100px, 100%);
+  container-type: inline-size;
+  margin-top: auto;
+  padding-block: 90px 34px;
+}
+.roof-hero-copy .eyebrow {
+  color: white;
+}
+.roof-hero h1 {
+  color: white;
+  font-size: clamp(1rem, 10.3cqi, 6.9rem);
+  white-space: nowrap;
+  overflow-wrap: normal;
+  margin-top: 18px;
+}
+.roof-hero-subtitle {
+  color: white;
+  font-size: clamp(1.4rem, 5.4cqi, 3.5rem);
+  margin-top: 4px !important;
+}
+.roof-hero-description {
+  max-width: 630px;
+  margin-top: 24px !important;
+  color: #fffffff0;
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+}
+.roof-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px 32px;
+  margin-top: 32px;
+}
+.roof-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--brand);
+  color: var(--brand-foreground);
+  padding: 18px 30px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.17em;
+  font-weight: 650;
+  line-height: 1.6;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.roof-button:hover {
+  background: var(--accent);
+  color: var(--brand);
+}
+.roof-button-white {
+  background: white;
+  color: var(--brand);
+  border-radius: 0;
+}
+.roof-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 650;
+  border-bottom: 1px solid currentColor;
+  padding-block: 6px;
+}
+.roof-hero .roof-text-link:hover {
+  color: var(--accent);
+}
+.roof-hero-caption {
+  font-size: 0.65rem;
+  text-align: right;
+  color: #ffffffd9;
+}
+.roof-benefits {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  gap: 35px;
+  padding-block: 38px;
+  border-bottom: 1px solid var(--border);
+}
+.roof-benefits > div {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.roof-benefits svg {
+  width: 25px;
+  height: 25px;
+  flex: none;
+  stroke-width: 1.6;
+}
+.roof-benefits strong {
+  display: block;
+  font-size: 1rem;
+}
+.roof-benefits small {
+  display: block;
+  font-size: 0.77rem;
+  margin-top: 4px;
+  color: var(--muted-foreground);
+}
+.roof-photo-section {
+  padding-block: 85px 75px;
+}
+.roof-section-heading {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: end;
+  gap: 55px;
+  margin-bottom: 40px;
+}
+.roof-section-heading h2,
+.roof-faq-grid h2,
+.roof-contact-copy h2 {
+  margin-top: 18px;
+}
+.roof-section-heading > p {
+  max-width: 410px;
+  justify-self: end;
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  padding-bottom: 4px;
+}
+.roof-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 22px;
+}
+.roof-image-card {
+  border-radius: 2rem;
+  background: var(--surface);
+  box-shadow: 0 15px 40px -30px color-mix(in srgb, var(--brand) 35%, transparent);
+}
+.roof-image-card > summary {
+  display: block;
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: 2rem;
+  color: white;
+  cursor: pointer;
+  background: var(--brand);
+}
+.roof-image-card summary::-webkit-details-marker {
+  display: none;
+}
+.roof-image-card summary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(7, 24, 13, 0.4), transparent 30%, rgba(7, 24, 13, 0.86));
+}
+.roof-image-card picture {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.roof-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.roof-image-card summary:hover img {
+  transform: scale(1.045);
+}
+.roof-card-top {
+  position: absolute;
+  inset: 22px 22px auto;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+}
+.roof-card-top > span:last-child {
+  border-radius: 999px;
+  background: #ffffff24;
+  backdrop-filter: blur(8px);
+  padding: 7px 11px;
+  font-size: 0.55rem;
+  letter-spacing: 0.09em;
+}
+.roof-card-copy {
+  position: absolute;
+  inset: auto 27px 23px;
+}
+.roof-card-title {
+  display: block;
+  font-weight: 800;
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  max-width: 320px;
+}
+.roof-card-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 22px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.roof-card-plus {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 1px solid #ffffff55;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 400;
+  transition:
+    rotate 0.2s,
+    background 0.2s;
+}
+.roof-image-card summary:hover .roof-card-plus {
+  background: var(--accent);
+  color: var(--brand);
+  border-color: var(--accent);
+}
+.roof-image-card[open] .roof-card-plus {
+  rotate: 45deg;
+}
+.roof-card-detail {
+  padding: 25px 27px 28px;
+  font-size: 0.9rem;
+}
+.roof-card-detail .roof-text-link {
+  margin-top: 16px;
+  font-size: 0.66rem;
+}
+.roof-photo-note {
+  font-size: 0.67rem;
+  color: var(--muted-foreground);
+  margin-top: 20px !important;
+}
+.roof-photo-note a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.roof-value-section {
+  padding-bottom: 85px;
+}
+.roof-value-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  background: var(--brand);
+  color: var(--brand-foreground);
+}
+.roof-value-photo {
+  position: relative;
+  min-height: 570px;
+}
+.roof-value-photo picture {
+  position: absolute;
+  inset: 0;
+}
+.roof-value-photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 48% 50%;
+}
+.roof-value-photo figcaption {
+  position: absolute;
+  bottom: 22px;
+  left: 24px;
+  right: 24px;
+  font-size: 0.64rem;
+  background: #102516d9;
+  padding: 7px 12px;
+  width: fit-content;
+  border-radius: 6px;
+}
+.roof-value-copy {
+  padding: clamp(30px, 4vw, 65px);
+}
+.roof-value-copy .eyebrow {
+  color: var(--accent);
+}
+.roof-value-copy h2 {
+  color: white;
+  margin-top: 18px;
+  font-size: clamp(2rem, 3.8vw, 3.7rem);
+}
+.roof-value-copy h2 > span {
+  color: var(--accent);
+}
+.roof-value-list {
+  display: grid;
+  gap: 25px;
+  margin-top: 32px;
+}
+.roof-value-list > div {
+  display: flex;
+  gap: 16px;
+}
+.roof-value-list svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  flex: none;
+  margin-top: 3px;
+  stroke-width: 1.6;
+}
+.roof-value-list h3 {
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.roof-value-list p {
+  margin-top: 6px;
+  font-size: 0.86rem;
+  color: #ffffffe0;
+}
+.roof-process {
+  padding-bottom: 85px;
+}
+.roof-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  gap: 40px;
+  padding: 0;
+  margin: 0 0 35px;
+}
+.roof-steps li {
+  border-top: 1px solid var(--border);
+  padding-top: 27px;
+}
+.roof-step-number {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: var(--brand);
+  color: white;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.roof-steps h3 {
+  font-weight: 750;
+  font-size: 1.1rem;
+  margin-top: 21px;
+}
+.roof-steps p {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  max-width: 380px;
+}
+.roof-faq-section {
+  padding-block: 75px;
+  background: var(--surface);
+}
+.roof-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 85px;
+}
+.roof-faq-grid > div > p {
+  margin-top: 22px;
+  max-width: 350px;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+}
+.roof-faq-grid h2 {
+  font-size: clamp(2rem, 3.6vw, 3.3rem);
+}
+.roof-faqs details {
+  border-bottom: 1px solid var(--border);
+}
+.roof-faqs details:first-child {
+  border-top: 1px solid var(--border);
+}
+.roof-faqs summary {
+  list-style: none;
+  cursor: pointer;
+  padding-block: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 550;
+}
+.roof-faqs summary::-webkit-details-marker,
+.roof-places summary::-webkit-details-marker {
+  display: none;
+}
+.roof-faqs summary > span {
+  font-size: 1.3rem;
+  line-height: 1.1;
+  flex: none;
+}
+.roof-faqs details[open] summary > span,
+.roof-places[open] summary > span {
+  rotate: 45deg;
+}
+.roof-faqs details > p {
+  padding: 0 25px 24px 0;
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+}
+.roof-contact-section {
+  padding-block: 85px 60px;
+}
+.roof-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.roof-contact-copy h2 {
+  font-size: clamp(2rem, 3.7vw, 3.5rem);
+}
+.roof-contact-copy > p {
+  margin-top: 22px;
+  max-width: 550px;
+  font-size: 0.95rem;
+  color: var(--muted-foreground);
+}
+.roof-team-photo {
+  margin-top: 28px !important;
+}
+.roof-team-photo img {
+  width: 100%;
+  aspect-ratio: 1.8;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+.roof-team-photo figcaption {
+  margin-top: 10px;
+  font-size: 0.67rem;
+  color: var(--muted-foreground);
+}
+.roof-phone {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: fit-content;
+  margin-top: 27px;
+  font-size: 1.25rem;
+  font-weight: 750;
+}
+.roof-places {
+  border-bottom: 1px solid var(--border);
+  margin-top: 24px;
+  padding-bottom: 15px;
+}
+.roof-places summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding-block: 5px;
+  list-style: none;
+}
+.roof-places p {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+}
+.roof-contact-membership {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  max-width: 440px;
+  margin-top: 22px;
+  font-size: 0.7rem;
+  line-height: 1.7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.roof-contact-membership svg {
+  flex: none;
+  margin-top: 3px;
+}
+.roof-sources {
+  padding-block: 20px 30px;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+  border-top: 1px solid var(--border);
+}
+.roof-sources summary {
+  cursor: pointer;
+  width: fit-content;
+}
+.roof-sources p {
+  margin-top: 15px;
+  max-width: 1100px;
+}
+.roof-sources a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 1100px) {
+  .roof-section-heading {
+    gap: 35px;
+  }
+  .roof-faq-grid,
+  .roof-contact-grid {
+    gap: 45px;
+  }
+  .roof-value-copy {
+    padding: 35px;
+  }
+  .roof-card-copy {
+    inset-inline: 22px;
+  }
+  .roof-card-top {
+    inset-inline: 18px;
+  }
+  .roof-card-top > span:last-child {
+    max-width: 135px;
+    text-align: right;
+  }
+}
+@media (max-width: 767px) {
+  .roof-container {
+    width: calc(100% - 48px);
+  }
+  .roof-hero-inner {
+    min-height: 720px;
+    min-height: min(820px, 100svh);
+    padding-top: 105px;
+    padding-bottom: 20px;
+  }
+  .roof-hero-copy {
+    padding-block: 100px 28px;
+  }
+  .roof-hero-image img {
+    object-position: 64% 50%;
+  }
+  .roof-hero-image::after {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 24, 15, 0.65),
+      rgba(8, 24, 15, 0.05) 25%,
+      rgba(8, 24, 15, 0.84)
+    );
+  }
+  .roof-hero h1 {
+    margin-top: 15px;
+  }
+  .roof-hero-description {
+    font-size: 0.97rem;
+    margin-top: 22px !important;
+  }
+  .roof-hero-copy .eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+  }
+  .roof-breadcrumb {
+    font-size: 0.56rem;
+  }
+  .roof-actions {
+    gap: 20px;
+    margin-top: 25px;
+  }
+  .roof-button {
+    padding: 16px 24px;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+  }
+  .roof-text-link {
+    font-size: 0.64rem;
+    letter-spacing: 0.13em;
+  }
+  .roof-hero-caption {
+    text-align: left;
+    max-width: 260px;
+    font-size: 0.58rem;
+  }
+  .roof-benefits {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding-block: 28px;
+  }
+  .roof-benefits strong {
+    font-size: 0.93rem;
+  }
+  .roof-benefits small {
+    font-size: 0.74rem;
+  }
+  .roof-photo-section {
+    padding-block: 50px;
+  }
+  .roof-section-heading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .roof-section-heading > p {
+    justify-self: start;
+    font-size: 0.94rem;
+  }
+  .roof-page h2 {
+    font-size: clamp(1.8rem, 7.6vw, 3.1rem);
+  }
+  .roof-page .eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+  }
+  .roof-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .roof-image-card > summary {
+    aspect-ratio: 1.05;
+  }
+  .roof-card-title {
+    font-size: 1.55rem;
+    max-width: 280px;
+  }
+  .roof-card-top > span:last-child {
+    max-width: none;
+  }
+  .roof-card-copy {
+    inset: auto 24px 23px;
+  }
+  .roof-card-detail {
+    padding: 24px;
+  }
+  .roof-photo-note {
+    font-size: 0.65rem;
+  }
+  .roof-value-section {
+    padding-bottom: 50px;
+  }
+  .roof-value-panel {
+    grid-template-columns: 1fr;
+    border-radius: 2rem;
+  }
+  .roof-value-photo {
+    min-height: 0;
+    aspect-ratio: 1.2;
+  }
+  .roof-value-copy {
+    padding: 32px 26px 37px;
+  }
+  .roof-value-list {
+    gap: 25px;
+    margin-top: 28px;
+  }
+  .roof-value-list h3 {
+    font-size: 0.95rem;
+  }
+  .roof-value-list p {
+    font-size: 0.85rem;
+  }
+  .roof-value-list > div {
+    gap: 13px;
+  }
+  .roof-process {
+    padding-bottom: 50px;
+  }
+  .roof-steps {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+  .roof-steps li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 0 18px;
+    padding-top: 24px;
+  }
+  .roof-step-number {
+    grid-row: 1/3;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    font-size: 0.85rem;
+  }
+  .roof-steps h3 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+  .roof-steps p {
+    margin-top: 8px;
+    font-size: 0.87rem;
+  }
+  .roof-faq-section {
+    padding-block: 45px;
+  }
+  .roof-faq-grid,
+  .roof-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .roof-faqs summary {
+    font-size: 0.88rem;
+  }
+  .roof-faqs details > p {
+    padding-right: 10px;
+    font-size: 0.86rem;
+  }
+  .roof-contact-section {
+    padding-block: 50px 35px;
+  }
+  .roof-contact-copy > p {
+    font-size: 0.92rem;
+  }
+  .roof-contact-grid form {
+    padding: 26px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .roof-page *,
+  .roof-page *::before,
+  .roof-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
