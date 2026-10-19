@@ -297,19 +297,25 @@
   flex-shrink: 0;
   border: 1px solid #ffffff55;
   border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: 400;
+  line-height: 1;
   transition:
-    rotate 0.2s,
-    background 0.2s;
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+.roof-card-plus svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s;
 }
 .roof-image-card summary:hover .roof-card-plus {
   background: var(--accent);
   color: var(--brand);
   border-color: var(--accent);
 }
-.roof-image-card[open] .roof-card-plus {
-  rotate: 45deg;
+.roof-image-card[open] .roof-card-plus svg {
+  transform: rotate(45deg);
 }
 .roof-card-detail {
   padding: 25px 27px 28px;

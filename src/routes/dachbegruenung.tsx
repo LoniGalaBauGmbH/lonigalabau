@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Droplets, Flower2, Phone, Sun } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Droplets, Flower2, Phone, Plus, Sun } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
@@ -220,7 +220,7 @@ function GreenRoofPage() {
                     <span className="roof-card-action">
                       Das ist wichtig{" "}
                       <span className="roof-card-plus" aria-hidden="true">
-                        +
+                        <Plus size={20} />
                       </span>
                     </span>
                   </span>
