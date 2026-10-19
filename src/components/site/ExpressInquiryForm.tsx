@@ -1,3 +1,4 @@
+import { useFormReady } from "@/hooks/useFormReady";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { ArrowLeft, ArrowRight, Check, Loader2, Send } from "lucide-react";
@@ -7,6 +8,7 @@ import { scrollStepIntoView, useStepTransition } from "@/hooks/useStepTransition
 import { useContactAttachments } from "@/hooks/useContactAttachments";
 import { ContactAttachments } from "./ContactAttachments";
 import { DiscoverySourceField } from "./DiscoverySourceField";
+import { currentInquiryPage } from "@/lib/inquiry-page";
 import "./CallbackForm.css";
 
 const emptyForm = {
@@ -53,6 +55,7 @@ export function ExpressInquiryForm({
   descriptionPlaceholder?: string;
 } = {}) {
   const compact = variant === "compact";
+  const formReady = useFormReady();
   const send = useServerFn(createExpressInquiry);
   const attachments = useContactAttachments();
   const uid = useId();
@@ -138,7 +141,11 @@ export function ExpressInquiryForm({
     setErrors({});
     try {
       await send({
-        data: { ...expressInquirySchema.parse(form), attachments: await attachments.serialize() },
+        data: {
+          ...expressInquirySchema.parse(form),
+          inquiryPage: currentInquiryPage(),
+          attachments: await attachments.serialize(),
+        },
       });
       attachments.clear();
       setStatus("success");
@@ -219,13 +226,14 @@ export function ExpressInquiryForm({
           </div>
         ) : (
           <form
+            method="post"
             ref={formRef}
             onSubmit={submit}
             noValidate
             className="callback-form"
             aria-label="Express-Anfrage"
           >
-            <fieldset disabled={pending}>
+            <fieldset disabled={!formReady || pending}>
               <legend className="sr-only">Kontaktdaten, Projekt und Anhänge</legend>
               <ol className="callback-steps" aria-label="Schritte der Express-Anfrage">
                 {steps.map((item, index) => (
@@ -379,11 +387,14 @@ export function ExpressInquiryForm({
                   {step === 2 && (
                     <>
                       <div className="express-attachments">
-                        <ContactAttachments attachments={attachments} disabled={pending} />
+                        <ContactAttachments
+                          attachments={attachments}
+                          disabled={!formReady || pending}
+                        />
                         <DiscoverySourceField
                           value={form.discoverySource}
                           onChange={(value) => update("discoverySource", value)}
-                          disabled={pending}
+                          disabled={!formReady || pending}
                         />
                       </div>
                       <details className="express-review">
@@ -459,7 +470,11 @@ export function ExpressInquiryForm({
                     ) : (
                       <span className="callback-small-note">Persönlich & unverbindlich.</span>
                     )}
-                    <button type="submit" className="callback-submit">
+                    <button
+                      type="submit"
+                      disabled={!formReady || pending}
+                      className="callback-submit"
+                    >
                       {pending ? (
                         <Loader2 size={18} className="animate-spin" aria-hidden="true" />
                       ) : step === 2 ? (

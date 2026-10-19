@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { contactSubmissionSchema } from "./validators";
 import { MAX_CONTACT_FILE_BYTES, MAX_CONTACT_TOTAL_BYTES } from "./contact-attachments";
 import { preparePublicUpload } from "./public-upload.server";
+import { withInquiryPage } from "./inquiry-page";
 
 export async function persistContactSubmission(
   client: Pick<SupabaseClient, "storage" | "from">,
@@ -41,7 +42,7 @@ export async function persistContactSubmission(
       email: data.email,
       phone: data.phone || null,
       subject: data.subject || null,
-      message: data.message,
+      message: withInquiryPage(data.message, data.inquiryPage),
       ...(data.discoverySource ? { discovery_source: data.discoverySource } : {}),
       image_paths: uploaded,
     });

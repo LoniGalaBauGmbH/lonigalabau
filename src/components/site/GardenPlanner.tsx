@@ -1,4 +1,6 @@
+import { useFormReady } from "@/hooks/useFormReady";
 import { publicImageUrl } from "@/lib/public-image-url";
+import { currentInquiryPage } from "@/lib/inquiry-page";
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
@@ -238,6 +240,7 @@ export function GardenPlanner() {
   const [savedFiles, setSavedFiles] = useState<string[]>([]);
   const attachments = useContactAttachments();
   const send = useServerFn(createGardenPlannerRequest);
+  const formReady = useFormReady();
   const { images } = useSiteImages();
   const heading = useRef<HTMLHeadingElement>(null);
   const formElement = useRef<HTMLFormElement>(null);
@@ -405,7 +408,14 @@ export function GardenPlanner() {
     setStatus("sending");
     try {
       const files = await attachments.serialize();
-      await send({ data: { plan: form, attachments: files, discoverySource } });
+      await send({
+        data: {
+          plan: form,
+          attachments: files,
+          discoverySource,
+          inquiryPage: currentInquiryPage(),
+        },
+      });
       setSavedFiles(attachments.items.map((i) => i.file.name));
       attachments.clear();
       removeDraft();
@@ -577,13 +587,14 @@ export function GardenPlanner() {
                     </div>
                   )}
                   <form
+                    method="post"
                     ref={formElement}
                     onSubmit={next}
                     noValidate
                     aria-label="Gartenprojekt planen"
                     aria-busy={pending}
                   >
-                    <fieldset disabled={pending} className="min-w-0">
+                    <fieldset disabled={!formReady || pending} className="min-w-0">
                       <legend className="sr-only">{step.title}</legend>
                       {!!Object.keys(errors).length && (
                         <div role="alert" className="planner-error-banner">
@@ -784,7 +795,10 @@ export function GardenPlanner() {
                               </li>
                             </ol>
                           </div>
-                          <ContactAttachments attachments={attachments} disabled={pending} />
+                          <ContactAttachments
+                            attachments={attachments}
+                            disabled={!formReady || pending}
+                          />
                           <Field
                             label={
                               "Was sollten wir außerdem wissen?" +
@@ -942,7 +956,7 @@ export function GardenPlanner() {
                           <DiscoverySourceField
                             value={discoverySource}
                             onChange={setDiscoverySource}
-                            disabled={pending}
+                            disabled={!formReady || pending}
                           />
                           <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed">
                             <Checkbox
@@ -997,7 +1011,11 @@ export function GardenPlanner() {
                             Kostenlos & unverbindlich
                           </span>
                         )}
-                        <button type="submit" className="planner-primary">
+                        <button
+                          type="submit"
+                          disabled={!formReady || pending}
+                          className="planner-primary"
+                        >
                           {pending ? (
                             <>
                               <Loader2
@@ -1022,7 +1040,7 @@ export function GardenPlanner() {
                 <button
                   type="button"
                   onClick={keepDraft}
-                  disabled={pending}
+                  disabled={!formReady || pending}
                   className="planner-text-button"
                 >
                   <Save className="size-4" aria-hidden="true" />

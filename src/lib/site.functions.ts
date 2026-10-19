@@ -21,6 +21,7 @@ import { partnerSubmissionSchema } from "@/lib/partner-application";
 import { persistPartnerSubmission } from "@/lib/partner-submission.server";
 import { buildExpressPayload, expressSubmissionSchema } from "@/lib/express-inquiry";
 import { discoverySourceSchema } from "@/lib/lead-qualification";
+import { inquiryPageSchema } from "@/lib/inquiry-page";
 
 export const createExpressInquiry = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => {
@@ -281,6 +282,7 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
       .object({
         plan: plannerStateSchema,
         discoverySource: discoverySourceSchema,
+        inquiryPage: inquiryPageSchema,
         attachments: contactAttachmentsSchema.default([]),
       })
       .parse(data),
@@ -290,6 +292,7 @@ export const createGardenPlannerRequest = createServerFn({ method: "POST" })
     const result = await persistContactSubmission(supabaseAdmin, {
       ...buildPlannerPayload(data.plan),
       discoverySource: data.discoverySource,
+      inquiryPage: data.inquiryPage,
       attachments: data.attachments,
     });
     await attemptSubmissionEmails(supabaseAdmin, "contact_requests", result.id);

@@ -31,6 +31,7 @@ export interface RegionPage {
   parentCity?: string;
   sources?: { title: string; url: string }[];
   updatedAt: string;
+  projectPreparation?: { heading: string; text: string };
 }
 
 export const regions: RegionPage[] = content;

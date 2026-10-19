@@ -1,4 +1,5 @@
 import { submissionTicket, type SubmissionTicketFields } from "./submission-ticket";
+import { normalizeInquiryPage } from "./inquiry-page";
 import { partnerAvailability, type PartnerRecord } from "./partner-application";
 export type EmailRecord = SubmissionTicketFields & {
   id: string;
@@ -63,7 +64,12 @@ const row = (line: string): Row => {
 
 /** Decode the two existing, server-generated briefings without interpreting free text as HTML. */
 export function emailSections(record: EmailRecord, application: boolean) {
-  const message = record.message || "Keine zusätzliche Nachricht.";
+  let message = record.message || "Keine zusätzliche Nachricht.";
+  const prefix = !application
+    ? message.match(/^Anfrageseite: https:\/\/www\.loni-galabau\.de([^\r\n]+)\n\n/)
+    : null;
+  const inquiryPage = prefix ? normalizeInquiryPage(prefix[1]) : undefined;
+  if (inquiryPage && prefix) message = message.slice(prefix[0].length);
   let channel = "";
   let notice = "";
   let sections: Section[] = [
@@ -152,6 +158,9 @@ export function emailSections(record: EmailRecord, application: boolean) {
     sections = [{ title: "Gewünschter Rückruf", rows: message.split("\n").slice(1, 5).map(row) }];
     notice =
       "Der Wunschzeitpunkt ist keine verbindliche Terminbuchung. Die Datenschutzhinweise wurden bestätigt.";
+  }
+  if (inquiryPage) {
+    sections.push({ title: "Anfrageseite", text: "https://www.loni-galabau.de" + inquiryPage });
   }
   return { sections, channel, notice };
 }

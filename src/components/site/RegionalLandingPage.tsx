@@ -91,6 +91,7 @@ function RegionalImage({
 export function RegionalLandingPage({ page }: { page: RegionPage }) {
   const related = page.relatedSlugs.map(getRegion).slice(0, 3);
   const detailPhotos = getRegionGallery(page.slug);
+  const preparation = page.projectPreparation ?? projectPreparation[page.slug];
   return (
     <PageShell transparentHeader>
       <article className="regions" lang="de">
@@ -346,10 +347,10 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
           </aside>
         )}
 
-        {projectPreparation[page.slug] && (
+        {preparation && (
           <section className="region-wrap region-prose" aria-labelledby="regional-project-offers">
-            <h2 id="regional-project-offers">{projectPreparation[page.slug].heading}</h2>
-            <p>{projectPreparation[page.slug].text}</p>
+            <h2 id="regional-project-offers">{preparation.heading}</h2>
+            <p>{preparation.text}</p>
             <Link
               to="/leistungen/$slug"
               params={{ slug: "rasenanlagen" }}
@@ -450,7 +451,10 @@ export function RegionsOverviewPage() {
         <section className="region-wrap region-overview" id="orte" aria-labelledby="orte-title">
           <div className="region-section-heading">
             <h2 id="orte-title">Orte und Stadtteile im Rhein-Main-Gebiet</h2>
-            <p>Regionale Beispiele im Main-Taunus-Kreis, in Frankfurt-West und Kelsterbach.</p>
+            <p>
+              Planungshilfen für Frankfurt, Wiesbaden, Mainz, Bad Homburg und die Orte rund um
+              unseren Firmensitz.
+            </p>
           </div>
           <div className="region-card-grid">
             {regions.map((page) => (

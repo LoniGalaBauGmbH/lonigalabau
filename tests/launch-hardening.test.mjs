@@ -47,6 +47,7 @@ test("public image settings reject tracking origins, private buckets and origin 
     "./contact-attachments": moduleAt("src/lib/contact-attachments.ts"),
     "./application-document": moduleAt("src/lib/application-document.ts"),
     "./lead-qualification": moduleAt("src/lib/lead-qualification.ts"),
+    "./inquiry-page": moduleAt("src/lib/inquiry-page.ts"),
   });
   const schema = validators.publicImageUrlSchema;
   for (const url of [
@@ -211,6 +212,7 @@ test("planner drafts retain selections while dropping personal and free-text det
     "./contact-attachments": attachments,
     "./application-document": document,
     "./lead-qualification": moduleAt("src/lib/lead-qualification.ts"),
+    "./inquiry-page": moduleAt("src/lib/inquiry-page.ts"),
   });
   const planner = moduleAt("src/lib/garden-planner.ts", { "./validators": validators });
   const draft = planner.privatePlannerDraft({

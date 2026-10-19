@@ -1,4 +1,6 @@
+import { useFormReady } from "@/hooks/useFormReady";
 import { publicImageUrl } from "@/lib/public-image-url";
+import { currentInquiryPage } from "@/lib/inquiry-page";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
@@ -42,6 +44,7 @@ const SUBJECTS = [
 
 function Page() {
   const send = useServerFn(createContactRequest);
+  const formReady = useFormReady();
   const attachments = useContactAttachments();
   const submitting = useRef(false);
   const emptyForm = {
@@ -64,7 +67,13 @@ function Page() {
     setStatus("loading");
     try {
       const parsed = contactSchema.parse(form);
-      await send({ data: { ...parsed, attachments: await attachments.serialize() } });
+      await send({
+        data: {
+          ...parsed,
+          inquiryPage: currentInquiryPage(),
+          attachments: await attachments.serialize(),
+        },
+      });
       setStatus("ok");
       setForm(emptyForm);
       attachments.clear();
@@ -205,12 +214,16 @@ function Page() {
                 </div>
               ) : (
                 <form
+                  method="post"
                   onSubmit={onSubmit}
                   className="relative space-y-6"
                   aria-label="Kontaktformular"
                   aria-busy={status === "loading"}
                 >
-                  <fieldset disabled={status === "loading"} className="min-w-0 space-y-6">
+                  <fieldset
+                    disabled={!formReady || status === "loading"}
+                    className="min-w-0 space-y-6"
+                  >
                     <legend className="sr-only">Ihre Nachricht an Loni Galabau</legend>
                     <div>
                       <h2 className="display text-2xl md:text-3xl text-brand">
@@ -291,13 +304,16 @@ function Page() {
                       </div>
                     </Field>
 
-                    <ContactAttachments attachments={attachments} disabled={status === "loading"} />
+                    <ContactAttachments
+                      attachments={attachments}
+                      disabled={!formReady || status === "loading"}
+                    />
                     <DiscoverySourceField
                       value={form.discoverySource}
                       onChange={(value) =>
                         setForm((current) => ({ ...current, discoverySource: value }))
                       }
-                      disabled={status === "loading"}
+                      disabled={!formReady || status === "loading"}
                     />
 
                     {status === "err" && (
@@ -319,7 +335,7 @@ function Page() {
                       </p>
                       <button
                         type="submit"
-                        disabled={status === "loading"}
+                        disabled={!formReady || status === "loading"}
                         className="inline-flex items-center gap-2 bg-brand text-brand-foreground px-8 py-3.5 rounded-full text-sm font-medium hover:bg-brand/90 disabled:opacity-50 transition group"
                       >
                         {status === "loading" ? (

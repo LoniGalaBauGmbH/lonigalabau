@@ -24,6 +24,9 @@ function load(name) {
 const { persistContactSubmission } = load("contact-submission.server");
 const { validateContactFiles, MAX_CONTACT_FILE_BYTES } = load("contact-attachments");
 const { contactSubmissionSchema } = load("validators");
+const { buildExpressPayload } = load("express-inquiry");
+const { normalizeInquiryPage } = load("inquiry-page");
+const { emailSections } = load("submission-email");
 const png = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10, 0]);
 const attachment = (extra = {}) => ({
   name: "Garten.png",
@@ -71,6 +74,50 @@ function harness({ failedUpload = 0, failedInsert = false } = {}) {
   return { client, uploads, removals, records };
 }
 
+test("form page context survives express persistence without breaking structured mail", async () => {
+  const h = harness();
+  const payload = buildExpressPayload({
+    firstName: "Synthetic",
+    lastName: "Test",
+    phone: "06190123456",
+    email: "qa@example.invalid",
+    service: "Pflasterarbeiten",
+    privacy: true,
+    description: "Synthetic terrace project",
+    inquiryPage: "/gartenbau-frankfurt",
+  });
+  await persistContactSubmission(h.client, payload);
+  const record = h.records[0];
+  assert.match(
+    record.message,
+    /^Anfrageseite: https:\/\/www\.loni-galabau\.de\/gartenbau-frankfurt\n\nEXPRESS/,
+  );
+  assert.equal(record.discovery_source, undefined);
+  const mail = emailSections(record, false);
+  assert.equal(mail.sections[1].text, "Synthetic terrace project");
+  assert.equal(mail.sections.at(-1).title, "Anfrageseite");
+  assert.equal(mail.sections.at(-1).text, "https://www.loni-galabau.de/gartenbau-frankfurt");
+});
+
+test("private or arbitrary URL data is discarded without blocking contact submission", async () => {
+  for (const path of [
+    "/admin/anfragen",
+    "/login",
+    "//evil.invalid",
+    "https://www.loni-galabau.de/kontakt",
+    "/kontakt?email=private",
+    "/kontakt#private",
+    "/kontakt\nForged: yes",
+    { value: "/kontakt" },
+  ]) {
+    assert.equal(normalizeInquiryPage(path), undefined);
+    const h = harness();
+    await persistContactSubmission(h.client, { ...lead, inquiryPage: path, attachments: [] });
+    assert.equal(h.records[0].message, lead.message);
+    assert.equal(h.records[0].discovery_source, undefined);
+  }
+});
+
 test("files and PDF attachments are linked to the contact only after successful uploads", async () => {
   const h = harness();
   const pdf = attachment({
@@ -92,7 +139,13 @@ test("files and PDF attachments are linked to the contact only after successful 
 
 test("voluntary source is stored separately while public callers cannot qualify themselves", async () => {
   const h = harness();
-  await persistContactSubmission(h.client, { ...lead, discoverySource: "google_search", lead_qualification: "qualified", lead_qualification_version: 7, referrer: "private.invalid" });
+  await persistContactSubmission(h.client, {
+    ...lead,
+    discoverySource: "google_search",
+    lead_qualification: "qualified",
+    lead_qualification_version: 7,
+    referrer: "private.invalid",
+  });
   assert.equal(h.records[0].discovery_source, "google_search");
   assert.equal(h.records[0].lead_qualification, undefined);
   assert.equal(h.records[0].lead_qualification_version, undefined);

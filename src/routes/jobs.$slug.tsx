@@ -1,3 +1,4 @@
+import { useFormReady } from "@/hooks/useFormReady";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
@@ -53,6 +54,7 @@ export const Route = createFileRoute("/jobs/$slug")({
 });
 
 function Page() {
+  const formReady = useFormReady();
   const { slug } = Route.useParams();
   const { data: job } = useSuspenseQuery(jobQuery(slug));
   const apply = useServerFn(createApplication);
@@ -180,12 +182,13 @@ function Page() {
             </div>
           ) : (
             <form
+              method="post"
               className="mt-8"
               onSubmit={onSubmit}
               aria-label="Bewerbungsformular"
               aria-busy={status === "loading"}
             >
-              <fieldset disabled={status === "loading"} className="min-w-0 space-y-6">
+              <fieldset disabled={!formReady || status === "loading"} className="min-w-0 space-y-6">
                 <legend className="sr-only">Ihre Bewerbung</legend>
                 <Field label="Name *">
                   <input
@@ -229,7 +232,11 @@ function Page() {
                     className="input resize-none"
                   />
                 </Field>
-                <ApplicationUpload file={file} onChange={setFile} disabled={status === "loading"} />
+                <ApplicationUpload
+                  file={file}
+                  onChange={setFile}
+                  disabled={!formReady || status === "loading"}
+                />
                 <p className="text-sm leading-relaxed text-brand/65">
                   Ihre Angaben verwenden wir zur Bearbeitung Ihrer Bewerbung. Mehr dazu in unseren{" "}
                   <Link
@@ -249,7 +256,7 @@ function Page() {
                 )}
                 <button
                   type="submit"
-                  disabled={status === "loading"}
+                  disabled={!formReady || status === "loading"}
                   className="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 bg-brand text-brand-foreground px-7 py-3 rounded-full text-sm font-medium hover:bg-brand/90 disabled:opacity-50"
                 >
                   {status === "loading" ? (

@@ -1,3 +1,4 @@
+import { useFormReady } from "@/hooks/useFormReady";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { ArrowLeft, ArrowRight, CheckCircle2, FileCheck2, Loader2, Upload, X } from "lucide-react";
@@ -45,6 +46,7 @@ const hints = [
   "Zwei gültige Nachweise Ihres Betriebs. Jeweils eine PDF, maximal 10 MB.",
 ];
 export function PartnerApplicationForm() {
+  const formReady = useFormReady();
   const send = useServerFn(createPartnerApplication);
   const uid = useId();
   const id = (key: string) => `${uid}-${key}`;
@@ -307,6 +309,7 @@ export function PartnerApplicationForm() {
     );
   return (
     <form
+      method="post"
       className="partner-form"
       ref={formRef}
       noValidate
@@ -335,7 +338,7 @@ export function PartnerApplicationForm() {
             {titles[step]}
           </h2>
           <p className="partner-form-hint">{hints[step]}</p>
-          <fieldset disabled={status === "pending"}>
+          <fieldset disabled={!formReady || status === "pending"}>
             <legend className="sr-only">{steps[step]}</legend>
             {step === 0 && (
               <div className="partner-fields">
@@ -660,7 +663,7 @@ export function PartnerApplicationForm() {
           <button
             type="button"
             className="partner-back"
-            disabled={status === "pending"}
+            disabled={!formReady || status === "pending"}
             onClick={() => go(step - 1)}
             aria-label="Vorheriger Schritt"
           >
@@ -668,7 +671,11 @@ export function PartnerApplicationForm() {
             <span>Zurück</span>
           </button>
         )}
-        <button type="submit" className="partner-primary" disabled={status === "pending"}>
+        <button
+          type="submit"
+          className="partner-primary"
+          disabled={!formReady || status === "pending"}
+        >
           {status === "pending" ? (
             <>
               <Loader2 className="animate-spin" size={18} />

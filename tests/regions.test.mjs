@@ -48,7 +48,10 @@ const photoVariants = moduleAt("src/lib/photo-variants.ts", {
 const serialize = (value) => JSON.parse(JSON.stringify(value));
 
 function publicAssetFile(src) {
-  const path = new URL(src, "https://www.loni-galabau.de").pathname.replace(/^\/__public-assets/, "");
+  const path = new URL(src, "https://www.loni-galabau.de").pathname.replace(
+    /^\/__public-assets/,
+    "",
+  );
   assert.match(path, /^\/images\/(?:projekte|optimized-v1|regionen)\//);
   return new URL("../public" + path, import.meta.url);
 }
@@ -73,6 +76,10 @@ const slugs = [
   "gartenbau-eschborn",
   "gartenbau-frankfurt-unterliederbach",
   "gartenbau-frankfurt-zeilsheim",
+  "gartenbau-frankfurt",
+  "gartenbau-wiesbaden",
+  "gartenbau-mainz",
+  "gartenbau-bad-homburg",
 ];
 
 test("all researched locations have distinct content and valid service and neighbor targets", () => {
@@ -258,7 +265,7 @@ test("unknown locations do not inherit a regional gallery", () => {
 });
 
 test("district pilots remain places within Frankfurt and cite real municipal resources", () => {
-  for (const slug of slugs.slice(-2)) {
+  for (const slug of ["gartenbau-frankfurt-unterliederbach", "gartenbau-frankfurt-zeilsheim"]) {
     const page = api.getRegion(slug);
     const service = serialize(api.regionSchema(page))["@graph"].find(
       (item) => item["@type"] === "Service",

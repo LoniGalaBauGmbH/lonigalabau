@@ -35,3 +35,13 @@ Loni Galabau GmbH, Auf der Roos 3, 65795 Hattersheim am Main. Telefon: +49 6190 
 - [Sitemap](https://www.loni-galabau.de/sitemap.xml): Aktuelle öffentliche Seiten.
 
 Leistungsumfang, Termine und Preise werden für das konkrete Grundstück besprochen. Die Ratgeber ersetzen keine Bestandsaufnahme oder individuelle Ausführungsplanung. Das Unternehmen bietet über diese Website keine öffentliche Zahlungs-, Commerce- oder MCP-API an.
+
+## Regionale Planungshilfen
+
+- [Einsatzgebiete](https://www.loni-galabau.de/einsatzgebiete): Deutschlandweit tätig, Firmensitz Hattersheim am Main.
+- [Gartenbau Frankfurt](https://www.loni-galabau.de/gartenbau-frankfurt): Baustellenzugang, Materialtransport und den Umbau bewohnter Grundstücke früh abstimmen. Terrasse, Einfahrt, Rasen und Zaun zu einer nutzbaren Außenanlage verbinden.
+- [Gartenbau Wiesbaden](https://www.loni-galabau.de/gartenbau-wiesbaden): Befestigte Flächen nach ihrer Nutzung aufteilen, Platz für Grün gewinnen und Regenwasser, Bewässerung und vorhandene Anschlüsse gemeinsam betrachten.
+- [Gartenbau Mainz](https://www.loni-galabau.de/gartenbau-mainz): Sitzplätze nach Sonnenverlauf und Tagesnutzung anordnen, vorhandenen Schatten erhalten und Pflanzflächen, Rasen und Bewässerung aufeinander abstimmen.
+- [Gartenbau Bad Homburg](https://www.loni-galabau.de/gartenbau-bad-homburg): Bäume, Hecken und vorhandene Bauteile zuerst aufnehmen. Neue Wege, Terrasse und Rasen in den Bestand einfügen und den Umbau in geeignete Bauabschnitte aufteilen.
+
+Die Ortsseiten beschreiben Einsatzgebiete und Projektvorbereitung, keine weiteren Niederlassungen. Projektfotos sind Gestaltungsbeispiele ohne behauptete Ortszuordnung.

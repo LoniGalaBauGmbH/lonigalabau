@@ -1,3 +1,4 @@
+import { useFormReady } from "@/hooks/useFormReady";
 import { useState, useId } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Link } from "@tanstack/react-router";
@@ -5,6 +6,7 @@ import { CheckCircle2, Loader2, Mail, Phone, ShieldCheck } from "lucide-react";
 import { createContactRequest } from "@/lib/site.functions";
 import { contactSchema } from "@/lib/validators";
 import { DiscoverySourceField } from "@/components/site/DiscoverySourceField";
+import { currentInquiryPage } from "@/lib/inquiry-page";
 
 export function ServiceMiniContact({
   serviceTitle,
@@ -14,6 +16,7 @@ export function ServiceMiniContact({
   messagePlaceholder?: string;
 }) {
   const messageId = useId();
+  const formReady = useFormReady();
   const submit = useServerFn(createContactRequest);
   const [state, setState] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
@@ -40,6 +43,7 @@ export function ServiceMiniContact({
       subject: `Anfrage: ${serviceTitle}`,
       message: form.message,
       discoverySource: form.discoverySource,
+      inquiryPage: currentInquiryPage(),
     });
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message ?? "Bitte Eingaben prüfen.");
@@ -86,108 +90,111 @@ export function ServiceMiniContact({
 
   return (
     <form
+      method="post"
       onSubmit={onSubmit}
-      className="rounded-2xl border border-brand/10 bg-surface p-7 md:p-9 space-y-4"
+      className="rounded-2xl border border-brand/10 bg-surface p-7 md:p-9"
     >
-      <div>
-        <span className="eyebrow text-accent-ink">Direkt anfragen</span>
-        <h3 className="font-display font-bold text-[clamp(1.25rem,2vw,1.625rem)] mt-3 text-brand leading-[1.15]">
-          Ihr Projekt, unser Handwerk.
-        </h3>
-        <p className="mt-2 text-sm text-foreground/65">
-          Schildern Sie uns Ihr Vorhaben – wir besprechen die nächsten Schritte.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 gap-3">
-        <Field
-          label="Ihr Name"
-          value={form.name}
-          onChange={(v) => setForm((f) => ({ ...f, name: v }))}
-          required
-        />
-        <Field
-          label="E-Mail"
-          type="email"
-          value={form.email}
-          onChange={(v) => setForm((f) => ({ ...f, email: v }))}
-          required
-        />
-        <Field
-          label="Telefon (optional)"
-          type="tel"
-          value={form.phone}
-          onChange={(v) => setForm((f) => ({ ...f, phone: v }))}
-        />
+      <fieldset disabled={!formReady || state === "loading"} className="min-w-0 space-y-4">
         <div>
-          <label
-            htmlFor={messageId}
-            className="block text-xs font-medium tracking-wider uppercase text-brand/70 mb-1.5"
-          >
-            Ihre Nachricht
-          </label>
-          <textarea
-            id={messageId}
-            minLength={10}
-            maxLength={5000}
+          <span className="eyebrow text-accent-ink">Direkt anfragen</span>
+          <h3 className="font-display font-bold text-[clamp(1.25rem,2vw,1.625rem)] mt-3 text-brand leading-[1.15]">
+            Ihr Projekt, unser Handwerk.
+          </h3>
+          <p className="mt-2 text-sm text-foreground/65">
+            Schildern Sie uns Ihr Vorhaben – wir besprechen die nächsten Schritte.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-3">
+          <Field
+            label="Ihr Name"
+            value={form.name}
+            onChange={(v) => setForm((f) => ({ ...f, name: v }))}
             required
-            rows={4}
-            value={form.message}
-            onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-            placeholder={messagePlaceholder ?? `Worum geht es bei Ihrem ${serviceTitle}-Projekt?`}
-            className="w-full rounded-lg border border-brand/15 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
           />
+          <Field
+            label="E-Mail"
+            type="email"
+            value={form.email}
+            onChange={(v) => setForm((f) => ({ ...f, email: v }))}
+            required
+          />
+          <Field
+            label="Telefon (optional)"
+            type="tel"
+            value={form.phone}
+            onChange={(v) => setForm((f) => ({ ...f, phone: v }))}
+          />
+          <div>
+            <label
+              htmlFor={messageId}
+              className="block text-xs font-medium tracking-wider uppercase text-brand/70 mb-1.5"
+            >
+              Ihre Nachricht
+            </label>
+            <textarea
+              id={messageId}
+              minLength={10}
+              maxLength={5000}
+              required
+              rows={4}
+              value={form.message}
+              onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+              placeholder={messagePlaceholder ?? `Worum geht es bei Ihrem ${serviceTitle}-Projekt?`}
+              className="w-full rounded-lg border border-brand/15 bg-background px-3.5 py-2.5 text-sm placeholder:text-foreground/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition"
+            />
+          </div>
         </div>
-      </div>
 
-      <DiscoverySourceField
-        value={form.discoverySource}
-        onChange={(value) => setForm((current) => ({ ...current, discoverySource: value }))}
-        disabled={state === "loading"}
-      />
-      <label className="flex items-start gap-3 text-xs text-foreground/70 leading-relaxed cursor-pointer">
-        <input
-          type="checkbox"
-          checked={form.consent}
-          onChange={(e) => setForm((f) => ({ ...f, consent: e.target.checked }))}
-          className="mt-0.5 h-4 w-4 rounded border-brand/30 text-accent-ink focus:ring-accent"
+        <DiscoverySourceField
+          value={form.discoverySource}
+          onChange={(value) => setForm((current) => ({ ...current, discoverySource: value }))}
+          disabled={!formReady || state === "loading"}
         />
-        <span>
-          Ich stimme der Verarbeitung meiner Daten gemäß{" "}
-          <Link to="/datenschutz" className="underline hover:text-brand">
-            Datenschutzerklärung
-          </Link>{" "}
-          zu.
-        </span>
-      </label>
+        <label className="flex items-start gap-3 text-xs text-foreground/70 leading-relaxed cursor-pointer">
+          <input
+            type="checkbox"
+            checked={form.consent}
+            onChange={(e) => setForm((f) => ({ ...f, consent: e.target.checked }))}
+            className="mt-0.5 h-4 w-4 rounded border-brand/30 text-accent-ink focus:ring-accent"
+          />
+          <span>
+            Ich stimme der Verarbeitung meiner Daten gemäß{" "}
+            <Link to="/datenschutz" className="underline hover:text-brand">
+              Datenschutzerklärung
+            </Link>{" "}
+            zu.
+          </span>
+        </label>
 
-      {error && (
-        <div
-          role="alert"
-          className="rounded-lg bg-destructive/10 border border-destructive/30 px-3 py-2 text-xs text-destructive"
-        >
-          {error}
-        </div>
-      )}
-
-      <button
-        type="submit"
-        disabled={state === "loading"}
-        className="w-full inline-flex items-center justify-center gap-2 bg-brand text-brand-foreground py-3.5 rounded-full text-sm font-semibold hover:bg-brand/90 transition disabled:opacity-80"
-      >
-        {state === "loading" ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Wird gesendet…
-          </>
-        ) : (
-          "Anfrage senden"
+        {error && (
+          <div
+            role="alert"
+            className="rounded-lg bg-destructive/10 border border-destructive/30 px-3 py-2 text-xs text-destructive"
+          >
+            {error}
+          </div>
         )}
-      </button>
 
-      <p className="flex items-center gap-2 text-[11px] text-foreground/55">
-        <ShieldCheck className="h-3.5 w-3.5" />
-        Ihre Daten werden vertraulich behandelt.
-      </p>
+        <button
+          type="submit"
+          disabled={!formReady || state === "loading"}
+          className="w-full inline-flex items-center justify-center gap-2 bg-brand text-brand-foreground py-3.5 rounded-full text-sm font-semibold hover:bg-brand/90 transition disabled:opacity-80"
+        >
+          {state === "loading" ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" /> Wird gesendet…
+            </>
+          ) : (
+            "Anfrage senden"
+          )}
+        </button>
+
+        <p className="flex items-center gap-2 text-[11px] text-foreground/55">
+          <ShieldCheck className="h-3.5 w-3.5" />
+          Ihre Daten werden vertraulich behandelt.
+        </p>
+      </fieldset>
     </form>
   );
 }

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { contactAttachmentsSchema } from "./contact-attachments";
 import { discoverySourceSchema } from "./lead-qualification";
+import { inquiryPageSchema } from "./inquiry-page";
 
 export const EXPRESS_SERVICES = [
   "Gartengestaltung",
@@ -55,6 +56,7 @@ const consent = z.object({
 export const expressInquirySchema = contact.merge(project).merge(consent);
 export const expressSubmissionSchema = expressInquirySchema
   .extend({
+    inquiryPage: inquiryPageSchema,
     attachments: contactAttachmentsSchema.default([]),
   })
   .strict();
@@ -81,5 +83,6 @@ export function buildExpressPayload(input: unknown) {
     ].join("\n"),
     attachments: data.attachments,
     discoverySource: data.discoverySource,
+    inquiryPage: data.inquiryPage,
   };
 }

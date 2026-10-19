@@ -49,6 +49,26 @@ export function ServicePreparation({ slug }: { slug: string }) {
             </a>
           </div>
         </div>
+        {slug === "zaunarbeiten" && (
+          <div className="mt-8 border-t border-brand/15 pt-6">
+            <h3 className="font-display text-lg font-bold text-brand">
+              Zaunbau in Frankfurt und im Rhein-Main-Gebiet
+            </h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80">
+              Für einen neuen Zaun in Frankfurt helfen Fotos des Grenzverlaufs, die ungefähre Länge
+              und die gewünschte Torbreite. Zeigen Sie auch, wie Material in den Garten gelangt und
+              welche vorhandenen Zaunabschnitte erhalten bleiben sollen. Von unserem Firmensitz in
+              Hattersheim betreuen wir Projekte nach individueller Abstimmung auch deutschlandweit.
+            </p>
+            <Link
+              to="/gartenbau-frankfurt"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+            >
+              Ihr Gartenprojekt in Frankfurt vorbereiten{" "}
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
         {[
           "gartengestaltung",
           "pflasterarbeiten",

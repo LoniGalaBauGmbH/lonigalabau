@@ -87,8 +87,8 @@
   font-size: clamp(40px, 4.9vw, 76px);
   line-height: 1.06;
   letter-spacing: -0.05em;
-  hyphens: auto;
-  overflow-wrap: break-word;
+  hyphens: none;
+  overflow-wrap: normal;
 }
 .region-lead {
   font-size: 18px;

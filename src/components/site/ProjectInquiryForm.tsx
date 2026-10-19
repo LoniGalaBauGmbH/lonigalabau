@@ -1,5 +1,7 @@
+import { useFormReady } from "@/hooks/useFormReady";
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { useServerFn } from "@tanstack/react-start";
+import { currentInquiryPage } from "@/lib/inquiry-page";
 import {
   ArrowLeft,
   ArrowRight,
@@ -61,6 +63,7 @@ export function ProjectInquiryForm({
   onClose?: () => void;
 }) {
   const send = useServerFn(createContactRequest);
+  const formReady = useFormReady();
   const attachments = useContactAttachments();
   const uid = useId();
   const [form, setForm] = useState<InquiryForm>(INITIAL_INQUIRY);
@@ -135,7 +138,13 @@ export function ProjectInquiryForm({
     setStatus("loading");
     try {
       const files = await attachments.serialize();
-      await send({ data: { ...buildInquiryPayload(form), attachments: files } });
+      await send({
+        data: {
+          ...buildInquiryPayload(form),
+          inquiryPage: currentInquiryPage(),
+          attachments: files,
+        },
+      });
       navigating.current = true;
       setStatus("ok");
       setForm(INITIAL_INQUIRY);
@@ -240,6 +249,7 @@ export function ProjectInquiryForm({
           </div>
         ) : (
           <form
+            method="post"
             ref={formRef}
             noValidate
             onSubmit={onSubmit}
@@ -305,7 +315,7 @@ export function ProjectInquiryForm({
                   <p className="mt-3 text-base leading-relaxed text-brand/80">{STEPS[step].hint}</p>
                 </div>
 
-                <fieldset disabled={pending} className="min-w-0 space-y-6">
+                <fieldset disabled={!formReady || pending} className="min-w-0 space-y-6">
                   <legend className="sr-only">{STEPS[step].title}</legend>
                   {step === 0 && (
                     <>
@@ -362,7 +372,10 @@ export function ProjectInquiryForm({
                           />
                         </Field>
                       </div>
-                      <ContactAttachments attachments={attachments} disabled={pending} />
+                      <ContactAttachments
+                        attachments={attachments}
+                        disabled={!formReady || pending}
+                      />
                       <details
                         className="rounded-2xl bg-brand/[0.035] p-5"
                         open={showOptional || !!errors.area}
@@ -497,7 +510,7 @@ export function ProjectInquiryForm({
                       <DiscoverySourceField
                         value={form.discoverySource || ""}
                         onChange={(value) => update("discoverySource", value)}
-                        disabled={status === "loading"}
+                        disabled={!formReady || status === "loading"}
                       />
                       <div>
                         <div className="flex items-start gap-3">
@@ -551,7 +564,7 @@ export function ProjectInquiryForm({
                   {step > 0 ? (
                     <button
                       type="button"
-                      disabled={pending}
+                      disabled={!formReady || pending}
                       onClick={() => goTo((step - 1) as InquiryStep)}
                       className="inline-flex min-h-12 items-center gap-2 rounded-full px-2 text-sm font-semibold text-brand hover:text-brand/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand disabled:opacity-50"
                     >
@@ -561,7 +574,11 @@ export function ProjectInquiryForm({
                   ) : (
                     <p className="text-sm text-brand/80">Unverbindlich & kostenlos</p>
                   )}
-                  <button type="submit" disabled={pending} className={buttonClass + " ml-auto"}>
+                  <button
+                    type="submit"
+                    disabled={!formReady || pending}
+                    className={buttonClass + " ml-auto"}
+                  >
                     {pending ? (
                       <>
                         <Loader2
