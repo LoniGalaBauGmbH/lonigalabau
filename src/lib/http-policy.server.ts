@@ -6,8 +6,10 @@ import { servicePreparation } from "./service-preparation";
 
 // Real content dates for the October SEO releases, not dates of sitemap requests.
 const STATIC_CONTENT_MODIFIED: Record<string, string> = {
-  "/": "2026-10-16T12:55:00Z",
-  "/leistungen": "2026-10-16T12:55:00Z",
+  "/": "2026-10-19T12:23:03Z",
+  "/leistungen": "2026-10-19T12:23:03Z",
+  "/terrasse-bauen-lassen": "2026-10-19T12:23:03Z",
+  "/einfahrt-pflastern-lassen": "2026-10-19T12:23:03Z",
   "/projekte": "2026-10-01T14:39:01Z",
   "/einsatzgebiete": "2026-10-12T07:19:00Z",
   "/datenschutz": "2026-10-12T08:45:00Z",
@@ -23,6 +25,15 @@ const CISTERN_CONTENT_MODIFIED: Record<string, string> = {
   bewaesserungsanlagen: "2026-10-12T14:15:00Z",
 };
 const JOB_SCHEMA_MODIFIED = "2026-10-12T08:45:00Z";
+const KEYWORD_SERVICE_SLUGS = [
+  "rasenanlagen",
+  "gartengestaltung",
+  "zaunarbeiten",
+  "pflasterarbeiten",
+  "natursteinarbeiten",
+  "erdarbeiten",
+  "entwaesserung",
+];
 
 function latestContentDate(stored: string, editorial: string | undefined) {
   return editorial && Date.parse(editorial) > Date.parse(stored) ? editorial : stored;
@@ -86,7 +97,9 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
             row.updated_at,
             i === 0
               ? servicePreparation[row.slug]
-                ? (CISTERN_CONTENT_MODIFIED[row.slug] ?? SERVICE_CONTENT_MODIFIED)
+                ? KEYWORD_SERVICE_SLUGS.includes(row.slug)
+                  ? "2026-10-19T12:23:03Z"
+                  : (CISTERN_CONTENT_MODIFIED[row.slug] ?? SERVICE_CONTENT_MODIFIED)
                 : undefined
               : JOB_SCHEMA_MODIFIED,
           ),

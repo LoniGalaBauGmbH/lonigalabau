@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ZisterneEinbauenLassenRouteImport } from './routes/zisterne-einbauen-lassen'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
+import { Route as TerrasseBauenLassenRouteImport } from './routes/terrasse-bauen-lassen'
 import { Route as ProjekteRouteImport } from './routes/projekte'
 import { Route as PartnerWerdenRouteImport } from './routes/partner-werden'
 import { Route as LoginRouteImport } from './routes/login'
@@ -31,6 +32,7 @@ import { Route as GartenbauEschbornRouteImport } from './routes/gartenbau-eschbo
 import { Route as GartenbauBadSodenRouteImport } from './routes/gartenbau-bad-soden'
 import { Route as FachverbandMitgliedschaftRouteImport } from './routes/fachverband-mitgliedschaft'
 import { Route as EinsatzgebieteRouteImport } from './routes/einsatzgebiete'
+import { Route as EinfahrtPflasternLassenRouteImport } from './routes/einfahrt-pflastern-lassen'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as DachbegruenungRouteImport } from './routes/dachbegruenung'
@@ -68,6 +70,11 @@ const ZisterneEinbauenLassenRoute = ZisterneEinbauenLassenRouteImport.update({
 const UeberUnsRoute = UeberUnsRouteImport.update({
   id: '/ueber-uns',
   path: '/ueber-uns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerrasseBauenLassenRoute = TerrasseBauenLassenRouteImport.update({
+  id: '/terrasse-bauen-lassen',
+  path: '/terrasse-bauen-lassen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjekteRoute = ProjekteRouteImport.update({
@@ -172,6 +179,11 @@ const FachverbandMitgliedschaftRoute =
 const EinsatzgebieteRoute = EinsatzgebieteRouteImport.update({
   id: '/einsatzgebiete',
   path: '/einsatzgebiete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EinfahrtPflasternLassenRoute = EinfahrtPflasternLassenRouteImport.update({
+  id: '/einfahrt-pflastern-lassen',
+  path: '/einfahrt-pflastern-lassen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DownloadsRoute = DownloadsRouteImport.update({
@@ -329,6 +341,7 @@ export interface FileRoutesByFullPath {
   '/dachbegruenung': typeof DachbegruenungRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
+  '/einfahrt-pflastern-lassen': typeof EinfahrtPflasternLassenRoute
   '/einsatzgebiete': typeof EinsatzgebieteRoute
   '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
@@ -349,6 +362,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
+  '/terrasse-bauen-lassen': typeof TerrasseBauenLassenRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
@@ -380,6 +394,7 @@ export interface FileRoutesByTo {
   '/dachbegruenung': typeof DachbegruenungRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
+  '/einfahrt-pflastern-lassen': typeof EinfahrtPflasternLassenRoute
   '/einsatzgebiete': typeof EinsatzgebieteRoute
   '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
@@ -400,6 +415,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
+  '/terrasse-bauen-lassen': typeof TerrasseBauenLassenRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
@@ -433,6 +449,7 @@ export interface FileRoutesById {
   '/dachbegruenung': typeof DachbegruenungRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
+  '/einfahrt-pflastern-lassen': typeof EinfahrtPflasternLassenRoute
   '/einsatzgebiete': typeof EinsatzgebieteRoute
   '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
@@ -453,6 +470,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
+  '/terrasse-bauen-lassen': typeof TerrasseBauenLassenRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
   '/autoren/serhad-marasli': typeof AutorenSerhadMarasliRoute
@@ -486,6 +504,7 @@ export interface FileRouteTypes {
     | '/dachbegruenung'
     | '/datenschutz'
     | '/downloads'
+    | '/einfahrt-pflastern-lassen'
     | '/einsatzgebiete'
     | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-soden'
@@ -506,6 +525,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner-werden'
     | '/projekte'
+    | '/terrasse-bauen-lassen'
     | '/ueber-uns'
     | '/zisterne-einbauen-lassen'
     | '/autoren/serhad-marasli'
@@ -537,6 +557,7 @@ export interface FileRouteTypes {
     | '/dachbegruenung'
     | '/datenschutz'
     | '/downloads'
+    | '/einfahrt-pflastern-lassen'
     | '/einsatzgebiete'
     | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-soden'
@@ -557,6 +578,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner-werden'
     | '/projekte'
+    | '/terrasse-bauen-lassen'
     | '/ueber-uns'
     | '/zisterne-einbauen-lassen'
     | '/autoren/serhad-marasli'
@@ -589,6 +611,7 @@ export interface FileRouteTypes {
     | '/dachbegruenung'
     | '/datenschutz'
     | '/downloads'
+    | '/einfahrt-pflastern-lassen'
     | '/einsatzgebiete'
     | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-soden'
@@ -609,6 +632,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner-werden'
     | '/projekte'
+    | '/terrasse-bauen-lassen'
     | '/ueber-uns'
     | '/zisterne-einbauen-lassen'
     | '/autoren/serhad-marasli'
@@ -642,6 +666,7 @@ export interface RootRouteChildren {
   DachbegruenungRoute: typeof DachbegruenungRoute
   DatenschutzRoute: typeof DatenschutzRoute
   DownloadsRoute: typeof DownloadsRoute
+  EinfahrtPflasternLassenRoute: typeof EinfahrtPflasternLassenRoute
   EinsatzgebieteRoute: typeof EinsatzgebieteRoute
   FachverbandMitgliedschaftRoute: typeof FachverbandMitgliedschaftRoute
   GartenbauBadSodenRoute: typeof GartenbauBadSodenRoute
@@ -662,6 +687,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PartnerWerdenRoute: typeof PartnerWerdenRoute
   ProjekteRoute: typeof ProjekteRoute
+  TerrasseBauenLassenRoute: typeof TerrasseBauenLassenRoute
   UeberUnsRoute: typeof UeberUnsRoute
   ZisterneEinbauenLassenRoute: typeof ZisterneEinbauenLassenRoute
   AutorenSerhadMarasliRoute: typeof AutorenSerhadMarasliRoute
@@ -691,6 +717,13 @@ declare module '@tanstack/react-router' {
       path: '/ueber-uns'
       fullPath: '/ueber-uns'
       preLoaderRoute: typeof UeberUnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terrasse-bauen-lassen': {
+      id: '/terrasse-bauen-lassen'
+      path: '/terrasse-bauen-lassen'
+      fullPath: '/terrasse-bauen-lassen'
+      preLoaderRoute: typeof TerrasseBauenLassenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projekte': {
@@ -831,6 +864,13 @@ declare module '@tanstack/react-router' {
       path: '/einsatzgebiete'
       fullPath: '/einsatzgebiete'
       preLoaderRoute: typeof EinsatzgebieteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/einfahrt-pflastern-lassen': {
+      id: '/einfahrt-pflastern-lassen'
+      path: '/einfahrt-pflastern-lassen'
+      fullPath: '/einfahrt-pflastern-lassen'
+      preLoaderRoute: typeof EinfahrtPflasternLassenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/downloads': {
@@ -1071,6 +1111,7 @@ const rootRouteChildren: RootRouteChildren = {
   DachbegruenungRoute: DachbegruenungRoute,
   DatenschutzRoute: DatenschutzRoute,
   DownloadsRoute: DownloadsRoute,
+  EinfahrtPflasternLassenRoute: EinfahrtPflasternLassenRoute,
   EinsatzgebieteRoute: EinsatzgebieteRoute,
   FachverbandMitgliedschaftRoute: FachverbandMitgliedschaftRoute,
   GartenbauBadSodenRoute: GartenbauBadSodenRoute,
@@ -1092,6 +1133,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PartnerWerdenRoute: PartnerWerdenRoute,
   ProjekteRoute: ProjekteRoute,
+  TerrasseBauenLassenRoute: TerrasseBauenLassenRoute,
   UeberUnsRoute: UeberUnsRoute,
   ZisterneEinbauenLassenRoute: ZisterneEinbauenLassenRoute,
   AutorenSerhadMarasliRoute: AutorenSerhadMarasliRoute,

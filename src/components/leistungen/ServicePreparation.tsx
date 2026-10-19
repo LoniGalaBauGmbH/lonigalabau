@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { servicePreparation } from "@/lib/service-preparation";
+import { ProjectOfferLinks } from "@/components/site/ProjectOfferLinks";
 
 export function ServicePreparation({ slug }: { slug: string }) {
   const content = servicePreparation[slug];
@@ -48,7 +49,16 @@ export function ServicePreparation({ slug }: { slug: string }) {
             </a>
           </div>
         </div>
-        {["erdarbeiten", "entwaesserung", "bewaesserungsanlagen"].includes(slug) && (
+        {[
+          "gartengestaltung",
+          "pflasterarbeiten",
+          "natursteinarbeiten",
+          "erdarbeiten",
+          "entwaesserung",
+        ].includes(slug) && <ProjectOfferLinks compact />}
+        {["erdarbeiten", "entwaesserung", "bewaesserungsanlagen", "rasenanlagen"].includes(
+          slug,
+        ) && (
           <div className="mt-8 border-t border-brand/15 pt-6">
             <h3 className="font-display text-lg font-bold text-brand">
               Regenwasser im Garten nutzen

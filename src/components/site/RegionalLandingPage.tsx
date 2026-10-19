@@ -11,6 +11,7 @@ import { getRegionGallery } from "@/lib/region-gallery";
 import { guides, type GuideSummary } from "@/lib/guide-index";
 import { parseContextLinks } from "@/lib/context-links";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
+import { ProjectOfferLinks } from "./ProjectOfferLinks";
 import { getRegion, regionImage, regionalHeroImage, regions, type RegionPage } from "@/lib/regions";
 import "./RegionalLandingPage.css";
 import "./RegionalDetails.css";
@@ -42,6 +43,21 @@ const overviewGuides = [
 ]
   .map((slug) => guides.find((guide) => guide.slug === slug))
   .filter((guide): guide is GuideSummary => Boolean(guide));
+
+const projectPreparation: Record<string, { heading: string; text: string }> = {
+  "gartenbau-hattersheim": {
+    heading: "Von Ihrer Gartenidee zum konkreten Bauvorhaben",
+    text: "Für Ihr Vorhaben in Hattersheim, Okriftel oder Eddersheim helfen uns Gesamtfotos, ungefähre Maße und ein Bild des Zugangs. Möchten Sie eine Terrasse oder Einfahrt erneuern, zeigen Sie auch die vorhandenen Anschlüsse. Für eine neue Rasenfläche sind Bodenbestand und Wasseranschluss wichtig.",
+  },
+  "gartenbau-hofheim": {
+    heading: "Terrasse, Einfahrt oder Rasen in Hofheim planen",
+    text: "Beschreiben Sie, welche Flächen auf Ihrem Grundstück in Hofheim verändert werden sollen. Fotos von Höhenübergängen, Einfassungen und dem Transportweg helfen bei der Vorbereitung. Bei einem Gartenumbau markieren Sie außerdem die Pflanzen und Bauteile, die erhalten bleiben sollen.",
+  },
+  "gartenbau-bad-soden": {
+    heading: "Ihr Gartenprojekt in Bad Soden gezielt vorbereiten",
+    text: "Zeigen Sie uns die geplante Fläche und ihre Übergänge zu Haus, Wegen und Garten. Für eine Terrasse oder Einfahrt klären wir Nutzung und Wasserführung; für Rollrasen den vorhandenen Boden und die spätere Bewässerung. Ort, grobe Maße und Ihr Wunschzeitraum geben dem ersten Gespräch eine Grundlage.",
+  },
+};
 
 function RegionalImage({
   page,
@@ -330,6 +346,20 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
           </aside>
         )}
 
+        {projectPreparation[page.slug] && (
+          <section className="region-wrap region-prose" aria-labelledby="regional-project-offers">
+            <h2 id="regional-project-offers">{projectPreparation[page.slug].heading}</h2>
+            <p>{projectPreparation[page.slug].text}</p>
+            <Link
+              to="/leistungen/$slug"
+              params={{ slug: "rasenanlagen" }}
+              className="region-text-link"
+            >
+              Rollrasen verlegen lassen <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+            <ProjectOfferLinks compact />
+          </section>
+        )}
         <RegionalMap key={page.slug + "-map"} city={page.city} />
 
         <section className="region-wrap region-contact" aria-labelledby="anfrage-title">

@@ -44,15 +44,19 @@ const steps = [
 export function ExpressInquiryForm({
   variant = "default",
   heading = "Express-Anfrage",
+  initialService = "",
+  descriptionPlaceholder,
 }: {
   variant?: "default" | "compact";
   heading?: string;
+  initialService?: (typeof EXPRESS_SERVICES)[number] | "";
+  descriptionPlaceholder?: string;
 } = {}) {
   const compact = variant === "compact";
   const send = useServerFn(createExpressInquiry);
   const attachments = useContactAttachments();
   const uid = useId();
-  const [form, setForm] = useState(emptyForm);
+  const [form, setForm] = useState({ ...emptyForm, service: initialService as string });
   const [step, setStep] = useState(0);
   const motion = useStepTransition(step);
   const navigating = useRef(false);
@@ -346,7 +350,10 @@ export function ExpressInquiryForm({
                             required
                             rows={3}
                             maxLength={3000}
-                            placeholder="Zum Beispiel: Wir möchten unsere Terrasse neu pflastern lassen, etwa 30 m² …"
+                            placeholder={
+                              descriptionPlaceholder ??
+                              "Zum Beispiel: Wir möchten unsere Terrasse neu pflastern lassen, etwa 30 m² …"
+                            }
                             value={form.description}
                             onChange={(e) => update("description", e.target.value)}
                           />

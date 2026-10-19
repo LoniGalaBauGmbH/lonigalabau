@@ -31,6 +31,15 @@ const guides = moduleAt("src/lib/ratgeber.ts", {
 });
 const serialize = (value) => JSON.parse(JSON.stringify(value));
 
+test("every guide date can be rendered on the public article page", () => {
+  for (const guide of guides.guides) {
+    for (const field of ["publishedAt", "updatedAt"]) {
+      assert.doesNotThrow(() => guides.guideDate(guide[field]), `${guide.slug}: ${field}`);
+      assert.match(guides.guideDate(guide[field]), /^\d{1,2}\. \S+ \d{4}$/);
+    }
+  }
+});
+
 test("public business identity keeps one canonical identifier and the confirmed national service area", () => {
   const organization = serialize(seo.organizationSchema());
   assert.equal(organization["@id"], "https://www.loni-galabau.de/#organization");

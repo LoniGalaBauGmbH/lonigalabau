@@ -94,8 +94,8 @@ Rollrasen zeigt in der gelieferten Reihe 720 Suchen im März 2026 gegenüber 50 
 
 ## Projektstand und Prüfung
 
-Die Seitenzuordnung beruht auf dem aktuellen Quellbestand und den vorhandenen Projektnachweisen. Die beiden Piloten sind weiterhin **geplant**, während Zisterne und Dachbegrünung im Bestand vorhanden sind. Die öffentliche Sitemap ließ sich in diesem Recherchelauf nicht neu abrufen; daraus wird kein Websitefehler abgeleitet.
+Die Seitenzuordnung beruht auf dem aktuellen Quellbestand und den vorhandenen Projektnachweisen. Zum Rechercheabschluss waren beide Piloten geplant; nach anschließendem Nutzerauftrag wurden sie am selben Tag in Version 80 veröffentlicht. Siehe [Umsetzung und Prüfungen](Keyword-Umsetzung-2026-10-19.md). Zisterne und Dachbegrünung sind bereits im Bestand vorhanden. Die öffentliche Sitemap ließ sich in diesem Recherchelauf nicht neu abrufen; daraus wird kein Websitefehler abgeleitet.
 
-Dieser Auftrag erstellt die Recherche und aktualisiert die Dokumentation. Es wurden keine Websiteinhalte veröffentlicht, Anzeigen geschaltet, Indexierungsanträge versendet oder Hintergrundläufe eingerichtet. Letzter dokumentierter Website-Stand bleibt Version 78.
+Die ursprüngliche Recherchephase änderte keine Websiteinhalte (damals Version 78). Der anschließende Umsetzungsauftrag ist in der verlinkten Dokumentation mit Version 80 abgeschlossen. Keine Anzeigen, Indexierungsanträge oder neuen Hintergrundläufe.
 
 Alle acht bezahlten API-Aufgaben meldeten Erfolg. Die vollständige Keywordliste wurde auf 142 eindeutige Phrasen, 136 numerische Volumina und 6 unbekannte Werte geprüft. Zahlen im Bericht wurden mit den gespeicherten Messwerten abgeglichen. Für die reine Dokumentationsänderung sind keine Anwendungstests oder Builds erforderlich.

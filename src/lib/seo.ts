@@ -23,6 +23,8 @@ export const STATIC_PATHS = [
   "/fachverband-mitgliedschaft",
   "/zisterne-einbauen-lassen",
   "/dachbegruenung",
+  "/terrasse-bauen-lassen",
+  "/einfahrt-pflastern-lassen",
   "/leistungen",
   "/projekte",
   "/einsatzgebiete",
@@ -139,7 +141,7 @@ export function editorialAuthorSchema() {
 export function publicPageSchema(
   path: string,
   name: string,
-  type: "AboutPage" | "ContactPage" | "CollectionPage",
+  type: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage",
   items?: { path: string; name: string }[],
 ) {
   const url = canonicalUrl(path);

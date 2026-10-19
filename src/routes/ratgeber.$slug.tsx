@@ -4,6 +4,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { GuideCard } from "@/components/site/GuideCard";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
+import { ProjectOfferLinks } from "@/components/site/ProjectOfferLinks";
 import {
   Table,
   TableHeader,
@@ -295,6 +296,11 @@ function Article() {
                 ))}
               </div>
             </section>
+            {[
+              "pflasterarbeiten-kosten-einfahrt",
+              "naturstein-terrasse-materialwahl",
+              "terrasse-entwaesserung-planen",
+            ].includes(article.slug) && <ProjectOfferLinks compact />}
             <details className="guide-sources">
               <summary>Fachliche Quellen &amp; weitere Informationen</summary>
               <p>

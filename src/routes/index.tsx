@@ -19,6 +19,7 @@ import { FAQ } from "@/components/site/FAQ";
 import { getServices, getFeaturedProject, getSitePartners } from "@/lib/site.functions";
 import { ServiceCarousel } from "@/components/site/ServiceCarousel";
 import { AdditionalServices } from "@/components/site/AdditionalServices";
+import { ProjectOfferLinks } from "@/components/site/ProjectOfferLinks";
 import { useSiteImages } from "@/hooks/useSiteImages";
 import { projectPhotos } from "@/lib/project-photos";
 import { ProjectImage } from "@/components/site/ProjectImage";
@@ -416,6 +417,7 @@ function HomePage() {
           >
             <ServiceCarousel services={services} />
             <AdditionalServices />
+            <ProjectOfferLinks />
           </Hydrate>
         </div>
       </section>

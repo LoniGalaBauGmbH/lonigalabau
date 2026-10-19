@@ -4,6 +4,7 @@ import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { getServices } from "@/lib/site.functions";
 import { ServiceCarousel } from "@/components/site/ServiceCarousel";
 import { AdditionalServices } from "@/components/site/AdditionalServices";
+import { ProjectOfferLinks } from "@/components/site/ProjectOfferLinks";
 import { publicPageSchema, safeJsonLd } from "@/lib/seo";
 
 const q = queryOptions({ staleTime: 60_000, queryKey: ["services"], queryFn: () => getServices() });
@@ -56,6 +57,7 @@ function Page() {
         <div className="max-w-7xl mx-auto">
           <ServiceCarousel services={services} headingLevel="h2" />
           <AdditionalServices />
+          <ProjectOfferLinks />
         </div>
       </section>
     </PageShell>

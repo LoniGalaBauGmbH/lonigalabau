@@ -41,6 +41,7 @@ import { getProjectsByService, getRelatedServices, getServiceBySlug } from "@/li
 import { getServiceImage } from "@/lib/service-images";
 import { ServiceFAQ } from "@/components/leistungen/ServiceFAQ";
 import { ServicePreparation } from "@/components/leistungen/ServicePreparation";
+import { ServiceExecution } from "@/components/leistungen/ServiceExecution";
 import { servicePreparation } from "@/lib/service-preparation";
 import { canonicalUrl, organizationSchema, safeJsonLd } from "@/lib/seo";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
@@ -455,6 +456,7 @@ function ServicePage({
       </section>
 
       <ServicePreparation slug={slug} />
+      <ServiceExecution slug={slug} />
 
       {/* 7. PORTFOLIO REFERENCES */}
       <Suspense key={data.id} fallback={<DeferredSection label="Projektbilder werden geladen" />}>
@@ -609,7 +611,18 @@ function ServicePage({
           </div>
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <ServiceMiniContact serviceTitle={data.title} />
+              <ServiceMiniContact
+                serviceTitle={data.title}
+                messagePlaceholder={
+                  slug === "rasenanlagen"
+                    ? "Ort/PLZ, ungefähre Rasenfläche, Zustand des Bodens, Zugang, Wasseranschluss und gewünschter Zeitraum …"
+                    : slug === "gartengestaltung"
+                      ? "Ort/PLZ, Neubau oder Gartenumbau, gewünschte Arbeiten, erhaltenswerte Bereiche und Zeitraum …"
+                      : slug === "zaunarbeiten"
+                        ? "Ort/PLZ, ungefähre Zaunlänge, Höhe, Material, Tore, vorhandener Zaun und Gelände …"
+                        : undefined
+                }
+              />
             </div>
           </div>
         </div>
