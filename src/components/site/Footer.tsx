@@ -147,7 +147,7 @@ export function Footer({ showContactCta = true }: { showContactCta?: boolean }) 
           <div className="lg:col-span-3 space-y-8">
             <div>
               <h2 className="uppercase tracking-[0.2em] text-xs font-semibold mb-4">
-                Für Sie erreichbar
+                Telefonisch erreichbar
               </h2>
               <p className="text-sm leading-relaxed">
                 Montag bis Freitag

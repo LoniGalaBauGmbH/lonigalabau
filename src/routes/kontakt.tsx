@@ -164,8 +164,9 @@ function Page() {
                 <div className="flex gap-3">
                   <Clock className="w-5 h-5 shrink-0 text-brand" aria-hidden="true" />
                   <div>
-                    <p className="font-medium text-brand mb-1">Erreichbarkeit</p>
+                    <p className="font-medium text-brand mb-1">Telefonisch erreichbar</p>
                     <p>Montag–Freitag · 07–18 Uhr</p>
+                    <p className="mt-1">Betriebszeiten · Montag–Freitag · 07–17 Uhr</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
@@ -175,6 +176,9 @@ function Page() {
                     <p>
                       Auf der Roos 3<br />
                       65795 Hattersheim am Main
+                    </p>
+                    <p className="mt-1">
+                      Persönliche Besuche nur nach vorheriger Terminvereinbarung.
                     </p>
                     <a
                       href="https://maps.google.com/?q=Auf+der+Roos+3,+65795+Hattersheim"

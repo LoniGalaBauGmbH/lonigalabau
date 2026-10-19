@@ -39,4 +39,12 @@ Am 19.10.2026 als Primärquellen geprüft; die Texte geben Vorbereitungshinweise
 
 ## Anschließend: Unternehmensprofil
 
-Noch nicht bearbeitet. Vor Änderung unklarer Öffnungszeiten tatsächliche Zeiten klären. Bestehender Prüfstand: Profil bestätigt, Adresse und Telefon passend, Website-Link HTTP, Einsatzgebiet leer, Profilzeiten 07–17 Uhr gegenüber Website-Erreichbarkeit 07–18 Uhr. Frühere nur lesende Prüfung durch diesen Auftrag um anschließende Fertigstellung erweitert; Tatsachen werden nicht geraten.
+Am 19.10.2026 anschließend bearbeitet: HTTPS-Website-Link, ausführliche sachliche Unternehmensbeschreibung, 13 Einsatzorte und Vor-Ort-Leistungen gespeichert und zurückgelesen. Sieben zusätzliche Dienstleistungen und zehn Beschreibungen gespeichert; diese Leistungsänderungen stehen noch unter Google-Prüfung. Nutzer bestätigt Betrieb Montag–Freitag 07–17 Uhr, telefonisch bis 18 Uhr sowie persönliche Besuche nur nach Termin. Details in `docs/Unternehmensprofil-2026-10-19.md`.
+
+## Bestätigte Zeiten: Folgeversion 82
+
+Durch die Nutzerklärung wurde zusätzlich der bisherige Schemawert 18 Uhr als Betriebsschluss korrigiert. Footer jetzt ausdrücklich „Telefonisch erreichbar“ (07–18 Uhr), Kontaktseite mit separaten Betriebszeiten 07–17 Uhr und Terminvorbehalt; gemeinsames Unternehmensschema `closes: 17:00`.
+
+Typprüfung, gezieltes ESLint und Client-/Serverbuild erfolgreich. Kontaktseite lokal und nach Veröffentlichung jeweils bei 320/390/1440 px geprüft: keine horizontalen Überläufe, Telefon-/Betriebs-/Terminhinweise und korrekter Schemawert vorhanden. Reine Text-/Faktenkorrektur; keine erneute vollständige Anwendungstestsuite oder neue Testanfrage. Die 234 Tests und der 61-Seiten-Crawl des unmittelbar vorherigen V81-Releases bleiben getrennt ausgewiesen.
+
+**V82 veröffentlicht am 19.10.2026 um 15:57:03 MESZ**, Quellcommit `4ed521c1735f5667159c15f2cf3869f7f93c5ec1`, Deployment `appgdep_6ad62192649081918427e2fc3b673afc`, Status succeeded. Audience public und Laufzeitkonfiguration Revision 4 erhalten. Bekannter Bash-Packagerfehler nach erfolgreichem Build mit geprüftem Windows-Paketierungsweg aufgelöst, Quellenstand anschließend erneut verifiziert. Private Screenshots/Prüfwerte außerhalb Git. V81 zuvor mit GitHub-Commit `c336a33e7c9d22147a630fd4b282481d355b559c` inhaltsgleich synchronisiert; finaler Folgeabgleich im Abschlussbericht.
