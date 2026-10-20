@@ -74,7 +74,7 @@ Die eigene Domain nach Veröffentlichung bei 390 und 1440 px gegengeprüft: zwö
 
 Diese Abschlussdokumentation verändert keinen veröffentlichten Programmcode. Abschließende GitHub-Sicherung im Chatabschluss.
 
-## Aktueller Stand: vier Zielstädte, Version 86
+## Vorheriger Stand: vier Zielstädte, Version 86
 
 Neueste Nutzerkorrektur: „sind doch zuviele städte bitte nur köln stuttgart frankfurt münchen“. Die Ortsauswahl der V85 ist damit ersetzt: nur noch Köln, Stuttgart, Frankfurt und München sowie Hattersheim als zuvor ausdrücklich grün gewünschter Firmensitz. Die Fortsetzung der Live-Aktualisierung wurde im Kommentar angekündigt und unter der bestehenden Beauftragung ausgeführt.
 
@@ -85,3 +85,26 @@ Typprüfung, gezieltes ESLint, Formatierung und Diffprüfung erfolgreich. Lokale
 **V86 erfolgreich live seit 20.10.2026, 10:17:19 MESZ.** Quellcommit `f249e78bea12e7db0ac3972b16732c23d5c228ff`; Version-ID `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_2ed866ca9f0c81918becc6a461f145b5`; Deployment `appgdep_6ad723712dfc819197b331cd47291f3e`, Status succeeded. Öffentliche Audience und Umgebung Revision 4 erhalten.
 
 Auf `https://www.loni-galabau.de/` nach Veröffentlichung bei 390/1440 px die fünf richtigen Ortsnamen, vier Verbindungen, `blur(9px) saturate(0.35)` und grüner Hattersheim-Punkt bestätigt. Keine Überläufe oder Browserfehler; Seite vollständig interaktiv. Live-Desktopansicht als lokaler Screenshot dokumentiert. Abschlussdokumentation ändert keinen Live-Code; abschließender GitHub-Abgleich im Chatabschluss.
+
+## Aktueller Stand: größere Punkte ohne Namen und Linien, Version 88
+
+Der Nutzer ersetzt die bisherige Auswahl durch Heidelberg, Mannheim, Hanau, Friedrichsdorf, Bad Homburg, Koblenz, Stuttgart und München und verlangt ausdrücklich nur Punkte ohne Namen und Linien. Hattersheim bleibt gemäß früherem Wunsch als grüner Heimatpunkt erhalten. Alle sichtbaren Ortslabels, Beschriftungskarten, Zuordnungslinien und Verbindungen einschließlich Lichtanimation wurden entfernt. Die Bildbeschreibung für Screenreader nennt weiterhin die Orte. Unter der Karte steht neutral „Deutschlandweit für Sie im Einsatz.“; weiße Deutschlandkontur und neutraler Hintergrundblur bleiben erhalten.
+
+Die erste reine Punktkarte wurde als **V87 am 20.10.2026 um 11:05:21 MESZ** veröffentlicht:
+
+- Quellcommit `6ba650060faa52e3ff9b6cf11921510b42563bab`.
+- Version-ID `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_1ab0983175248191839d8bc53de1256b`.
+- Deployment `appgdep_6ad72eb0d68081919e722429d7d9d726`, Status succeeded.
+
+Während des Abschlusses verlangte der Nutzer deutlich größere Punkte. **V88 ist seit 20.10.2026, 11:10:34 MESZ live:**
+
+- Weiße Standardpunkte: Radius 4,5 statt 2,5 SVG-Einheiten, also 80 % größerer Durchmesser. Hattersheim: Radius 5,5 statt 3,5.
+- Friedrichsdorf und Bad Homburg: Radius 3,25 statt 0,9; zur Trennung auf der Übersichtskarte je 1,5 Einheiten horizontal und 2 Einheiten vertikal in entgegengesetzte Richtungen versetzt. Diese beiden Marker sind damit bewusst leicht schematisch positioniert. Den äußeren Hattersheim-Ring entfernt, damit er den benachbarten Punkt nicht überlagert.
+- Quellcommit `7e3ceaf1863e788054398f4f770613bc20d6b280`.
+- Version-ID `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_0658912a836c8191899f34a8b2182184`.
+- Deployment `appgdep_6ad72ff3c0208191bb6ef1b85a092516`, Status succeeded.
+- Öffentliche Audience, Domain und Umgebung Revision 4 in beiden Veröffentlichungen erhalten.
+
+Typprüfung, gezieltes ESLint, Formatierung, Diffprüfung und Client-/Serverbuild samt Postbuild für beide Fassungen erfolgreich. Offizieller Source-Workflow hat die jeweiligen Stände vor der Veröffentlichung gespeichert und übertragen; wegen des bekannten fehlenden Bash wurde jeweils das erfolgreiche Build-Ergebnis mit dem vorhandenen Windows-Packager und unverändertem offiziellen Vorbereitungsskript verpackt.
+
+Lokal und auf `https://www.loni-galabau.de/` bei 390/1440 px neun richtige Stadtpunkte, keine SVG-Ortslabels oder Verbindungslinien, kein horizontaler Überlauf, neutraler `blur(9px) saturate(0.35)` und grüner Heimatpunkt bestätigt. Größere Radien in der veröffentlichten V88 zurückgelesen. Keine neuen Abhängigkeiten, Backend-/Datenbankänderungen oder versandten Testanfragen. Die abschließende Dokumentation ändert keinen Live-Code; GitHub-Abgleich im Chatabschluss.

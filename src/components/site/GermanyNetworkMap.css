@@ -44,53 +44,8 @@
   filter: drop-shadow(0 2px 4px rgb(0 0 0 / 55%));
 }
 
-.germany-network-route {
-  stroke: #fff;
-  stroke-opacity: 0.56;
-  stroke-width: 1.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.germany-network-light {
-  stroke: #fff;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-dasharray: 0.012 0.988;
-  filter: drop-shadow(0 0 2px rgb(255 255 255 / 65%));
-  animation: germany-light-travel var(--travel-time, 8s) linear var(--travel-delay, 0s) infinite;
-}
-
-.germany-network-leader {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 0.85;
-  stroke-opacity: 0.8;
-}
-
-.germany-network-pin-halo {
-  fill: #fff;
-  opacity: 0.12;
-}
-
 .germany-network-pin {
   fill: #fff;
-  stroke: #fff;
-  stroke-width: 0.7;
-  filter: drop-shadow(0 0 2px rgb(255 255 255 / 65%));
-}
-
-.germany-network-home-ring {
-  fill: rgb(169 223 121 / 14%);
-  stroke: #b9e890;
-  stroke-width: 1;
-}
-
-.germany-network-home-card {
-  fill: #f5f5f2;
-  stroke: #fff;
-  stroke-width: 1;
-  filter: drop-shadow(0 4px 8px rgb(0 0 0 / 30%));
 }
 
 .germany-network-city.is-home .germany-network-pin {
@@ -98,30 +53,6 @@
   stroke: #dbf7c3;
   stroke-width: 1.2;
   filter: drop-shadow(0 0 4px rgb(169 223 121 / 75%));
-}
-
-.germany-network-label {
-  fill: #fff;
-  font-family: inherit;
-  font-size: 17px;
-  font-weight: 600;
-  paint-order: stroke;
-  stroke: rgb(20 20 20 / 70%);
-  stroke-width: 3px;
-  stroke-linejoin: round;
-}
-
-.germany-network-city.is-home .germany-network-label {
-  fill: #242824;
-  stroke: none;
-  font-size: 18px;
-  font-weight: 750;
-}
-
-.germany-network-home-label {
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 1.6px;
 }
 
 .germany-network-caption {
@@ -142,29 +73,11 @@
   box-shadow: 0 0 10px rgb(255 255 255 / 35%);
 }
 
-@keyframes germany-light-travel {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 @media (min-width: 1024px) {
   .germany-network {
     align-self: center;
     justify-self: end;
     width: min(100%, 54svh);
     margin: 0 0 3rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .germany-network-light {
-    animation: none;
-  }
-  .germany-network-light {
-    display: none;
   }
 }
