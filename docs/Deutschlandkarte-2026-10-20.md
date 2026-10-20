@@ -31,3 +31,20 @@ Die erste Fassung wurde als **V83 am 20.10.2026 um 08:44:43 MESZ** veröffentlic
 Abschließende Prüfung auf `https://www.loni-galabau.de/` um **08:54:15 MESZ**: HTTP 200; alle sechs Bildschirmgrößen ohne Überlauf, überlappende Ortsnamen oder geteilte Überschrift. Alle zwölf Pins innerhalb der Landesfläche und regionale Himmelsrichtungsreihenfolge korrekt, Kontur weiß mit 1,8 px, kein Kartenknopf, laufende Lichtimpulse und statische Darstellung bei reduzierter Bewegung bestätigt. Express-Anker funktioniert, keine Browserfehler und kein Formularversand.
 
 Die Kartenumsetzung einschließlich Nutzerkorrektur ist abgeschlossen. Keine Änderungen an Backend, Datenbank, Formularverarbeitung oder Unternehmensangaben; deshalb keine erneute vollständige Backendtestsuite. Lokale Screenshots und Prüfwerte bleiben in ignorierter Ablage. Diese Nachdokumentation verändert den veröffentlichten Programmcode nicht; abschließender GitHub-Abgleich im Chatabschluss.
+
+## Grafische Weiterentwicklung und klare Verbindungen
+
+Weiterer Auftrag vom 20.10.2026: Die Karte wirkt zu langweilig; anschließend ausdrücklich die Verbindungen sauberer und klar zusammenhängend gestalten.
+
+- Letzte Nutzerkorrektur: die grüne Innenfläche vollständig entfernen. Finale Karte ohne Füllung, Farbverlauf, Flächenraster oder gefärbte Unterkante; weißer Umriss direkt über dem Gartenfoto. Heller Standortmarker für Hattersheim, stärkere Ortsbeschriftungen und eine leicht größere Karte.
+- Elf Strecken bilden ein zusammenhängendes Netz mit zwölf Städten. Die kreuzenden Diagonalen entfallen; Nord-/Ostverbindungen führen über Kassel/Berlin, Südverbindungen über Stuttgart und die westliche Verbindung über Koblenz. Die drei kurzen Anschlüsse nach Wiesbaden, Mainz und Frankfurt sind geradlinig.
+- Gleichmäßige Linien mit runden Enden und kleine, langsame Lichtpunkte auf längeren Strecken. Keine zusätzlichen dekorativen Kreislinien. Die geografischen Pins, nahe zugeordnete Ortsnamen, weiße Kontur und der entfernte Play-Knopf aus V84 bleiben erhalten; reduzierte Bewegung weiterhin berücksichtigt.
+- Keine zusätzlichen Assets, Abhängigkeiten, Kartenanbieter oder Backendänderungen.
+
+Typprüfung, gezieltes ESLint und Diffprüfung erfolgreich. Finale lokale Browseransichten bei 320/390/768/1024/1440/1920 px ohne Überlauf oder überlappende Ortsnamen. Aus dem gerenderten SVG geprüft: genau elf Strecken, alle zwölf Städte von Hattersheim erreichbar, sämtliche Start-/Endkoordinaten exakt auf den zugehörigen Pins. Express-Anker geprüft, keine Anfrage gesendet.
+
+Die erste isolierte Vorschau hatte beim Wechsel des lokalen Abhängigkeitscaches einen Browser-Ladefehler. Nach Neustart auf einer frischen lokalen Adresse vollständige Darstellung und Hydrierung ohne Browserfehler bestätigt. Dies betraf ausschließlich die Vorschau, nicht die Produktionskonfiguration.
+
+Die automatische Freigabeprüfung hat den Aufruf des Sites-Veröffentlichungsablaufs wegen fehlender ausdrücklicher Zustimmung zur Produktionsveröffentlichung abgelehnt. Die abgelehnte Eingabe wurde nicht ausgeführt, der wartende Helfer abgebrochen. Kein Umweg zur Veröffentlichung; die neue Gestaltung bleibt lokal, öffentlich weiterhin V84.
+
+Der separat ausgeführte lokale Client-/Serverbuild einschließlich Postbuild ist erfolgreich; dieser Schritt hat keinen Veröffentlichungszugang. Abschließende Typprüfung, ESLint und Formatprüfung bestanden. Die transparente Endfassung bei allen sechs Bildschirmgrößen erneut ohne Überlauf und ohne überlappende Namen bestätigt; zwölf Pins, elf Strecken und `fill="none"` in jeder Ansicht. Keine Backendänderung, deshalb keine erneute vollständige Backendtestsuite. Abschließende GitHub-Sicherung im Chatabschluss; Live-Freigabe weiterhin erforderlich.

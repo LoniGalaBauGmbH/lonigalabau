@@ -134,23 +134,18 @@ const cities = [
 });
 
 const connections = [
-  ["hattersheim", "hamburg", -38],
-  ["hamburg", "berlin", -24],
-  ["berlin", "dresden", 18],
-  ["dresden", "muenchen", -25],
-  ["muenchen", "stuttgart", 22],
-  ["stuttgart", "hattersheim", -18],
-  ["hattersheim", "kassel", 13],
-  ["kassel", "hamburg", -12],
-  ["kassel", "berlin", -18],
-  ["kassel", "dresden", 18],
-  ["hattersheim", "muenchen", -30],
-  ["hattersheim", "koeln", -15],
-  ["koeln", "koblenz", 12],
-  ["koblenz", "wiesbaden", 8],
-  ["wiesbaden", "mainz", 3],
-  ["mainz", "hattersheim", 5],
-  ["hattersheim", "frankfurt", -7],
+  // A connected tree gives every city one clear route, without crossing arcs.
+  ["hattersheim", "kassel", 10],
+  ["kassel", "hamburg", -8],
+  ["kassel", "berlin", -16],
+  ["berlin", "dresden", 10],
+  ["hattersheim", "stuttgart", 12],
+  ["stuttgart", "muenchen", 14],
+  ["hattersheim", "koblenz", 0],
+  ["koblenz", "koeln", -5],
+  ["hattersheim", "wiesbaden", 0],
+  ["hattersheim", "mainz", 0],
+  ["hattersheim", "frankfurt", 0],
 ] as const;
 
 const routes = connections.map(([from, to, bend]) => {
@@ -161,7 +156,11 @@ const routes = connections.map(([from, to, bend]) => {
   const distance = Math.hypot(dx, dy);
   const controlX = (start.x + end.x) / 2 - (dy / distance) * bend;
   const controlY = (start.y + end.y) / 2 + (dx / distance) * bend;
-  return `M${start.x},${start.y} Q${controlX},${controlY} ${end.x},${end.y}`;
+  return {
+    id: `${from}-${to}`,
+    path: `M${start.x},${start.y} Q${controlX},${controlY} ${end.x},${end.y}`,
+    animated: distance > 30,
+  };
 });
 
 export function GermanyNetworkMap() {
@@ -180,44 +179,30 @@ export function GermanyNetworkMap() {
           Einsatzorte: Koblenz, Frankfurt, Mainz, Wiesbaden, München, Hamburg, Kassel, Köln, Berlin,
           Dresden und Stuttgart. Leuchtende Linien verbinden die Städte.
         </desc>
-        <defs>
-          <linearGradient id={`${id}-land`} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#203e30" stopOpacity=".55" />
-            <stop offset="1" stopColor="#0b2015" stopOpacity=".8" />
-          </linearGradient>
-          <radialGradient id={`${id}-halo`}>
-            <stop stopColor="#b6d88c" stopOpacity=".1" />
-            <stop offset="1" stopColor="#b6d88c" stopOpacity="0" />
-          </radialGradient>
-          <pattern id={`${id}-dots`} width="12" height="12" patternUnits="userSpaceOnUse">
-            <circle cx="6" cy="6" r=".7" fill="#ffffff" fillOpacity=".12" />
-          </pattern>
-        </defs>
-
-        <ellipse cx="270" cy="290" rx="250" ry="265" fill={`url(#${id}-halo)`} />
         <path
           className="germany-network-outline"
           d={germanyOutline}
-          fill={`url(#${id}-land)`}
+          fill="none"
           vectorEffect="non-scaling-stroke"
         />
-        <path d={germanyOutline} fill={`url(#${id}-dots)`} />
 
         <g fill="none" aria-hidden="true">
           {routes.map((route, index) => (
-            <g key={index}>
-              <path className="germany-network-route" d={route} />
-              <path
-                className="germany-network-light"
-                d={route}
-                pathLength="1"
-                style={
-                  {
-                    "--travel-time": `${6 + (index % 5)}s`,
-                    "--travel-delay": `${-index * 1.7}s`,
-                  } as CSSProperties
-                }
-              />
+            <g key={route.id} data-connection={route.id}>
+              <path className="germany-network-route" d={route.path} />
+              {route.animated && (
+                <path
+                  className="germany-network-light"
+                  d={route.path}
+                  pathLength="1"
+                  style={
+                    {
+                      "--travel-time": `${7 + (index % 3)}s`,
+                      "--travel-delay": `${-index * 1.7}s`,
+                    } as CSSProperties
+                  }
+                />
+              )}
             </g>
           ))}
         </g>
@@ -248,7 +233,17 @@ export function GermanyNetworkMap() {
                 </>
               )}
               {city.home && (
-                <circle className="germany-network-home-ring" cx={city.x} cy={city.y} r="7.5" />
+                <>
+                  <circle className="germany-network-home-ring" cx={city.x} cy={city.y} r="7.5" />
+                  <rect
+                    className="germany-network-home-card"
+                    x={city.labelX - 10}
+                    y={city.labelY - 21}
+                    width="128"
+                    height="46"
+                    rx="10"
+                  />
+                </>
               )}
               <circle
                 className="germany-network-pin"
