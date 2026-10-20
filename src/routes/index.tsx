@@ -199,7 +199,6 @@ function HomePage() {
                 </Link>
               </div>
             </div>
-            <GermanyNetworkMap />
           </div>
         </div>
       </section>
@@ -340,35 +339,38 @@ function HomePage() {
       <ExpressInquiryForm />
 
       {/* PROCESS */}
-      <section className="bg-brand text-brand-foreground px-6 md:px-10 py-16 md:py-20">
-        <div className="max-w-[1480px] mx-auto">
-          <span className="eyebrow eyebrow-bracket text-brand-foreground/70">
-            Von der Anfrage zur Umsetzung
-          </span>
-          <h2
-            lang="de"
-            className="display break-words hyphens-auto text-[clamp(2rem,4vw,3.5rem)] mt-5 text-brand-foreground max-w-4xl"
-          >
-            Ihr Vorhaben.
-            <br />
-            <span className="text-accent">Die nächsten Schritte.</span>
-          </h2>
+      <section className="home-process bg-brand text-brand-foreground px-6 md:px-10 py-16 md:py-20">
+        <div className="max-w-[1480px] mx-auto grid lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] gap-12 lg:gap-16 items-center">
+          <div className="min-w-0">
+            <span className="eyebrow eyebrow-bracket text-brand-foreground/70">
+              Von der Anfrage zur Umsetzung
+            </span>
+            <h2
+              lang="de"
+              className="display break-words hyphens-auto text-[clamp(2rem,4vw,3.5rem)] mt-5 text-brand-foreground max-w-4xl"
+            >
+              Ihr Vorhaben.
+              <br />
+              <span className="text-accent">Die nächsten Schritte.</span>
+            </h2>
 
-          <ol className="mt-10 md:mt-14 grid sm:grid-cols-2 xl:grid-cols-4 gap-8 xl:gap-10">
-            {steps.map((s) => (
-              <li key={s.n} className="flex gap-4 sm:block">
-                <span className="font-display text-xl text-accent font-semibold sm:block sm:mb-5">
-                  {s.n}
-                </span>
-                <div>
-                  <h3 className="text-xl text-brand-foreground font-display font-bold tracking-tight">
-                    {s.t}
-                  </h3>
-                  <p className="mt-3 text-brand-foreground/80 leading-relaxed max-w-md">{s.d}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+            <ol className="mt-10 md:mt-14 grid sm:grid-cols-2 gap-8 xl:gap-10">
+              {steps.map((s) => (
+                <li key={s.n} className="flex gap-4 sm:block">
+                  <span className="font-display text-xl text-accent font-semibold sm:block sm:mb-5">
+                    {s.n}
+                  </span>
+                  <div>
+                    <h3 className="text-xl text-brand-foreground font-display font-bold tracking-tight">
+                      {s.t}
+                    </h3>
+                    <p className="mt-3 text-brand-foreground/80 leading-relaxed max-w-md">{s.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <GermanyNetworkMap />
         </div>
       </section>
 

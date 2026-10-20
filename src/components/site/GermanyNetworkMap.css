@@ -1,8 +1,8 @@
 .germany-network {
   position: relative;
   isolation: isolate;
-  width: min(100%, 31rem);
-  margin: 2rem auto 0;
+  width: min(100%, 29rem);
+  margin: 0 auto;
   color: #f5f5f5;
 }
 
@@ -10,7 +10,7 @@
   position: absolute;
   z-index: -1;
   inset: -3% -5%;
-  background: radial-gradient(ellipse, rgb(0 0 0 / 48%), transparent 72%);
+  background: radial-gradient(ellipse, rgb(0 0 0 / 22%), transparent 72%);
   content: "";
   pointer-events: none;
 }
@@ -22,7 +22,7 @@
 .germany-network-glass {
   position: absolute;
   inset: 0;
-  background: rgb(255 255 255 / 7%);
+  background: rgb(24 31 29 / 70%);
   -webkit-backdrop-filter: blur(9px) saturate(0.35);
   backdrop-filter: blur(9px) saturate(0.35);
   pointer-events: none;
@@ -69,7 +69,7 @@
 
 .germany-network-caption {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 0.65rem;
   margin-top: 0.75rem;
@@ -77,9 +77,19 @@
   letter-spacing: 0.035em;
 }
 
+.germany-network-caption-note {
+  display: block;
+  margin-top: 0.25rem;
+  color: rgb(245 245 245 / 75%);
+  font-size: 0.6875rem;
+  letter-spacing: 0.015em;
+}
+
 .germany-network-caption-dot {
+  flex-shrink: 0;
   width: 0.3rem;
   height: 0.3rem;
+  margin-top: 0.4rem;
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 0 10px rgb(255 255 255 / 35%);
@@ -103,14 +113,5 @@
 
   .germany-network:hover .germany-network-glass::after {
     opacity: 1;
-  }
-}
-
-@media (min-width: 1024px) {
-  .germany-network {
-    align-self: center;
-    justify-self: end;
-    width: min(100%, 54svh);
-    margin: 0 0 3rem;
   }
 }

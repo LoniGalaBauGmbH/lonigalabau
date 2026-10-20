@@ -105,12 +105,6 @@
   }
 }
 @media (min-width: 1024px) {
-  .home-hero-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
-    align-items: center;
-    gap: clamp(1.5rem, 4vw, 4.5rem);
-  }
   .home-hero-copy {
     align-self: center;
   }

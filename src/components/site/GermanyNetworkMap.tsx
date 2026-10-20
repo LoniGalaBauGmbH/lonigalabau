@@ -110,12 +110,12 @@ export function GermanyNetworkMap() {
           role="img"
           aria-labelledby={`${id}-title ${id}-description`}
         >
-          <title id={`${id}-title`}>Aus Hattersheim in ganz Deutschland vernetzt</title>
+          <title id={`${id}-title`}>Aus Hattersheim überregional im Einsatz</title>
           <desc id={`${id}-description`}>
             Deutschlandkarte mit unserem Sitz in Hattersheim am Main und einer Auswahl unserer
             Einsatzorte: Heidelberg, Mannheim, Hanau, Friedrichsdorf, Bad Homburg, Koblenz,
             Stuttgart und München. Die Orte sind als weiße Punkte markiert, unser Sitz als grüner
-            Punkt.
+            Punkt. Weitere Standorte auf Anfrage.
           </desc>
           <defs>
             <clipPath id={`${id}-silhouette`} clipPathUnits="objectBoundingBox">
@@ -149,7 +149,10 @@ export function GermanyNetworkMap() {
       </div>
       <figcaption className="germany-network-caption">
         <span className="germany-network-caption-dot" aria-hidden="true" />
-        <span>Deutschlandweit für Sie im Einsatz.</span>
+        <span>
+          Überregional für Sie im Einsatz.
+          <span className="germany-network-caption-note">Weitere Standorte auf Anfrage.</span>
+        </span>
       </figcaption>
     </figure>
   );

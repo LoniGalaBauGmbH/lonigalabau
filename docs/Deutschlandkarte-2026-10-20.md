@@ -109,7 +109,7 @@ Typprüfung, gezieltes ESLint, Formatierung, Diffprüfung und Client-/Serverbuil
 
 Lokal und auf `https://www.loni-galabau.de/` bei 390/1440 px neun richtige Stadtpunkte, keine SVG-Ortslabels oder Verbindungslinien, kein horizontaler Überlauf, neutraler `blur(9px) saturate(0.35)` und grüner Heimatpunkt bestätigt. Größere Radien in der veröffentlichten V88 zurückgelesen. Keine neuen Abhängigkeiten, Backend-/Datenbankänderungen oder versandten Testanfragen. Die abschließende Dokumentation ändert keinen Live-Code; GitHub-Abgleich im Chatabschluss.
 
-## Aktueller Stand: sanfte Kartenbewegung, Version 89
+## Sanfte Kartenbewegung, Version 89
 
 Auf „wenn man mit der maus hovert“ wurde zunächst eine Namensanzeige vorbereitet. Der Nutzer hat während der Umsetzung klargestellt, dass sich die **ganze Karte leicht bewegen** soll. Der unveröffentlichte Namensentwurf wurde vollständig entfernt. Es erscheinen weiterhin keine Ortsnamen oder Verbindungslinien.
 
@@ -127,3 +127,33 @@ Typprüfung, gezieltes ESLint, Formatierung, Diffprüfung und Client-/Serverbuil
 - Öffentliche Audience und Umgebung Revision 4 erhalten.
 
 Auf der eigenen Domain bei 390/1440 px Kartenbestand und fehlenden Überlauf bestätigt; anschließend Mausreaktion (X 2,609° / Y 4,642°), transformierte Kartenebene und Rücksetzung auf 0° live geprüft. Neutraler Blur, grüner Heimatpunkt und bedienbare Formularfelder bestätigt, keine Browserfehler oder versandten Testanfragen. Live-Screenshot dokumentiert. Abschlussdokumentation ändert keinen Live-Code; GitHub-Abgleich im Chatabschluss.
+
+## Aktueller Stand: Karte im Ablaufbereich, Version 92
+
+Der Nutzer zeigt den grünen Abschnitt „Ihr Vorhaben. Die nächsten Schritte.“ als neuen Kartenplatz. Die einzelne Karteninstanz wurde aus dem Gartenhero dorthin verschoben. Ab 1024 px stehen die vier unveränderten Schritte links in zwei Reihen und die Karte rechts. Auf kleineren Bildschirmen folgt die Karte unter dem Ablauf. Die ehemalige leere Hero-Kartenspalte wurde entfernt. Die Karte ist maximal 29 rem breit und ohne die frühere viewporthöhenabhängige Hero-Ausrichtung zentriert. Eine neutral dunkle Füllung und ein schwächerer äußerer Schatten sorgen auf der flächig grünen Sektion für Kontrast; Blur und Mausneigung bleiben erhalten.
+
+Die Verschiebung wurde als **V91 am 20.10.2026 um 13:49:08 MESZ** veröffentlicht:
+
+- Quellcommit `e26c571d0433337765d6265e7abc4eafaa8d9a29`.
+- Version-ID `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_1493485216648191ac7c41e1dfa17180`.
+- Deployment `appgdep_6ad7552012d48191a190dde253cf821d`, succeeded.
+
+Während der Abschlussprüfung änderte der Nutzer den Wortlaut unter der Karte. **V92 ist seit 20.10.2026, 13:53:49 MESZ live**, mit zwei Zeilen:
+
+> Überregional für Sie im Einsatz.
+> Weitere Standorte auf Anfrage.
+
+Der zugängliche SVG-Titel lautet jetzt „Aus Hattersheim überregional im Einsatz“, die Bildbeschreibung enthält ebenfalls den Anfragehinweis. Die Korrektur betrifft den Kartenbereich. Punkte, fehlende Ortsnamen/Verbindungen und Mausbewegung bleiben erhalten.
+
+- Quellcommit `da06410c5813a1f753d39bb8ac8d1d925fbc50f7`.
+- Version-ID `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_bf485f93e9ac8191ada65c2db2f0c83d`.
+- Deployment `appgdep_6ad75637444081919ebebe95c7bc0269`, succeeded.
+- Öffentliche Audience und Umgebung Revision 4 in beiden Veröffentlichungen erhalten.
+
+Der zu Arbeitsbeginn saubere Quellstand enthielt bereits den zwischenzeitlichen Ortsausbau V90 sowie die jüngste Indexierungsdokumentation. Diese Änderungen wurden erhalten. Keine Backend-, Datenbank-, SEO-Metadaten- oder Sitemapänderung in diesem Kartenauftrag.
+
+Typprüfung, gezieltes ESLint, Formatierung, Diffprüfung und Client-/Serverbuild samt Postbuild für beide Fassungen erfolgreich. Offizieller Source-Abgleich, danach Windows-Paketierung des identischen Builds wegen des bekannten fehlenden Bash.
+
+Lokal bei 320, 390, 768, 1024 und 1440 px genau eine Karte im Ablauf, keine im Hero, vier Schritte, neun Punkte und kein horizontaler Überlauf. Anordnung unter bzw. neben dem Ablauf per Elementgrenzen geprüft. Lokale Mausneigung am neuen Platz, Blur und grüner Heimatpunkt bestätigt. Neue Beschriftung bei 320/1440 px lesbar innerhalb der Kartenbreite.
+
+Final live bei 390/1440 px neue Platzierung, vier Schritte, neun Punkte, keine Ortslabels/Verbindungen, exakter Wortlaut, aktivierte Formularfelder und fehlender Überlauf bestätigt. Im Browserprotokoll stand ein Hydrierungsfehler #422 vom ersten V91-Aufruf um 13:49:32 MESZ; nach frischem V92-Aufruf keine neuen Fehler festgestellt. Keine Testanfrage versendet. Abschlussdokumentation verändert keinen Live-Code; GitHub-Abgleich im Chatabschluss.
