@@ -57,4 +57,19 @@ Die abschließende lokale Browserprüfung bei **320, 390, 768, 1024, 1440 und 19
 
 Typprüfung, gezieltes ESLint, Formatierung und Diffprüfung erfolgreich. Der erste Build scheiterte lokal an fehlendem Schreibzugriff auf ein bestehendes Ausgabe-Unterverzeichnis; der Wiederholungslauf mit passendem Dateizugriff war einschließlich Client-/Serverbuild und Postbuild erfolgreich. Dieser Build veröffentlicht nichts. Die vollständige Backendtestsuite wurde wegen der rein visuellen Änderung nicht erneut ausgeführt.
 
-Aktuelle Gestaltung lokal abgeschlossen; abschließende GitHub-Sicherung im Chatabschluss. **Weiterhin nicht live:** Die frühere automatische Ablehnung des Veröffentlichungsablaufs bleibt maßgeblich, der Nutzer hat danach gestalterische Korrekturen, aber keine ausdrückliche Live-Freigabe erteilt. Öffentlich bleibt V84.
+Die Gestaltung wurde zunächst lokal abgeschlossen und auf GitHub unter `1e53aed4a56ee7da0feafad5b1b6450b087ad914` baumgleich gesichert. Die Veröffentlichung wartete bis zur ausdrücklichen Live-Freigabe.
+
+## Glaskarte live in Version 85
+
+Der Nutzer hat anschließend ausdrücklich **„stelle es live“** beauftragt. Die vorherige Ablehnung wegen fehlender Live-Zustimmung ist damit erledigt. **V85 wurde am 20.10.2026 um 09:42:03 MESZ erfolgreich veröffentlicht.**
+
+- Quellcommit: `025b81c4a200285ff19d46a02659580318668e73`.
+- Version-ID: `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_7346aa58cc288191b00af26226014c66`.
+- Deployment: `appgdep_6ad71b34d5a88191bc72be0b20805627`, Status `succeeded`.
+- Öffentliche Audience, Domain und Umgebung Revision 4 erhalten.
+- Offizieller Source-Workflow hat den Quellstand erfolgreich übertragen und abgeglichen. Der Standard-Packager scheiterte anschließend am hier fehlenden Bash; das bereits geprüfte Windows-Verfahren mit unverändertem offiziellen Vorbereitungsskript erstellte das Archiv aus demselben erfolgreichen Build.
+- Live-URL des Deployments: `https://loni-galabau.serhad1999.chatgpt.site`; eigene Domain: `https://www.loni-galabau.de/`.
+
+Die eigene Domain nach Veröffentlichung bei 390 und 1440 px gegengeprüft: zwölf richtige Orte, elf Verbindungen, `blur(9px) saturate(0.35)` und grüner Hattersheim-Punkt sichtbar bestätigt. Keine horizontalen Überläufe oder Browserfehler; Seite vollständig interaktiv. Keine Anfrage versendet. Die Live-Desktopansicht ist lokal als Screenshot dokumentiert.
+
+Diese Abschlussdokumentation verändert keinen veröffentlichten Programmcode. Abschließende GitHub-Sicherung im Chatabschluss.
