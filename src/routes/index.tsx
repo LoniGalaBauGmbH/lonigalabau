@@ -14,6 +14,7 @@ import { GardenDetails } from "@/components/site/GardenDetails";
 import { ProjectGallery } from "@/components/site/ProjectGallery";
 import { Awards } from "@/components/site/Awards";
 import { GuideEntryLinks } from "@/components/site/GuideEntryLinks";
+import { GermanyNetworkMap } from "@/components/site/GermanyNetworkMap";
 
 import { FAQ } from "@/components/site/FAQ";
 import { getServices, getFeaturedProject, getSitePartners } from "@/lib/site.functions";
@@ -168,34 +169,37 @@ function HomePage() {
               Im Garten- & Landschaftsbau
             </div>
           </div>
-          <div className="home-hero-copy max-w-5xl animate-fade-up">
-            <h1 lang="de" className="home-hero-title display text-white">
-              Garten- und <br />
-              <span className="text-white">Landschaftsbau</span>
-            </h1>
+          <div className="home-hero-content">
+            <div className="home-hero-copy max-w-5xl animate-fade-up">
+              <h1 lang="de" className="home-hero-title display text-white">
+                Garten- und <br />
+                <span className="text-white">Landschaftsbau</span>
+              </h1>
 
-            <p className="home-hero-description max-w-2xl text-white/90 font-normal">
-              Überregional für Sie im Einsatz – aus Hattersheim am Main in ganz Deutschland gut
-              vernetzt. Wir gestalten Ihren Garten, bauen Terrassen und pflastern Einfahrten –
-              passend zu Ihrem Grundstück und Ihrem Alltag.
-            </p>
+              <p className="home-hero-description max-w-2xl text-white/90 font-normal">
+                Überregional für Sie im Einsatz – aus Hattersheim am Main in ganz Deutschland gut
+                vernetzt. Wir gestalten Ihren Garten, bauen Terrassen und pflastern Einfahrten –
+                passend zu Ihrem Grundstück und Ihrem Alltag.
+              </p>
 
-            <div className="home-hero-actions flex flex-wrap items-center">
-              <Link
-                to="/"
-                hash="express-anfrage"
-                className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-accent hover:text-brand transition"
-              >
-                Express-Anfrage
-              </Link>
-              <Link
-                to="/leistungen"
-                className="group inline-flex items-center gap-3 text-white text-sm uppercase tracking-[0.2em] font-semibold border-b border-white/60 pb-1 hover:border-accent hover:text-accent transition"
-              >
-                Unsere Leistungen
-                <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
-              </Link>
+              <div className="home-hero-actions flex flex-wrap items-center">
+                <Link
+                  to="/"
+                  hash="express-anfrage"
+                  className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold hover:bg-accent hover:text-brand transition"
+                >
+                  Express-Anfrage
+                </Link>
+                <Link
+                  to="/leistungen"
+                  className="group inline-flex items-center gap-3 text-white text-sm uppercase tracking-[0.2em] font-semibold border-b border-white/60 pb-1 hover:border-accent hover:text-accent transition"
+                >
+                  Unsere Leistungen
+                  <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+                </Link>
+              </div>
             </div>
+            <GermanyNetworkMap />
           </div>
         </div>
       </section>

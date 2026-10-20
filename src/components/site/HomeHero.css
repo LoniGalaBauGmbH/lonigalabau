@@ -25,6 +25,9 @@
   container-type: inline-size;
   width: 100%;
 }
+.home-hero-content {
+  min-width: 0;
+}
 .home-hero-title {
   /* Size the long second line against the copy column, not the viewport. */
   font-size: clamp(1rem, 10.5cqw, 8rem);
@@ -85,6 +88,9 @@
   .home-hero-copy {
     align-self: end;
   }
+  .home-hero-content {
+    align-self: end;
+  }
   .home-hero-title {
     font-size: clamp(1rem, min(10.5cqw, 9svh), 8rem);
   }
@@ -96,5 +102,19 @@
   .home-hero-actions {
     margin-top: var(--hero-gap);
     gap: 1rem 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .home-hero-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 4.5rem);
+  }
+  .home-hero-copy {
+    align-self: center;
+  }
+  .home-hero-description {
+    max-width: 36rem;
   }
 }
