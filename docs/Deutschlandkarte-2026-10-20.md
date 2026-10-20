@@ -86,7 +86,7 @@ Typprüfung, gezieltes ESLint, Formatierung und Diffprüfung erfolgreich. Lokale
 
 Auf `https://www.loni-galabau.de/` nach Veröffentlichung bei 390/1440 px die fünf richtigen Ortsnamen, vier Verbindungen, `blur(9px) saturate(0.35)` und grüner Hattersheim-Punkt bestätigt. Keine Überläufe oder Browserfehler; Seite vollständig interaktiv. Live-Desktopansicht als lokaler Screenshot dokumentiert. Abschlussdokumentation ändert keinen Live-Code; abschließender GitHub-Abgleich im Chatabschluss.
 
-## Aktueller Stand: größere Punkte ohne Namen und Linien, Version 88
+## Größere Punkte ohne Namen und Linien, Version 88
 
 Der Nutzer ersetzt die bisherige Auswahl durch Heidelberg, Mannheim, Hanau, Friedrichsdorf, Bad Homburg, Koblenz, Stuttgart und München und verlangt ausdrücklich nur Punkte ohne Namen und Linien. Hattersheim bleibt gemäß früherem Wunsch als grüner Heimatpunkt erhalten. Alle sichtbaren Ortslabels, Beschriftungskarten, Zuordnungslinien und Verbindungen einschließlich Lichtanimation wurden entfernt. Die Bildbeschreibung für Screenreader nennt weiterhin die Orte. Unter der Karte steht neutral „Deutschlandweit für Sie im Einsatz.“; weiße Deutschlandkontur und neutraler Hintergrundblur bleiben erhalten.
 
@@ -108,3 +108,22 @@ Während des Abschlusses verlangte der Nutzer deutlich größere Punkte. **V88 i
 Typprüfung, gezieltes ESLint, Formatierung, Diffprüfung und Client-/Serverbuild samt Postbuild für beide Fassungen erfolgreich. Offizieller Source-Workflow hat die jeweiligen Stände vor der Veröffentlichung gespeichert und übertragen; wegen des bekannten fehlenden Bash wurde jeweils das erfolgreiche Build-Ergebnis mit dem vorhandenen Windows-Packager und unverändertem offiziellen Vorbereitungsskript verpackt.
 
 Lokal und auf `https://www.loni-galabau.de/` bei 390/1440 px neun richtige Stadtpunkte, keine SVG-Ortslabels oder Verbindungslinien, kein horizontaler Überlauf, neutraler `blur(9px) saturate(0.35)` und grüner Heimatpunkt bestätigt. Größere Radien in der veröffentlichten V88 zurückgelesen. Keine neuen Abhängigkeiten, Backend-/Datenbankänderungen oder versandten Testanfragen. Die abschließende Dokumentation ändert keinen Live-Code; GitHub-Abgleich im Chatabschluss.
+
+## Aktueller Stand: sanfte Kartenbewegung, Version 89
+
+Auf „wenn man mit der maus hovert“ wurde zunächst eine Namensanzeige vorbereitet. Der Nutzer hat während der Umsetzung klargestellt, dass sich die **ganze Karte leicht bewegen** soll. Der unveröffentlichte Namensentwurf wurde vollständig entfernt. Es erscheinen weiterhin keine Ortsnamen oder Verbindungslinien.
+
+Die Karte folgt der relativen Mausposition mit maximal ±4° Neigung um die X-Achse und ±6° um die Y-Achse bei 1000-px-Perspektive. Beim Hover hebt sich die Kartenebene 3 px; ein sehr dezenter weißer Lichtreflex folgt innerhalb der bestehenden Deutschlandform der Mausposition. Kontur, Blur und Punkte bewegen sich gemeinsam. Die Bildunterschrift bleibt ruhig. Ein 450-ms-Übergang glättet die Bewegung und die Rückkehr beim Verlassen. Die Berechnung nutzt das unverformte äußere Element, damit kein Rückkopplungszittern entsteht.
+
+CSS und Ereignisbehandlung sind auf `(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)` beschränkt; Touch-Pointer werden zusätzlich ignoriert. Keine automatische Dauerschleife, keine neuen Abhängigkeiten oder Backendänderungen. Die deaktivierte Bewegung für Touch/reduzierte Bewegung wurde im Quellcode geprüft, nicht durch eine Änderung der Geräteeinstellungen erprobt.
+
+Typprüfung, gezieltes ESLint, Formatierung, Diffprüfung und Client-/Serverbuild einschließlich Postbuild erfolgreich. Lokal bei 1440 px unterschiedliche Mauspositionen mit wechselnden Neigungsrichtungen, Lichtreflex bis Deckkraft 1 sowie Rückkehr auf beide Winkel 0 und Reflex 0 bestätigt. Bei 390/1440 px neun Punkte, keine Ortsnamen oder Verbindungen, kein horizontaler Überlauf oder Browserfehler. Offizieller Source-Workflow erfolgreich; anschließend bewährte Windows-Paketierung nach dem bekannten fehlenden Bash.
+
+**V89 live seit 20.10.2026, 11:28:22 MESZ:**
+
+- Quellcommit `c7e5a3fb7952234acab842d75cff6450b51d8fbd`.
+- Version-ID `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_66ebdf6a61e48191a5ab0dcac1e73ca7`.
+- Deployment `appgdep_6ad7341853e08191af74a211d5fa8311`, succeeded.
+- Öffentliche Audience und Umgebung Revision 4 erhalten.
+
+Auf der eigenen Domain bei 390/1440 px Kartenbestand und fehlenden Überlauf bestätigt; anschließend Mausreaktion (X 2,609° / Y 4,642°), transformierte Kartenebene und Rücksetzung auf 0° live geprüft. Neutraler Blur, grüner Heimatpunkt und bedienbare Formularfelder bestätigt, keine Browserfehler oder versandten Testanfragen. Live-Screenshot dokumentiert. Abschlussdokumentation ändert keinen Live-Code; GitHub-Abgleich im Chatabschluss.

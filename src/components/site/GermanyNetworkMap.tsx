@@ -74,7 +74,30 @@ const cities = [
 export function GermanyNetworkMap() {
   const id = useId();
   return (
-    <figure className="germany-network">
+    <figure
+      className="germany-network"
+      onPointerMove={(event) => {
+        if (
+          event.pointerType === "touch" ||
+          !window.matchMedia(
+            "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+          ).matches
+        ) {
+          return;
+        }
+        const bounds = event.currentTarget.getBoundingClientRect();
+        const x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+        const y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+        event.currentTarget.style.setProperty("--map-rotate-x", `${(0.5 - y) * 8}deg`);
+        event.currentTarget.style.setProperty("--map-rotate-y", `${(x - 0.5) * 12}deg`);
+        event.currentTarget.style.setProperty("--map-pointer-x", `${x * 100}%`);
+        event.currentTarget.style.setProperty("--map-pointer-y", `${y * 100}%`);
+      }}
+      onPointerLeave={(event) => {
+        event.currentTarget.style.setProperty("--map-rotate-x", "0deg");
+        event.currentTarget.style.setProperty("--map-rotate-y", "0deg");
+      }}
+    >
       <div className="germany-network-stage">
         <div
           className="germany-network-glass"
