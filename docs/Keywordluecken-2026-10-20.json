@@ -1,0 +1,6088 @@
+{
+  "retrieved_date": "2026-10-20",
+  "source": "DataForSEO Google Ads Keywords Data API; Google Organic SERP API",
+  "market": {
+    "country": "Germany",
+    "location_code": 2276,
+    "language_code": "de",
+    "search_partners": false
+  },
+  "monthly_period": {
+    "from": "2025-10",
+    "to": "2026-09"
+  },
+  "currency": "USD",
+  "notes": [
+    "Approximate monthly search counts, not unique people or inquiries.",
+    "City keywords were measured for Germany; these are not city-wide total search volumes.",
+    "Do not add close keyword variants; Google Ads can group them.",
+    "Ads competition is not organic difficulty; null means unknown, not zero.",
+    "Existing 2026-10-19 dataset reused for overlap; no duplicate volume requests."
+  ],
+  "total_api_cost_usd": 0.2,
+  "counts": {
+    "phrases": 89,
+    "unique": 89,
+    "numeric": 70,
+    "unknown": 19
+  },
+  "tasks": [
+    {
+      "id": "10200943-2663-0368-0000-63947d8dd023",
+      "status_code": 20000,
+      "cost_usd": 0.09,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "keywords_for_keywords",
+        "live"
+      ],
+      "keywords": [
+        "garten begradigen lassen",
+        "l steine setzen lassen",
+        "gartenmauer bauen lassen",
+        "vorgarten gestalten lassen",
+        "außenanlagen neubau",
+        "gartensanierung",
+        "pflaster reparieren lassen",
+        "hecke pflanzen lassen"
+      ]
+    },
+    {
+      "id": "10200944-2663-0367-0000-da572d6b4225",
+      "status_code": 20000,
+      "cost_usd": 0.09,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "search_volume",
+        "live"
+      ],
+      "keywords": [
+        "gartenmauer bauen",
+        "stützmauer bauen lassen",
+        "stützmauer bauen kosten",
+        "stützmauer firma",
+        "hangbefestigung firma",
+        "hangbefestigung kosten",
+        "hang abfangen lassen",
+        "l steine setzen",
+        "gartenmauer kosten",
+        "natursteinmauer bauen lassen",
+        "trockenmauer bauen lassen",
+        "garten komplett neu gestalten lassen",
+        "garten neu anlegen kosten",
+        "gartensanierung kosten",
+        "gartenrenovierung",
+        "garten umbau",
+        "außenanlagen neubau kosten",
+        "außenanlagen firma",
+        "außenanlagen gestalten lassen",
+        "vorgarten gestalten",
+        "vorgarten gestalten kosten",
+        "hecke pflanzen kosten",
+        "hecken pflanzen lassen",
+        "heckenpflanzung",
+        "garten bepflanzen lassen",
+        "garten bepflanzen lassen kosten",
+        "gartenhaus fundament erstellen lassen",
+        "fundament gartenhaus firma",
+        "pflaster ausbessern",
+        "pflaster absackung reparieren",
+        "pflaster sanieren kosten",
+        "pflasterfugen erneuern lassen",
+        "terrasse sanieren lassen",
+        "terrassenplatten verlegen lassen",
+        "terrassenplatten verlegen kosten",
+        "gartentreppe bauen lassen",
+        "außentreppe bauen lassen",
+        "gartentreppe kosten",
+        "gartenbau darmstadt",
+        "gartenbau offenbach",
+        "gartenbau hanau",
+        "gartenbau oberursel",
+        "gartenbau königstein",
+        "gartenbau kronberg",
+        "gartenbau rüsselsheim",
+        "gartenbau neu isenburg",
+        "gartengestaltung darmstadt",
+        "gartengestaltung offenbach",
+        "gartengestaltung hanau",
+        "gartengestaltung oberursel",
+        "pflasterarbeiten darmstadt",
+        "pflasterarbeiten offenbach",
+        "pflasterarbeiten hanau",
+        "pflasterarbeiten oberursel",
+        "baggerarbeiten in der nähe",
+        "baggerarbeiten garten kosten",
+        "gartengestaltung reihenhaus",
+        "garten gestalten lassen kosten",
+        "gartenbau angebot",
+        "landschaftsgärtner beauftragen",
+        "außenanlagen gewerbe",
+        "gartenbau für hausverwaltungen",
+        "pflegeleichter garten anlegen lassen"
+      ]
+    },
+    {
+      "id": "10200945-2663-0139-0000-9830aeba485c",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "gartenbau darmstadt"
+    },
+    {
+      "id": "10200945-2663-0139-0000-516781382b11",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "gartenbau hanau"
+    },
+    {
+      "id": "10200945-2663-0139-0000-f4e4b4f02a6b",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "gartenbau offenbach"
+    },
+    {
+      "id": "10200946-2663-0139-0000-b89e2b46ffd2",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "gartenbau rüsselsheim"
+    },
+    {
+      "id": "10200946-2663-0139-0000-953ad5f25cd6",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "l steine setzen lassen kosten"
+    },
+    {
+      "id": "10200946-2663-0139-0000-99ad5ef669b2",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "hecke pflanzen lassen kosten pro meter"
+    },
+    {
+      "id": "10200946-2663-0139-0000-79ceb1917485",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "vorgarten gestalten lassen"
+    },
+    {
+      "id": "10200946-2663-0139-0000-364c918edd86",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "gartenmauer bauen lassen kosten"
+    },
+    {
+      "id": "10200947-2663-0139-0000-7b21882a1f28",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "hecke pflanzen lassen"
+    },
+    {
+      "id": "10200947-2663-0139-0000-b420093f30f6",
+      "status_code": 20000,
+      "cost_usd": 0.002,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "keyword": "l steine setzen lassen"
+    }
+  ],
+  "metrics": [
+    {
+      "keyword": "garten begradigen lassen",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 86,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "l steine setzen lassen",
+      "search_volume": 20,
+      "cpc_usd": 3.09,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 52,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenmauer bauen lassen",
+      "search_volume": 20,
+      "cpc_usd": 2.69,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 73,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 30
+        }
+      ]
+    },
+    {
+      "keyword": "vorgarten gestalten lassen",
+      "search_volume": 10,
+      "cpc_usd": 1.48,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 86,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    },
+    {
+      "keyword": "außenanlagen neubau",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 8,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartensanierung",
+      "search_volume": 40,
+      "cpc_usd": 1.29,
+      "ads_competition": "LOW",
+      "ads_competition_index": 30,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "pflaster reparieren lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "hecke pflanzen lassen",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 90,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenmauer bauen lassen kosten",
+      "search_volume": 70,
+      "cpc_usd": 2.11,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 38,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "gartenmauer bauen firma",
+      "search_volume": 10,
+      "cpc_usd": 2.4,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 71,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    },
+    {
+      "keyword": "außenanlage neubau kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 0,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "garten begradigen lassen kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 79,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "garten sanierung",
+      "search_volume": 20,
+      "cpc_usd": 2.9,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 45,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 30
+        }
+      ]
+    },
+    {
+      "keyword": "gartenmauer mauern lassen kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 57,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "hecke pflanzen lassen kosten",
+      "search_volume": 20,
+      "cpc_usd": 1.82,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 56,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "hecke pflanzen lassen kosten pro meter",
+      "search_volume": 40,
+      "cpc_usd": 3.16,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 50,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "kosten außenanlage neubau",
+      "search_volume": 20,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 4,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "kosten hecke pflanzen lassen",
+      "search_volume": 20,
+      "cpc_usd": 1.82,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 56,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "kosten l steine setzen lassen",
+      "search_volume": 40,
+      "cpc_usd": 1.42,
+      "ads_competition": "LOW",
+      "ads_competition_index": 19,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 40
+        }
+      ]
+    },
+    {
+      "keyword": "l steine setzen lassen kosten",
+      "search_volume": 40,
+      "cpc_usd": 1.42,
+      "ads_competition": "LOW",
+      "ads_competition_index": 19,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 40
+        }
+      ]
+    },
+    {
+      "keyword": "l steine setzen lassen preis",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "neubau aussenanlagen",
+      "search_volume": 20,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 15,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "neubau außenanlage planen",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    },
+    {
+      "keyword": "thuja hecke pflanzen lassen kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "thuja pflanzen lassen kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "winkelsteine setzen lassen kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 0,
+      "source_batch": "keyword_ideas",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenmauer bauen",
+      "search_volume": 720,
+      "cpc_usd": 0.42,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 82,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 1000
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 1300
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 1300
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 390
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 260
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 390
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 720
+        }
+      ]
+    },
+    {
+      "keyword": "stützmauer bauen lassen",
+      "search_volume": 10,
+      "cpc_usd": 0.99,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 43,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "stützmauer bauen kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 50,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "stützmauer firma",
+      "search_volume": 10,
+      "cpc_usd": 1.95,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 57,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "hangbefestigung firma",
+      "search_volume": 10,
+      "cpc_usd": 2.17,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 86,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "hangbefestigung kosten",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 0,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "hang abfangen lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "l steine setzen",
+      "search_volume": 3600,
+      "cpc_usd": 0.25,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 57,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 2900
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 3600
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 3600
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 3600
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 4400
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 6600
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 6600
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 2400
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 1600
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 1300
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 1900
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 2900
+        }
+      ]
+    },
+    {
+      "keyword": "gartenmauer kosten",
+      "search_volume": 50,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 17,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "natursteinmauer bauen lassen",
+      "search_volume": 10,
+      "cpc_usd": 1.01,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 47,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "trockenmauer bauen lassen",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "garten komplett neu gestalten lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "garten neu anlegen kosten",
+      "search_volume": 90,
+      "cpc_usd": 1.77,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 50,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 110
+        }
+      ]
+    },
+    {
+      "keyword": "gartensanierung kosten",
+      "search_volume": 20,
+      "cpc_usd": 1.74,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 54,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "gartenrenovierung",
+      "search_volume": 90,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 13,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 90
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 110
+        }
+      ]
+    },
+    {
+      "keyword": "garten umbau",
+      "search_volume": 70,
+      "cpc_usd": 2.25,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 33,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "außenanlagen neubau kosten",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "außenanlagen firma",
+      "search_volume": 40,
+      "cpc_usd": 1.76,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 46,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "außenanlagen gestalten lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "vorgarten gestalten",
+      "search_volume": 6600,
+      "cpc_usd": 0.82,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 55,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 5400
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 6600
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 6600
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 5400
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 8100
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 9900
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 12100
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 6600
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 3600
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 2400
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 3600
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 6600
+        }
+      ]
+    },
+    {
+      "keyword": "vorgarten gestalten kosten",
+      "search_volume": 10,
+      "cpc_usd": 1.9,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 39,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "hecke pflanzen kosten",
+      "search_volume": 90,
+      "cpc_usd": 0.44,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 100,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 90
+        }
+      ]
+    },
+    {
+      "keyword": "hecken pflanzen lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "heckenpflanzung",
+      "search_volume": 70,
+      "cpc_usd": 0.35,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 80,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "garten bepflanzen lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "garten bepflanzen lassen kosten",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenhaus fundament erstellen lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "fundament gartenhaus firma",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "pflaster ausbessern",
+      "search_volume": 50,
+      "cpc_usd": 1.17,
+      "ads_competition": "LOW",
+      "ads_competition_index": 2,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "pflaster absackung reparieren",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "pflaster sanieren kosten",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "pflasterfugen erneuern lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "terrasse sanieren lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "terrassenplatten verlegen lassen",
+      "search_volume": 90,
+      "cpc_usd": 2.55,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 67,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 30
+        }
+      ]
+    },
+    {
+      "keyword": "terrassenplatten verlegen kosten",
+      "search_volume": 210,
+      "cpc_usd": 1.41,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 41,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 210
+        }
+      ]
+    },
+    {
+      "keyword": "gartentreppe bauen lassen",
+      "search_volume": 10,
+      "cpc_usd": 3.02,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 100,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "außentreppe bauen lassen",
+      "search_volume": 50,
+      "cpc_usd": 2.06,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 56,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 30
+        }
+      ]
+    },
+    {
+      "keyword": "gartentreppe kosten",
+      "search_volume": 10,
+      "cpc_usd": 0.09,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 65,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau darmstadt",
+      "search_volume": 210,
+      "cpc_usd": 0.95,
+      "ads_competition": "LOW",
+      "ads_competition_index": 28,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 140
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 210
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 170
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau offenbach",
+      "search_volume": 90,
+      "cpc_usd": 2.39,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 42,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 90
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau hanau",
+      "search_volume": 140,
+      "cpc_usd": 1.12,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 45,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 170
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 90
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 110
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau oberursel",
+      "search_volume": 50,
+      "cpc_usd": 0.84,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 57,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 40
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau königstein",
+      "search_volume": 10,
+      "cpc_usd": 0.29,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 43,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau kronberg",
+      "search_volume": 20,
+      "cpc_usd": 1.23,
+      "ads_competition": "LOW",
+      "ads_competition_index": 31,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau rüsselsheim",
+      "search_volume": 70,
+      "cpc_usd": 0.86,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 47,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau neu isenburg",
+      "search_volume": 30,
+      "cpc_usd": 0.83,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 45,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartengestaltung darmstadt",
+      "search_volume": 20,
+      "cpc_usd": 0.19,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 89,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartengestaltung offenbach",
+      "search_volume": 10,
+      "cpc_usd": 0.76,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 71,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartengestaltung hanau",
+      "search_volume": 20,
+      "cpc_usd": 0.7,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 60,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartengestaltung oberursel",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "pflasterarbeiten darmstadt",
+      "search_volume": 20,
+      "cpc_usd": 1.44,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 86,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "pflasterarbeiten offenbach",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "ads_competition_index": 14,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "pflasterarbeiten hanau",
+      "search_volume": 10,
+      "cpc_usd": 1.96,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 71,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "pflasterarbeiten oberursel",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 0
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    },
+    {
+      "keyword": "baggerarbeiten in der nähe",
+      "search_volume": 390,
+      "cpc_usd": 2.8,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 40,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 320
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 210
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 210
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 170
+        }
+      ]
+    },
+    {
+      "keyword": "baggerarbeiten garten kosten",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartengestaltung reihenhaus",
+      "search_volume": 90,
+      "cpc_usd": 0.91,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 38,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "garten gestalten lassen kosten",
+      "search_volume": 20,
+      "cpc_usd": 0.89,
+      "ads_competition": "MEDIUM",
+      "ads_competition_index": 59,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau angebot",
+      "search_volume": 170,
+      "cpc_usd": 0.43,
+      "ads_competition": "HIGH",
+      "ads_competition_index": 100,
+      "source_batch": "targeted_volume",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "landschaftsgärtner beauftragen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "außenanlagen gewerbe",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau für hausverwaltungen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    },
+    {
+      "keyword": "pflegeleichter garten anlegen lassen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "ads_competition_index": null,
+      "source_batch": "targeted_volume",
+      "monthly_searches": null
+    }
+  ],
+  "serp_sample": {
+    "location": "Frankfurt am Main,Hessen,Germany",
+    "location_code": 1004363,
+    "language_code": "de",
+    "device": "mobile",
+    "os": "android",
+    "depth": 10,
+    "queries": [
+      {
+        "keyword": "gartenbau darmstadt",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:45:45 +00:00",
+        "types": [
+          "local_pack",
+          "compare_sites",
+          "organic",
+          "people_also_ask",
+          "related_searches",
+          "people_also_search",
+          "images"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Landschaftsbau Darmstadt Eberstadt",
+            "url": "https://winkler-galabau.de/lp/landschaftsbau-darmstadt-eberstadt/"
+          },
+          {
+            "rank": 2,
+            "title": "Oliver P. Simon (@ollisgartenbau) · Darmstadt",
+            "url": "https://www.instagram.com/ollisgartenbau/"
+          },
+          {
+            "rank": 3,
+            "title": "Garten- & Landschaftsbau",
+            "url": "https://baule24.de/startseite-garten-landschaftbau/"
+          },
+          {
+            "rank": 4,
+            "title": "ᐅ Top 10 Gartenbau & Landschaftsbau Roßdorf bei ...",
+            "url": "https://www.gelbeseiten.de/branchen/gartenbau%20%26%20landschaftsbau/ro%C3%9Fdorf%20bei%20darmstadt"
+          },
+          {
+            "rank": 5,
+            "title": "Gartenbau in Darmstadt-Eberstadt >> Jetzt finden!",
+            "url": "https://www.dastelefonbuch.de/Branchen/Gartenbau/Darmstadt--Eberstadt"
+          },
+          {
+            "rank": 6,
+            "title": "Baumann Gärten & Freiräume Griesheim - Baumann Gärten",
+            "url": "https://baumann-gaerten.de/"
+          },
+          {
+            "rank": 7,
+            "title": "Landschaftsbau Seeheim-Jugenheim",
+            "url": "https://winkler-galabau.de/lp/landschaftsbau-seeheim-jugenheim/"
+          },
+          {
+            "rank": 8,
+            "title": "ᐅ Top 5 Gartenbau & Landschaftsbau Darmstadt-Arheilgen",
+            "url": "https://www.gelbeseiten.de/branchen/gartenbau%20%26%20landschaftsbau/darmstadt%20stadtteil%20arheilgen"
+          },
+          {
+            "rank": 9,
+            "title": "Gartenbau in Eberstadt Stadt Darmstadt",
+            "url": "https://www.dasoertliche.de/Themen/Gartenbau/Eberstadt-Stadt-Darmstadt.html"
+          },
+          {
+            "rank": 10,
+            "title": "Gartenbaugenossenschaft Darmstadt eG – Wir lieben Gärtnern!",
+            "url": "https://www.gartenbaugenossenschaft-darmstadt.de/"
+          }
+        ],
+        "local_pack": [
+          {
+            "rank": 1,
+            "title": "Bensmann Garten- und Landschaftsbau GmbH"
+          },
+          {
+            "rank": 2,
+            "title": "Gartengestaltung Soeder"
+          },
+          {
+            "rank": 3,
+            "title": "Azizi Garten- und Landschaftsbau Darmstadt"
+          },
+          {
+            "rank": 4,
+            "title": "Völger Dienstleistungen"
+          }
+        ],
+        "questions": [
+          "Wie teuer ist Gartenbau?",
+          "Welche Erfindungen stammen aus Darmstadt?",
+          "Welche 7 Fachrichtungen gibt es im Gartenbau?",
+          "Was macht man im Gartenbau?"
+        ]
+      },
+      {
+        "keyword": "gartenbau hanau",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:45:52 +00:00",
+        "types": [
+          "local_pack",
+          "compare_sites",
+          "organic",
+          "people_also_ask"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Kontakt",
+            "url": "https://diehlgalabau.de/kontakt/"
+          },
+          {
+            "rank": 2,
+            "title": "Eberhard Zoske - Gartenbauer in Hanau",
+            "url": "https://www.gartenbau.org/hanau/eberhard-zoske-aUMc8S"
+          },
+          {
+            "rank": 3,
+            "title": "Winterstein Galabau - Hanau",
+            "url": "https://www.winterstein-galabau.de/"
+          },
+          {
+            "rank": 4,
+            "title": "Özdemir Bau | Garten- und Landschaftsbau in Hanau",
+            "url": "https://www.gartenbau.org/hanau/oezdemir-bau-garten-und-landschaftsbau-aUOsI6"
+          },
+          {
+            "rank": 5,
+            "title": "Gartenbau & Landschaftsbau in Hanau | Firmensuche in der Nähe",
+            "url": "https://branchenbuch.meinestadt.de/hanau/brazl/100-19055-19065-71743"
+          },
+          {
+            "rank": 6,
+            "title": "Garten- und Landschaftsbau in Hanau",
+            "url": "https://www.gramenz-galabau.de/garten-und-landschaftsbau-in-hanau"
+          },
+          {
+            "rank": 7,
+            "title": "GaLa Bau Garten- u. Landschaftsbau in 63456 Hanau",
+            "url": "https://www.gelbeseiten.de/gsbiz/5cf71dbe-4de1-499f-96d4-b5a04f6810de"
+          },
+          {
+            "rank": 8,
+            "title": "Ahmet Keskinovic Garten- und Landschaftsbau in Hanau",
+            "url": "https://www.gartenbau.org/hanau/ahmet-keskinovic-garten-und-landschaftsbau-aUPhGm"
+          },
+          {
+            "rank": 9,
+            "title": "Grünbau KG - Gartenbauer in Hanau",
+            "url": "https://www.gartenbau.org/hanau/gruenbau-kg-aUOD34"
+          },
+          {
+            "rank": 10,
+            "title": "Tudorean - Gartenbauer in Hanau",
+            "url": "https://www.gartenbau.org/hanau/tudorean-aUPZef"
+          }
+        ],
+        "local_pack": [
+          {
+            "rank": 1,
+            "title": "Tulipa Garten und Landschaftsbau"
+          },
+          {
+            "rank": 2,
+            "title": "Diehl Garten Und Landschaftsbau"
+          },
+          {
+            "rank": 3,
+            "title": "Wendt Galabau"
+          },
+          {
+            "rank": 4,
+            "title": "Main Gala"
+          }
+        ],
+        "questions": [
+          "Wie teuer ist Gartenbau?",
+          "Welche Neubauprojekte gibt es in Hanau?",
+          "Was macht man im Gartenbau?",
+          "Wie hoch ist der Stundenlohn eines Gartenbauers?"
+        ]
+      },
+      {
+        "keyword": "gartenbau offenbach",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:45:58 +00:00",
+        "types": [
+          "local_pack",
+          "compare_sites",
+          "organic",
+          "people_also_ask",
+          "related_searches"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Garten in Offenbach am Main - Bewertungen, Preise & Kosten",
+            "url": "https://www.kennstdueinen.de/ergebnis-garten-in-offenbach-am-main-198-1578.html"
+          },
+          {
+            "rank": 2,
+            "title": "Garten- & Landschaftsbau in Offenbach am Main - Houzz.de",
+            "url": "https://www.houzz.de/professionals/gartenbau/offenbach-am-main-05-de-probr0-bo~t_11977~r_2857807"
+          },
+          {
+            "rank": 3,
+            "title": "Johannes Irgel Garten Landschaftsbau in Offenbach (Main)",
+            "url": "https://www.gartenbau.org/offenbach/johannes-irgel-garten-landschaftsbau-aUOZuj"
+          },
+          {
+            "rank": 4,
+            "title": "Gartenbau & Landschaftsbau in Landkreis Offenbach suchen & finden",
+            "url": "https://www.gelbeseiten.de/branchenbuch/branche/gartenbau%20%26%20landschaftsbau/hessen/offenbach"
+          },
+          {
+            "rank": 5,
+            "title": "Landschaftsbauer in Offenbach (Queich) » 245 Fachbetriebe",
+            "url": "https://www.gartenbau.org/offenbach-queich/landschaftsbau"
+          },
+          {
+            "rank": 6,
+            "title": "Daily Gartenpflege - Gartenbauer in Offenbach (Main)",
+            "url": "https://www.gartenbau.org/offenbach/daily-gartenpflege-aUQ1Gh"
+          },
+          {
+            "rank": 7,
+            "title": "Garten- und Landschaftsbau | Offenbach am Main",
+            "url": "https://www.facebook.com/GartenUndLandschaftsbau/"
+          },
+          {
+            "rank": 8,
+            "title": "Garten Landschaftsbau in Offenbach am Main Bürgel",
+            "url": "https://www.dasoertliche.de/Themen/Garten-Landschaftsbau/Offenbach-am-Main-B%C3%BCrgel.html"
+          },
+          {
+            "rank": 9,
+            "title": "GARTEN- & LANDSCHAFTSBAU JÖST - Offenbach, DE 63067",
+            "url": "https://www.houzz.de/experten/garten-und-landschaftsbau/garten-und-landschaftsbau-joest-pfvwde-pf~1101081123"
+          },
+          {
+            "rank": 10,
+            "title": "Gartengestaltung Offenbach | Garten-Gestaltung",
+            "url": "https://hausmeisterservice-offenbach.com/gartengestaltung/"
+          }
+        ],
+        "local_pack": [
+          {
+            "rank": 1,
+            "title": "Stenger Garten- und Landschaftsservice GmbH"
+          },
+          {
+            "rank": 2,
+            "title": "Hausmeisterservice & Gartenstyling"
+          },
+          {
+            "rank": 3,
+            "title": "Simon Schmid"
+          },
+          {
+            "rank": 4,
+            "title": "Kunstform Garten"
+          }
+        ],
+        "questions": [
+          "Was kostet eine Gartenbaufirma?",
+          "Ist Gartenbau anstrengend?",
+          "Was macht man beim Garten Landschaftsbau?",
+          "Welche 7 Fachrichtungen gibt es im Gartenbau?"
+        ]
+      },
+      {
+        "keyword": "gartenbau rüsselsheim",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:46:07 +00:00",
+        "types": [
+          "local_services",
+          "local_pack",
+          "compare_sites",
+          "organic",
+          "people_also_ask",
+          "related_searches",
+          "people_also_search",
+          "images"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Ihr Gärtner in Rüsselsheim: Kreative Gartengestaltung",
+            "url": "https://porzgmbh.de/"
+          },
+          {
+            "rank": 2,
+            "title": "Die 32 besten Gartenbauer in Rüsselsheim",
+            "url": "https://www.11880-gartenbau.com/gartenbau/ruesselsheim?utm_source=portal_searchresult&source=portal_searchresult"
+          },
+          {
+            "rank": 3,
+            "title": "Startseite - Hund Garten- und Landschaftsbau",
+            "url": "https://hund-gartenbau.de/"
+          },
+          {
+            "rank": 4,
+            "title": "ᐅ Top 10 Gartenbau & Landschaftsbau Rüsselsheim am ...",
+            "url": "https://www.gelbeseiten.de/branchen/gartenbau%20%26%20landschaftsbau/r%C3%BCsselsheim%20am%20main"
+          },
+          {
+            "rank": 5,
+            "title": "Garten- und Landschaftsbau in Rüsselsheim",
+            "url": "https://www.gramenz-galabau.de/garten-und-landschaftsbau-in-ruesselsheim-am-main"
+          },
+          {
+            "rank": 6,
+            "title": "Gartenservice Rüsselsheim",
+            "url": "http://gartenservice-ruesselsheim.de/"
+          },
+          {
+            "rank": 7,
+            "title": "Sixel GaLaBau – Garten- und Landschaftsbau – Rüsselsheim",
+            "url": "https://www.galabau-sixel.de/"
+          },
+          {
+            "rank": 8,
+            "title": "Kontakt - Garten- und Landschaftsbau Rodenheber",
+            "url": "https://galabau-rodenheber.de/kontakt/"
+          },
+          {
+            "rank": 9,
+            "title": "Garten- und Landschaftsbauer in Rüsselsheim - Houzz.de",
+            "url": "https://www.houzz.de/professionals/gartenbau/r%C3%BCsselsheim-05-de-probr0-bo~t_11977~r_2842884?fi=135"
+          },
+          {
+            "rank": 10,
+            "title": "Rodenheber Unternehmensgruppe - Rodenheber Unternehmensgruppe",
+            "url": "https://rodenheber.com/"
+          }
+        ],
+        "local_pack": [
+          {
+            "rank": 1,
+            "title": "Korkmaz Garten- und Landschaftsbau"
+          },
+          {
+            "rank": 2,
+            "title": "Garten- und Landschaftsbau Rodenheber GmbH"
+          },
+          {
+            "rank": 3,
+            "title": "Alagöz Garten- und Landschaftsbau"
+          },
+          {
+            "rank": 4,
+            "title": "Axel Porz - Landschaftsbau und Gartengestaltung - GmbH"
+          }
+        ],
+        "questions": [
+          "Wie viel kostet ein Gartenbauer pro Stunde?",
+          "Wie viel kostet die Gartengestaltung für einen Garten von 600 qm?",
+          "Wie viel kostet es, einen Garten mit 100 qm zu gestalten?",
+          "Was ist der Unterschied zwischen Landschaftsgärtner und Gartenbauer?"
+        ]
+      },
+      {
+        "keyword": "l steine setzen lassen kosten",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:46:15 +00:00",
+        "types": [
+          "ai_overview",
+          "organic",
+          "people_also_ask"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "L Steine, Dienstleistungen für Haus & Garten in Nordrhein-Westfalen",
+            "url": "https://www.kleinanzeigen.de/s-dienstleistungen-haus-garten/nordrhein-westfalen/l-steine/k0c239l928"
+          },
+          {
+            "rank": 2,
+            "title": "Kosten Natursteinmauer / L-Steine?",
+            "url": "https://www.gutefrage.net/frage/kosten-natursteinmauer--l-steine"
+          },
+          {
+            "rank": 3,
+            "title": "L-Stein (2026) zum Bestpreis",
+            "url": "https://www.idealo.de/preisvergleich/ProductCategory/26016F9283938.html"
+          },
+          {
+            "rank": 4,
+            "title": "L Steine",
+            "url": "https://www.mobau-wirtz-classen.de/produkte/garten-hof/l-steine"
+          },
+          {
+            "rank": 5,
+            "title": "L-Steine für Garage: Gründung, Kosten, Statik: Tipps",
+            "url": "https://bau.de/forum/garten/11284.php"
+          },
+          {
+            "rank": 6,
+            "title": "L Steine, Dienstleistungen für Haus & Garten in Bayern",
+            "url": "https://www.kleinanzeigen.de/s-dienstleistungen-haus-garten/bayern/l-steine/k0c239l5510"
+          },
+          {
+            "rank": 7,
+            "title": "Lsteinen kleinanzeigen.de",
+            "url": "https://www.kleinanzeigen.de/s-lsteinen/k0"
+          },
+          {
+            "rank": 8,
+            "title": "Geschätzte Kosten Randeinfassung mit Betonrandsteinen",
+            "url": "https://www.expertenforum-bau.de/forum/index.php?diskussion/2277-gesch%C3%A4tzte-kosten-randeinfassung-mit-betonrandsteinen/"
+          },
+          {
+            "rank": 9,
+            "title": "L Steine Setzen in Nordrhein-Westfalen",
+            "url": "https://www.kleinanzeigen.de/s-nordrhein-westfalen/l-steine-setzen/k0l928"
+          }
+        ],
+        "local_pack": [],
+        "questions": [
+          "Wie verlege ich L-Steine?",
+          "Was kostet 1 Meter L-Steine setzen?",
+          "Ist es möglich, Winkelsteine ohne Fundament zu setzen?",
+          "Was ist der Unterschied zwischen einem L-Stein und einer Mauerscheibe?"
+        ]
+      },
+      {
+        "keyword": "hecke pflanzen lassen kosten pro meter",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:46:22 +00:00",
+        "types": [
+          "ai_overview",
+          "organic",
+          "people_also_ask",
+          "related_searches",
+          "people_also_search"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Heckenpflanzen in Größen von 300-900 cm günstig kaufen",
+            "url": "https://www.baumschule-newgarden.de/hecken/heckenpflanzen-300-900-cm/"
+          },
+          {
+            "rank": 2,
+            "title": "Hecken-Direkt.de - Der Heckenspezialist",
+            "url": "https://www.hecken-direkt.de/?srsltid=AU7gw4VFGFWOzV1zbuVXf2HHM5OyGa0pk5fnWBFjptks0kZUruEsrPVN"
+          },
+          {
+            "rank": 3,
+            "title": "Hecken-Rechner: Bedarf, Abstand und Kosten exakt planen",
+            "url": "https://www.sanier.de/garten/hecke/hecken-rechner"
+          },
+          {
+            "rank": 4,
+            "title": "Aufwand/Kosten Hecke \"austauschen\" - Garten",
+            "url": "https://www.gartenforum.de/threads/3699901-aufwand-kosten-hecke-austauschen"
+          },
+          {
+            "rank": 5,
+            "title": "Heckenpflanzen Großhändler & Lieferanten",
+            "url": "https://www.wlw.de/de/suche/heckenpflanzen"
+          },
+          {
+            "rank": 6,
+            "title": "Hecke Kosten",
+            "url": "https://www.haus-forum.ch/threads/hecke-kosten.20994"
+          },
+          {
+            "rank": 7,
+            "title": "Hecke schneiden: Kosten 2026 & Alle Infos",
+            "url": "https://www.my-hammer.de/garten-aussenbereich/preisradar/was-kostet-hecke-schneiden"
+          },
+          {
+            "rank": 8,
+            "title": "Spalierbaum oder Hainbuchenhecke: Was lohnt sich wirklich?",
+            "url": "https://www.spalierbaumspezialist.de/blogs/news/spalierbaum-oder-hainbuchenhecke"
+          },
+          {
+            "rank": 9,
+            "title": "Heckenpflanze (2026) zum Bestpreis",
+            "url": "https://www.idealo.de/preisvergleich/ProductCategory/26072.html"
+          }
+        ],
+        "local_pack": [],
+        "questions": [
+          "Wie teuer ist Hecke?",
+          "Wie nah darf eine Hecke an die Grundstücksgrenze gepflanzt werden?",
+          "Was nimmt ein Gärtner fürs Hecke schneiden?",
+          "Wie viele Pflanzen pro Meter?"
+        ]
+      },
+      {
+        "keyword": "vorgarten gestalten lassen",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:46:27 +00:00",
+        "types": [
+          "ai_overview",
+          "organic",
+          "people_also_ask",
+          "images",
+          "people_also_search"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Gartenplanung Kosten",
+            "url": "https://www.gempp-gartendesign.de/gartenplanung-gartenarchitektur/gartenplanung-kosten/"
+          },
+          {
+            "rank": 2,
+            "title": "Naturgarten-Planer finden",
+            "url": "https://naturgartenwelt.de/naturgarten-experten/"
+          },
+          {
+            "rank": 3,
+            "title": "Garten planen",
+            "url": "https://www.hornbach.de/projekte/garten-planen/"
+          },
+          {
+            "rank": 4,
+            "title": "Gartenplanung - Eine schöner Garten muss gut geplant sein!",
+            "url": "https://www.ab-durch-die-hecke.de/gartenplanung"
+          },
+          {
+            "rank": 5,
+            "title": "Projekt Gartenplanung |A. Walter Garten- & Landschaftsbau",
+            "url": "https://www.aw-gartenbau.de/gartengestaltung/galabau/gartengestaltung-vorlaufzeit"
+          },
+          {
+            "rank": 6,
+            "title": "Meine Gartenplanung - Hainmüller Gartengestaltung",
+            "url": "https://hainmueller.com/leistungen/meine-gartenplanung/"
+          },
+          {
+            "rank": 7,
+            "title": "Naturgartenexperten | Garten- und Landschaftsplanung",
+            "url": "https://www.naturgartenexperten.de/"
+          },
+          {
+            "rank": 8,
+            "title": "So gestalten Sie Ihren Vorgarten!",
+            "url": "https://www.gartenbau.org/magazin/vorgarten-gestalten-20111885"
+          }
+        ],
+        "local_pack": [],
+        "questions": [
+          "Wie kann man einen kleinen Vorgarten gestalten?",
+          "Wie viel kostet ein Gärtner?",
+          "Wie viel kostet es, einen Garten mit 300 qm zu gestalten?",
+          "Wie kann ich meinen Garten günstig selbst gestalten?"
+        ]
+      },
+      {
+        "keyword": "gartenmauer bauen lassen kosten",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:46:32 +00:00",
+        "types": [
+          "ai_overview",
+          "organic",
+          "people_also_ask",
+          "people_also_search"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Mauerbau nach Wunsch - Meisterbetrieb | Wiesendanger",
+            "url": "https://wiesendanger-garten.de/Leistungen/Mauerbau/"
+          },
+          {
+            "rank": 2,
+            "title": "How much does it actually cost to build a garden wall yourself?",
+            "url": "https://www.youtube.com/watch?v=fHrvfmzv1wE"
+          },
+          {
+            "rank": 3,
+            "title": "Kosten für Stützmauer aus Schalungssteinen",
+            "url": "https://www.hausbau-forum.de/threads/kosten-fuer-stuetzmauer-aus-schalungssteinen.y4x5s7/"
+          },
+          {
+            "rank": 4,
+            "title": "Mauer Bauen, Dienstleistungen für Haus & Garten",
+            "url": "https://www.kleinanzeigen.de/s-dienstleistungen-haus-garten/mauer-bauen/k0c239"
+          },
+          {
+            "rank": 5,
+            "title": "Trockenmauer Preise?",
+            "url": "https://www.bauexpertenforum.de/threads/trockenmauer-preise.70494/"
+          },
+          {
+            "rank": 6,
+            "title": "Beton Gartenmauer: 25m Preis-Check: Tipps & Tricks im Forum",
+            "url": "https://bau.de/forum/garten/10819.php"
+          },
+          {
+            "rank": 7,
+            "title": "Bruchsteinmauer: Stundenlohn vs. Pauschale | Kosten & Dauer",
+            "url": "https://bau.de/forum/garten/12064.php"
+          },
+          {
+            "rank": 8,
+            "title": "Gartenmauer bauen: Günstige Steine & Fertigteile: Tipps",
+            "url": "https://bau.net/forum/garten/11858.php"
+          },
+          {
+            "rank": 9,
+            "title": "Gartenmauer bauen mit Mauersteinen | Anleitung von ...",
+            "url": "https://www.hornbach.de/projekte/gartenmauer-bauen-mit-mauersteinen/"
+          }
+        ],
+        "local_pack": [],
+        "questions": [
+          "Was kostet ein Gartenbauer pro Stunde?",
+          "Wie baue ich eine freistehende Mauer?",
+          "Was kostet es, eine Mauer zu bauen?",
+          "Wie tief muss das Fundament für eine Natursteinmauer sein?"
+        ]
+      },
+      {
+        "keyword": "hecke pflanzen lassen",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:47:13 +00:00",
+        "types": [
+          "ai_overview",
+          "organic",
+          "people_also_ask",
+          "related_searches",
+          "people_also_search"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "Fertig-Hecke pflanzen",
+            "url": "https://www.gartenpflanzendirekt.de/gartenratgeber-fertig-hecke/fertig-hecke-pflanzen"
+          },
+          {
+            "rank": 2,
+            "title": "Spartipps » Die 5 günstigsten Heckenpflanzen | Gratis-Lieferung",
+            "url": "https://www.hecken-helge.de/heckenpflanzen-guenstig-kaufen/"
+          },
+          {
+            "rank": 3,
+            "title": "Die grünen Nebenkosten für die Anlage eines Gartens",
+            "url": "https://www.sanier.de/garten/kosten-garten/die-gruenen-nebenkosten-fuer-den-garten"
+          },
+          {
+            "rank": 4,
+            "title": "Eine Hecke pflanzen - wie und wann?",
+            "url": "https://www.hedgy-heckenpflanzen.de/nachrichten/hecke-pflanzen/"
+          },
+          {
+            "rank": 5,
+            "title": "Hecken richtig pflanzen – Tipps vom Fachmann Haas GaLaBau",
+            "url": "https://www.haas-galabau.de/blog/2017/03/hecken-im-maerz-pflanzen-mit-unseren-profi-tipps/"
+          },
+          {
+            "rank": 6,
+            "title": "Heckenpflanzen berechnen: Anzahl und Pflanzabstand",
+            "url": "https://rechner-portal.de/garten-natur/gartenplanung-flaechen/heckenpflanzen-rechner"
+          },
+          {
+            "rank": 7,
+            "title": "Heckenpflanzen",
+            "url": "https://www.mitteldeutsche-baumschulen.de/collections/heckenpflanzen?srsltid=AU7gw4U7QePonZg5AckHSN9UOgnaP5HBqbctujcmOG5EQpCLKE-kPD7e"
+          },
+          {
+            "rank": 8,
+            "title": "Hecke – Pflanzen, planen und anlegen",
+            "url": "https://www.mein-schoener-garten.de/themen/hecke"
+          },
+          {
+            "rank": 9,
+            "title": "Heckenpflanzen kaufen bei HORNBACH",
+            "url": "https://www.hornbach.de/c/garten/pflanzen/gartenpflanzen-freilandpflanzen/heckenpflanzen/S9831/"
+          }
+        ],
+        "local_pack": [],
+        "questions": [
+          "Welche Hecke wächst schnell und ist immer grün?",
+          "Wie nah darf eine Hecke an die Grundstücksgrenze gepflanzt werden?",
+          "Wie viel kostet ein Meter Hecke?",
+          "Wie lange braucht Hainbuche zum Anwachsen?"
+        ]
+      },
+      {
+        "keyword": "l steine setzen lassen",
+        "status_code": 20000,
+        "datetime": "2026-10-20 09:47:29 +00:00",
+        "types": [
+          "ai_overview",
+          "video",
+          "people_also_ask",
+          "images",
+          "people_also_search",
+          "organic"
+        ],
+        "organic": [
+          {
+            "rank": 1,
+            "title": "L-Steine im Garten setzen: Schritt-für-Schritt-Anleitung",
+            "url": "https://magazin.steda.de/l-steine-im-garten-setzen-anleitung/"
+          },
+          {
+            "rank": 2,
+            "title": "L-Steine Winkelsteine",
+            "url": "https://gerwing.de/produkt-kategorie/gartengestaltung/befestigung/l-steine/?srsltid=AU7gw4XJ56OPsbv8DdhDLuseR-gldpQGzZR_R7mZe5ItQdP6nPd7DoyY"
+          },
+          {
+            "rank": 3,
+            "title": "L-Steine setzen ohne Fundament: Ist das möglich? - Bauprofi-Magazin",
+            "url": "https://bauprofi-magazin.de/l-steine-setzen-ohne-fundament/"
+          },
+          {
+            "rank": 4,
+            "title": "L-Steine – ein Dauerbrenner!  Kaum ein Thema beschäftigt euch so sehr ...",
+            "url": "https://www.facebook.com/schindlergarten.de/videos/l-steine-ein-dauerbrenner-kaum-ein-thema-besch%C3%A4ftigt-euch-so-sehr-wie-das-setzen/1223006627559950/"
+          },
+          {
+            "rank": 5,
+            "title": "L Steine setzen - 2 Varianten",
+            "url": "https://www.bauexpertenforum.de/threads/l-steine-setzen-2-varianten.106101/"
+          },
+          {
+            "rank": 6,
+            "title": "L-Steine günstig kaufen",
+            "url": "https://benz24.de/hofeinfassungen/stuetzwinkel/"
+          },
+          {
+            "rank": 7,
+            "title": "L-Steine abtreppen: So geht's! Tipps & Tricks im BAU-Forum",
+            "url": "https://bau.de/forum/garten/12078.php"
+          }
+        ],
+        "local_pack": [],
+        "questions": [
+          "Wie verlege ich L-Steine?",
+          "Was kostet 1 Meter L-Steine setzen?",
+          "Welche günstigen Alternativen gibt es zu L-Steinen?",
+          "Ist es möglich, L-Steine ohne Fundament zu setzen?"
+        ]
+      }
+    ]
+  }
+}
