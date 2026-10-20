@@ -264,8 +264,32 @@ const galleriesByRegion = new Map<string, readonly GalleryPhotoKey[]>([
   ],
 ]);
 
+const galleryAliases = new Map<string, string>([
+  ["gartenbau-darmstadt", "gartenbau-hattersheim"],
+  ["gartenbau-hanau", "gartenbau-kriftel"],
+  ["gartenbau-offenbach", "gartenbau-sulzbach-taunus"],
+  ["gartenbau-ruesselsheim", "gartenbau-floersheim"],
+  ["gartenbau-oberursel", "gartenbau-bad-soden"],
+  ["gartenbau-neu-isenburg", "gartenbau-eschborn"],
+  ["gartenbau-kronberg", "gartenbau-kriftel"],
+  ["gartenbau-koenigstein", "gartenbau-hofheim"],
+  ["gartenbau-kelkheim", "gartenbau-hofheim"],
+  ["gartenbau-schwalbach-taunus", "gartenbau-kriftel"],
+  ["gartenbau-liederbach", "gartenbau-floersheim"],
+  ["gartenbau-friedrichsdorf", "gartenbau-hattersheim"],
+  ["gartenbau-bad-vilbel", "gartenbau-bad-soden"],
+  ["gartenbau-dreieich", "gartenbau-sulzbach-taunus"],
+  ["gartenbau-langen", "gartenbau-eschborn"],
+  ["gartenbau-maintal", "gartenbau-floersheim"],
+  ["gartenbau-eltville", "gartenbau-kriftel"],
+  ["gartenbau-niedernhausen", "gartenbau-hofheim"],
+  ["gartenbau-taunusstein", "gartenbau-floersheim"],
+  ["gartenbau-idstein", "gartenbau-bad-soden"],
+  ["gartenbau-raunheim", "gartenbau-kelsterbach"],
+]);
+
 export function getRegionGallery(slug: string): RegionalProjectPhoto[] {
-  return (galleriesByRegion.get(slug) ?? []).map((key) => ({
+  return (galleriesByRegion.get(galleryAliases.get(slug) ?? slug) ?? []).map((key) => ({
     ...galleryPhotos[key],
   }));
 }

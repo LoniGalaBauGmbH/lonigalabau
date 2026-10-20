@@ -12,7 +12,13 @@ import { guides, type GuideSummary } from "@/lib/guide-index";
 import { parseContextLinks } from "@/lib/context-links";
 import { ServiceMiniContact } from "@/components/leistungen/ServiceMiniContact";
 import { ProjectOfferLinks } from "./ProjectOfferLinks";
-import { getRegion, regionImage, regionalHeroImage, regions, type RegionPage } from "@/lib/regions";
+import {
+  getRegion,
+  regionImage,
+  regionalHeroImage,
+  regionGroups,
+  type RegionPage,
+} from "@/lib/regions";
 import "./RegionalLandingPage.css";
 import "./RegionalDetails.css";
 
@@ -179,6 +185,11 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
                       <a href={`#abschnitt-${index + 1}`}>{section.heading}</a>
                     </li>
                   ))}
+                  {page.districtNotes && page.districtNotes.length > 0 && (
+                    <li>
+                      <a href="#stadtteile">Stadtteile & Projektorte</a>
+                    </li>
+                  )}
                   <li>
                     <a href="#fragen">Häufige Fragen</a>
                   </li>
@@ -296,6 +307,37 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
             );
           })}
         </div>
+        {page.districtNotes && page.districtNotes.length > 0 && (
+          <section
+            className="region-wrap region-district-section"
+            id="stadtteile"
+            aria-labelledby="region-district-title"
+          >
+            <div className="region-section-heading">
+              <div>
+                <span className="region-kicker">Ihr genauer Projektort</span>
+                <h2 id="region-district-title">Gartenprojekte in den Stadtteilen</h2>
+              </div>
+              <p>
+                Nennen Sie uns den Stadtteil und zeigen Sie die konkrete Fläche. Zugang, Bestand und
+                Ihre Wünsche bestimmen die Planung.
+              </p>
+            </div>
+            <div className="region-district-grid">
+              {page.districtNotes.map((district) => (
+                <article key={district.name}>
+                  <h3>{district.name}</h3>
+                  <p>{district.text}</p>
+                  {district.slug && (
+                    <a className="region-text-link" href={`/${district.slug}`}>
+                      Gartenbau in {district.name} <ArrowUpRight size={16} aria-hidden="true" />
+                    </a>
+                  )}
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
         <div className="region-wrap region-preparation-grid">
           <section className="region-checklist" aria-labelledby="vorbereitung">
             <span className="region-kicker">Gut vorbereitet</span>
@@ -452,33 +494,50 @@ export function RegionsOverviewPage() {
           <div className="region-section-heading">
             <h2 id="orte-title">Orte und Stadtteile im Rhein-Main-Gebiet</h2>
             <p>
-              Planungshilfen für Frankfurt, Wiesbaden, Mainz, Bad Homburg und die Orte rund um
-              unseren Firmensitz.
+              Wählen Sie Ihre Region. Auf den Ortsseiten finden Sie passende Leistungen,
+              Planungshilfen und eine direkte Projektanfrage.
             </p>
           </div>
-          <div className="region-card-grid">
-            {regions.map((page) => (
-              <article className="region-card" key={page.slug}>
-                <a href={`/${page.slug}`} className="region-card-link">
-                  <div className="region-card-image">
-                    <RegionalImage
-                      page={page}
-                      sizes="(max-width: 600px) calc(100vw - 36px), (max-width: 1100px) 45vw, (max-width: 1328px) 30vw, 405px"
-                    />
-                    {page.slug === "gartenbau-hattersheim" && (
-                      <span className="region-base-badge">Unser Firmensitz</span>
-                    )}
-                  </div>
-                  <div className="region-card-heading">
-                    <h3>{page.city}</h3>
-                    <ArrowUpRight aria-hidden="true" size={22} />
-                  </div>
-                  <p>{page.focus}</p>
-                  <span className="region-card-read">Gartenbau in {page.shortName}</span>
-                </a>
-              </article>
+          <nav className="region-directory-nav" aria-label="Region auswählen">
+            {regionGroups.map((group) => (
+              <a key={group.id} href={`#region-${group.id}`}>
+                {group.name}
+              </a>
             ))}
-          </div>
+          </nav>
+          {regionGroups.map((group) => (
+            <section
+              key={group.id}
+              id={`region-${group.id}`}
+              className="region-directory-group"
+              aria-labelledby={`region-${group.id}-title`}
+            >
+              <h3 id={`region-${group.id}-title`}>{group.name}</h3>
+              <div className="region-card-grid">
+                {group.pages.map((page) => (
+                  <article className="region-card" key={page.slug}>
+                    <a href={`/${page.slug}`} className="region-card-link">
+                      <div className="region-card-image">
+                        <RegionalImage
+                          page={page}
+                          sizes="(max-width: 600px) calc(100vw - 36px), (max-width: 1100px) 45vw, (max-width: 1328px) 30vw, 405px"
+                        />
+                        {page.slug === "gartenbau-hattersheim" && (
+                          <span className="region-base-badge">Unser Firmensitz</span>
+                        )}
+                      </div>
+                      <div className="region-card-heading">
+                        <h4>{page.city}</h4>
+                        <ArrowUpRight aria-hidden="true" size={22} />
+                      </div>
+                      <p>{page.focus}</p>
+                      <span className="region-card-read">Gartenbau in {page.shortName}</span>
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
         </section>
 
         <RegionalProjectGallery slug="gartenbau-hattersheim" />

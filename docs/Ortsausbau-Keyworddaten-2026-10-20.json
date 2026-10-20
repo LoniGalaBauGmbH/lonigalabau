@@ -1,0 +1,965 @@
+{
+  "retrieved_date": "2026-10-20",
+  "source": "DataForSEO Google Ads Search Volume",
+  "market": {
+    "location_code": 2276,
+    "country": "Germany",
+    "language_code": "de",
+    "search_partners": false
+  },
+  "monthly_period": {
+    "from": "2025-10",
+    "to": "2026-09"
+  },
+  "cost_usd": 0.09,
+  "task_id": "10201016-2663-0367-0000-f6d6b166d04d",
+  "status_code": 20000,
+  "notes": [
+    "null means unknown, not zero",
+    "District coverage is selected for geographic relevance, not an invented search volume."
+  ],
+  "metrics": [
+    {
+      "keyword": "gartenbau kelkheim",
+      "search_volume": 40,
+      "cpc_usd": 0.46,
+      "ads_competition": "MEDIUM",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau raunheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau schwalbach",
+      "search_volume": 10,
+      "cpc_usd": 1.35,
+      "ads_competition": "MEDIUM",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau liederbach",
+      "search_volume": 20,
+      "cpc_usd": 0.79,
+      "ads_competition": "HIGH",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau bischofsheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau ginsheim gustavsburg",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau friedrichsdorf",
+      "search_volume": 30,
+      "cpc_usd": 1.12,
+      "ads_competition": "MEDIUM",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 40
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau bad vilbel",
+      "search_volume": 30,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau dreieich",
+      "search_volume": 50,
+      "cpc_usd": 0.9,
+      "ads_competition": "LOW",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau langen",
+      "search_volume": 50,
+      "cpc_usd": 5.92,
+      "ads_competition": "MEDIUM",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 70
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau maintal",
+      "search_volume": 30,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau walluf",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau eltville",
+      "search_volume": 10,
+      "cpc_usd": null,
+      "ads_competition": "LOW",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau niedernhausen",
+      "search_volume": 10,
+      "cpc_usd": 0.93,
+      "ads_competition": "MEDIUM",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau taunusstein",
+      "search_volume": 50,
+      "cpc_usd": 0.7,
+      "ads_competition": "MEDIUM",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 40
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau idstein",
+      "search_volume": 30,
+      "cpc_usd": null,
+      "ads_competition": "MEDIUM",
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau okriftel",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau eddersheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau frankfurt sindlingen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau frankfurt nied",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau frankfurt griesheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau frankfurt schwanheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau frankfurt sossenheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau hofheim diedenbergen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau hofheim lorsbach",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau nordenstadt",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau biebrich",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau wiesbaden erbenheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau mainz gonsenheim",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "gartenbau mainz finthen",
+      "search_volume": null,
+      "cpc_usd": null,
+      "ads_competition": null,
+      "monthly_searches": null
+    }
+  ]
+}

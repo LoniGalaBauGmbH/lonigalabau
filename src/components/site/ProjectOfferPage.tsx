@@ -59,7 +59,9 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
               <span aria-hidden="true">/</span>
               <span aria-current="page">{content.label}</span>
             </nav>
-            <span className="eyebrow eyebrow-bracket">Von der Idee zur fertigen Fläche</span>
+            <span className="eyebrow eyebrow-bracket">
+              {content.kicker ?? "Von der Idee zur fertigen Fläche"}
+            </span>
             <h1 className="display">{content.title}</h1>
             <p className="offer-intro">{content.intro}</p>
             <p className="offer-location">
@@ -81,7 +83,9 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
               fetchPriority="high"
               sizes="(max-width: 800px) calc(100vw - 40px), 45vw"
             />
-            <figcaption>{hero.alt} · Einblick in unsere Arbeiten</figcaption>
+            <figcaption>
+              {content.heroCaption ?? `${hero.alt} · Einblick in unsere Arbeiten`}
+            </figcaption>
           </figure>
         </header>
 
@@ -116,7 +120,7 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
               loading="lazy"
               sizes="(max-width: 800px) calc(100vw - 40px), 45vw"
             />
-            <figcaption>{detail.alt}</figcaption>
+            <figcaption>{content.detail.caption ?? detail.alt}</figcaption>
           </figure>
           <div>
             <span className="eyebrow eyebrow-bracket">Auf die Details kommt es an</span>
@@ -248,11 +252,26 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
             key={content.path}
             variant="compact"
             heading={`${content.label} anfragen`}
-            initialService="Pflasterarbeiten"
+            initialService={content.initialService ?? "Pflasterarbeiten"}
             descriptionPlaceholder={content.request}
           />
         </section>
 
+        {content.sources && (
+          <aside className="offer-wrap offer-related" aria-label="Weiterführende Fachinformationen">
+            <h2 className="display">Grundlagen für die Planung.</h2>
+            <ul>
+              {content.sources.map((source) => (
+                <li key={source.href}>
+                  <a href={source.href}>
+                    {source.label}
+                    <ArrowUpRight size={17} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
         <aside className="offer-wrap offer-related" aria-label="Passende Leistungen und Ratgeber">
           <h2 className="display">Ihr Projekt weiterdenken.</h2>
           <ul>

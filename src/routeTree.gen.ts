@@ -15,23 +15,45 @@ import { Route as TerrasseBauenLassenRouteImport } from './routes/terrasse-bauen
 import { Route as ProjekteRouteImport } from './routes/projekte'
 import { Route as PartnerWerdenRouteImport } from './routes/partner-werden'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as LSteineSetzenLassenRouteImport } from './routes/l-steine-setzen-lassen'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KonfiguratorRouteImport } from './routes/konfigurator'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as GartenbauWiesbadenRouteImport } from './routes/gartenbau-wiesbaden'
+import { Route as GartenbauTaunussteinRouteImport } from './routes/gartenbau-taunusstein'
 import { Route as GartenbauSulzbachTaunusRouteImport } from './routes/gartenbau-sulzbach-taunus'
+import { Route as GartenbauSchwalbachTaunusRouteImport } from './routes/gartenbau-schwalbach-taunus'
+import { Route as GartenbauRuesselsheimRouteImport } from './routes/gartenbau-ruesselsheim'
+import { Route as GartenbauRaunheimRouteImport } from './routes/gartenbau-raunheim'
+import { Route as GartenbauOffenbachRouteImport } from './routes/gartenbau-offenbach'
+import { Route as GartenbauOberurselRouteImport } from './routes/gartenbau-oberursel'
+import { Route as GartenbauNiedernhausenRouteImport } from './routes/gartenbau-niedernhausen'
+import { Route as GartenbauNeuIsenburgRouteImport } from './routes/gartenbau-neu-isenburg'
 import { Route as GartenbauMainzRouteImport } from './routes/gartenbau-mainz'
+import { Route as GartenbauMaintalRouteImport } from './routes/gartenbau-maintal'
+import { Route as GartenbauLiederbachRouteImport } from './routes/gartenbau-liederbach'
+import { Route as GartenbauLangenRouteImport } from './routes/gartenbau-langen'
+import { Route as GartenbauKronbergRouteImport } from './routes/gartenbau-kronberg'
 import { Route as GartenbauKriftelRouteImport } from './routes/gartenbau-kriftel'
+import { Route as GartenbauKoenigsteinRouteImport } from './routes/gartenbau-koenigstein'
 import { Route as GartenbauKelsterbachRouteImport } from './routes/gartenbau-kelsterbach'
+import { Route as GartenbauKelkheimRouteImport } from './routes/gartenbau-kelkheim'
+import { Route as GartenbauIdsteinRouteImport } from './routes/gartenbau-idstein'
 import { Route as GartenbauHofheimRouteImport } from './routes/gartenbau-hofheim'
 import { Route as GartenbauHochheimRouteImport } from './routes/gartenbau-hochheim'
 import { Route as GartenbauHattersheimRouteImport } from './routes/gartenbau-hattersheim'
+import { Route as GartenbauHanauRouteImport } from './routes/gartenbau-hanau'
+import { Route as GartenbauFriedrichsdorfRouteImport } from './routes/gartenbau-friedrichsdorf'
 import { Route as GartenbauFrankfurtZeilsheimRouteImport } from './routes/gartenbau-frankfurt-zeilsheim'
 import { Route as GartenbauFrankfurtUnterliederbachRouteImport } from './routes/gartenbau-frankfurt-unterliederbach'
 import { Route as GartenbauFrankfurtHoechstRouteImport } from './routes/gartenbau-frankfurt-hoechst'
 import { Route as GartenbauFrankfurtRouteImport } from './routes/gartenbau-frankfurt'
 import { Route as GartenbauFloersheimRouteImport } from './routes/gartenbau-floersheim'
 import { Route as GartenbauEschbornRouteImport } from './routes/gartenbau-eschborn'
+import { Route as GartenbauEltvilleRouteImport } from './routes/gartenbau-eltville'
+import { Route as GartenbauDreieichRouteImport } from './routes/gartenbau-dreieich'
+import { Route as GartenbauDarmstadtRouteImport } from './routes/gartenbau-darmstadt'
+import { Route as GartenbauBadVilbelRouteImport } from './routes/gartenbau-bad-vilbel'
 import { Route as GartenbauBadSodenRouteImport } from './routes/gartenbau-bad-soden'
 import { Route as GartenbauBadHomburgRouteImport } from './routes/gartenbau-bad-homburg'
 import { Route as FachverbandMitgliedschaftRouteImport } from './routes/fachverband-mitgliedschaft'
@@ -96,6 +118,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LSteineSetzenLassenRoute = LSteineSetzenLassenRouteImport.update({
+  id: '/l-steine-setzen-lassen',
+  path: '/l-steine-setzen-lassen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KontaktRoute = KontaktRouteImport.update({
   id: '/kontakt',
   path: '/kontakt',
@@ -116,9 +143,50 @@ const GartenbauWiesbadenRoute = GartenbauWiesbadenRouteImport.update({
   path: '/gartenbau-wiesbaden',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GartenbauTaunussteinRoute = GartenbauTaunussteinRouteImport.update({
+  id: '/gartenbau-taunusstein',
+  path: '/gartenbau-taunusstein',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GartenbauSulzbachTaunusRoute = GartenbauSulzbachTaunusRouteImport.update({
   id: '/gartenbau-sulzbach-taunus',
   path: '/gartenbau-sulzbach-taunus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauSchwalbachTaunusRoute =
+  GartenbauSchwalbachTaunusRouteImport.update({
+    id: '/gartenbau-schwalbach-taunus',
+    path: '/gartenbau-schwalbach-taunus',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GartenbauRuesselsheimRoute = GartenbauRuesselsheimRouteImport.update({
+  id: '/gartenbau-ruesselsheim',
+  path: '/gartenbau-ruesselsheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauRaunheimRoute = GartenbauRaunheimRouteImport.update({
+  id: '/gartenbau-raunheim',
+  path: '/gartenbau-raunheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauOffenbachRoute = GartenbauOffenbachRouteImport.update({
+  id: '/gartenbau-offenbach',
+  path: '/gartenbau-offenbach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauOberurselRoute = GartenbauOberurselRouteImport.update({
+  id: '/gartenbau-oberursel',
+  path: '/gartenbau-oberursel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauNiedernhausenRoute = GartenbauNiedernhausenRouteImport.update({
+  id: '/gartenbau-niedernhausen',
+  path: '/gartenbau-niedernhausen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauNeuIsenburgRoute = GartenbauNeuIsenburgRouteImport.update({
+  id: '/gartenbau-neu-isenburg',
+  path: '/gartenbau-neu-isenburg',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GartenbauMainzRoute = GartenbauMainzRouteImport.update({
@@ -126,14 +194,49 @@ const GartenbauMainzRoute = GartenbauMainzRouteImport.update({
   path: '/gartenbau-mainz',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GartenbauMaintalRoute = GartenbauMaintalRouteImport.update({
+  id: '/gartenbau-maintal',
+  path: '/gartenbau-maintal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauLiederbachRoute = GartenbauLiederbachRouteImport.update({
+  id: '/gartenbau-liederbach',
+  path: '/gartenbau-liederbach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauLangenRoute = GartenbauLangenRouteImport.update({
+  id: '/gartenbau-langen',
+  path: '/gartenbau-langen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauKronbergRoute = GartenbauKronbergRouteImport.update({
+  id: '/gartenbau-kronberg',
+  path: '/gartenbau-kronberg',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GartenbauKriftelRoute = GartenbauKriftelRouteImport.update({
   id: '/gartenbau-kriftel',
   path: '/gartenbau-kriftel',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GartenbauKoenigsteinRoute = GartenbauKoenigsteinRouteImport.update({
+  id: '/gartenbau-koenigstein',
+  path: '/gartenbau-koenigstein',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GartenbauKelsterbachRoute = GartenbauKelsterbachRouteImport.update({
   id: '/gartenbau-kelsterbach',
   path: '/gartenbau-kelsterbach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauKelkheimRoute = GartenbauKelkheimRouteImport.update({
+  id: '/gartenbau-kelkheim',
+  path: '/gartenbau-kelkheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauIdsteinRoute = GartenbauIdsteinRouteImport.update({
+  id: '/gartenbau-idstein',
+  path: '/gartenbau-idstein',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GartenbauHofheimRoute = GartenbauHofheimRouteImport.update({
@@ -149,6 +252,16 @@ const GartenbauHochheimRoute = GartenbauHochheimRouteImport.update({
 const GartenbauHattersheimRoute = GartenbauHattersheimRouteImport.update({
   id: '/gartenbau-hattersheim',
   path: '/gartenbau-hattersheim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauHanauRoute = GartenbauHanauRouteImport.update({
+  id: '/gartenbau-hanau',
+  path: '/gartenbau-hanau',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauFriedrichsdorfRoute = GartenbauFriedrichsdorfRouteImport.update({
+  id: '/gartenbau-friedrichsdorf',
+  path: '/gartenbau-friedrichsdorf',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GartenbauFrankfurtZeilsheimRoute =
@@ -182,6 +295,26 @@ const GartenbauFloersheimRoute = GartenbauFloersheimRouteImport.update({
 const GartenbauEschbornRoute = GartenbauEschbornRouteImport.update({
   id: '/gartenbau-eschborn',
   path: '/gartenbau-eschborn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauEltvilleRoute = GartenbauEltvilleRouteImport.update({
+  id: '/gartenbau-eltville',
+  path: '/gartenbau-eltville',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauDreieichRoute = GartenbauDreieichRouteImport.update({
+  id: '/gartenbau-dreieich',
+  path: '/gartenbau-dreieich',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauDarmstadtRoute = GartenbauDarmstadtRouteImport.update({
+  id: '/gartenbau-darmstadt',
+  path: '/gartenbau-darmstadt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GartenbauBadVilbelRoute = GartenbauBadVilbelRouteImport.update({
+  id: '/gartenbau-bad-vilbel',
+  path: '/gartenbau-bad-vilbel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GartenbauBadSodenRoute = GartenbauBadSodenRouteImport.update({
@@ -370,23 +503,45 @@ export interface FileRoutesByFullPath {
   '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-homburg': typeof GartenbauBadHomburgRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
+  '/gartenbau-bad-vilbel': typeof GartenbauBadVilbelRoute
+  '/gartenbau-darmstadt': typeof GartenbauDarmstadtRoute
+  '/gartenbau-dreieich': typeof GartenbauDreieichRoute
+  '/gartenbau-eltville': typeof GartenbauEltvilleRoute
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
   '/gartenbau-frankfurt': typeof GartenbauFrankfurtRoute
   '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
   '/gartenbau-frankfurt-unterliederbach': typeof GartenbauFrankfurtUnterliederbachRoute
   '/gartenbau-frankfurt-zeilsheim': typeof GartenbauFrankfurtZeilsheimRoute
+  '/gartenbau-friedrichsdorf': typeof GartenbauFriedrichsdorfRoute
+  '/gartenbau-hanau': typeof GartenbauHanauRoute
   '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
   '/gartenbau-hochheim': typeof GartenbauHochheimRoute
   '/gartenbau-hofheim': typeof GartenbauHofheimRoute
+  '/gartenbau-idstein': typeof GartenbauIdsteinRoute
+  '/gartenbau-kelkheim': typeof GartenbauKelkheimRoute
   '/gartenbau-kelsterbach': typeof GartenbauKelsterbachRoute
+  '/gartenbau-koenigstein': typeof GartenbauKoenigsteinRoute
   '/gartenbau-kriftel': typeof GartenbauKriftelRoute
+  '/gartenbau-kronberg': typeof GartenbauKronbergRoute
+  '/gartenbau-langen': typeof GartenbauLangenRoute
+  '/gartenbau-liederbach': typeof GartenbauLiederbachRoute
+  '/gartenbau-maintal': typeof GartenbauMaintalRoute
   '/gartenbau-mainz': typeof GartenbauMainzRoute
+  '/gartenbau-neu-isenburg': typeof GartenbauNeuIsenburgRoute
+  '/gartenbau-niedernhausen': typeof GartenbauNiedernhausenRoute
+  '/gartenbau-oberursel': typeof GartenbauOberurselRoute
+  '/gartenbau-offenbach': typeof GartenbauOffenbachRoute
+  '/gartenbau-raunheim': typeof GartenbauRaunheimRoute
+  '/gartenbau-ruesselsheim': typeof GartenbauRuesselsheimRoute
+  '/gartenbau-schwalbach-taunus': typeof GartenbauSchwalbachTaunusRoute
   '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
+  '/gartenbau-taunusstein': typeof GartenbauTaunussteinRoute
   '/gartenbau-wiesbaden': typeof GartenbauWiesbadenRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
+  '/l-steine-setzen-lassen': typeof LSteineSetzenLassenRoute
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
@@ -427,23 +582,45 @@ export interface FileRoutesByTo {
   '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-homburg': typeof GartenbauBadHomburgRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
+  '/gartenbau-bad-vilbel': typeof GartenbauBadVilbelRoute
+  '/gartenbau-darmstadt': typeof GartenbauDarmstadtRoute
+  '/gartenbau-dreieich': typeof GartenbauDreieichRoute
+  '/gartenbau-eltville': typeof GartenbauEltvilleRoute
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
   '/gartenbau-frankfurt': typeof GartenbauFrankfurtRoute
   '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
   '/gartenbau-frankfurt-unterliederbach': typeof GartenbauFrankfurtUnterliederbachRoute
   '/gartenbau-frankfurt-zeilsheim': typeof GartenbauFrankfurtZeilsheimRoute
+  '/gartenbau-friedrichsdorf': typeof GartenbauFriedrichsdorfRoute
+  '/gartenbau-hanau': typeof GartenbauHanauRoute
   '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
   '/gartenbau-hochheim': typeof GartenbauHochheimRoute
   '/gartenbau-hofheim': typeof GartenbauHofheimRoute
+  '/gartenbau-idstein': typeof GartenbauIdsteinRoute
+  '/gartenbau-kelkheim': typeof GartenbauKelkheimRoute
   '/gartenbau-kelsterbach': typeof GartenbauKelsterbachRoute
+  '/gartenbau-koenigstein': typeof GartenbauKoenigsteinRoute
   '/gartenbau-kriftel': typeof GartenbauKriftelRoute
+  '/gartenbau-kronberg': typeof GartenbauKronbergRoute
+  '/gartenbau-langen': typeof GartenbauLangenRoute
+  '/gartenbau-liederbach': typeof GartenbauLiederbachRoute
+  '/gartenbau-maintal': typeof GartenbauMaintalRoute
   '/gartenbau-mainz': typeof GartenbauMainzRoute
+  '/gartenbau-neu-isenburg': typeof GartenbauNeuIsenburgRoute
+  '/gartenbau-niedernhausen': typeof GartenbauNiedernhausenRoute
+  '/gartenbau-oberursel': typeof GartenbauOberurselRoute
+  '/gartenbau-offenbach': typeof GartenbauOffenbachRoute
+  '/gartenbau-raunheim': typeof GartenbauRaunheimRoute
+  '/gartenbau-ruesselsheim': typeof GartenbauRuesselsheimRoute
+  '/gartenbau-schwalbach-taunus': typeof GartenbauSchwalbachTaunusRoute
   '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
+  '/gartenbau-taunusstein': typeof GartenbauTaunussteinRoute
   '/gartenbau-wiesbaden': typeof GartenbauWiesbadenRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
+  '/l-steine-setzen-lassen': typeof LSteineSetzenLassenRoute
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
@@ -486,23 +663,45 @@ export interface FileRoutesById {
   '/fachverband-mitgliedschaft': typeof FachverbandMitgliedschaftRoute
   '/gartenbau-bad-homburg': typeof GartenbauBadHomburgRoute
   '/gartenbau-bad-soden': typeof GartenbauBadSodenRoute
+  '/gartenbau-bad-vilbel': typeof GartenbauBadVilbelRoute
+  '/gartenbau-darmstadt': typeof GartenbauDarmstadtRoute
+  '/gartenbau-dreieich': typeof GartenbauDreieichRoute
+  '/gartenbau-eltville': typeof GartenbauEltvilleRoute
   '/gartenbau-eschborn': typeof GartenbauEschbornRoute
   '/gartenbau-floersheim': typeof GartenbauFloersheimRoute
   '/gartenbau-frankfurt': typeof GartenbauFrankfurtRoute
   '/gartenbau-frankfurt-hoechst': typeof GartenbauFrankfurtHoechstRoute
   '/gartenbau-frankfurt-unterliederbach': typeof GartenbauFrankfurtUnterliederbachRoute
   '/gartenbau-frankfurt-zeilsheim': typeof GartenbauFrankfurtZeilsheimRoute
+  '/gartenbau-friedrichsdorf': typeof GartenbauFriedrichsdorfRoute
+  '/gartenbau-hanau': typeof GartenbauHanauRoute
   '/gartenbau-hattersheim': typeof GartenbauHattersheimRoute
   '/gartenbau-hochheim': typeof GartenbauHochheimRoute
   '/gartenbau-hofheim': typeof GartenbauHofheimRoute
+  '/gartenbau-idstein': typeof GartenbauIdsteinRoute
+  '/gartenbau-kelkheim': typeof GartenbauKelkheimRoute
   '/gartenbau-kelsterbach': typeof GartenbauKelsterbachRoute
+  '/gartenbau-koenigstein': typeof GartenbauKoenigsteinRoute
   '/gartenbau-kriftel': typeof GartenbauKriftelRoute
+  '/gartenbau-kronberg': typeof GartenbauKronbergRoute
+  '/gartenbau-langen': typeof GartenbauLangenRoute
+  '/gartenbau-liederbach': typeof GartenbauLiederbachRoute
+  '/gartenbau-maintal': typeof GartenbauMaintalRoute
   '/gartenbau-mainz': typeof GartenbauMainzRoute
+  '/gartenbau-neu-isenburg': typeof GartenbauNeuIsenburgRoute
+  '/gartenbau-niedernhausen': typeof GartenbauNiedernhausenRoute
+  '/gartenbau-oberursel': typeof GartenbauOberurselRoute
+  '/gartenbau-offenbach': typeof GartenbauOffenbachRoute
+  '/gartenbau-raunheim': typeof GartenbauRaunheimRoute
+  '/gartenbau-ruesselsheim': typeof GartenbauRuesselsheimRoute
+  '/gartenbau-schwalbach-taunus': typeof GartenbauSchwalbachTaunusRoute
   '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
+  '/gartenbau-taunusstein': typeof GartenbauTaunussteinRoute
   '/gartenbau-wiesbaden': typeof GartenbauWiesbadenRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
+  '/l-steine-setzen-lassen': typeof LSteineSetzenLassenRoute
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
@@ -545,23 +744,45 @@ export interface FileRouteTypes {
     | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-homburg'
     | '/gartenbau-bad-soden'
+    | '/gartenbau-bad-vilbel'
+    | '/gartenbau-darmstadt'
+    | '/gartenbau-dreieich'
+    | '/gartenbau-eltville'
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
     | '/gartenbau-frankfurt'
     | '/gartenbau-frankfurt-hoechst'
     | '/gartenbau-frankfurt-unterliederbach'
     | '/gartenbau-frankfurt-zeilsheim'
+    | '/gartenbau-friedrichsdorf'
+    | '/gartenbau-hanau'
     | '/gartenbau-hattersheim'
     | '/gartenbau-hochheim'
     | '/gartenbau-hofheim'
+    | '/gartenbau-idstein'
+    | '/gartenbau-kelkheim'
     | '/gartenbau-kelsterbach'
+    | '/gartenbau-koenigstein'
     | '/gartenbau-kriftel'
+    | '/gartenbau-kronberg'
+    | '/gartenbau-langen'
+    | '/gartenbau-liederbach'
+    | '/gartenbau-maintal'
     | '/gartenbau-mainz'
+    | '/gartenbau-neu-isenburg'
+    | '/gartenbau-niedernhausen'
+    | '/gartenbau-oberursel'
+    | '/gartenbau-offenbach'
+    | '/gartenbau-raunheim'
+    | '/gartenbau-ruesselsheim'
+    | '/gartenbau-schwalbach-taunus'
     | '/gartenbau-sulzbach-taunus'
+    | '/gartenbau-taunusstein'
     | '/gartenbau-wiesbaden'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
+    | '/l-steine-setzen-lassen'
     | '/login'
     | '/partner-werden'
     | '/projekte'
@@ -602,23 +823,45 @@ export interface FileRouteTypes {
     | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-homburg'
     | '/gartenbau-bad-soden'
+    | '/gartenbau-bad-vilbel'
+    | '/gartenbau-darmstadt'
+    | '/gartenbau-dreieich'
+    | '/gartenbau-eltville'
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
     | '/gartenbau-frankfurt'
     | '/gartenbau-frankfurt-hoechst'
     | '/gartenbau-frankfurt-unterliederbach'
     | '/gartenbau-frankfurt-zeilsheim'
+    | '/gartenbau-friedrichsdorf'
+    | '/gartenbau-hanau'
     | '/gartenbau-hattersheim'
     | '/gartenbau-hochheim'
     | '/gartenbau-hofheim'
+    | '/gartenbau-idstein'
+    | '/gartenbau-kelkheim'
     | '/gartenbau-kelsterbach'
+    | '/gartenbau-koenigstein'
     | '/gartenbau-kriftel'
+    | '/gartenbau-kronberg'
+    | '/gartenbau-langen'
+    | '/gartenbau-liederbach'
+    | '/gartenbau-maintal'
     | '/gartenbau-mainz'
+    | '/gartenbau-neu-isenburg'
+    | '/gartenbau-niedernhausen'
+    | '/gartenbau-oberursel'
+    | '/gartenbau-offenbach'
+    | '/gartenbau-raunheim'
+    | '/gartenbau-ruesselsheim'
+    | '/gartenbau-schwalbach-taunus'
     | '/gartenbau-sulzbach-taunus'
+    | '/gartenbau-taunusstein'
     | '/gartenbau-wiesbaden'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
+    | '/l-steine-setzen-lassen'
     | '/login'
     | '/partner-werden'
     | '/projekte'
@@ -660,23 +903,45 @@ export interface FileRouteTypes {
     | '/fachverband-mitgliedschaft'
     | '/gartenbau-bad-homburg'
     | '/gartenbau-bad-soden'
+    | '/gartenbau-bad-vilbel'
+    | '/gartenbau-darmstadt'
+    | '/gartenbau-dreieich'
+    | '/gartenbau-eltville'
     | '/gartenbau-eschborn'
     | '/gartenbau-floersheim'
     | '/gartenbau-frankfurt'
     | '/gartenbau-frankfurt-hoechst'
     | '/gartenbau-frankfurt-unterliederbach'
     | '/gartenbau-frankfurt-zeilsheim'
+    | '/gartenbau-friedrichsdorf'
+    | '/gartenbau-hanau'
     | '/gartenbau-hattersheim'
     | '/gartenbau-hochheim'
     | '/gartenbau-hofheim'
+    | '/gartenbau-idstein'
+    | '/gartenbau-kelkheim'
     | '/gartenbau-kelsterbach'
+    | '/gartenbau-koenigstein'
     | '/gartenbau-kriftel'
+    | '/gartenbau-kronberg'
+    | '/gartenbau-langen'
+    | '/gartenbau-liederbach'
+    | '/gartenbau-maintal'
     | '/gartenbau-mainz'
+    | '/gartenbau-neu-isenburg'
+    | '/gartenbau-niedernhausen'
+    | '/gartenbau-oberursel'
+    | '/gartenbau-offenbach'
+    | '/gartenbau-raunheim'
+    | '/gartenbau-ruesselsheim'
+    | '/gartenbau-schwalbach-taunus'
     | '/gartenbau-sulzbach-taunus'
+    | '/gartenbau-taunusstein'
     | '/gartenbau-wiesbaden'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
+    | '/l-steine-setzen-lassen'
     | '/login'
     | '/partner-werden'
     | '/projekte'
@@ -719,23 +984,45 @@ export interface RootRouteChildren {
   FachverbandMitgliedschaftRoute: typeof FachverbandMitgliedschaftRoute
   GartenbauBadHomburgRoute: typeof GartenbauBadHomburgRoute
   GartenbauBadSodenRoute: typeof GartenbauBadSodenRoute
+  GartenbauBadVilbelRoute: typeof GartenbauBadVilbelRoute
+  GartenbauDarmstadtRoute: typeof GartenbauDarmstadtRoute
+  GartenbauDreieichRoute: typeof GartenbauDreieichRoute
+  GartenbauEltvilleRoute: typeof GartenbauEltvilleRoute
   GartenbauEschbornRoute: typeof GartenbauEschbornRoute
   GartenbauFloersheimRoute: typeof GartenbauFloersheimRoute
   GartenbauFrankfurtRoute: typeof GartenbauFrankfurtRoute
   GartenbauFrankfurtHoechstRoute: typeof GartenbauFrankfurtHoechstRoute
   GartenbauFrankfurtUnterliederbachRoute: typeof GartenbauFrankfurtUnterliederbachRoute
   GartenbauFrankfurtZeilsheimRoute: typeof GartenbauFrankfurtZeilsheimRoute
+  GartenbauFriedrichsdorfRoute: typeof GartenbauFriedrichsdorfRoute
+  GartenbauHanauRoute: typeof GartenbauHanauRoute
   GartenbauHattersheimRoute: typeof GartenbauHattersheimRoute
   GartenbauHochheimRoute: typeof GartenbauHochheimRoute
   GartenbauHofheimRoute: typeof GartenbauHofheimRoute
+  GartenbauIdsteinRoute: typeof GartenbauIdsteinRoute
+  GartenbauKelkheimRoute: typeof GartenbauKelkheimRoute
   GartenbauKelsterbachRoute: typeof GartenbauKelsterbachRoute
+  GartenbauKoenigsteinRoute: typeof GartenbauKoenigsteinRoute
   GartenbauKriftelRoute: typeof GartenbauKriftelRoute
+  GartenbauKronbergRoute: typeof GartenbauKronbergRoute
+  GartenbauLangenRoute: typeof GartenbauLangenRoute
+  GartenbauLiederbachRoute: typeof GartenbauLiederbachRoute
+  GartenbauMaintalRoute: typeof GartenbauMaintalRoute
   GartenbauMainzRoute: typeof GartenbauMainzRoute
+  GartenbauNeuIsenburgRoute: typeof GartenbauNeuIsenburgRoute
+  GartenbauNiedernhausenRoute: typeof GartenbauNiedernhausenRoute
+  GartenbauOberurselRoute: typeof GartenbauOberurselRoute
+  GartenbauOffenbachRoute: typeof GartenbauOffenbachRoute
+  GartenbauRaunheimRoute: typeof GartenbauRaunheimRoute
+  GartenbauRuesselsheimRoute: typeof GartenbauRuesselsheimRoute
+  GartenbauSchwalbachTaunusRoute: typeof GartenbauSchwalbachTaunusRoute
   GartenbauSulzbachTaunusRoute: typeof GartenbauSulzbachTaunusRoute
+  GartenbauTaunussteinRoute: typeof GartenbauTaunussteinRoute
   GartenbauWiesbadenRoute: typeof GartenbauWiesbadenRoute
   ImpressumRoute: typeof ImpressumRoute
   KonfiguratorRoute: typeof KonfiguratorRoute
   KontaktRoute: typeof KontaktRoute
+  LSteineSetzenLassenRoute: typeof LSteineSetzenLassenRoute
   LoginRoute: typeof LoginRoute
   PartnerWerdenRoute: typeof PartnerWerdenRoute
   ProjekteRoute: typeof ProjekteRoute
@@ -799,6 +1086,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/l-steine-setzen-lassen': {
+      id: '/l-steine-setzen-lassen'
+      path: '/l-steine-setzen-lassen'
+      fullPath: '/l-steine-setzen-lassen'
+      preLoaderRoute: typeof LSteineSetzenLassenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kontakt': {
       id: '/kontakt'
       path: '/kontakt'
@@ -827,11 +1121,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GartenbauWiesbadenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gartenbau-taunusstein': {
+      id: '/gartenbau-taunusstein'
+      path: '/gartenbau-taunusstein'
+      fullPath: '/gartenbau-taunusstein'
+      preLoaderRoute: typeof GartenbauTaunussteinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gartenbau-sulzbach-taunus': {
       id: '/gartenbau-sulzbach-taunus'
       path: '/gartenbau-sulzbach-taunus'
       fullPath: '/gartenbau-sulzbach-taunus'
       preLoaderRoute: typeof GartenbauSulzbachTaunusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-schwalbach-taunus': {
+      id: '/gartenbau-schwalbach-taunus'
+      path: '/gartenbau-schwalbach-taunus'
+      fullPath: '/gartenbau-schwalbach-taunus'
+      preLoaderRoute: typeof GartenbauSchwalbachTaunusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-ruesselsheim': {
+      id: '/gartenbau-ruesselsheim'
+      path: '/gartenbau-ruesselsheim'
+      fullPath: '/gartenbau-ruesselsheim'
+      preLoaderRoute: typeof GartenbauRuesselsheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-raunheim': {
+      id: '/gartenbau-raunheim'
+      path: '/gartenbau-raunheim'
+      fullPath: '/gartenbau-raunheim'
+      preLoaderRoute: typeof GartenbauRaunheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-offenbach': {
+      id: '/gartenbau-offenbach'
+      path: '/gartenbau-offenbach'
+      fullPath: '/gartenbau-offenbach'
+      preLoaderRoute: typeof GartenbauOffenbachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-oberursel': {
+      id: '/gartenbau-oberursel'
+      path: '/gartenbau-oberursel'
+      fullPath: '/gartenbau-oberursel'
+      preLoaderRoute: typeof GartenbauOberurselRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-niedernhausen': {
+      id: '/gartenbau-niedernhausen'
+      path: '/gartenbau-niedernhausen'
+      fullPath: '/gartenbau-niedernhausen'
+      preLoaderRoute: typeof GartenbauNiedernhausenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-neu-isenburg': {
+      id: '/gartenbau-neu-isenburg'
+      path: '/gartenbau-neu-isenburg'
+      fullPath: '/gartenbau-neu-isenburg'
+      preLoaderRoute: typeof GartenbauNeuIsenburgRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gartenbau-mainz': {
@@ -841,6 +1191,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GartenbauMainzRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gartenbau-maintal': {
+      id: '/gartenbau-maintal'
+      path: '/gartenbau-maintal'
+      fullPath: '/gartenbau-maintal'
+      preLoaderRoute: typeof GartenbauMaintalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-liederbach': {
+      id: '/gartenbau-liederbach'
+      path: '/gartenbau-liederbach'
+      fullPath: '/gartenbau-liederbach'
+      preLoaderRoute: typeof GartenbauLiederbachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-langen': {
+      id: '/gartenbau-langen'
+      path: '/gartenbau-langen'
+      fullPath: '/gartenbau-langen'
+      preLoaderRoute: typeof GartenbauLangenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-kronberg': {
+      id: '/gartenbau-kronberg'
+      path: '/gartenbau-kronberg'
+      fullPath: '/gartenbau-kronberg'
+      preLoaderRoute: typeof GartenbauKronbergRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gartenbau-kriftel': {
       id: '/gartenbau-kriftel'
       path: '/gartenbau-kriftel'
@@ -848,11 +1226,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GartenbauKriftelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gartenbau-koenigstein': {
+      id: '/gartenbau-koenigstein'
+      path: '/gartenbau-koenigstein'
+      fullPath: '/gartenbau-koenigstein'
+      preLoaderRoute: typeof GartenbauKoenigsteinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gartenbau-kelsterbach': {
       id: '/gartenbau-kelsterbach'
       path: '/gartenbau-kelsterbach'
       fullPath: '/gartenbau-kelsterbach'
       preLoaderRoute: typeof GartenbauKelsterbachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-kelkheim': {
+      id: '/gartenbau-kelkheim'
+      path: '/gartenbau-kelkheim'
+      fullPath: '/gartenbau-kelkheim'
+      preLoaderRoute: typeof GartenbauKelkheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-idstein': {
+      id: '/gartenbau-idstein'
+      path: '/gartenbau-idstein'
+      fullPath: '/gartenbau-idstein'
+      preLoaderRoute: typeof GartenbauIdsteinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gartenbau-hofheim': {
@@ -874,6 +1273,20 @@ declare module '@tanstack/react-router' {
       path: '/gartenbau-hattersheim'
       fullPath: '/gartenbau-hattersheim'
       preLoaderRoute: typeof GartenbauHattersheimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-hanau': {
+      id: '/gartenbau-hanau'
+      path: '/gartenbau-hanau'
+      fullPath: '/gartenbau-hanau'
+      preLoaderRoute: typeof GartenbauHanauRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-friedrichsdorf': {
+      id: '/gartenbau-friedrichsdorf'
+      path: '/gartenbau-friedrichsdorf'
+      fullPath: '/gartenbau-friedrichsdorf'
+      preLoaderRoute: typeof GartenbauFriedrichsdorfRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gartenbau-frankfurt-zeilsheim': {
@@ -916,6 +1329,34 @@ declare module '@tanstack/react-router' {
       path: '/gartenbau-eschborn'
       fullPath: '/gartenbau-eschborn'
       preLoaderRoute: typeof GartenbauEschbornRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-eltville': {
+      id: '/gartenbau-eltville'
+      path: '/gartenbau-eltville'
+      fullPath: '/gartenbau-eltville'
+      preLoaderRoute: typeof GartenbauEltvilleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-dreieich': {
+      id: '/gartenbau-dreieich'
+      path: '/gartenbau-dreieich'
+      fullPath: '/gartenbau-dreieich'
+      preLoaderRoute: typeof GartenbauDreieichRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-darmstadt': {
+      id: '/gartenbau-darmstadt'
+      path: '/gartenbau-darmstadt'
+      fullPath: '/gartenbau-darmstadt'
+      preLoaderRoute: typeof GartenbauDarmstadtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gartenbau-bad-vilbel': {
+      id: '/gartenbau-bad-vilbel'
+      path: '/gartenbau-bad-vilbel'
+      fullPath: '/gartenbau-bad-vilbel'
+      preLoaderRoute: typeof GartenbauBadVilbelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gartenbau-bad-soden': {
@@ -1196,6 +1637,10 @@ const rootRouteChildren: RootRouteChildren = {
   FachverbandMitgliedschaftRoute: FachverbandMitgliedschaftRoute,
   GartenbauBadHomburgRoute: GartenbauBadHomburgRoute,
   GartenbauBadSodenRoute: GartenbauBadSodenRoute,
+  GartenbauBadVilbelRoute: GartenbauBadVilbelRoute,
+  GartenbauDarmstadtRoute: GartenbauDarmstadtRoute,
+  GartenbauDreieichRoute: GartenbauDreieichRoute,
+  GartenbauEltvilleRoute: GartenbauEltvilleRoute,
   GartenbauEschbornRoute: GartenbauEschbornRoute,
   GartenbauFloersheimRoute: GartenbauFloersheimRoute,
   GartenbauFrankfurtRoute: GartenbauFrankfurtRoute,
@@ -1203,17 +1648,35 @@ const rootRouteChildren: RootRouteChildren = {
   GartenbauFrankfurtUnterliederbachRoute:
     GartenbauFrankfurtUnterliederbachRoute,
   GartenbauFrankfurtZeilsheimRoute: GartenbauFrankfurtZeilsheimRoute,
+  GartenbauFriedrichsdorfRoute: GartenbauFriedrichsdorfRoute,
+  GartenbauHanauRoute: GartenbauHanauRoute,
   GartenbauHattersheimRoute: GartenbauHattersheimRoute,
   GartenbauHochheimRoute: GartenbauHochheimRoute,
   GartenbauHofheimRoute: GartenbauHofheimRoute,
+  GartenbauIdsteinRoute: GartenbauIdsteinRoute,
+  GartenbauKelkheimRoute: GartenbauKelkheimRoute,
   GartenbauKelsterbachRoute: GartenbauKelsterbachRoute,
+  GartenbauKoenigsteinRoute: GartenbauKoenigsteinRoute,
   GartenbauKriftelRoute: GartenbauKriftelRoute,
+  GartenbauKronbergRoute: GartenbauKronbergRoute,
+  GartenbauLangenRoute: GartenbauLangenRoute,
+  GartenbauLiederbachRoute: GartenbauLiederbachRoute,
+  GartenbauMaintalRoute: GartenbauMaintalRoute,
   GartenbauMainzRoute: GartenbauMainzRoute,
+  GartenbauNeuIsenburgRoute: GartenbauNeuIsenburgRoute,
+  GartenbauNiedernhausenRoute: GartenbauNiedernhausenRoute,
+  GartenbauOberurselRoute: GartenbauOberurselRoute,
+  GartenbauOffenbachRoute: GartenbauOffenbachRoute,
+  GartenbauRaunheimRoute: GartenbauRaunheimRoute,
+  GartenbauRuesselsheimRoute: GartenbauRuesselsheimRoute,
+  GartenbauSchwalbachTaunusRoute: GartenbauSchwalbachTaunusRoute,
   GartenbauSulzbachTaunusRoute: GartenbauSulzbachTaunusRoute,
+  GartenbauTaunussteinRoute: GartenbauTaunussteinRoute,
   GartenbauWiesbadenRoute: GartenbauWiesbadenRoute,
   ImpressumRoute: ImpressumRoute,
   KonfiguratorRoute: KonfiguratorRoute,
   KontaktRoute: KontaktRoute,
+  LSteineSetzenLassenRoute: LSteineSetzenLassenRoute,
   LoginRoute: LoginRoute,
   PartnerWerdenRoute: PartnerWerdenRoute,
   ProjekteRoute: ProjekteRoute,

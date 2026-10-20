@@ -32,9 +32,22 @@ export interface RegionPage {
   sources?: { title: string; url: string }[];
   updatedAt: string;
   projectPreparation?: { heading: string; text: string };
+  directoryGroup: string;
+  districtNotes?: { name: string; text: string; slug?: string }[];
 }
 
 export const regions: RegionPage[] = content;
+
+export const regionGroups = [
+  { id: "main-taunus", name: "Main-Taunus & Untermain" },
+  { id: "frankfurt", name: "Frankfurt & Stadtteile" },
+  { id: "taunus", name: "Taunus" },
+  { id: "sued-ost", name: "Südliches & östliches Rhein-Main-Gebiet" },
+  { id: "rhein", name: "Wiesbaden, Mainz & Rheingau" },
+].map((group) => ({
+  ...group,
+  pages: regions.filter((page) => page.directoryGroup === group.id),
+}));
 
 export const regionalHeroImage = {
   src: publicImageUrl("/images/regionen/garten-hero-ki-2026-1920.webp"),

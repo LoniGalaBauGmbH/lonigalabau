@@ -6,12 +6,13 @@ import { servicePreparation } from "./service-preparation";
 
 // Real content dates for the October SEO releases, not dates of sitemap requests.
 const STATIC_CONTENT_MODIFIED: Record<string, string> = {
-  "/": "2026-10-19T12:23:03Z",
-  "/leistungen": "2026-10-19T12:23:03Z",
+  "/": "2026-10-20T10:28:28.110Z",
+  "/leistungen": "2026-10-20T10:28:28.110Z",
+  "/l-steine-setzen-lassen": "2026-10-20T10:28:28.110Z",
   "/terrasse-bauen-lassen": "2026-10-19T12:23:03Z",
   "/einfahrt-pflastern-lassen": "2026-10-19T12:23:03Z",
   "/projekte": "2026-10-01T14:39:01Z",
-  "/einsatzgebiete": "2026-10-19T13:20:22.874Z",
+  "/einsatzgebiete": "2026-10-20T10:28:28.110Z",
   "/datenschutz": "2026-10-19T13:20:22.874Z",
   "/fachverband-mitgliedschaft": "2026-10-12T09:50:00Z",
   "/ueber-uns": "2026-10-12T09:50:00Z",
@@ -98,7 +99,7 @@ export async function publicUtilityResponse(request: Request): Promise<Response 
             i === 0
               ? servicePreparation[row.slug]
                 ? KEYWORD_SERVICE_SLUGS.includes(row.slug)
-                  ? "2026-10-19T12:23:03Z"
+                  ? "2026-10-20T10:28:28.110Z"
                   : (CISTERN_CONTENT_MODIFIED[row.slug] ?? SERVICE_CONTENT_MODIFIED)
                 : undefined
               : JOB_SCHEMA_MODIFIED,

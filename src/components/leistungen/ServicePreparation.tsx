@@ -49,6 +49,46 @@ export function ServicePreparation({ slug }: { slug: string }) {
             </a>
           </div>
         </div>
+        {slug === "gartengestaltung" && (
+          <div className="mt-8 border-t border-brand/15 pt-6" id="hecke-pflanzen-lassen">
+            <h3 className="font-display text-lg font-bold text-brand">
+              Hecke pflanzen lassen: Sichtschutz passend zum Garten
+            </h3>
+            <p className="mt-3 max-w-4xl text-sm leading-relaxed text-foreground/80">
+              Eine neue Hecke soll zu Ihrem Grundstück und dem gewünschten Pflegeaufwand passen. Wir
+              besprechen den Verlauf, den verfügbaren Platz und die gewünschte Höhe. Zur
+              Vorbereitung gehören auch Sonne und Schatten, vorhandene Pflanzen, der Boden und die
+              Wasserversorgung nach der Pflanzung. Pflanzenart und Größe stimmen wir gemeinsam mit
+              Ihnen ab; der Grenzverlauf und geltende Pflanzabstände müssen vorab geklärt sein.
+            </p>
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div>
+                <h4 className="font-semibold text-brand">Was kostet eine Hecke pro Meter?</h4>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                  Die Länge allein ergibt noch keinen vergleichbaren Preis. Pflanzenart, Liefergröße
+                  und Stückzahl, Bodenvorbereitung, Zugang und eine mögliche Entfernung der alten
+                  Hecke beeinflussen den Aufwand. Im Angebot grenzen wir Pflanzenlieferung,
+                  Pflanzarbeiten, Abtransport und gegebenenfalls Bewässerung voneinander ab.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-brand">So bereiten Sie Ihre Anfrage vor</h4>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                  Senden Sie Fotos, die ungefähre Länge, Ihre gewünschte Sichtschutzhöhe und den
+                  Projektort. Zeigen Sie bestehende Pflanzen, den Materialzugang und den
+                  Wasseranschluss. Erwähnen Sie, ob die Hecke neu angelegt oder ersetzt werden soll.
+                  Auch die Betreuung und Bewässerung nach der Pflanzung sprechen wir mit Ihnen ab.
+                </p>
+              </div>
+            </div>
+            <a
+              href="#anfrage"
+              className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+            >
+              Heckenpflanzung anfragen <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
+        )}
         {slug === "zaunarbeiten" && (
           <div className="mt-8 border-t border-brand/15 pt-6">
             <h3 className="font-display text-lg font-bold text-brand">

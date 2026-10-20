@@ -10,8 +10,8 @@ export function ProjectOfferLinks({ compact = false }: { compact?: boolean }) {
     >
       <h3 className="font-display text-xl font-bold text-brand">Eine konkrete Fläche im Blick?</h3>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80">
-        Neue Terrasse oder Einfahrt: Hier finden Sie die passenden Entscheidungen, den Ablauf und
-        eine direkte Anfrage für Ihr Vorhaben.
+        Terrasse, Einfahrt oder ein Höhenunterschied im Garten: Hier finden Sie die passenden
+        Entscheidungen, den Ablauf und eine direkte Anfrage für Ihr Vorhaben.
       </p>
       <div className="mt-4 flex flex-wrap gap-x-7 gap-y-2">
         <Link
@@ -19,6 +19,12 @@ export function ProjectOfferLinks({ compact = false }: { compact?: boolean }) {
           className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
         >
           Terrasse bauen lassen <ArrowUpRight size={17} aria-hidden="true" />
+        </Link>
+        <Link
+          to="/l-steine-setzen-lassen"
+          className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+        >
+          L-Steine setzen lassen <ArrowUpRight size={17} aria-hidden="true" />
         </Link>
         <Link
           to="/einfahrt-pflastern-lassen"

@@ -80,6 +80,27 @@ const slugs = [
   "gartenbau-wiesbaden",
   "gartenbau-mainz",
   "gartenbau-bad-homburg",
+  "gartenbau-darmstadt",
+  "gartenbau-hanau",
+  "gartenbau-offenbach",
+  "gartenbau-ruesselsheim",
+  "gartenbau-oberursel",
+  "gartenbau-neu-isenburg",
+  "gartenbau-kronberg",
+  "gartenbau-koenigstein",
+  "gartenbau-kelkheim",
+  "gartenbau-schwalbach-taunus",
+  "gartenbau-liederbach",
+  "gartenbau-friedrichsdorf",
+  "gartenbau-bad-vilbel",
+  "gartenbau-dreieich",
+  "gartenbau-langen",
+  "gartenbau-maintal",
+  "gartenbau-eltville",
+  "gartenbau-niedernhausen",
+  "gartenbau-taunusstein",
+  "gartenbau-idstein",
+  "gartenbau-raunheim",
 ];
 
 test("all researched locations have distinct content and valid service and neighbor targets", () => {
@@ -150,6 +171,30 @@ test("regional overview exposes every destination once with consistent canonical
     slugs.map((slug) => seo.canonicalUrl("/" + slug)),
   );
   assert.equal(seo.STATIC_PATHS.filter((path) => path === "/einsatzgebiete").length, 1);
+});
+
+test("regional directory groups include every location once and all inquiry pages keep their context", () => {
+  const groups = serialize(api.regionGroups);
+  const groupedSlugs = groups.flatMap((group) => group.pages.map((page) => page.slug));
+  assert.equal(groupedSlugs.length, slugs.length);
+  assert.deepEqual([...groupedSlugs].sort(), [...slugs].sort());
+  assert.ok(groups.every((group) => group.pages.length > 0));
+  const inquiry = moduleAt("src/lib/inquiry-page.ts");
+  for (const slug of [...slugs, "l-steine-setzen-lassen"]) {
+    assert.equal(inquiry.normalizeInquiryPage(`/${slug}`), `/${slug}`);
+    assert.equal(inquiry.normalizeInquiryPage(`/${slug}?email=private@example.org`), undefined);
+    assert.ok(readFileSync(new URL(`../src/routes/${slug}.tsx`, import.meta.url), "utf8"));
+  }
+  assert.equal(inquiry.normalizeInquiryPage("/gartenbau-erfunden"), undefined);
+  for (const page of content) {
+    for (const note of page.districtNotes ?? []) {
+      if (note.slug) assert.ok(slugs.includes(note.slug));
+    }
+    const text = JSON.stringify(page);
+    for (const [, target] of text.matchAll(/\]\((\/[^)]+)\)/g)) {
+      assert.match(target, /^\/(?:leistungen|ratgeber)\/[a-z-]+$/, page.slug);
+    }
+  }
 });
 
 test("regional images use complete responsive public assets with real format signatures", () => {

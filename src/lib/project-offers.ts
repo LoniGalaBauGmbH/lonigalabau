@@ -1,6 +1,7 @@
 import { projectPhotos } from "./project-photos";
 import { canonicalUrl } from "./seo";
 import { publicImageUrl } from "./public-image-url";
+import type { EXPRESS_SERVICES } from "./express-inquiry";
 
 export function projectOfferHead(content: ProjectOffer) {
   const photo = projectPhotos[content.image];
@@ -18,15 +19,24 @@ export function projectOfferHead(content: ProjectOffer) {
 }
 
 export type ProjectOffer = {
-  path: "/terrasse-bauen-lassen" | "/einfahrt-pflastern-lassen";
+  path: "/terrasse-bauen-lassen" | "/einfahrt-pflastern-lassen" | "/l-steine-setzen-lassen";
   label: string;
   title: string;
   metaTitle: string;
   description: string;
   intro: string;
-  image: "26" | "85";
+  image: keyof typeof projectPhotos;
+  heroCaption?: string;
+  initialService?: (typeof EXPRESS_SERVICES)[number];
+  kicker?: string;
   cases: { title: string; text: string }[];
-  detail: { image: "25" | "87"; title: string; text: string; points: string[] };
+  detail: {
+    image: keyof typeof projectPhotos;
+    caption?: string;
+    title: string;
+    text: string;
+    points: string[];
+  };
   choices: { title: string; text: string }[];
   choiceHeading: string;
   costIntro: string;
@@ -36,6 +46,7 @@ export type ProjectOffer = {
   request: string;
   photos: string[];
   links: { href: string; label: string }[];
+  sources?: { href: string; label: string }[];
 };
 
 export const terraceOffer: ProjectOffer = {

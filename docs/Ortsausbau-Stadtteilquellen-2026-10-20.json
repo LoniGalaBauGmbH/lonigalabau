@@ -1,0 +1,207 @@
+{
+  "checkedAt": "2026-10-20T10:28:28.110Z",
+  "scope": "Kommunal belegte Stadtteile und benannte Stadtbereiche. Redaktionelle Auswahl, keine Suchvolumenmessung pro Stadtteil.",
+  "locations": [
+    {
+      "slug": "gartenbau-darmstadt",
+      "city": "Darmstadt",
+      "districts": [
+        "Arheilgen",
+        "Bessungen",
+        "Eberstadt",
+        "Kranichstein",
+        "Wixhausen"
+      ],
+      "source": {
+        "title": "Darmstadt: Stadtporträt und Stadtteile",
+        "url": "https://www.darmstadt.de/standort/wohnort/stadtportraet"
+      }
+    },
+    {
+      "slug": "gartenbau-hanau",
+      "city": "Hanau",
+      "districts": [
+        "Steinheim",
+        "Großauheim",
+        "Klein-Auheim",
+        "Mittelbuchen",
+        "Kesselstadt",
+        "Wolfgang"
+      ],
+      "source": {
+        "title": "Hanau: Stadtteilentwicklung und Stadtteile",
+        "url": "https://www.hanau.de/stadtentwicklung/stadtteilentwicklung/index.html"
+      }
+    },
+    {
+      "slug": "gartenbau-offenbach",
+      "city": "Offenbach am Main",
+      "districts": [
+        "Bieber",
+        "Bürgel",
+        "Rumpenheim",
+        "Waldheim",
+        "Tempelsee",
+        "Rosenhöhe"
+      ],
+      "source": {
+        "title": "Offenbach am Main: Stadtpläne und amtliche Stadtteile",
+        "url": "https://www.offenbach.de/buerger_innen/rathaus-politik/offenbach-in-zahlen/stadtplaene-mit-gliederungseinheiten.php"
+      }
+    },
+    {
+      "slug": "gartenbau-ruesselsheim",
+      "city": "Rüsselsheim am Main",
+      "districts": [
+        "Bauschheim",
+        "Haßloch",
+        "Königstädten"
+      ],
+      "source": {
+        "title": "Rüsselsheim am Main: Stadtteile und Wappen",
+        "url": "https://www.ruesselsheim.de/stadt/ruesselsheim-am-main/stadtteile/"
+      }
+    },
+    {
+      "slug": "gartenbau-oberursel",
+      "city": "Oberursel (Taunus)",
+      "districts": [
+        "Bommersheim",
+        "Oberstedten",
+        "Stierstadt",
+        "Weißkirchen"
+      ],
+      "source": {
+        "title": "Oberursel: Stadtteile",
+        "url": "https://www.oberursel.de/de/wirtschaft-stadtentwicklung/projekte-stadtentwicklung/stadtteile/"
+      }
+    },
+    {
+      "slug": "gartenbau-neu-isenburg",
+      "city": "Neu-Isenburg",
+      "districts": [
+        "Gravenbruch",
+        "Zeppelinheim"
+      ],
+      "source": {
+        "title": "Neu-Isenburg und seine Stadtteile",
+        "url": "https://www.neu-isenburg.de/leben_und_wohnen/stadt_und_geschichte/stadtteile"
+      }
+    },
+    {
+      "slug": "gartenbau-kronberg",
+      "city": "Kronberg im Taunus",
+      "districts": [
+        "Kronberg",
+        "Oberhöchstadt",
+        "Schönberg"
+      ],
+      "source": {
+        "title": "Kronberg im Taunus: Daten, Zahlen und Stadtteile",
+        "url": "https://www.kronberg.de/stadtleben-aktuelles/ueber-kronberg/daten-zahlen-fakten/"
+      }
+    },
+    {
+      "slug": "gartenbau-koenigstein",
+      "city": "Königstein im Taunus",
+      "districts": [
+        "Falkenstein",
+        "Mammolshain",
+        "Schneidhain"
+      ],
+      "source": {
+        "title": "Königstein im Taunus: Bebauungspläne nach Ortsteilen",
+        "url": "https://www.koenigstein.de/rathaus-politik/bauen-wohnen/bebauungsplaene/"
+      }
+    },
+    {
+      "slug": "gartenbau-kelkheim",
+      "city": "Kelkheim (Taunus)",
+      "districts": [
+        "Kelkheim-Mitte",
+        "Münster",
+        "Hornau",
+        "Fischbach",
+        "Ruppertshain",
+        "Eppenhain"
+      ],
+      "source": {
+        "title": "Stadt Kelkheim, Stadtbibliothek und Kulturreferat: Die sechs Stadtteile",
+        "url": "https://www.kelkheim-entdecken.de/deine-stadt/hier-liegt-kelkheim/"
+      },
+      "evidence": "Geöffnet am 20.10.2026. Die Seite nennt ausdrücklich alle sechs Stadtteile. Kommunaler Betreiber durch Footer und geöffnetes Impressum https://www.kelkheim-entdecken.de/impressum/ bestätigt; eine zweite offizielle Domain der Stadt, nicht die zuvor gesperrte Hauptdomain."
+    },
+    {
+      "slug": "gartenbau-schwalbach-taunus",
+      "city": "Schwalbach am Taunus",
+      "districts": [
+        "Alt-Schwalbach",
+        "Wohnstadt Limes"
+      ],
+      "source": {
+        "title": "Schwalbach am Taunus: Alt-Schwalbach und Wohnstadt Limes",
+        "url": "https://www.schwalbach.de/Stadtportraet/Alt-Schwalbach.htm"
+      },
+      "evidence": "Geöffnet am 20.10.2026. Die Stadt beschreibt das Miteinander von Alt-Schwalbach und Wohnstadt Limes ausdrücklich. Ergänzend geöffnet: https://www.schwalbach.de/Stadtportraet/Wohnstadt-Limes.htm. Keine Verwechslung mit Schwalbach im Saarland oder Bad Schwalbach."
+    },
+    {
+      "slug": "gartenbau-liederbach",
+      "city": "Liederbach am Taunus",
+      "districts": [
+        "Niederhofheim",
+        "Oberliederbach"
+      ],
+      "source": {
+        "title": "Liederbach am Taunus: Zahlen, Daten und Fakten zu den beiden Gemarkungen",
+        "url": "https://www.liederbach.eu/seite/de/cns501a93b55c751d/039%3A87/-/Zahlen_Daten_und_Fakten.html"
+      },
+      "evidence": "Amtlicher Suchtreffer vom 20.10.2026 mit vollständigem betreffendem Text: Die Gemeinde setzt sich seit 1971 aus den Gemarkungen Niederhofheim und Oberliederbach zusammen. Der separate Open-/Click-Abruf scheiterte technisch; die Belegung stammt aus dem indexierten Inhalt der Gemeindeseite, nicht aus einer Fremdquelle. Keine weitergehende förmliche Ortsbezirksgliederung behaupten."
+    },
+    {
+      "slug": "gartenbau-dreieich",
+      "city": "Dreieich",
+      "districts": [
+        "Sprendlingen",
+        "Dreieichenhain",
+        "Buchschlag",
+        "Götzenhain",
+        "Offenthal"
+      ],
+      "source": {
+        "title": "Stadt Dreieich: Stadtporträt und die fünf Stadtteile",
+        "url": "https://www.dreieich.de/freizeit-entdecken/sehenswertes-besichtigen/stadtgeschichte/"
+      },
+      "evidence": "Geöffnet am 20.10.2026. Die kommunale Seite nennt ausdrücklich fünf Stadtteile und enthält zu jedem einen eigenen Abschnitt."
+    },
+    {
+      "slug": "gartenbau-langen",
+      "city": "Langen (Hessen)",
+      "districts": [
+        "Langen (Hessen)",
+        "Nordend",
+        "Oberlinden",
+        "Neurott"
+      ],
+      "source": {
+        "title": "Stadt Langen: Stadtgeschichte mit Nordend, Oberlinden und Neurott",
+        "url": "https://www.langen.de/datei/anzeigen/id/44825,1018/0_1_langens_geschichte.PDF"
+      },
+      "evidence": "Amtliches PDF geöffnet am 20.10.2026. Seite 2 nennt Nordend sowie ausdrücklich die Stadtteile Oberlinden und Neurott. Dies ist eine belegte Auswahl wichtiger benannter Stadtbereiche, keine behauptete vollständige oder förmliche Verwaltungsbezirksliste."
+    },
+    {
+      "slug": "gartenbau-maintal",
+      "city": "Maintal",
+      "districts": [
+        "Dörnigheim",
+        "Bischofsheim",
+        "Hochstadt",
+        "Wachenbuchen"
+      ],
+      "source": {
+        "title": "Stadt Maintal: Stadtporträt und vier Stadtteile",
+        "url": "https://www.maintal.de/seite/130191/stadtportrait.html"
+      },
+      "evidence": "Geöffnet am 20.10.2026. Die kommunale Seite nennt ausdrücklich Dörnigheim, Bischofsheim, Hochstadt und Wachenbuchen als die vier Stadtteile."
+    }
+  ]
+}

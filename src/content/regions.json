@@ -61,11 +61,37 @@
         "answer": "Fläche, gewünschte Materialien und vorhandener Aufbau beeinflussen das Angebot. Für Terrasse, Pflaster und Rasen benötigen wir außerdem Angaben zu Anschlusshöhen, Wasserführung und Baustellenzugang. Eine Skizze, Fotos und Ihre Prioritäten helfen, den Umfang einzuordnen. Einen pauschalen Preis allein anhand des Orts nennen wir nicht."
       }
     ],
-    "relatedSlugs": ["gartenbau-kriftel", "gartenbau-floersheim", "gartenbau-frankfurt-hoechst"],
+    "relatedSlugs": [
+      "gartenbau-kriftel",
+      "gartenbau-hofheim",
+      "gartenbau-raunheim",
+      "gartenbau-liederbach"
+    ],
     "imageAlt": "Rasengarten mit Plattenterrasse und Hecke entlang der Grundstücksgrenze",
     "imageCaption": "Rasengarten mit Plattenterrasse – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-19T12:23:03Z",
-    "heroLead": "Ihr Garten soll zu Ihrem Leben passen. Wir verbinden Gartengestaltung, Pflasterarbeiten und Rollrasen in Hattersheim, Okriftel und Eddersheim – mit Wegen, Terrasse und Sichtschutz, die gemeinsam funktionieren."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Ihr Garten soll zu Ihrem Leben passen. Wir verbinden Gartengestaltung, Pflasterarbeiten und Rollrasen in Hattersheim, Okriftel und Eddersheim – mit Wegen, Terrasse und Sichtschutz, die gemeinsam funktionieren.",
+    "directoryGroup": "main-taunus",
+    "districtNotes": [
+      {
+        "name": "Hattersheim",
+        "text": "Unser Firmensitz liegt Auf der Roos 3. Persönliche Besuche sind nach vorheriger Terminvereinbarung möglich. Für die erste Projektbesprechung helfen Fotos, Maße und Ihre Wünsche für den Garten."
+      },
+      {
+        "name": "Okriftel",
+        "text": "Terrasse, Einfahrt oder neue Grünflächen in Okriftel: Zeigen Sie die Übergänge zum Haus und angrenzende Gartenbereiche. So können Beläge, Ränder und Pflanzflächen zusammen geplant werden."
+      },
+      {
+        "name": "Eddersheim",
+        "text": "Für Gartenprojekte in Eddersheim nehmen wir neben der Arbeitsfläche auch den Zugang auf. Teilen Sie mit, ob es um eine einzelne Maßnahme oder die Erneuerung mehrerer Gartenbereiche geht."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Hattersheim: Stadtteile Okriftel und Eddersheim",
+        "url": "https://www.hattersheim.de/files/Mediathek/PDF/Infomaterial/Einlegeblatt%20A4_2025_O%2BE_highres.pdf"
+      }
+    ]
   },
   {
     "slug": "gartenbau-kelsterbach",
@@ -129,15 +155,12 @@
         "answer": "Ja. Beschreiben Sie Zaunverlauf, Torposition und die Flächen, die befestigt werden sollen. Fotos vorhandener Pfosten, Türanschlüsse und Abläufe helfen, Abhängigkeiten zu erkennen. Fundamente, Leitungswege und Belag werden im Zusammenhang abgestimmt; der genaue Umfang ergibt sich aus Ihrem Grundstück."
       }
     ],
-    "relatedSlugs": [
-      "gartenbau-hattersheim",
-      "gartenbau-frankfurt-hoechst",
-      "gartenbau-floersheim"
-    ],
+    "relatedSlugs": ["gartenbau-raunheim", "gartenbau-ruesselsheim", "gartenbau-frankfurt-hoechst"],
     "imageAlt": "Anthrazitfarbener Sichtschutz zwischen zwei Gebäuden",
     "imageCaption": "Anthrazitfarbener Sichtschutz – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-12T07:19:08.824Z",
-    "heroLead": "Mehr Privatsphäre und ein Garten, den Sie gern nutzen: Wir planen Gartengestaltung, Pflasterarbeiten und Sichtschutz in Kelsterbach zusammen – vom Weg zur Haustür bis zum geschützten Sitzplatz."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Mehr Privatsphäre und ein Garten, den Sie gern nutzen: Wir planen Gartengestaltung, Pflasterarbeiten und Sichtschutz in Kelsterbach zusammen – vom Weg zur Haustür bis zum geschützten Sitzplatz.",
+    "directoryGroup": "main-taunus"
   },
   {
     "slug": "gartenbau-hofheim",
@@ -209,11 +232,37 @@
         "answer": "Grenzverlauf, Torposition und vorhandene Höhen werden gemeinsam betrachtet. Ein neuer Zaun muss an Stufen, Wege oder eine bestehende Einfriedung anschließen können. Geben Sie für ein Angebot auch an, ob die Grenze von beiden Seiten zugänglich ist und welche Teile erhalten bleiben sollen."
       }
     ],
-    "relatedSlugs": ["gartenbau-kriftel", "gartenbau-hattersheim", "gartenbau-bad-soden"],
+    "relatedSlugs": [
+      "gartenbau-kriftel",
+      "gartenbau-kelkheim",
+      "gartenbau-niedernhausen",
+      "gartenbau-idstein"
+    ],
     "imageAlt": "Natursteinmauer mit angrenzender Außentreppe als Übergang zwischen Geländehöhen",
     "imageCaption": "Natursteinmauer mit Außentreppe – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-19T12:23:03Z",
-    "heroLead": "Sie möchten Ihren Garten in Hofheim am Taunus neu gestalten? Wir stimmen Terrassenbau, Natursteinarbeiten und Wege auf Ihr Grundstück ab – mit sorgfältig geplanten Übergängen bei unterschiedlichen Höhen."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Sie möchten Ihren Garten in Hofheim am Taunus neu gestalten? Wir stimmen Terrassenbau, Natursteinarbeiten und Wege auf Ihr Grundstück ab – mit sorgfältig geplanten Übergängen bei unterschiedlichen Höhen.",
+    "directoryGroup": "main-taunus",
+    "districtNotes": [
+      {
+        "name": "Marxheim und Diedenbergen",
+        "text": "Garten, Einfahrt und Terrasse können als Gesamtprojekt oder einzelne Maßnahmen angefragt werden. Fotos der Anschlüsse und eine Liste der gewünschten Änderungen helfen bei der Abgrenzung."
+      },
+      {
+        "name": "Lorsbach und Langenhain",
+        "text": "Zeigen Sie bei vorhandenen Höhenunterschieden Stufen, Mauern und Übergänge im Zusammenhang. Ob und wie diese verändert werden, ergibt sich aus dem Grundstück und Ihrer gewünschten Nutzung."
+      },
+      {
+        "name": "Wallau und Wildsachsen",
+        "text": "Für die Vorbereitung sind Flächenmaße, Materialwünsche und der Baustellenzugang wichtig. Beschreiben Sie auch, welche Gartenbereiche während der Arbeiten nutzbar bleiben sollen."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Hofheim: Stadtteile",
+        "url": "https://www.hofheim.de/kultur-sport-und-tourismus/tourismus/das-ist-hofheim/stadtteile/"
+      }
+    ]
   },
   {
     "slug": "gartenbau-kriftel",
@@ -277,11 +326,12 @@
         "answer": "Nennen Sie die ungefähre Rasenfläche, den jetzigen Bodenaufbau und den Zugang für Materialtransport. Fotos von Schattenbereichen und dem Wasseranschluss helfen bei der Planung. Teilen Sie auch mit, wann die Fläche genutzt werden soll, damit Bodenarbeiten, Bewässerung und Anwuchsphase gemeinsam abgestimmt werden können."
       }
     ],
-    "relatedSlugs": ["gartenbau-hofheim", "gartenbau-hattersheim", "gartenbau-sulzbach-taunus"],
+    "relatedSlugs": ["gartenbau-hattersheim", "gartenbau-hofheim", "gartenbau-liederbach"],
     "imageAlt": "Rasenfläche mit Hecke und einem runden Sitzbereich",
     "imageCaption": "Rasenfläche mit Hecke und rundem Sitzbereich – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-12T07:19:08.824Z",
-    "heroLead": "Ein neuer Garten in Kriftel beginnt mit der richtigen Aufteilung. Wir verbinden Gartengestaltung, Rollrasen und Bewässerung mit nutzbaren Wegen und Terrassen – abgestimmt auf vorhandene Bäume und Ihre Wünsche."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Ein neuer Garten in Kriftel beginnt mit der richtigen Aufteilung. Wir verbinden Gartengestaltung, Rollrasen und Bewässerung mit nutzbaren Wegen und Terrassen – abgestimmt auf vorhandene Bäume und Ihre Wünsche.",
+    "directoryGroup": "main-taunus"
   },
   {
     "slug": "gartenbau-floersheim",
@@ -345,11 +395,12 @@
         "answer": "Hilfreich sind Flächenmaße, Fahrzeugarten und Fotos von Garage, Tor, Stufen und vorhandenen Abläufen. Nennen Sie Schäden am alten Belag und ob Steine wiederverwendet werden sollen. Damit lassen sich Rückbau, Unterbau, Pflaster und Entwässerung als zusammenhängendes Vorhaben besprechen."
       }
     ],
-    "relatedSlugs": ["gartenbau-hattersheim", "gartenbau-hochheim", "gartenbau-hofheim"],
+    "relatedSlugs": ["gartenbau-hochheim", "gartenbau-raunheim", "gartenbau-ruesselsheim"],
     "imageAlt": "Gepflasterter Hauseingang mit eingefasstem Höhenübergang",
     "imageCaption": "Gepflasterter Hauseingang mit Höhenübergang – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-12T07:19:08.824Z",
-    "heroLead": "Hof und Einfahrt sollen im Alltag funktionieren. Für Ihr Vorhaben in Flörsheim am Main, Wicker oder Weilbach verbinden wir Pflasterarbeiten mit Gartengestaltung, passenden Einfassungen und einer durchdachten Wasserführung."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Hof und Einfahrt sollen im Alltag funktionieren. Für Ihr Vorhaben in Flörsheim am Main, Wicker oder Weilbach verbinden wir Pflasterarbeiten mit Gartengestaltung, passenden Einfassungen und einer durchdachten Wasserführung.",
+    "directoryGroup": "main-taunus"
   },
   {
     "slug": "gartenbau-hochheim",
@@ -413,11 +464,12 @@
         "answer": "Fotografieren Sie die Terrassentür, vorhandene Stufen und den Übergang zum Garten. Ergänzen Sie ungefähre Maße, die gewünschte Möblierung und Ihre Materialvorstellungen. Zugangsbreite und bestehende Abläufe sind ebenfalls relevant, um Aufbau, Transport und Wasserführung projektbezogen abzustimmen."
       }
     ],
-    "relatedSlugs": ["gartenbau-floersheim", "gartenbau-hofheim", "gartenbau-hattersheim"],
+    "relatedSlugs": ["gartenbau-floersheim", "gartenbau-wiesbaden", "gartenbau-mainz"],
     "imageAlt": "Holzterrasse neben einer Natursteintreppe als Verbindung zum Garten",
     "imageCaption": "Holzterrasse mit Natursteintreppe – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-12T07:19:08.824Z",
-    "heroLead": "Eine Terrasse, die zu Ihrem Haus und Garten passt: In Hochheim am Main und Massenheim planen wir Terrassenbau, Natursteinarbeiten und Gartengestaltung gemeinsam – von der Materialwahl bis zu den Übergängen ins Grün."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Eine Terrasse, die zu Ihrem Haus und Garten passt: In Hochheim am Main und Massenheim planen wir Terrassenbau, Natursteinarbeiten und Gartengestaltung gemeinsam – von der Materialwahl bis zu den Übergängen ins Grün.",
+    "directoryGroup": "main-taunus"
   },
   {
     "slug": "gartenbau-frankfurt-hoechst",
@@ -488,8 +540,9 @@
     ],
     "imageAlt": "Sichtschutzelemente aus Holz in Metallrahmen entlang einer Außenfläche",
     "imageCaption": "Sichtschutz aus Holz in Metallrahmen – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-19T13:20:22.874Z",
-    "heroLead": "Ein Innenhof, neue Wege oder ein geschützter Gartenplatz: Für Frankfurt-Höchst und den Frankfurter Westen verbinden wir Gartengestaltung, Pflasterarbeiten und Zaunbau mit einer Planung, die Zugang und vorhandene Gebäude berücksichtigt."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Ein Innenhof, neue Wege oder ein geschützter Gartenplatz: Für Frankfurt-Höchst und den Frankfurter Westen verbinden wir Gartengestaltung, Pflasterarbeiten und Zaunbau mit einer Planung, die Zugang und vorhandene Gebäude berücksichtigt.",
+    "directoryGroup": "frankfurt"
   },
   {
     "slug": "gartenbau-bad-soden",
@@ -553,11 +606,17 @@
         "answer": "Beschreiben Sie, welche Gartenbereiche erneuert werden und welche Pflanzen erhalten bleiben sollen. Fotos, ungefähre Maße und Materialwünsche helfen bei der Einordnung. Für Terrassen und Wege sind außerdem Türanschlüsse, vorhandene Stufen und der Baustellenzugang wichtig. Ein Angebot orientiert sich an diesem Umfang und dem tatsächlichen Bestand."
       }
     ],
-    "relatedSlugs": ["gartenbau-sulzbach-taunus", "gartenbau-eschborn", "gartenbau-hofheim"],
+    "relatedSlugs": [
+      "gartenbau-kelkheim",
+      "gartenbau-schwalbach-taunus",
+      "gartenbau-koenigstein",
+      "gartenbau-sulzbach-taunus"
+    ],
     "imageAlt": "Terrassenfläche aus großformatigen Platten mit gleichmäßigem Fugenbild",
     "imageCaption": "Großformatige Terrassenplatten – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-19T12:23:03Z",
-    "heroLead": "Neues gestalten und gewachsenes Grün erhalten: Wir planen Gartengestaltung und Terrassenbau in Bad Soden am Taunus, Neuenhain und Altenhain mit Blick auf Materialien, vorhandene Pflanzen und die Nutzung Ihres Gartens."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Neues gestalten und gewachsenes Grün erhalten: Wir planen Gartengestaltung und Terrassenbau in Bad Soden am Taunus, Neuenhain und Altenhain mit Blick auf Materialien, vorhandene Pflanzen und die Nutzung Ihres Gartens.",
+    "directoryGroup": "main-taunus"
   },
   {
     "slug": "gartenbau-sulzbach-taunus",
@@ -621,11 +680,12 @@
         "answer": "Ein Teilumbau lässt sich prüfen, wenn Höhen, Unterbau und Wasserführung zur erhaltenen Fläche passen. Zeigen Sie uns Einfahrt, Haustür, Stellplätze und vorhandene Beete. Geben Sie an, welche Wege und Pflanzen bleiben sollen; daraus ergibt sich, welche Anschlüsse und vorbereitenden Arbeiten erforderlich sind."
       }
     ],
-    "relatedSlugs": ["gartenbau-bad-soden", "gartenbau-eschborn", "gartenbau-frankfurt-hoechst"],
+    "relatedSlugs": ["gartenbau-liederbach", "gartenbau-schwalbach-taunus", "gartenbau-bad-soden"],
     "imageAlt": "Gepflasterter Weg mit angrenzenden Gräsern und klarer Randführung",
     "imageCaption": "Pflasterweg mit Gräsern – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-12T07:19:08.824Z",
-    "heroLead": "Vom Stellplatz sicher zur Haustür und weiter ins Grün: In Sulzbach (Taunus) verbinden wir Pflasterarbeiten für Einfahrten mit Vorgartengestaltung, Zaunbau und Entwässerung – passend zu Ihren täglichen Wegen."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Vom Stellplatz sicher zur Haustür und weiter ins Grün: In Sulzbach (Taunus) verbinden wir Pflasterarbeiten für Einfahrten mit Vorgartengestaltung, Zaunbau und Entwässerung – passend zu Ihren täglichen Wegen.",
+    "directoryGroup": "main-taunus"
   },
   {
     "slug": "gartenbau-eschborn",
@@ -689,15 +749,12 @@
         "answer": "Nennen Sie die gewünschte Nutzung: Privatgarten, Hauseingang, Besucherwege, Stellplätze oder Lieferflächen. Ergänzen Sie Fotos, Maße und Hinweise zu täglichen Betriebszeiten oder benötigten Zugängen. So können Belag, Einfriedung, Grünflächen und mögliche Bauabschnitte gemeinsam besprochen werden."
       }
     ],
-    "relatedSlugs": [
-      "gartenbau-sulzbach-taunus",
-      "gartenbau-bad-soden",
-      "gartenbau-frankfurt-hoechst"
-    ],
+    "relatedSlugs": ["gartenbau-schwalbach-taunus", "gartenbau-kronberg", "gartenbau-frankfurt"],
     "imageAlt": "Staudenpflanzung entlang eines befestigten Wegs im Stadtraum",
     "imageCaption": "Staudenpflanzung entlang eines Wegs – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
-    "updatedAt": "2026-10-12T07:19:08.824Z",
-    "heroLead": "Privatgarten oder Außenanlage für Ihr Unternehmen: In Eschborn und Niederhöchstadt stimmen wir Gartengestaltung, Pflasterarbeiten und Einfriedungen auf die Nutzung ab – mit passenden Wegen, Grünflächen und einem abgestimmten Bauablauf."
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "heroLead": "Privatgarten oder Außenanlage für Ihr Unternehmen: In Eschborn und Niederhöchstadt stimmen wir Gartengestaltung, Pflasterarbeiten und Einfriedungen auf die Nutzung ab – mit passenden Wegen, Grünflächen und einem abgestimmten Bauablauf.",
+    "directoryGroup": "main-taunus"
   },
   {
     "slug": "gartenbau-frankfurt-unterliederbach",
@@ -769,7 +826,7 @@
     ],
     "imageAlt": "Rasengarten mit Plattenterrasse und Hecke entlang der Grundstücksgrenze",
     "imageCaption": "Rasengarten mit Plattenterrasse – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
-    "updatedAt": "2026-10-19T13:20:22.874Z",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
     "sources": [
       {
         "title": "Stadt Frankfurt: Stadtteil Unterliederbach",
@@ -785,7 +842,8 @@
       }
     ],
     "imageSlug": "gartenbau-hattersheim",
-    "parentCity": "Frankfurt am Main"
+    "parentCity": "Frankfurt am Main",
+    "directoryGroup": "frankfurt"
   },
   {
     "slug": "gartenbau-frankfurt-zeilsheim",
@@ -857,7 +915,7 @@
     ],
     "imageAlt": "Anthrazitfarbener Sichtschutz zwischen zwei Gebäuden",
     "imageCaption": "Anthrazitfarbener Sichtschutz – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
-    "updatedAt": "2026-10-19T13:20:22.874Z",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
     "sources": [
       {
         "title": "Stadt Frankfurt: Stadtteil Zeilsheim und Zeilsheimer Kolonie",
@@ -869,7 +927,8 @@
       }
     ],
     "imageSlug": "gartenbau-kelsterbach",
-    "parentCity": "Frankfurt am Main"
+    "parentCity": "Frankfurt am Main",
+    "directoryGroup": "frankfurt"
   },
   {
     "slug": "gartenbau-frankfurt",
@@ -880,7 +939,17 @@
     "h1": "Garten- und Landschaftsbau in Frankfurt",
     "kicker": "Garten, Hof und Hauszugang gemeinsam gestalten",
     "heroLead": "Ein Garten zum Ankommen, eine neue Terrasse oder eine erneuerte Einfahrt: Wir planen die passenden Flächen und ihre Umsetzung für Ihr Grundstück in Frankfurt.",
-    "districts": ["Frankfurt am Main", "Höchst", "Unterliederbach", "Zeilsheim"],
+    "districts": [
+      "Frankfurt am Main",
+      "Höchst",
+      "Unterliederbach",
+      "Zeilsheim",
+      "Sindlingen",
+      "Nied",
+      "Griesheim",
+      "Schwanheim",
+      "Sossenheim"
+    ],
     "focus": "Baustellenzugang, Materialtransport und den Umbau bewohnter Grundstücke früh abstimmen. Terrasse, Einfahrt, Rasen und Zaun zu einer nutzbaren Außenanlage verbinden.",
     "intro": [
       "Eine Außenanlage in Frankfurt kann vom kleinen Garten hinter dem Haus bis zum großzügigen Hof reichen. Entscheidend sind Ihre Nutzung und der vorhandene Platz. Loni GalaBau kommt aus Hattersheim am Main und übernimmt [Gartengestaltung](/leistungen/gartengestaltung) nach individueller Abstimmung auch in Frankfurt. Wir besprechen, was erhalten bleiben soll, welche Flächen sich verändern und wie der Umbau in Ihren Alltag passt.",
@@ -937,7 +1006,9 @@
     "relatedSlugs": [
       "gartenbau-frankfurt-hoechst",
       "gartenbau-frankfurt-unterliederbach",
-      "gartenbau-frankfurt-zeilsheim"
+      "gartenbau-frankfurt-zeilsheim",
+      "gartenbau-offenbach",
+      "gartenbau-bad-vilbel"
     ],
     "imageSlug": "gartenbau-frankfurt-hoechst",
     "sources": [
@@ -948,6 +1019,10 @@
       {
         "title": "Frankfurt: Starkregengefahrenkarten",
         "url": "https://frankfurt.de/themen/umwelt-und-gruen/umwelt-und-gruen-a-z/wasser/starkregen/starkregengefahrenkarten"
+      },
+      {
+        "title": "Frankfurt: Ortsbeirat 6 und Stadtteile im Westen",
+        "url": "https://frankfurt.de/service-und-rathaus/stadtpolitik/ortsbeiraete/ortsbeirat-06"
       }
     ],
     "projectPreparation": {
@@ -956,7 +1031,45 @@
     },
     "imageAlt": "Sichtschutzelemente aus Holz in Metallrahmen entlang einer Außenfläche",
     "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
-    "updatedAt": "2026-10-19T13:20:22.874Z"
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "frankfurt",
+    "districtNotes": [
+      {
+        "name": "Höchst",
+        "text": "Für Projekte in Höchst gibt es eine eigene Planungshilfe zu Garten, Terrasse und Sichtschutz. Zeigen Sie bei Ihrer Anfrage auch die Verbindung von der Straße bis zur Arbeitsfläche.",
+        "slug": "gartenbau-frankfurt-hoechst"
+      },
+      {
+        "name": "Unterliederbach",
+        "text": "Die Ortsseite für Unterliederbach hilft bei der Vorbereitung von Gartenumbau, Pflaster und Entwässerung. Fotos der Anschlüsse und des Baustellenzugangs machen den gewünschten Umfang greifbar.",
+        "slug": "gartenbau-frankfurt-unterliederbach"
+      },
+      {
+        "name": "Zeilsheim",
+        "text": "Auf der Seite für Zeilsheim finden Sie Hinweise zu Garten, Zaun und befestigten Flächen. Beschreiben Sie, welche Bereiche erhalten bleiben und was neu entstehen soll.",
+        "slug": "gartenbau-frankfurt-zeilsheim"
+      },
+      {
+        "name": "Sindlingen",
+        "text": "Auch für Sindlingen können Sie Terrasse, Einfahrt oder einen Gartenumbau anfragen. Nennen Sie die betroffenen Flächen und zeigen Sie den Transportweg; ein Garten hinter dem Haus braucht eine andere Vorbereitung als ein frei zugänglicher Vorgarten."
+      },
+      {
+        "name": "Nied",
+        "text": "Für Ihr Vorhaben in Nied helfen Gesamtfotos, ungefähre Maße und Angaben zu vorhandenen Abläufen. Ob eine neue Wasserführung nötig ist, beurteilen wir am Grundstück; die Lage im Stadtteil allein entscheidet das nicht."
+      },
+      {
+        "name": "Griesheim",
+        "text": "Für Frankfurt-Griesheim stimmen wir Hauszugang, Stellplätze und Gartenflächen auf die gewünschte Nutzung ab. Geben Sie bitte die Postleitzahl an, damit das Vorhaben eindeutig Frankfurt zugeordnet ist."
+      },
+      {
+        "name": "Schwanheim",
+        "text": "Bei Gartenprojekten in Schwanheim können vorhandene Bäume und Pflanzen Teil der neuen Gestaltung bleiben. Markieren Sie auf Fotos, was Ihnen wichtig ist, und zeigen Sie die geplanten Wege und Sitzplätze."
+      },
+      {
+        "name": "Sossenheim",
+        "text": "Für eine Terrasse, einen neuen Rasen oder Sichtschutz in Sossenheim reichen zunächst Fotos und eine grobe Skizze. Nennen Sie auch die Bereiche, die während eines Umbaus weiter erreichbar bleiben müssen."
+      }
+    ]
   },
   {
     "slug": "gartenbau-wiesbaden",
@@ -967,7 +1080,7 @@
     "h1": "Garten- und Landschaftsbau in Wiesbaden",
     "kicker": "Mehr Grün und durchdachte Wege im Garten",
     "heroLead": "Wie viel Pflaster braucht Ihr Garten – und wo darf wieder Grün entstehen? Wir verbinden nutzbare Wege und Sitzplätze mit Bepflanzung und einer passenden Wasserführung.",
-    "districts": ["Wiesbaden", "Ihr Grundstück im Mittelpunkt"],
+    "districts": ["Wiesbaden", "Biebrich", "Nordenstadt", "Erbenheim"],
     "focus": "Befestigte Flächen nach ihrer Nutzung aufteilen, Platz für Grün gewinnen und Regenwasser, Bewässerung und vorhandene Anschlüsse gemeinsam betrachten.",
     "intro": [
       "Ein Gartenumbau in Wiesbaden bietet die Gelegenheit, die vorhandenen Flächen neu zu ordnen. Vielleicht ist der Hof größer befestigt als nötig, die Terrasse zu klein oder der Weg zum Garten umständlich. Bei der [Gartengestaltung](/leistungen/gartengestaltung) beginnen wir mit den Flächen, die Sie tatsächlich benötigen, und prüfen anschließend, wo Rasen oder Pflanzbereiche sinnvoll sind.",
@@ -1021,7 +1134,12 @@
         "answer": "Maßgeblich sind Rückbau, Flächen, Materialien, Bodenarbeiten und Baustellenzugang. Beschreiben Sie, welche Bereiche erhalten bleiben und welche neu entstehen sollen. Daraus klären wir den Leistungsumfang für ein individuelles Angebot."
       }
     ],
-    "relatedSlugs": ["gartenbau-mainz", "gartenbau-hochheim", "gartenbau-hattersheim"],
+    "relatedSlugs": [
+      "gartenbau-eltville",
+      "gartenbau-taunusstein",
+      "gartenbau-niedernhausen",
+      "gartenbau-mainz"
+    ],
     "imageSlug": "gartenbau-hattersheim",
     "sources": [
       {
@@ -1031,6 +1149,10 @@
       {
         "title": "Wiesbaden: Beratung zur Versickerung von Regenwasser",
         "url": "https://www.wiesbaden.de/vv/produkte/36/Versickerung-von-Regenwasser-Beratung-und-Antrag-auf-wasserrechtliche-Erlaubnis"
+      },
+      {
+        "title": "Wiesbaden: Stadtteile",
+        "url": "https://www.wiesbaden.de/leben-wohnen/stadtportraet/stadtteile/stadtteile"
       }
     ],
     "projectPreparation": {
@@ -1039,7 +1161,22 @@
     },
     "imageAlt": "Rasengarten mit Plattenterrasse und Hecke entlang der Grundstücksgrenze",
     "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
-    "updatedAt": "2026-10-19T13:20:22.874Z"
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "rhein",
+    "districtNotes": [
+      {
+        "name": "Biebrich",
+        "text": "Für Ihre Außenanlage in Biebrich klären wir, welche Flächen befahren, begangen oder begrünt werden sollen. Eine Skizze mit Stellplätzen, Hauseingang und Terrasse hilft bei der Aufteilung."
+      },
+      {
+        "name": "Nordenstadt",
+        "text": "Wenn Sie Garten und Terrasse in Nordenstadt neu anlegen oder erneuern möchten, zeigen Sie vorhandene Anschlüsse und geplante Flächen. Auch spätere Bauabschnitte können bei der Vorbereitung berücksichtigt werden."
+      },
+      {
+        "name": "Erbenheim",
+        "text": "Für Pflaster, Rasen und Sichtschutz in Erbenheim sind Fotos des Bestands und der Grundstückszugänge hilfreich. Sagen Sie dazu, welche Materialien oder Pflanzen erhalten bleiben sollen."
+      }
+    ]
   },
   {
     "slug": "gartenbau-mainz",
@@ -1050,7 +1187,7 @@
     "h1": "Garten- und Landschaftsbau in Mainz",
     "kicker": "Ein Garten für Ihre Zeit draußen",
     "heroLead": "Ein Sitzplatz am Abend, Grün vor dem Fenster oder mehr Raum zum Spielen: Wir gestalten Ihren Garten in Mainz passend zu Licht, Nutzung und gewünschter Pflege.",
-    "districts": ["Mainz", "Garten und Außenanlagen"],
+    "districts": ["Mainz", "Gonsenheim", "Finthen", "Bretzenheim", "Hechtsheim"],
     "focus": "Sitzplätze nach Sonnenverlauf und Tagesnutzung anordnen, vorhandenen Schatten erhalten und Pflanzflächen, Rasen und Bewässerung aufeinander abstimmen.",
     "intro": [
       "Wann möchten Sie Ihren Garten nutzen – zum Frühstück, am Nachmittag mit der Familie oder am Abend auf der Terrasse? Diese Frage hilft bei der [Gartengestaltung](/leistungen/gartengestaltung) in Mainz, Sitzplatz, Wege und Grün sinnvoll zu verteilen. Wir betrachten vorhandene Bäume, Schatten durch Gebäude und die Bereiche, die Sie wirklich erreichen und nutzen möchten.",
@@ -1104,7 +1241,12 @@
         "answer": "Sie können auch eine Terrasse, einen Weg oder eine Rasenfläche anfragen. Zeigen Sie die angrenzenden Bereiche mit, damit die Anschlüsse zum bestehenden Garten bei der Abstimmung berücksichtigt werden."
       }
     ],
-    "relatedSlugs": ["gartenbau-wiesbaden", "gartenbau-hochheim", "gartenbau-floersheim"],
+    "relatedSlugs": [
+      "gartenbau-wiesbaden",
+      "gartenbau-ruesselsheim",
+      "gartenbau-hochheim",
+      "gartenbau-darmstadt"
+    ],
     "imageSlug": "gartenbau-eschborn",
     "sources": [
       {
@@ -1114,6 +1256,10 @@
       {
         "title": "Mainz: Stadtplan mit Luftbildern und Fachkarten",
         "url": "https://internet.mainz.de/stadtplan"
+      },
+      {
+        "title": "Mainz: Stadtteilbeschreibungen 2026",
+        "url": "https://www.mainz.de/medien/internet/downloads/dezernate/Mainzer-Stadtteilbeschreibungen-2026.pdf"
       }
     ],
     "projectPreparation": {
@@ -1122,7 +1268,26 @@
     },
     "imageAlt": "Staudenpflanzung entlang eines befestigten Wegs im Stadtraum",
     "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
-    "updatedAt": "2026-10-19T13:20:22.874Z"
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "rhein",
+    "districtNotes": [
+      {
+        "name": "Gonsenheim",
+        "text": "Bei einem Gartenumbau in Gonsenheim beginnen wir mit Ihrem Bestand und den gewünschten Nutzungen. Zeigen Sie Sitzplätze, vorhandene Pflanzen und die Wege, die Sie täglich benötigen."
+      },
+      {
+        "name": "Finthen",
+        "text": "Für eine neue Terrasse oder Rasenfläche in Finthen helfen Angaben zu Sonne, Schatten und Wasseranschluss. Die Ausführung wird auf den tatsächlichen Standort im Garten abgestimmt."
+      },
+      {
+        "name": "Bretzenheim",
+        "text": "Möchten Sie Einfahrt, Vorgarten oder Hauszugang in Bretzenheim verändern, erfassen Sie die zusammenhängenden Flächen. Stellplätze, Abstellmöglichkeiten und Begrünung sollten sich im Alltag ergänzen."
+      },
+      {
+        "name": "Hechtsheim",
+        "text": "Für Ihr Vorhaben in Hechtsheim zeigen Sie neben dem Garten auch den Weg für Anlieferung und Materialtransport. Bei mehreren Maßnahmen legen wir die sinnvolle Reihenfolge gemeinsam fest."
+      }
+    ]
   },
   {
     "slug": "gartenbau-bad-homburg",
@@ -1133,7 +1298,7 @@
     "h1": "Garten- und Landschaftsbau in Bad Homburg",
     "kicker": "Bewährtes erhalten. Neues passend ergänzen.",
     "heroLead": "Ihr Garten darf sich verändern, ohne seinen Charakter zu verlieren. Wir stimmen neue Terrasse, Wege und Grünflächen auf den Bestand und Ihre heutigen Wünsche ab.",
-    "districts": ["Bad Homburg vor der Höhe", "Gartenumbau nach Ihrem Bedarf"],
+    "districts": ["Bad Homburg vor der Höhe"],
     "focus": "Bäume, Hecken und vorhandene Bauteile zuerst aufnehmen. Neue Wege, Terrasse und Rasen in den Bestand einfügen und den Umbau in geeignete Bauabschnitte aufteilen.",
     "intro": [
       "Ein gewachsener Garten enthält oft Dinge, die bleiben sollen: einen schattigen Sitzplatz, eine Hecke oder vertraute Wege. Vor einer [Gartengestaltung](/leistungen/gartengestaltung) in Bad Homburg nehmen wir deshalb zuerst den Bestand auf. Anschließend besprechen wir, welche Bereiche nicht mehr zu Ihrem Alltag passen und wie sie sich sinnvoll erneuern lassen.",
@@ -1187,7 +1352,7 @@
         "answer": "Hilfreich sind Projektadresse, ungefähre Maße, Fotos von Bestand und Zugang sowie Ihre Wünsche zu Material und Nutzung. Rückbau, Bodenarbeiten, Anschlüsse und Bauabschnitte bestimmen den Aufwand mit."
       }
     ],
-    "relatedSlugs": ["gartenbau-bad-soden", "gartenbau-eschborn", "gartenbau-frankfurt"],
+    "relatedSlugs": ["gartenbau-oberursel", "gartenbau-friedrichsdorf", "gartenbau-kronberg"],
     "imageSlug": "gartenbau-bad-soden",
     "sources": [
       {
@@ -1205,6 +1370,1865 @@
     },
     "imageAlt": "Terrassenfläche aus großformatigen Platten mit gleichmäßigem Fugenbild",
     "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
-    "updatedAt": "2026-10-19T13:20:22.874Z"
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-darmstadt",
+    "city": "Darmstadt",
+    "shortName": "Darmstadt",
+    "title": "Gartenbau Darmstadt | Gartengestaltung & Pflasterarbeiten",
+    "description": "Gartenbau in Darmstadt: Terrasse, Einfahrt, Rasen und Wasserführung passend planen. Loni GalaBau aus Hattersheim – Gartenprojekt mit Fotos anfragen.",
+    "h1": "Garten- und Landschaftsbau in Darmstadt",
+    "kicker": "Ein Garten, dessen Flächen zusammenpassen",
+    "heroLead": "Mehr Platz zum Sitzen, eine neue Einfahrt oder Grün statt alter Beläge: Wir verbinden Ihre Gartenwünsche mit einer durchdachten Aufteilung und Wasserführung.",
+    "districts": ["Darmstadt", "Arheilgen", "Bessungen", "Eberstadt", "Kranichstein", "Wixhausen"],
+    "focus": "Befestigte und begrünte Bereiche passend zur Nutzung verteilen. Regenwasser, Übergänge am Haus und die spätere Bewässerung vor dem Bau zusammen betrachten.",
+    "intro": [
+      "Bei einer [Gartengestaltung](/leistungen/gartengestaltung) in Darmstadt geht es zuerst um Ihren Alltag: Wo möchten Sie sitzen, welche Wege werden täglich gebraucht und welche Fläche soll grün bleiben? Daraus entsteht eine Aufteilung, die Terrasse, Einfahrt, Beete und Rasen verbindet. Auch einzelne Bereiche lassen sich erneuern, wenn die Anschlüsse an den vorhandenen Garten berücksichtigt werden.",
+      "Loni GalaBau kommt aus Hattersheim am Main und arbeitet deutschlandweit. Für Ihr Grundstück in Darmstadt helfen eine Übersicht, ungefähre Maße und Fotos nach einem Regenschauer. So lassen sich bestehende Wasserwege erkennen und Fragen zum Unterbau früh sammeln. Die Stadt stellt ergänzend Informationen zur Grundstücksentwässerung und ein Gründach- und Entsiegelungskataster bereit."
+    ],
+    "sections": [
+      {
+        "heading": "Terrasse, Einfahrt und Grün sinnvoll aufteilen",
+        "paragraphs": [
+          "Markieren Sie zunächst die Flächen, die tatsächlich befahren oder regelmäßig begangen werden. Daneben halten wir fest, wo ein Sitzplatz, Rasen oder Bepflanzung gewünscht ist. Das vermeidet eine unnötig große befestigte Fläche. Möbel, geöffnete Türen, Fahrräder und Abstellplätze brauchen trotzdem ausreichend Platz; diese Dinge gehören bereits in die erste Skizze.",
+          "Für [Pflasterarbeiten in Darmstadt](/leistungen/pflasterarbeiten) richtet sich der Aufbau nach Nutzung und örtlichem Bestand. Eine Einfahrt stellt andere Anforderungen als ein schmaler Gartenweg. Das städtische Kataster kann Anhaltspunkte für mögliche Entsiegelung geben. Ob sich eine vorhandene Fläche auf Ihrem Grundstück zurückbauen oder durchlässiger gestalten lässt, wird am konkreten Aufbau geprüft."
+        ]
+      },
+      {
+        "heading": "Regenwasser vor der Materialauswahl klären",
+        "paragraphs": [
+          "Zeigen Sie uns Fallrohre, Abläufe, tiefe Stellen und Übergänge zu Türen. Ein neuer Belag verändert unter Umständen den Weg des Wassers. Daher klären wir Gefälle und [Entwässerung](/leistungen/entwaesserung), bevor Steinformat und Fugenbild festgelegt werden. Bestehende Pläne zu Leitungen und Anschlüssen sind dafür wertvoller als eine reine Gesamtansicht des Gartens.",
+          "Darmstadt erläutert auf seiner Abwasserseite die Anforderungen bei Änderungen der Grundstücksentwässerung und die Möglichkeiten der Regenwassernutzung. Welche Abstimmung für Ihr Vorhaben nötig ist, muss im Einzelfall geklärt werden. Eine durchlässige Oberfläche allein belegt noch keine geeignete Versickerung. Boden, Unterbau, Anschlüsse und mögliche Einbauflächen müssen zusammenpassen."
+        ]
+      },
+      {
+        "heading": "Rasen und Pflanzen auf den fertigen Bauablauf abstimmen",
+        "paragraphs": [
+          "Erst Rückbau und [Erdarbeiten](/leistungen/erdarbeiten), dann Leitungen und befestigte Flächen, anschließend die empfindlichen Gartenbereiche: Diese Reihenfolge hilft, neu angelegtes Grün nicht wieder durch Transporte zu belasten. Nennen Sie früh, welche Bereiche während der Arbeiten erreichbar bleiben müssen und wo Material vorübergehend stehen könnte.",
+          "Für [Rollrasen](/leistungen/rasenanlagen) und Pflanzflächen besprechen wir Bodenvorbereitung, Licht und die spätere Pflege. Soll eine [Bewässerungsanlage](/leistungen/bewaesserungsanlagen) entstehen, werden Leitungswege und Wasseranschluss vorher eingeplant. Sie müssen bei der Anfrage noch keine fertige Pflanzenliste haben. Ihre Wünsche zur Nutzung und zum Pflegeaufwand sind der bessere Ausgangspunkt."
+        ]
+      }
+    ],
+    "checklist": [
+      "Befestigte und begrünte Wunschflächen grob einzeichnen.",
+      "Fallrohre, Abläufe und nasse Stellen fotografieren.",
+      "Türschwellen und Anschlüsse an vorhandene Wege zeigen.",
+      "Zufahrt, Durchgänge und Lagerflächen angeben.",
+      "Gewünschte Nutzung und späteren Pflegeaufwand beschreiben."
+    ],
+    "faqs": [
+      {
+        "question": "Übernimmt Loni GalaBau auch einzelne Pflasterarbeiten in Darmstadt?",
+        "answer": "Sie können eine Einfahrt, Terrasse oder einen Gartenweg einzeln anfragen. Wir betrachten die angrenzenden Flächen mit, damit Aufbau, Höhen und Wasserführung zum Bestand passen."
+      },
+      {
+        "question": "Kann aus einem gepflasterten Bereich wieder Garten werden?",
+        "answer": "Das ist je nach Unterbau, Boden, Leitungen und späterer Nutzung möglich. Zeigen Sie die Fläche und beschreiben Sie, ob dort Rasen, Beete oder ein gemischter Gartenbereich entstehen sollen."
+      },
+      {
+        "question": "Welche Angaben braucht ein Angebot für Gartenbau in Darmstadt?",
+        "answer": "Hilfreich sind Adresse, ungefähre Flächengröße, Fotos des Bestands und des Zugangs sowie Ihre Material- und Nutzungswünsche. Rückbau, Erdarbeiten und Entwässerung beeinflussen den Aufwand zusätzlich."
+      },
+      {
+        "question": "Muss ich vor der Anfrage schon die Entwässerung geplant haben?",
+        "answer": "Nein. Senden Sie vorhandene Pläne und beschreiben Sie bekannte Probleme. Die technische Lösung und erforderliche örtliche Abstimmungen werden vor der Ausführung geklärt; eine Fotoprüfung ersetzt diese Planung nicht."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-ruesselsheim", "gartenbau-neu-isenburg", "gartenbau-hattersheim"],
+    "sources": [
+      {
+        "title": "Darmstadt: Abwasser und Grundstücksentwässerung",
+        "url": "https://www.darmstadt.de/leben/umwelt/wasser-und-boden/abwasser"
+      },
+      {
+        "title": "Darmstadt: Gründach- und Entsiegelungskataster",
+        "url": "https://www.darmstadt.de/presseportal/pressemitteilungen/einzelansicht/wissenschaftsstadt-darmstadt-stellt-gruendach-und-entsiegelungskataster-online"
+      },
+      {
+        "title": "Darmstadt: Stadtporträt und Stadtteile",
+        "url": "https://www.darmstadt.de/standort/wohnort/stadtportraet"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihr Gartenprojekt in Darmstadt vorbereiten",
+      "text": "Eine Skizze mit befestigten Flächen, gewünschten Grünbereichen und vorhandenen Abläufen hilft beim Einstieg. Ergänzen Sie Fotos vom Zugang und nennen Sie, welche Teile zuerst fertig werden sollen."
+    },
+    "imageSlug": "gartenbau-hattersheim",
+    "imageAlt": "Rasengarten mit Plattenterrasse und Hecke entlang der Grundstücksgrenze",
+    "imageCaption": "Rasengarten mit Plattenterrasse – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-hanau",
+    "city": "Hanau",
+    "shortName": "Hanau",
+    "title": "Gartenbau Hanau | Garten erneuern mit Loni GalaBau",
+    "description": "Gartengestaltung in Hanau: alte Flächen erneuern, Terrasse und Wege bauen, Rasen und Pflanzen ergänzen. Loni GalaBau aus Hattersheim anfragen.",
+    "h1": "Garten- und Landschaftsbau in Hanau",
+    "kicker": "Aus vorhandenen Flächen wird Ihr neuer Garten",
+    "heroLead": "Eine ungenutzte Hoffläche, ein alter Belag oder ein Garten mit zu viel Pflaster: Wir klären, was bleiben kann und wo Platz für neue Nutzung und Grün entsteht.",
+    "districts": [
+      "Hanau",
+      "Steinheim",
+      "Großauheim",
+      "Klein-Auheim",
+      "Mittelbuchen",
+      "Kesselstadt",
+      "Wolfgang"
+    ],
+    "focus": "Vorhandene Beläge und Gartenelemente bewerten, Rückbau gezielt vorbereiten und neue Sitzplätze, Wege und Pflanzflächen in einen nutzbaren Garten einfügen.",
+    "intro": [
+      "Wer einen bestehenden Garten in Hanau umgestalten lässt, beginnt selten auf einer leeren Fläche. Alte Wege, Einfassungen und Pflanzungen bestimmen den Ausgangspunkt. Bei der [Gartengestaltung](/leistungen/gartengestaltung) besprechen wir deshalb zuerst, was Ihnen noch gefällt, was im Alltag stört und welche Bereiche eine neue Aufgabe bekommen sollen.",
+      "Unser Firmensitz ist Hattersheim am Main; Loni GalaBau übernimmt Vorhaben deutschlandweit. Für Gartenbau in Hanau verbinden wir Ihre Wünsche mit der Prüfung des vorhandenen Grundstücks. Die städtischen Informationen zu Begrünung und Entsiegelung können zusätzliche Ideen liefern. Sie sagen jedoch nicht, welche Maßnahme auf Ihrem Grundstück technisch möglich oder förderfähig ist."
+    ],
+    "sections": [
+      {
+        "heading": "Vor dem Rückbau entscheiden, was bleiben soll",
+        "paragraphs": [
+          "Teilen Sie Ihre Skizze in drei Bereiche: erhalten, verändern und noch offen. Zeigen Sie alte Pflasterflächen auch von der Seite, sichtbare Einfassungen und beschädigte Stellen. Ob Materialien wiederverwendet werden können, hängt von ihrem Zustand und der neuen Nutzung ab. Ein Rückbauangebot sollte deshalb mehr beschreiben als nur die Quadratmeterzahl.",
+          "Für neue [Pflasterarbeiten](/leistungen/pflasterarbeiten) betrachten wir die Verbindung zu Haustür, Garage und Garten. Die Stadt Hanau bietet ein Gründach- und Entsiegelungskataster an, das mögliche Flächenpotenziale sichtbar macht. Für Ihre Planung bleibt entscheidend, welche Wege erforderlich sind und wo Boden, Anschlüsse und Nutzung tatsächlich eine Begrünung zulassen."
+        ]
+      },
+      {
+        "heading": "Aus einer Restfläche einen nutzbaren Gartenbereich machen",
+        "paragraphs": [
+          "Eine freie Ecke kann zum Sitzplatz werden; ein zu breiter Weg schafft unter Umständen Raum für Pflanzen. Wir prüfen solche Möglichkeiten an Ihren täglichen Wegen. Für eine Terrasse zählen Tisch und Stühle ebenso wie Bewegungsfläche und Zugang. Beete sollten erreichbar bleiben, ohne dass dafür ständig über andere Pflanzungen gelaufen werden muss.",
+          "Bei [Rasenanlagen](/leistungen/rasenanlagen) sind Flächengröße, Licht und Bodenvorbereitung wichtig. Wo eine Rasenfläche wenig genutzt würde, kann eine abgestimmte Bepflanzung besser zu Ihren Wünschen passen. Nennen Sie die Zeit, die Sie fürs Mähen, Gießen und Pflegen aufbringen möchten. Daraus entwickeln wir eine Gestaltung, deren spätere Nutzung mitgedacht ist."
+        ]
+      },
+      {
+        "heading": "Wasserwege und Bauabschnitte beim Umbau mitdenken",
+        "paragraphs": [
+          "Wer alte Beläge entfernt, kann Leitungen und Anschlüsse häufig im selben Bauabschnitt prüfen lassen. Schicken Sie Fotos der Fallrohre und Abläufe sowie Angaben zu bekannten Wasserproblemen. Eine geplante [Bewässerung](/leistungen/bewaesserungsanlagen) sollte früh angesprochen werden, damit neue Terrassen oder Wege später möglichst nicht erneut geöffnet werden müssen.",
+          "Die Hanauer Wasser- und Bodenschutzbehörde informiert zur Regenwassernutzung und prüft, welche Erlaubnisse erforderlich sind. Diese Klärung gehört vor den Bau einer entsprechenden Anlage. Falls der Garten schrittweise erneuert wird, stimmen wir [Erdarbeiten](/leistungen/erdarbeiten), Transporte und fertige Flächen aufeinander ab. So bleibt sichtbar, welche Vorarbeiten auch dem nächsten Abschnitt dienen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Erhaltene und zu verändernde Bereiche markieren.",
+      "Alte Beläge, Kanten und Schadstellen fotografieren.",
+      "Wünsche für Sitzplatz, Grün und tägliche Wege nennen.",
+      "Fallrohre, Wasseranschluss und Abläufe zeigen.",
+      "Zugang und gewünschte Reihenfolge der Arbeiten beschreiben."
+    ],
+    "faqs": [
+      {
+        "question": "Muss für eine Gartengestaltung in Hanau alles neu gebaut werden?",
+        "answer": "Nein. Wir klären, welche Beläge, Einfassungen und Pflanzen erhalten bleiben können. Der Aufwand hängt auch davon ab, wie sich neue Flächen an den vorhandenen Garten anschließen lassen."
+      },
+      {
+        "question": "Kann ich Pflaster entfernen und stattdessen Rasen anlegen lassen?",
+        "answer": "Das lässt sich nach Prüfung des Unterbaus, des Bodens und der Nutzung beurteilen. Zum Umbau können Rückbau, Abtransport und Bodenvorbereitung gehören; nur die Steine zu entfernen reicht nicht immer."
+      },
+      {
+        "question": "Kann eine Bewässerung gleichzeitig mit der Terrasse vorbereitet werden?",
+        "answer": "Ja, sprechen Sie das bei der Anfrage an. Wasseranschluss, benötigte Bereiche und Leitungswege sollten feststehen, bevor die neuen Oberflächen geschlossen werden."
+      },
+      {
+        "question": "Gibt es für meinen Gartenumbau eine Förderung in Hanau?",
+        "answer": "Die Stadt stellt Informationen zu Begrünung und Entsiegelung bereit. Aktuelle Bedingungen, Mittel und Antragszeitpunkt müssen Sie vor Beauftragung mit der zuständigen Stelle klären. Wir können keine Förderzusage geben."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-offenbach", "gartenbau-frankfurt", "gartenbau-neu-isenburg"],
+    "sources": [
+      {
+        "title": "Hanau: Begrünung und Entsiegelung",
+        "url": "https://www.hanau.de/stadtentwicklung/energie_klima/gruendachundentsiegelungskataster/index.html"
+      },
+      {
+        "title": "Hanau: Regenwassernutzung und behördliche Beratung",
+        "url": "https://www.hanau.de/umwelt/boden_wasser/regenwassernutzung/index.html"
+      },
+      {
+        "title": "Hanau: Stadtteilentwicklung und Stadtteile",
+        "url": "https://www.hanau.de/stadtentwicklung/stadtteilentwicklung/index.html"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Zeigen Sie uns Ihren Garten in Hanau",
+      "text": "Fotografieren Sie den heutigen Zustand und kennzeichnen Sie, was bleiben soll. Maße, Zugang und Ihre Prioritäten helfen, Rückbau, neue Flächen und Begrünung gemeinsam abzustimmen."
+    },
+    "imageSlug": "gartenbau-kriftel",
+    "imageAlt": "Rasenfläche mit Hecke und einem runden Sitzbereich",
+    "imageCaption": "Rasenfläche mit Hecke und rundem Sitzbereich – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-offenbach",
+    "city": "Offenbach am Main",
+    "shortName": "Offenbach",
+    "title": "Gartenbau Offenbach am Main | Loni GalaBau",
+    "description": "Gartengestaltung in Offenbach am Main: Hof, Terrasse, Wege und Grün gemeinsam erneuern. Loni GalaBau aus Hattersheim – Ihr Projekt mit Fotos anfragen.",
+    "h1": "Garten- und Landschaftsbau in Offenbach am Main",
+    "kicker": "Mehr aus Hof und Garten machen",
+    "heroLead": "Sitzen, ankommen, Fahrräder abstellen und Grün genießen: Wir gestalten Außenflächen in Offenbach so, dass die verschiedenen Wünsche gut zusammenpassen.",
+    "districts": [
+      "Offenbach",
+      "Bieber",
+      "Bürgel",
+      "Rumpenheim",
+      "Waldheim",
+      "Tempelsee",
+      "Rosenhöhe"
+    ],
+    "focus": "Mehrere Nutzungen auf einer Außenfläche ordnen. Wege und Abstellplätze erhalten, Sitzbereiche sinnvoll abgrenzen und Raum für standortgerechte Pflanzen schaffen.",
+    "intro": [
+      "Auch eine überschaubare Außenfläche kann viel leisten. Bei der [Gartengestaltung in Offenbach](/leistungen/gartengestaltung) beginnen wir mit den Wegen und Dingen, die täglich gebraucht werden. Ein Sitzplatz, Beete, Mülltonnen und Fahrräder sollten so angeordnet sein, dass sich die Nutzungen nicht gegenseitig behindern. Danach sprechen wir über Materialien und die gewünschte Atmosphäre.",
+      "Loni GalaBau arbeitet von Hattersheim am Main aus deutschlandweit. Ihr Projekt in Offenbach am Main beurteilen wir anhand des tatsächlichen Bestands, des Zugangs und Ihrer Prioritäten. Die Stadt informiert zum klimagerechten Bauen und zur Begrünung privater Flächen. Daraus übernehmen wir keine pauschalen Aussagen über Ihren Hof, sondern konkrete Fragen für die Planung."
+    ],
+    "sections": [
+      {
+        "heading": "Alltagswege und Sitzplatz voneinander ordnen",
+        "paragraphs": [
+          "Zeichnen Sie Haustür, Durchgänge, Abstellplätze und den Weg zum Garten ein. Ergänzen Sie die Fläche, die Möbel bei Benutzung benötigen. Eine Terrasse kann auf dem Plan groß genug aussehen und im Alltag trotzdem einen wichtigen Durchgang verengen. Besonders bei mehreren Nutzern hilft es, die regelmäßigen Wege zuerst gemeinsam festzuhalten.",
+          "Für [Pflasterarbeiten in Offenbach](/leistungen/pflasterarbeiten) unterscheiden wir befahrene Bereiche, Hauptwege und reine Sitzflächen. Materialwechsel oder eine passende Einfassung können die Bereiche gliedern. Unnötige Kanten sollten dabei vermieden werden. Vorhandene Höhen und Türanschlüsse entscheiden mit, welche Lösung sauber an das Haus und die angrenzenden Flächen anschließt."
+        ]
+      },
+      {
+        "heading": "Raum für Pflanzen schaffen, ohne die Nutzung zu verlieren",
+        "paragraphs": [
+          "Nicht jede bestehende Pflasterfläche muss dieselbe Größe behalten. Wir besprechen, wo ein Pflanzstreifen oder ein größeres Beet möglich wäre und welche Bereiche frei bleiben müssen. Die städtische Information zum klimagerechten Bauen nennt Begrünung und Entsiegelung als mögliche Maßnahmen im Bestand. Ob das zu Ihrem Hof passt, hängt auch von Boden, Leitungen und Aufbau ab.",
+          "Pflanzen brauchen geeigneten Wurzelraum, Licht und eine erreichbare Wasserversorgung. Schildern Sie, wie oft Sie den Garten pflegen möchten und ob der Sitzplatz zu bestimmten Tageszeiten Schatten braucht. Ein [Sichtschutz](/leistungen/zaunarbeiten) kann zusätzlich Privatsphäre schaffen; seine Lage sollte Fenster, Durchgänge und vorhandene Grenzen berücksichtigen, statt die Fläche einfach rundherum zu schließen."
+        ]
+      },
+      {
+        "heading": "Baustellenzugang und Wasserführung früh klären",
+        "paragraphs": [
+          "Ein schmaler Durchgang, Stufen oder eine Zufahrt mit begrenzter Höhe beeinflussen Materialtransport und Rückbau. Messen Sie deshalb nicht nur die spätere Terrasse, sondern auch den engsten Zugang. Teilen Sie mit, ob andere Bewohner den Hof während der Arbeiten nutzen. Diese Angaben helfen, Bauabschnitte und vorübergehende Lagerflächen realistisch abzustimmen.",
+          "Bei erneuerten Belägen gehört die [Entwässerung](/leistungen/entwaesserung) zum Gesamtkonzept. Zeigen Sie Rinnen, Abläufe und Bereiche, in denen Wasser stehen bleibt. Auch eine geplante [Bewässerung](/leistungen/bewaesserungsanlagen) wird vor dem Schließen der Flächen berücksichtigt. Für das Angebot unterscheiden wir Rückbau, Vorbereitung, neue Beläge und Begrünung, damit der vereinbarte Umfang nachvollziehbar bleibt."
+        ]
+      }
+    ],
+    "checklist": [
+      "Tägliche Wege und benötigte Abstellplätze einzeichnen.",
+      "Sitzplatz mit Tisch- und Stuhlflächen grob abmessen.",
+      "Engsten Zugang, Stufen und Durchfahrtshöhe zeigen.",
+      "Mögliche Pflanzbereiche und gewünschte Privatsphäre beschreiben.",
+      "Abläufe und zeitweise stehendes Wasser dokumentieren."
+    ],
+    "faqs": [
+      {
+        "question": "Gestaltet Loni auch einen kleinen Hof in Offenbach?",
+        "answer": "Ja, Sie können auch eine einzelne Außenfläche anfragen. Wichtig sind ihre Nutzung, der Zugang und die angrenzenden Bereiche. Fotos und ungefähre Maße helfen, die Möglichkeiten für Sitzplatz, Wege und Grün zu besprechen."
+      },
+      {
+        "question": "Kann ein Hof begrünt werden, obwohl er weiter als Zugang dient?",
+        "answer": "Häufig lässt sich die Flächenaufteilung prüfen. Benötigte Durchgänge und Abstellflächen müssen erhalten bleiben. Ob Teilbereiche zurückgebaut werden können, hängt unter anderem von Unterbau, Leitungen und Boden ab."
+      },
+      {
+        "question": "Was soll ich bei einem engen Zugang mitschicken?",
+        "answer": "Hilfreich sind Breite und Höhe des engsten Durchgangs, Fotos von Stufen und die Entfernung zwischen Anlieferung und Arbeitsfläche. Diese Punkte beeinflussen Transport, Materialwahl und Bauablauf."
+      },
+      {
+        "question": "Ist die Seite auch für andere Orte namens Offenbach gedacht?",
+        "answer": "Diese Ortsseite bezieht sich auf Offenbach am Main im Rhein-Main-Gebiet. Loni GalaBau hat seinen Firmensitz in Hattersheim und ist deutschlandweit tätig; nennen Sie deshalb bei jeder Anfrage die genaue Projektadresse."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-hanau", "gartenbau-neu-isenburg", "gartenbau-frankfurt"],
+    "sources": [
+      {
+        "title": "Offenbach am Main: Klimagerechtes Bauen und Begrünung",
+        "url": "https://www.offenbach.de/buerger_innen/umwelt-klima/klima/klimawandel-klimaanpassung/klimagerechtes-bauen.php"
+      },
+      {
+        "title": "Offenbach am Main: Klimakonzepte",
+        "url": "https://www.offenbach.de/buerger_innen/umwelt-klima/klima/klimakonzepte/klimakonzepte.php"
+      },
+      {
+        "title": "Offenbach am Main: Stadtpläne und amtliche Stadtteile",
+        "url": "https://www.offenbach.de/buerger_innen/rathaus-politik/offenbach-in-zahlen/stadtplaene-mit-gliederungseinheiten.php"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Hof oder Garten in Offenbach anfragen",
+      "text": "Schicken Sie eine Übersicht mit Wegen, Sitzplatz und Abstellflächen. Ergänzen Sie Fotos des engsten Zugangs und beschreiben Sie, wo Sie mehr Grün oder Privatsphäre wünschen."
+    },
+    "imageSlug": "gartenbau-sulzbach-taunus",
+    "imageAlt": "Gepflasterter Weg mit angrenzenden Gräsern und klarer Randführung",
+    "imageCaption": "Pflasterweg mit Gräsern – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-ruesselsheim",
+    "city": "Rüsselsheim am Main",
+    "shortName": "Rüsselsheim",
+    "title": "Gartenbau Rüsselsheim | Außenanlagen mit Loni GalaBau",
+    "description": "Gartenbau in Rüsselsheim am Main: Einfahrt, Terrasse, Rasen und Bepflanzung gemeinsam planen. Loni GalaBau aus Hattersheim für Ihre Außenanlage anfragen.",
+    "h1": "Garten- und Landschaftsbau in Rüsselsheim am Main",
+    "kicker": "Vom Hauszugang bis zum fertigen Garten",
+    "heroLead": "Sie möchten Ihre Außenanlage neu anlegen oder nach einem Umbau fertigstellen? Wir stimmen Einfahrt, Wege, Terrasse und Grün auf eine sinnvolle Reihenfolge ab.",
+    "districts": ["Rüsselsheim", "Bauschheim", "Haßloch", "Königstädten"],
+    "focus": "Hauszugang und Baustellenverkehr zuerst ordnen, Leitungen und Höhen vor fertigen Belägen klären und Rasen sowie Bepflanzung passend zum Baufortschritt anlegen.",
+    "intro": [
+      "Nach einem Hausbau oder größeren Umbau fehlt draußen oft noch der Zusammenhang: Der Eingang muss erreichbar sein, eine Terrasse soll entstehen und die übrige Fläche zum Garten werden. Für [Gartenbau in Rüsselsheim](/leistungen/gartengestaltung) nehmen wir diese Aufgaben gemeinsam auf. Das hilft, einzelne Arbeiten nicht unabhängig voneinander zu beauftragen und wichtige Vorbereitungen zu übersehen.",
+      "Loni GalaBau hat seinen Firmensitz in Hattersheim am Main und arbeitet deutschlandweit. Für Ihr Vorhaben in Rüsselsheim betrachten wir Grundstück, Hausanschlüsse und gewünschte Bauabschnitte. Die Stadt bietet Beratung zur Freiflächenplanung an. Vorhandene Unterlagen oder abgestimmte Vorgaben können Sie zum ersten Gespräch mitbringen, damit die Ausführung daran anknüpft."
+    ],
+    "sections": [
+      {
+        "heading": "Hauszugang, Einfahrt und Garten als Gesamtfläche sehen",
+        "paragraphs": [
+          "Beginnen Sie mit den festen Punkten: Haustür, Garage, Grundstückszugang und Ausgänge zum Garten. Dazu kommen die Wege, die Sie mit Einkauf, Fahrrad oder Mülltonnen nutzen. Für eine Einfahrt werden außerdem Fahrzeuge und erforderliche Bewegungsflächen besprochen. Erst daraus ergibt sich, wie viel Platz für Terrasse, Rasen und Beete bleibt.",
+          "Bei [Pflasterarbeiten](/leistungen/pflasterarbeiten) stimmen wir Einfassungen, Höhen und den erforderlichen Unterbau aufeinander ab. Eine bereits fertige Fläche darf spätere Arbeiten nicht unnötig erschweren. Nennen Sie deshalb auch Pläne, die erst später umgesetzt werden sollen, etwa zusätzliche Gartenwege, ein Tor oder eine Erweiterung der Terrasse."
+        ]
+      },
+      {
+        "heading": "Vorarbeiten abschließen, bevor die Oberflächen fertig sind",
+        "paragraphs": [
+          "Für die Reihenfolge sind offene Arbeiten am Haus, vorhandene Leitungen und geplante Anschlüsse entscheidend. Zeigen Sie Wasser- und Stromauslässe sowie Ablaufpunkte. Vorbereitende [Erdarbeiten](/leistungen/erdarbeiten) und Leitungswege sollten vor den neuen Belägen geklärt sein. So wird erkennbar, welche Leistungen zusammen ausgeführt werden müssen und wo ein späterer Abschnitt möglich ist.",
+          "Regenwasser und [Entwässerung](/leistungen/entwaesserung) werden anhand der tatsächlichen Flächen und Anschlüsse betrachtet. Die Rüsselsheimer Abwasserinformationen unterscheiden unterschiedliche Flächentypen; daraus lässt sich keine pauschale Eignung oder Gebührenersparnis für Ihr Projekt ableiten. Wenn befestigte Flächen geändert werden, sollten die örtlichen Anforderungen und erforderlichen Angaben vorab geklärt werden."
+        ]
+      },
+      {
+        "heading": "Mit Rasen, Pflanzen und Bewässerung den Garten fertigstellen",
+        "paragraphs": [
+          "Die Begrünung folgt passend zu den übrigen Arbeiten und zur Jahreszeit. Auf Flächen, über die noch schwere Transporte laufen, wäre frisch verlegter [Rollrasen](/leistungen/rasenanlagen) meist zu früh. Wir besprechen Bodenaufbereitung, Flächenübergänge und die Pflege nach der Anlage. Auch Beete sollten so liegen, dass sie später gut erreichbar sind.",
+          "Eine [Bewässerungsanlage](/leistungen/bewaesserungsanlagen) kann schon vor der fertigen Terrasse vorbereitet werden. Für ein Angebot sind deshalb sowohl der heutige Zustand als auch die geplante Nutzung wichtig. Teilen Sie Ihre Prioritäten mit: zunächst ein sauberer Zugang, zuerst die Familienterrasse oder eine komplette Außenanlage. Daraus lässt sich ein passender Leistungsumfang abstimmen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Hauszugänge, Garage und Terrassentüren im Plan markieren.",
+      "Offene Arbeiten am Haus und geplante Anschlüsse nennen.",
+      "Leitungspläne und vorhandene Freiflächenunterlagen bereithalten.",
+      "Anlieferung und notwendige Fahrwege fotografieren.",
+      "Prioritäten für erste und spätere Bauabschnitte festlegen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann Loni die Außenanlage nach einem Neubau in Rüsselsheim übernehmen?",
+        "answer": "Sie können Einfahrt, Terrasse, Wege und Garten gemeinsam anfragen. Wir klären den Bestand, offene Hausarbeiten und Anschlüsse, bevor der konkrete Leistungsumfang und die Reihenfolge vereinbart werden."
+      },
+      {
+        "question": "Lassen sich Einfahrt und Garten in getrennten Etappen bauen?",
+        "answer": "Das kann sinnvoll sein, wenn die Vorarbeiten zusammenpassen. Geplante Leitungen, Transportwege und spätere Flächen sollten bereits im ersten Abschnitt berücksichtigt werden."
+      },
+      {
+        "question": "Wann wird Rollrasen bei einer neuen Außenanlage verlegt?",
+        "answer": "Der Zeitpunkt richtet sich unter anderem nach den übrigen Arbeiten, Wetter und Bodenvorbereitung. Schwere Transporte sollten die neue Rasenfläche anschließend möglichst nicht mehr belasten; auch die Erstbewässerung muss gesichert sein."
+      },
+      {
+        "question": "Was beeinflusst die Kosten für eine komplette Außenanlage?",
+        "answer": "Neben der Größe zählen Erdarbeiten, Abtransport, Material, Unterbau, Entwässerung und Zugang. Fotos und ein Plan aller gewünschten Flächen helfen, diese Leistungen im Angebot nachvollziehbar zu beschreiben."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-darmstadt", "gartenbau-floersheim", "gartenbau-hochheim"],
+    "sources": [
+      {
+        "title": "Rüsselsheim: Stadtgrün und Freiflächenberatung",
+        "url": "https://www.ruesselsheim.de/klima-und-umwelt/stadtgruen/"
+      },
+      {
+        "title": "Rüsselsheim: Abwasserbeitrags- und Gebührensatzung",
+        "url": "https://www.ruesselsheim.de/medien/pdfs-ruesselsheim.de/satzungen/oeffentliche-einrichtungen-und-wirtschaftsfoerderung/Abwasserbeitrags-und-Gebuehrensatzung.pdf"
+      },
+      {
+        "title": "Rüsselsheim am Main: Stadtteile und Wappen",
+        "url": "https://www.ruesselsheim.de/stadt/ruesselsheim-am-main/stadtteile/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihre Außenanlage in Rüsselsheim abstimmen",
+      "text": "Eine Skizze mit Eingang, Einfahrt, Terrasse und Grünflächen zeigt das Gesamtvorhaben. Ergänzen Sie offene Hausarbeiten, Leitungspläne und Ihre Prioritäten für die Fertigstellung."
+    },
+    "imageSlug": "gartenbau-floersheim",
+    "imageAlt": "Gepflasterter Hauseingang mit eingefasstem Höhenübergang",
+    "imageCaption": "Gepflasterter Hauseingang mit Höhenübergang – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "main-taunus"
+  },
+  {
+    "slug": "gartenbau-oberursel",
+    "city": "Oberursel (Taunus)",
+    "shortName": "Oberursel",
+    "title": "Gartenbau Oberursel | Gartengestaltung & Pflasterarbeiten",
+    "description": "Gartengestaltung in Oberursel: Terrasse, Wege, Höhen und Entwässerung aufeinander abstimmen. Loni GalaBau aus Hattersheim für Ihr Gartenprojekt anfragen.",
+    "h1": "Garten- und Landschaftsbau in Oberursel",
+    "kicker": "Gute Übergänge zwischen Haus und Garten",
+    "heroLead": "Neue Wege und eine Terrasse sollen sich selbstverständlich nutzen lassen. Wir betrachten deshalb Höhen, Anschlüsse und Wasserführung gemeinsam mit Ihrer Gartenidee.",
+    "districts": ["Oberursel", "Bommersheim", "Oberstedten", "Stierstadt", "Weißkirchen"],
+    "focus": "Vorhandene Höhen und Schwellen aufnehmen, Wege nach ihrer täglichen Nutzung planen und Oberflächenwasser bei Änderungen im Garten früh berücksichtigen.",
+    "intro": [
+      "Eine neue Terrasse beginnt nicht bei der Plattenfarbe. Für [Gartengestaltung in Oberursel](/leistungen/gartengestaltung) betrachten wir zuerst die Verbindung vom Haus zum Garten: Türschwellen, vorhandene Stufen, angrenzende Wege und die späteren Nutzungsflächen. Auch kleine Höhenunterschiede können beeinflussen, wie bequem ein Bereich erreichbar ist und wohin Regenwasser fließt.",
+      "Loni GalaBau arbeitet von Hattersheim am Main aus deutschlandweit. Für Ihr Grundstück in Oberursel brauchen wir den konkreten Bestand; aus der Lage im Taunus schließen wir keine bestimmte Hanglage oder Bodenbeschaffenheit. Die städtischen Starkregengefahrenkarten dienen als ergänzende Orientierung. Sie ersetzen weder die Aufnahme vor Ort noch die Planung der Entwässerung."
+    ],
+    "sections": [
+      {
+        "heading": "Höhen und tägliche Wege zuerst aufnehmen",
+        "paragraphs": [
+          "Zeigen Sie die Terrassentür, bestehende Treppen und die Anschlüsse an Garage oder Hauseingang. Eine seitliche Aufnahme hilft, Höhenunterschiede zu erkennen. Beschreiben Sie außerdem, ob Gartenmöbel, Fahrräder, Kinderwagen oder Gartengeräte regelmäßig über die Fläche bewegt werden. Diese Nutzung bestimmt mit, welche Breiten, Übergänge und Oberflächen für Sie sinnvoll sind.",
+          "Bei [Pflasterarbeiten in Oberursel](/leistungen/pflasterarbeiten) werden Aufbau und Einfassungen auf den Bestand abgestimmt. Ein neuer Weg sollte nicht nur am Anfang bequem sein, sondern auch am anderen Ende passend anschließen. Für Stufen oder Übergänge aus [Naturstein](/leistungen/natursteinarbeiten) prüfen wir Lage, Abmessungen und die Einbindung in das Gesamtvorhaben."
+        ]
+      },
+      {
+        "heading": "Wasserwege bei neuen Flächen berücksichtigen",
+        "paragraphs": [
+          "Notieren Sie, wo sich nach Regen Wasser sammelt oder über die Fläche läuft. Zeigen Sie Rinnen, Abläufe und angrenzende tiefer liegende Bereiche. Wenn Beläge oder Höhen geändert werden, gehört die [Entwässerung](/leistungen/entwaesserung) von Anfang an zur Planung. Eine neue Oberfläche allein beseitigt vorhandene Probleme nicht automatisch.",
+          "Oberursel veröffentlicht Hinweise zum individuellen Hochwasserschutz und Starkregengefahrenkarten. Diese helfen, Fragen zu möglichen Wasserwegen früh zu erkennen. Für die Lösung auf Ihrem Grundstück zählen zusätzlich die tatsächlichen Höhen, vorhandenen Anschlüsse und Bodenverhältnisse. Bei weitergehendem Planungsbedarf wird der erforderliche fachliche Umfang vor der Ausführung geklärt."
+        ]
+      },
+      {
+        "heading": "Terrasse und Garten ohne unnötige Nacharbeiten verbinden",
+        "paragraphs": [
+          "Bevor die neue Fläche geschlossen wird, besprechen wir Leitungen und mögliche spätere Ergänzungen. Soll eine [Bewässerung](/leistungen/bewaesserungsanlagen) entstehen oder ein Gartenbereich erst im nächsten Abschnitt folgen, lassen sich erforderliche Vorarbeiten gemeinsam betrachten. Auch der Weg für Material und Maschinen muss bis zum jeweiligen Bauabschnitt verfügbar bleiben.",
+          "Eine angrenzende [Rasenfläche](/leistungen/rasenanlagen) oder Bepflanzung wird passend zu den fertigen Kanten und zur späteren Pflege geplant. Schmale Reststreifen sollten nicht ohne Zweck übrig bleiben. Nennen Sie uns deshalb auch, wie Sie mähen, gießen und den Garten nutzen möchten. Ein gemeinsamer Plan macht die Übergänge zwischen befestigten und grünen Bereichen nachvollziehbar."
+        ]
+      }
+    ],
+    "checklist": [
+      "Türschwellen, Stufen und Wege seitlich fotografieren.",
+      "Tägliche Laufwege und besondere Nutzungsanforderungen beschreiben.",
+      "Abläufe und beobachtete Wasseransammlungen zeigen.",
+      "Vorhandene Höhen- und Leitungspläne beilegen.",
+      "Spätere Gartenabschnitte und gewünschte Begrünung nennen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann eine Terrasse ohne störenden Übergang an den Garten anschließen?",
+        "answer": "Das hängt von vorhandenen Höhen, Hausanschluss und Entwässerung ab. Zeigen Sie die Türschwelle und angrenzende Flächen. Wir klären, welche Übergänge im konkreten Bestand möglich sind."
+      },
+      {
+        "question": "Übernimmt Loni Pflasterarbeiten für Wege und Einfahrten in Oberursel?",
+        "answer": "Ja, beide Bereiche können angefragt werden. Da Nutzung und Belastung unterschiedlich sind, werden Unterbau, Belag und Einfassungen passend zur jeweiligen Fläche abgestimmt."
+      },
+      {
+        "question": "Reicht die städtische Starkregenkarte für die Gartenplanung?",
+        "answer": "Nein. Sie bietet eine erste Orientierung. Für Arbeiten auf dem Grundstück werden tatsächliche Höhen, Anschlüsse und örtliche Bedingungen betrachtet; aus einer Kartenfarbe allein ergibt sich keine fertige Lösung."
+      },
+      {
+        "question": "Welche Unterlagen helfen bei einem Garten mit Höhenunterschieden?",
+        "answer": "Hilfreich sind ein Lageplan, bekannte Höhen, Fotos von Stufen und Türen sowie eine Skizze der gewünschten Wege. Wenn keine Pläne vorliegen, können Sie zunächst Fotos und ungefähre Maße senden."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-bad-homburg", "gartenbau-kronberg", "gartenbau-koenigstein"],
+    "sources": [
+      {
+        "title": "Oberursel: Individueller Hochwasserschutz und Starkregengefahrenkarten",
+        "url": "https://www.oberursel.de/de/leben-wohnen/oekologie-umwelt/klimawandel/klimaanpassung/individueller-hochwasserschutz/"
+      },
+      {
+        "title": "Oberursel: Bauinformationen und Bebauungspläne",
+        "url": "https://www.oberursel.de/de/rathaus/buergerservice/online-angebote-formulare/bauen-wohnen/"
+      },
+      {
+        "title": "Oberursel: Stadtteile",
+        "url": "https://www.oberursel.de/de/wirtschaft-stadtentwicklung/projekte-stadtentwicklung/stadtteile/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Terrasse und Wege in Oberursel vorbereiten",
+      "text": "Zeigen Sie Übergänge am Haus, vorhandene Stufen und den Verlauf des Wassers nach Regen. Zusammen mit einer Nutzungsskizze entsteht daraus die Grundlage für die Abstimmung Ihres Gartenprojekts."
+    },
+    "imageSlug": "gartenbau-bad-soden",
+    "imageAlt": "Terrassenfläche aus großformatigen Platten mit gleichmäßigem Fugenbild",
+    "imageCaption": "Großformatige Terrassenplatten – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-neu-isenburg",
+    "city": "Neu-Isenburg",
+    "shortName": "Neu-Isenburg",
+    "title": "Gartenbau Neu-Isenburg | Vorgarten & Gartengestaltung",
+    "description": "Gartenbau in Neu-Isenburg: Vorgarten, Hauseingang, Wege und Bepflanzung passend erneuern. Loni GalaBau aus Hattersheim – Gartenprojekt anfragen.",
+    "h1": "Garten- und Landschaftsbau in Neu-Isenburg",
+    "kicker": "Ein Eingang, der zum Haus und Alltag passt",
+    "heroLead": "Der Vorgarten soll einladend aussehen und im Alltag funktionieren. Wir stimmen Hauseingang, notwendige Wege, Abstellflächen und Begrünung miteinander ab.",
+    "districts": ["Neu-Isenburg", "Gravenbruch", "Zeppelinheim"],
+    "focus": "Den Bereich zwischen Straße und Haus nach tatsächlichem Platzbedarf ordnen. Begrünung, gut nutzbare Wege und Abstellflächen gemeinsam planen und örtliche Vorgaben früh einbeziehen.",
+    "intro": [
+      "Ein Vorgarten ist täglich im Blick und wird häufig zugleich als Zugang genutzt. Bei der [Gartengestaltung in Neu-Isenburg](/leistungen/gartengestaltung) beginnen wir mit Haustür, Briefkasten, Fahrrädern und Mülltonnen. Was davon liegt fest, was darf einen neuen Platz bekommen und wo wünschen Sie sich Pflanzen? Diese Fragen bringen die Gestaltung näher an Ihren Alltag.",
+      "Unser Betrieb sitzt in Hattersheim am Main und arbeitet deutschlandweit. Für Neu-Isenburg planen wir anhand Ihrer Projektadresse und des vorhandenen Grundstücks. Die Stadt veröffentlicht eine Vorgartensatzung sowie weitere örtliche Regelungen. Welche Vorgaben für Ihr Vorhaben gelten, sollte vor der Ausführung geklärt werden; die unten verlinkten städtischen Unterlagen helfen beim Einstieg."
+    ],
+    "sections": [
+      {
+        "heading": "Eingang und Abstellflächen mit ausreichendem Platz anordnen",
+        "paragraphs": [
+          "Zeichnen Sie Haustür, Zuwegung und benötigte Abstellplätze maßstäblich oder mit groben Maßen ein. Denken Sie auch an geöffnete Türen, das Herausziehen von Mülltonnen und das Rangieren mit Fahrrädern. So wird sichtbar, wo ein Weg breiter sein muss und wo eine kleinere befestigte Fläche ausreicht.",
+          "Für [Pflasterarbeiten](/leistungen/pflasterarbeiten) werden die Anschlüsse an Hauseingang und vorhandene Einfassungen aufgenommen. Ein gut gegliederter Eingangsbereich braucht nicht zwingend viele verschiedene Materialien. Passende Kanten und ein klarer Weg können bereits Ordnung schaffen. Die Wasserführung und der Unterbau werden trotzdem für die jeweilige Nutzung geplant."
+        ]
+      },
+      {
+        "heading": "Begrünung nach Licht und gewünschter Pflege auswählen",
+        "paragraphs": [
+          "Notieren Sie, wann der Vorgarten Sonne bekommt und welche Pflanzen erhalten bleiben sollen. Für die neue Bepflanzung sind außerdem Platz, Boden und spätere Wuchsgröße wichtig. Ein kleines Pflanzbeet sollte nicht mit Arten gefüllt werden, die den Weg bald verengen. Auch die Erreichbarkeit zum Gießen und Pflegen gehört zur Auswahl.",
+          "Neu-Isenburg führt seine Vorgartensatzung im städtischen Satzungsverzeichnis. Sie ist ein Anlass, die zulässige Flächengestaltung früh zu prüfen, statt erst nach der Materialbestellung. Wir übernehmen daraus keine pauschale Aussage für jede Bestandsfläche. Vorhandene Pläne, bekannte Auflagen und Ihre Wünsche zur Begrünung werden für das konkrete Projekt zusammengetragen."
+        ]
+      },
+      {
+        "heading": "Vorgarten, Sichtschutz und hinteren Garten verbinden",
+        "paragraphs": [
+          "Wenn gleichzeitig der hintere Garten erneuert wird, sollte der Transportweg durch den Eingangsbereich berücksichtigt werden. Eine fertige Zuwegung kann sonst später erneut belastet werden. Vorbereitende [Erdarbeiten](/leistungen/erdarbeiten), Wasserleitungen und gewünschte Anschlüsse stimmen wir deshalb über beide Bereiche hinweg ab.",
+          "Ein neuer [Zaun oder Sichtschutz](/leistungen/zaunarbeiten) muss mit Toren, Einfassungen und der Lage der Grenze zusammenpassen. Für Rasen und Beete kann eine vorbereitete [Bewässerung](/leistungen/bewaesserungsanlagen) sinnvoll sein. Nennen Sie alle gewünschten Arbeiten schon bei der Anfrage, auch wenn sie in Etappen erfolgen sollen. So lässt sich ein zusammenhängender Leistungsumfang besprechen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Haustür, Briefkasten und Abstellplätze in einer Skizze zeigen.",
+      "Wege inklusive geöffneter Türen und Torflügel abmessen.",
+      "Lichtverhältnisse und zu erhaltende Pflanzen beschreiben.",
+      "Vorhandene Pläne oder bekannte örtliche Vorgaben beilegen.",
+      "Weitere Gartenarbeiten und Transportwege nennen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann Loni meinen Vorgarten in Neu-Isenburg neu gestalten?",
+        "answer": "Ja. Wir besprechen Wege, Abstellflächen und Begrünung gemeinsam. Fotos, ungefähre Maße und Angaben zu den Dingen, die bleiben sollen, bilden die Grundlage für die erste Abstimmung."
+      },
+      {
+        "question": "Lässt sich ein Vorgarten pflegearm bepflanzen?",
+        "answer": "Die Pflanzenauswahl und Flächenaufteilung lassen sich an Ihre verfügbare Zeit anpassen. Licht, Boden, Wuchsgröße und Zugang zum Gießen müssen dabei passen. Vollständig pflegefrei ist eine bepflanzte Fläche nicht."
+      },
+      {
+        "question": "Welche örtlichen Vorgaben muss ich berücksichtigen?",
+        "answer": "Neu-Isenburg veröffentlicht unter anderem eine Vorgartensatzung und Regelungen zum Grünbestand. Ob und wie sie Ihr Grundstück betreffen, muss für das Vorhaben geprüft werden. Das städtische Satzungsverzeichnis ist unten verlinkt."
+      },
+      {
+        "question": "Kann der Hauseingang während der Arbeiten nutzbar bleiben?",
+        "answer": "Beschreiben Sie bereits bei der Anfrage, welche Zugänge täglich gebraucht werden. Wir besprechen daraufhin mögliche Bauabschnitte und vorübergehende Wege. Die tatsächlichen Möglichkeiten hängen von Platz und Arbeitsumfang ab."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-offenbach", "gartenbau-frankfurt", "gartenbau-darmstadt"],
+    "sources": [
+      {
+        "title": "Neu-Isenburg: Stadtrecht mit Vorgarten- und Grünbestandssatzung",
+        "url": "https://www.neu-isenburg.de/rathaus_und_service/verwaltung_im_rathaus/Stadtrecht"
+      },
+      {
+        "title": "Neu-Isenburg: Vorgartensatzung",
+        "url": "https://www.neu-isenburg.de/medien/downloads/buergerservice/verwaltung-im-rathaus/stadtrecht/6-8_Vorgartensatzung_barrierearm.pdf"
+      },
+      {
+        "title": "Neu-Isenburg und seine Stadtteile",
+        "url": "https://www.neu-isenburg.de/leben_und_wohnen/stadt_und_geschichte/stadtteile"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Den Vorgarten in Neu-Isenburg neu ordnen",
+      "text": "Schicken Sie Fotos von Straße, Hauseingang und Abstellflächen. Markieren Sie vorhandene Pflanzen und nennen Sie, wie viel Pflege Sie später einplanen möchten."
+    },
+    "imageSlug": "gartenbau-eschborn",
+    "imageAlt": "Staudenpflanzung entlang eines befestigten Wegs im Stadtraum",
+    "imageCaption": "Staudenpflanzung entlang eines Wegs – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-kronberg",
+    "city": "Kronberg im Taunus",
+    "shortName": "Kronberg",
+    "title": "Gartenbau Kronberg im Taunus | Loni GalaBau",
+    "description": "Garten in Kronberg erneuern: Bäume und Bestand berücksichtigen, Terrasse, Wege und Grün passend ergänzen. Loni GalaBau aus Hattersheim anfragen.",
+    "h1": "Garten- und Landschaftsbau in Kronberg im Taunus",
+    "kicker": "Den Garten erneuern und seinen Charakter erhalten",
+    "heroLead": "Vorhandene Bäume, vertraute Wege und ein gewachsener Garten müssen einer Veränderung nicht im Weg stehen. Wir planen die neuen Bereiche vom Bestand aus.",
+    "districts": ["Kronberg", "Oberhöchstadt", "Schönberg"],
+    "focus": "Erhaltenswerte Bäume und Pflanzen vor Baubeginn aufnehmen. Neue Beläge und Leitungen mit Transportwegen, Lagerflächen und dem Schutz vorhandener Gartenbereiche abstimmen.",
+    "intro": [
+      "Ein Garten kann sich mit den Lebensumständen verändern: Ein größerer Sitzplatz wird gewünscht, ein Weg ist unpraktisch oder die Rasenfläche soll anders genutzt werden. Für [Gartenbau in Kronberg](/leistungen/gartengestaltung) schauen wir zunächst auf die Elemente, die bleiben sollen. Daraus entsteht ein Umbau, der vorhandene Qualitäten und neue Wünsche zusammenführt.",
+      "Loni GalaBau arbeitet deutschlandweit mit Firmensitz in Hattersheim am Main. Ihr Vorhaben in Kronberg wird anhand der konkreten Fläche geplant. Die Stadt veröffentlicht ausführliche Hinweise zum Baumschutz auf Baustellen. Wenn Bäume von Arbeiten betroffen sein können, gehören die Abstimmung und gegebenenfalls weitere fachliche Planung deshalb an den Anfang des Vorhabens."
+    ],
+    "sections": [
+      {
+        "heading": "Bäume und erhaltenswerte Bereiche vorab markieren",
+        "paragraphs": [
+          "Zeigen Sie alle Bäume, Hecken, Beete und Bauteile, die erhalten bleiben sollen. Wichtig sind auch die angrenzenden Flächen, in denen gearbeitet, gefahren oder Material gelagert werden könnte. Ein Baum wird nicht nur am Stamm berührt; auch Veränderungen im Umfeld können relevant sein. Eine Übersicht macht solche Zusammenhänge früh sichtbar.",
+          "Die Kronberger Baumschutzinformation empfiehlt, Schutzmaßnahmen und Baustellenlogistik rechtzeitig zu planen. Ob Ihr Vorhaben besondere Abstimmungen oder ein Fachkonzept benötigt, wird vor der Ausführung geklärt. Wir leiten aus Fotos keine Fällfreigabe ab. Für die erste Anfrage helfen vorhandene Pläne und die klare Kennzeichnung der Bereiche, die unangetastet bleiben sollen."
+        ]
+      },
+      {
+        "heading": "Neue Terrasse und Wege in den Garten einfügen",
+        "paragraphs": [
+          "Eine Terrasse soll zu Ihren heutigen Möbeln und Nutzungswünschen passen, aber auch an vorhandene Wege anschließen. Wir besprechen Form, Lage und notwendige Bewegungsflächen, bevor ein Material festgelegt wird. Für [Natursteinarbeiten](/leistungen/natursteinarbeiten) sind Oberflächenwirkung und Format wichtig; ebenso zählen Höhen, Einfassungen und die technische Vorbereitung.",
+          "Bei erneuerten [Pflasterflächen](/leistungen/pflasterarbeiten) prüfen wir, welche bestehenden Teile bleiben können und wie die Übergänge gestaltet werden. Bekannte Leitungswege und Abläufe werden dabei berücksichtigt. Wenn eine neue Trasse mit erhaltenswerten Pflanzen kollidiert, müssen die Möglichkeiten vor dem Rückbau geklärt werden. Erst dann lässt sich ein sinnvoller Arbeitsumfang beschreiben."
+        ]
+      },
+      {
+        "heading": "Den Umbau mit erreichbaren Gartenbereichen organisieren",
+        "paragraphs": [
+          "Nennen Sie uns den Zugang für Materialien und die Flächen, die während der Arbeiten gebraucht werden. Gerade im bestehenden Garten sollten Lagerplätze und Transportwege bewusst gewählt werden. Vorbereitende [Erdarbeiten](/leistungen/erdarbeiten) werden mit den späteren Oberflächen abgestimmt. Ein abschnittsweiser Umbau ist möglich, wenn die erforderlichen Vorarbeiten zusammenpassen.",
+          "Für ergänzende [Rasenanlagen](/leistungen/rasenanlagen) oder Pflanzbereiche werden die verbleibenden Lichtverhältnisse und der Boden betrachtet. Eine geplante [Bewässerung](/leistungen/bewaesserungsanlagen) sollte früh bekannt sein. Beschreiben Sie, welche Pflege Sie selbst übernehmen möchten. Damit werden nicht nur neue Flächen gebaut, sondern auch ihre spätere Nutzung und Erreichbarkeit besprochen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Bäume, Hecken und zu erhaltende Beete markieren.",
+      "Arbeitsbereich und angrenzenden Bestand gemeinsam fotografieren.",
+      "Bekannte Leitungen und vorhandene Abläufe angeben.",
+      "Transportwege und mögliche Lagerflächen zeigen.",
+      "Nutzbare Gartenbereiche und gewünschte Etappen benennen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann eine neue Terrasse in einen gewachsenen Garten eingefügt werden?",
+        "answer": "Ja, das lässt sich anhand von Lage, Höhen, Bestand und Nutzung planen. Zeigen Sie auch die Pflanzen und Wege rund um den gewünschten Sitzplatz, damit die Anschlüsse mitbetrachtet werden."
+      },
+      {
+        "question": "Was ist wichtig, wenn Bäume nahe an der Baustelle stehen?",
+        "answer": "Markieren Sie die Bäume schon bei der Anfrage. Arbeitsflächen, Transporte und mögliche Eingriffe müssen vorab geprüft werden. Die verlinkten Kronberger Informationen nennen die örtlichen Ansprechpartner und Hinweise zur Planung."
+      },
+      {
+        "question": "Kann vorhandenes Pflaster beim Gartenumbau wiederverwendet werden?",
+        "answer": "Das hängt vom Materialzustand, vorhandenen Mengen und der neuen Nutzung ab. Wir besprechen, ob Wiederverwendung sinnvoll ist und welche Anpassungen an Unterbau, Einfassungen oder Anschlüssen erforderlich wären."
+      },
+      {
+        "question": "Brauche ich für eine erste Anfrage schon einen fertigen Gartenplan?",
+        "answer": "Nein. Fotos, ungefähre Maße und eine Liste mit „erhalten“, „erneuern“ und „noch offen“ reichen für den Einstieg. Bekannte örtliche Vorgaben und vorhandene Pläne sollten Sie ergänzen."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-koenigstein", "gartenbau-oberursel", "gartenbau-bad-soden"],
+    "sources": [
+      {
+        "title": "Kronberg: Baumschutz auf Baustellen",
+        "url": "https://www.kronberg.de/umwelt-klimaschutz/umwelt-und-naturschutz/baumschutz/"
+      },
+      {
+        "title": "Kronberg: Informationen für Bauherren",
+        "url": "https://www.kronberg.de/planen-bauen-mobilitaet/informationen-fuer-bauherrn/baugenehmigungen/"
+      },
+      {
+        "title": "Kronberg im Taunus: Daten, Zahlen und Stadtteile",
+        "url": "https://www.kronberg.de/stadtleben-aktuelles/ueber-kronberg/daten-zahlen-fakten/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihren Gartenumbau in Kronberg vorbereiten",
+      "text": "Zeigen Sie uns die gewünschte Veränderung zusammen mit dem Bestand, der bleiben soll. Eine Skizze von Zugang, Bäumen und neuen Flächen hilft, die nächsten Schritte gezielt zu besprechen."
+    },
+    "imageSlug": "gartenbau-kriftel",
+    "imageAlt": "Rasenfläche mit Hecke und einem runden Sitzbereich",
+    "imageCaption": "Rasenfläche mit Hecke und rundem Sitzbereich – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-koenigstein",
+    "city": "Königstein im Taunus",
+    "shortName": "Königstein",
+    "title": "Gartenbau Königstein im Taunus | Loni GalaBau",
+    "description": "Gartenbau in Königstein im Taunus: Sitzplätze, Wege, Naturstein und Höhenübergänge passend planen. Loni GalaBau aus Hattersheim für Ihr Projekt anfragen.",
+    "h1": "Garten- und Landschaftsbau in Königstein im Taunus",
+    "kicker": "Gartenbereiche gut miteinander verbinden",
+    "heroLead": "Vom Haus zum Sitzplatz und weiter ins Grün: Wir planen Wege und Übergänge so, dass die einzelnen Bereiche Ihres Gartens sinnvoll zusammenarbeiten.",
+    "districts": ["Königstein", "Falkenstein", "Mammolshain", "Schneidhain"],
+    "focus": "Wege, Stufen und Sitzbereiche nach vorhandenen Höhen und Nutzung planen. Transporte und Wasserführung mitdenken, bevor Naturstein oder andere Beläge eingebaut werden.",
+    "intro": [
+      "Ein Garten wird leichter nutzbar, wenn seine Bereiche gut erreichbar sind. Für [Gartengestaltung in Königstein](/leistungen/gartengestaltung) besprechen wir deshalb nicht nur die neue Terrasse, sondern auch den Weg dorthin und die Verbindung zu Beeten und Rasen. Vorhandene Höhenunterschiede werden aufgenommen, ohne aus der Ortslage pauschal auf Ihr Grundstück zu schließen.",
+      "Loni GalaBau hat seinen Firmensitz in Hattersheim am Main und arbeitet deutschlandweit. Bei Ihrem Projekt in Königstein im Taunus helfen Fotos aus verschiedenen Blickrichtungen und Angaben zur Anlieferung. Die Stadt stellt Fließpfadkarten bereit. Solche Unterlagen können Fragen zur Wasserführung aufwerfen, ersetzen aber keine Beurteilung der tatsächlichen Grundstückssituation."
+    ],
+    "sections": [
+      {
+        "heading": "Wege und Stufen nach der Nutzung planen",
+        "paragraphs": [
+          "Welche Gartenbereiche möchten Sie regelmäßig erreichen und was transportieren Sie dorthin? Ein Weg zum Sitzplatz wird anders genutzt als eine Verbindung für Gartengeräte. Zeigen Sie bestehende Stufen und Engstellen. Wenn Höhenunterschiede vorhanden sind, besprechen wir mögliche Übergänge gemeinsam mit der gewünschten Wegführung und dem Platz, der dafür verfügbar ist.",
+          "Für [Natursteinarbeiten](/leistungen/natursteinarbeiten) gehören Materialwirkung, Oberflächenbeschaffenheit und Abmessungen zusammen. Eine Stufe muss sich in den Weg und die angrenzende Fläche einfügen. Bei größeren Veränderungen am Gelände wird der erforderliche Planungsumfang gesondert geklärt. Eine allgemeine Materialempfehlung aus der Ferne kann das nicht ersetzen."
+        ]
+      },
+      {
+        "heading": "Wasserführung entlang der Gartenwege berücksichtigen",
+        "paragraphs": [
+          "Fotografieren Sie Stellen, an denen Wasser nach Regen stehen bleibt oder über den Weg läuft. Zeigen Sie auch die angrenzenden Flächen oberhalb und unterhalb des geplanten Bauabschnitts. Neue Kanten, Stufen und Beläge können Wasserwege verändern. Deshalb betrachten wir die [Entwässerung](/leistungen/entwaesserung) mit dem gesamten Übergang zwischen den Bereichen.",
+          "Königsteins Fließpfadkarten dienen der Orientierung zu möglichen Abflusswegen. Sie stellen kein Aufmaß Ihres Gartens und keine fertige Entwässerungsplanung dar. Für die Ausführung sind tatsächliche Höhen, vorhandene Leitungen und örtliche Voraussetzungen maßgeblich. Bei Änderungen befestigter Flächen können außerdem Angaben an die Stadtwerke relevant werden; die offiziellen Informationen sind unten verlinkt."
+        ]
+      },
+      {
+        "heading": "Materialtransport und Reihenfolge für den Umbau festlegen",
+        "paragraphs": [
+          "Ein Garten hinter dem Haus kann über eine Zufahrt, einen schmalen Durchgang oder vorhandene Treppen erreichbar sein. Diese Unterschiede beeinflussen Rückbau und Materialtransport. Schicken Sie deshalb den vollständigen Weg von der Anlieferung bis zur Arbeitsfläche mit. Auch eine mögliche Zwischenlagerung und die zu erhaltenden Gartenbereiche werden besprochen.",
+          "Nach erforderlichen [Erdarbeiten](/leistungen/erdarbeiten) entstehen die vorgesehenen Einfassungen und [Pflasterflächen](/leistungen/pflasterarbeiten). Rasen und Pflanzflächen werden zum passenden Zeitpunkt ergänzt. Wenn Sie abschnittsweise vorgehen möchten, halten wir früh fest, welche Übergänge und Leitungen für spätere Arbeiten vorbereitet sein müssen. So bleibt die Planung auch über mehrere Bauabschnitte zusammenhängend."
+        ]
+      }
+    ],
+    "checklist": [
+      "Gewünschte Gartenwege und Sitzplätze in einer Skizze verbinden.",
+      "Stufen und Höhenübergänge aus mehreren Richtungen fotografieren.",
+      "Beobachtete Wasserwege und vorhandene Abläufe zeigen.",
+      "Den gesamten Transportweg mit Engstellen dokumentieren.",
+      "Erhaltenswerte Bereiche und spätere Bauabschnitte benennen."
+    ],
+    "faqs": [
+      {
+        "question": "Plant Loni auch Wege und Gartentreppen in Königstein?",
+        "answer": "Wege, Natursteinarbeiten und Übergänge können Teil Ihrer Anfrage sein. Vor der Ausführung werden Höhen, Nutzung, Anschlüsse und der notwendige technische Planungsumfang für das konkrete Vorhaben geklärt."
+      },
+      {
+        "question": "Kann eine vorhandene Terrasse mit neuen Gartenwegen verbunden werden?",
+        "answer": "Ja, die Anschlüsse lassen sich am Bestand prüfen. Dafür sind Fotos von Belag, Kanten und Höhen sowie Angaben zum Zustand hilfreich. Die neue Wegführung sollte zur Nutzung und Wasserführung passen."
+      },
+      {
+        "question": "Was tun, wenn Material nur über einen schmalen Zugang in den Garten kommt?",
+        "answer": "Senden Sie Maße und Fotos aller Engstellen, Stufen und Höhenbegrenzungen. Der Zugang beeinflusst Transportverfahren, Baustellenorganisation und Aufwand und sollte vor der Angebotsabstimmung bekannt sein."
+      },
+      {
+        "question": "Beziehen sich die Angebote auf Königstein im Taunus?",
+        "answer": "Ja, diese Seite ist für Königstein im Taunus angelegt. Nennen Sie bei der Anfrage die genaue Adresse und den gewünschten Arbeitsumfang. Unser Firmensitz bleibt Hattersheim am Main."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-kronberg", "gartenbau-oberursel", "gartenbau-bad-soden"],
+    "sources": [
+      {
+        "title": "Königstein im Taunus: Kommunale Fließpfadkarten",
+        "url": "https://www.koenigstein.de/rathaus-politik/bauen-wohnen/fliesspfadkarten/"
+      },
+      {
+        "title": "Königstein im Taunus: Stadtwerke und Grundstücksentwässerung",
+        "url": "https://www.koenigstein.de/rathaus-politik/stadtwerke/"
+      },
+      {
+        "title": "Königstein im Taunus: Bebauungspläne nach Ortsteilen",
+        "url": "https://www.koenigstein.de/rathaus-politik/bauen-wohnen/bebauungsplaene/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Wege und Garten in Königstein abstimmen",
+      "text": "Zeigen Sie die Verbindung vom Haus zu den geplanten Gartenbereichen, vorhandene Stufen und den Transportweg. Mit Ihren Nutzungswünschen lässt sich daraus das erste Gespräch vorbereiten."
+    },
+    "imageSlug": "gartenbau-hofheim",
+    "imageAlt": "Natursteinmauer mit angrenzender Außentreppe als Übergang zwischen Geländehöhen",
+    "imageCaption": "Natursteinmauer mit Außentreppe – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau. Thematische Aufnahme, keine Ortsreferenz.",
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-kelkheim",
+    "city": "Kelkheim (Taunus)",
+    "shortName": "Kelkheim",
+    "title": "Gartenbau Kelkheim | Terrasse, Wege und Garten gestalten",
+    "description": "Gartenbau in Kelkheim: Terrasse, Gartenwege, Höhenübergänge und Rasen zusammen planen. Loni GalaBau aus Hattersheim für Ihr Vorhaben anfragen.",
+    "h1": "Garten- und Landschaftsbau in Kelkheim",
+    "kicker": "Aus Höhenunterschieden werden nutzbare Gartenbereiche",
+    "heroLead": "Eine Terrasse am Haus, ein gut erreichbarer Rasen und Wege ohne unnötige Umwege: Wir planen Ihren Garten in Kelkheim von den Anschlüssen bis zur fertigen Oberfläche.",
+    "districts": [
+      "Kelkheim",
+      "Kelkheim-Mitte",
+      "Münster",
+      "Hornau",
+      "Fischbach",
+      "Ruppertshain",
+      "Eppenhain"
+    ],
+    "focus": "Vorhandene Höhen und tägliche Wege aufnehmen, Übergänge zwischen Haus und Garten gestalten und Transportwege vor Erd- und Belagsarbeiten klären.",
+    "intro": [
+      "Soll der Garten leichter erreichbar werden oder braucht Ihre Terrasse einen besseren Anschluss an den Rasen? Bei der [Gartengestaltung](/leistungen/gartengestaltung) in Kelkheim beginnen wir mit den Wegen, die Sie täglich zurücklegen. Türschwellen, vorhandene Stufen und Geländehöhen geben dabei wichtige Anhaltspunkte. Ob Ihr Grundstück eben oder geneigt ist, wird individuell aufgenommen.",
+      "Loni GalaBau kommt aus Hattersheim am Main und arbeitet deutschlandweit. Für Ihr Projekt in Kelkheim helfen uns eine Übersicht des Gartens und Fotos entlang des Weges vom Haus bis zur Grundstücksgrenze. Beschreiben Sie, wo Sie sitzen, spielen, arbeiten oder mit einer Schubkarre durchkommen möchten."
+    ],
+    "sections": [
+      {
+        "heading": "Gartenwege und Höhenübergänge gemeinsam entwerfen",
+        "paragraphs": [
+          "Eine neue Fläche muss zu den angrenzenden Bereichen passen. Messen Sie deshalb nicht nur die gewünschte Terrasse, sondern zeigen Sie auch Kellertüren, Außentreppen und vorhandene Einfassungen. Bei unterschiedlichen Höhen klären wir, welche Übergänge gebraucht werden und welche Bereiche als zusammenhängende Fläche funktionieren können. Eine pauschale Begradigung ist dafür nicht automatisch die passende Lösung.",
+          "Für Wege, Stufen und Einfassungen können [Natursteinarbeiten](/leistungen/natursteinarbeiten) infrage kommen. Material, Aufbau und erforderliche Sicherung werden nach Nutzung und örtlicher Situation festgelegt. Wenn geplante Änderungen Fragen zum Bebauungsplan aufwerfen, ist die Kelkheimer Stadtplanung ein Ansprechpartner; der amtliche Kontakt ist unten verlinkt."
+        ]
+      },
+      {
+        "heading": "Terrassenanschlüsse vor der Materialwahl klären",
+        "paragraphs": [
+          "Legen Sie zunächst fest, wie groß Tisch, Stühle und Bewegungsfläche sein sollen. Berücksichtigen Sie außerdem Türöffnungen und den Weg zum Garten. Erst dann lassen sich Plattenformate und Verlegerichtung sinnvoll vergleichen. Ein Foto eines Lieblingsmaterials ist hilfreich, ersetzt aber keine Abstimmung mit den vorhandenen Hausanschlüssen.",
+          "Bei [Pflasterarbeiten](/leistungen/pflasterarbeiten) planen wir Unterbau, Einfassungen und Wasserführung mit ein. Zeigen Sie bestehende Abläufe und Stellen, an denen nach Regen Wasser steht. Unser Ratgeber zur [Terrassenentwässerung](/ratgeber/terrasse-entwaesserung-planen) erläutert, welche Angaben vor einer neuen Oberfläche wichtig sind."
+        ]
+      },
+      {
+        "heading": "Erdarbeiten und Gartennutzung aufeinander abstimmen",
+        "paragraphs": [
+          "Fotografieren Sie den vollständigen Transportweg von der Straße bis zur Baustelle. Engstellen, Treppen und niedrige Durchgänge beeinflussen, wie Material angeliefert und Aushub abtransportiert werden kann. Vorbereitende [Erdarbeiten](/leistungen/erdarbeiten) und Leitungswege gehören in den Ablauf, bevor neue Wege und Sitzplätze fertiggestellt werden.",
+          "Soll ein Teil des Gartens weiter nutzbar bleiben, benennen Sie diesen Bereich bereits bei der Anfrage. Die spätere [Rasenanlage](/leistungen/rasenanlagen) sollte so eingeplant werden, dass sie nicht erneut als Materiallager oder Transportstrecke dient. Für einen Umbau in mehreren Abschnitten halten wir fest, welche Vorarbeiten spätere Schritte erleichtern."
+        ]
+      }
+    ],
+    "checklist": [
+      "Hausanschlüsse, Stufen und erkennbare Höhenunterschiede fotografieren.",
+      "Tägliche Wege und gewünschte Sitzbereiche in einer Skizze markieren.",
+      "Geplante Terrassen- und Wegeflächen ungefähr ausmessen.",
+      "Engstellen entlang des gesamten Baustellenzugangs zeigen.",
+      "Vorhandene Pläne sowie Bereiche nennen, die während des Baus nutzbar bleiben sollen."
+    ],
+    "faqs": [
+      {
+        "question": "Können Terrasse und Rasen auf unterschiedlichen Höhen bleiben?",
+        "answer": "Ja, das kann sinnvoll sein. Entscheidend sind nutzbare Übergänge, vorhandene Anschlüsse und die Wasserführung. Zeigen Sie die gesamte Situation, damit wir mögliche Wege und Stufen gemeinsam besprechen können."
+      },
+      {
+        "question": "Übernimmt Loni einzelne Pflasterarbeiten in Kelkheim?",
+        "answer": "Sie können auch einen Gartenweg oder eine Terrasse einzeln anfragen. Fotos der angrenzenden Flächen helfen, Material, Höhen und Anschlüsse aufeinander abzustimmen."
+      },
+      {
+        "question": "Was beeinflusst die Kosten bei einem schwer zugänglichen Garten?",
+        "answer": "Transportentfernung, nutzbare Durchgangsbreite, Treppen, Materialmengen und mögliche Lagerplätze bestimmen den Aufwand mit. Ein zusammenhängender Überblick des Zugangs ist daher für das Angebot besonders wertvoll."
+      },
+      {
+        "question": "Muss ich vor der Anfrage bereits alle Maße kennen?",
+        "answer": "Nein. Grobe Flächengrößen, Fotos und Ihre Wünsche reichen für das erste Gespräch. Genaue Höhen, Aufbau und Ausführungsdetails werden im weiteren Verlauf geklärt."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-hofheim", "gartenbau-bad-soden", "gartenbau-liederbach"],
+    "imageSlug": "gartenbau-hofheim",
+    "imageAlt": "Natursteinmauer mit angrenzender Außentreppe als Übergang zwischen Geländehöhen",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Amtlicher Kontakt: Stadt Kelkheim (Taunus), Stadtplanung",
+        "url": "https://verwaltungsportal.hessen.de/behoerde?org_id=L100001_9034686"
+      },
+      {
+        "title": "Stadt Kelkheim, Stadtbibliothek und Kulturreferat: Die sechs Stadtteile",
+        "url": "https://www.kelkheim-entdecken.de/deine-stadt/hier-liegt-kelkheim/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihr Gartenprojekt in Kelkheim mit den Anschlüssen zeigen",
+      "text": "Schicken Sie eine Übersicht von Haus, Terrasse und Garten sowie Fotos des Zugangs. Nennen Sie die Wege, die besser funktionieren sollen, und welche vorhandenen Flächen bleiben dürfen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "main-taunus"
+  },
+  {
+    "slug": "gartenbau-schwalbach-taunus",
+    "city": "Schwalbach am Taunus",
+    "shortName": "Schwalbach",
+    "title": "Gartenbau Schwalbach am Taunus | Loni GalaBau",
+    "description": "Garten in Schwalbach am Taunus umgestalten: Sitzplatz, Sichtschutz und Grün auf kleiner Fläche abstimmen. Loni GalaBau aus Hattersheim anfragen.",
+    "h1": "Garten- und Landschaftsbau in Schwalbach",
+    "kicker": "Platz für Alltag, Erholung und gewachsenes Grün",
+    "heroLead": "Auch ein überschaubarer Garten kann viel leisten. Wir ordnen Sitzplatz, Wege und Bepflanzung so, dass Ihre Wünsche und vorhandene Gartenstrukturen zusammenpassen.",
+    "districts": ["Schwalbach", "Alt-Schwalbach", "Wohnstadt Limes"],
+    "focus": "Kleine Gartenflächen nach ihrer Nutzung aufteilen, vorhandene Bäume und Hecken einbeziehen und Sitzplatz, Sichtschutz sowie praktische Zugänge abstimmen.",
+    "intro": [
+      "Mehr Platz zum Sitzen, ein geschützter Blick ins Grüne und trotzdem Raum für Rasen oder Beete: Bei der [Gartengestaltung](/leistungen/gartengestaltung) in Schwalbach zählt die Aufteilung. Wir besprechen, welche Funktionen Sie tatsächlich brauchen und wo sich Wege, Möbel oder Gartengeräte bisher gegenseitig im Weg stehen.",
+      "Loni GalaBau arbeitet von Hattersheim am Main aus deutschlandweit. Für Ihren Garten in Schwalbach benötigen wir keinen fertigen Entwurf. Eine Skizze mit Sitzplatz, Zugang und erhaltenswerten Pflanzen reicht als Ausgangspunkt, um die nächsten Planungsschritte und den gewünschten Umfang zu besprechen."
+    ],
+    "sections": [
+      {
+        "heading": "Sitzfläche und Gartenwege ohne verschenkte Ecken planen",
+        "paragraphs": [
+          "Zeichnen Sie Tisch, Stühle und häufig genutzte Laufwege mit ungefähren Maßen ein. So zeigt sich, wie viel Fläche die Terrasse wirklich braucht. Eine gut nutzbare Verbindung zum Gartenhaus oder zu den Mülltonnen sollte auch dann funktionieren, wenn jemand am Tisch sitzt. Bewegliche Möbel bieten andere Möglichkeiten als fest eingebaute Elemente.",
+          "Bei [Pflasterarbeiten](/leistungen/pflasterarbeiten) helfen klare Ränder und passende Anschlüsse, kleine Flächen ruhig zu gestalten. Die Auswahl von Steinformat und Farbe folgt der Nutzung und dem vorhandenen Haus. Gleichzeitig berücksichtigen wir Aufbau, Höhen und Ableitung des Oberflächenwassers. Eine geringere Fläche bedeutet nicht, dass diese Vorbereitung entfallen kann."
+        ]
+      },
+      {
+        "heading": "Sichtschutz mit vorhandenen Pflanzen verbinden",
+        "paragraphs": [
+          "Fotografieren Sie die Blickrichtungen, die Sie abschirmen möchten, möglichst vom geplanten Sitzplatz aus. Eine durchgehende Abschirmung ist nicht immer nötig. Bei [Zaunarbeiten](/leistungen/zaunarbeiten) stimmen wir Verlauf, Tore und Materialien auf Zugang und vorhandene Hecken ab. Geben Sie an, welche Pflanzen bleiben sollen und wo Pflegezugänge erforderlich sind.",
+          "Wenn Bäume nahe der geplanten Arbeiten stehen, gehören auch ihre Umgebung und mögliche Transportwege in die Bestandsaufnahme. Die Stadt Schwalbach bietet über ihren Umweltschutzbeauftragten Auskunft zu Erhaltung und weiteren Baumfragen. Nutzen Sie diesen amtlichen Kontakt bei offenen Fragen. Eine neue Terrasse oder ein Zaun wird nicht allein nach dem Abstand zum Stamm beurteilt."
+        ]
+      },
+      {
+        "heading": "Weniger Pflegeaufwand durch eine passende Flächenaufteilung",
+        "paragraphs": [
+          "Sagen Sie uns, welche Gartenarbeiten Ihnen Freude machen und wofür im Alltag wenig Zeit bleibt. Zusammenhängende Pflanzflächen, gut erreichbare Beetränder und ein passender Rasenanteil können die Nutzung vereinfachen. Entscheidend sind Licht, Boden, Bewässerungsmöglichkeit und Ihre Erwartungen an das Erscheinungsbild.",
+          "Eine neue [Rasenanlage](/leistungen/rasenanlagen) braucht Vorbereitung und anschließende Pflege. Soll eine [Bewässerungsanlage](/leistungen/bewaesserungsanlagen) eingebunden werden, prüfen wir verfügbare Anschlüsse und Leitungswege, bevor Beläge geschlossen werden. Bei begrenztem Budget hilft eine Reihenfolge: zuerst notwendige Anschlüsse und Wege, danach weitere gewünschte Gartenbereiche."
+        ]
+      }
+    ],
+    "checklist": [
+      "Sitzmöbel und regelmäßig genutzte Wege grob einzeichnen.",
+      "Fotos aus den zu schützenden Blickrichtungen aufnehmen.",
+      "Erhaltenswerte Bäume, Hecken und Beete markieren.",
+      "Gartentor, schmale Durchgänge und Wasseranschluss zeigen.",
+      "Gewünschten Pflegeaufwand und wichtigste Wünsche nennen."
+    ],
+    "faqs": [
+      {
+        "question": "Lohnt sich eine Gartengestaltung auch bei einer kleinen Fläche?",
+        "answer": "Ja. Gerade dann hilft eine genaue Aufteilung zwischen Sitzplatz, Zugang und Grün. Entscheidend ist, welche Funktionen Sie brauchen und wie die vorhandenen Anschlüsse aussehen."
+      },
+      {
+        "question": "Kann eine bestehende Hecke beim Umbau erhalten bleiben?",
+        "answer": "Das wird anhand von Zustand, Lage und geplanten Arbeiten geprüft. Zeigen Sie die Hecke mit ihrem Umfeld. Baustellenzugang, neue Beläge und spätere Pflege müssen dazu passen."
+      },
+      {
+        "question": "Kann ich nur einen neuen Sichtschutz anfragen?",
+        "answer": "Ja. Nennen Sie Länge, gewünschte Blickabschirmung und vorhandene Tore oder Fundamente. Fotos beider Seiten und Angaben zum Grenzverlauf helfen bei der Abstimmung."
+      },
+      {
+        "question": "Welche Lösung macht meinen Garten pflegeleichter?",
+        "answer": "Das hängt von Nutzung und Bestand ab. Gut zugängliche Beete, passende Pflanzen und eine sinnvolle Flächenaufteilung sind wichtige Ansatzpunkte. Völlige Pflegefreiheit lässt sich auch mit neuen Belägen oder einer Bewässerung nicht zusagen."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-eschborn", "gartenbau-bad-soden", "gartenbau-sulzbach-taunus"],
+    "imageSlug": "gartenbau-kriftel",
+    "imageAlt": "Rasenfläche mit Hecke und einem runden Sitzbereich",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Schwalbach am Taunus: Auskunft zu Baumschutz und Erhaltung",
+        "url": "https://www.schwalbach.de/Biodiversitaet.htm/Dienstleistungen/Baumschutz.html?cat=7753"
+      },
+      {
+        "title": "Schwalbach am Taunus: Alt-Schwalbach und Wohnstadt Limes",
+        "url": "https://www.schwalbach.de/Stadtportraet/Alt-Schwalbach.htm"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Die wichtigsten Gartenwünsche in Schwalbach festhalten",
+      "text": "Zeigen Sie die gesamte Fläche, Ihren bevorzugten Sitzplatz und die Pflanzen, die bleiben sollen. Markieren Sie auf einer einfachen Skizze die Wege und Blickrichtungen, die Sie verändern möchten."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "main-taunus"
+  },
+  {
+    "slug": "gartenbau-liederbach",
+    "city": "Liederbach am Taunus",
+    "shortName": "Liederbach",
+    "title": "Gartenbau Liederbach | Vorgarten, Einfahrt und Terrasse",
+    "description": "Gartenbau in Liederbach am Taunus: Vorgarten, Hauseingang, Einfahrt und Terrasse zusammen gestalten. Individuelles Angebot von Loni GalaBau anfragen.",
+    "h1": "Garten- und Landschaftsbau in Liederbach",
+    "kicker": "Ein Hauseingang, der täglich gut funktioniert",
+    "heroLead": "Vom Stellplatz bis zur Haustür und weiter in den Garten: Wir verbinden befestigte Flächen, Begrünung und praktische Wege zu einer stimmigen Außenanlage.",
+    "districts": ["Liederbach", "Niederhofheim", "Oberliederbach"],
+    "focus": "Hauseingang und Vorgarten nach täglichen Wegen aufteilen, Stellplätze und Gartenanbindung berücksichtigen und offene Fragen zum Grundstück früh klären.",
+    "intro": [
+      "Eine Einfahrt ist zugleich Ankunftsort, Transportweg und oft der Zugang zum Garten. Für [Gartenbau in Liederbach](/leistungen/gartengestaltung) betrachten wir deshalb die gesamte Fläche vor und neben dem Haus. Wo stehen Fahrräder, wie gelangen Mülltonnen zur Straße und welcher Weg soll auch mit Einkäufen frei bleiben?",
+      "Unser Firmensitz ist Hattersheim am Main; von dort arbeitet Loni GalaBau deutschlandweit. Für Ihr Vorhaben in Liederbach besprechen wir die gewünschte Nutzung und den vorhandenen Zustand. Fotos von der Straße bis zum Gartentor und eine grobe Flächenaufteilung helfen, den Umfang sinnvoll festzulegen."
+    ],
+    "sections": [
+      {
+        "heading": "Stellplatz, Haustür und Vorgarten gemeinsam aufteilen",
+        "paragraphs": [
+          "Beginnen Sie mit den Flächen, die im Alltag gebraucht werden. Markieren Sie parkende Fahrzeuge einschließlich geöffneter Türen, den Weg zur Haustür und Abstellplätze. Danach lässt sich erkennen, wo zusammenhängende Pflanzflächen möglich sind. Ein Beet sollte später erreichbar bleiben und nicht bei jedem Transport überquert werden müssen.",
+          "Vor größeren Änderungen lohnt der Blick in vorhandene Grundstücksunterlagen. Die Gemeinde Liederbach verlinkt ihre rechtskräftigen Bebauungspläne über RegioMap und nennt Kontakte im Bauamt. Welche Vorgaben Ihr Grundstück betreffen, muss gezielt geklärt werden. Aus einem Plan für ein anderes Wohngebiet lässt sich keine pauschale Regel für Ihren Vorgarten ableiten."
+        ]
+      },
+      {
+        "heading": "Pflaster passend zur Beanspruchung auswählen",
+        "paragraphs": [
+          "Eine befahrene Einfahrt hat andere Anforderungen als ein schmaler Gartenweg. Für [Pflasterarbeiten](/leistungen/pflasterarbeiten) halten wir daher fest, welche Fahrzeuge die Fläche nutzen und welche Teile überwiegend begangen werden. Bestehende Ränder, Schächte und Türhöhen fotografieren Sie am besten gleich mit.",
+          "Zum Angebot gehören neben der sichtbaren Oberfläche auch Rückbau, Untergrund, Tragschichten und Einfassungen nach vereinbartem Umfang. Bei einer neuen Wasserführung müssen Anschluss und geeignete Ableitung geprüft werden. Ein bestimmtes Pflasterformat allein entscheidet weder über Belastbarkeit noch über die Eignung zur Versickerung."
+        ]
+      },
+      {
+        "heading": "Den Zugang zum hinteren Garten mit vorbereiten",
+        "paragraphs": [
+          "Soll später eine Terrasse oder [Rasenanlage](/leistungen/rasenanlagen) erneuert werden, berücksichtigen wir schon jetzt den Materialtransport dorthin. Ein gerade fertiggestellter Vorgarten sollte nicht unnötig wieder als Baustellenfläche dienen. Nennen Sie daher auch Wünsche, die erst in einem späteren Bauabschnitt umgesetzt werden sollen.",
+          "Geplante [Zaunarbeiten](/leistungen/zaunarbeiten) stimmen wir mit Torbreite, Öffnungsrichtung und täglichen Wegen ab. Für eine spätere [Bewässerung](/leistungen/bewaesserungsanlagen) können Leitungswege ebenfalls rechtzeitig geprüft werden. Die Reihenfolge erläutert unser Ratgeber zum [Gartenumbau in Etappen](/ratgeber/garten-umgestalten-in-etappen)."
+        ]
+      }
+    ],
+    "checklist": [
+      "Stellplätze, Hauseingang und Weg zum Garten skizzieren.",
+      "Fahrzeugnutzung und benötigte Türöffnungsflächen nennen.",
+      "Schächte, Einfassungen und Höhen an der Haustür fotografieren.",
+      "Vorhandene Grundstückspläne oder bekannte Vorgaben bereithalten.",
+      "Auch spätere Wünsche für Terrasse, Rasen und Zaun mitteilen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann ich Einfahrt und Vorgarten zusammen anfragen?",
+        "answer": "Ja. Eine gemeinsame Betrachtung hilft, Stellplätze, Laufwege und Pflanzflächen passend aufzuteilen. Geben Sie an, was erhalten bleibt und welche Flächen verändert werden sollen."
+      },
+      {
+        "question": "Welches Pflaster eignet sich für meine Einfahrt in Liederbach?",
+        "answer": "Das hängt von Nutzung, Untergrund, Aufbau und Anschlüssen ab. Nennen Sie Fahrzeugarten und gewünschte Oberfläche. Die Materialauswahl wird gemeinsam mit der technischen Vorbereitung abgestimmt."
+      },
+      {
+        "question": "Muss ich den Bebauungsplan selbst heraussuchen?",
+        "answer": "Wenn Sie vorhandene Unterlagen haben, senden Sie diese mit. Die verlinkte Gemeindeseite hilft bei der Suche und nennt Ansprechpartner. Offene Vorgaben für das konkrete Grundstück sollten vor der Ausführung geklärt sein."
+      },
+      {
+        "question": "Wie lässt sich der Gartenumbau auf mehrere Schritte verteilen?",
+        "answer": "Wir besprechen zuerst notwendige Anschlüsse, Transporte und Zugänge. Darauf lässt sich eine Reihenfolge aufbauen, bei der spätere Arbeiten möglichst wenig bereits Fertiges wieder öffnen müssen."
+      }
+    ],
+    "relatedSlugs": [
+      "gartenbau-kelkheim",
+      "gartenbau-frankfurt-unterliederbach",
+      "gartenbau-hattersheim"
+    ],
+    "imageSlug": "gartenbau-floersheim",
+    "imageAlt": "Gepflasterter Hauseingang mit eingefasstem Höhenübergang",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Liederbach am Taunus: Bebauungspläne und Bauamt",
+        "url": "https://www.liederbach.eu/seite/de/gemeinde/545/-/Bebauungsplaene.html"
+      },
+      {
+        "title": "Liederbach am Taunus: Zahlen, Daten und Fakten zu den beiden Gemarkungen",
+        "url": "https://www.liederbach.eu/seite/de/cns501a93b55c751d/039%3A87/-/Zahlen_Daten_und_Fakten.html"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Vorgarten und Einfahrt in Liederbach gemeinsam anfragen",
+      "text": "Nennen Sie ungefähre Flächen, die Fahrzeugnutzung und Ihre Wünsche zur Begrünung. Fotos von Hauszugang, Stellplatz und Verbindung zum Garten zeigen die Anschlüsse für das erste Gespräch."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "main-taunus"
+  },
+  {
+    "slug": "gartenbau-friedrichsdorf",
+    "city": "Friedrichsdorf",
+    "shortName": "Friedrichsdorf",
+    "title": "Gartenbau Friedrichsdorf | Rasen, Pflanzen und Bewässerung",
+    "description": "Garten in Friedrichsdorf gestalten: Rasen, Pflanzflächen, Terrasse und Bewässerung abstimmen. Loni GalaBau aus Hattersheim für Ihr Projekt anfragen.",
+    "h1": "Garten- und Landschaftsbau in Friedrichsdorf",
+    "kicker": "Grünflächen mit einem Plan für die Pflege",
+    "heroLead": "Ein neuer Garten soll auch nach der Fertigstellung zu Ihrem Alltag passen. Wir stimmen Rasen, Pflanzen, Wege und Bewässerung auf Nutzung und Pflege ab.",
+    "districts": ["Friedrichsdorf und Dillingen", "Köppern", "Seulberg", "Burgholzhausen"],
+    "focus": "Rasen- und Pflanzflächen nach Nutzung und Pflegebedarf aufteilen, Wasseranschlüsse prüfen und die Anwuchsphase bereits bei der Ausführung einplanen.",
+    "intro": [
+      "Ein sattgrüner Garten beginnt nicht mit der Rollrasenlieferung, sondern mit einer passenden Flächenaufteilung. Für [Gartengestaltung in Friedrichsdorf](/leistungen/gartengestaltung) besprechen wir, welche Bereiche zum Spielen, Sitzen oder Gärtnern dienen sollen. Der gewünschte Pflegeaufwand gehört ebenso dazu wie Terrasse und Gartenwege.",
+      "Loni GalaBau arbeitet deutschlandweit mit Firmensitz in Hattersheim am Main. Ihr Vorhaben in Friedrichsdorf, Dillingen, Köppern, Seulberg oder Burgholzhausen betrachten wir anhand des tatsächlichen Gartens. Fotos, ungefähre Flächen und Angaben zu vorhandenem Wasseranschluss sowie Sonneneinstrahlung bilden eine gute Grundlage."
+    ],
+    "sections": [
+      {
+        "heading": "Rasen dort anlegen, wo er gebraucht und gepflegt wird",
+        "paragraphs": [
+          "Markieren Sie die zusammenhängende Fläche, auf der gespielt oder gelaufen werden soll. Schmale Reststreifen und schwer erreichbare Ecken sollten bewusst geplant werden. Für eine [Rasenanlage](/leistungen/rasenanlagen) klären wir vorhandenen Boden, vorbereitende Arbeiten und die Anschlüsse an Wege oder Beete. Auch der spätere Mähzugang zählt.",
+          "Bei Rollrasen muss die Versorgung während des Anwachsens organisiert sein. Teilen Sie uns deshalb mit, wann Sie vor Ort sind und wer die Pflege übernehmen kann. Eine Bewässerungsmöglichkeit und ein geeigneter Ausführungszeitraum gehören zur Abstimmung. Der neue Rasen sollte nicht direkt wieder für schwere Transporte eingeplant werden."
+        ]
+      },
+      {
+        "heading": "Bewässerung nach Flächen und Anschlussmöglichkeiten planen",
+        "paragraphs": [
+          "Beete und Rasen müssen nicht auf dieselbe Weise bewässert werden. Bei einer [Bewässerungsanlage](/leistungen/bewaesserungsanlagen) nehmen wir die Flächen, Leitungswege und den verfügbaren Anschluss auf. Angaben zu vorhandenen Hähnen oder einem Speicher sind hilfreich; technische Eignung und benötigte Leistung werden gesondert geprüft.",
+          "Die Stadtwerke Friedrichsdorf veröffentlichen Informationen zur Wasserversorgung und zur Wasserampel. Beachten Sie dort aktuelle Hinweise zur Nutzung, besonders während trockener Phasen. Soll Regenwasser gesammelt oder eine Ableitung verändert werden, müssen Speicher, Überlauf und örtliche Anforderungen zusammen geklärt werden. Die städtische Satzungsübersicht ist als Anlaufstelle verlinkt."
+        ]
+      },
+      {
+        "heading": "Pflanzflächen und befestigte Bereiche in der richtigen Reihenfolge bauen",
+        "paragraphs": [
+          "Wählen Sie Pflanzbereiche nach Licht, Platz und gewünschter Pflege. Geben Sie an, welche vorhandenen Gehölze bleiben sollen und wo Sie einen freien Blick erhalten möchten. Eine spätere Pflanzung sollte ausreichend Raum bekommen, ohne Wege und Sitzplätze schon nach kurzer Zeit einzuengen.",
+          "Vor den fertigen Grünflächen liegen erforderliche [Erdarbeiten](/leistungen/erdarbeiten), Leitungen und [Pflasterarbeiten](/leistungen/pflasterarbeiten). Bei einem Umbau in Etappen planen wir die Grenzen so, dass Rasen und Beete möglichst nicht erneut geöffnet werden. Nennen Sie Ihr Budget und die Bereiche, die zuerst nutzbar sein müssen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Spiel-, Sitz- und Pflanzflächen grob einzeichnen.",
+      "Sonnige und schattige Gartenbereiche fotografieren.",
+      "Wasseranschlüsse, vorhandene Speicher und Leitungswege benennen.",
+      "Pflege und Bewässerung während der Anwuchsphase einplanen.",
+      "Gewünschte Reihenfolge sowie vorhandene Bäume und Gehölze angeben."
+    ],
+    "faqs": [
+      {
+        "question": "Kann ich Rollrasen in Friedrichsdorf verlegen lassen?",
+        "answer": "Ja, eine Rasenanlage können Sie anfragen. Wichtig sind Flächengröße, Bodenzustand, Zugang und die anschließende Pflege. Fotos und Angaben zum Wasseranschluss helfen bei der ersten Abstimmung."
+      },
+      {
+        "question": "Brauche ich für einen neuen Garten automatisch eine Bewässerungsanlage?",
+        "answer": "Nein. Die Entscheidung hängt von Flächen, Nutzung, verfügbarer Zeit und Anschlussmöglichkeiten ab. Wir besprechen, welche Bereiche versorgt werden müssen und welche Lösung zum Vorhaben passt."
+      },
+      {
+        "question": "Lässt sich vorhandenes Regenwasser zum Gießen nutzen?",
+        "answer": "Das kann geprüft werden. Nennen Sie vorhandene Behälter oder geplanten Speicherplatz. Entnahme, Leitungen, Wasserbedarf und Überlauf müssen zusammenpassen; ein Speicher allein garantiert keine ausreichende Versorgung."
+      },
+      {
+        "question": "Wann sollte die Bepflanzung im Bauablauf erfolgen?",
+        "answer": "In der Regel nach den erforderlichen schweren Transporten und Vorarbeiten. Der konkrete Zeitpunkt hängt von Pflanzen, Witterung und Pflege ab. Diese Punkte werden vor der Ausführung abgestimmt."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-bad-homburg", "gartenbau-bad-vilbel", "gartenbau-frankfurt"],
+    "imageSlug": "gartenbau-hattersheim",
+    "imageAlt": "Rasengarten mit Plattenterrasse und Hecke entlang der Grundstücksgrenze",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Friedrichsdorf: Wasserversorgung und aktuelle Wasserampel",
+        "url": "https://www.friedrichsdorf.de/rathaus/stadtwerke/wasserversorgung"
+      },
+      {
+        "title": "Friedrichsdorf: Satzungen und Entwässerung",
+        "url": "https://www.friedrichsdorf.de/rathaus/politik/satzungen-und-rechtsgrundlagen"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Den Garten in Friedrichsdorf bis zur Pflege mitdenken",
+      "text": "Zeigen Sie geplante Rasen- und Pflanzflächen, vorhandene Anschlüsse und den Baustellenzugang. Sagen Sie uns, wie Sie den Garten nutzen und seine Pflege organisieren möchten."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-bad-vilbel",
+    "city": "Bad Vilbel",
+    "shortName": "Bad Vilbel",
+    "title": "Gartenbau Bad Vilbel | Außenanlagen nach dem Hausbau",
+    "description": "Außenanlagen in Bad Vilbel planen: Einfahrt, Terrasse, Wege und Garten nach dem Hausbau abstimmen. Angebot bei Loni GalaBau aus Hattersheim anfragen.",
+    "h1": "Garten- und Landschaftsbau in Bad Vilbel",
+    "kicker": "Vom fertigen Haus zum nutzbaren Grundstück",
+    "heroLead": "Einfahrt, Hauseingang, Terrasse und Grün sollen nach dem Hausbau zusammenpassen. Wir helfen Ihnen, den Umfang zu ordnen und die Außenanlagen in sinnvoller Reihenfolge umzusetzen.",
+    "districts": ["Bad Vilbel", "Dortelweil", "Gronau", "Heilsberg", "Massenheim"],
+    "focus": "Außenanlagen nach dem Hausbau vorbereiten, Schnittstellen zu Haus und Haustechnik aufnehmen und notwendige Arbeiten von späteren Ergänzungen unterscheiden.",
+    "intro": [
+      "Das Haus ist fertig, aber draußen fehlen sichere Wege, Sitzplatz und Grün? Beim [Gartenbau in Bad Vilbel](/leistungen/gartengestaltung) betrachten wir zunächst den Übergang vom Gebäude zum Grundstück. Fertige Türhöhen, Schächte, Anschlüsse und noch ausstehende Arbeiten anderer Gewerke beeinflussen den Ablauf.",
+      "Loni GalaBau hat seinen Firmensitz in Hattersheim am Main und arbeitet deutschlandweit. Für Außenanlagen in Bad Vilbel und seinen Stadtteilen besprechen wir Ihre Prioritäten: Was brauchen Sie zum Einzug, was gehört zum ersten Bauabschnitt und welche Wünsche können vorbereitet werden, aber später folgen?"
+    ],
+    "sections": [
+      {
+        "heading": "Vorhandene Hausplanung als Ausgangspunkt nutzen",
+        "paragraphs": [
+          "Halten Sie Lageplan, bekannte Leitungsverläufe und die geplanten fertigen Höhen bereit. Fotografieren Sie Hauszugänge, Terrassentüren, Lichtschächte und technische Anlagen mit ihrem Umfeld. So lassen sich spätere Wege und Beläge auf die tatsächlichen Anschlüsse abstimmen. Nennen Sie auch Bereiche, die für Wartung und Versorgung frei bleiben müssen.",
+          "Bad Vilbel stellt Bebauungspläne nach Stadtteilen sowie weitere Planungsinformationen bereit. Die Stadt weist auf mögliche Unvollständigkeit digitaler Unterlagen hin und bietet Beratung an. Klären Sie offene Grundstücksvorgaben daher mit den zuständigen Stellen, bevor Flächenaufteilung und Ausführung festgelegt werden. Die offizielle Übersicht finden Sie unten."
+        ]
+      },
+      {
+        "heading": "Einfahrt, Terrasse und Grün mit getrennten Mengen erfassen",
+        "paragraphs": [
+          "Ein Angebot wird klarer, wenn Sie die gewünschten Flächen getrennt angeben: befahrener Stellplatz, Fußweg, Sitzplatz, Rasen und Pflanzbereiche. Beschreiben Sie vorhandenen Bauschutt oder provisorische Beläge, ohne den Bodenaufbau bereits selbst festzulegen. Notwendige [Erdarbeiten](/leistungen/erdarbeiten) werden nach Bestandsaufnahme und vereinbartem Umfang berücksichtigt.",
+          "Für [Pflasterarbeiten](/leistungen/pflasterarbeiten) vergleichen wir Nutzung, Materialien und Anschlüsse. Bei einer Terrasse sind neben der Größe auch Möblierung und der Zugang zum Haus wichtig. Die künftige [Entwässerung](/leistungen/entwaesserung) wird vor fertigen Oberflächen abgestimmt. Unbekannte Anschlüsse sollten nicht durch eine pauschale Quadratmeterannahme verdeckt werden."
+        ]
+      },
+      {
+        "heading": "Den Bauablauf auf Einzug und spätere Ergänzungen abstimmen",
+        "paragraphs": [
+          "Nennen Sie den gewünschten Einzugstermin und noch laufende Arbeiten am Gebäude. Materiallager, Gerüste oder Lieferungen können Flächen beanspruchen, die später Garten werden sollen. Hauszugang und notwendige Wege haben häufig andere zeitliche Prioritäten als ein zusätzlicher Sitzplatz oder die vollständige Bepflanzung.",
+          "Für eine spätere [Bewässerung](/leistungen/bewaesserungsanlagen) oder [Zaunanlage](/leistungen/zaunarbeiten) sollten erforderliche Vorbereitungen früh geprüft werden. Rasen und Pflanzen folgen passend zu Transporten und Pflege. Unser Ratgeber zum [Gartenumbau in Etappen](/ratgeber/garten-umgestalten-in-etappen) hilft, solche Abhängigkeiten sichtbar zu machen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Lageplan und bekannte Leitungsverläufe bereithalten.",
+      "Türhöhen, Lichtschächte und technische Anschlüsse fotografieren.",
+      "Einfahrt, Wege, Terrasse und Grün getrennt überschlagen.",
+      "Noch laufende Hausarbeiten und gewünschte Nutzungsfristen nennen.",
+      "Pflichtbereiche, spätere Wünsche und Budgetrahmen unterscheiden."
+    ],
+    "faqs": [
+      {
+        "question": "Wann sollte ich Außenanlagen für einen Neubau anfragen?",
+        "answer": "Sobald Hausanschlüsse, Nutzung und grobe Flächen bekannt sind. Auch wenn noch gebaut wird, lassen sich Umfang und Abhängigkeiten besprechen. Ein Ausführungstermin wird nach Planung und Verfügbarkeit abgestimmt."
+      },
+      {
+        "question": "Übernimmt Loni auch den Garten eines bestehenden Hauses in Bad Vilbel?",
+        "answer": "Ja. Bei bestehenden Außenanlagen stehen zusätzlich Zustand, Rückbau und erhaltenswerte Bereiche im Mittelpunkt. Senden Sie Fotos und kennzeichnen Sie, was bleiben soll."
+      },
+      {
+        "question": "Kann ich ein Angebot für mehrere Bauabschnitte erhalten?",
+        "answer": "Beschreiben Sie Ihre Prioritäten und das gewünschte Gesamtbild. Wir prüfen, welche Arbeiten zusammengehören und welche Vorbereitungen für spätere Abschnitte sinnvoll sind."
+      },
+      {
+        "question": "Warum reichen Quadratmeter für die Kosten nicht aus?",
+        "answer": "Rückbau, Boden, Aufbau, Material, Anschlüsse und Baustellenzugang können sich deutlich unterscheiden. Getrennte Flächenangaben und Fotos machen den Umfang besser vergleichbar und bilden die Grundlage eines individuellen Angebots."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-friedrichsdorf", "gartenbau-frankfurt", "gartenbau-maintal"],
+    "imageSlug": "gartenbau-bad-soden",
+    "imageAlt": "Terrassenfläche aus großformatigen Platten mit gleichmäßigem Fugenbild",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Bad Vilbel: Bebauungspläne und Beratung nach Stadtteilen",
+        "url": "https://www.bad-vilbel.de/wirtschaft-mobilitaet/bauen/bebauungsplaene/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ein klares Angebot für Außenanlagen in Bad Vilbel vorbereiten",
+      "text": "Senden Sie Pläne, Fotos der Hausanschlüsse und ungefähre Flächen. Nennen Sie, was zum Einzug nutzbar sein muss und welche Gartenbereiche später folgen können."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-dreieich",
+    "city": "Dreieich",
+    "shortName": "Dreieich",
+    "title": "Gartenbau Dreieich | Hof und Garten neu gestalten",
+    "description": "Hof und Garten in Dreieich umgestalten: Beläge erneuern, Flächen begrünen und nutzbare Wege erhalten. Loni GalaBau aus Hattersheim anfragen.",
+    "h1": "Garten- und Landschaftsbau in Dreieich",
+    "kicker": "Aus ungenutzten Flächen wird Platz zum Draußensein",
+    "heroLead": "Weniger ungenutztes Pflaster, mehr Grün oder ein neuer Sitzplatz: Wir planen den Umbau Ihrer Außenanlage in Dreieich ausgehend von dem, was Sie täglich brauchen.",
+    "districts": [
+      "Dreieich",
+      "Sprendlingen",
+      "Dreieichenhain",
+      "Buchschlag",
+      "Götzenhain",
+      "Offenthal"
+    ],
+    "focus": "Vorhandene Hofflächen nach tatsächlicher Nutzung prüfen, geeignete Bereiche für Grün zurückgewinnen und Rückbau, Beläge sowie Wasserwege gemeinsam planen.",
+    "intro": [
+      "Nicht jede befestigte Ecke muss dauerhaft Stell- oder Abstellfläche bleiben. Bei der [Gartengestaltung in Dreieich](/leistungen/gartengestaltung) besprechen wir, wo Sie mehr Grün wünschen und welche Wege unverzichtbar sind. Ein teilweise umgestalteter Hof kann weiterhin praktisch funktionieren und zugleich Raum für einen Sitzplatz oder Pflanzen bieten.",
+      "Loni GalaBau arbeitet von Hattersheim am Main aus deutschlandweit. Für Ihr Projekt in Dreieich nehmen wir vorhandene Beläge, Nutzung und Anschlüsse als Ausgangspunkt. Sie können einen einzelnen Bereich erneuern lassen oder den Umbau der gesamten Außenanlage anfragen."
+    ],
+    "sections": [
+      {
+        "heading": "Erst die Nutzung prüfen, dann Pflaster zurückbauen",
+        "paragraphs": [
+          "Markieren Sie, wo regelmäßig Fahrzeuge stehen, wo angeliefert wird und welche Strecken mit Mülltonnen oder Fahrrädern genutzt werden. Flächen, die selten gebraucht werden, lassen sich gesondert betrachten. Mögliche Pflanzbereiche brauchen nicht nur Platz an der Oberfläche, sondern auch einen geeigneten Bodenaufbau.",
+          "Vor einem Rückbau klären wir, was unter den vorhandenen Steinen liegt und welche Leitungen betroffen sein könnten. Verwertbares Material, notwendiger Abtransport und vorbereitende [Erdarbeiten](/leistungen/erdarbeiten) gehören in den Leistungsumfang. Eine neue Grünfläche sollte anschließend ohne Umwege gepflegt und bewässert werden können."
+        ]
+      },
+      {
+        "heading": "Begrünung und Wasserführung zusammen betrachten",
+        "paragraphs": [
+          "Die Stadt Dreieich informiert über Klimaförderung unter anderem für Entsiegelung, Begrünung und Regenwassernutzung. Wenn Sie eine Förderung prüfen möchten, nutzen Sie die offizielle Seite vor Beginn der Maßnahme. Dort stehen Bedingungen und Verfahren. Ein Zuschuss lässt sich weder aus der Gartengröße noch aus einer allgemeinen Gestaltungsidee ableiten.",
+          "Für Ihre Außenanlage prüfen wir unabhängig davon die konkrete Nutzung und die [Entwässerung](/leistungen/entwaesserung). Ein anderer Oberflächenbelag allein löst nicht jede Wasserfrage. Anschlüsse, Untergrund und geeignete Ableitung müssen zusammenpassen. Zeigen Sie bei der Anfrage auch Abläufe und Stellen, an denen sich bisher Wasser sammelt."
+        ]
+      },
+      {
+        "heading": "Den verbleibenden Hof alltagstauglich erneuern",
+        "paragraphs": [
+          "Wo befestigte Flächen gebraucht werden, stimmen wir [Pflasterarbeiten](/leistungen/pflasterarbeiten) auf Belastung und angrenzende Bereiche ab. Ein Sitzplatz benötigt andere Bewegungsflächen als eine Einfahrt. Einfassungen und Übergänge zwischen Grün und Belag sollten so geplant sein, dass Türen, Tore und Pflegearbeiten weiterhin funktionieren.",
+          "Wenn nur ein Teil des Hofs verändert wird, sind saubere Übergänge zum Bestand besonders wichtig. Nennen Sie erhaltenswerte Steine und vorhandene Schäden. Ein Umbau in Abschnitten kann sinnvoll sein; dabei besprechen wir, wie Anlieferung, Hauszugang und spätere [Rasenflächen](/leistungen/rasenanlagen) zeitlich zusammenpassen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Regelmäßig genutzte und entbehrliche befestigte Flächen markieren.",
+      "Beläge, erkennbare Schäden und erhaltenswertes Material fotografieren.",
+      "Abläufe, Fallrohre und bekannte Leitungen zeigen.",
+      "Gewünschte Pflanz-, Rasen- und Sitzbereiche skizzieren.",
+      "Bei Förderinteresse die aktuellen Bedingungen vor Maßnahmenbeginn prüfen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann aus einer gepflasterten Hofecke ein Beet werden?",
+        "answer": "Das kann geprüft werden. Wichtig sind Unterbau, Leitungen, Boden, Licht und die spätere Pflege. Fotografieren Sie die Fläche und beschreiben Sie, welche Nutzung dort entfallen kann."
+      },
+      {
+        "question": "Gibt es in Dreieich Förderung für einen solchen Umbau?",
+        "answer": "Die Stadt nennt Entsiegelung und weitere Maßnahmen in ihrer Klimaförderung. Ob Ihr Vorhaben die aktuellen Bedingungen erfüllt und Mittel verfügbar sind, klären Sie über die verlinkte städtische Stelle vor Beginn."
+      },
+      {
+        "question": "Können vorhandene Pflastersteine wiederverwendet werden?",
+        "answer": "Das hängt von Zustand, Menge, Format und gewünschter neuer Nutzung ab. Zeigen Sie das Material und die betroffenen Flächen. Die Wiederverwendung wird bei der Planung geprüft."
+      },
+      {
+        "question": "Muss beim Hofumbau alles gleichzeitig erneuert werden?",
+        "answer": "Nein. Einzelne Bereiche können Teil eines abgestimmten Gesamtplans sein. Anschlüsse, Entwässerung und Transportwege müssen so berücksichtigt werden, dass die Abschnitte später zueinander passen."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-langen", "gartenbau-frankfurt", "gartenbau-hattersheim"],
+    "imageSlug": "gartenbau-sulzbach-taunus",
+    "imageAlt": "Gepflasterter Weg mit angrenzenden Gräsern und klarer Randführung",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Dreieich: Klimaförderung, Bedingungen und Verfahren",
+        "url": "https://www.dreieich.de/zukunft-leben/umwelt-natur/umwelt-klima/klimaschutz/foerderung-klima-und-umwelt/"
+      },
+      {
+        "title": "Stadt Dreieich: Stadtporträt und die fünf Stadtteile",
+        "url": "https://www.dreieich.de/freizeit-entdecken/sehenswertes-besichtigen/stadtgeschichte/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Den Hofumbau in Dreieich nach Ihrem Alltag planen",
+      "text": "Zeigen Sie den Bestand und kennzeichnen Sie Stellplätze und Wege, die bleiben müssen. Nennen Sie die Bereiche, in denen Sie künftig sitzen, pflanzen oder mehr Grün haben möchten."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-langen",
+    "city": "Langen (Hessen)",
+    "shortName": "Langen",
+    "title": "Gartenbau Langen (Hessen) | Grün und Sitzplätze gestalten",
+    "description": "Gartengestaltung in Langen: passende Pflanzen, gut nutzbare Wege, Terrasse und Rasen planen. Ihr Gartenprojekt bei Loni GalaBau aus Hattersheim anfragen.",
+    "h1": "Garten- und Landschaftsbau in Langen",
+    "kicker": "Ein Garten, dessen Pflege zu Ihnen passt",
+    "heroLead": "Mehr Zeit auf der Terrasse und eine überschaubare Gartenpflege: Wir gestalten Grünflächen, Wege und Sitzplätze passend zu Standort, Nutzung und Ihren Möglichkeiten.",
+    "districts": ["Langen", "Langen (Hessen)", "Nordend", "Oberlinden", "Neurott"],
+    "focus": "Pflanzen und Rasen nach Standort und Pflege auswählen, gut erreichbare Beete schaffen und Grün mit Terrasse sowie Bewässerungsmöglichkeiten verbinden.",
+    "intro": [
+      "Ein Garten kann großzügig begrünt sein, ohne dass jede Ecke dieselbe Pflege braucht. Bei der [Gartengestaltung in Langen](/leistungen/gartengestaltung) besprechen wir, welche Flächen Sie nutzen und wie viel Zeit für Mähen, Gießen und Pflanzenpflege vorhanden ist. Daraus entsteht eine passende Aufteilung zwischen Terrasse, Wegen, Rasen und Beeten.",
+      "Loni GalaBau arbeitet deutschlandweit von Hattersheim am Main aus. Für Ihr Vorhaben in Langen helfen Fotos aus mehreren Blickrichtungen und Angaben zu Sonne, Schatten und bestehender Bepflanzung. Sie müssen dafür noch keine konkreten Pflanzenarten oder Materialien festgelegt haben."
+    ],
+    "sections": [
+      {
+        "heading": "Pflanzflächen aus dem Standort heraus entwickeln",
+        "paragraphs": [
+          "Beobachten Sie, welche Bereiche lange Sonne bekommen und wo Gebäude oder vorhandene Bäume Schatten werfen. Notieren Sie auch Stellen, die nach Regen länger feucht bleiben. Eine passende Bepflanzung braucht diese Informationen ebenso wie ausreichend Platz für die spätere Entwicklung. Einzelne Wunschpflanzen sollten deshalb zum gesamten Standort passen.",
+          "Die Stadt Langen veröffentlicht ein Faltblatt zum klimafreundlichen Garten mit Hinweisen zu Pflanzenauswahl, Boden und Regenwassernutzung. Diese Anregungen können bei der Vorbereitung helfen. Für die Umsetzung werden die Bedingungen Ihres Grundstücks geprüft; eine allgemeine Pflanzenliste ersetzt keine konkrete Auswahl für Licht, Boden und Nutzung."
+        ]
+      },
+      {
+        "heading": "Pflegewege und Flächenränder gleich mitgestalten",
+        "paragraphs": [
+          "Ein Beet sollte erreichbar sein, ohne ständig über andere Pflanzen steigen zu müssen. Für [Pflasterarbeiten](/leistungen/pflasterarbeiten) planen wir deshalb neben den täglichen Hauptwegen auch die Anschlüsse an Beete und Rasen. Klare Ränder erleichtern die Orientierung und können die Pflege vereinfachen, wenn Form und Aufbau zur Nutzung passen.",
+          "Bei einer neuen [Rasenanlage](/leistungen/rasenanlagen) zählt die zusammenhängende nutzbare Fläche mehr als die größtmögliche Rasenmenge. Prüfen Sie, welche Bereiche wirklich bespielt werden und welche anders gestaltet werden dürfen. Mähen, Randpflege und Bewässerung bleiben Teil des Gartens; eine vollständig pflegefreie Anlage wäre kein realistisches Versprechen."
+        ]
+      },
+      {
+        "heading": "Sitzplatz, Wasseranschluss und Bauabschnitte verbinden",
+        "paragraphs": [
+          "Für eine Terrasse nennen Sie die Zahl der Sitzplätze und Ihre bevorzugte Tageszeit draußen. Vorhandene Pflanzen können Schatten und räumliche Begrenzung geben. Bei [Natursteinarbeiten](/leistungen/natursteinarbeiten) oder anderen Belägen stimmen wir Oberflächen und Anschlüsse auf den Sitzplatz ab. Auch der Weg mit Gießkanne oder Gartengeräten sollte praktikabel bleiben.",
+          "Soll eine [Bewässerung](/leistungen/bewaesserungsanlagen) eingerichtet werden, berücksichtigen wir die verschiedenen Pflanzbereiche und verfügbare Anschlüsse frühzeitig. Leitungen und notwendige Bodenarbeiten gehen den fertigen Oberflächen voraus. Für einen schrittweisen Umbau halten wir fest, welche Bereiche zuerst entstehen und wie spätere Pflanzungen erreicht werden können."
+        ]
+      }
+    ],
+    "checklist": [
+      "Sonnen- und Schattenbereiche zu verschiedenen Tageszeiten fotografieren.",
+      "Erhaltenswerte Pflanzen und auffällig feuchte Stellen markieren.",
+      "Gewünschte Rasenfläche und Sitzplätze grob einzeichnen.",
+      "Wasseranschluss und Wege für die Gartenpflege zeigen.",
+      "Verfügbare Pflegezeit sowie gewünschte Bauabschnitte nennen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann ein begrünter Garten pflegeleicht gestaltet werden?",
+        "answer": "Der Pflegeaufwand lässt sich durch passende Pflanzen, erreichbare Beete und eine sinnvolle Flächenaufteilung beeinflussen. Ganz ohne Pflege kommen auch neu angelegte Gärten nicht aus."
+      },
+      {
+        "question": "Muss ich für die Anfrage schon Pflanzen auswählen?",
+        "answer": "Nein. Nennen Sie gewünschte Wirkung, Pflegeaufwand und vorhandene Pflanzen. Fotos und Angaben zu Licht und Feuchtigkeit helfen dabei, passende Möglichkeiten zu besprechen."
+      },
+      {
+        "question": "Kann eine große Rasenfläche teilweise in Beete umgewandelt werden?",
+        "answer": "Ja, das können Sie anfragen. Wir betrachten Nutzung, Boden und Bewässerung und stimmen neue Ränder und Pflegezugänge mit den verbleibenden Flächen ab."
+      },
+      {
+        "question": "Übernimmt Loni auch nur eine neue Terrasse in Langen?",
+        "answer": "Eine einzelne Terrasse ist ebenfalls möglich. Zeigen Sie Hausanschluss, vorhandene Abläufe und angrenzendes Grün, damit Größe, Material und Übergänge passend abgestimmt werden können."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-dreieich", "gartenbau-frankfurt", "gartenbau-kelsterbach"],
+    "imageSlug": "gartenbau-eschborn",
+    "imageAlt": "Staudenpflanzung entlang eines befestigten Wegs im Stadtraum",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Langen: Faltblatt für einen klimafreundlichen Garten",
+        "url": "https://www.langen.de/datei/anzeigen/id/309552,1018/faltblatt_klimafreundlicher_garten_web.pdf"
+      },
+      {
+        "title": "Stadt Langen: Stadtgeschichte mit Nordend, Oberlinden und Neurott",
+        "url": "https://www.langen.de/datei/anzeigen/id/44825,1018/0_1_langens_geschichte.PDF"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihre Gartengestaltung in Langen vorbereiten",
+      "text": "Nennen Sie Ihre Wünsche für Sitzplatz, Rasen und Bepflanzung. Fotos der Lichtverhältnisse, vorhandenen Pflanzen und Anschlüsse helfen, Gestaltung und Pflege zusammen zu planen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-maintal",
+    "city": "Maintal",
+    "shortName": "Maintal",
+    "title": "Gartenbau Maintal | Garten, Terrasse und Wege erneuern",
+    "description": "Gartenbau in Maintal: Terrasse, Einfahrt und Gartenwege mit passenden Anschlüssen und Wasserführung erneuern. Loni GalaBau aus Hattersheim anfragen.",
+    "h1": "Garten- und Landschaftsbau in Maintal",
+    "kicker": "Neue Oberflächen mit durchdachten Anschlüssen",
+    "heroLead": "Wenn Terrasse, Einfahrt oder Gartenwege erneuert werden, lohnt der Blick auf die gesamte Außenanlage. Wir planen Nutzung, Höhen und Wasserführung gemeinsam mit dem Grün.",
+    "districts": ["Maintal", "Dörnigheim", "Bischofsheim", "Hochstadt", "Wachenbuchen"],
+    "focus": "Bei der Erneuerung befestigter Flächen vorhandene Wasserwege und Anschlüsse aufnehmen, Ursachen auffälliger Stellen klären und Grünflächen passend einbinden.",
+    "intro": [
+      "Abgesackte Steine, ungünstige Übergänge oder Wasser an der falschen Stelle können Anlass für einen Gartenumbau sein. Beim [Gartenbau in Maintal](/leistungen/gartengestaltung) beginnen wir deshalb mit dem Bestand und Ihren Beobachtungen. Ein neuer Belag sollte zu Haus, Garten und täglicher Nutzung passen.",
+      "Loni GalaBau arbeitet von Hattersheim am Main aus deutschlandweit. Für Ihr Projekt in Maintal zeigen Sie uns möglichst die gesamte Fläche einschließlich angrenzender Türen, Wege und Beete. Fotos nach Regen können zusätzlich helfen, auffällige Bereiche zu erkennen; sie ersetzen keine Untersuchung der Ursache."
+    ],
+    "sections": [
+      {
+        "heading": "Wasserwege vor dem Austausch der Oberfläche aufnehmen",
+        "paragraphs": [
+          "Markieren Sie Rinnen, Einläufe, Fallrohre und Stellen, an denen Wasser stehen bleibt oder über die Fläche fließt. Zeigen Sie den Verlauf bis zu den angrenzenden Bereichen. Für [Entwässerungsarbeiten](/leistungen/entwaesserung) müssen vorhandene Anschlüsse, Höhen und geeignete Ableitung gemeinsam geklärt werden.",
+          "Maintal stellt offizielle Informationen zu Hochwasser und Starkregen bereit. Dort werden unterschiedliche Ursachen und Möglichkeiten der Vorsorge erläutert. Daraus folgt keine pauschale Gefährdung jedes Grundstücks. Wenn Ihr Vorhaben besondere Schutzfragen berührt, müssen geeignete Fachplanung und zuständige Stellen einbezogen werden; ein Gartenumbau allein ist keine Schutzgarantie."
+        ]
+      },
+      {
+        "heading": "Einfahrt und Terrasse nach ihrer Nutzung erneuern",
+        "paragraphs": [
+          "Halten Sie fest, wo Fahrzeuge fahren oder stehen und welche Flächen nur begangen werden. Bei [Pflasterarbeiten](/leistungen/pflasterarbeiten) werden Aufbau und Einfassungen passend zur Nutzung abgestimmt. Bestehende Setzungen oder lose Ränder sollten vor dem neuen Belag betrachtet werden, statt lediglich eine andere Oberfläche darüber zu planen.",
+          "Für die Terrasse sind Türanschlüsse, Möbel und die Verbindung zum Garten entscheidend. Gewünschte [Natursteinflächen](/leistungen/natursteinarbeiten) lassen sich nach Format, Oberfläche und Nutzung besprechen. Unser Ratgeber zur [Terrassenentwässerung](/ratgeber/terrasse-entwaesserung-planen) hilft Ihnen, die relevanten Anschlüsse bereits für die Anfrage zusammenzustellen."
+        ]
+      },
+      {
+        "heading": "Grünflächen und Regenwassernutzung sinnvoll ergänzen",
+        "paragraphs": [
+          "Prüfen Sie, ob alle befestigten Bereiche weiterhin gebraucht werden. Eine entbehrliche Ecke kann als Pflanzfläche geplant werden, sofern Boden, Leitungen und Pflegezugang dafür geeignet sind. Die Stadt Maintal erläutert in ihren Informationen zu Hochwasser, welche Rolle Boden, Bewuchs und Versiegelung für die Aufnahme von Regenwasser spielen.",
+          "Wenn Sie Regenwasser später für eine [Bewässerungsanlage](/leistungen/bewaesserungsanlagen) nutzen möchten, besprechen wir Platz, Leitungswege und benötigte Versorgung im Zusammenhang mit dem Umbau. Vorbereitende [Erdarbeiten](/leistungen/erdarbeiten) müssen vor fertigen Oberflächen eingeordnet werden. Speicher, Bewässerung und sichere Ableitung erfüllen unterschiedliche Aufgaben und werden entsprechend abgestimmt."
+        ]
+      }
+    ],
+    "checklist": [
+      "Gesamte Fläche und angrenzende Haus- und Gartenbereiche fotografieren.",
+      "Abläufe, Fallrohre und auffällige Wasserstellen markieren.",
+      "Fahrzeugnutzung, Sitzbereiche und unverzichtbare Wege nennen.",
+      "Setzungen, lockere Ränder und bekannte Leitungen zeigen.",
+      "Wünsche zu Begrünung oder Regenwassernutzung früh mitteilen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann ich eine abgesackte Einfahrt in Maintal erneuern lassen?",
+        "answer": "Ja, Sie können die betroffene Fläche anfragen. Zeigen Sie die Schäden und nennen Sie die Nutzung. Ursache, Unterbau und Anschlüsse müssen vor der geeigneten Ausführung betrachtet werden."
+      },
+      {
+        "question": "Helfen Fotos von Pfützen für die Planung?",
+        "answer": "Ja, sie zeigen, wo Auffälligkeiten auftreten. Fotografieren Sie auch die Umgebung und vorhandene Abläufe. Die Ursache lässt sich daraus allein nicht sicher bestimmen."
+      },
+      {
+        "question": "Verhindert neues Pflaster eine Überflutung?",
+        "answer": "Das lässt sich nicht pauschal zusagen. Aufbau, Wasserwege, Anschlüsse und mögliche äußere Einflüsse müssen betrachtet werden. Besondere Schutzfragen können zusätzliche Fachplanung und behördliche Abstimmung erfordern."
+      },
+      {
+        "question": "Kann der Umbau zugleich mehr Grün schaffen?",
+        "answer": "Ja, unbenötigte befestigte Bereiche lassen sich auf eine neue Nutzung prüfen. Entscheidend sind Boden, Leitungen, tägliche Wege und die spätere Pflege der geplanten Pflanzflächen."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-bad-vilbel", "gartenbau-frankfurt", "gartenbau-hattersheim"],
+    "imageSlug": "gartenbau-floersheim",
+    "imageAlt": "Gepflasterter Hauseingang mit eingefasstem Höhenübergang",
+    "imageCaption": "Gestaltungsbeispiel aus Arbeiten von Loni GalaBau; keine Ortszuordnung.",
+    "sources": [
+      {
+        "title": "Maintal: Hochwasser, Starkregen und Vorsorge",
+        "url": "https://www.maintal.de/hochwasser"
+      },
+      {
+        "title": "Stadt Maintal: Stadtporträt und vier Stadtteile",
+        "url": "https://www.maintal.de/seite/130191/stadtportrait.html"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihre Außenanlage in Maintal mit dem Bestand zeigen",
+      "text": "Senden Sie Fotos von Belägen, Anschlüssen und auffälligen Wasserstellen. Beschreiben Sie die gewünschte Nutzung und welche Teile der Fläche erhalten oder begrünt werden sollen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "sued-ost"
+  },
+  {
+    "slug": "gartenbau-eltville",
+    "city": "Eltville am Rhein",
+    "shortName": "Eltville",
+    "title": "Gartenbau Eltville am Rhein | Loni GalaBau",
+    "description": "Gartengestaltung in Eltville, Erbach, Hattenheim, Martinsthal und Rauenthal: Terrasse, Pflanzflächen und Wasserbedarf gemeinsam mit Loni GalaBau planen.",
+    "h1": "Garten- und Landschaftsbau in Eltville am Rhein",
+    "kicker": "Ein Sitzplatz im Grünen, der im Alltag funktioniert",
+    "heroLead": "Aus einem gepflasterten Hof, einer alten Terrasse oder einer ungenutzten Rasenfläche kann Ihr neuer Lieblingsplatz werden. Wir planen Beläge, Pflanzen und Bewässerung zusammen.",
+    "intro": [
+      "Sie suchen einen Gartenbaubetrieb für Eltville am Rhein, Erbach, Hattenheim, Martinsthal oder Rauenthal? Loni GalaBau arbeitet von Hattersheim aus an Gartenprojekten im deutschlandweiten Einsatzgebiet. Für Ihre [Gartengestaltung](/leistungen/gartengestaltung) beginnen wir mit der Nutzung: gemeinsam essen, einen ruhigen Platz finden oder mehr Raum für Pflanzen schaffen.",
+      "Eltville bündelt im Klimaanpassungskonzept Hinweise zu Gartengestaltung, Regenwassernutzung und Entsiegelung. Diese Themen lassen sich bei einem Gartenumbau früh mitdenken. Welche Lösung auf Ihrem Grundstück passt, hängt von den tatsächlichen Lichtverhältnissen, Flächen und Anschlüssen ab."
+    ],
+    "districts": ["Eltville", "Erbach", "Hattenheim", "Martinsthal", "Rauenthal"],
+    "focus": "Befestigte Flächen auf die benötigte Nutzung abstimmen, Pflanzflächen gut erreichbar anordnen und den Wasserbedarf schon vor der Ausführung von Terrasse und Wegen berücksichtigen.",
+    "sections": [
+      {
+        "heading": "Terrasse und Pflanzflächen richtig verteilen",
+        "paragraphs": [
+          "Bevor Sie eine [Terrasse bauen lassen](/leistungen/pflasterarbeiten), stellen Sie die gewünschten Möbel gedanklich auf die Fläche. Neben Tisch und Stühlen braucht es Platz zum Vorbeigehen und einen freien Zugang zum Garten. So zeigt sich, welche Fläche wirklich befestigt werden muss und wo ein Beet, eine Hecke oder Rasen sinnvoll anschließen kann.",
+          "Soll ein vorhandener Belag teilweise weichen, betrachten wir auch den Unterbau und die angrenzenden Höhen. Neue Pflanzflächen benötigen einen geeigneten Bodenaufbau. Die Bezeichnung „wasserdurchlässig“ auf einem Stein allein beantwortet noch nicht, wohin das Wasser später gelangt. Hausanschlüsse und bestehende Abläufe bleiben Teil der Planung."
+        ]
+      },
+      {
+        "heading": "Den späteren Gießaufwand mitplanen",
+        "paragraphs": [
+          "Ein sonniger Sitzplatz und ein schattiger Gartenrand haben unterschiedliche Voraussetzungen. Fotografieren Sie die Flächen deshalb möglichst zu mehreren Tageszeiten. Bei der Pflanzenwahl sind neben dem Erscheinungsbild der verfügbare Wurzelraum, der Standort und Ihre Zeit für die spätere Pflege entscheidend. Bestehende Gehölze können dabei wichtige Orientierungspunkte sein.",
+          "Für [Bewässerungsanlagen](/leistungen/bewaesserungsanlagen) klären wir Wasserquelle, Leitungswege und die zu versorgenden Bereiche. Wenn Sie Regenwasser nutzen möchten, lässt sich ein [Zisterneneinbau](/leistungen/bewaesserungsanlagen) projektbezogen prüfen. Dachflächen, Speicherplatz und Überlauf müssen zusammenpassen; ein Tankvolumen oder eine Einsparung lässt sich nicht allein aus der Gartengröße ableiten."
+        ]
+      },
+      {
+        "heading": "Den Umbau mit einem klaren Leistungsumfang beginnen",
+        "paragraphs": [
+          "Bei einer bestehenden Außenanlage lohnt sich die Unterscheidung zwischen erhaltenen und neuen Teilen. Ein brauchbarer Weg kann bleiben, während der Sitzplatz anders angeordnet wird. Für [Natursteinarbeiten](/leistungen/natursteinarbeiten) vergleichen wir vorhandene und neue Materialien, damit Übergänge, Kanten und Formate bewusst gestaltet werden.",
+          "Schicken Sie neben den Wunschbildern auch Fotos des Zugangs und der vorhandenen Wasserstellen. Rückbau, Materialtransport, Vorbereitung und neue Oberflächen bilden zusammen den Aufwand. Falls der Garten in Abschnitten entstehen soll, hilft unser Ratgeber [Garten in Etappen umgestalten](/ratgeber/garten-umgestalten-in-etappen), die Reihenfolge vor fertigen Belägen zu überdenken."
+        ]
+      }
+    ],
+    "checklist": [
+      "Stadtteil und Projektadresse nennen.",
+      "Sitzplatz, Laufwege und gewünschte Pflanzflächen skizzieren.",
+      "Sonne, Schatten und vorhandene Gehölze fotografieren.",
+      "Wasseranschluss und mögliche Regenwasserzuleitung zeigen.",
+      "Erhaltenswerte Beläge sowie Zugang und Lagerfläche angeben."
+    ],
+    "faqs": [
+      {
+        "question": "Kann ich auch in Rauenthal oder Martinsthal einen Gartenumbau anfragen?",
+        "answer": "Ja. Anfragen aus allen fünf Eltviller Stadtteilen sind möglich. Unser Firmensitz liegt in Hattersheim; Umfang, Zugang und Ausführung stimmen wir für Ihr konkretes Grundstück ab."
+      },
+      {
+        "question": "Muss eine pflegeleichtere Gestaltung aus viel Pflaster bestehen?",
+        "answer": "Nein. Gut erreichbare Beete, klare Ränder und passende Pflanzen können den Pflegeaufwand überschaubar halten. Entscheidend ist, welchen Aufwand Sie tatsächlich übernehmen möchten; vollständig pflegefrei wird eine Außenanlage nicht."
+      },
+      {
+        "question": "Lassen sich Terrasse und Bewässerung gemeinsam planen?",
+        "answer": "Ja. Leitungswege und Wasserentnahmestellen werden sinnvollerweise besprochen, bevor die Oberflächen fertig sind. Teilen Sie mit, ob nur Beete oder auch Rasen versorgt werden sollen."
+      },
+      {
+        "question": "Was braucht ein Angebot für Gartenbau in Eltville?",
+        "answer": "Ungefähre Maße, Fotos, gewünschte Nutzung und Materialvorstellungen helfen beim Einstieg. Rückbau, Bodenaufbau, Anschlüsse und Erreichbarkeit bestimmen den Aufwand mit. Ein pauschaler Quadratmeterpreis bildet diese Unterschiede nicht ab."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-wiesbaden", "gartenbau-taunusstein", "gartenbau-mainz"],
+    "imageSlug": "gartenbau-kriftel",
+    "imageAlt": "Rasenfläche mit Hecke und einem runden Sitzbereich",
+    "imageCaption": "Rasenfläche mit Hecke und rundem Sitzbereich – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
+    "sources": [
+      {
+        "title": "Eltville: Stadtteile",
+        "url": "https://www.eltville.de/freizeit-tourismus/erleben-entdecken/stadtportrait/stadtteile/"
+      },
+      {
+        "title": "Eltville: Klimaanpassung, Garten und Regenwassernutzung",
+        "url": "https://www.eltville.de/leben-wohnen/nachhaltiges-eltville/klimaschutz-anpassungen/integriertes-klimaanpassungskonzept/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihr Gartenprojekt in Eltville vorbereiten",
+      "text": "Zeigen Sie uns den heutigen Garten und beschreiben Sie Ihren gewünschten Alltag darin. Fotos von Sitzplatz, Anschlüssen und Zugang helfen, Gestaltung und Ausführung gemeinsam einzuordnen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "rhein"
+  },
+  {
+    "slug": "gartenbau-niedernhausen",
+    "city": "Niedernhausen",
+    "shortName": "Niedernhausen",
+    "title": "Gartenbau Niedernhausen | Loni GalaBau",
+    "description": "Gartengestaltung in Niedernhausen: Höhen, Terrasse, Wege und Baustellenzugang zusammen planen. Auch Königshofen, Oberjosbach und die weiteren Ortsteile.",
+    "h1": "Garten- und Landschaftsbau in Niedernhausen",
+    "kicker": "Gute Übergänge zwischen Haus und Garten",
+    "heroLead": "Eine Terrasse, ein neuer Weg oder eine Rasenfläche soll bequem erreichbar sein. Wir stimmen die Gartengestaltung auf Ihre Anschlusshöhen und den tatsächlichen Zugang zum Grundstück ab.",
+    "intro": [
+      "Niedernhausen umfasst sechs Ortsteile mit unterschiedlichen Lagen im Taunus. Ob Ihr Garten in Königshofen, Oberjosbach, Engenhahn, Niederseelbach, Oberseelbach oder Niedernhausen liegt: Für die Planung zählen die konkreten Höhen und Wege. Die Ortsbeschreibung allein sagt nichts darüber aus, welche Bodenarbeiten bei Ihnen notwendig sind.",
+      "Loni GalaBau aus Hattersheim nimmt Gartenprojekte in Niedernhausen als Teil des deutschlandweiten Einsatzgebiets an. Bei der [Gartengestaltung](/leistungen/gartengestaltung) verbinden wir Nutzungswünsche mit einer sinnvollen Ausführung: vom Materialtransport bis zum Übergang zwischen Haustür, Terrasse und Grünfläche."
+    ],
+    "districts": [
+      "Niedernhausen",
+      "Königshofen",
+      "Oberjosbach",
+      "Engenhahn",
+      "Niederseelbach",
+      "Oberseelbach"
+    ],
+    "focus": "Anschlusshöhen, Stufen und Transportwege aufnehmen, bevor die Gartenaufteilung feststeht. Terrasse und Grünflächen so verbinden, dass die täglichen Wege nachvollziehbar und gut nutzbar bleiben.",
+    "sections": [
+      {
+        "heading": "Die Gartenplanung an den Höhen beginnen",
+        "paragraphs": [
+          "Zeigen Sie zunächst Türschwellen, vorhandene Treppen und den Übergang zur Straße. Soll eine Fläche verändert werden, müssen erhaltene Bauteile weiterhin funktionieren. Für [Erdarbeiten](/leistungen/erdarbeiten) betrachten wir deshalb nicht nur die gewünschte spätere Höhe, sondern auch die Grenzen, Leitungen und benachbarten Bereiche.",
+          "Wo größere Höhenunterschiede bestehen, können Stufen oder getrennte Gartenebenen sinnvoll sein. Ob eine Abstützung nötig ist und welche Nachweise dazu gehören, muss im Einzelfall geklärt werden. Die Gemeinde stellt Bebauungspläne nach Ortsteilen bereit. Vorhandene Planunterlagen zur Adresse helfen, mögliche Vorgaben rechtzeitig mit einzubeziehen."
+        ]
+      },
+      {
+        "heading": "Terrasse und Wege mit passenden Übergängen",
+        "paragraphs": [
+          "Beim [Terrassenbau](/leistungen/pflasterarbeiten) sollte neben dem Sitzplatz auch der Weg dorthin angenehm sein. Prüfen Sie, welche Strecke Sie mit Einkauf, Gartenmöbeln oder Schubkarre nutzen. Ein kurzer Weg mit mehreren unpassenden Stufen kann im Alltag aufwendiger sein als eine etwas andere Aufteilung des Gartens.",
+          "Für [Natursteinarbeiten](/leistungen/natursteinarbeiten) und Pflaster wählen wir Material, Format und Kanten passend zur Nutzung. Rinnen, Einfassungen und der Hausanschluss gehören zur Fläche dazu. Wo Wasser heute nach Regen stehen bleibt, sind Fotos besonders hilfreich. Der Ratgeber zur [Terrassenentwässerung](/ratgeber/terrasse-entwaesserung-planen) erläutert diese Verbindung von Belag und Wasserführung."
+        ]
+      },
+      {
+        "heading": "Den Baustellenzugang vor der Materialbestellung klären",
+        "paragraphs": [
+          "Ein hinter dem Haus gelegener Garten braucht einen durchdachten Transportweg. Messen Sie die schmalste Durchfahrt und fotografieren Sie Stufen, Kurven sowie bestehende Beläge auf dem Weg. Davon hängt ab, wie Aushub und Material bewegt werden können. Auch ein vorübergehend nutzbarer Lagerplatz sollte früh benannt werden.",
+          "Ist die Terrasse fertig, kann eine vorbereitete [Rasenfläche](/leistungen/rasenanlagen) den Garten ergänzen. Damit neue Oberflächen nicht gleich wieder als Baustellenweg dienen, planen wir die Reihenfolge gemeinsam. Nennen Sie außerdem Zugänge, die während des Umbaus unverzichtbar bleiben, und kennzeichnen Sie gewünschte spätere Bauabschnitte."
+        ]
+      }
+    ],
+    "checklist": [
+      "Ortsteil, Adresse und vorhandene Planunterlagen nennen.",
+      "Türschwellen, Stufen und Geländeübergänge fotografieren.",
+      "Schmalste Zufahrt sowie Kurven und Hindernisse messen.",
+      "Erforderliche Alltagswege und Lagerflächen markieren.",
+      "Erhaltene Bauteile und geplante Bauabschnitte unterscheiden."
+    ],
+    "faqs": [
+      {
+        "question": "Bearbeitet Loni GalaBau Anfragen aus allen Niedernhausener Ortsteilen?",
+        "answer": "Ja. Beschreiben Sie das Vorhaben mit Adresse und Ortsteil. Unser Firmensitz liegt in Hattersheim. Welche Leistungen und welcher Bauablauf passen, klären wir anhand der Grundstücksbedingungen."
+      },
+      {
+        "question": "Kann ein Garten mit schmalem Zugang erneuert werden?",
+        "answer": "Das lässt sich projektbezogen prüfen. Fotos, Durchfahrtsbreite, Stufen und mögliche Lagerflächen sind dafür wichtig. Ein begrenzter Zugang kann Transport und Arbeitsweise verändern und damit den Aufwand beeinflussen."
+      },
+      {
+        "question": "Braucht jeder Garten in Niedernhausen eine Hanglösung?",
+        "answer": "Nein. Entscheidend sind die tatsächlichen Höhen des Grundstücks und die gewünschte Nutzung. Eine Lage im Taunus ersetzt weder ein Aufmaß noch die Beurteilung des vorhandenen Geländes."
+      },
+      {
+        "question": "Kann die Terrasse zuerst und der Rasen später entstehen?",
+        "answer": "Das kann sinnvoll sein. Vorher sollten die späteren Transportwege, Leitungen und Randanschlüsse feststehen. Beschreiben Sie in Ihrer Anfrage, welche Bereiche zuerst nutzbar sein müssen und welche warten können."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-hofheim", "gartenbau-idstein", "gartenbau-taunusstein"],
+    "imageSlug": "gartenbau-hofheim",
+    "imageAlt": "Natursteinmauer mit angrenzender Außentreppe als Übergang zwischen Geländehöhen",
+    "imageCaption": "Natursteinmauer mit Außentreppe – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
+    "sources": [
+      {
+        "title": "Niedernhausen: die sechs Ortsteile",
+        "url": "https://www.niedernhausen.de/portrait/ortsteile/"
+      },
+      {
+        "title": "Niedernhausen: Bebauungspläne und Bauleitplanverfahren",
+        "url": "https://www.niedernhausen.de/bauen-planen-wohnen/bebauungsplaene-bauleitplanverfahren/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihr Vorhaben in Niedernhausen einordnen",
+      "text": "Ein Foto vom Haus bis zum Garten und eine einfache Skizze zeigen oft mehr als einzelne Detailbilder. Ergänzen Sie Maße des Zugangs und Ihre Wünsche für Terrasse, Wege und Grünflächen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-taunusstein",
+    "city": "Taunusstein",
+    "shortName": "Taunusstein",
+    "title": "Gartenbau Taunusstein | Loni GalaBau",
+    "description": "Gartenbau in Taunusstein: Wege, Einfahrt, Terrasse und Regenwasser sinnvoll abstimmen. Gartengestaltung in Hahn, Wehen, Bleidenstadt und weiteren Stadtteilen.",
+    "h1": "Garten- und Landschaftsbau in Taunusstein",
+    "kicker": "Wege, Grünflächen und Regenwasser gemeinsam planen",
+    "heroLead": "Ein guter Garten beginnt mit einer klaren Aufteilung. Wir verbinden die Flächen für Wohnen, Spielen und Ankommen mit passenden Wegen und einer abgestimmten Wasserführung.",
+    "intro": [
+      "Sie möchten einen Garten in Taunusstein neu anlegen oder eine bestehende Außenanlage verändern? Loni GalaBau aus Hattersheim plant Ihr Vorhaben vom Alltag her: Wo kommen Sie an, wo möchten Sie sitzen und welche Fläche bleibt zum Spielen oder Pflanzen? Wir arbeiten deutschlandweit und nehmen Anfragen aus allen zehn Taunussteiner Stadtteilen an.",
+      "Bei [Pflasterarbeiten](/leistungen/pflasterarbeiten) lohnt sich ein Blick über den einzelnen Weg hinaus. Neue befestigte Flächen, vorhandene Abläufe und die angrenzenden Grünbereiche müssen zusammen funktionieren. Deshalb besprechen wir die Wasserführung vor der endgültigen Materialauswahl."
+    ],
+    "districts": [
+      "Hahn",
+      "Wehen",
+      "Bleidenstadt",
+      "Neuhof",
+      "Seitzenhahn",
+      "Orlen",
+      "Watzhahn",
+      "Wingsbach",
+      "Hambach",
+      "Niederlibbach"
+    ],
+    "focus": "Einfahrt, Hauszugang und Gartenflächen nach ihrer Nutzung unterscheiden. Bestehende Wasserwege aufnehmen und mögliche Regenwassernutzung vor dem Bau fertiger Oberflächen abstimmen.",
+    "sections": [
+      {
+        "heading": "Einfahrt und Gartenwege unterschiedlich aufbauen",
+        "paragraphs": [
+          "Ein Stellplatz wird anders beansprucht als ein Weg zum Beet. Wenn Sie eine [Einfahrt pflastern lassen](/leistungen/pflasterarbeiten), nennen Sie deshalb die vorgesehenen Fahrzeuge und zusätzliche Nutzungen. Fahrräder, Mülltonnen und der Zugang zum Haus benötigen ebenfalls Platz, ohne dass die gesamte Vorderfläche gleich gestaltet werden muss.",
+          "Für den Belag zählen neben Farbe und Format auch Einfassungen, Anschlusshöhen und der vorhandene Aufbau. Markieren Sie Abläufe, Schächte und bekannte Leitungen in einer Skizze. So lässt sich prüfen, welche Vorarbeiten nötig sind und an welchen Stellen eine erhaltene Fläche mit der neuen Gestaltung verbunden wird."
+        ]
+      },
+      {
+        "heading": "Wasserwege erkennen und Regenwasser nutzen",
+        "paragraphs": [
+          "Taunusstein stellt Informationen zu einer Fließpfadkarte bereit. Die Stadt weist darauf hin, dass solche Karten Orientierung geben und örtliche Details ergänzend betrachtet werden müssen. Für Ihre Anfrage sind deshalb eigene Beobachtungen wertvoll: Wo sammelt sich nach Regen Wasser, welche Fläche liegt tiefer und welche Anschlüsse sind bereits vorhanden?",
+          "Bei einer geplanten [Entwässerung](/leistungen/entwaesserung) oder einer [Zisterne](/leistungen/bewaesserungsanlagen) besprechen wir das Grundstück als Ganzes. Regenwasserspeicherung für den Garten und die Ableitung größerer Wassermengen erfüllen unterschiedliche Aufgaben. Zuleitung, Überlauf, zugängliche Wartung und mögliche örtliche Anforderungen müssen geklärt sein, bevor neue Wege oder Terrassen geschlossen werden."
+        ]
+      },
+      {
+        "heading": "Die Grünflächen auf Ihre Nutzung abstimmen",
+        "paragraphs": [
+          "Eine Spielfläche, ein ruhiger Sitzplatz und ein bepflanzter Rand brauchen jeweils andere Proportionen. Bei der [Gartengestaltung](/leistungen/gartengestaltung) legen wir zuerst diese Nutzungen fest. Danach folgen Flächenform, Übergänge und Pflanzen. Auch der spätere Weg mit Mäher oder Gießgerät gehört zu einer alltagstauglichen Aufteilung.",
+          "Wenn Sie [Rollrasen verlegen lassen](/leistungen/rasenanlagen) möchten, stimmen wir Bodenvorbereitung und die Versorgung in der Anwuchsphase ab. Sichtschutz lässt sich ergänzend über [Zaunarbeiten](/leistungen/zaunarbeiten) planen. Nennen Sie Torpositionen und Bereiche, die erreichbar bleiben müssen, damit die Grundstücksgrenze die Nutzung des Gartens sinnvoll unterstützt."
+        ]
+      }
+    ],
+    "checklist": [
+      "Stadtteil und Projektadresse angeben.",
+      "Fahrflächen, Gehwege und Grünflächen getrennt skizzieren.",
+      "Abläufe, Schächte und bekannte Leitungswege markieren.",
+      "Beobachtete Wasseransammlungen nach Regen fotografieren.",
+      "Wünsche für Rasen, Sitzplatz und Regenwassernutzung nennen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann ich in Hahn, Wehen oder Bleidenstadt Gartenbau anfragen?",
+        "answer": "Ja, ebenso in den weiteren Taunussteiner Stadtteilen. Schicken Sie Adresse, Bilder und eine Beschreibung. Wir stimmen den möglichen Umfang und die Ausführung von unserem Firmensitz in Hattersheim aus projektbezogen ab."
+      },
+      {
+        "question": "Ersetzt eine Fließpfadkarte die Prüfung meines Gartens?",
+        "answer": "Nein. Sie ist eine Orientierung. Die vorhandenen Höhen, Gebäudeanschlüsse, Abläufe und weitere örtliche Details müssen zusätzlich betrachtet werden. Fotos nach einem Regen können die Bestandsaufnahme unterstützen."
+      },
+      {
+        "question": "Lässt sich eine Zisterne beim Gartenumbau mit einbauen?",
+        "answer": "Das kann geprüft werden. Benötigt werden Angaben zu Dachflächen, Leitungen, Zugang und Platz. Größe, Einbauweise und Überlauf ergeben sich aus der Planung; ein Speicher allein garantiert keinen Schutz vor Starkregen."
+      },
+      {
+        "question": "Welche Angaben beeinflussen das Angebot für Pflasterarbeiten?",
+        "answer": "Fläche und Material sind nur ein Teil. Bestehender Aufbau, Rückbau, Befahrbarkeit, Höhen, Entwässerung und Transportwege bestimmen den Aufwand ebenfalls. Eine Skizze mit Fotos hilft, diese Positionen einzuordnen."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-wiesbaden", "gartenbau-niedernhausen", "gartenbau-idstein"],
+    "imageSlug": "gartenbau-floersheim",
+    "imageAlt": "Gepflasterter Hauseingang mit eingefasstem Höhenübergang",
+    "imageCaption": "Gepflasterter Hauseingang mit Höhenübergang – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
+    "sources": [
+      {
+        "title": "Taunusstein: Stadtportrait und zehn Stadtteile",
+        "url": "https://www.taunusstein.de/portal/seiten/stadtportrait-900000052-29880.html"
+      },
+      {
+        "title": "Taunusstein: Fließpfadkarte und Starkregenvorsorge",
+        "url": "https://www.taunusstein.de/portal/pressemitteilungen/sommer-ist-starkregenzeit-die-fliesspfadkarte-taunussteins-900003478-29880.html?rubrik=900000041"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Die Außenanlage in Taunusstein vorbereiten",
+      "text": "Beschreiben Sie, welche Flächen befahren, betreten oder bepflanzt werden sollen. Ergänzen Sie Fotos von Anschlüssen und Wasseransammlungen, damit Gestaltung und technische Vorbereitung zusammenpassen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-idstein",
+    "city": "Idstein",
+    "shortName": "Idstein",
+    "title": "Gartenbau Idstein | Gartenumbau mit Loni GalaBau",
+    "description": "Gartengestaltung in Idstein: vorhandene Beläge prüfen, Terrasse erneuern und Garten in Etappen umbauen. Auch Wörsdorf, Walsdorf und Heftrich anfragen.",
+    "h1": "Garten- und Landschaftsbau in Idstein",
+    "kicker": "Den Garten weiterentwickeln und Gutes erhalten",
+    "heroLead": "Nicht jede Gartenerneuerung beginnt bei null. Wir prüfen mit Ihnen, welche Wege, Pflanzen und Materialien bleiben können und wie neue Flächen sinnvoll daran anschließen.",
+    "intro": [
+      "Ein vorhandener Garten verändert sich mit seinen Bewohnern: Ein Sitzplatz wird zu klein, ein Weg ist umständlich oder eine Rasenfläche wird anders gebraucht. Für [Gartengestaltung in Idstein](/leistungen/gartengestaltung) nehmen wir diese Wünsche als Ausgangspunkt und halten zunächst fest, was sich bewährt hat.",
+      "Loni GalaBau hat seinen Firmensitz in Hattersheim und arbeitet deutschlandweit. Neben der Idsteiner Kernstadt können Sie Projekte in Wörsdorf, Walsdorf, Heftrich und den weiteren Stadtteilen anfragen. Für einen ersten Überblick helfen Fotos aus mehreren Blickrichtungen und die ungefähren Maße der betroffenen Flächen."
+    ],
+    "districts": [
+      "Idstein",
+      "Wörsdorf",
+      "Walsdorf",
+      "Heftrich",
+      "Dasbach",
+      "Ehrenbach",
+      "Eschenhahn",
+      "Kröftel",
+      "Lenzhahn",
+      "Niederauroff",
+      "Nieder-Oberrod",
+      "Oberauroff"
+    ],
+    "focus": "Erhaltene und neue Gartenbereiche bewusst verbinden. Wiederverwendung, Anschlusshöhen und Bauabschnitte vor dem Rückbau klären und tägliche Zugänge während der Arbeiten berücksichtigen.",
+    "sections": [
+      {
+        "heading": "Vor dem Rückbau den Bestand bewerten",
+        "paragraphs": [
+          "Markieren Sie Beläge, Einfassungen, Pflanzen und Mauern, die Sie behalten möchten. Bei [Natursteinarbeiten](/leistungen/natursteinarbeiten) kann ein vorhandenes Material den Charakter einer neuen Fläche mitbestimmen. Ob sich Steine wiederverwenden lassen, hängt jedoch von Zustand, Menge und dem vorgesehenen Aufbau ab; ein Foto reicht dafür nicht immer aus.",
+          "Neue und alte Flächen brauchen passende Anschlüsse. Zeigen Sie deshalb nicht nur die beschädigte Stelle, sondern auch die Wege daneben. Höhen, Fugenbild und Entwässerung sollten zusammen betrachtet werden. Eine einfache Liste mit „bleibt“, „wird erneuert“ und „noch offen“ hilft, den Leistungsumfang nachvollziehbar zu besprechen."
+        ]
+      },
+      {
+        "heading": "Neue Terrassen an Haus und Wasserführung anpassen",
+        "paragraphs": [
+          "Wenn Sie eine [Terrasse erneuern lassen](/leistungen/pflasterarbeiten), sind Türschwellen und bestehende Sockel wichtige Grenzen. Der neue Belag darf diese Übergänge nicht unbeachtet überdecken. Gleichzeitig brauchen Möbel und Laufwege ausreichend Platz. Wir stimmen die gewünschte Fläche auf Hausanschluss, Gartenhöhe und die tatsächliche Nutzung ab.",
+          "Idstein veröffentlicht Fließpfadkarten und erläutert ausdrücklich deren Modellgrenzen. Sie können für die Vorbereitung Orientierung geben; die Wasserführung auf der einzelnen Fläche muss trotzdem geprüft werden. Vor [Pflasterarbeiten](/leistungen/pflasterarbeiten) sind vorhandene Abläufe und bekannte Problemstellen aufzunehmen. Unser Ratgeber zur [Terrassenentwässerung](/ratgeber/terrasse-entwaesserung-planen) erklärt, warum diese Punkte vor dem fertigen Belag stehen."
+        ]
+      },
+      {
+        "heading": "Den Gartenumbau mit dem Alltag vereinbaren",
+        "paragraphs": [
+          "Nicht jede Fläche muss gleichzeitig bearbeitet werden. Benennen Sie die Wege, die Bewohner während des Umbaus weiterhin brauchen. So lässt sich prüfen, welche Abschnitte zusammengehören und ob ein vorläufiger Zugang möglich ist. Auch Anlieferung, Materiallager und die Erreichbarkeit hinterer Gartenbereiche beeinflussen die Reihenfolge.",
+          "Vorbereitende Leitungen und [Erdarbeiten](/leistungen/erdarbeiten) sollten vor neuen Oberflächen liegen. Rasen oder Pflanzflächen folgen sinnvollerweise, wenn schwere Transporte abgeschlossen sind. Bei mehreren Bauabschnitten hilft unser Ratgeber [Garten in Etappen umgestalten](/ratgeber/garten-umgestalten-in-etappen). Für das Angebot unterscheiden wir gewünschte Sofortmaßnahmen von Ergänzungen, die erst später umgesetzt werden sollen."
+        ]
+      }
+    ],
+    "checklist": [
+      "Stadtteil und betroffene Flächen mit Maßen angeben.",
+      "Erhaltene und zu erneuernde Bauteile unterscheiden.",
+      "Beläge, Türanschlüsse und Abläufe fotografieren.",
+      "Täglich benötigte Wege und Transportzugang benennen.",
+      "Sofortmaßnahmen und spätere Wünsche getrennt aufführen."
+    ],
+    "faqs": [
+      {
+        "question": "Kann ich auch in Wörsdorf, Walsdorf oder Heftrich anfragen?",
+        "answer": "Ja. Die Anfrage kann Ihr Vorhaben in der Kernstadt oder einem Idsteiner Stadtteil betreffen. Unser Standort ist Hattersheim; wir stimmen Leistungen und Ablauf anhand Ihrer Projektangaben ab."
+      },
+      {
+        "question": "Können vorhandene Pflastersteine wieder eingebaut werden?",
+        "answer": "Das lässt sich nach Prüfung von Zustand, Menge und geplanter Nutzung beurteilen. Auch Ausbau, Reinigung, Lagerung und der passende Unterbau gehören zur Entscheidung. Wiederverwendung ist nicht automatisch die günstigste Variante."
+      },
+      {
+        "question": "Muss der ganze Garten für eine neue Terrasse umgebaut werden?",
+        "answer": "Nicht zwingend. Entscheidend sind Zugang, Anschlusshöhen und notwendige Vorarbeiten. Wir besprechen, welche angrenzenden Flächen berührt werden und welche Teile des Gartens erhalten bleiben können."
+      },
+      {
+        "question": "Wie wird ein Gartenumbau in Idstein kalkuliert?",
+        "answer": "Maße und Materialwünsche bilden den Einstieg. Dazu kommen Rückbau, Vorbereitung, Wiederverwendung, Wasserführung und Transportbedingungen. Mit Fotos, Skizze und einer Prioritätenliste lässt sich der gewünschte Umfang genauer einordnen."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-niedernhausen", "gartenbau-taunusstein", "gartenbau-hofheim"],
+    "imageSlug": "gartenbau-bad-soden",
+    "imageAlt": "Terrassenfläche aus großformatigen Platten mit gleichmäßigem Fugenbild",
+    "imageCaption": "Großformatige Terrassenplatten – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
+    "sources": [
+      {
+        "title": "Idstein: Stadtteile",
+        "url": "https://www.idstein.de/leben-in-idstein/stadtportraet/stadtteile/"
+      },
+      {
+        "title": "Idstein: Fließpfadkarten und ihre Grenzen",
+        "url": "https://www.idstein.de/umwelt-bauen/natur-umwelt-klimaschutz/gewaesser-und-hochwasserschutz/fliesspfadkarten/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Den Gartenumbau in Idstein vorbereiten",
+      "text": "Zeigen Sie uns, welche Teile Ihres Gartens bleiben sollen. Fotos der Übergänge, eine Flächenskizze und Ihre Prioritäten helfen, notwendige Arbeiten und mögliche Bauabschnitte abzustimmen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "taunus"
+  },
+  {
+    "slug": "gartenbau-raunheim",
+    "city": "Raunheim",
+    "shortName": "Raunheim",
+    "title": "Gartenbau Raunheim | Gartengestaltung & Pflasterarbeiten",
+    "description": "Gartenbau in Raunheim mit Loni GalaBau: Einfahrt, Hauszugang, Terrasse und Sichtschutz gemeinsam planen. Fotos senden und Ihr Vorhaben anfragen.",
+    "h1": "Garten- und Landschaftsbau in Raunheim",
+    "kicker": "Mehr aus dem Platz rund ums Haus machen",
+    "heroLead": "Einfahrt, Abstellplätze und ein geschützter Sitzplatz müssen sich nicht im Weg stehen. Wir stimmen Wege, befestigte Flächen und Grünbereiche auf Ihre tägliche Nutzung ab.",
+    "intro": [
+      "Sie möchten Ihre Außenanlage in Raunheim praktischer nutzen? Häufig beginnt der Wunsch mit einer konkreten Stelle: Mülltonnen stehen im Weg, der Zugang zum Garten ist umständlich oder die Terrasse bietet wenig Privatsphäre. Bei der [Gartengestaltung](/leistungen/gartengestaltung) betrachten wir diese Aufgaben im Zusammenhang.",
+      "Loni GalaBau hat seinen Firmensitz in Hattersheim am Main und arbeitet deutschlandweit. Für Ihr Projekt in Raunheim helfen Fotos von der Straße bis zum hinteren Garten. So werden Wege, Anschlüsse und mögliche Engstellen sichtbar, bevor die Auswahl von Pflaster, Platten oder Zaunelementen feststeht."
+    ],
+    "districts": ["Raunheim"],
+    "focus": "Vorderer Grundstücksbereich, seitlichen Zugang und hinteren Sitzplatz gemeinsam aufteilen. Bewegungsraum für Fahrzeuge, Fahrräder und Tonnen erhalten und Sichtschutz gezielt dort anordnen, wo er gebraucht wird.",
+    "sections": [
+      {
+        "heading": "Einfahrt, Hauseingang und Abstellflächen ordnen",
+        "paragraphs": [
+          "Bei [Pflasterarbeiten](/leistungen/pflasterarbeiten) beginnt die Planung mit den täglichen Bewegungen: Autotüren öffnen, ein Fahrrad schieben oder eine Mülltonne durch das Tor bewegen. Zeichnen Sie diese Wege in eine grobe Skizze ein. Dadurch zeigt sich, an welchen Stellen zusätzliche Breite nötig ist und wo eine bepflanzte Fläche erhalten werden kann.",
+          "Wenn Sie Ihre [Einfahrt pflastern lassen](/leistungen/pflasterarbeiten), betrachten wir Beanspruchung, vorhandenen Aufbau und Wasserführung gemeinsam. Die Stadt Raunheim bietet einen digitalen Zugang zu Bebauungsplänen und eine Bauberatung. Für Änderungen an Stellplätzen oder der Grundstücksaufteilung sollten die Unterlagen zur Adresse früh berücksichtigt werden; konkrete Vorgaben hängen vom Vorhaben ab."
+        ]
+      },
+      {
+        "heading": "Sichtschutz passend zur Terrasse auswählen",
+        "paragraphs": [
+          "Privatsphäre lässt sich gezielter planen, wenn die wichtigen Blickrichtungen bekannt sind. Fotografieren Sie den Sitzplatz aus der Terrassentür und vom Gartenrand. Für [Zaunbau und Sichtschutz](/leistungen/zaunarbeiten) besprechen wir, welche Abschnitte geschlossen sein sollen und wo offene Bereiche oder Pflanzen zur gewünschten Wirkung beitragen.",
+          "Torbreite, Pfosten, vorhandene Fundamente und Grenzverlauf gehören zur Entscheidung. Ein durchgehender hoher Abschluss ist nicht automatisch die passende Lösung für jeden Garten. Auch Licht und Erreichbarkeit für spätere Pflege zählen. Wenn Lärmminderung das Ziel ist, muss dies gesondert benannt werden: Ein Sichtschutzzaun bedeutet nicht automatisch nachgewiesenen Schallschutz."
+        ]
+      },
+      {
+        "heading": "Den Garten hinter dem Haus gut erreichbar halten",
+        "paragraphs": [
+          "Für eine neue [Terrasse](/leistungen/pflasterarbeiten) sind nicht nur die fertige Fläche und der Hausanschluss wichtig. Während des Baus müssen Material und gegebenenfalls Aushub den Garten erreichen. Zeigen Sie seitliche Durchgänge, Stufen und enge Kurven. Diese Bedingungen beeinflussen Arbeitsweise und Reihenfolge ebenso wie die gewünschten Materialien.",
+          "Nach den vorbereitenden Arbeiten kann eine zusammenhängende [Rasenfläche](/leistungen/rasenanlagen) oder Bepflanzung anschließen. Planen Sie einen erreichbaren Wasseranschluss und klare Ränder ein. Wenn nur ein Teil zuerst erneuert wird, sollten Wege für die spätere Bauphase berücksichtigt bleiben, damit fertige Flächen möglichst sinnvoll erhalten werden können."
+        ]
+      }
+    ],
+    "checklist": [
+      "Projektadresse und gewünschte Teilflächen benennen.",
+      "Wege für Auto, Fahrrad und Mülltonnen skizzieren.",
+      "Blickrichtungen am Sitzplatz fotografieren.",
+      "Tor, Durchgang, Stufen und schmalste Stelle messen.",
+      "Vorhandene Pläne, Abläufe und Wasseranschlüsse angeben."
+    ],
+    "faqs": [
+      {
+        "question": "Hat Loni GalaBau einen Standort in Raunheim?",
+        "answer": "Unser Firmensitz liegt in Hattersheim am Main. Raunheim gehört zu den Orten, aus denen Sie Gartenprojekte anfragen können. Den passenden Leistungsumfang und die Ausführung stimmen wir anhand Ihres Vorhabens ab."
+      },
+      {
+        "question": "Kann ich Einfahrt, Zaun und Terrasse zusammen anfragen?",
+        "answer": "Ja. Eine gemeinsame Skizze hilft, Torpositionen, Fundamente, Wege und Flächen aufeinander abzustimmen. Teilen Sie mit, was zusammen entstehen soll und welche Bereiche gegebenenfalls später folgen."
+      },
+      {
+        "question": "Wie lässt sich ein kleiner Garten besser nutzen?",
+        "answer": "Beginnen Sie mit den wirklich benötigten Wegen und der Größe des Sitzplatzes. Danach werden Grünflächen und Sichtschutz angeordnet. Weniger schwer erreichbare Restflächen können die Nutzung und spätere Pflege vereinfachen."
+      },
+      {
+        "question": "Was wird für ein Angebot für Raunheim benötigt?",
+        "answer": "Fotos, ungefähre Maße, Materialwünsche und Angaben zum Zugang sind hilfreich. Bei Pflaster und Terrasse gehören Höhen und Abläufe dazu, beim Zaun Grenzverlauf und Torposition. So wird der gewünschte Umfang konkreter."
+      }
+    ],
+    "relatedSlugs": ["gartenbau-kelsterbach", "gartenbau-ruesselsheim", "gartenbau-floersheim"],
+    "imageSlug": "gartenbau-kelsterbach",
+    "imageAlt": "Anthrazitfarbener Sichtschutz zwischen zwei Gebäuden",
+    "imageCaption": "Anthrazitfarbener Sichtschutz – Gestaltungsbeispiel aus Arbeiten von Loni GalaBau.",
+    "sources": [
+      {
+        "title": "Raunheim: Bauleitpläne und digitaler Stadtplan",
+        "url": "https://www.raunheim.de/leben/planen-bauen/bauleitplaene/"
+      },
+      {
+        "title": "Raunheim: Bauberatung und Zuständigkeiten",
+        "url": "https://www.raunheim.de/leben/planen-bauen/bauberatung/"
+      }
+    ],
+    "projectPreparation": {
+      "heading": "Ihr Gartenprojekt in Raunheim vorbereiten",
+      "text": "Senden Sie eine Übersicht der Außenanlage und Bilder der Engstellen. Beschreiben Sie, welche täglichen Wege besser funktionieren sollen und wo Sie sich einen geschützten Sitzplatz wünschen."
+    },
+    "updatedAt": "2026-10-20T10:28:28.110Z",
+    "directoryGroup": "main-taunus"
   }
 ]
