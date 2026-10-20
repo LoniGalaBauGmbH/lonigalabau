@@ -14,10 +14,12 @@ sämtliche 37 Ortsseiten und die neue Seite `/l-steine-setzen-lassen`.
 Damit sind alle 83 öffentlichen Sitemap-Seiten über diesen gemeinsamen Weg
 zur Entdeckung und Verarbeitung angemeldet.
 
-**Das bestätigt keine tatsächliche Indexierung aller 83 Seiten.** Direkt nach
-der Einreichung zeigte Google noch die ältere Sitemap-Verarbeitung vom
-05.10.2026 mit 49 erkannten Seiten. Dieser historische Zähler ist weder die
-aktuelle Größe der Sitemap noch die Zahl der indexierten Seiten.
+**Google hat die Sitemap inzwischen auch verarbeitet:** Die abschließende
+Ansicht um **13:05:55 MESZ** zeigte „Last read: Oct 20, 2026“, „Success“
+und **83 erkannte Seiten**. Der unmittelbar nach der Einreichung noch angezeigte
+Altstand vom 05.10. mit 49 Seiten ist damit überholt.
+Das bestätigt die Erkennung aller 83 Sitemap-URLs, aber noch keine tatsächliche
+Indexierung aller Seiten.
 
 ## Gelesener Indexstatus und zusätzliche Einzelanträge
 
@@ -57,7 +59,6 @@ Kontingent; wiederholte Anträge beschleunigen die Verarbeitung nicht. Crawling
 kann Tage bis Wochen dauern, Aufnahme und Zeitpunkt bleiben bei Google:
 [Google Search Central: erneutes Crawling anfordern](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
 
-Offen bleiben die tatsächliche Verarbeitung des neuen Sitemap-Bestands und die
-Indexaufnahme der neuen Seiten. Für noch fehlende wichtige URLs können später,
+Offen bleibt die Indexaufnahme der neuen Seiten. Für noch fehlende wichtige URLs können später,
 nach erneuter Statusprüfung und bei funktionierender Google-Sicherheitsprüfung,
 zusätzliche Einzelanträge gestellt werden.
