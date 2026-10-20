@@ -73,3 +73,15 @@ Der Nutzer hat anschließend ausdrücklich **„stelle es live“** beauftragt. 
 Die eigene Domain nach Veröffentlichung bei 390 und 1440 px gegengeprüft: zwölf richtige Orte, elf Verbindungen, `blur(9px) saturate(0.35)` und grüner Hattersheim-Punkt sichtbar bestätigt. Keine horizontalen Überläufe oder Browserfehler; Seite vollständig interaktiv. Keine Anfrage versendet. Die Live-Desktopansicht ist lokal als Screenshot dokumentiert.
 
 Diese Abschlussdokumentation verändert keinen veröffentlichten Programmcode. Abschließende GitHub-Sicherung im Chatabschluss.
+
+## Aktueller Stand: vier Zielstädte, Version 86
+
+Neueste Nutzerkorrektur: „sind doch zuviele städte bitte nur köln stuttgart frankfurt münchen“. Die Ortsauswahl der V85 ist damit ersetzt: nur noch Köln, Stuttgart, Frankfurt und München sowie Hattersheim als zuvor ausdrücklich grün gewünschter Firmensitz. Die Fortsetzung der Live-Aktualisierung wurde im Kommentar angekündigt und unter der bestehenden Beauftragung ausgeführt.
+
+Alle übrigen Stadtpunkte und zugehörigen Verbindungen entfernt. Vier gerade Strecken verbinden die ausgewählten Städte direkt mit Hattersheim. Köln steht wieder unmittelbar am Punkt; die bisherige linke Beschriftungsspalte wird nicht mehr benötigt. Der neutrale Glaseffekt, die weiße Kontur und der grüne Heimatpunkt bleiben erhalten.
+
+Typprüfung, gezieltes ESLint, Formatierung und Diffprüfung erfolgreich. Lokale Browserprüfung bei 390 und 1440 px: genau fünf Punkte und vier Strecken, keine überlappenden Ortsnamen oder horizontalen Überläufe, keine Browserfehler. Client-/Serverbuild samt Postbuild erfolgreich. Offizieller Source-Workflow hat den geprüften Stand gespeichert und übertragen; nach dem bekannten fehlenden Bash wurde mit dem bewährten Windows-Packager das identische Build-Ergebnis verpackt. Keine Backendänderung, keine Testanfrage.
+
+**V86 erfolgreich live seit 20.10.2026, 10:17:19 MESZ.** Quellcommit `f249e78bea12e7db0ac3972b16732c23d5c228ff`; Version-ID `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_2ed866ca9f0c81918becc6a461f145b5`; Deployment `appgdep_6ad723712dfc819197b331cd47291f3e`, Status succeeded. Öffentliche Audience und Umgebung Revision 4 erhalten.
+
+Auf `https://www.loni-galabau.de/` nach Veröffentlichung bei 390/1440 px die fünf richtigen Ortsnamen, vier Verbindungen, `blur(9px) saturate(0.35)` und grüner Hattersheim-Punkt bestätigt. Keine Überläufe oder Browserfehler; Seite vollständig interaktiv. Live-Desktopansicht als lokaler Screenshot dokumentiert. Abschlussdokumentation ändert keinen Live-Code; abschließender GitHub-Abgleich im Chatabschluss.

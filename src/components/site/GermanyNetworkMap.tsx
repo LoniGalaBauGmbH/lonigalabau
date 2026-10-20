@@ -20,62 +20,13 @@ const cities = [
     home: true,
   },
   {
-    id: "hamburg",
-    name: "Hamburg",
-    longitude: 9.9937,
-    latitude: 53.5511,
-    labelOffsetX: 12,
-    labelOffsetY: -10,
-    anchor: "start",
-  },
-  {
-    id: "berlin",
-    name: "Berlin",
-    longitude: 13.405,
-    latitude: 52.52,
-    labelOffsetX: 12,
-    labelOffsetY: -9,
-    anchor: "start",
-  },
-  {
     id: "koeln",
     name: "Köln",
     longitude: 6.9603,
     latitude: 50.9375,
-    labelOffsetX: 0,
-    labelOffsetY: 21,
-    anchor: "end",
-    westColumn: true,
-  },
-  {
-    id: "duesseldorf",
-    name: "Düsseldorf",
-    longitude: 6.7735,
-    latitude: 51.2277,
-    labelOffsetX: 0,
-    labelOffsetY: 6,
-    anchor: "end",
-    westColumn: true,
-  },
-  {
-    id: "essen",
-    name: "Essen",
-    longitude: 7.0116,
-    latitude: 51.4556,
-    labelOffsetX: 0,
-    labelOffsetY: -13,
-    anchor: "end",
-    westColumn: true,
-  },
-  {
-    id: "dortmund",
-    name: "Dortmund",
-    longitude: 7.4653,
-    latitude: 51.5136,
-    labelOffsetX: 0,
-    labelOffsetY: -42,
-    anchor: "end",
-    westColumn: true,
+    labelOffsetX: 12,
+    labelOffsetY: -10,
+    anchor: "start",
   },
   {
     id: "frankfurt",
@@ -86,24 +37,6 @@ const cities = [
     labelOffsetY: 29,
     anchor: "start",
     nearHome: true,
-  },
-  {
-    id: "leipzig",
-    name: "Leipzig",
-    longitude: 12.3731,
-    latitude: 51.3397,
-    labelOffsetX: 12,
-    labelOffsetY: -12,
-    anchor: "start",
-  },
-  {
-    id: "dresden",
-    name: "Dresden",
-    longitude: 13.7373,
-    latitude: 51.0504,
-    labelOffsetX: 0,
-    labelOffsetY: 24,
-    anchor: "middle",
   },
   {
     id: "stuttgart",
@@ -128,22 +61,15 @@ const cities = [
   return {
     ...city,
     ...point,
-    labelX: city.westColumn ? 96 : point.x + city.labelOffsetX,
+    labelX: point.x + city.labelOffsetX,
     labelY: point.y + city.labelOffsetY,
   };
 });
 
-// Nearby cities share a branch instead of stacking almost identical spokes.
+// Four direct connections keep the selected cities linked to our home pin.
 const connections = [
-  ["hattersheim", "hamburg"],
-  ["hattersheim", "berlin"],
   ["hattersheim", "koeln"],
-  ["koeln", "duesseldorf"],
-  ["duesseldorf", "essen"],
-  ["essen", "dortmund"],
   ["hattersheim", "frankfurt"],
-  ["frankfurt", "leipzig"],
-  ["leipzig", "dresden"],
   ["hattersheim", "stuttgart"],
   ["hattersheim", "muenchen"],
 ] as const;
@@ -177,9 +103,8 @@ export function GermanyNetworkMap() {
           <title id={`${id}-title`}>Aus Hattersheim in ganz Deutschland vernetzt</title>
           <desc id={`${id}-description`}>
             Deutschlandkarte mit unserem Sitz in Hattersheim am Main und einer Auswahl unserer
-            Einsatzorte: Hamburg, Berlin, Köln, Düsseldorf, Essen, Dortmund, Frankfurt am Main,
-            Leipzig, Dresden, Stuttgart und München. Unser Sitz ist grün markiert. Klare Linien
-            verbinden alle Städte; nahe Orte teilen sich eine Verbindung.
+            Einsatzorte: Köln, Stuttgart, Frankfurt am Main und München. Unser Sitz ist grün
+            markiert. Vier direkte Linien verbinden die Städte mit Hattersheim.
           </desc>
           <defs>
             <clipPath id={`${id}-silhouette`} clipPathUnits="objectBoundingBox">
@@ -233,19 +158,8 @@ export function GermanyNetworkMap() {
                     d={`M${city.x},${city.y} L${city.labelX - 12},${city.labelY - 7} h6`}
                   />
                 )}
-                {city.westColumn && (
-                  <path
-                    className="germany-network-leader"
-                    d={`M${city.x},${city.y} L${city.labelX + 6},${city.labelY - 6}`}
-                  />
-                )}
                 {!city.home && !city.nearHome && (
-                  <circle
-                    className="germany-network-pin-halo"
-                    cx={city.x}
-                    cy={city.y}
-                    r={city.westColumn ? 5 : 8}
-                  />
+                  <circle className="germany-network-pin-halo" cx={city.x} cy={city.y} r="8" />
                 )}
                 {city.home && (
                   <>
