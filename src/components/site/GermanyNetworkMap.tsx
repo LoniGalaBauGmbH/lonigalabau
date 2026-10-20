@@ -14,10 +14,9 @@ const cities = [
     name: "Hattersheim",
     longitude: 8.4854,
     latitude: 50.0696,
-    labelOffsetX: 31,
-    labelOffsetY: 23,
-    anchor: "start",
-    regional: true,
+    labelOffsetX: -22,
+    labelOffsetY: 36,
+    anchor: "end",
     home: true,
   },
   {
@@ -39,52 +38,44 @@ const cities = [
     anchor: "start",
   },
   {
-    id: "kassel",
-    name: "Kassel",
-    longitude: 9.4797,
-    latitude: 51.3127,
-    labelOffsetX: 12,
-    labelOffsetY: -10,
-    anchor: "start",
-  },
-  {
     id: "koeln",
     name: "Köln",
     longitude: 6.9603,
     latitude: 50.9375,
-    labelOffsetX: -12,
-    labelOffsetY: -10,
+    labelOffsetX: 0,
+    labelOffsetY: 21,
     anchor: "end",
+    westColumn: true,
   },
   {
-    id: "koblenz",
-    name: "Koblenz",
-    longitude: 7.5889,
-    latitude: 50.3569,
-    labelOffsetX: -18,
-    labelOffsetY: -8,
+    id: "duesseldorf",
+    name: "Düsseldorf",
+    longitude: 6.7735,
+    latitude: 51.2277,
+    labelOffsetX: 0,
+    labelOffsetY: 6,
     anchor: "end",
-    regional: true,
+    westColumn: true,
   },
   {
-    id: "wiesbaden",
-    name: "Wiesbaden",
-    longitude: 8.2398,
-    latitude: 50.0782,
-    labelOffsetX: -26,
-    labelOffsetY: -6,
+    id: "essen",
+    name: "Essen",
+    longitude: 7.0116,
+    latitude: 51.4556,
+    labelOffsetX: 0,
+    labelOffsetY: -13,
     anchor: "end",
-    regional: true,
+    westColumn: true,
   },
   {
-    id: "mainz",
-    name: "Mainz",
-    longitude: 8.2473,
-    latitude: 49.9929,
-    labelOffsetX: -18,
-    labelOffsetY: 24,
+    id: "dortmund",
+    name: "Dortmund",
+    longitude: 7.4653,
+    latitude: 51.5136,
+    labelOffsetX: 0,
+    labelOffsetY: -42,
     anchor: "end",
-    regional: true,
+    westColumn: true,
   },
   {
     id: "frankfurt",
@@ -92,9 +83,18 @@ const cities = [
     longitude: 8.6821,
     latitude: 50.1109,
     labelOffsetX: 34,
+    labelOffsetY: 29,
+    anchor: "start",
+    nearHome: true,
+  },
+  {
+    id: "leipzig",
+    name: "Leipzig",
+    longitude: 12.3731,
+    latitude: 51.3397,
+    labelOffsetX: 12,
     labelOffsetY: -12,
     anchor: "start",
-    regional: true,
   },
   {
     id: "dresden",
@@ -128,38 +128,33 @@ const cities = [
   return {
     ...city,
     ...point,
-    labelX: point.x + city.labelOffsetX,
+    labelX: city.westColumn ? 96 : point.x + city.labelOffsetX,
     labelY: point.y + city.labelOffsetY,
   };
 });
 
+// Nearby cities share a branch instead of stacking almost identical spokes.
 const connections = [
-  // A connected tree gives every city one clear route, without crossing arcs.
-  ["hattersheim", "kassel", 10],
-  ["kassel", "hamburg", -8],
-  ["kassel", "berlin", -16],
-  ["berlin", "dresden", 10],
-  ["hattersheim", "stuttgart", 12],
-  ["stuttgart", "muenchen", 14],
-  ["hattersheim", "koblenz", 0],
-  ["koblenz", "koeln", -5],
-  ["hattersheim", "wiesbaden", 0],
-  ["hattersheim", "mainz", 0],
-  ["hattersheim", "frankfurt", 0],
+  ["hattersheim", "hamburg"],
+  ["hattersheim", "berlin"],
+  ["hattersheim", "koeln"],
+  ["koeln", "duesseldorf"],
+  ["duesseldorf", "essen"],
+  ["essen", "dortmund"],
+  ["hattersheim", "frankfurt"],
+  ["frankfurt", "leipzig"],
+  ["leipzig", "dresden"],
+  ["hattersheim", "stuttgart"],
+  ["hattersheim", "muenchen"],
 ] as const;
 
-const routes = connections.map(([from, to, bend]) => {
+const routes = connections.map(([from, to]) => {
   const start = cities.find((city) => city.id === from)!;
   const end = cities.find((city) => city.id === to)!;
-  const dx = end.x - start.x;
-  const dy = end.y - start.y;
-  const distance = Math.hypot(dx, dy);
-  const controlX = (start.x + end.x) / 2 - (dy / distance) * bend;
-  const controlY = (start.y + end.y) / 2 + (dx / distance) * bend;
   return {
     id: `${from}-${to}`,
-    path: `M${start.x},${start.y} Q${controlX},${controlY} ${end.x},${end.y}`,
-    animated: distance > 30,
+    path: `M${start.x},${start.y} L${end.x},${end.y}`,
+    animated: Math.hypot(end.x - start.x, end.y - start.y) > 45,
   };
 });
 
@@ -167,107 +162,128 @@ export function GermanyNetworkMap() {
   const id = useId();
   return (
     <figure className="germany-network">
-      <svg
-        className="germany-network-map"
-        viewBox="0 0 520 560"
-        role="img"
-        aria-labelledby={`${id}-title ${id}-description`}
-      >
-        <title id={`${id}-title`}>Aus Hattersheim in ganz Deutschland vernetzt</title>
-        <desc id={`${id}-description`}>
-          Deutschlandkarte mit unserem Sitz in Hattersheim am Main und einer Auswahl unserer
-          Einsatzorte: Koblenz, Frankfurt, Mainz, Wiesbaden, München, Hamburg, Kassel, Köln, Berlin,
-          Dresden und Stuttgart. Leuchtende Linien verbinden die Städte.
-        </desc>
-        <path
-          className="germany-network-outline"
-          d={germanyOutline}
-          fill="none"
-          vectorEffect="non-scaling-stroke"
+      <div className="germany-network-stage">
+        <div
+          className="germany-network-glass"
+          style={{ clipPath: `url(#${id}-silhouette)` }}
+          aria-hidden="true"
         />
+        <svg
+          className="germany-network-map"
+          viewBox="0 0 520 560"
+          role="img"
+          aria-labelledby={`${id}-title ${id}-description`}
+        >
+          <title id={`${id}-title`}>Aus Hattersheim in ganz Deutschland vernetzt</title>
+          <desc id={`${id}-description`}>
+            Deutschlandkarte mit unserem Sitz in Hattersheim am Main und einer Auswahl unserer
+            Einsatzorte: Hamburg, Berlin, Köln, Düsseldorf, Essen, Dortmund, Frankfurt am Main,
+            Leipzig, Dresden, Stuttgart und München. Unser Sitz ist grün markiert. Klare Linien
+            verbinden alle Städte; nahe Orte teilen sich eine Verbindung.
+          </desc>
+          <defs>
+            <clipPath id={`${id}-silhouette`} clipPathUnits="objectBoundingBox">
+              <path d={germanyOutline} transform={`scale(${1 / 520} ${1 / 560})`} />
+            </clipPath>
+          </defs>
+          <path
+            className="germany-network-outline"
+            d={germanyOutline}
+            fill="none"
+            vectorEffect="non-scaling-stroke"
+          />
 
-        <g fill="none" aria-hidden="true">
-          {routes.map((route, index) => (
-            <g key={route.id} data-connection={route.id}>
-              <path className="germany-network-route" d={route.path} />
-              {route.animated && (
-                <path
-                  className="germany-network-light"
-                  d={route.path}
-                  pathLength="1"
-                  style={
-                    {
-                      "--travel-time": `${7 + (index % 3)}s`,
-                      "--travel-delay": `${-index * 1.7}s`,
-                    } as CSSProperties
-                  }
-                />
-              )}
-            </g>
-          ))}
-        </g>
+          <g fill="none" aria-hidden="true">
+            {routes.map((route, index) => (
+              <g key={route.id} data-connection={route.id}>
+                <path className="germany-network-route" d={route.path} />
+                {route.animated && (
+                  <path
+                    className="germany-network-light"
+                    d={route.path}
+                    pathLength="1"
+                    style={
+                      {
+                        "--travel-time": "10s",
+                        "--travel-delay": `${-index * 1.6}s`,
+                      } as CSSProperties
+                    }
+                  />
+                )}
+              </g>
+            ))}
+          </g>
 
-        <g aria-hidden="true">
-          {cities.map((city, index) => (
-            <g
-              key={city.id}
-              className={city.home ? "germany-network-city is-home" : "germany-network-city"}
-              data-city={city.id}
-            >
-              {city.regional && (
-                <path
-                  className="germany-network-leader"
-                  d={`M${city.x},${city.y} L${city.labelX + (city.anchor === "end" ? 10 : -10)},${city.labelY - 5} h${city.anchor === "end" ? -5 : 5}`}
-                />
-              )}
-              {!city.regional && (
-                <>
-                  <circle className="germany-network-pin-halo" cx={city.x} cy={city.y} r="8" />
+          <g aria-hidden="true">
+            {cities.map((city) => (
+              <g
+                key={city.id}
+                className={city.home ? "germany-network-city is-home" : "germany-network-city"}
+                data-city={city.id}
+              >
+                {city.home && (
+                  <path
+                    className="germany-network-leader"
+                    d={`M${city.x},${city.y} v27 H${city.labelX + 12}`}
+                  />
+                )}
+                {city.nearHome && (
+                  <path
+                    className="germany-network-leader"
+                    d={`M${city.x},${city.y} L${city.labelX - 12},${city.labelY - 7} h6`}
+                  />
+                )}
+                {city.westColumn && (
+                  <path
+                    className="germany-network-leader"
+                    d={`M${city.x},${city.y} L${city.labelX + 6},${city.labelY - 6}`}
+                  />
+                )}
+                {!city.home && !city.nearHome && (
                   <circle
-                    className="germany-network-pulse"
+                    className="germany-network-pin-halo"
                     cx={city.x}
                     cy={city.y}
-                    r="6"
-                    style={{ animationDelay: `${-index * 0.6}s` }}
+                    r={city.westColumn ? 5 : 8}
                   />
-                </>
-              )}
-              {city.home && (
-                <>
-                  <circle className="germany-network-home-ring" cx={city.x} cy={city.y} r="7.5" />
-                  <rect
-                    className="germany-network-home-card"
-                    x={city.labelX - 10}
-                    y={city.labelY - 21}
-                    width="128"
-                    height="46"
-                    rx="10"
-                  />
-                </>
-              )}
-              <circle
-                className="germany-network-pin"
-                cx={city.x}
-                cy={city.y}
-                r={city.home ? 3.5 : city.regional ? 2.3 : 3}
-              />
-              <text
-                className="germany-network-label"
-                x={city.labelX}
-                y={city.labelY}
-                textAnchor={city.anchor as "start" | "end" | "middle"}
-              >
-                {city.name}
-                {city.home && (
-                  <tspan x={city.labelX} dy="17" className="germany-network-home-label">
-                    UNSER SITZ
-                  </tspan>
                 )}
-              </text>
-            </g>
-          ))}
-        </g>
-      </svg>
+                {city.home && (
+                  <>
+                    <circle className="germany-network-home-ring" cx={city.x} cy={city.y} r="5.5" />
+                    <rect
+                      className="germany-network-home-card"
+                      x={city.labelX - 116}
+                      y={city.labelY - 21}
+                      width="128"
+                      height="46"
+                      rx="10"
+                    />
+                  </>
+                )}
+                <circle
+                  className="germany-network-pin"
+                  cx={city.x}
+                  cy={city.y}
+                  r={city.home ? 3.5 : city.nearHome ? 2.5 : 3}
+                />
+                <text
+                  className="germany-network-label"
+                  x={city.labelX}
+                  y={city.labelY}
+                  textAnchor={city.anchor as "start" | "end" | "middle"}
+                >
+                  {city.name}
+                  {city.home && (
+                    <tspan x={city.labelX} dy="17" className="germany-network-home-label">
+                      UNSER SITZ
+                    </tspan>
+                  )}
+                </text>
+              </g>
+            ))}
+          </g>
+        </svg>
+      </div>
       <figcaption className="germany-network-caption">
         <span className="germany-network-caption-dot" aria-hidden="true" />
         <span>Von Hattersheim aus. Deutschlandweit.</span>

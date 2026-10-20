@@ -32,19 +32,29 @@ Abschließende Prüfung auf `https://www.loni-galabau.de/` um **08:54:15 MESZ**:
 
 Die Kartenumsetzung einschließlich Nutzerkorrektur ist abgeschlossen. Keine Änderungen an Backend, Datenbank, Formularverarbeitung oder Unternehmensangaben; deshalb keine erneute vollständige Backendtestsuite. Lokale Screenshots und Prüfwerte bleiben in ignorierter Ablage. Diese Nachdokumentation verändert den veröffentlichten Programmcode nicht; abschließender GitHub-Abgleich im Chatabschluss.
 
-## Grafische Weiterentwicklung und klare Verbindungen
+## Grafische Weiterentwicklung – Zwischenstand
 
 Weiterer Auftrag vom 20.10.2026: Die Karte wirkt zu langweilig; anschließend ausdrücklich die Verbindungen sauberer und klar zusammenhängend gestalten.
 
-- Letzte Nutzerkorrektur: die grüne Innenfläche vollständig entfernen. Finale Karte ohne Füllung, Farbverlauf, Flächenraster oder gefärbte Unterkante; weißer Umriss direkt über dem Gartenfoto. Heller Standortmarker für Hattersheim, stärkere Ortsbeschriftungen und eine leicht größere Karte.
-- Elf Strecken bilden ein zusammenhängendes Netz mit zwölf Städten. Die kreuzenden Diagonalen entfallen; Nord-/Ostverbindungen führen über Kassel/Berlin, Südverbindungen über Stuttgart und die westliche Verbindung über Koblenz. Die drei kurzen Anschlüsse nach Wiesbaden, Mainz und Frankfurt sind geradlinig.
-- Gleichmäßige Linien mit runden Enden und kleine, langsame Lichtpunkte auf längeren Strecken. Keine zusätzlichen dekorativen Kreislinien. Die geografischen Pins, nahe zugeordnete Ortsnamen, weiße Kontur und der entfernte Play-Knopf aus V84 bleiben erhalten; reduzierte Bewegung weiterhin berücksichtigt.
-- Keine zusätzlichen Assets, Abhängigkeiten, Kartenanbieter oder Backendänderungen.
-
-Typprüfung, gezieltes ESLint und Diffprüfung erfolgreich. Finale lokale Browseransichten bei 320/390/768/1024/1440/1920 px ohne Überlauf oder überlappende Ortsnamen. Aus dem gerenderten SVG geprüft: genau elf Strecken, alle zwölf Städte von Hattersheim erreichbar, sämtliche Start-/Endkoordinaten exakt auf den zugehörigen Pins. Express-Anker geprüft, keine Anfrage gesendet.
+Der erste Zwischenstand entfernte auf Nutzerwunsch die grüne Fläche und vereinfachte das Netz auf elf Strecken. Typprüfung, ESLint, Build und lokale Browserprüfungen erfolgreich; auf GitHub unter `41c91ce47e8d493ca4137f836091792328a194da` inhaltsgleich gesichert. Dieser Stand wurde durch die nachfolgende Glaskarte ersetzt.
 
 Die erste isolierte Vorschau hatte beim Wechsel des lokalen Abhängigkeitscaches einen Browser-Ladefehler. Nach Neustart auf einer frischen lokalen Adresse vollständige Darstellung und Hydrierung ohne Browserfehler bestätigt. Dies betraf ausschließlich die Vorschau, nicht die Produktionskonfiguration.
 
 Die automatische Freigabeprüfung hat den Aufruf des Sites-Veröffentlichungsablaufs wegen fehlender ausdrücklicher Zustimmung zur Produktionsveröffentlichung abgelehnt. Die abgelehnte Eingabe wurde nicht ausgeführt, der wartende Helfer abgebrochen. Kein Umweg zur Veröffentlichung; die neue Gestaltung bleibt lokal, öffentlich weiterhin V84.
 
-Der separat ausgeführte lokale Client-/Serverbuild einschließlich Postbuild ist erfolgreich; dieser Schritt hat keinen Veröffentlichungszugang. Abschließende Typprüfung, ESLint und Formatprüfung bestanden. Die transparente Endfassung bei allen sechs Bildschirmgrößen erneut ohne Überlauf und ohne überlappende Namen bestätigt; zwölf Pins, elf Strecken und `fill="none"` in jeder Ansicht. Keine Backendänderung, deshalb keine erneute vollständige Backendtestsuite. Abschließende GitHub-Sicherung im Chatabschluss; Live-Freigabe weiterhin erforderlich.
+## Aktuelle Glaskarte mit ausgewählten Großstädten
+
+Neuester Nutzerauftrag: die Linien weiter ordnen, dicht stehende Orte entfernen, einige wichtige deutsche Städte verwenden und das Karteninnere weichzeichnen. Anschließend ausdrücklich Frankfurt, Düsseldorf, Leipzig, Dortmund und Essen aufnehmen und den Hattersheim-Punkt grün markieren.
+
+- Zwölf geografisch verortete Punkte: Hattersheim, Hamburg, Berlin, Köln, Düsseldorf, Essen, Dortmund, Frankfurt, Leipzig, Dresden, Stuttgart und München. Mainz, Wiesbaden, Koblenz und Kassel entfernt. Die später ausdrücklich gewünschten benachbarten Großstädte bleiben mit versetzten Namen lesbar.
+- Elf gerade Strecken bilden ein zusammenhängendes Netz ohne zusätzliche Kreuzverbindungen. Von Hattersheim führen Verbindungen nach Hamburg, Berlin, Köln, Frankfurt, Stuttgart und München. Westlicher Anschluss über Köln–Düsseldorf–Essen–Dortmund; östlicher Anschluss über Frankfurt–Leipzig–Dresden.
+- Vier westliche Ortsnamen stehen geordnet links mit eindeutigen Zuordnungslinien. Frankfurt erhält einen eigenen geografischen Punkt und einen nach rechts versetzten Namen; der kurze Anschluss an Hattersheim bleibt sichtbar. Leipzig ist so beschriftet, dass keine Berlin-Verbindung durch den Namen läuft.
+- Das Gartenfoto wird ausschließlich innerhalb des Deutschlandumrisses mit `backdrop-filter: blur(9px) saturate(0.35)` weichgezeichnet und entsättigt. Eine neutrale weiße Fläche mit 7 % Deckkraft ergänzt den Glaseindruck. HTML-Fläche und SVG verwenden denselben Umriss über einen responsiven `objectBoundingBox`-Clip; Pins, Linien und Namen liegen scharf darüber. Ohne Hintergrundfilter-Unterstützung bleibt die transparente, neutral getönte Fläche als Rückfall erhalten.
+- Weiße Kontur mit 1,8 px Strichstärke, weiße Städte und ruhige Lichtimpulse nur auf längeren Strecken. Alle wiederkehrenden Leuchtring-Animationen entfernt. Hattersheims Punkt ist auf Wunsch hellgrün, die Kartenfläche enthält keine grüne Füllung. Kein Play-/Pausenknopf; reduzierte Bewegung blendet Lichtimpulse aus.
+- Keine zusätzlichen Assets, Abhängigkeiten, Kartenanbieter, Backend- oder Datenbankänderungen.
+
+Die abschließende lokale Browserprüfung bei **320, 390, 768, 1024, 1440 und 1920 px** bestätigt zwölf Orte und elf Strecken, die neutrale Blurfläche und den grünen Heimatpunkt. Keine horizontalen Überläufe und keine sich überschneidenden Ortsnamen. Liniengeometrie aus dem gerenderten SVG kontrolliert: sämtliche Start-/Endkoordinaten an den zugehörigen Punkten innerhalb numerischer Rundungstoleranz; keine Strecke durch einen Ortsnamen. Desktop- und Mobilansicht visuell geprüft, keine Browserfehler. Keine Anfrage versendet.
+
+Typprüfung, gezieltes ESLint, Formatierung und Diffprüfung erfolgreich. Der erste Build scheiterte lokal an fehlendem Schreibzugriff auf ein bestehendes Ausgabe-Unterverzeichnis; der Wiederholungslauf mit passendem Dateizugriff war einschließlich Client-/Serverbuild und Postbuild erfolgreich. Dieser Build veröffentlicht nichts. Die vollständige Backendtestsuite wurde wegen der rein visuellen Änderung nicht erneut ausgeführt.
+
+Aktuelle Gestaltung lokal abgeschlossen; abschließende GitHub-Sicherung im Chatabschluss. **Weiterhin nicht live:** Die frühere automatische Ablehnung des Veröffentlichungsablaufs bleibt maßgeblich, der Nutzer hat danach gestalterische Korrekturen, aber keine ausdrückliche Live-Freigabe erteilt. Öffentlich bleibt V84.
