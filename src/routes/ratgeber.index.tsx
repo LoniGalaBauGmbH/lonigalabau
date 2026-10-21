@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { ProjectImage } from "@/components/site/ProjectImage";
 import { GuideCard } from "@/components/site/GuideCard";
@@ -38,36 +39,42 @@ function Ratgeber() {
           ),
         }}
       />
-      <div className="guides">
-        <header className="guide-index-intro guide-wrap">
-          <div className="guide-kicker">Der Loni Gartenratgeber</div>
-          <h1>
-            Gute Gärten beginnen
-            <br />
-            mit <em>guten Fragen.</em>
-          </h1>
-          <div className="guide-intro-bottom">
-            <p>
-              Ideen einordnen, Materialien verstehen und die nächsten Schritte planen. Unser Wissen
-              für Ihr Gartenprojekt – von unserem Team aus Hattersheim, deutschlandweit im Einsatz.
-            </p>
-            <a href="#alle-ratgeber" className="guide-text-link">
-              Alle Ratgeber entdecken
-            </a>
+      <div className="guides guide-index">
+        <header className="guide-index-hero">
+          <div className="guide-index-hero-image">
+            <ProjectImage
+              src="/images/projekte/rasengarten-mit-plattenterrasse.webp"
+              alt="Gestalteter Garten mit grüner Rasenfläche, Terrasse und blühender Bepflanzung"
+              original
+              width={1600}
+              height={1200}
+              fetchPriority="high"
+              loading="eager"
+              sizes="(max-width: 1600px) 100vw, 1536px"
+            />
+          </div>
+          <div className="guide-index-hero-content">
+            <div className="guide-kicker">Der Loni Gartenratgeber</div>
+            <div className="guide-index-hero-copy">
+              <h1>
+                Gute Gärten beginnen <br />
+                mit <em>guten Fragen.</em>
+              </h1>
+              <p>
+                Ideen finden. Materialien verstehen. Mit Wissen aus der Praxis den nächsten Schritt
+                für Ihren Garten planen.
+              </p>
+              <a href="#alle-ratgeber" className="guide-button guide-hero-button">
+                Ratgeber entdecken <ArrowDown size={18} aria-hidden="true" />
+              </a>
+            </div>
+            <span className="guide-index-hero-note">Planung · Materialien · Gartengestaltung</span>
           </div>
         </header>
-        <section className="guide-wrap" aria-labelledby="featured-guide">
+        <section className="guide-wrap guide-feature-section" aria-labelledby="featured-guide">
           <div className="guide-feature">
-            <ProjectImage
-              src={featured.image}
-              alt={featured.imageCaption}
-              width={1200}
-              height={900}
-              fetchPriority="high"
-              sizes="(max-width: 800px) 100vw, 60vw"
-            />
             <div className="guide-feature-copy">
-              <span className="guide-kicker">Gut vorbereitet starten</span>
+              <span className="guide-kicker">Unser Lesetipp · {featured.readingMinutes} Min.</span>
               <h2 id="featured-guide">
                 Ein Garten.
                 <br />
@@ -78,9 +85,17 @@ function Ratgeber() {
                 das Ganze im Blick behalten.
               </p>
               <Link to="/ratgeber/$slug" params={{ slug: featured.slug }} className="guide-button">
-                Garten in Etappen planen
+                Garten in Etappen planen <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
               <span className="guide-feature-note">Mit Checkliste für Ihr Vorhaben</span>
+            </div>
+            <div className="guide-feature-image">
+              <ProjectImage
+                src="/images/projekte/garten-mit-rasen-und-bepflanzung.webp"
+                alt="Fertiger Hausgarten mit Rasen, Terrasse und dichter Bepflanzung"
+                loading="lazy"
+                sizes="(max-width: 800px) 100vw, 600px"
+              />
             </div>
           </div>
         </section>
