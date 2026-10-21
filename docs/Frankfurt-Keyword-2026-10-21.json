@@ -1,0 +1,328 @@
+{
+  "checkedAt": "2026-10-21 11:39:49 +00:00",
+  "market": "Frankfurt am Main,Hessen,Germany",
+  "language": "de",
+  "device": "mobile/android",
+  "keyword": "garten landschaftsbau frankfurt",
+  "requestedDepth": 100,
+  "organicReturned": 95,
+  "loniOrganic": [],
+  "organicTop10": [
+    {
+      "rank": 1,
+      "title": "Wir schaffen Gärten für´s Leben - Garten und Landschaftsbau Bolkart ...",
+      "url": "https://www.garten-landschaftsbau-bolkart.de/"
+    },
+    {
+      "rank": 2,
+      "title": "Andreas Bolkart Galabau » Top Gartenbauer in Frankfurt (Main)",
+      "url": "https://www.gartenbau.org/frankfurt/andreas-bolkart-galabau-aULBxN"
+    },
+    {
+      "rank": 3,
+      "title": "Garten- & Landschaftspflege Willi Möller | Frankfurt",
+      "url": "https://www.facebook.com/gartenpflegewillimoeller/"
+    },
+    {
+      "rank": 4,
+      "title": "Mario Gabriele Garten- und Landschaftsbau in Frankfurt (Main)",
+      "url": "https://www.gartenbau.org/frankfurt/mario-gabriele-garten--und-landschaftsbau-aUMdtg"
+    },
+    {
+      "rank": 5,
+      "title": "Arbeitsgemeinschaft Landschaftsgärtner in Frankfurt ...",
+      "url": "https://www.gartenbau.org/frankfurt/arbeitsgemeinschaft-landschaftsgaertner-aULmkq"
+    },
+    {
+      "rank": 6,
+      "title": "Garten- und Landschaftsbau in Frankfurt | Stadtgärten und Poolbau",
+      "url": "https://www.gramenz-galabau.de/garten-und-landschaftsbau-in-frankfurt"
+    },
+    {
+      "rank": 7,
+      "title": "Gartengestaltung – Garten - Frankfurt am Main",
+      "url": "https://www.galabau-baksi.de/gartengestaltung/"
+    },
+    {
+      "rank": 8,
+      "title": "Terrassenbau – Garten und Landschaftsbau Frankfurt Sascha ...",
+      "url": "https://www.garten-und-landschaftsbau-frankfurt.de/services/terrassenbau-2/"
+    },
+    {
+      "rank": 9,
+      "title": "GALANATURA - Frankfurt am Main, DE 60325 - Houzz.de",
+      "url": "https://www.houzz.de/experten/garten-und-landschaftsbau/galanatura-pfvwde-pf~815727967"
+    },
+    {
+      "rank": 10,
+      "title": "ᐅ Top 7 Gartenbau & Landschaftsbau Frankfurt am Main-Fechenheim",
+      "url": "https://www.gelbeseiten.de/branchen/gartenbau%20%26%20landschaftsbau/frankfurt%20am%20main%20stadtteil%20fechenheim"
+    }
+  ],
+  "local": [
+    {
+      "title": "Garten- & Landschaftspflege Willi Möller",
+      "rating": {
+        "rating_type": "Max5",
+        "value": 5,
+        "votes_count": 75,
+        "rating_max": 5
+      }
+    },
+    {
+      "title": "Garten & Landschaftsbau Bolkart Über 25 Jahre Erfahrung!",
+      "rating": {
+        "rating_type": "Max5",
+        "value": 4.6,
+        "votes_count": 52,
+        "rating_max": 5
+      }
+    },
+    {
+      "title": "Gartenbau Frankfurt",
+      "rating": {
+        "rating_type": "Max5",
+        "value": 5,
+        "votes_count": 15,
+        "rating_max": 5
+      }
+    },
+    {
+      "title": "Garten- und Landschaftsbau Guwer",
+      "rating": {
+        "rating_type": "Max5",
+        "value": 5,
+        "votes_count": 12,
+        "rating_max": 5
+      }
+    }
+  ],
+  "keywordMetrics": [
+    {
+      "keyword": "garten landschaftsbau frankfurt",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "HIGH",
+      "competition_index": 74,
+      "search_volume": 70,
+      "low_top_of_page_bid": 1.23,
+      "high_top_of_page_bid": 4.28,
+      "cpc": 8.86,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 90
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "garten und landschaftsbau frankfurt",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "MEDIUM",
+      "competition_index": 39,
+      "search_volume": 170,
+      "low_top_of_page_bid": 1,
+      "high_top_of_page_bid": 3.68,
+      "cpc": 1.58,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 260
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 170
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 210
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 140
+        }
+      ]
+    },
+    {
+      "keyword": "gartenbau frankfurt",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "LOW",
+      "competition_index": 20,
+      "search_volume": 590,
+      "low_top_of_page_bid": 0.94,
+      "high_top_of_page_bid": 3.59,
+      "cpc": 1.27,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 880
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 1000
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 880
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 480
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 390
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 390
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 590
+        }
+      ]
+    }
+  ],
+  "cost": 0.11
+}
