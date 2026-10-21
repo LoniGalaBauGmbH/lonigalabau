@@ -277,7 +277,7 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
 
         <div className="region-wrap region-details">
           {page.sections.slice(1).map((section, index) => {
-            const photo = detailPhotos[index === 0 ? 2 : 0];
+            const photo = detailPhotos[index === 0 ? 2 : index === 1 ? 0 : index + 2];
             return (
               <section
                 className="region-detail-section"

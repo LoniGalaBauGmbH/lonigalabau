@@ -89,6 +89,23 @@ export function ServicePreparation({ slug }: { slug: string }) {
             </a>
           </div>
         )}
+        {slug === "gartengestaltung" && (
+          <div className="mt-8 border-t border-brand/15 pt-6">
+            <h3 className="font-display text-lg font-bold text-brand">
+              Ihr Gartenprojekt in Frankfurt
+            </h3>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80">
+              Sie möchten Ihren Garten in Frankfurt neu anlegen oder umgestalten? Auf unserer
+              Ortsseite finden Sie Leistungen, Hinweise zum Aufwand und die direkte Projektanfrage.
+            </p>
+            <Link
+              to="/gartenbau-frankfurt"
+              className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+            >
+              Garten- und Landschaftsbau in Frankfurt <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
         {slug === "zaunarbeiten" && (
           <div className="mt-8 border-t border-brand/15 pt-6">
             <h3 className="font-display text-lg font-bold text-brand">
