@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ZisterneEinbauenLassenRouteImport } from './routes/zisterne-einbauen-lassen'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 import { Route as TerrasseBauenLassenRouteImport } from './routes/terrasse-bauen-lassen'
+import { Route as SpielplatzbauRouteImport } from './routes/spielplatzbau'
 import { Route as ProjekteRouteImport } from './routes/projekte'
 import { Route as PartnerWerdenRouteImport } from './routes/partner-werden'
 import { Route as LoginRouteImport } from './routes/login'
@@ -101,6 +102,11 @@ const UeberUnsRoute = UeberUnsRouteImport.update({
 const TerrasseBauenLassenRoute = TerrasseBauenLassenRouteImport.update({
   id: '/terrasse-bauen-lassen',
   path: '/terrasse-bauen-lassen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpielplatzbauRoute = SpielplatzbauRouteImport.update({
+  id: '/spielplatzbau',
+  path: '/spielplatzbau',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjekteRoute = ProjekteRouteImport.update({
@@ -545,6 +551,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
+  '/spielplatzbau': typeof SpielplatzbauRoute
   '/terrasse-bauen-lassen': typeof TerrasseBauenLassenRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
@@ -624,6 +631,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
+  '/spielplatzbau': typeof SpielplatzbauRoute
   '/terrasse-bauen-lassen': typeof TerrasseBauenLassenRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
@@ -705,6 +713,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/partner-werden': typeof PartnerWerdenRoute
   '/projekte': typeof ProjekteRoute
+  '/spielplatzbau': typeof SpielplatzbauRoute
   '/terrasse-bauen-lassen': typeof TerrasseBauenLassenRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/zisterne-einbauen-lassen': typeof ZisterneEinbauenLassenRoute
@@ -786,6 +795,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner-werden'
     | '/projekte'
+    | '/spielplatzbau'
     | '/terrasse-bauen-lassen'
     | '/ueber-uns'
     | '/zisterne-einbauen-lassen'
@@ -865,6 +875,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner-werden'
     | '/projekte'
+    | '/spielplatzbau'
     | '/terrasse-bauen-lassen'
     | '/ueber-uns'
     | '/zisterne-einbauen-lassen'
@@ -945,6 +956,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner-werden'
     | '/projekte'
+    | '/spielplatzbau'
     | '/terrasse-bauen-lassen'
     | '/ueber-uns'
     | '/zisterne-einbauen-lassen'
@@ -1026,6 +1038,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PartnerWerdenRoute: typeof PartnerWerdenRoute
   ProjekteRoute: typeof ProjekteRoute
+  SpielplatzbauRoute: typeof SpielplatzbauRoute
   TerrasseBauenLassenRoute: typeof TerrasseBauenLassenRoute
   UeberUnsRoute: typeof UeberUnsRoute
   ZisterneEinbauenLassenRoute: typeof ZisterneEinbauenLassenRoute
@@ -1063,6 +1076,13 @@ declare module '@tanstack/react-router' {
       path: '/terrasse-bauen-lassen'
       fullPath: '/terrasse-bauen-lassen'
       preLoaderRoute: typeof TerrasseBauenLassenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/spielplatzbau': {
+      id: '/spielplatzbau'
+      path: '/spielplatzbau'
+      fullPath: '/spielplatzbau'
+      preLoaderRoute: typeof SpielplatzbauRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projekte': {
@@ -1680,6 +1700,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PartnerWerdenRoute: PartnerWerdenRoute,
   ProjekteRoute: ProjekteRoute,
+  SpielplatzbauRoute: SpielplatzbauRoute,
   TerrasseBauenLassenRoute: TerrasseBauenLassenRoute,
   UeberUnsRoute: UeberUnsRoute,
   ZisterneEinbauenLassenRoute: ZisterneEinbauenLassenRoute,

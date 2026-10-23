@@ -19,7 +19,11 @@ export function projectOfferHead(content: ProjectOffer) {
 }
 
 export type ProjectOffer = {
-  path: "/terrasse-bauen-lassen" | "/einfahrt-pflastern-lassen" | "/l-steine-setzen-lassen";
+  path:
+    | "/terrasse-bauen-lassen"
+    | "/einfahrt-pflastern-lassen"
+    | "/l-steine-setzen-lassen"
+    | "/spielplatzbau";
   label: string;
   title: string;
   metaTitle: string;
@@ -29,6 +33,14 @@ export type ProjectOffer = {
   heroCaption?: string;
   initialService?: (typeof EXPRESS_SERVICES)[number];
   kicker?: string;
+  landscapeHero?: boolean;
+  casesHeading?: string;
+  gallery?: {
+    title: string;
+    intro: string;
+    images: { image: keyof typeof projectPhotos; title: string; caption: string }[];
+    note?: string;
+  };
   cases: { title: string; text: string }[];
   detail: {
     image: keyof typeof projectPhotos;
@@ -44,6 +56,8 @@ export type ProjectOffer = {
   steps: { title: string; text: string }[];
   faq: { question: string; answer: string }[];
   request: string;
+  requestTitle?: string;
+  requestIntro?: string;
   photos: string[];
   links: { href: string; label: string }[];
   sources?: { href: string; label: string }[];

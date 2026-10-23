@@ -47,7 +47,7 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
   };
   return (
     <PageShell>
-      <article className="offer-page">
+      <article className={`offer-page${content.landscapeHero ? " offer-landscape" : ""}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
@@ -96,7 +96,7 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
         >
           <span className="eyebrow eyebrow-bracket">Ihr Ausgangspunkt</span>
           <h2 className="display" id="offer-cases-title">
-            Was möchten Sie verändern?
+            {content.casesHeading ?? "Was möchten Sie verändern?"}
           </h2>
           <div className="offer-cases">
             {content.cases.map((item, index) => (
@@ -108,6 +108,36 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
             ))}
           </div>
         </section>
+
+        {content.gallery && (
+          <section className="offer-wrap offer-section" aria-labelledby="offer-gallery-title">
+            <span className="eyebrow eyebrow-bracket">Einblick in ein Loni-Projekt</span>
+            <h2 className="display" id="offer-gallery-title">
+              {content.gallery.title}
+            </h2>
+            <p className="offer-gallery-intro">{content.gallery.intro}</p>
+            <div className="offer-gallery">
+              {content.gallery.images.map((item) => {
+                const photo = projectPhotos[item.image];
+                return (
+                  <figure key={item.image}>
+                    <ProjectImage
+                      src={photo.src}
+                      alt={photo.alt}
+                      loading="lazy"
+                      sizes="(max-width: 800px) calc(100vw - 40px), 47vw"
+                    />
+                    <figcaption>
+                      <strong>{item.title}</strong>
+                      {item.caption}
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
+            {content.gallery.note && <p className="offer-gallery-note">{content.gallery.note}</p>}
+          </section>
+        )}
 
         <section
           className="offer-wrap offer-detail offer-section"
@@ -225,11 +255,11 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
               Lassen Sie uns Ihr Vorhaben kennenlernen
             </span>
             <h2 className="display" id="offer-request-title">
-              Drei Fotos. Ein guter Anfang.
+              {content.requestTitle ?? "Drei Fotos. Ein guter Anfang."}
             </h2>
             <p>
-              Ort, ungefähre Größe und Ihre Wünsche reichen für den ersten Kontakt. Diese Bilder
-              helfen uns, die nächsten Schritte vorzubereiten:
+              {content.requestIntro ??
+                "Ort, ungefähre Größe und Ihre Wünsche reichen für den ersten Kontakt. Diese Bilder helfen uns, die nächsten Schritte vorzubereiten:"}
             </p>
             <ul className="offer-checklist">
               {content.photos.map((point) => (

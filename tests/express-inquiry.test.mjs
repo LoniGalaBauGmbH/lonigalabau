@@ -45,6 +45,23 @@ const pdf = {
   contentType: "application/pdf",
   base64: Buffer.from("%PDF-1.7\n").toString("base64"),
 };
+test("playground inquiry preserves service, public landing page and PDF plans through submission", async () => {
+  const input = api.expressSubmissionSchema.parse({
+    ...valid,
+    service: "Spielplatzbau",
+    inquiryPage: "/spielplatzbau",
+    description: "Kita-Außengelände mit neuer Spielanlage; Lageplan anbei.",
+    attachments: [pdf],
+  });
+  const payload = api.buildExpressPayload(input);
+  assert.equal(contactSubmissionSchema.safeParse(payload).success, true);
+  assert.match(payload.message, /Spielplatzbau/);
+  assert.equal(payload.inquiryPage, "/spielplatzbau");
+  assert.equal(payload.attachments[0].name, "Skizze.pdf");
+  const h = harness();
+  await persistContactSubmission(h.client, payload);
+  assert.match(h.records[0].message, /https:\/\/www\.loni-galabau\.de\/spielplatzbau/);
+});
 function harness() {
   const uploads = [],
     records = [];

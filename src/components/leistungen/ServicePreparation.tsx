@@ -49,6 +49,24 @@ export function ServicePreparation({ slug }: { slug: string }) {
             </a>
           </div>
         </div>
+        {(slug === "gartengestaltung" || slug === "erdarbeiten") && (
+          <div className="mt-8 border-t border-brand/15 pt-6">
+            <h3 className="font-display text-lg font-bold text-brand">
+              Ein Spielplatz ist Teil Ihres Vorhabens?
+            </h3>
+            <p className="mt-3 max-w-4xl text-sm leading-relaxed text-foreground/80">
+              Für Kitas, Schulen, Kommunen und Wohnanlagen verbinden wir Erdarbeiten,
+              Spielgeräte-Montage, Fallschutz und die Gestaltung der Außenanlage. Hier finden Sie
+              Projektbilder und die passende Anfrage für Ihren Neubau oder Umbau.
+            </p>
+            <Link
+              to="/spielplatzbau"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+            >
+              Spielplatzbau und Spielplatzgestaltung <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
         {slug === "gartengestaltung" && (
           <div className="mt-8 border-t border-brand/15 pt-6" id="hecke-pflanzen-lassen">
             <h3 className="font-display text-lg font-bold text-brand">

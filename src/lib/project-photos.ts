@@ -276,6 +276,42 @@ export const projectPhotos = {
     smallWidth: 800,
     alt: "Das Team von Loni GalaBau gemeinsam auf einer Baustelle",
   },
+  "100": {
+    src: "/images/projekte/spielanlage-montage-rutsche.webp",
+    width: 1280,
+    smallWidth: 640,
+    alt: "Spielanlage aus Holz während der Montage mit noch verpackter Rutsche",
+  },
+  "101": {
+    src: "/images/projekte/spielgeraete-montage-holzturm.webp",
+    width: 960,
+    smallWidth: 640,
+    alt: "Holzturm mit Leiter und verpackter Rutsche während der Spielgeräte-Montage",
+  },
+  "102": {
+    src: "/images/projekte/spielplatz-holztuerme-holzschnitzel.webp",
+    width: 1448,
+    smallWidth: 640,
+    alt: "Spielanlage mit zwei Holztürmen, Rutsche und Federwippen auf einer Holzschnitzelfläche",
+  },
+  "103": {
+    src: "/images/projekte/spielplatz-erdarbeiten-fundamente.webp",
+    width: 960,
+    smallWidth: 640,
+    alt: "Vorbereitete Spielfläche mit Einfassung und ausgehobenen Fundamentbereichen",
+  },
+  "104": {
+    src: "/images/projekte/spielanlage-holzkonstruktion-aufbau.webp",
+    width: 1280,
+    smallWidth: 640,
+    alt: "Holzpfosten und Querträger einer Spielanlage während des Aufbaus",
+  },
+  "105": {
+    src: "/images/projekte/spielplatz-spielflaeche-bauphase.webp",
+    width: 1448,
+    smallWidth: 640,
+    alt: "Abgesperrte Spielanlage mit Rutsche, Federwippe und Holzschnitzelfläche während der Abschlussarbeiten",
+  },
 } as const;
 const byName = new Map(
   Object.values(projectPhotos).map((photo) => [photo.src.split("/").pop(), photo]),

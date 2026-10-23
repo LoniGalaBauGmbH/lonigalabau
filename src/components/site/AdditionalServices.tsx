@@ -18,6 +18,12 @@ export function AdditionalServices() {
         >
           Dachbegrünung: Möglichkeiten für Ihr Dach entdecken <span aria-hidden="true">↗</span>
         </Link>
+        <Link
+          to="/spielplatzbau"
+          className="mt-4 flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+        >
+          Spielplatzbau für Kitas, Schulen und Wohnanlagen <span aria-hidden="true">↗</span>
+        </Link>
       </div>
       <Link
         to="/kontakt"

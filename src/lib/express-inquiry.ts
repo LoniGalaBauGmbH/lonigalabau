@@ -11,6 +11,7 @@ export const EXPRESS_SERVICES = [
   "Zaunbau & Sichtschutz",
   "Rasenanlagen",
   "Erdarbeiten",
+  "Spielplatzbau",
   "Entwässerung",
   "Mehrere Leistungen / Beratung",
   "Sonstiges",
