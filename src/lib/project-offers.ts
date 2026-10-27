@@ -44,7 +44,12 @@ export type ProjectOffer = {
     eyebrow?: string;
     title: string;
     intro: string;
-    images: { image: keyof typeof projectPhotos; title: string; caption: string }[];
+    images: {
+      image: keyof typeof projectPhotos;
+      title: string;
+      caption: string;
+      objectPosition?: string;
+    }[];
     note?: string;
   };
   videos?: {

@@ -131,6 +131,9 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
                       alt={photo.alt}
                       loading="lazy"
                       sizes="(max-width: 800px) calc(100vw - 40px), 47vw"
+                      style={
+                        item.objectPosition ? { objectPosition: item.objectPosition } : undefined
+                      }
                     />
                     <figcaption>
                       <strong>{item.title}</strong>

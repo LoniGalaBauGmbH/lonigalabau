@@ -27,3 +27,11 @@ Live-HTTP-Prüfung 09:12:07 MEZ: sieben Seiten-/Sitemap-/robots-Abrufe und alle 
 Live im Browser: beide Videos vollständig bis 15,43 bzw. 12,10 Sekunden ohne Wiedergabefehler abgespielt, alle sechs Fotos geladen, bedienbares Formular. Allgemeine Seite bei 390/1440 px, Bad Soden bei 390 px ohne horizontalen Überlauf. Gegenseitige Navigation erfolgreich. Screenshots und HTTP-/Medienbelege liegen im ignorierten lokalen Aufgabenordner. Der Browser ließ den alten lokalen Fehler-Tab nicht schließen; die neue funktionierende Live-Ansicht bleibt als Ergebnis geöffnet.
 
 Keine Search-Console-Aktion und keine Google-Indexierung oder Klick-/Anfragenwirkung bestätigt. Abschlussdokumentation verändert den veröffentlichten Programmcode nicht. Vollständiger GitHub-Abgleich inklusive optimierter Medien gemäß Dauerauftrag im Chatabschluss.
+
+## Galerie-Korrektur V99
+
+Auf ausdrücklichen Nutzerwunsch liegt der Bildfokus der Gartenhausaufnahme jetzt unten (`object-position: center bottom`). Terrasse und Stufen werden im bestehenden 4:3-Ausschnitt sichtbar; andere Bilder behalten ihre bisherige Ausrichtung. Die Überschrift „Den Sitzplatz einfassen“ lautet jetzt „Sichtschutz aus Holz“. Originalbilder, Metadaten, URLs und übrige Seiteninhalte bleiben erhalten.
+
+Typprüfung, gezieltes ESLint, Diffprüfung und Client-/Serverbuild samt Postbuild erfolgreich. Lokal und auf der öffentlichen Domain jeweils 390/1440 px ohne horizontalen Überlauf; neuer Wortlaut und berechneter Fokus `50% 100%` bestätigt. Alle vier Galeriebilder live geladen. Nach anfänglicher Navigationsverzögerung war die lokale Vorschau vollständig prüfbar. Live-Nachladen bestätigte den neuen Veröffentlichungsstand. Screenshot: `artifacts.local/holzterrassen-2026-10-27/gartenhaus-fokus-live-desktop.png` (ignoriert).
+
+**Live als Version 99 seit 27.10.2026, 09:39:43 MEZ.** Quellcommit `f5e69b71d3eadca82942ef22fc40f64cf400c71d`, Version `appgprj_6aba3b55b36c8191b73435ce2be73fe4~appgver_8551777912a88191931fdf2dfeadb194`, Deployment `appgdep_6ae0633912288191ba438c880f5199fe`, Status `succeeded`. Audience public und Umgebung Revision 4 erhalten. Für diese reine Darstellungs-/Textkorrektur keine neuen Tests oder erneuter Volltestlauf. Keine Datenbank-/Indexierungsaktion.

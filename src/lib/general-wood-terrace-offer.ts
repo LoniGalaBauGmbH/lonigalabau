@@ -51,13 +51,14 @@ export const generalWoodTerraceOffer: ProjectOffer = {
       },
       {
         image: "holz-gartenhaus",
+        objectPosition: "center bottom",
         title: "Ein eigener Platz im Grünen",
         caption:
           "Ein Deck am Gartenhaus mit Stufen zur tiefer liegenden Fläche. Größe, Nutzung und Zugänge werden zusammen gedacht.",
       },
       {
         image: "holz-sichtschutz",
-        title: "Den Sitzplatz einfassen",
+        title: "Sichtschutz aus Holz",
         caption:
           "Waagerechte Holzlamellen als Sichtschutz während der Gartenarbeiten. Solche ergänzenden Bauteile können Teil Ihrer Gesamtplanung sein.",
       },
