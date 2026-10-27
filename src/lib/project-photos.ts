@@ -312,6 +312,42 @@ export const projectPhotos = {
     smallWidth: 640,
     alt: "Abgesperrte Spielanlage mit Rutsche, Federwippe und Holzschnitzelfläche während der Abschlussarbeiten",
   },
+  "holz-garten": {
+    src: "/images/projekte/holzterrasse-garten-steinbeete.webp",
+    width: 1280,
+    smallWidth: 640,
+    alt: "Helle Holzterrasse mit angrenzendem Garten und eingefassten Beeten",
+  },
+  "holz-wintergarten": {
+    src: "/images/projekte/holzterrasse-am-wintergarten.webp",
+    width: 1600,
+    smallWidth: 640,
+    alt: "Holzterrasse mit überdachtem Bereich vor einem Wintergarten",
+  },
+  "holz-anschluss": {
+    src: "/images/projekte/holzdeck-gartenanschluss.webp",
+    width: 1200,
+    smallWidth: 640,
+    alt: "Holzdeck mit Übergängen zu Grünflächen und Gartenwegen",
+  },
+  "holz-baum": {
+    src: "/images/projekte/holzterrasse-baumumfassung.webp",
+    width: 1200,
+    smallWidth: 640,
+    alt: "Holzterrasse mit ausgespartem Bereich um einen Baum",
+  },
+  "holz-gartenhaus": {
+    src: "/images/projekte/holzterrasse-gartenhaus.webp",
+    width: 1206,
+    smallWidth: 640,
+    alt: "Holzterrasse vor einem Gartenhaus mit angrenzender Bepflanzung",
+  },
+  "holz-sichtschutz": {
+    src: "/images/projekte/holzsichtschutz-lamellen.webp",
+    width: 1600,
+    smallWidth: 640,
+    alt: "Holzsichtschutz mit waagerechten Lamellen während der Gartenarbeiten",
+  },
 } as const;
 const byName = new Map(
   Object.values(projectPhotos).map((photo) => [photo.src.split("/").pop(), photo]),

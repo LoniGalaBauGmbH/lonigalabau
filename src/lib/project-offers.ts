@@ -24,7 +24,8 @@ export type ProjectOffer = {
     | "/einfahrt-pflastern-lassen"
     | "/l-steine-setzen-lassen"
     | "/spielplatzbau"
-    | "/holzterrasse-bad-soden";
+    | "/holzterrasse-bad-soden"
+    | "/holzterrasse-bauen-lassen";
   label: string;
   title: string;
   metaTitle: string;
@@ -46,6 +47,11 @@ export type ProjectOffer = {
     images: { image: keyof typeof projectPhotos; title: string; caption: string }[];
     note?: string;
   };
+  videos?: {
+    title: string;
+    intro: string;
+    clips: { src: string; poster: string; title: string; description: string }[];
+  };
   cases: { title: string; text: string }[];
   detail: {
     image: keyof typeof projectPhotos;
@@ -57,6 +63,7 @@ export type ProjectOffer = {
   choices: { title: string; text: string }[];
   choiceHeading: string;
   costIntro: string;
+  costHeading?: string;
   costs: string[];
   steps: { title: string; text: string }[];
   faq: { question: string; answer: string }[];
@@ -183,6 +190,7 @@ export const terraceOffer: ProjectOffer = {
     "Gartenzugang und Transportweg",
   ],
   links: [
+    { href: "/holzterrasse-bauen-lassen", label: "Holzterrassen planen & bauen lassen" },
     { href: "/holzterrasse-bad-soden", label: "Holzterrassen in Bad Soden" },
     { href: "/leistungen/natursteinarbeiten", label: "Natursteinarbeiten" },
     { href: "/leistungen/pflasterarbeiten", label: "Pflasterarbeiten im Überblick" },

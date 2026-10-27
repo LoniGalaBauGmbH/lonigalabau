@@ -4,6 +4,7 @@ import { PageShell } from "./PageShell";
 import { ProjectImage } from "./ProjectImage";
 import { ExpressInquiryForm } from "./ExpressInquiryForm";
 import { projectPhotos } from "@/lib/project-photos";
+import { publicImageUrl } from "@/lib/public-image-url";
 import { canonicalUrl, ORGANIZATION_ID, publicPageSchema, safeJsonLd } from "@/lib/seo";
 import type { ProjectOffer } from "@/lib/project-offers";
 import "./ProjectOfferPage.css";
@@ -143,6 +144,43 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
           </section>
         )}
 
+        {content.videos && (
+          <section className="offer-wrap offer-section" aria-labelledby="offer-video-title">
+            <span className="eyebrow eyebrow-bracket">Unsere Arbeit in Bewegung</span>
+            <h2 className="display" id="offer-video-title">
+              {content.videos.title}
+            </h2>
+            <p className="offer-gallery-intro">{content.videos.intro}</p>
+            <div
+              className={`offer-videos${content.videos.clips.length === 1 ? " offer-videos-single" : ""}`}
+            >
+              {content.videos.clips.map((clip, index) => (
+                <figure key={clip.src}>
+                  <video
+                    controls
+                    playsInline
+                    preload="none"
+                    poster={publicImageUrl(clip.poster)}
+                    aria-label={clip.title}
+                    aria-describedby={`offer-video-caption-${index}`}
+                  >
+                    <source
+                      src={import.meta.env.PROD ? `/__public-assets${clip.src}` : clip.src}
+                      type="video/mp4"
+                    />
+                    Ihr Browser unterstützt die Videowiedergabe nicht.
+                  </video>
+                  <figcaption id={`offer-video-caption-${index}`}>
+                    <strong>{clip.title}</strong>
+                    {clip.description}
+                    <span className="offer-video-note">Eigene Projektaufnahme · Ohne Ton</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
         <section
           className="offer-wrap offer-detail offer-section"
           aria-labelledby="offer-detail-title"
@@ -194,7 +232,7 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
                 Ein Angebot, das zu Ihrem Vorhaben passt
               </span>
               <h2 className="display" id="offer-cost-title">
-                Was bestimmt die Kosten?
+                {content.costHeading ?? "Was bestimmt die Kosten?"}
               </h2>
               <p>{content.costIntro}</p>
               <p>

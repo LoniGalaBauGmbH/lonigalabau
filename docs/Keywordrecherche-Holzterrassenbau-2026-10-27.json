@@ -1,0 +1,2639 @@
+{
+  "date": "2026-10-27",
+  "source": "DataForSEO Google Ads Keywords Data / Google Organic SERP",
+  "market": {
+    "country": "Deutschland",
+    "location_code": 2276,
+    "language_code": "de",
+    "search_partners": false
+  },
+  "period": {
+    "from": "2025-10",
+    "to": "2026-09"
+  },
+  "metrics": {
+    "search_volume": "Approximate average searches/month for all Germany; not local demand or potential inquiries",
+    "cpc": "USD per paid ad click",
+    "competition": "Google Ads competition, not organic SEO difficulty"
+  },
+  "reuse": {
+    "file": "Keywordrecherche-Holzterrasse-Bad-Soden-2026-10-27.json",
+    "additionalCostUSD": 0,
+    "reason": "Same-day DE/de volume results and Bad-Soden SERPs reused; no repeat validation call."
+  },
+  "newCostUSD": 0.098,
+  "ideaRequest": {
+    "status_code": 20000,
+    "cost": 0.09,
+    "tasks": [
+      {
+        "id": "10270755-2663-0368-0000-ed394f3fc069",
+        "status_code": 20000,
+        "status_message": "Ok.",
+        "cost": 0.09,
+        "data": {
+          "api": "keywords_data",
+          "function": "keywords_for_keywords",
+          "se": "google_ads",
+          "keywords": [
+            "holzterrassenbau",
+            "holzterrasse bauen lassen",
+            "terrassendielen verlegen lassen",
+            "holzterrasse erneuern",
+            "holzterrasse kosten",
+            "holzdeck bauen lassen"
+          ],
+          "location_code": 2276,
+          "language_code": "de",
+          "search_partners": false,
+          "sort_by": "relevance"
+        },
+        "result_count": 114
+      }
+    ],
+    "note": "Endpoint offers no limit parameter. Six seeds returned 114 suggestions for a flat request cost. All 114 were screened; detailed analysis focuses on 16 representative terms."
+  },
+  "keywords": [
+    {
+      "keyword": "holzterrassenbau",
+      "search_volume": 590,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 1.26,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 880
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 1000
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 1000
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 480
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 320
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 320
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 390
+        }
+      ]
+    },
+    {
+      "keyword": "holzterrasse bauen lassen",
+      "search_volume": 170,
+      "competition": "HIGH",
+      "competition_index": 70,
+      "cpc": 2.81,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 110
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "terrassendielen verlegen lassen",
+      "search_volume": 30,
+      "competition": "MEDIUM",
+      "competition_index": 38,
+      "cpc": 0.7,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "holzterrasse erneuern",
+      "search_volume": 20,
+      "competition": "HIGH",
+      "competition_index": 75,
+      "cpc": 2.82,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "holzterrasse kosten",
+      "search_volume": 140,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 1.6,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 140
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 70
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 90
+        }
+      ]
+    },
+    {
+      "keyword": "holzdeck bauen lassen",
+      "search_volume": null,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse bauen",
+      "search_volume": 2900,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.68,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 1600
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 2900
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 2900
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 3600
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 4400
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 5400
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 5400
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 2400
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 1300
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 880
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 1000
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 1300
+        }
+      ]
+    },
+    {
+      "keyword": "terrasse bauen kosten",
+      "search_volume": 260,
+      "competition": "HIGH",
+      "competition_index": 80,
+      "cpc": 1.92
+    },
+    {
+      "keyword": "kosten holzterrasse",
+      "search_volume": 70,
+      "competition": "HIGH",
+      "competition_index": 94,
+      "cpc": 0.41
+    },
+    {
+      "keyword": "wpc terrassendielen verlegen lassen kosten",
+      "search_volume": 10,
+      "competition": "LOW",
+      "competition_index": 15,
+      "cpc": 0.77
+    },
+    {
+      "keyword": "terrassendielen verlegen firma",
+      "search_volume": 10,
+      "competition": "LOW",
+      "competition_index": 24,
+      "cpc": 1.13,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 0
+        }
+      ]
+    },
+    {
+      "keyword": "wpc verlegen lassen kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 71,
+      "cpc": 3.64
+    },
+    {
+      "keyword": "wpc terrassendielen verlegen lassen",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 97,
+      "cpc": 2.22
+    },
+    {
+      "keyword": "terrassendielen verlegen lassen kosten",
+      "search_volume": 20,
+      "competition": "MEDIUM",
+      "competition_index": 39,
+      "cpc": 1.1,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "kosten holzterrasse 10 qm",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 99,
+      "cpc": 0.64
+    },
+    {
+      "keyword": "terrasse unterkonstruktion alu kosten",
+      "search_volume": 90,
+      "competition": "HIGH",
+      "competition_index": 99,
+      "cpc": 1.11
+    },
+    {
+      "keyword": "terrassendielen verlegen kosten",
+      "search_volume": 30,
+      "competition": "MEDIUM",
+      "competition_index": 61,
+      "cpc": 1.37
+    },
+    {
+      "keyword": "holzterrasse bauen kosten",
+      "search_volume": 50,
+      "competition": "HIGH",
+      "competition_index": 99,
+      "cpc": 1.19
+    },
+    {
+      "keyword": "holzterrasse bauen lassen kosten",
+      "search_volume": 50,
+      "competition": "MEDIUM",
+      "competition_index": 60,
+      "cpc": 2.66,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 30
+        }
+      ]
+    },
+    {
+      "keyword": "holzterrasse kosten pro m2",
+      "search_volume": 70,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.84,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 40
+        }
+      ]
+    },
+    {
+      "keyword": "wpc terrasse bauen lassen",
+      "search_volume": 20,
+      "competition": "MEDIUM",
+      "competition_index": 53,
+      "cpc": 5.18,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "holzterrasse kosten handwerker",
+      "search_volume": 20,
+      "competition": "MEDIUM",
+      "competition_index": 43,
+      "cpc": 3.12,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 30
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "wpc verlegen lassen",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 57,
+      "cpc": 4.84
+    },
+    {
+      "keyword": "wpc terrasse verlegen lassen kosten",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 80,
+      "cpc": 0.46
+    },
+    {
+      "keyword": "wpc terrassendielen verlegen firma",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 83,
+      "cpc": 3.33
+    },
+    {
+      "keyword": "kosten holzterrasse 30 qm",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.41
+    },
+    {
+      "keyword": "terrasse anlegen kosten",
+      "search_volume": 70,
+      "competition": "MEDIUM",
+      "competition_index": 58,
+      "cpc": 1.16
+    },
+    {
+      "keyword": "kosten holzterrasse 25 qm",
+      "search_volume": 50,
+      "competition": "HIGH",
+      "competition_index": 97,
+      "cpc": 1.81
+    },
+    {
+      "keyword": "kosten für 20 qm holzterrasse",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse bauen firma",
+      "search_volume": 30,
+      "competition": "MEDIUM",
+      "competition_index": 48,
+      "cpc": 2.29,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 20
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 40
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "kosten terrasse holz",
+      "search_volume": 20,
+      "competition": "HIGH",
+      "competition_index": 86,
+      "cpc": null
+    },
+    {
+      "keyword": "terrasse holz kosten",
+      "search_volume": 20,
+      "competition": "HIGH",
+      "competition_index": 92,
+      "cpc": 0.24
+    },
+    {
+      "keyword": "wpc terrasse verlegen lassen",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 43,
+      "cpc": 5.98
+    },
+    {
+      "keyword": "kosten holzterrasse mit unterkonstruktion",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 98,
+      "cpc": null,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "wpc boden verlegen lassen",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "wpc terrasse bauen lassen kosten",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 78,
+      "cpc": 2.61
+    },
+    {
+      "keyword": "holzterrasse verlegen lassen",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 71,
+      "cpc": null,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 10
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 10
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 0
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "kosten holzterrasse 40 qm",
+      "search_volume": 20,
+      "competition": "HIGH",
+      "competition_index": 90,
+      "cpc": 1.33
+    },
+    {
+      "keyword": "terrassendielen wpc verlegen lassen",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 43,
+      "cpc": 1.73
+    },
+    {
+      "keyword": "kosten holzterrasse pro m2",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 57,
+      "cpc": null
+    },
+    {
+      "keyword": "terrasse aus holz kosten",
+      "search_volume": 20,
+      "competition": "HIGH",
+      "competition_index": 86,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse preis pro m2",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 93,
+      "cpc": null
+    },
+    {
+      "keyword": "hochterrasse kosten",
+      "search_volume": 40,
+      "competition": "MEDIUM",
+      "competition_index": 44,
+      "cpc": 1.95
+    },
+    {
+      "keyword": "preis holzterrasse pro qm",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 80,
+      "cpc": 1.24
+    },
+    {
+      "keyword": "holz terrasse kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse verlegen kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 71,
+      "cpc": 1.93
+    },
+    {
+      "keyword": "kosten holzterrasse 20qm",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.64
+    },
+    {
+      "keyword": "wpc dielen verlegen lassen",
+      "search_volume": 10,
+      "competition": "LOW",
+      "competition_index": 14,
+      "cpc": null
+    },
+    {
+      "keyword": "kosten holzterrasse pro qm",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 83,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse preis",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 89,
+      "cpc": 1.58
+    },
+    {
+      "keyword": "terrasse holz kosten berechnen",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "kosten wpc terrasse verlegen lassen",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 43,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse kosten pro qm",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 83,
+      "cpc": null
+    },
+    {
+      "keyword": "kosten für holzterrasse",
+      "search_volume": 140,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 1.6
+    },
+    {
+      "keyword": "terrasse holzboden kosten",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 64,
+      "cpc": 0.12
+    },
+    {
+      "keyword": "terrassendielen kosten m2",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "terrasse holz preis qm",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 1.27
+    },
+    {
+      "keyword": "terrasse holz bauen lassen kosten",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "terrassenholz preise pro m2",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 1.45
+    },
+    {
+      "keyword": "20 qm holzterrasse",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.46
+    },
+    {
+      "keyword": "30 qm terrasse kosten",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 36,
+      "cpc": null
+    },
+    {
+      "keyword": "bambus terrassendielen kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.11
+    },
+    {
+      "keyword": "bangkirai terrasse kosten",
+      "search_volume": 90,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.75
+    },
+    {
+      "keyword": "bankirai terrasse kosten pro qm",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": null
+    },
+    {
+      "keyword": "dachterrasse holz kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": null
+    },
+    {
+      "keyword": "einfache holzterrasse bauen",
+      "search_volume": 20,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.29
+    },
+    {
+      "keyword": "hochterrasse bauen kosten",
+      "search_volume": 20,
+      "competition": "LOW",
+      "competition_index": 17,
+      "cpc": 2.97
+    },
+    {
+      "keyword": "hochterrasse holz kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 71,
+      "cpc": null
+    },
+    {
+      "keyword": "holz terrassenbau",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 84,
+      "cpc": 2.57
+    },
+    {
+      "keyword": "holzboden terrasse kosten",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 64,
+      "cpc": 0.12
+    },
+    {
+      "keyword": "holzterrasse 30 qm kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.18
+    },
+    {
+      "keyword": "holzterrasse anlegen kosten",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 36,
+      "cpc": 0.36
+    },
+    {
+      "keyword": "holzterrasse auf stelzen kosten",
+      "search_volume": 10,
+      "competition": "LOW",
+      "competition_index": 19,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse bangkirai kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse bauen auf rasen kosten",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 64,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse bauen einfach",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.6
+    },
+    {
+      "keyword": "holzterrasse bauen material",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.08
+    },
+    {
+      "keyword": "holzterrasse kosten 20 qm",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 43,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse kosten m2",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse kosten qm",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse lärche kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse m2 preis",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse oder steinterrasse kosten",
+      "search_volume": 10,
+      "competition": "LOW",
+      "competition_index": 19,
+      "cpc": null
+    },
+    {
+      "keyword": "holzterrasse preise pro qm",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.66
+    },
+    {
+      "keyword": "holzterrasse qm preis",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.68
+    },
+    {
+      "keyword": "holzterrasse selber bauen kosten",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 94,
+      "cpc": 0.35
+    },
+    {
+      "keyword": "holzterrassen bau",
+      "search_volume": 2900,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.68
+    },
+    {
+      "keyword": "kleine holzterrasse bauen",
+      "search_volume": 10,
+      "competition": "MEDIUM",
+      "competition_index": 57,
+      "cpc": null
+    },
+    {
+      "keyword": "kosten für 30 qm holzterrasse",
+      "search_volume": 0,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "kosten für eine holzterrasse",
+      "search_volume": 140,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 1.6
+    },
+    {
+      "keyword": "kosten für holzterrasse berechnen",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 86,
+      "cpc": 5.13
+    },
+    {
+      "keyword": "kosten hochterrasse",
+      "search_volume": 10,
+      "competition": "LOW",
+      "competition_index": 0,
+      "cpc": null
+    },
+    {
+      "keyword": "kosten holzterrasse 15 qm",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 1.87
+    },
+    {
+      "keyword": "kosten holzterrasse 50 qm",
+      "search_volume": 40,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.65
+    },
+    {
+      "keyword": "kosten holzterrasse bauen lassen",
+      "search_volume": 50,
+      "competition": "MEDIUM",
+      "competition_index": 60,
+      "cpc": 2.66
+    },
+    {
+      "keyword": "kosten holzterrasse verlegen lassen",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 86,
+      "cpc": 2.48
+    },
+    {
+      "keyword": "kosten terrasse holz m2",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "kosten terrassendielen verlegen",
+      "search_volume": 30,
+      "competition": "MEDIUM",
+      "competition_index": 61,
+      "cpc": 1.37
+    },
+    {
+      "keyword": "kosten wpc verlegen lassen",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 86,
+      "cpc": null
+    },
+    {
+      "keyword": "preis holzterrasse",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 89,
+      "cpc": 1.58
+    },
+    {
+      "keyword": "qm preis holzterrasse",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.68
+    },
+    {
+      "keyword": "teakholz terrasse kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.9
+    },
+    {
+      "keyword": "terrasse aus holz bauen kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.6
+    },
+    {
+      "keyword": "terrasse bauen holz kosten",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.15
+    },
+    {
+      "keyword": "terrasse bauen lassen preis",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 86,
+      "cpc": null
+    },
+    {
+      "keyword": "terrasse holz kosten qm",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.05
+    },
+    {
+      "keyword": "terrasse holz oder stein kosten",
+      "search_volume": 30,
+      "competition": "MEDIUM",
+      "competition_index": 40,
+      "cpc": 1.02
+    },
+    {
+      "keyword": "terrasse holz verlegen kosten",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "terrasse holzdielen verlegen preis",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "terrassendielen kosten",
+      "search_volume": 30,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "cpc": 0.56
+    },
+    {
+      "keyword": "terrassendielen verlegen preis m2",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    },
+    {
+      "keyword": "unterkonstruktion holzterrasse bauen",
+      "search_volume": 70,
+      "competition": "HIGH",
+      "competition_index": 95,
+      "cpc": 0.12,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 30
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "wieviel kostet eine holzterrasse",
+      "search_volume": 10,
+      "competition": "HIGH",
+      "competition_index": 75,
+      "cpc": null
+    },
+    {
+      "keyword": "wpc dielen verlegen lassen kosten",
+      "search_volume": 10,
+      "competition": null,
+      "competition_index": null,
+      "cpc": null
+    }
+  ],
+  "reusedSupplementalKeywords": [
+    {
+      "keyword": "holzterrasse erneuern lassen",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "holzterrasse sanieren lassen",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": null,
+      "competition_index": null,
+      "search_volume": null,
+      "low_top_of_page_bid": null,
+      "high_top_of_page_bid": null,
+      "cpc": null,
+      "monthly_searches": null
+    },
+    {
+      "keyword": "terrassenbau firma",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "HIGH",
+      "competition_index": 68,
+      "search_volume": 210,
+      "low_top_of_page_bid": 0.83,
+      "high_top_of_page_bid": 2.79,
+      "cpc": 2.15,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 320
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 90
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 20
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "terrassenbauer in der nähe",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "HIGH",
+      "competition_index": 70,
+      "search_volume": 1000,
+      "low_top_of_page_bid": 0.98,
+      "high_top_of_page_bid": 3.53,
+      "cpc": 3.42,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 1000
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 1300
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 1300
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 1300
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 1600
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 1900
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 2400
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 880
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 720
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 320
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 590
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 720
+        }
+      ]
+    },
+    {
+      "keyword": "holzterrasse douglasie",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "search_volume": 110,
+      "low_top_of_page_bid": 0.56,
+      "high_top_of_page_bid": 1.89,
+      "cpc": 0.57,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 70
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "holzterrasse lärche",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "search_volume": 110,
+      "low_top_of_page_bid": 0.29,
+      "high_top_of_page_bid": 1.48,
+      "cpc": 0.29,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 50
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 140
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 170
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 110
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 50
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 40
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "thermoholz terrasse",
+      "spell": null,
+      "location_code": 2276,
+      "language_code": "de",
+      "search_partners": false,
+      "competition": "HIGH",
+      "competition_index": 100,
+      "search_volume": 320,
+      "low_top_of_page_bid": 0.29,
+      "high_top_of_page_bid": 1.3,
+      "cpc": 0.93,
+      "monthly_searches": [
+        {
+          "year": 2026,
+          "month": 9,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 8,
+          "search_volume": 260
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "search_volume": 390
+        },
+        {
+          "year": 2026,
+          "month": 6,
+          "search_volume": 480
+        },
+        {
+          "year": 2026,
+          "month": 5,
+          "search_volume": 720
+        },
+        {
+          "year": 2026,
+          "month": 4,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 3,
+          "search_volume": 590
+        },
+        {
+          "year": 2026,
+          "month": 2,
+          "search_volume": 210
+        },
+        {
+          "year": 2026,
+          "month": 1,
+          "search_volume": 210
+        },
+        {
+          "year": 2025,
+          "month": 12,
+          "search_volume": 140
+        },
+        {
+          "year": 2025,
+          "month": 11,
+          "search_volume": 140
+        },
+        {
+          "year": 2025,
+          "month": 10,
+          "search_volume": 210
+        }
+      ]
+    }
+  ],
+  "serpLocation": {
+    "location_code": 1004363,
+    "location_name": "Frankfurt am Main,Hessen,Germany",
+    "location_code_parent": 20231,
+    "country_iso_code": "DE",
+    "location_type": "City"
+  },
+  "serps": [
+    {
+      "request": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "keyword": "holzterrassenbau",
+        "location_code": 1004363,
+        "language_code": "de",
+        "device": "mobile",
+        "os": "android",
+        "depth": 10
+      },
+      "provider_status": 20000,
+      "task_id": "10270756-2663-0139-0000-1b96b21760c0",
+      "task_status": 20000,
+      "task_message": "Ok.",
+      "costUSD": 0.002,
+      "datetime": "2026-10-27 07:56:28 +00:00",
+      "items": [
+        {
+          "type": "local_pack",
+          "rank_group": 1,
+          "rank_absolute": 2,
+          "title": "Freiraumgestalter.com Holzterrassen, Poolumrandungen, WPC Decks",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSDyoNCgsvZy8xdGdjOG42dxgK"
+        },
+        {
+          "type": "local_pack",
+          "rank_group": 2,
+          "rank_absolute": 3,
+          "title": "Werner Garten- und Landschaftsbau GmbH",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSESoPCg0vZy8xMWM1cnQzaHBuGAo"
+        },
+        {
+          "type": "local_pack",
+          "rank_group": 3,
+          "rank_absolute": 4,
+          "title": "Holz Terrassenbau Großheimann",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSESoPCg0vZy8xMXpkZGhmc21oGAo"
+        },
+        {
+          "type": "local_pack",
+          "rank_group": 4,
+          "rank_absolute": 5,
+          "title": "Holzterrassen - Holz und Design Simon Alber",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSECoOCgwvZy8xMmhrNmx5MXgYCg"
+        },
+        {
+          "type": "organic",
+          "rank_group": 1,
+          "rank_absolute": 7,
+          "title": "Holzterrasse bauen: Schritt-für-Schritt-Anleitung - OBI",
+          "url": "https://www.obi.de/magazin/garten/terrasse/holzterrasse-bauen"
+        },
+        {
+          "type": "people_also_ask",
+          "rank_group": 1,
+          "rank_absolute": 8,
+          "title": null,
+          "url": null,
+          "questions": [
+            "Was kostet eine 20 qm Holzterrasse?",
+            "Wie viel kostet es, eine Holzterrasse zu bauen?",
+            "Welche Nachteile hat eine Holzterrasse?",
+            "Was kostet eine 50 qm Holzterrasse?"
+          ]
+        },
+        {
+          "type": "organic",
+          "rank_group": 2,
+          "rank_absolute": 10,
+          "title": "Holzterrasse bauen | Anleitung von HORNBACH",
+          "url": "https://www.hornbach.de/projekte/holzterrasse-bauen/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 3,
+          "rank_absolute": 12,
+          "title": "Holzterrassen — Terrassen aus Holz von Holz und Design Simon Alber",
+          "url": "https://holzunddesign-holzterrasse.de/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 4,
+          "rank_absolute": 13,
+          "title": "Terrassendielen verlegen mit Bauanleitung für die Holzterrasse",
+          "url": "https://betterwood.de/beratung/terrassendielen/bauanleitung-holzterrasse/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 5,
+          "rank_absolute": 15,
+          "title": "20 Holz-Terrassenbau-Ideen in 2026",
+          "url": "https://de.pinterest.com/wolfcraft_DE/holz-terrassenbau/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 6,
+          "rank_absolute": 16,
+          "title": "Holzterrassenbau: Hölzer, Unterbau, Kosten",
+          "url": "https://www.tischler-schreiner.org/magazin/holzterrassenbau-20134605"
+        },
+        {
+          "type": "organic",
+          "rank_group": 7,
+          "rank_absolute": 17,
+          "title": "5 Tricks für den Holzterrassen-Bau | Handwerker Blog",
+          "url": "https://www.kloepfer.de/blog/holzterrasse-bauen"
+        },
+        {
+          "type": "organic",
+          "rank_group": 8,
+          "rank_absolute": 18,
+          "title": "Holzterrassen Know-how",
+          "url": "https://www.spax.com/de-de/spax-in-der-praxis/terrassenbau/holzterrassen-know-how.html"
+        }
+      ]
+    },
+    {
+      "request": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "keyword": "holzterrasse verlegen lassen",
+        "location_code": 1004363,
+        "language_code": "de",
+        "device": "mobile",
+        "os": "android",
+        "depth": 10
+      },
+      "provider_status": 20000,
+      "task_id": "10270756-2663-0139-0000-86fb611371ef",
+      "task_status": 20000,
+      "task_message": "Ok.",
+      "costUSD": 0.002,
+      "datetime": "2026-10-27 07:56:34 +00:00",
+      "items": [
+        {
+          "type": "organic",
+          "rank_group": 1,
+          "rank_absolute": 2,
+          "title": "Holzterrasse mit höhenverstellbarem Verlegesystem von SPAX bauen",
+          "url": "https://www.youtube.com/watch?v=4rKS_RHvvSs"
+        },
+        {
+          "type": "people_also_ask",
+          "rank_group": 1,
+          "rank_absolute": 3,
+          "title": null,
+          "url": null,
+          "questions": [
+            "Wie viel Abstand zwischen Holzterrassendielen?",
+            "Was kostet eine Holzterrasse mit 30 qm?",
+            "Kann ich Terrassendielen ohne Unterkonstruktion verlegen?",
+            "Welchen Abstand sollte der Unterbau von Bangkirai haben?"
+          ]
+        },
+        {
+          "type": "organic",
+          "rank_group": 2,
+          "rank_absolute": 5,
+          "title": "Holzterrassen-Unterkonstruktion: Das ist wichtig - OBI",
+          "url": "https://www.obi.de/magazin/garten/terrasse/unterkonstruktion-holzterrasse"
+        },
+        {
+          "type": "organic",
+          "rank_group": 3,
+          "rank_absolute": 7,
+          "title": "Holz-Stein-Terrasse bauen | Anleitung von HORNBACH",
+          "url": "https://www.hornbach.de/projekte/holz-stein-terrasse-bauen/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 4,
+          "rank_absolute": 8,
+          "title": "Holzterrasse selber bauen: Einfache Schritt-für-Schritt-Anleitung | wolfcraft",
+          "url": "https://www.youtube.com/watch?v=mzWlToD3rDc"
+        },
+        {
+          "type": "organic",
+          "rank_group": 5,
+          "rank_absolute": 10,
+          "title": "Holzterrassen Know-how",
+          "url": "https://www.spax.com/de-de/spax-in-der-praxis/terrassenbau/holzterrassen-know-how.html"
+        },
+        {
+          "type": "organic",
+          "rank_group": 6,
+          "rank_absolute": 11,
+          "title": "Terrassenplatten verlegen: Wen beauftragen?",
+          "url": "https://www.my-hammer.de/garten-aussenbereich/artikel/welcher-handwerker-verlegt-terrassenplatten"
+        },
+        {
+          "type": "organic",
+          "rank_group": 7,
+          "rank_absolute": 12,
+          "title": "WPC Terrassendielen Verlegen Lassen Kosten: Kosten, Faktoren & ...",
+          "url": "https://www.hosungdeck.com/wpc-in-germany/wpc-terrassendielen-verlegen-lassen-kosten/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 8,
+          "rank_absolute": 13,
+          "title": "Terrassenbau Teil 1 - Vorbereitung und Unterkonstruktion",
+          "url": "https://www.youtube.com/watch?v=BqxQ0HMZgy0"
+        },
+        {
+          "type": "local_pack",
+          "rank_group": 1,
+          "rank_absolute": 14,
+          "title": "ESPEN - Bad Vilbel",
+          "url": null
+        }
+      ]
+    },
+    {
+      "request": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "keyword": "holzterrasse erneuern lassen",
+        "location_code": 1004363,
+        "language_code": "de",
+        "device": "mobile",
+        "os": "android",
+        "depth": 10
+      },
+      "provider_status": 20000,
+      "task_id": "10270756-2663-0139-0000-8ca71af70af2",
+      "task_status": 40101,
+      "task_message": "Internal SE Server Error.",
+      "costUSD": 0.002,
+      "datetime": null,
+      "items": []
+    },
+    {
+      "request": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "keyword": "holzterrasse bauen firma",
+        "location_code": 1004363,
+        "language_code": "de",
+        "device": "mobile",
+        "os": "android",
+        "depth": 10
+      },
+      "provider_status": 20000,
+      "task_id": "10270757-2663-0139-0000-a382ffa0ae02",
+      "task_status": 20000,
+      "task_message": "Ok.",
+      "costUSD": 0.002,
+      "datetime": "2026-10-27 07:57:09 +00:00",
+      "items": [
+        {
+          "type": "local_pack",
+          "rank_group": 1,
+          "rank_absolute": 2,
+          "title": "Freiraumgestalter.com Holzterrassen, Poolumrandungen, WPC Decks",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSDyoNCgsvZy8xdGdjOG42dxgK"
+        },
+        {
+          "type": "local_pack",
+          "rank_group": 2,
+          "rank_absolute": 3,
+          "title": "Holzboden Bauer",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSESoPCg0vZy8xMXZsOHN4bjIxGAo"
+        },
+        {
+          "type": "local_pack",
+          "rank_group": 3,
+          "rank_absolute": 4,
+          "title": "Zimmerei Wilhelm Gauf & Sohn",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSDyoNCgsvZy8xd2ZjbjhkehgK"
+        },
+        {
+          "type": "local_pack",
+          "rank_group": 4,
+          "rank_absolute": 5,
+          "title": "Gartenbau Frankfurt",
+          "url": "https://www.google.com/searchviewer/10?sca_esv=06eb4749832549b6&hl=de&gl=DE&output=search&svid=CCYSESoPCg0vZy8xMXg5MXB5bnFxGAo"
+        },
+        {
+          "type": "organic",
+          "rank_group": 1,
+          "rank_absolute": 7,
+          "title": "Hochwertige Holzterrassen, Dachterrassen und Sonnendecks",
+          "url": "https://www.freiraumgestalter.com/holzterrassen.html"
+        },
+        {
+          "type": "people_also_ask",
+          "rank_group": 1,
+          "rank_absolute": 8,
+          "title": null,
+          "url": null,
+          "questions": [
+            "Was kostet eine Holzterrasse mit 30 qm?",
+            "Kann ich eine Dachterrasse selbst bauen?",
+            "Welche Handwerker bauen Terrassen?",
+            "Was legt man unter eine Holzterrasse?"
+          ]
+        },
+        {
+          "type": "organic",
+          "rank_group": 2,
+          "rank_absolute": 9,
+          "title": "Von Holzterrassen, über Holzstufen & -pergola bieten wir alles.",
+          "url": "https://www.florian-feth.de/holz-im-garten"
+        },
+        {
+          "type": "organic",
+          "rank_group": 3,
+          "rank_absolute": 10,
+          "title": "Die 15 besten Terrassenbauer - Houzz",
+          "url": "https://www.houzz.de/professionals/terrasse-und-aussenbereich/probr0-bo~t_12019"
+        },
+        {
+          "type": "organic",
+          "rank_group": 4,
+          "rank_absolute": 12,
+          "title": "Ihre neue Holzterrasse in Frankenthal",
+          "url": "https://sofortholz.de/holzterrassen?ort=Frankenthal&srsltid=AYCX9vKrNAxGxfGGmXFHBd-FcwbEi-GNSjs-lleMstY0t1GppVt2scl1"
+        },
+        {
+          "type": "organic",
+          "rank_group": 5,
+          "rank_absolute": 13,
+          "title": "Montage einer Holzterrasse in Leverkusen, Köln und Umgebung",
+          "url": "https://arbor-holz.de/montage-einer-holzterrasse-in-leverkusen-koeln-und-umgebung/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 6,
+          "rank_absolute": 14,
+          "title": "Ihre neue Holzterrasse in Garmisch-Partenkirchen",
+          "url": "https://sofortholz.de/holzterrassen?ort=Garmisch-Partenkirchen&srsltid=AYCX9vKIQx9iMu8X7uENetSuQXE8FvXE7G5p20pS4jZQ1DGlrM8XSZ_k"
+        },
+        {
+          "type": "organic",
+          "rank_group": 7,
+          "rank_absolute": 15,
+          "title": "Terrasse mit dem cleversten Terrassensystem der Schweiz bauen",
+          "url": "https://www.terrassensystem.ch/de/kontakt"
+        },
+        {
+          "type": "organic",
+          "rank_group": 8,
+          "rank_absolute": 16,
+          "title": "Gewerblicher Terrassenbau – Holzterrassen",
+          "url": "https://www.holz-terrassenbau-berlin.de/gewerblicher-terrassenbau-holzterrassen/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 9,
+          "rank_absolute": 17,
+          "title": "Holzterrasse Berlin-Zehlendorf",
+          "url": "https://www.bauzeit-berlin.de/leistungen/projektleitung/holzterrasse-berlin-zehlendorf/"
+        },
+        {
+          "type": "organic",
+          "rank_group": 10,
+          "rank_absolute": 18,
+          "title": "Ihre Holzterrasse im Raum Mannheim",
+          "url": "https://holzunddesign-holzterrasse.de/mannheim"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No reliable search volume for exact Bad-Soden phrases; unknown is not zero.",
+    "Volume variants overlap and must not be summed.",
+    "Search results are one mobile Frankfurt snapshot; no stable ranking or lead forecast.",
+    "One SERP task failed with status 40101; its billed cost is included and no findings are derived from it."
+  ]
+}

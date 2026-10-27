@@ -9,8 +9,8 @@ export const woodTerraceOffer: ProjectOffer = {
     "Holzterrasse in Bad Soden am Taunus bauen lassen: Planung, Unterkonstruktion und Dielenmontage. Auch in Neuenhain und Altenhain. Jetzt Projekt anfragen.",
   intro:
     "Warme Holztöne, ein Platz im Grünen und ein schöner Übergang vom Haus in den Garten. Wir planen und bauen Ihre Holzterrasse in Bad Soden am Taunus – vom vorbereiteten Untergrund bis zur letzten Diele.",
-  image: "69",
-  heroCaption: "Holzterrasse mit dunklem Sichtschutz · Eigene Aufnahme von Loni GalaBau",
+  image: "holz-wintergarten",
+  heroCaption: "Holzterrasse am Wintergarten · Eigene Aufnahme von Loni GalaBau",
   initialService: "Holzterrassenbau",
   kicker: "Draußen zu Hause",
   landscapeHero: true,
@@ -39,23 +39,37 @@ export const woodTerraceOffer: ProjectOffer = {
       "Ein Deck darf sich in einen gewachsenen Garten einfügen. Unsere Aufnahmen zeigen, wie Holzflächen, Bäume und Pflanzbeete miteinander verbunden werden können.",
     images: [
       {
-        image: "28",
+        image: "holz-baum",
         title: "Raum für vorhandenes Grün",
         caption:
           "Ein Holzdeck mit Baumaussparung. Für neue Vorhaben betrachten wir Wurzelraum, Wachstum und die nötigen Abstände am konkreten Standort.",
       },
       {
-        image: "63",
-        title: "Ein weicher Übergang zum Beet",
+        image: "holz-garten",
+        title: "Ein klarer Übergang zum Garten",
         caption:
-          "Bepflanzung entlang eines Holzdecks. Erreichbare Beetränder und abgestimmte Laufwege gehören zur Gestaltung dazu.",
+          "Holzterrasse mit eingefassten Beeten. Erreichbare Beetränder und abgestimmte Laufwege gehören zur Gestaltung dazu.",
       },
     ],
     note: "Alle Fotos stammen aus dem eigenen Loni-Bildbestand. Sie zeigen Gestaltungsbeispiele verschiedener Arbeiten; eine Lage dieser Projekte in Bad Soden ist damit nicht angegeben.",
   },
+  videos: {
+    title: "Eine Holzterrasse im Rundgang.",
+    intro:
+      "Unsere eigene Aufnahme zeigt, wie Holzdeck, Pflanzbeete und Steinstufen zusammenwirken. Ein Projektbeispiel ohne bestätigte Ortszuordnung zu Bad Soden; das Video startet auf Ihren Klick.",
+    clips: [
+      {
+        src: "/videos/holzterrasse-pflanzbeete-stufen.mp4",
+        poster: "/images/projekte/holzterrasse-pflanzbeete-stufen-poster.webp",
+        title: "Holzdeck mit Gartenanschlüssen",
+        description:
+          "Blick über die Dielen am Haus, auf bepflanzte Einfassungen und die angrenzende Treppe.",
+      },
+    ],
+  },
   detail: {
-    image: "36",
-    caption: "Holzterrasse mit Natursteintreppe · Eigene Projektaufnahme",
+    image: "holz-anschluss",
+    caption: "Holzdielen und Übergang zum Garten · Eigene Projektaufnahme",
     title: "Der gute Aufbau liegt unter den Dielen.",
     text: "Wer eine Holzterrasse verlegen lässt, entscheidet auch über Untergrund, Unterkonstruktion und Wasserführung. Wir betrachten die vorhandenen Höhen am Haus und die spätere Nutzung, bevor wir den Aufbau festlegen.",
     points: [
@@ -148,6 +162,7 @@ export const woodTerraceOffer: ProjectOffer = {
     "Den Zugang vom Grundstückseingang bis zum Garten",
   ],
   links: [
+    { href: "/holzterrasse-bauen-lassen", label: "Holzterrassenbau: Leistungen & Projektvideos" },
     { href: "/gartenbau-bad-soden", label: "Gartengestaltung in Bad Soden" },
     { href: "/terrasse-bauen-lassen", label: "Terrassen aus Pflaster & Naturstein" },
     { href: "/leistungen/gartengestaltung", label: "Den ganzen Garten gestalten" },

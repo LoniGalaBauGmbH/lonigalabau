@@ -4,14 +4,39 @@ if (!existsSync("dist/server/index.mjs")) throw new Error("Cloudflare Worker bui
 copyFileSync("scripts/asset-response.mjs", "dist/server/asset-response.mjs");
 copyFileSync("scripts/public-webp.mjs", "dist/server/public-webp.mjs");
 copyFileSync("scripts/public-assets.mjs", "dist/server/public-assets.mjs");
-const types = { js: "text/javascript", css: "text/css", png: "image/png", jpg: "image/jpeg",
-  jpeg: "image/jpeg", webp: "image/webp", avif: "image/avif", svg: "image/svg+xml", woff2: "font/woff2" };
+const types = {
+  js: "text/javascript",
+  css: "text/css",
+  png: "image/png",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  webp: "image/webp",
+  avif: "image/avif",
+  svg: "image/svg+xml",
+  woff2: "font/woff2",
+  mp4: "video/mp4",
+};
 const assetPaths = readdirSync("dist/client", { recursive: true, withFileTypes: true })
   .filter((entry) => entry.isFile())
-  .map((entry) => "/" + path.relative("dist/client", path.join(entry.parentPath, entry.name)).split(path.sep).join("/"))
-  .filter((name) => /^\/(?:assets|images|fonts)\/[\w/.-]+\.(?:js|css|png|jpe?g|webp|avif|svg|woff2)$/.test(name))
+  .map(
+    (entry) =>
+      "/" +
+      path
+        .relative("dist/client", path.join(entry.parentPath, entry.name))
+        .split(path.sep)
+        .join("/"),
+  )
+  .filter(
+    (name) =>
+      /^\/(?:assets|images|fonts)\/[\w/.-]+\.(?:js|css|png|jpe?g|webp|avif|svg|woff2)$/.test(
+        name,
+      ) || /^\/videos\/[\w/.-]+\.mp4$/.test(name),
+  )
   .map((name) => [name, types[name.split(".").pop()]]);
-writeFileSync("dist/server/public-asset-paths.mjs", `export const publicAssetPaths = new Map(${JSON.stringify(assetPaths)});\n`);
+writeFileSync(
+  "dist/server/public-asset-paths.mjs",
+  `export const publicAssetPaths = new Map(${JSON.stringify(assetPaths)});\n`,
+);
 const publicFiles = readdirSync("dist/client", { recursive: true, withFileTypes: true })
   .filter((entry) => entry.isFile() && entry.name.endsWith(".webp"))
   .map(

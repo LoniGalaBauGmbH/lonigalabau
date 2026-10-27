@@ -6,11 +6,12 @@ import { servicePreparation } from "./service-preparation";
 
 // Real content dates for the October SEO releases, not dates of sitemap requests.
 const STATIC_CONTENT_MODIFIED: Record<string, string> = {
-  "/holzterrasse-bad-soden": "2026-10-27T07:29:15.819Z",
+  "/holzterrasse-bad-soden": "2026-10-27T07:57:51.213Z",
+  "/holzterrasse-bauen-lassen": "2026-10-27T07:57:51.213Z",
   "/": "2026-10-20T10:28:28.110Z",
-  "/leistungen": "2026-10-20T10:28:28.110Z",
+  "/leistungen": "2026-10-27T07:57:51.213Z",
   "/l-steine-setzen-lassen": "2026-10-20T10:28:28.110Z",
-  "/terrasse-bauen-lassen": "2026-10-27T07:29:15.819Z",
+  "/terrasse-bauen-lassen": "2026-10-27T07:57:51.213Z",
   "/einfahrt-pflastern-lassen": "2026-10-19T12:23:03Z",
   "/projekte": "2026-10-01T14:39:01Z",
   "/einsatzgebiete": "2026-10-20T10:28:28.110Z",
