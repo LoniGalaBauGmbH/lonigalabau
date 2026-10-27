@@ -23,7 +23,7 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
         description: content.description,
         url: canonicalUrl(content.path),
         provider: { "@id": ORGANIZATION_ID },
-        areaServed: { "@type": "Country", name: "Deutschland" },
+        areaServed: content.areaServed ?? { "@type": "Country", name: "Deutschland" },
       },
       {
         "@type": "BreadcrumbList",
@@ -65,7 +65,8 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
             <h1 className="display">{content.title}</h1>
             <p className="offer-intro">{content.intro}</p>
             <p className="offer-location">
-              Aus Hattersheim am Main · Deutschlandweit für Sie im Einsatz
+              {content.locationLine ??
+                "Aus Hattersheim am Main · Deutschlandweit für Sie im Einsatz"}
             </p>
             <div className="offer-actions">
               <a className="offer-button" href="#projekt-anfragen">
@@ -80,6 +81,7 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
             <ProjectImage
               src={hero.src}
               alt={hero.alt}
+              original={content.originalHero}
               fetchPriority="high"
               sizes="(max-width: 800px) calc(100vw - 40px), 45vw"
             />
@@ -111,7 +113,9 @@ export function ProjectOfferPage({ content }: { content: ProjectOffer }) {
 
         {content.gallery && (
           <section className="offer-wrap offer-section" aria-labelledby="offer-gallery-title">
-            <span className="eyebrow eyebrow-bracket">Einblick in ein Loni-Projekt</span>
+            <span className="eyebrow eyebrow-bracket">
+              {content.gallery.eyebrow ?? "Einblick in ein Loni-Projekt"}
+            </span>
             <h2 className="display" id="offer-gallery-title">
               {content.gallery.title}
             </h2>

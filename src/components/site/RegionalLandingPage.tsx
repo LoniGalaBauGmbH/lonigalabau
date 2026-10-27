@@ -230,6 +230,14 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
                     <RegionalText>{paragraph}</RegionalText>
                   </p>
                 ))}
+                {page.slug === "gartenbau-bad-soden" && (
+                  <p>
+                    <Link to="/holzterrasse-bad-soden" className="region-text-link">
+                      Holzterrasse in Bad Soden bauen lassen
+                      <ArrowUpRight aria-hidden="true" size={17} />
+                    </Link>
+                  </p>
+                )}
               </section>
             ))}
           </div>

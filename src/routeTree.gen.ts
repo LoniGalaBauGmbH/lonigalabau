@@ -20,6 +20,7 @@ import { Route as LSteineSetzenLassenRouteImport } from './routes/l-steine-setze
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KonfiguratorRouteImport } from './routes/konfigurator'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as HolzterrasseBadSodenRouteImport } from './routes/holzterrasse-bad-soden'
 import { Route as GartenbauWiesbadenRouteImport } from './routes/gartenbau-wiesbaden'
 import { Route as GartenbauTaunussteinRouteImport } from './routes/gartenbau-taunusstein'
 import { Route as GartenbauSulzbachTaunusRouteImport } from './routes/gartenbau-sulzbach-taunus'
@@ -142,6 +143,11 @@ const KonfiguratorRoute = KonfiguratorRouteImport.update({
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HolzterrasseBadSodenRoute = HolzterrasseBadSodenRouteImport.update({
+  id: '/holzterrasse-bad-soden',
+  path: '/holzterrasse-bad-soden',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GartenbauWiesbadenRoute = GartenbauWiesbadenRouteImport.update({
@@ -544,6 +550,7 @@ export interface FileRoutesByFullPath {
   '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
   '/gartenbau-taunusstein': typeof GartenbauTaunussteinRoute
   '/gartenbau-wiesbaden': typeof GartenbauWiesbadenRoute
+  '/holzterrasse-bad-soden': typeof HolzterrasseBadSodenRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
@@ -624,6 +631,7 @@ export interface FileRoutesByTo {
   '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
   '/gartenbau-taunusstein': typeof GartenbauTaunussteinRoute
   '/gartenbau-wiesbaden': typeof GartenbauWiesbadenRoute
+  '/holzterrasse-bad-soden': typeof HolzterrasseBadSodenRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
@@ -706,6 +714,7 @@ export interface FileRoutesById {
   '/gartenbau-sulzbach-taunus': typeof GartenbauSulzbachTaunusRoute
   '/gartenbau-taunusstein': typeof GartenbauTaunussteinRoute
   '/gartenbau-wiesbaden': typeof GartenbauWiesbadenRoute
+  '/holzterrasse-bad-soden': typeof HolzterrasseBadSodenRoute
   '/impressum': typeof ImpressumRoute
   '/konfigurator': typeof KonfiguratorRoute
   '/kontakt': typeof KontaktRoute
@@ -788,6 +797,7 @@ export interface FileRouteTypes {
     | '/gartenbau-sulzbach-taunus'
     | '/gartenbau-taunusstein'
     | '/gartenbau-wiesbaden'
+    | '/holzterrasse-bad-soden'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
@@ -868,6 +878,7 @@ export interface FileRouteTypes {
     | '/gartenbau-sulzbach-taunus'
     | '/gartenbau-taunusstein'
     | '/gartenbau-wiesbaden'
+    | '/holzterrasse-bad-soden'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
@@ -949,6 +960,7 @@ export interface FileRouteTypes {
     | '/gartenbau-sulzbach-taunus'
     | '/gartenbau-taunusstein'
     | '/gartenbau-wiesbaden'
+    | '/holzterrasse-bad-soden'
     | '/impressum'
     | '/konfigurator'
     | '/kontakt'
@@ -1031,6 +1043,7 @@ export interface RootRouteChildren {
   GartenbauSulzbachTaunusRoute: typeof GartenbauSulzbachTaunusRoute
   GartenbauTaunussteinRoute: typeof GartenbauTaunussteinRoute
   GartenbauWiesbadenRoute: typeof GartenbauWiesbadenRoute
+  HolzterrasseBadSodenRoute: typeof HolzterrasseBadSodenRoute
   ImpressumRoute: typeof ImpressumRoute
   KonfiguratorRoute: typeof KonfiguratorRoute
   KontaktRoute: typeof KontaktRoute
@@ -1132,6 +1145,13 @@ declare module '@tanstack/react-router' {
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/holzterrasse-bad-soden': {
+      id: '/holzterrasse-bad-soden'
+      path: '/holzterrasse-bad-soden'
+      fullPath: '/holzterrasse-bad-soden'
+      preLoaderRoute: typeof HolzterrasseBadSodenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gartenbau-wiesbaden': {
@@ -1693,6 +1713,7 @@ const rootRouteChildren: RootRouteChildren = {
   GartenbauSulzbachTaunusRoute: GartenbauSulzbachTaunusRoute,
   GartenbauTaunussteinRoute: GartenbauTaunussteinRoute,
   GartenbauWiesbadenRoute: GartenbauWiesbadenRoute,
+  HolzterrasseBadSodenRoute: HolzterrasseBadSodenRoute,
   ImpressumRoute: ImpressumRoute,
   KonfiguratorRoute: KonfiguratorRoute,
   KontaktRoute: KontaktRoute,

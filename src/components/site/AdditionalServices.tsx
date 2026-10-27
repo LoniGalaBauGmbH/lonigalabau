@@ -24,6 +24,12 @@ export function AdditionalServices() {
         >
           Spielplatzbau für Kitas, Schulen und Wohnanlagen <span aria-hidden="true">↗</span>
         </Link>
+        <Link
+          to="/holzterrasse-bad-soden"
+          className="mt-4 flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+        >
+          Holzterrasse in Bad Soden bauen lassen <span aria-hidden="true">↗</span>
+        </Link>
       </div>
       <Link
         to="/kontakt"

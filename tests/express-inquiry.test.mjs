@@ -62,6 +62,24 @@ test("playground inquiry preserves service, public landing page and PDF plans th
   await persistContactSubmission(h.client, payload);
   assert.match(h.records[0].message, /https:\/\/www\.loni-galabau\.de\/spielplatzbau/);
 });
+test("wood terrace inquiry preserves the selected service and Bad Soden source through storage", async () => {
+  const input = api.expressSubmissionSchema.parse({
+    ...valid,
+    service: "Holzterrassenbau",
+    inquiryPage: "/holzterrasse-bad-soden",
+    description: "Holzterrasse in Bad Soden erneuern, ungefähr 30 m².",
+    attachments: [pdf],
+  });
+  const payload = api.buildExpressPayload(input);
+  assert.equal(contactSubmissionSchema.safeParse(payload).success, true);
+  assert.match(payload.message, /Holzterrassenbau/);
+  assert.equal(payload.inquiryPage, "/holzterrasse-bad-soden");
+  const h = harness();
+  await persistContactSubmission(h.client, payload);
+  assert.match(h.records[0].message, /https:\/\/www\.loni-galabau\.de\/holzterrasse-bad-soden/);
+  assert.equal(h.uploads.length, 1);
+});
+
 function harness() {
   const uploads = [],
     records = [];

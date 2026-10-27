@@ -23,7 +23,8 @@ export type ProjectOffer = {
     | "/terrasse-bauen-lassen"
     | "/einfahrt-pflastern-lassen"
     | "/l-steine-setzen-lassen"
-    | "/spielplatzbau";
+    | "/spielplatzbau"
+    | "/holzterrasse-bad-soden";
   label: string;
   title: string;
   metaTitle: string;
@@ -34,8 +35,12 @@ export type ProjectOffer = {
   initialService?: (typeof EXPRESS_SERVICES)[number];
   kicker?: string;
   landscapeHero?: boolean;
+  originalHero?: boolean;
+  locationLine?: string;
+  areaServed?: { "@type": "City"; name: string };
   casesHeading?: string;
   gallery?: {
+    eyebrow?: string;
     title: string;
     intro: string;
     images: { image: keyof typeof projectPhotos; title: string; caption: string }[];
@@ -178,6 +183,7 @@ export const terraceOffer: ProjectOffer = {
     "Gartenzugang und Transportweg",
   ],
   links: [
+    { href: "/holzterrasse-bad-soden", label: "Holzterrassen in Bad Soden" },
     { href: "/leistungen/natursteinarbeiten", label: "Natursteinarbeiten" },
     { href: "/leistungen/pflasterarbeiten", label: "Pflasterarbeiten im Überblick" },
     {
