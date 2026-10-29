@@ -1,0 +1,66 @@
+LONI GALABAU – RECRUITING-FLYER V2
+Konzept vom 29.10.2026
+
+Aktuelle Grafik: loni-werkstudent-bauleitung-flyer-v2.png
+Format: 1122 × 1402 Pixel, RGB, Hochformat (annähernd 4:5).
+Status: digitaler Grafikentwurf; keine Druckvorstufe mit Beschnitt/CMYK.
+Erstellt mit der integrierten Imagegen-Funktion, ohne API-/CLI-Fallback.
+
+GESTALTUNG
+Der Nutzer wünschte nach dem ersten Entwurf ausdrücklich deutlich weniger Text und eine professionellere grafische Gestaltung.
+Aktuelle Leitidee: BAU DEINE ZUKUNFT.
+Große kompakte Typografie, asymmetrisches Landschaftsmodell, heller Hintergrund, dunkles Loni-Grün und gezielter hellgrüner Akzent.
+Das bestehende Original-Logo wurde als Bildreferenz verwendet. Es ist Bestandteil der generierten Grafik, kein separat eingebettetes Vektorobjekt.
+Das Architekturmodell ist ein KI-generiertes Gestaltungsmotiv, keine reale Projektreferenz.
+
+INHALT
+Werkstudent Bauleitung, (m/w/d) · Garten- & Landschaftsbau.
+Firmenwagen + Firmenhandy.
+Übernahme nach dem Studium möglich.
+Jetzt bewerben → info@loni-galabau.de.
+Vorteile gemäß Nutzerauftrag, Kontakt aus öffentlichen Unternehmensangaben im Projekt.
+Keine erfundene Vergütung, Wochenstunden, garantierte Übernahme oder private Fahrzeugnutzung.
+
+PRÜFUNG
+Wortlaut, Umlaute, Lesbarkeit, Kontaktadresse und Ränder visuell geprüft.
+PNG-Metadaten/Dateihash geprüft. Keine Website- oder Stellenportal-Veröffentlichung.
+Nur Grafik/Dokumentation geändert; keine Anwendungstests erforderlich.
+SHA-256 PNG: EA36BA2DE84A8C6C72DE31977CB45AAD01D9CAB26AC6C761769AEDDFEFDFBCDD
+
+FINALER GENERIERUNGSPROMPT
+Use case: ads-marketing, radical redesign of recruitment flyer.
+Input image 1 is the previous flyer and is an EDIT TARGET that the client REJECTED for too much text and too generic a look. COMPLETELY replace its layout and art direction; do not retain its photograph, icon columns, brochure layout, footer box or long copy.
+Input image 2 is the original Loni GalaBau logo, a supporting brand asset. Preserve the actual logo faithfully with its original lettering, botanical ornament and proportions.
+
+Make a beautifully art-directed contemporary graphic design recruitment POSTER in portrait 4:5 ratio, actual flat finished artwork, no paper mockup. It should look like a talented Swiss editorial graphic designer made it for a premium landscaping studio. Design-first, audacious typographic scale, very minimal word count, extremely intentional asymmetric composition, generous negative space.
+
+ART DIRECTION:
+Warm pale ivory background #F9FBF4. Forest green #1C4C24 typography. Fresh pale lime #C7E486 as one sharp accent panel. A SMALL original green logo at upper left with generous breathing room. Thin architectural hairline rules only where structurally useful. No rounded cards, no stock-photo recruitment scene, no icons, no gradients, no drop shadows, no template look.
+Hero: huge stunning heavy neo-grotesk typography, optical kerning, on three short lines, left aligned:
+"BAU"
+"DEINE"
+"ZUKUNFT."
+Make "BAU" and "DEINE" dark forest green. "ZUKUNFT." can span almost the full poster width in a very bold condensed sans serif, with exact clear lettering. Confident editorial scale and premium contrast.
+One striking graphic visual interacts with the type on the right: a crisp photoreal architectural LANDSCAPE MAQUETTE, a single isolated rectangular miniature slice of designed outdoor space with pale limestone paving, a small clean planting bed with ornamental grasses, and a single fine young leafy tree. Beautiful true-to-material texture, precise geometry. Oblique/isometric overhead view, like an architect's physical presentation model, floating visually on the ivory plane without a shadow. Thin drafting guide lines extend from its corner toward a lime rectangular accent behind it, hinting at Bauleitung and planning. Not a real project claim. No people, no machinery, no cute cartoon or childish 3D, no extraneous decorative leaves. This visual should be exquisitely composed in the open upper-right area alongside BAU/DEINE and not obscure the lettering.
+Below the headline, strong clear compact role:
+"Werkstudent Bauleitung"
+"(m/w/d) · Garten- & Landschaftsbau"
+Use short restrained sans serif text. Then generous space.
+Near the bottom a narrow lime bar or a very clean understated typeset benefit line:
+"Firmenwagen + Firmenhandy"
+Below it, a single smaller line:
+"Übernahme nach dem Studium möglich"
+Bottom margin: minimal call-to-action in dark green, no colored footer container:
+"Jetzt bewerben → info@loni-galabau.de"
+
+THE ENTIRE POSTER MUST CONTAIN ONLY the original logo and these exact strings. NO OTHER TEXT:
+BAU
+DEINE
+ZUKUNFT.
+Werkstudent Bauleitung
+(m/w/d) · Garten- & Landschaftsbau
+Firmenwagen + Firmenhandy
+Übernahme nach dem Studium möglich
+Jetzt bewerben → info@loni-galabau.de
+
+All words must be perfectly legible and exactly spelled, including umlauts. Only ~30 words total besides logo. No explanatory sentences, no location, no website URL, no list of study programs, no additional slogan, no numbering, no badge. Calm refined layout with a strong graphic idea, not crammed. Visually beautiful negative space. Deliver one finished premium poster.
