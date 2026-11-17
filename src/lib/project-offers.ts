@@ -105,9 +105,10 @@ export const terraceOffer: ProjectOffer = {
     },
   ],
   detail: {
-    image: "25",
-    title: "Ein guter Anschluss gehört dazu.",
-    text: "Die schönste Platte allein macht noch keine gute Terrasse. Wir betrachten den Weg vom Haus in den Garten: Tür, Belag, Rand und Wasserführung müssen zusammenpassen.",
+    image: "14",
+    caption: "Eigene Aufnahme: Gitterrinne an der Kante einer Plattenterrasse.",
+    title: "Wo Terrasse und Pflaster aufeinandertreffen",
+    text: "Bei dieser Terrasse verläuft eine schmale Gitterrinne zwischen dem hellen Sitzbereich und der grau gepflasterten Nachbarfläche. Der Rost bleibt von oben für die Reinigung erreichbar. Für Ihre Terrasse klären wir schon beim Aufmaß, wo Regenwasser ankommt und wohin es abfließen kann.",
     points: [
       "Bestehende Tür- und Sockelhöhen aufnehmen.",
       "Gefälle und geeigneten weiteren Wasserweg klären.",
@@ -195,6 +196,10 @@ export const terraceOffer: ProjectOffer = {
     "Gartenzugang und Transportweg",
   ],
   links: [
+    {
+      href: "/projekte/9cce7291-71ea-43c7-86a0-8543691b9323",
+      label: "Projektfotos: Entwässerungsrinnen an Terrasse und Pflaster",
+    },
     { href: "/holzterrasse-bauen-lassen", label: "Holzterrassen planen & bauen lassen" },
     { href: "/holzterrasse-bad-soden", label: "Holzterrassen in Bad Soden" },
     { href: "/leistungen/natursteinarbeiten", label: "Natursteinarbeiten" },

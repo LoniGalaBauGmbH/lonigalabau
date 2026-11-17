@@ -19,6 +19,12 @@ export function AdditionalServices() {
           Dachbegrünung: Möglichkeiten für Ihr Dach entdecken <span aria-hidden="true">↗</span>
         </Link>
         <Link
+          to="/baumpflege"
+          className="mt-4 flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
+        >
+          Baumpflege mit Hubarbeitsbühne <span aria-hidden="true">↗</span>
+        </Link>
+        <Link
           to="/spielplatzbau"
           className="mt-4 flex min-h-11 items-center gap-2 text-sm font-semibold text-brand underline underline-offset-4"
         >

@@ -142,11 +142,11 @@ const FAQS = [
 export const Route = createFileRoute("/zisterne-einbauen-lassen")({
   head: () => ({
     meta: [
-      { title: "Zisterne einbauen lassen & nachrüsten | Loni GalaBau" },
+      { title: "Zisterne einbauen lassen in Rhein-Main | Loni GalaBau" },
       {
         name: "description",
         content:
-          "Zisterne einbauen oder nachrüsten lassen: Einbauumfang, Kostenfaktoren und passende Speichergröße klären. Deutschlandweit mit Loni GalaBau.",
+          "Fachbetrieb aus Hattersheim für den Zisterneneinbau. Wir übernehmen Aushub, Tank, Leitungen und die Wiederherstellung der Gartenfläche. Projekt anfragen.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: PREVIEW_IMAGE },

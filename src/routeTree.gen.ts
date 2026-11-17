@@ -65,6 +65,7 @@ import { Route as EinfahrtPflasternLassenRouteImport } from './routes/einfahrt-p
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as DachbegruenungRouteImport } from './routes/dachbegruenung'
+import { Route as BaumpflegeRouteImport } from './routes/baumpflege'
 import { Route as AgbRouteImport } from './routes/agb'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
@@ -376,6 +377,11 @@ const DachbegruenungRoute = DachbegruenungRouteImport.update({
   path: '/dachbegruenung',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BaumpflegeRoute = BaumpflegeRouteImport.update({
+  id: '/baumpflege',
+  path: '/baumpflege',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AgbRoute = AgbRouteImport.update({
   id: '/agb',
   path: '/agb',
@@ -513,6 +519,7 @@ const AuthenticatedAdminAnfragenRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
+  '/baumpflege': typeof BaumpflegeRoute
   '/dachbegruenung': typeof DachbegruenungRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
@@ -595,6 +602,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
+  '/baumpflege': typeof BaumpflegeRoute
   '/dachbegruenung': typeof DachbegruenungRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
@@ -679,6 +687,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/agb': typeof AgbRoute
+  '/baumpflege': typeof BaumpflegeRoute
   '/dachbegruenung': typeof DachbegruenungRoute
   '/datenschutz': typeof DatenschutzRoute
   '/downloads': typeof DownloadsRoute
@@ -763,6 +772,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/agb'
+    | '/baumpflege'
     | '/dachbegruenung'
     | '/datenschutz'
     | '/downloads'
@@ -845,6 +855,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/agb'
+    | '/baumpflege'
     | '/dachbegruenung'
     | '/datenschutz'
     | '/downloads'
@@ -928,6 +939,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/agb'
+    | '/baumpflege'
     | '/dachbegruenung'
     | '/datenschutz'
     | '/downloads'
@@ -1012,6 +1024,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   AgbRoute: typeof AgbRoute
+  BaumpflegeRoute: typeof BaumpflegeRoute
   DachbegruenungRoute: typeof DachbegruenungRoute
   DatenschutzRoute: typeof DatenschutzRoute
   DownloadsRoute: typeof DownloadsRoute
@@ -1475,6 +1488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DachbegruenungRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/baumpflege': {
+      id: '/baumpflege'
+      path: '/baumpflege'
+      fullPath: '/baumpflege'
+      preLoaderRoute: typeof BaumpflegeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agb': {
       id: '/agb'
       path: '/agb'
@@ -1689,6 +1709,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   AgbRoute: AgbRoute,
+  BaumpflegeRoute: BaumpflegeRoute,
   DachbegruenungRoute: DachbegruenungRoute,
   DatenschutzRoute: DatenschutzRoute,
   DownloadsRoute: DownloadsRoute,

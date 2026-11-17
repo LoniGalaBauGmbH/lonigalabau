@@ -62,18 +62,26 @@ test("playground inquiry preserves service, public landing page and PDF plans th
   await persistContactSubmission(h.client, payload);
   assert.match(h.records[0].message, /https:\/\/www\.loni-galabau\.de\/spielplatzbau/);
 });
-for (const inquiryPage of ["/holzterrasse-bad-soden", "/holzterrasse-bauen-lassen"]) {
-  test(`wood terrace inquiry preserves service and ${inquiryPage} through storage`, async () => {
+for (const [inquiryPage, service, description] of [
+  [
+    "/holzterrasse-bad-soden",
+    "Holzterrassenbau",
+    "Holzterrasse in Bad Soden erneuern, ungefähr 30 m².",
+  ],
+  ["/holzterrasse-bauen-lassen", "Holzterrassenbau", "Holzterrasse erneuern, ungefähr 30 m²."],
+  ["/baumpflege", "Baumpflege", "Baumkrone an der Einfahrt pflegen."],
+]) {
+  test(`inquiry preserves ${service} and ${inquiryPage} through storage`, async () => {
     const input = api.expressSubmissionSchema.parse({
       ...valid,
-      service: "Holzterrassenbau",
+      service,
       inquiryPage,
-      description: "Holzterrasse in Bad Soden erneuern, ungefähr 30 m².",
+      description,
       attachments: [pdf],
     });
     const payload = api.buildExpressPayload(input);
     assert.equal(contactSubmissionSchema.safeParse(payload).success, true);
-    assert.match(payload.message, /Holzterrassenbau/);
+    assert.ok(payload.message.includes(`Gewünschte Leistung: ${service}`));
     assert.equal(payload.inquiryPage, inquiryPage);
     const h = harness();
     await persistContactSubmission(h.client, payload);

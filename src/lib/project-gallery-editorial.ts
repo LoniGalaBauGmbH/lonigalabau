@@ -3,6 +3,7 @@
  * and docs/bildkatalog.md. These selections are not individual case studies.
  */
 type GalleryEditorial = {
+  terraceOffer?: boolean;
   description: string;
   heading: string;
   paragraph: string;
@@ -185,6 +186,7 @@ const galleries: Record<string, GalleryEditorial> = {
     },
   },
   "9cce7291-71ea-43c7-86a0-8543691b9323": {
+    terraceOffer: true,
     description:
       "Entwässerungsrinnen an Terrasse, Garage und Pflasterfläche: Eigene Projektfotos zeigen Übergänge und Anschlüsse befestigter Außenflächen.",
     heading: "Wasserführung an befestigten Flächen",

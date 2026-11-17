@@ -232,8 +232,61 @@ export function RegionalLandingPage({ page }: { page: RegionPage }) {
                 ))}
                 {page.slug === "gartenbau-bad-soden" && (
                   <p>
+                    Sie planen ein Holzdeck oder möchten vorhandene Dielen erneuern? Auf unserer
+                    Holzterrassenseite sehen Sie eigene Bau- und Gartenaufnahmen und können Ihren
+                    Standort und die ungefähren Maße direkt für ein Angebot übermitteln.{" "}
                     <Link to="/holzterrasse-bad-soden" className="region-text-link">
                       Holzterrasse in Bad Soden bauen lassen
+                      <ArrowUpRight aria-hidden="true" size={17} />
+                    </Link>
+                  </p>
+                )}
+                {page.slug === "gartenbau-hattersheim" && (
+                  <p>
+                    Steht bei Ihrem Gartenprojekt ein Baum im Mittelpunkt? Für Pflegearbeiten in der
+                    Krone klären wir vorab den Zugang für unsere Hubarbeitsbühne.{" "}
+                    <Link to="/baumpflege" className="region-text-link">
+                      Baumpflege in Hattersheim anfragen{" "}
+                      <ArrowUpRight aria-hidden="true" size={17} />
+                    </Link>
+                  </p>
+                )}
+                {page.slug === "gartenbau-frankfurt-hoechst" && (
+                  <aside className="mt-7 border-l-2 border-brand/30 pl-5">
+                    <h3>Ein Frankfurter Projekt unseres Teams: Begrünung an der Alten Oper</h3>
+                    <p>
+                      Am Opernplatz in der Frankfurter Innenstadt hat unser Team die Pflanzflächen
+                      der Zufahrtsschutzmodule bepflanzt. Zwischen den Stahlkanten war der Raum für
+                      das Grün bereits vorgegeben. Unser Geschäftsführer Valon Sinanaj zeigt die
+                      ausgeführte Arbeit in seinem Projektbericht.
+                    </p>
+                    <a
+                      className="region-text-link"
+                      href="https://de.linkedin.com/posts/valon-sinanaj-635b7b132_lonigalabau-frankfurt-alteoper-activity-7511422376929161217-fcLa"
+                    >
+                      Projekt am Opernplatz ansehen <ArrowUpRight aria-hidden="true" size={17} />
+                    </a>
+                  </aside>
+                )}
+                {page.slug === "gartenbau-floersheim" && (
+                  <p>
+                    Bei einer Einfahrt helfen uns Fotos vom Übergang zur Straße und zur Garage.
+                    Markieren Sie abgesackte Fahrspuren oder Stellen, an denen nach Regen Wasser
+                    stehen bleibt.{" "}
+                    <Link to="/einfahrt-pflastern-lassen" className="region-text-link">
+                      Pflasterarbeiten für Ihre Einfahrt in Flörsheim{" "}
+                      <ArrowUpRight aria-hidden="true" size={17} />
+                    </Link>
+                  </p>
+                )}
+                {page.slug === "gartenbau-niedernhausen" && (
+                  <p>
+                    Soll die Terrasse künftig ohne große Stufe vom Haus aus erreichbar sein?
+                    Fotografieren Sie Türschwelle, vorhandene Stufen und den Übergang zum Rasen
+                    zusammen. So können wir die gewünschte Höhe bereits im ersten Gespräch
+                    einordnen.{" "}
+                    <Link to="/terrasse-bauen-lassen" className="region-text-link">
+                      Terrassenaufbau und Wasserführung ansehen{" "}
                       <ArrowUpRight aria-hidden="true" size={17} />
                     </Link>
                   </p>

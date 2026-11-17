@@ -27,6 +27,7 @@ export const STATIC_PATHS = [
   "/einfahrt-pflastern-lassen",
   "/l-steine-setzen-lassen",
   "/spielplatzbau",
+  "/baumpflege",
   "/holzterrasse-bad-soden",
   "/holzterrasse-bauen-lassen",
   "/leistungen",

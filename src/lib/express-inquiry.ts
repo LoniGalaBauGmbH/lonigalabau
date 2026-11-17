@@ -5,6 +5,7 @@ import { inquiryPageSchema } from "./inquiry-page";
 
 export const EXPRESS_SERVICES = [
   "Gartengestaltung",
+  "Baumpflege",
   "Holzterrassenbau",
   "Pflasterarbeiten",
   "Natursteinarbeiten",

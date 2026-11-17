@@ -154,6 +154,11 @@ function Page() {
                     {relatedService.title} →
                   </Link>
                 ))}
+                {editorial.terraceOffer && (
+                  <Link to="/terrasse-bauen-lassen" className="underline underline-offset-4">
+                    Terrasse mit passender Entwässerung bauen lassen →
+                  </Link>
+                )}
                 <Link
                   to="/ratgeber/$slug"
                   params={{ slug: editorial.guide.slug }}

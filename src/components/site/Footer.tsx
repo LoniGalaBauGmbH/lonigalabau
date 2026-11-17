@@ -30,6 +30,7 @@ const navLinks: [string, string][] = [
   ["/einfahrt-pflastern-lassen", "Einfahrt pflastern"],
   ["/l-steine-setzen-lassen", "L-Steine setzen"],
   ["/spielplatzbau", "Spielplatzbau"],
+  ["/baumpflege", "Baumpflege"],
   ["/konfigurator", "Gartenplaner"],
   ["/jobs", "Jobs"],
   ["/kontakt", "Kontakt"],
