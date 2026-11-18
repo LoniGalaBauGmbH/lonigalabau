@@ -3,14 +3,16 @@ import { ArrowUpRight } from "lucide-react";
 import { ExpressInquiryForm } from "@/components/site/ExpressInquiryForm";
 import { PageShell } from "@/components/site/PageShell";
 import { ProjectImage } from "@/components/site/ProjectImage";
-import { projectPhotos } from "@/lib/project-photos";
 import { publicImageUrl } from "@/lib/public-image-url";
 import { canonicalUrl, ORGANIZATION_ID, publicPageSchema, safeJsonLd } from "@/lib/seo";
 
 const title = "Baumpflege in Hattersheim & Rhein-Main | Loni GalaBau";
 const description =
   "Baumpflege mit eigener Hubarbeitsbühne in Hattersheim und im Rhein-Main-Gebiet. Senden Sie Fotos von Baum und Zufahrt für ein individuelles Angebot.";
-const photo = projectPhotos["holz-baum"];
+const photo = {
+  src: "/images/baumpflege/baumpflege-hubarbeitsbuehne.jpg",
+  alt: "Mitarbeiter bei der Baumpflege aus dem Arbeitskorb einer orangefarbenen Hubarbeitsbühne",
+};
 const pageSchema = publicPageSchema(
   "/baumpflege",
   "Baumpflege in Hattersheim und Rhein-Main",
@@ -78,25 +80,40 @@ function TreeCarePage() {
               src={photo.src}
               original
               alt={photo.alt}
-              width={1200}
-              height={1600}
+              width={720}
+              height={1280}
               fetchPriority="high"
               sizes="(min-width: 768px) 45vw, 100vw"
-              className="aspect-[4/3] w-full rounded-3xl object-cover object-top"
+              className="aspect-[3/4] w-full rounded-3xl object-cover object-[50%_70%]"
             />
             <figcaption className="mt-2 text-sm text-brand/75">
-              Ein bestehender Gartenbaum an einer Holzterrasse aus unseren Arbeiten.
+              Baumpflege aus dem Arbeitskorb unserer Hubarbeitsbühne.
             </figcaption>
           </figure>
         </header>
         <section
-          className="grid gap-6 border-y border-brand/20 py-10 md:grid-cols-2 md:gap-14"
+          className="grid items-center gap-8 border-y border-brand/20 py-10 md:grid-cols-2 md:gap-14"
           aria-labelledby="baum-zugang"
         >
-          <h2 id="baum-zugang" className="font-serif text-3xl text-brand md:text-4xl">
-            Kommt die Bühne an meinen Baum?
-          </h2>
+          <figure>
+            <ProjectImage
+              src="/images/baumpflege/gehoelzpflege-garten.jpg"
+              original
+              alt="Gehölzpflege im Garten mit herbstlichem Schnittgut, Laubrechen und Laubbläser"
+              width={960}
+              height={1280}
+              loading="lazy"
+              sizes="(min-width: 1280px) 572px, (min-width: 768px) 45vw, 100vw"
+              className="aspect-[3/4] w-full rounded-3xl object-cover"
+            />
+            <figcaption className="mt-2 text-sm text-brand/75">
+              Einblick in unsere Pflegearbeiten im Garten.
+            </figcaption>
+          </figure>
           <div className="space-y-3 leading-relaxed">
+            <h2 id="baum-zugang" className="mb-5 font-serif text-3xl text-brand md:text-4xl">
+              Kommt die Bühne an meinen Baum?
+            </h2>
             <p>
               Für den Einsatz zählen der Weg von der Straße zum Baum und die verfügbare Stellfläche.
               Ein schmales Gartentor, eine Stufe oder ein Vordach kann entscheidend sein. Ein Foto
